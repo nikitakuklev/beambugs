@@ -1,0 +1,76 @@
+---
+title: "COL-02: ISR uses the electron classical radius for every species"
+hide:
+  - toc
+---
+
+# COL-02 — ISR uses the electron classical radius for every species
+
+| | |
+|---|---|
+| Code | [ImpactX](../index.md) · Collective effects |
+| Priority | P2 |
+| Severity | Wrong physics |
+| Evidence | Reproduced, independently rechecked |
+| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
+| Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1708]] |
+| Source | [`ISRPush.cpp#L36-L47`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/wakefields/ISRPush.cpp#L36-L47) |
+
+Incoherent synchrotron radiation (ISR) uses the electron classical radius for every species, although the radiated power scales with the species radius `r_q = q²/(4πε₀mc²)`. For ultrarelativistic particles the fractional momentum loss is `(2/3)·r_q·(βγ)³·ds/ρ²`. A 7 TeV (kinetic) proton reference over 100 m at bending radius 2800 m loses 9.954e-9 of its momentum instead of 5.421e-12, 1836 times too much. The same radius enters the quantum-excitation variance, and an ion of mass `M` and charge `Ze` radiates `M/(Z²mₑ)` times too much; ISR accepts any species.
+
+## Reproducer
+
+Requires scipy.
+
+Classical loss in a bend of radius R over ds (ultrarelativistic): dP/P = (2/3) r\_q (beta gamma)^3 ds / R^2, with the species radius r\_q = q^2 / (4 pi eps0 m c^2). For a proton r\_e / r\_p = m\_p / m\_e = 1836.
+
+??? example "COL-02.py"
+
+    [Download COL-02.py](COL-02.py)
+
+    ```python
+    """COL-02: incoherent synchrotron radiation uses the electron classical radius for every species.
+
+    Classical loss in a bend of radius R over ds (ultrarelativistic): dP/P = (2/3) r_q (beta gamma)^3 ds / R^2,
+    with the species radius r_q = q^2 / (4 pi eps0 m c^2). For a proton r_e / r_p = m_p / m_e = 1836.
+    """
+    import numpy as np
+    from impactx import ImpactX, elements
+    from scipy.constants import c, epsilon_0
+
+    sim = ImpactX()
+    sim.verbose = 0
+    sim.tiny_profiler = False
+    sim.diagnostics = False
+    sim.space_charge = False
+    sim.isr = True
+    sim.isr_order = 1
+    sim.isr_on_ref_part = True
+    sim.init_grids()
+    try:
+        ref = sim.beam.ref
+        ref.set_species("proton").set_kin_energy_MeV(7e6)  # 7 TeV
+        z = np.zeros(4)
+        sim.beam.add_n_particles(x=z, y=z, t=z, px=z, py=z, pt=z, qm=ref.qm_ratio_SI, bunch_charge=1e-15)
+        R, ds = 2800.0, 100.0
+        bg = ref.beta_gamma
+        r_p = ref.charge**2 / (4 * np.pi * epsilon_0 * ref.mass * c**2)
+        expected = 2 / 3 * r_p * bg**3 * ds / R**2
+        sim.lattice.append(elements.ExactSbend(ds=ds, phi=np.degrees(ds / R)))
+        sim.track_particles()
+        observed = (bg - ref.beta_gamma) / bg
+        print(f"proton reference dP/P observed {observed:.4g}, expected {expected:.4g}, ratio {observed / expected:.4g}")
+        print("DEFECT REPRODUCED" if abs(observed / expected - 1) > 1e-3 else "NOT REPRODUCED")
+    finally:
+        sim.finalize()
+
+    ```
+
+## Provenance
+
+| Role | Model | Effort | Date | Code examined |
+|---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | `claude-opus-5-5` |  | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+

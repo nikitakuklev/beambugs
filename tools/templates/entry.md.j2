@@ -1,0 +1,77 @@
+{% macro codeid(c) %}{{ c.ref }} (`{{ c.commit }}`){% if c.get('build') %}, {{ c.build }}{% endif %}{% endmacro %}
+---
+title: "{{ e.id }}: {{ e.title | replace('"', '\\"') | replace('`', '') }}"
+hide:
+  - toc
+---
+
+# {{ e.id }} — {{ e.title }}
+
+| | |
+|---|---|
+| Code | [{{ code.name }}](../index.md) · {{ e.area }} |
+| Priority | {{ e.priority }} |
+| Severity | {{ e.severity }} |
+| Evidence | {{ e.level }} |
+{% if e.provenance.get('verified') %}
+| Last reproduced | {{ e.provenance.verified.date }} on {{ codeid(e.provenance.verified.code) }} |
+{% endif %}
+{% if e.tags %}
+| Tags | {% for t in e.tags %}<span class="bb-tag">{{ t }}</span> {% endfor %}[?](../../methodology.md#tags) |
+{% endif %}
+{% for kind, label in [('issue', 'Issue'), ('pull', 'Pull request')] %}
+{% set rows = e.upstream | selectattr('kind', 'equalto', kind) | rejectattr('relation', 'equalto', 'discussion') | list %}
+{% if rows %}
+| {{ label }} | {% for u in rows %}[[gh:{{ u.url }}]]{% if u.relation == 'filed' %}, filed from this evidence{% elif u.relation == 'fix' %}, fix{% endif %}{% if not loop.last %}<br>{% endif %}{% endfor %} |
+{% endif %}
+{% endfor %}
+{% set disc = e.upstream | selectattr('relation', 'equalto', 'discussion') | list %}
+{% if disc %}
+| Discussed in | {% for u in disc %}[[gh:{{ u.url }}]]{% if not loop.last %}<br>{% endif %}{% endfor %} |
+{% endif %}
+{% if e.locations %}
+| Source | {% for l in e.locations %}[{{ l.label }}]({{ l.url }}){% if not loop.last %}<br>{% endif %}{% endfor %} |
+{% endif %}
+
+{{ e.summary }}
+
+{% if e.justification %}
+**Why no reproducer.** {{ e.justification }}
+
+{% endif %}
+## Reproducer
+
+{% if note %}
+{{ note }}
+
+{% endif %}
+{% for name, text in sources.items() %}
+{% if descriptions[name] %}
+{{ descriptions[name] }}
+
+{% endif %}
+??? example "{{ name }}"
+
+    [Download {{ name }}]({{ name }})
+
+    ```python
+{{ text | indent(4, first=True) }}
+    ```
+
+{% endfor %}
+## Provenance
+
+| Role | Model | Effort | Date | Code examined |
+|---|---|---|---|---|
+{% for role in ['found', 'confirmed'] %}
+{% for p in e.provenance[role] %}
+| {{ role | capitalize }}{% if p.get('scope') %} ({{ p.scope }}){% endif %} | `{{ p.model }}` | {{ p.get('effort', '') }} | {{ p.date }} | {{ codeid(p.code) if p.get('code') else '' }} |
+{% endfor %}
+{% endfor %}
+
+{% if brief %}
+??? note "Technical brief"
+
+{{ brief | indent(4, first=True) }}
+
+{% endif %}

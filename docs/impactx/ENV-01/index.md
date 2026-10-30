@@ -1,0 +1,123 @@
+---
+title: "ENV-01: Eigenemittance diagnostics corrupt small or repeated modes"
+hide:
+  - toc
+---
+
+# ENV-01 — Eigenemittance diagnostics corrupt small or repeated modes
+
+| | |
+|---|---|
+| Code | [ImpactX](../index.md) · Envelope |
+| Priority | P2 |
+| Severity | Silent wrong result |
+| Evidence | Reproduced, independently rechecked |
+| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1481]] |
+| Source | [`EmittanceInvariants.cpp#L119-L134`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/EmittanceInvariants.cpp#L119-L134)<br>[`CovarianceMatrixMath.H#L59-L90`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/CovarianceMatrixMath.H#L59-L90) |
+
+With eigenemittance diagnostics enabled, `beam_moments()` returns wrong eigenemittances, or three NaNs, when the beam's emittances differ widely or two are equal; both particle beams and `Envelope` are affected. The code forms the characteristic cubic from differences of trace invariants, which loses the small modes, and then evaluates `acos` without guarding its domain. For an uncoupled beam the documented eigenemittances equal the projected normalized rms emittances, which an independent Hermitian eigensolver reproduces to 5e-15. At γ = 2, an uncoupled beam with emittances 1e-8, 2e-8 and 1e-3 m gives eigenemittances 5.116e-8, 5.584e-8 and 1e-3 m, and emittances 1e-6, 1e-6 and 1e-3 m give three NaNs; a moderate spread (1e-6, 2e-6, 3e-6 m) is correct.
+
+## Reproducer
+
+??? example "ENV-01.py"
+
+    [Download ENV-01.py](ENV-01.py)
+
+    ```python
+    """ENV-01: eigenemittance diagnostics corrupt small or repeated modes."""
+
+    import os
+
+    for variable in (
+        "NPROC",
+        "PJRT_NPROC",
+        "OMP_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "NUMEXPR_NUM_THREADS",
+    ):
+        os.environ[variable] = "1"
+
+    import numpy as np
+    from impactx import Envelope, ImpactX, Map6x6
+
+    sim = ImpactX()
+    sim.particle_shape = 1
+    sim.space_charge = False
+    sim.diagnostics = False
+    sim.eigenemittances = True
+    sim.init_grids()
+    ref = sim.beam.ref
+    ref.set_charge_qe(1).set_mass_MeV(1000).set_kin_energy_MeV(1000)
+    bg = ref.beta_gamma
+    print(f"gamma={ref.gamma:.17g} beta_gamma={bg:.17g}")
+    j = np.kron(np.eye(3), [[0.0, 1.0], [-1.0, 0.0]])
+
+
+    def compare(label, moments, expected):
+        projected = np.array([moments[f"emittance_{axis}n"] for axis in "xyt"])
+        eigen = np.sort([moments[f"emittance_{i}"] for i in (1, 2, 3)])
+        np.testing.assert_allclose(np.sort(projected), expected, rtol=2e-14, atol=0)
+        good = np.all(np.isfinite(eigen)) and np.max(abs(eigen / expected - 1)) < 1e-11
+        print(
+            f"{label}: expected={expected.tolist()} projected={projected.tolist()} eigen={eigen.tolist()} valid={good}"
+        )
+        return good
+
+
+    try:
+        for emittances in ([1e-6, 2e-6, 3e-6], [1e-8, 2e-8, 1e-3], [1e-6, 1e-6, 1e-3]):
+            expected = np.array(emittances)
+            # Covariances in (x,px,y,py,t,pt); p's are normalized to reference P0.
+            diagonal = np.repeat(expected, 2)
+            diagonal[1::2] /= bg**2
+            matrix = Map6x6()
+            raw = matrix.to_numpy()
+            raw[:] = np.diag(diagonal)
+            normalized = raw.copy()
+            normalized[1::2, :] *= bg
+            normalized[:, 1::2] *= bg
+            assert np.linalg.eigvalsh(normalized).min() > 0
+            # For SPD Sigma, i*sqrt(Sigma)*J*sqrt(Sigma) is Hermitian and has
+            # eigenvalues +/- epsilon.  This avoids a characteristic polynomial.
+            square_root = np.diag(np.sqrt(np.diag(normalized)))
+            oracle = np.linalg.eigvalsh(1j * square_root @ j @ square_root)[3:]
+            np.testing.assert_allclose(oracle, expected, rtol=5e-15, atol=0)
+            print(
+                f"SPD condition_number={np.linalg.cond(normalized):.8g} hermitian_oracle={oracle.tolist()}"
+            )
+            env_good = compare("envelope", Envelope(matrix, 0.0).beam_moments(ref), expected)
+
+            # Twelve equal-weight particles with exactly diagonal sample covariance:
+            # each coordinate has two entries +/-sqrt(6*variance), all others zero.
+            points = np.concatenate((np.diag(np.sqrt(6 * diagonal)), -np.diag(np.sqrt(6 * diagonal))))
+            sim.beam.clear_particles()
+            sim.beam.add_n_particles(
+                x=points[:, 0].copy(),
+                px=points[:, 1].copy(),
+                y=points[:, 2].copy(),
+                py=points[:, 3].copy(),
+                t=points[:, 4].copy(),
+                pt=points[:, 5].copy(),
+                qm=ref.qm_ratio_SI,
+                bunch_charge=1e-15,
+            )
+            particles_good = compare("particles", sim.beam.beam_moments(), expected)
+            if emittances[-1] == 3e-6:
+                assert env_good and particles_good
+            else:
+                assert not env_good and not particles_good
+        print("DEFECT REPRODUCED")
+    finally:
+        sim.finalize()
+
+    ```
+
+## Provenance
+
+| Role | Model | Effort | Date | Code examined |
+|---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-28 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-28 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+

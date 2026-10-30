@@ -1,0 +1,30 @@
+/* Wider content area for the defect tables. */
+.md-grid { max-width: 1600px; }
+/* Defect tables span the content width. */
+.md-typeset__table { width: 100%; }
+.md-typeset__table table:not([class]) { display: table; width: 100%; }
+/* Entry header tables have no column headings. */
+.md-typeset table thead:has(th:empty) { display: none; }
+/* Index tables: keep dates, commits and upstream links on one line. */
+.md-typeset table[data-defects] td:nth-child(n+6), .md-typeset table[data-defects] td:first-child { white-space: nowrap; }
+.md-typeset table[data-defects] td:nth-child(2) { min-width: 22em; }
+/* GitHub-style state icons for linked issues and pull requests. */
+.md-typeset .bb-open { color: #1a7f37; }
+.md-typeset .bb-done { color: #8250df; }
+.md-typeset .bb-closed { color: #cf222e; }
+.md-typeset .bb-dropped { color: #6e7781; }
+/* Tags next to defect titles. */
+.md-typeset .bb-tag {
+  display: inline-block; padding: 0 .45em; margin-left: .2em;
+  border-radius: .6em; font-size: .85em; white-space: nowrap;
+  background: var(--md-accent-fg-color--transparent); color: var(--md-default-fg-color--light);
+}
+/* Category filter buttons above the index table. */
+.md-typeset .bb-filters { display: flex; flex-wrap: wrap; gap: .4em; margin: 1em 0; }
+.md-typeset .bb-filters button {
+  padding: .2em .8em; border-radius: 1em; cursor: pointer;
+  border: 1px solid var(--md-primary-fg-color); color: var(--md-primary-fg-color);
+}
+.md-typeset .bb-filters button[aria-pressed="true"] {
+  background: var(--md-primary-fg-color); color: var(--md-primary-bg-color);
+}

@@ -1,0 +1,3838 @@
+[
+ {
+  "code": "impactx",
+  "id": "TRK-01",
+  "title": "`ExactCFbend` ignores the skew dipole `k_skew[0]`",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`ExactCFbend` omits `k_skew[0]` from its orbital kick loop, so the horizontal field of a skew dipole produces no vertical steering. The element's field model gives `Bx/(Bρ) = ks/(1+hx)`, with `h` the curvature, so an on-axis particle must gain `Δpy = ks·L`. For an on-axis proton in `ExactCFbend(ds=0.7, k_normal=[0.3], k_skew=[0.02])`, `py` is 0 instead of 0.01400 with one and with four slices. Users who model a skew dipole or a vertical corrector inside an `ExactCFbend` get no vertical kick from it.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ExactCFbend.H#L349-L366`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactCFbend.H#L349-L366"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1733,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1733",
+    "relation": "filed"
+   },
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1734,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1734",
+    "relation": "filed"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "TRK-01.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-01/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-02",
+  "title": "`RFCavity` spin transport rotates spin without a field and uses `sqrt(1+pt²)` for βγ",
+  "area": "Tracking",
+  "priority": "P4",
+  "severity": "Wrong physics (spin)",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "experimental"
+  ],
+  "summary": "With spin tracking enabled (experimental in ImpactX), `RFCavity` rotates the spin incorrectly: one spin-coupling term omits the on-axis field profile, and two terms divide by `sqrt(1+pt²)` where the reference momentum βγ belongs. The Thomas–BMT equation requires no precession when the field is zero, and an entrance precession rate `escale·ez·px·(G+1/(γ+1))` for on-axis field `escale·ez` and magnetic anomaly `G`. For a proton at γ = 2, a cavity with `cos_coefficients=[0]` (no field) turns the spin from `[0, 0, 1]` to `[-0.002864, -0.001091, 1.000]`, and the entrance precession rate `|dSx/ds|` is 0.0003294 instead of 0.0004252, low by a factor 0.7746. Settings describing the same field give the same orbit but different spins; the orbit is unaffected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`RFCavity.H#L383-L386`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/RFCavity.H#L383-L386"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "TRK-02.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-02/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-03",
+  "title": "`DipEdge(modify_ref_part=True)` deflects the reference by the beam-normalized kick",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "In the nonlinear `DipEdge` model with `modify_ref_part=True`, the reference-particle update adds the fringe kick, which is normalized to the reference momentum P₀, directly to the reference `px`, which is stored in units of mc. For a reference entering along the axis, the kick in mc units must be βγ times the beam-normalized kick. With `psi=0.25 rad`, `rc=1 m` and `g=0.1 m`, the reference `px` is −0.004474 at every energy instead of −0.007749 at γ = 2 and −0.04452 at γ = 10. The reference deflection is wrong by the factor βγ: too small above βγ = 1 and too large below.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`DipEdge.H#L345-L353`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/DipEdge.H#L345-L353"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1729,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1729",
+    "relation": "filed"
+   },
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1730,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1730",
+    "relation": "filed"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "TRK-03.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-03/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-04",
+  "title": "Soft-edge elements and their `reverse()` do not cancel in a lattice",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "A `SoftQuadrupole`, `SoftSolenoid` or `RFCavity` followed by its `reverse()` copy in a lattice does not return particles to their initial coordinates. Lattice tracking resets the field-profile origin at each element, so the reversed element (negative `ds`) integrates outside its field profile; with a flat profile it reduces to a drift of length −`ds`. The manual documents `reverse()` as undoing the original element, and pushing the reversed element with the forward element's profile origin closes the round trip to 2.1e-16. With a constant profile (`cos_coefficients=[2]`, `ds=0.7`) the largest coordinate error is 0.0108 for `SoftQuadrupole`, 0.004498 for `SoftSolenoid` and 0.002723 for `RFCavity`.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`SoftQuad.H#L548-L555`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftQuad.H#L548-L555"
+   },
+   {
+    "label": "`SoftSol.H#L648-L655`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L648-L655"
+   },
+   {
+    "label": "`RFCavity.H#L604-L611`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/RFCavity.H#L604-L611"
+   },
+   {
+    "label": "`tracking/common.H#L168-L170`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/tracking/common.H#L168-L170"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1731,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1731",
+    "relation": "filed"
+   },
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1732,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1732",
+    "relation": "filed"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "TRK-04.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-04/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-05",
+  "title": "Periodic `PolygonAperture` mirrors asymmetric polygons",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "A `PolygonAperture` with a nonzero period `repeat_x` (or `repeat_y`) folds coordinates into the central cell through their absolute value, which mirrors every negative coordinate. For a polygon that is not symmetric about `x = 0` (or `y = 0`), particles inside the aperture are removed and particles outside it can pass, whereas a periodic translation must leave a point already in the central period unchanged. For a rectangle `x ∈ [-0.3, 0.1]`, `y ∈ [-0.2, 0.2]` with `repeat_x=1`, a particle at `x = -0.2`, inside the rectangle, is removed; with `repeat_x=0` it survives. Symmetric polygons are unaffected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`PolygonAperture.H#L167-L169`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/PolygonAperture.H#L167-L169"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-30",
+    "code": {
+     "ref": "development",
+     "commit": "dfd49f22c34f",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "TRK-05.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-05/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-06",
+  "title": "Linear `CFbend` returns NaN at a zero focusing frequency",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Silent wrong result; crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "The linear `CFbend` returns NaN coordinates at valid zero focusing frequencies: `k = 0` gives NaN `y` and `py`, and `k = −1/rc²` (horizontal focusing cancelled, `k1 = −h²`) gives NaN `x`, `px` and `t`. The transfer functions have finite zero-frequency limits, and at `k = 0` the element must agree with `Sbend`. Near cancellation, division by the small horizontal focusing coefficient gives finite but wrong results: for `rc = 1/0.3 m`, `k = −0.09 m⁻²` and `ds = 0.7 m`, `x` is 0.0277 m instead of 0.0302 m and `t` is 0.0112 m instead of 0.0131 m. Zero-gradient bends and combined-function bends tuned to cancel horizontal focusing are affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`CFbend.H#L133-L140`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/CFbend.H#L133-L140"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1664,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1664#issuecomment-5706911843",
+    "relation": "discussion"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    },
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     },
+     "scope": "silently wrong near-zero case"
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "TRK-06.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-06/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-07",
+  "title": "`ExactCFbend` with `k_normal[0]=0` returns NaN",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "An `ExactCFbend` with zero dipole strength (`k_normal[0]=0`) and a quadrupole or higher coefficient returns NaN in `x`, `px`, `y`, `py` and `t`, because its multipole kick divides by a bend radius stored as zero. At zero curvature the element must reduce to the corresponding straight multipole. `ExactCFbend(ds=0.7, k_normal=[0, 0.8])` gives NaN, while `ExactQuad(k=0.8)` with the same integrator gives `x = 0.0239 m`, `px = 0.0103`, `y = −0.0146 m`. An element with only the dipole coefficient stays finite.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ExactCFbend.H#L340-L342`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactCFbend.H#L340-L342"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "TRK-07.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-07/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-08",
+  "title": "`Sol(ks=0)` returns NaN positions",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "A `Sol` with zero strength, `ks=0`, as when a solenoid is switched off in a scan or knob, returns NaN `x` and `y`, because the map divides by `ks/2`. The zero-field limit is a drift (`sin(αL)/α → L`), which `Sol(ks=1e-9)` and `Drift` both give. In the reproducer the particle exits with NaN `x` and `y` instead of `x = 0.0277`, `y = −0.0114`; the momenta and longitudinal coordinates are correct. Any lattice that contains a switched-off `Sol` is affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Sol.H#L112`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/Sol.H#L112"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    },
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "TRK-08.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-08/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-09",
+  "title": "`ExactCFbend` octupole and decapole kicks lose all precision at small curvature",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`ExactCFbend` evaluates its octupole and decapole kicks through cancelling order-one terms in `1 + x/rc` and then multiplies by powers of the bend radius `rc`, so rounding dominates at small curvature: the error scales as `ε·rc³·k3` for the octupole and `ε·rc⁴·k4` for the decapole, with ε the double-precision epsilon. In the straight limit at `y = 0` the decapole kick rate is `−k4·x⁴/24`, which a 60-digit evaluation of the same expression reproduces. For `ds = 1e-4 m`, `rc = 1000 m`, `k4 = 1e4 m⁻⁵` and `x = 1 mm`, the decapole changes `px` by −6.889e-6 instead of −4.167e-14. Weakly curved combined-function magnets with these terms are affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ExactCFbend.H#L375-L389`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactCFbend.H#L375-L389"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1050,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1050",
+    "relation": "report"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "TRK-09.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-09/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-10",
+  "title": "Defocusing `ChrPlasmaLens` has the wrong arrival-time sign term",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "In a defocusing `ChrPlasmaLens` (negative strength `k`), one arrival-time term proportional to `(x²+y²)·ds` keeps the sign of the focusing branch, so the arrival-time coordinate `t` is wrong and the map is not symplectic. Independent integration of the element's documented Hamiltonian (second order in the transverse variables, exact in `pt`) gives the correct `t` and predicts the observed error to 2e-15 m; the transverse map and focusing lenses are correct. For a proton at γ = 2 with `ds=0.4 m`, `k=-2 m⁻²`, `x = 0.01 m` and `y = -0.015 m`, `t` is off by 1.459e-4 m with one slice and 1.713e-4 m with four, and the symplecticity residual is 0.01347.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ChrPlasmaLens.H#L219-L223`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrPlasmaLens.H#L219-L223"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-30",
+    "code": {
+     "ref": "development",
+     "commit": "dfd49f22c34f",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-10.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "impactx/TRK-10/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-11",
+  "title": "Integer factorial overflow corrupts multipole normalization",
+  "area": "Tracking",
+  "priority": "P4",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`Multipole` and `ExactMultipole` compute the factorial normalization in 32-bit integers, which overflow from `13! = 6227020800` on: thin `multipole=14` and above, and thick coefficients at index 13 and above. For a thin normal multipole at `y = 0` the kick must be `Δpx = −K·xⁿ/n!` with the exact factorial, and thick elements use the same normalization. On the tested CPU build, order-14 normal and skew kicks are 3.223 times too large, and order-18 kicks have the wrong sign and are 1.233e6 times too large. Orders up to 13 are correct; signed overflow makes the higher-order values compiler-dependent.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Multipole.H#L54-L60`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/Multipole.H#L54-L60"
+   },
+   {
+    "label": "`ExactMultipole.H#L307-L322`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactMultipole.H#L307-L322"
+   },
+   {
+    "label": "multipole contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1162-L1170"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-11.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-11/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-12",
+  "title": "`Buncher` uses the wrong transverse fields for spin transport",
+  "area": "Tracking",
+  "priority": "P4",
+  "severity": "Wrong physics (spin)",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "experimental"
+  ],
+  "summary": "With spin tracking enabled (experimental in ImpactX), `Buncher` replaces the transverse RF fields with an effective magnetic field that reproduces the orbital kick but not the Thomas–BMT spin precession. Maxwell's near-axis fields of a localized axisymmetric RF field give a spin rotation `θy = −Ax/[2(γ+1)]`, with `A = kV`, independent of the magnetic anomaly; a 65-digit quadrature confirms it. For a proton at γ = 2 in `Buncher(V=0.01, k=2)`, the transverse spin rotation per metre of offset is +0.01529 instead of −0.003333, wrong in sign and magnitude. The orbital kick is correct; the spin error persists for electrons, at γ = 10 and at low voltage.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Buncher.H#L197-L204`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/Buncher.H#L197-L204"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-12.py"
+  ],
+  "requirements": [
+   "mpmath",
+   "numpy"
+  ],
+  "page": "impactx/TRK-12/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-13",
+  "title": "Built-in H⁻ species has the wrong magnetic-anomaly sign",
+  "area": "Tracking",
+  "priority": "P4",
+  "severity": "Wrong physics (spin)",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "experimental"
+  ],
+  "summary": "The built-in `Hminus` species receives the proton magnetic anomaly `a = 1.793` together with its negative charge, which reverses the ion's magnetic moment and its spin precession; spin tracking is experimental in ImpactX. Ground-state H⁻ has a closed electron shell and keeps the positive, slightly shielded proton moment, which with negative charge requires `1 + a < 0`, giving `a ≈ −3.796`. In a 0.1 T longitudinal field over 0.1 m at γ = 2, the built-in species precesses by +0.005146 rad instead of the Thomas–BMT value −0.005152 rad. Orbital mass and charge are not affected, and an explicitly supplied anomaly gives the correct precession.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ReferenceParticle.H#L123-L126`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/ReferenceParticle.H#L123-L126"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-13.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-13/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-14",
+  "title": "Weak nonzero `ChrAcc` acceleration corrupts transport and reference time",
+  "area": "Tracking",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "extreme-regime"
+  ],
+  "summary": "`ChrAcc` with a very small nonzero acceleration `ez` (`qEz/(mc²)`) divides a logarithm of a near-unity ratio and differences of nearly equal momenta by `ez`, so rounding corrupts the transverse map, the arrival time `t` and the reference time. The documented Hamiltonian has a regular zero-acceleration limit; a 65-digit quadrature of it agrees with the exact `ez=0` branch. For a proton at γ = 2 with `ds=0.4` and `ez=1e-14 m⁻¹`, `x` exits at 0.01846 m instead of 0.01782 m, `t` is off by 0.002584 m and the reference `ct` is 0.4663 m instead of 0.4619 m; at `ez=1e-16 m⁻¹` the particle is not moved and the reference `ct` is 0. Both acceleration signs fail.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ChrUniformAcc.H#L172-L174`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrUniformAcc.H#L172-L174"
+   },
+   {
+    "label": "`L204-L206`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrUniformAcc.H#L204-L206"
+   },
+   {
+    "label": "`L273`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrUniformAcc.H#L273"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1573,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1573",
+    "relation": "report"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-14.py"
+  ],
+  "requirements": [
+   "mpmath",
+   "numpy"
+  ],
+  "page": "impactx/TRK-14/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-15",
+  "title": "Weak `ExactSbend` bends lose precision through cancellation",
+  "area": "Tracking",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "extreme-regime"
+  ],
+  "summary": "`ExactSbend` with a very small nonzero bend angle `phi` loses precision, because the position update subtracts large bend-radius terms and nearly equal momenta. A 65-digit Lorentz-trajectory calculation gives the correct exit coordinates, which approach the exact drift as the angle goes to zero. For a proton at γ = 2 in `ExactSbend(ds=0.4, phi=1e-12, B=0)` (`phi` in degrees), `x` is 0.02190 m instead of 0.01782 m, an error of 4.075 mm; at `phi=1e-10` degrees the error is 0.02487 mm. Bends of exactly zero and of 10° are correct, and both curvature signs fail.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ExactSbend.H#L230-L235`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactSbend.H#L230-L235"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-15.py"
+  ],
+  "requirements": [
+   "mpmath",
+   "numpy"
+  ],
+  "page": "impactx/TRK-15/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-16",
+  "title": "Rolled `ThinDipole`, `Sbend` and `ExactSbend` omit vertical steering",
+  "area": "Tracking",
+  "priority": "P1",
+  "severity": "Wrong physics (rotation-error reading)",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "contract-unsettled"
+  ],
+  "summary": "Setting `rotation` (a roll about the beam axis) on a `ThinDipole`, `Sbend` or `ExactSbend` produces no vertical steering. Under the manual's rotation-error convention, a bend of angle θ rolled by α must give the small-angle kick `py = −θ·sin α`, and ImpactX gives `py = 0`. A 3 mrad bend rolled by 20 mrad misses a kick of −6.000e-5, about 60 μm after a 1 m drift. Examples and the MAD-X importer also use `rotation` as a design roll, under which the reference orbit must bend vertically; under both readings the orbit stays in the horizontal plane.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ThinDipole.H#L154-L193`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ThinDipole.H#L154-L193"
+   },
+   {
+    "label": "`Sbend.H#L178-L284`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/Sbend.H#L178-L284"
+   },
+   {
+    "label": "`ExactSbend.H#L166-L305`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactSbend.H#L166-L305"
+   },
+   {
+    "label": "alignment wrapper",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/mixin/beamoptic.H#L440-L507"
+   },
+   {
+    "label": "`Sbend`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1855-L1859"
+   },
+   {
+    "label": "`ExactSbend`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1910-L1914"
+   },
+   {
+    "label": "`ThinDipole`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2325-L2329"
+   },
+   {
+    "label": "reference-trajectory contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/theory/concepts.rst#L9-L20"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1725,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1725",
+    "relation": "filed"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-16.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "impactx/TRK-16/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-17",
+  "title": "`SoftSolenoid` omits transverse fringe-field spin precession",
+  "area": "Tracking",
+  "priority": "P4",
+  "severity": "Wrong physics (experimental, unsupported spin)",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "experimental"
+  ],
+  "summary": "With spin tracking enabled (experimental in ImpactX), `SoftSolenoid` omits the spin precession caused by the radial fringe field of a varying longitudinal field, because the spin map discards the field derivative. Maxwell's equations give the off-axis fields `bx = −x·b′/2`, `by = −y·b′/2` for normalized longitudinal field `b`, and an independent Thomas–BMT integration with these fields disagrees with ImpactX while the orbits agree; at vanishing anomaly the spin must follow the velocity, which ImpactX does not reproduce. For a proton at γ = 3.3, offset by 20 μm in an asymmetric 0.7 m field profile, the spin-vector error is about 1.55e-4. On-axis precession is correct; off-axis particles are affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`SoftSol.H#L418-L462`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L418-L462"
+   },
+   {
+    "label": "`map3()`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L477-L544"
+   },
+   {
+    "label": "spin push",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L243-L295"
+   },
+   {
+    "label": "soft-element contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/theory/softedge_elements.rst#L17-L29"
+   },
+   {
+    "label": "spin contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2792-L2800"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-17.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-17/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-18",
+  "title": "Low-energy `ExactDrift` corrupts co-moving arrival times",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "At low energy, `ExactDrift` shifts the arrival time `t` of particles at the reference energy and direction, because its longitudinal-momentum radical subtracts the separately rounded terms `(1/β−pt)²` and `1/(βγ)²`. A 90-digit evaluation shows that these particles keep their relative arrival times. For a proton (rest energy 938.27208816 MeV) at 1 keV kinetic energy, a 1 m drift adds 0.002379 m (7.9 ps) to `t` and shifts the bunch centroid; off-energy and inclined particles get timing errors up to 0.002454 m and transverse errors up to 1.013e-7 m. At 1000 MeV the errors are below 1e-16 m; at low energy their sign and size depend on floating-point rounding.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ExactDrift.H#L95-L96`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactDrift.H#L95-L96"
+   },
+   {
+    "label": "particle map",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactDrift.H#L140-L153"
+   },
+   {
+    "label": "`ReferenceParticle.H#L169-L185`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/ReferenceParticle.H#L169-L185"
+   },
+   {
+    "label": "public model",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L1999-L2001"
+   },
+   {
+    "label": "coordinate contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/docs/source/theory/coordinates_units.rst#L5-L13"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1576,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1576",
+    "relation": "report"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-18.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-18/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-19",
+  "title": "`ExactCFbend` reverses the skew-decapole horizontal kick",
+  "area": "Tracking",
+  "priority": "P3 (spin P4)",
+  "severity": "Wrong physics; experimental, unsupported spin",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "experimental"
+  ],
+  "summary": "`ExactCFbend` applies the horizontal kick of the skew decapole, `k_skew[4]`, with the wrong sign: it is the negative of the derivative of the documented vector potential (Zolkin 2017, Table XI), while the vertical kick is correct. The map is therefore not symplectic, and an independent integration of the curvilinear Hamiltonian differs from ImpactX by exactly this term. For a proton at γ = 3.25, curvature 2 m⁻¹, `L=0.15 m`, `k4=160 m⁻⁵` and a particle at `x = 0.08 m`, `y = −0.05 m`, `px` is off by 1.321e-4 and the symplecticity residual is 6.795e-4. Spin tracking (experimental in ImpactX) uses the same wrong field, with spin-component errors of 7.899e-4. The error scales with skew-decapole strength and amplitude.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ExactCFbend.H#L379-L389`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactCFbend.H#L379-L389"
+   },
+   {
+    "label": "manual",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L2073-L2099"
+   },
+   {
+    "label": "`ExactCFbend.H#L506-L538`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/ExactCFbend.H#L506-L538"
+   },
+   {
+    "label": "spin contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2792-L2800"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    },
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     },
+     "scope": "spin-field coefficient observation"
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     },
+     "scope": "spin extension"
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    },
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     },
+     "scope": "spin extension"
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-19.py",
+   "TRK-19-spin.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy",
+   "sympy"
+  ],
+  "page": "impactx/TRK-19/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-20",
+  "title": "`CFbend` spin coupling is singular at coincident frequencies",
+  "area": "Tracking",
+  "priority": "P4",
+  "severity": "Wrong physics (experimental, unsupported spin)",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "experimental"
+  ],
+  "summary": "With spin tracking enabled (experimental in ImpactX), `CFbend` divides its spin coupling by `k + (Gγh)²`, with `G` the magnetic anomaly and `h = 1/rc`, which vanishes when the vertical focusing frequency `sqrt(−k)` equals `|Gγh|`. The Thomas–BMT solution is finite at this coincidence. For built-in electrons at `γ = 0.5/G` (431.16) in a `CFbend` with `rc = 1 m`, `k = −0.25 m⁻²` and `L = 0.31 m`, every spin component becomes NaN, also on axis, while the orbit is correct. Near the coincidence the spins are finite but wrong: a test with `γ = 2`, `G = 0.25` and relative gradient detuning 1e-15 gives a spin error of 7.450e-5.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`CFbend.H#L171-L184`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/CFbend.H#L171-L184"
+   },
+   {
+    "label": "spin push",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/CFbend.H#L327-L345"
+   },
+   {
+    "label": "manual",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2792-L2800"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-20.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "impactx/TRK-20/"
+ },
+ {
+  "code": "impactx",
+  "id": "ENV-01",
+  "title": "Eigenemittance diagnostics corrupt small or repeated modes",
+  "area": "Envelope",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "With eigenemittance diagnostics enabled, `beam_moments()` returns wrong eigenemittances, or three NaNs, when the beam's emittances differ widely or two are equal; both particle beams and `Envelope` are affected. The code forms the characteristic cubic from differences of trace invariants, which loses the small modes, and then evaluates `acos` without guarding its domain. For an uncoupled beam the documented eigenemittances equal the projected normalized rms emittances, which an independent Hermitian eigensolver reproduces to 5e-15. At γ = 2, an uncoupled beam with emittances 1e-8, 2e-8 and 1e-3 m gives eigenemittances 5.116e-8, 5.584e-8 and 1e-3 m, and emittances 1e-6, 1e-6 and 1e-3 m give three NaNs; a moderate spread (1e-6, 2e-6, 3e-6 m) is correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`EmittanceInvariants.cpp#L119-L134`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/EmittanceInvariants.cpp#L119-L134"
+   },
+   {
+    "label": "`CovarianceMatrixMath.H#L59-L90`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/CovarianceMatrixMath.H#L59-L90"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1481,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1481",
+    "relation": "report"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "ENV-01.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/ENV-01/"
+ },
+ {
+  "code": "impactx",
+  "id": "ENV-02",
+  "title": "Nonlinear `DipEdge` optics omit `K5` fringe focusing",
+  "area": "Envelope",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "For a `DipEdge` with the nonlinear fringe model, the linear transfer matrix that ImpactX reports omits the vertical focusing from the fringe-field integral `K5`, which the particle map includes. The reported matrix must equal the small-amplitude derivative of the particle map, whose vertical focusing changes in proportion to `sin(psi)·g·K5/cos³(psi)`. For a proton at 1000 MeV kinetic energy with `psi = 0.2 rad`, `rc = 1 m`, `g = 0.1 m` and `K1 = 0`, raising `K5` from 0 to 0.1 changes the particle map's `R43 = ∂py/∂y` by 0.002110 m⁻¹ while the reported matrix stays unchanged. Envelope tracking uses the reported matrix.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`DipEdge.H#L433-L467`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/DipEdge.H#L433-L467"
+   },
+   {
+    "label": "`DipEdge.H#L210-L287`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/DipEdge.H#L210-L287"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "ENV-02.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/ENV-02/"
+ },
+ {
+  "code": "impactx",
+  "id": "ENV-03",
+  "title": "Phase-space legends label geometric emittance as normalized",
+  "area": "Envelope",
+  "priority": "P5",
+  "severity": "Documentation or example mismatch",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "The phase-space plot produced by `plot_phasespace()` labels its legends with the normalized-emittance symbols `εₙ,x`, `εₙ,y` and `εₙ,t` but displays the geometric emittances. The documented normalized emittances are the diagnostic keys with an `n` suffix and equal `β₀γ₀` times the geometric values. For a proton beam at γ = 7, the x legend shows 168.7 nm while the normalized emittance is 1168 nm, a factor `β₀γ₀ = 6.928`. The numerical diagnostics are correct; only the plot annotation is wrong, by the factor `β₀γ₀`.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ImpactXParticleContainer.py#L257-L285`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L257-L285"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "ENV-03.py"
+  ],
+  "requirements": [
+   "matplotlib",
+   "numpy",
+   "quantiphy"
+  ],
+  "page": "impactx/ENV-03/"
+ },
+ {
+  "code": "impactx",
+  "id": "COL-01",
+  "title": "PIC `2p5D` longitudinal kick uses a fixed 1 m reference length `r0`, which `Gauss2p5D` exposes",
+  "area": "Collective effects",
+  "priority": "P1",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "With `2p5D` particle-in-cell space charge, the longitudinal kick multiplies the absolute 2D potential, whose logarithmic kernel implicitly fixes a reference length `r0 = 1 m`. The `Gauss2p5D` model exposes this length as `gauss_long_scale` (default `1.103·γ·σz`), but `2p5D` has no such parameter and does not document it. Scaling all lengths by a common factor at fixed charge and energy must leave the length-scaled kick unchanged; the transverse kick obeys this, while the longitudinal kick changes by 7.879% when lengths double. Against the exact 3D field of a long round Gaussian bunch at `γσz/σ⊥ = 50`, the on-axis longitudinal field has L2 errors of 73.62% (`σ⊥ = 1 mm`) and 131.1% (`σ⊥ = 0.1 mm`), and 149.9% in a 25 mm round pipe.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`GatherAndPush.cpp#L222-L229`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/spacecharge/GatherAndPush.cpp#L222-L229"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1718,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1718",
+    "relation": "filed"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c"
+     },
+     "scope": "physics review of the reference length"
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     },
+     "scope": "validity review"
+    },
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     },
+     "scope": "validity review"
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "development",
+      "commit": "b701a6e9d1f9",
+      "build": "source, CPU, double, serial"
+     },
+     "scope": "filing-text review and development-build numbers"
+    }
+   ],
+   "verified": {
+    "date": "2026-10-28",
+    "code": {
+     "ref": "development",
+     "commit": "b701a6e9d1f9",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "COL-01.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/COL-01/"
+ },
+ {
+  "code": "impactx",
+  "id": "COL-02",
+  "title": "ISR uses the electron classical radius for every species",
+  "area": "Collective effects",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Incoherent synchrotron radiation (ISR) uses the electron classical radius for every species, although the radiated power scales with the species radius `r_q = q²/(4πε₀mc²)`. For ultrarelativistic particles the fractional momentum loss is `(2/3)·r_q·(βγ)³·ds/ρ²`. A 7 TeV (kinetic) proton reference over 100 m at bending radius 2800 m loses 9.954e-9 of its momentum instead of 5.421e-12, 1836 times too much. The same radius enters the quantum-excitation variance, and an ion of mass `M` and charge `Ze` radiates `M/(Z²mₑ)` times too much; ISR accepts any species.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ISRPush.cpp#L36-L47`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/wakefields/ISRPush.cpp#L36-L47"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1708,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1708",
+    "relation": "report"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "COL-02.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "impactx/COL-02/"
+ },
+ {
+  "code": "impactx",
+  "id": "COL-03",
+  "title": "`wakeconvolution.w_t_rf` has the wrong functional form",
+  "area": "Collective effects",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "The Python helper `impactx.wakeconvolution.w_t_rf` uses the bracket `u·exp(−u)`, with `u = sqrt(s/s0)`, where the cited Bane model has `1 − (1+u)·exp(−u)`; its documentation also calls it a resistive-wall wake, although it is the short-range dipole wake of a periodic accelerating structure, and states units of V/m/pC/mm although it returns SI. Bane (SLAC-PUB-9663, 2003, Eqs. 15–16) gives the correct form, which rises linearly in `s`, whereas the implemented one starts as `sqrt(s)`. For an NLC-like cell (`a = 4.92 mm`, `g = 6.89 mm`, `L = 8.75 mm`) the wake is 19.34 times too large at `s/s0 = 0.01` and 1.392 times at `s/s0 = 1`. Built-in tracking does not call this function; users who call it directly are affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`WakeConvolution.cpp#L36-L49`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/wakefields/WakeConvolution.cpp#L36-L49"
+   },
+   {
+    "label": "`WakeConvolution.H#L56-L66`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/wakefields/WakeConvolution.H#L56-L66"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra"
+  ],
+  "reproducers": [
+   "COL-03.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/COL-03/"
+ },
+ {
+  "code": "impactx",
+  "id": "COL-04",
+  "title": "`Gauss2p5D` underweights the initial quadrature interval",
+  "area": "Collective effects",
+  "priority": "P4",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`Gauss2p5D` divides the integral over its initial interval `[0, gauss_taylor_delta]` by three a second time when it completes the Simpson quadrature, so the transverse forces carry a bias that does not vanish as the quadrature resolution increases. Direct integration of the Gaussian Coulomb convolution, checked against Gauss's law for a round beam, gives the correct forces. With `gauss_taylor_delta = 0.01`, 4001 quadrature points and a test particle at `(x, y) = (σx, 0.6σy)`, aspect ratio `σy/σx = 0.25` gives relative errors of −5.736e-5 in `px` and −1.648e-5 in `py`; aspect ratio 4 gives −2.312e-4 and −8.103e-4. At the default 101 points, ordinary Simpson discretization error adds to this bias.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Gauss2p5dPush.cpp#L62-L147`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/Gauss2p5dPush.cpp#L62-L147"
+   },
+   {
+    "label": "caller",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/Gauss2p5dPush.cpp#L240-L299"
+   },
+   {
+    "label": "manual",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2462-L2480"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-04.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "impactx/COL-04/"
+ },
+ {
+  "code": "impactx",
+  "id": "COL-05",
+  "title": "The 3D PIC beta interface loses the supplied Lorentz factor",
+  "area": "Collective effects",
+  "priority": "P5",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "extreme-regime"
+  ],
+  "summary": "For 3D FFT particle-in-cell space charge, ImpactX passes only the rounded velocity `β` to the WarpX/ABLASTR Poisson solver, which reconstructs γ from it, while ImpactX's own coordinate transforms keep the original γ. Lorentz similarity requires the kick scaled by `(βγ)²` to stay unchanged for a fixed rest-frame source and mesh. At γ = 6e7 (30.66 TeV electrons) the solver uses γ = 4.745e7 and the rescaled transverse kick is 9.642% low, on a normalized kick of only 1.735e-20. At γ = 1e4 the error is 2.716e-9.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`PoissonSolve.cpp#L52-L61`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/PoissonSolve.cpp#L52-L61"
+   },
+   {
+    "label": "`PoissonSolver.H#L270-L284`",
+    "url": "https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/PoissonSolver.H#L270-L284"
+   },
+   {
+    "label": "integrated Green function",
+    "url": "https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/IntegratedGreenFunctionSolver.H#L83-L96"
+   },
+   {
+    "label": "kick normalization",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/GatherAndPush.cpp#L98-L119"
+   },
+   {
+    "label": "3D model contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2456-L2460"
+   },
+   {
+    "label": "equation",
+    "url": "https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/PoissonSolver.H#L157-L172"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-WarpX/warpx",
+    "number": 7178,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-WarpX/warpx/pull/7178",
+    "relation": "discussion"
+   },
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1621,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1621",
+    "relation": "discussion"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-05.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "impactx/COL-05/"
+ },
+ {
+  "code": "impactx",
+  "id": "IO-01",
+  "title": "A tracer can erase weighted beam size and emittance",
+  "area": "Particles and I/O",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`beam_moments()` can report zero beam size and emittance for a finite-emittance beam when a distant particle with zero or tiny weight, such as a tracer, is stored first. The moments are accumulated about the first stored particle, so with a distant origin the shifted second moment and squared mean nearly cancel and the core variance is lost. Weighted standard deviations and emittances must not depend on particle order or on zero-weight particles; a two-pass weighted covariance gives the correct values. For a core with `σx = 1e-9 m` and `εx = 1e-12 m` and a tracer at `x = 1 m` stored first, with weight 0 or 1e-24, both are reported as 0; stored last, they are correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ReducedBeamCharacteristics.cpp#L197-L203`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/ReducedBeamCharacteristics.cpp#L197-L203"
+   },
+   {
+    "label": "`L335`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/ReducedBeamCharacteristics.cpp#L335"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-01.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/IO-01/"
+ },
+ {
+  "code": "impactx",
+  "id": "IO-02",
+  "title": "Phase-space charge histograms ignore particle weights",
+  "area": "Particles and I/O",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`plot_phasespace()` labels its charge histograms `Q [C/bin]` but counts macroparticles instead of summing their charges `q_ref·w`. The displayed values are counts, and bins whose particles carry different weights also have wrong relative charges. For a 1.550 nC test beam, a 2×2 `x`–`px` histogram shows 16 in every bin instead of charges from 8.613e-11 to 8.613e-10 C, and splitting each macroparticle into two half-weight copies doubles every bin while the beam is unchanged. The numerical charge and moment diagnostics are correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ImpactXParticleContainer.py#L97-L125`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L97-L125"
+   },
+   {
+    "label": "`L239-L253`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L239-L253"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-02.py"
+  ],
+  "requirements": [
+   "matplotlib",
+   "numpy"
+  ],
+  "page": "impactx/IO-02/"
+ },
+ {
+  "code": "impactx",
+  "id": "IO-03",
+  "title": "Longitudinal plot scale and units disagree by 1000",
+  "area": "Particles and I/O",
+  "priority": "P5",
+  "severity": "Documentation or example mismatch",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`plot_phasespace()` multiplies the longitudinal momentum `pt` (the energy deviation `−ΔE/(P₀c)`, dimensionless) by 1000, the factor used for the transverse mrad conversion, while the axis label states units of `p₀c` without a scale factor. The documented coordinate definition makes `pt` dimensionless, so a per-mille display must state its factor. A beam with `pt = ±0.004` is plotted at `±4`. Tracking and stored coordinates are unaffected; values read from the plot are 1000 times too large.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ImpactXParticleContainer.py#L83-L95`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L83-L95"
+   },
+   {
+    "label": "`L117-L125`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L117-L125"
+   },
+   {
+    "label": "`L252`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L252"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-03.py"
+  ],
+  "requirements": [
+   "matplotlib",
+   "numpy"
+  ],
+  "page": "impactx/IO-03/"
+ },
+ {
+  "code": "impactx",
+  "id": "IO-04",
+  "title": "`Thermal` negative-charge initialization returns NaN positions",
+  "area": "Particles and I/O",
+  "priority": "P3",
+  "severity": "Crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Initializing a `Thermal` distribution for a negatively charged species, such as electrons or H⁻, with positive focusing and nonzero bunch charge returns NaN for every particle position, while the momenta are finite and the call returns normally. The radius calculation raises a self-field coefficient computed with the signed species charge to a fractional power. Reversing the charge sign leaves the repulsive self-force unchanged, so the distribution must equal that of the opposite charge; an independent Gauss-law integration gives that finite solution. In the tested electron and H⁻ cases all 2049 positions are NaN; at zero bunch charge both signs give identical results.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Thermal.H#L99-L108`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L99-L108"
+   },
+   {
+    "label": "`matched_scale_radius` at L162-L172",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L162-L172"
+   },
+   {
+    "label": "caller",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/initialization/InitDistribution.cpp#L310-L312"
+   },
+   {
+    "label": "L354-L356",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/initialization/InitDistribution.cpp#L354-L356"
+   },
+   {
+    "label": "sampler contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L277-L290"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-04.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "impactx/IO-04/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-01",
+  "title": "MAD-X `PC` leaves the reference energy at its default",
+  "area": "Python API",
+  "priority": "P1",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Importing a MAD-X lattice whose `BEAM` command gives the momentum `PC` instead of `ENERGY`, for example through `RefPart.load_file()`, leaves the reference total energy at the parser's 1 GeV default; `GAMMA`, `BETA` and `BRHO` are also ignored. MAD-X derives the total energy from these parameters, as `sqrt((pc)² + (mc²)²)` for `PC`, and native MAD-X 5.09.03 does so for the same input. A proton `BEAM, PC=2` is initialized at 61.73 MeV kinetic energy instead of 1271 MeV, so the reference velocity and rigidity are also wrong. Only the importer's general preview warning is printed, with no indication that `PC` was not used.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`MADXParser.py#L2243-L2266`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/MADXParser.py#L2243-L2266"
+   },
+   {
+    "label": "`getEtot()`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/MADXParser.py#L2664-L2666"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1726,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1726",
+    "relation": "filed"
+   },
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1727,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1727",
+    "relation": "filed"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-01.py"
+  ],
+  "requirements": [],
+  "page": "impactx/API-01/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-02",
+  "title": "MAD-X ion import discards explicit mass and charge",
+  "area": "Python API",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Importing a MAD-X `BEAM, PARTICLE=ION` with explicit `MASS` and `CHARGE` discards both and uses a fixed default ion mass and charge, so the reference mass, charge, kinetic energy and rigidity are wrong before tracking starts. MAD-X documents independent mass and charge overrides for ions, and native MAD-X 5.09.03 keeps them for this input. For an alpha particle, `BEAM, PARTICLE=ION, MASS=3.7273794, CHARGE=2, ENERGY=10`, ImpactX uses a mass of 939.6 MeV and charge 1, giving 9060 MeV kinetic energy instead of 6273 MeV. The importer prints that it ignores the supplied mass and charge; an unrecognized particle name keeps them.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`madx_to_impactx.py#L1681-L1697`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1681-L1697"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-02.py"
+  ],
+  "requirements": [],
+  "page": "impactx/API-02/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-03",
+  "title": "Marker insertion multiplies an exact bend's angle",
+  "area": "Python API",
+  "priority": "P1",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`insert_element_every_ds()`, which inserts a thin element such as a `Marker` at regular spacing by splitting the thick elements it falls in, gives each piece of a split `ExactSbend` the full original angle `phi`. Splitting a uniform sector bend must preserve its total deflection θ and its arc of radius `L/θ`, so a piece of length `Lᵢ` needs the angle `θ·Lᵢ/L`. A marker at the midpoint of a 1 m, 20° `ExactSbend` makes it bend by 40° in total, and markers every 0.3 m make 80°, while the path length stays 1 m. This holds both with `B=0` and with an explicit field; `Sbend`, `CFbend`, `Quad` and `ChrAcc` split exactly.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Insert.cpp#L64-L74`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/transformation/Insert.cpp#L64-L74"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1723,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1723",
+    "relation": "filed"
+   },
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1724,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1724",
+    "relation": "filed"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-03.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/API-03/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-04",
+  "title": "`before_slice` length changes retain stale collective-kick lengths",
+  "area": "Python API",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "If a `before_slice` hook changes the length `ds` of the upcoming element, the element is transported over the new length but its space-charge kick uses the length cached before the hook. The hook contract allows modifying the upcoming element, and the same change made in `before_element` gives the correct result. In 2D envelope tracking, retuning a drift from 0.1 to 0.2 m gives a 0.2 m drift with half the space-charge kick, retuning from 0.4 m doubles the kick, and retuning from zero length omits it, with both first-order and Strang splitting. Particle tracking uses the same traversal code.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`common.H#L187-L231`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/tracking/common.H#L187-L231"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-04.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/API-04/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-05",
+  "title": "Survey reverses normalized-quadrupole focusing for negative charge",
+  "area": "Python API",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`plot_survey()` draws quadrupoles above or below the axis according to the sign of `k·charge`, but `Quad.k` and `ChrQuad(unit=0).k` are already normalized by the signed rigidity, so a positive `k` focuses horizontally for either charge. The plot's docstring defines a positive height as horizontal focusing, and particle tracking and the analytic transfer matrix confirm the focusing direction for both charges. For electrons and other negative species, every `Quad` and normalized `ChrQuad` is drawn with the opposite focusing direction. Tracking is correct, and `ChrQuad` with a physical gradient (`unit=1`) is drawn correctly.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Survey.py#L85-L86`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/plot/Survey.py#L85-L86"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-05.py"
+  ],
+  "requirements": [
+   "matplotlib",
+   "numpy"
+  ],
+  "page": "impactx/API-05/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-06",
+  "title": "PALS import discards quadrupole tilt and skew",
+  "area": "Python API",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Importing a PALS lattice ignores a quadrupole's tilt `tilt1` and skew coefficient `Ks1`: the converter builds a normal quadrupole from `Kn1` (or `Bn1`) alone, with no warning about the dropped properties. PALS defines the normalized coefficient as `(Kn1 + i·Ks1)·exp(−2i·tilt1)`, and native rotated `ChrQuad` elements agree with an independent matrix calculation. For a γ = 5 proton at `x = 1 mm` through `L = 0.2 m`, `k = 2 m⁻²`, a quadrupole tilted by 90° gives `px = −3.947e-4` instead of +4.054e-4, and a skew quadrupole given as `Kn1=0, Ks1=2` gives `py = 0` instead of 4.000e-4. A skew quadrupole without `Kn1` is rejected with an error.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`pals_to_impactx.py#L112-L130`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/pals_to_impactx.py#L112-L130"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-06.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pals_schema",
+   "scipy"
+  ],
+  "page": "impactx/API-06/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-07",
+  "title": "PALS import discards body offsets and active apertures",
+  "area": "Python API",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Importing a PALS lattice ignores body offsets (`BodyShiftP`) and apertures (`ApertureP`) on drifts and quadrupoles, without a warning. A body shift displaces the element and its field, so transport becomes `M·(u − d) + d` for map `M` and offset `d`, and an active aperture removes particles outside its limits; native `ChrQuad(dx=d)` and `Drift` followed by `Aperture` give these results. For a γ = 5 proton, a quadrupole (`L = 0.2 m`, `Kn1 = 2 m⁻²`) offset by 1 mm gives an on-axis particle `px = 0` instead of 3.947e-4, and a drift with an active ±1 mm rectangular exit aperture passes all four test particles where two should be removed. Misalignment and aperture models read from PALS files are lost.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`pals_to_impactx.py#L100-L130`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/pals_to_impactx.py#L100-L130"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-07.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pals_schema",
+   "scipy"
+  ],
+  "page": "impactx/API-07/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-08",
+  "title": "Dashboard imports the bundled proton cyclotron with electron mass and charge",
+  "area": "Python API",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "The dashboard's import of Python input files ignores `set_species()` and keeps its electron mass and charge defaults, so the bundled `cyclotron/run_cyclotron.py` example, which sets a proton reference, imports as an electron. Importing a script must preserve the species it defines, and replacing `set_species(\"proton\")` with explicit mass and charge setters preserves it. At the example's 4 keV kinetic energy the imported rigidity is −2.137e-4 T·m instead of +9.139e-3 T·m. Every imported script that sets a non-electron species with `set_species()` is affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`helper.py#L35-L63`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/file_imports/python/helper.py#L35-L63"
+   },
+   {
+    "label": "`cyclotron/run_cyclotron.py` example",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/examples_loader/loader.py#L18-L31"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-08.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/API-08/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-09",
+  "title": "Dashboard Twiss import corrupts scientific notation and drops negative alpha",
+  "area": "Python API",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "The dashboard's import of Python input files reads Twiss parameters with a pattern that keeps only the mantissa of numbers in scientific notation and skips negative values. Re-importing the dashboard's own export must restore the same beam. A Gaussian beam exported with `beta_x=1`, `emitt_x=1e-6` and `alpha_x=-0.5` re-imports with `emitt_x=1` and no `alpha_x`, so the initial `x` variance is 1 m² instead of 1e-6 m², and `alpha_x` keeps the value the interface held before (zero by default, which removes the 5e-7 m `x`–`px` correlation). The `y` and `t` emittances lose their exponents as well.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`helper.py#L122-L162`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/file_imports/python/helper.py#L122-L162"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-09.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/API-09/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-10",
+  "title": "Dashboard envelope commands omit the selected beam intensity",
+  "area": "Python API",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "In envelope tracking mode, the dashboard generates `sim.init_envelope(ref, distr)` without the selected beam intensity, so the envelope starts with zero bunch charge and its space-charge kicks vanish. `init_envelope` defines the intensity as bunch charge in C for 3D space charge and current in A for 2D, and the bundled envelope example passes it. Running the generated code for a 10 MeV proton envelope with 1 nC selected through a 0.2 m drift with 3D space charge leaves the `px` variance at its vacuum value 1.000e-8 instead of 3.889e-5. ImpactX logs a zero-charge warning; the dashboard's Run and Export both use this generator.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`simulation.py#L12-L20`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Run/simulation.py#L12-L20"
+   },
+   {
+    "label": "`init_envelope` contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/docs/source/usage/python.rst#L340-L348"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-10.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/API-10/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-11",
+  "title": "Dashboard silently accepts a partial lattice when repeated cells are unresolved",
+  "area": "Python API",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "When the dashboard imports a Python input file whose lattice includes a repeated cell, such as `sim.lattice.extend(cell * 3)`, it drops the repetition without a message and accepts the preceding elements as the complete lattice. The ImpactX manual documents this form, and an importer that cannot evaluate it must report an incomplete import. A 0.4 m drift followed by three drift–quadrupole cells, 1.3 m in total, imports as the single 0.4 m drift, so the horizontal focusing term `R21` is 0 instead of −0.5510 m⁻¹; the same lattice written out element by element imports all seven elements.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`lattice_helper.py#L217-L219`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/file_imports/python/lattice_helper.py#L217-L219"
+   },
+   {
+    "label": "`parse()` and `parse_cleaned_lattice()`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/file_imports/python/lattice_helper.py#L30-L80"
+   },
+   {
+    "label": "`sim.lattice.extend(cell * 3)`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/docs/source/usage/howto/lattice_manipulation.rst#L51-L65"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-11.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/API-11/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-12",
+  "title": "Dashboard reimports envelope and reference exports as particle tracking",
+  "area": "Python API",
+  "priority": "P4",
+  "severity": "API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "A simulation exported from the dashboard in envelope or reference tracking mode re-imports as particle tracking: the export writes only the tracking call (`track_envelope()` or `track_reference(ref)`), and the import does not read it and keeps its particle-tracking default. The regenerated commands then use `sim.add_particles(...)` and `sim.track_particles()`. The bundled envelope examples that the dashboard offers also import as particle tracking. An explicit tracking-mode assignment in the script preserves the mode.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`helper.py#L35-L63`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/file_imports/python/helper.py#L35-L63"
+   },
+   {
+    "label": "`simulation.py#L172-L213`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Run/simulation.py#L172-L213"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-12.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/API-12/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-13",
+  "title": "MAD-X `BV=-1` retains forward straight-multipole polarity",
+  "area": "Python API",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "When a MAD-X lattice for a reversed beam (`BV=-1`) is imported, straight normal and skew multipole strengths keep their forward-beam polarity, because the importer omits the `bv` factor. MAD-X defines `BV=-1` as reversing the magnetic force, native MAD-X 5.09.03 applies it, and the importer's documentation specifies the reversal. Body quadrupoles, sextupoles and octupoles and thin quadrupole through dodecapole terms are affected. For a 1.4 GeV (total energy) proton in a 0.23 m quadrupole with `k1 = 1.7 m⁻²` and tilt 0.21 rad, a test particle exits with `px = −7.699e-5` instead of +2.189e-5. Kickers import with the correct polarity.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`madx_to_impactx.py#L766-L798`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L766-L798"
+   },
+   {
+    "label": "sextupole/octupole branches",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1327-L1370"
+   },
+   {
+    "label": "thin-multipole branch",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1375-L1435"
+   },
+   {
+    "label": "`read_lattice()`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1604-L1632"
+   },
+   {
+    "label": "`bv` contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L80-L83"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-13.py"
+  ],
+  "requirements": [
+   "cpymad",
+   "numpy",
+   "scipy"
+  ],
+  "page": "impactx/API-13/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-14",
+  "title": "Harmonic-only MAD-X ring cavities import at zero frequency",
+  "area": "Python API",
+  "priority": "P2",
+  "severity": "Wrong physics, with warning",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "known-limitation"
+  ],
+  "summary": "Importing a MAD-X ring whose `RFCAVITY` gives only the harmonic number `HARMON`, without `FREQ` or a beam `FREQ0`, creates a `ShortRF` with zero frequency and prints a warning. MAD-X derives the frequency as `f = hβc/C`, and native MAD-X 5.09.03 does so for the same decks: a 1.4 GeV (total energy) proton ring with `C = 73 m` and `h = 17` needs 51.82 MHz. With the test's 0.73 MV zero-crossing cavity, the energy-kick slope along the bunch is 0 instead of −7.630e-4 m⁻¹, so the cavity gives no longitudinal focusing. A source comment states that both `HARMON` and `FREQ0` must be set; the importer's documentation does not.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`MADXParser.py#L746-L763`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/MADXParser.py#L746-L763"
+   },
+   {
+    "label": "`_parse_beam_command()`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/MADXParser.py#L2243-L2254"
+   },
+   {
+    "label": "`getFreq0()`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/MADXParser.py#L2668-L2670"
+   },
+   {
+    "label": "RF branch",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1480-L1553"
+   },
+   {
+    "label": "public import contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L1139-L1246"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-14.py"
+  ],
+  "requirements": [
+   "cpymad",
+   "numpy"
+  ],
+  "page": "impactx/API-14/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-15",
+  "title": "Programmable reference callbacks lose mutations without a retained live wrapper",
+  "area": "Python API",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "A `Programmable` element's reference-particle callback loses its changes to the reference particle unless a Python object for `sim.beam.ref` is being held. The documented contract applies the reference update before beam transport with no such prerequisite, and analytic drift and energy-gain formulas give the required result. A 0.375 m programmable drift traversed over three periods at γ = 1.25 leaves the reference at `s = 0` instead of 1.125 m, and an electron energy update leaves γ at 1.050 instead of 1.250, after which beam coordinates are off by up to 1.376e-4. Holding `sim.beam.ref` gives the correct result; the bundled example and tests hold it.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`src/python/elements.cpp#L2239-L2251`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/elements.cpp#L2239-L2251"
+   },
+   {
+    "label": "`src/elements/Programmable.cpp#L19-L57`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/Programmable.cpp#L19-L57"
+   },
+   {
+    "label": "`src/particles/PushAll.H#L105-L132`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/PushAll.H#L105-L132"
+   },
+   {
+    "label": "`docs/source/usage/python.rst#L2323-L2352`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L2323-L2352"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-15.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/API-15/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-16",
+  "title": "Dashboard variable refresh leaves equal elements at stale lengths",
+  "area": "Python API",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "In the dashboard, when several equal elements, such as identical drifts, have their lengths bound to one lattice variable, changing the variable leaves some of them at the old length, because the update finds elements by value equality instead of identity. Every bound parameter must take the variable's current value. For eight equal drifts bound in reverse order and changed from 0.125 m to 0.375 m, the exported lattice is 2.5 m long instead of 3 m, and a test particle exits at `x = −0.0016 m` instead of −0.0017 m. Two further refreshes restore the lengths.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`src/python/impactx/dashboard/Input/lattice/variable_handler.py#L128-L147`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/dashboard/Input/lattice/variable_handler.py#L128-L147"
+   },
+   {
+    "label": "`src/python/impactx/dashboard/Input/lattice/ui.py#L137-L178`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/dashboard/Input/lattice/ui.py#L137-L178"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-16.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/API-16/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-17",
+  "title": "CSR-only dashboard exports omit required particle shape",
+  "area": "Python API",
+  "priority": "P4",
+  "severity": "Crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "A dashboard simulation with CSR enabled and space charge disabled is exported without the required `particle_shape` setting, so the generated script raises `RuntimeError` (\"particle_shape is not set\") in `init_grids()`. The generator tests `if not state.space_charge`, but disabled space charge is the string `\"false\"`, which is truthy, so the shape line is skipped. ImpactX requires a particle shape whenever CSR is enabled, and inserting `sim.particle_shape = 1` before `init_grids()` makes the script run. CSR together with 3D space charge exports correctly.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`src/python/impactx/dashboard/Run/simulation.py#L89-L131`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/dashboard/Run/simulation.py#L89-L131"
+   },
+   {
+    "label": "`src/python/impactx/dashboard/Input/defaults.py#L64-L74`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/dashboard/Input/defaults.py#L64-L74"
+   },
+   {
+    "label": "`src/ImpactX.cpp#L129-L154`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/ImpactX.cpp#L129-L154"
+   },
+   {
+    "label": "`src/particles/ImpactXParticleContainer.cpp#L106-L123`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/ImpactXParticleContainer.cpp#L106-L123"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-17.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/API-17/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-18",
+  "title": "Marker insertion compresses field profiles and repeats linear maps in each piece",
+  "area": "Python API",
+  "priority": "P1",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`insert_element_every_ds()` splits thick elements by copying them with a shorter `ds`, so each piece of a split `RFCavity`, `SoftQuadrupole` or `SoftSolenoid` holds a compressed copy of the whole field profile instead of its own section. A midpoint marker in a 1 m, 10 GeV electron cavity with profile `½(1 − cos 2πs/L)` reduces its energy gain by 20.00%; constant profiles are unaffected. The helper also splits `LinearMap` and `SpinMap` elements, which the manual documents as unsliceable, and each piece applies the whole map: a 60° `SpinMap` rotation becomes 120°. A `Programmable` drift that captures the original element doubles its advance.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Insert.cpp#L64-L74`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/fa0a43b9bb07decba15daa38ed56ca947160ed1d/src/elements/transformation/Insert.cpp#L64-L74"
+   },
+   {
+    "label": "`RFCavity.H#L294-L317`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/fa0a43b9bb07decba15daa38ed56ca947160ed1d/src/elements/RFCavity.H#L294-L317"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1728,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1728",
+    "relation": "filed"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "claude-opus-5-5",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "development",
+      "commit": "fa0a43b9bb07",
+      "build": "source, CPU, double, serial"
+     }
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial"
+     },
+     "scope": "LinearMap duplication, source-only, as an API-03 extension"
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "development",
+      "commit": "fa0a43b9bb07",
+      "build": "source, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "development",
+     "commit": "fa0a43b9bb07",
+     "build": "source, CPU, double, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-18.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/API-18/"
+ }
+]

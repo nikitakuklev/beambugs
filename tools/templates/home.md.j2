@@ -1,0 +1,20 @@
+---
+title: beambugs
+---
+
+# beambugs
+
+Evidence for defects in accelerator and beam-physics codes: what goes wrong, a script that shows it, and who established it.
+Each entry was found by one AI model and confirmed independently by another, with a different method, and is reproduced by a standalone script.
+See [Methodology](methodology.md) for the criteria.
+
+This is not an issue tracker.
+Where an entry has been reported upstream, its page links the issue or pull request.
+
+| Code | Entries |
+|---|---|
+{% for key, code in codes.items() if key in published %}
+| [{{ code.name }}]({{ key }}/index.md) | {{ published[key] | length }} |
+{% endfor %}
+
+All entries as JSON: [defects.json](defects.json).

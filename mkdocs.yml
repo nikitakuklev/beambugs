@@ -1,0 +1,51 @@
+site_name: beambugs
+site_description: Evidence for defects in accelerator and beam-physics codes
+repo_url: https://github.com/nikitakuklev/beambugs
+repo_name: nikitakuklev/beambugs
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle: {icon: material/brightness-7, name: Dark mode}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle: {icon: material/brightness-4, name: Light mode}
+
+nav:
+  - Home: index.md
+  - Methodology: methodology.md
+  - Codes:
+      - ImpactX: impactx/index.md
+
+hooks:
+  - hooks/upstream_state.py
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
+  - javascripts/filters.js
+
+validation:
+  nav:
+    omitted_files: ignore

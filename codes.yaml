@@ -1,0 +1,17 @@
+# Codes exported into beambugs. `ledger` is the private ledger directory the
+# exporter reads; it is only needed to regenerate docs/, not to build the site.
+impactx:
+  name: ImpactX
+  homepage: https://impactx.readthedocs.io
+  repository: BLAST-ImpactX/impactx
+  ledger: /mnt/apollo/ref_docs/impactx/upstream_defects
+  areas:
+    tracking.md: Tracking
+    envelope.md: Envelope
+    collective.md: Collective effects
+    particles_io.md: Particles and I/O
+    python_api.md: Python API
+  # Modules provided by the code's own package; other imports are listed per entry.
+  modules: [impactx, amrex]
+  # Reproducers that read the code's sources or git history take a clone path from this variable.
+  source_env: IMPACTX_SOURCE
