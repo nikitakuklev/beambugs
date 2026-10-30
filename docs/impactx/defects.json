@@ -331,7 +331,22 @@
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/PolygonAperture.H#L167-L169"
    }
   ],
-  "upstream": [],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1740,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1740",
+    "relation": "filed"
+   },
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1741,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1741",
+    "relation": "filed"
+   }
+  ],
   "provenance": {
    "found": [
     {
@@ -686,7 +701,22 @@
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrPlasmaLens.H#L219-L223"
    }
   ],
-  "upstream": [],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1742,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1742",
+    "relation": "filed"
+   },
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1743,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1743",
+    "relation": "filed"
+   }
+  ],
   "provenance": {
    "found": [
     {

@@ -13,6 +13,8 @@ hide:
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-30 on development (`dfd49f22c34f`), source, CPU, double, serial |
+| Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1740]], filed from this evidence |
+| Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1741]], filed from this evidence |
 | Source | [`PolygonAperture.H#L167-L169`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/PolygonAperture.H#L167-L169) |
 
 A `PolygonAperture` with a nonzero period `repeat_x` (or `repeat_y`) folds coordinates into the central cell through their absolute value, which mirrors every negative coordinate. For a polygon that is not symmetric about `x = 0` (or `y = 0`), particles inside the aperture are removed and particles outside it can pass, whereas a periodic translation must leave a point already in the central period unchanged. For a rectangle `x ∈ [-0.3, 0.1]`, `y ∈ [-0.2, 0.2]` with `repeat_x=1`, a particle at `x = -0.2`, inside the rectangle, is removed; with `repeat_x=0` it survives. Symmetric polygons are unaffected.
