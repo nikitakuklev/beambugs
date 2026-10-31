@@ -12,23 +12,28 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Source | [`Sol.H#L112`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/Sol.H#L112) |
 
-A `Sol` with zero strength, `ks=0`, as when a solenoid is switched off in a scan or knob, returns NaN `x` and `y`, because the map divides by `ks/2`. The zero-field limit is a drift (`sin(αL)/α → L`), which `Sol(ks=1e-9)` and `Drift` both give. In the reproducer the particle exits with NaN `x` and `y` instead of `x = 0.0277`, `y = −0.0114`; the momenta and longitudinal coordinates are correct. Any lattice that contains a switched-off `Sol` is affected.
+A `Sol` with zero strength, `ks=0`, as when a solenoid is switched off in a scan or knob, returns NaN `x` and `y`, because the map divides by α = `ks`/2. The zero-field limit is a drift, since sin(αL)/α → L for length L, and both `Sol(ks=1e-9)` and `Drift` give it. A proton entering a 0.7 m `Sol(ks=0)` at `x` = 13 mm, `px` = 0.021, `y` = −17 mm and `py` = 0.008 exits with NaN `x` and `y` instead of 27.70 mm and −11.40 mm; the momenta and longitudinal coordinates are correct. Any lattice that contains a switched-off `Sol` is affected.
 
-## Reproducer
-
-sin(ks L/2)/(ks/2) -\> L as ks -\> 0, so a switched-off solenoid is the linear drift.
-
-??? example "TRK-08.py"
+??? example "Reproducer: TRK-08.py"
 
     [Download TRK-08.py](TRK-08.py)
 
     ```python
-    """TRK-08: Sol with ks = 0 returns NaN positions instead of a drift.
+    """TRK-08: `Sol(ks=0)` returns NaN positions
 
-    sin(ks L/2)/(ks/2) -> L as ks -> 0, so a switched-off solenoid is the linear drift."""
+    A `Sol` with zero strength, `ks=0`, as when a solenoid is switched off in a scan or knob, returns
+    NaN `x` and `y`, because the map divides by α = `ks`/2. The zero-field limit is a drift, since
+    sin(αL)/α → L for length L, and both `Sol(ks=1e-9)` and `Drift` give it. A proton entering a 0.7 m
+    `Sol(ks=0)` at `x` = 13 mm, `px` = 0.021, `y` = −17 mm and `py` = 0.008 exits with NaN `x` and `y`
+    instead of 27.70 mm and −11.40 mm; the momenta and longitudinal coordinates are correct. Any lattice
+    that contains a switched-off `Sol` is affected.
+
+    The script tracks one proton (938.3 MeV kinetic energy) with all six coordinates nonzero through
+    `Sol(ds=0.7, ks=0)` and through `Drift(ds=0.7)`, and compares the two exit vectors.
+    """
     import numpy as np
     from impactx import ImpactX, elements
 
@@ -64,6 +69,7 @@ sin(ks L/2)/(ks/2) -\> L as ks -\> 0, so a switched-off solenoid is the linear d
 
     u = [0.013, 0.021, -0.017, 0.008, 0.015, -0.03]
     try:
+        # sin(ks L/2)/(ks/2) -> L as ks -> 0, so a switched-off solenoid is the linear drift.
         out = track([elements.Sol(ds=0.7, ks=0.0)], u)[0]
         exp = track([elements.Drift(ds=0.7)], u)[0]
         print(f"observed {np.round(out, 4).tolist()}\nexpected {np.round(exp, 4).tolist()}")
@@ -78,6 +84,6 @@ sin(ks L/2)/(ks/2) -\> L as ks -\> 0, so a switched-off solenoid is the linear d
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed | `claude-opus-5-5` |  | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed | `claude-opus-5-5` |  | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
 

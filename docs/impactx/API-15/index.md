@@ -12,25 +12,35 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Source | [`src/python/elements.cpp#L2239-L2251`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/elements.cpp#L2239-L2251)<br>[`src/elements/Programmable.cpp#L19-L57`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/Programmable.cpp#L19-L57)<br>[`src/particles/PushAll.H#L105-L132`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/PushAll.H#L105-L132)<br>[`docs/source/usage/python.rst#L2323-L2352`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L2323-L2352) |
 
-A `Programmable` element's reference-particle callback loses its changes to the reference particle unless a Python object for `sim.beam.ref` is being held. The documented contract applies the reference update before beam transport with no such prerequisite, and analytic drift and energy-gain formulas give the required result. A 0.375 m programmable drift traversed over three periods at γ = 1.25 leaves the reference at `s = 0` instead of 1.125 m, and an electron energy update leaves γ at 1.050 instead of 1.250, after which beam coordinates are off by up to 1.376e-4. Holding `sim.beam.ref` gives the correct result; the bundled example and tests hold it.
+A `Programmable` element's reference-particle callback loses its changes to the reference particle unless the script holds a Python object for `sim.beam.ref` while tracking. The documented contract applies the reference update before beam transport with no such prerequisite, and analytic drift and energy-gain formulas give the required result. A 0.375 m programmable drift traversed over three periods at γ = 1.25 leaves the reference at s = 0 instead of 1.125 m, and an electron energy update leaves γ at 1.050 instead of 1.250, after which the beam's normalized momenta are off by up to 1.376×10⁻⁴. Holding `sim.beam.ref` gives the correct result, as the bundled example and tests do; holding only `sim.beam` or a copy of the reference does not.
 
-## Reproducer
-
-Checks reference drift and energy updates against analytic formulas. Reference momenta use mc normalization; beam momenta use the design momentum. Writes no files. Each native case runs in a fresh child process.
-
-??? example "API-15.py"
+??? example "Reproducer: API-15.py"
 
     [Download API-15.py](API-15.py)
 
     ```python
-    """API-15: Programmable reference mutations depend on a retained live wrapper.
+    """API-15: Programmable reference callbacks lose mutations without a retained live wrapper
 
-    Checks reference drift and energy updates against analytic formulas.
-    Reference momenta use mc normalization; beam momenta use the design momentum.
-    Writes no files. Each native case runs in a fresh child process.
+    A `Programmable` element's reference-particle callback loses its changes to the reference particle
+    unless the script holds a Python object for `sim.beam.ref` while tracking. The documented contract
+    applies the reference update before beam transport with no such prerequisite, and analytic drift and
+    energy-gain formulas give the required result. A 0.375 m programmable drift traversed over three
+    periods at γ = 1.25 leaves the reference at s = 0 instead of 1.125 m, and an electron energy update
+    leaves γ at 1.050 instead of 1.250, after which the beam's normalized momenta are off by up to
+    1.376×10⁻⁴. Holding `sim.beam.ref` gives the correct result, as the bundled example and tests do;
+    holding only `sim.beam` or a copy of the reference does not.
+
+    The script runs each case in a fresh child process with twelve particles: a programmable drift whose
+    callbacks advance the reference and the beam (γ = 1.25 along a tilted direction over 0.375 m with
+    five slices and three periods, and γ = 7.3 over 0.14 m), and a zero-length element raising γ of an
+    electron from 1.05 to 1.25 and of a proton from 20 to 22.5. It compares the final reference with
+    constant-velocity transport, and the beam with the linear drift map or with momenta scaled by √((γ₀²
+    − 1)/(γ₁² − 1)) for initial γ₀ and final γ₁. Holding nothing, only `sim.beam`, a copy of the
+    reference or a released reference shows the bug; a held `sim.beam.ref`, a whole-container `push`
+    callback that reads `beam.ref`, and a native `Drift` are the controls.
     """
 
     import os

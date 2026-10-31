@@ -1,6 +1,20 @@
-"""TRK-13: Hminus has the wrong magnetic-anomaly sign.
+"""TRK-13: Built-in H⁻ species has the wrong magnetic-anomaly sign
 
-Check magnetic moment implied by set_species, then longitudinal precession.
+With spin tracking enabled (experimental in ImpactX), the built-in `Hminus` species uses the
+proton's magnetic anomaly a = 1.793 together with its negative charge, which reverses the ion's
+magnetic moment and its spin precession. Ground-state H⁻ has a closed electron shell and keeps the
+positive, slightly shielded proton moment; since the moment is (1 + a)qS/m for charge q, mass m and
+spin S, the negative charge requires 1 + a < 0, giving a ≈ −3.796. In a 0.1 T longitudinal field
+over 0.1 m at γ = 2, the built-in species precesses by +0.005146 rad instead of the Thomas–BMT value
+−0.005152 rad. Mass and charge are not affected, and an explicitly supplied anomaly gives the
+correct precession.
+
+The script first computes the magnetic moment implied by the built-in `Hminus` anomaly and charge,
+which must have the proton moment's sign. It then tracks an on-axis particle at γ = 2 with spin (1,
+0, 0) through a 0.1 m `ChrAcc` with zero electric field and a 0.1 T longitudinal magnetic field, and
+compares the spin rotation with the Thomas–BMT angle −(1 + a)qBL/(mcβγ) for a proton, the built-in
+`Hminus`, and `Hminus` with the anomaly set to the values derived from the proton moment and the H⁻
+mass, with and without electronic shielding.
 """
 
 import os

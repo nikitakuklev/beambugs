@@ -1,8 +1,21 @@
-"""COL-01: PIC 2.5D longitudinal space-charge kick depends on a hidden 1 m length scale.
+"""COL-01: PIC `2p5D` longitudinal kick uses a fixed 1 m reference length `r0`, which `Gauss2p5D`
+exposes
 
-Scale every length (bunch, mesh, kick length) by a at fixed charge and energy. Coulomb fields
-scale as 1/a^2, so a*(kick) must be unchanged for every component. The transverse kicks pass;
-the longitudinal kick multiplies the absolute 2D potential, whose log reference is 1 m.
+With `2p5D` particle-in-cell space charge, the longitudinal kick multiplies the absolute 2D
+potential, whose logarithmic kernel implicitly fixes a reference length r₀ = 1 m; `Gauss2p5D`
+exposes this length as `gauss_long_scale` (default 1.103·γ·σz, σz the rms bunch length), but `2p5D`
+has no such parameter and does not document it. Scaling all lengths by one factor at fixed charge
+and energy must leave the length-scaled kick unchanged; for a 1 pC electron bunch at γ = 10 the
+transverse kick obeys this, while the longitudinal kick changes by 7.879% when lengths double.
+Against the exact 3D field of a long round Gaussian bunch with γσz/σ⊥ = 50 (σ⊥ the rms width), the
+on-axis longitudinal field has L2 errors of 73.62% (σ⊥ = 1 mm) and 131.1% (σ⊥ = 0.1 mm), and 149.9%
+in a round pipe of radius 25 mm.
+
+The script gives 16384 Gaussian-distributed electrons (σx = σy = 0.1 mm, σt = 1 mm, 1 pC) at
+γ = 10 one `2p5D` space-charge kick over 1 mm with no transport, then repeats with every length
+(bunch, mesh and kick length) doubled. It compares the length-scaled kicks a·Δp of the two runs,
+which must agree for every component; the transverse kick serves as the control that passes. The
+random positions use a fixed seed.
 """
 import numpy as np
 from impactx import ImpactX, elements
@@ -39,6 +52,9 @@ def scaled_kicks(a):
     sim.lattice.append(kick_only)
     sim.track_particles()
     df = beam.to_df(local=True).reset_index(drop=True).sort_values("idcpu")
+    # Coulomb fields scale as 1/a^2 and the kick length as a, so a*(kick) is invariant for
+    # every component; the longitudinal kick instead multiplies the absolute 2D potential,
+    # whose log reference is 1 m.
     return a * df[["momentum_x", "momentum_t"]].to_numpy()
 
 

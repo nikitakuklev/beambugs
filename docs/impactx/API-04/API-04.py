@@ -1,4 +1,22 @@
-"""API-04: Callback length retuning leaves stale collective-kick lengths."""
+"""API-04: `before_slice` length changes retain stale collective-kick lengths
+
+If a `before_slice` hook changes the length `ds` of the upcoming element, ImpactX transports the
+element over the new length but applies its space-charge kick for the length cached before the hook.
+The hook contract allows modifying the upcoming element, the same change made in `before_element`
+gives the correct result, and independently composed drift and kick matrices reproduce both
+outcomes. For a 10 MeV, 0.1 A proton envelope with 1 mm rms sizes and 2D space charge, retuning a
+drift from 0.1 to 0.2 m halves the kick: the normalized-momentum variance ⟨pₓ²⟩ ends at 1.270×10⁻⁸
+instead of 2.058×10⁻⁸ with Strang splitting. Retuning from 0.4 m doubles the kick and from zero
+length omits it, in first-order and Strang splitting; particle tracking shares this code but was not
+run.
+
+The script tracks a 10 MeV, 0.1 A proton envelope (rms sizes 1 mm, normalized-momentum rms widths
+10⁻⁴) with 2D space charge through one single-slice drift whose `before_slice` hook sets `ds` = 0.2
+m, starting from 0.1, 0.4 and 0 m, in first-order and Strang splitting. It compares the full
+covariance matrix with drift and kick matrices composed from the paraxial uniform-ellipse kick, for
+both the correct and the stale kick length, and infers the ratio of applied to correct kick. A
+static 0.2 m drift and the same change made in `before_element` are the controls.
+"""
 
 import os
 

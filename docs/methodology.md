@@ -4,7 +4,7 @@
 
 1. **Discovery.** An AI model examines one subsystem of a code against its documentation, source contracts, analytic results or another code, and writes a runnable reproducer for each candidate.
 2. **Confirmation.** A different model rechecks the candidate with an independent method: an analytic invariant, finite differences, an independent numerical integration, the documented contract or another code. Rerunning the discovery reproducer does not count.
-3. **Head verification.** The reproducer is run on a build of the code's current upstream head. The entry's *Last reproduced* row records the date, commit and build.
+3. **Head verification.** The reproducer is run on a build of the code's current upstream head. The entry's *Last reproduced* row gives the date, branch or release and commit of the most recent run, and notes a later development-branch run that no longer reproduces the defect; the provenance table names the builds.
 
 Before an observation becomes an entry, it is separated from coordinate conventions, documented model approximations and unsupported inputs.
 Coordinates, signs, charge and reference normalization, slicing and splitting are resolved before comparing with another code.
@@ -83,4 +83,4 @@ A row with a scope established only that part of the claim.
 
 Each reproducer builds its case inline, prints observed and expected values with the expected value's derivation, and ends with `DEFECT REPRODUCED` or `NOT REPRODUCED`.
 A nonzero exit status means the run failed, not a verdict.
-Reproducers that read the code's sources or git history take the path of a clone from an environment variable named on the entry page.
+Each script opens with the entry's title and summary, then a short description of how it demonstrates the defect. Reproducers that read the code's sources or git history take the path of a clone from an environment variable that the description names; they stop with an error when it is unset. Installation and run instructions are on each code's page.

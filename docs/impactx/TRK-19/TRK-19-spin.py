@@ -1,11 +1,15 @@
-"""TRK-19: ExactCFbend's skew-decapole field corrupts spin precession.
+"""TRK-19: the same skew-decapole field error in spin tracking
 
-Self-contained serial CPU/double check with deterministic particles. Compares against a
-Maxwell field reconstruction with a Cartesian Lorentz/Thomas-BMT integration and
-a curvilinear-potential DOP853 integration.
-Requires NumPy, SciPy, SymPy and impactx-noacc; writes no files. Spin tracking
-is experimental and explicitly unsupported. Each native child owns one
-simulation and has a 290-second timeout.
+With spin tracking enabled, the script tracks 12 protons that share the principal fixture's orbit
+and carry the three Cartesian unit spins through the same `ExactCFbend`, in 20 cases that each run
+in a fresh single-threaded child process: coarser and finer steps, slicing, integrator orders 2 and
+4, and a second fixture with negative curvature whose strength, length, energy, anomaly, field unit
+and species are varied, plus a pure dipole, an on-axis particle and spin tracking disabled. It
+compares the exit spins with a Cartesian Lorentz and Thomas–BMT integration to the exit plane in
+three field models: the physical field reconstructed from Maxwell's equations, the physical field
+along the implemented orbit, and the implemented field, which must reproduce ImpactX. A moving-frame
+integration of the documented potential cross-checks the physical result, and the pure-dipole and
+on-axis cases must agree with it.
 """
 
 import argparse

@@ -1,8 +1,18 @@
-"""TRK-09: ExactCFbend higher-order multipole kicks lose all precision at small curvature.
+"""TRK-09: `ExactCFbend` octupole and decapole kicks lose all precision at small curvature
 
-The curvilinear decapole kick at y = 0 is k4*x^4/24 + O(k4 x^5/rc); the code evaluates it as a
-difference of O(1) polynomial and log terms in rho = 1 + x/rc, multiplied by rc^4*k4.
-Expected: the decapole changes px by -ds*k4*x^4/24 relative to the same bend without it.
+`ExactCFbend` evaluates its octupole and decapole kicks as differences of order-one terms in 1 +
+x/`rc` and then multiplies them by powers of the bend radius `rc`, so rounding dominates at small
+curvature: the error scales as ε·`rc`³·k₃ for the octupole and ε·`rc`⁴·k₄ for the decapole, with k₃
+and k₄ their coefficients and ε the double-precision machine epsilon. In the straight limit at y = 0
+the decapole kick rate is −k₄x⁴/24, which a 60-digit evaluation of the code's own expression
+reproduces. For `rc` = 1000 m, `ds` = 1e-4 m, k₄ = 1e4 m⁻⁵ and a particle at x = 1 mm, the decapole
+changes `px` by −6.889e-6 instead of −4.167e-14. Weakly curved combined-function magnets with these
+terms are affected.
+
+The script pushes a proton (938.3 MeV kinetic energy) at x = 1 mm with zero momenta through a 0.1 mm
+`ExactCFbend` with `k_normal[0]` = 1e-3 m⁻¹ (`rc` = 1000 m), once with k₄ = 1e4 m⁻⁵ and once
+without, using one second-order map step. It compares the difference in exit `px` with
+−`ds`·k₄x⁴/24.
 """
 import numpy as np
 from impactx import ImpactX, elements
@@ -42,6 +52,8 @@ try:
     base = dict(ds=ds, k_skew=[0.0] * 5, int_order=2, mapsteps=1)
     with_k4 = track([elements.ExactCFbend(k_normal=[1e-3, 0, 0, 0, k4], **base)], [x, 0, 0, 0, 0, 0])[0, 1]
     without = track([elements.ExactCFbend(k_normal=[1e-3, 0, 0, 0, 0], **base)], [x, 0, 0, 0, 0, 0])[0, 1]
+    # The curvilinear decapole kick at y = 0 is k4*x^4/24 + O(k4 x^5/rc); the code evaluates it as a
+    # difference of O(1) polynomial and log terms in rho = 1 + x/rc, multiplied by rc^4*k4.
     expected = -ds * k4 * x**4 / 24
     print(f"rc = 1000 m: decapole px change observed {with_k4 - without:.4g}, expected {expected:.4g}")
     print("DEFECT REPRODUCED" if abs(with_k4 - without - expected) > 1e-3 * abs(expected) else "NOT REPRODUCED")

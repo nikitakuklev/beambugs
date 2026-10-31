@@ -1,8 +1,19 @@
-"""TRK-06: linear CFbend returns NaN when a focusing frequency is zero.
+"""TRK-06: Linear `CFbend` returns NaN at a zero focusing frequency
 
-k = 0 is a sector bend (equal to Sbend); k = -1/rc^2 cancels horizontal focusing. Both maps are
-finite: sin(w L)/w -> L, (1 - cos)/w^2 -> L^2/2. A neighbouring k gives the limit. Exactly zero
-gives NaN; a rounding residue (h = 0.3: k = -h^2 leaves gx = -1.4e-17) gives finite wrong x and t."""
+The linear `CFbend` returns NaN coordinates when a focusing frequency is zero: gradient `k` = 0
+gives NaN `y` and `py`, and `k` = −1/`rc`² (bend radius `rc`), which cancels horizontal focusing,
+gives NaN `x`, `px` and `t`. The transfer functions have finite limits there, matched by `Sbend` at
+`k` = 0 and by a gradient raised by 1e-9 m⁻². When rounding leaves a residue of −1.4e-17 m⁻² in the
+horizontal focusing `k` + 1/`rc`², the result is finite but wrong: for `rc` = 1/0.3 m,
+`k` = −0.09 m⁻² and `ds` = 0.7 m, `x` is 0.02770 m instead of 0.03025 m and `t` is 0.01115 m instead
+of 0.01314 m. Zero-gradient bends and bends tuned to cancel horizontal focusing are affected.
+
+The script tracks one proton (938.3 MeV kinetic energy) with all six coordinates nonzero through
+0.7 m `CFbend`s with `rc` = 3 m and `k` = 0, `rc` = 2 m and `k` = −0.25 m⁻², and `rc` = 1/0.3 m and
+`k` = −0.3² m⁻². It compares the first with `Sbend(rc=3)` and the other two with a `CFbend` whose
+`k` is raised by 1e-9 m⁻². The last case prints `rc` rounded to 3.333; a literal `rc` = 3.333 would
+leave a horizontal focusing of about 1.8e-5 m⁻² and track correctly.
+"""
 import numpy as np
 from impactx import ImpactX, elements
 
@@ -38,6 +49,8 @@ def track(lattice, coords, kin_MeV=938.27208816):
 
 u = [0.013, 0.021, -0.017, 0.008, 0.015, -0.03]
 bad = False
+# Both zero-frequency maps are finite: sin(w L)/w -> L, (1 - cos(w L))/w^2 -> L^2/2. Exactly zero
+# gives NaN; a rounding residue (h = 0.3: k = -h^2 leaves gx = -1.4e-17) gives finite wrong x and t.
 try:
     for rc, k, ref_el in [
         (3.0, 0.0, elements.Sbend(ds=0.7, rc=3.0)),

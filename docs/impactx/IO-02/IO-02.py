@@ -1,4 +1,22 @@
-"""IO-02: Charge histograms ignore particle weights."""
+"""IO-02: Phase-space charge histograms ignore particle weights
+
+The phase-space plot from `plot_phasespace()` labels its charge histograms Q [C/bin] but counts
+macroparticles instead of summing their charges q_ref·w, where q_ref is the reference-particle
+charge and w the number of real particles a macroparticle represents. The displayed values are
+therefore counts, and bins whose particles carry different weights also have wrong relative charges.
+For a 1.550 nC test beam, a 2×2 x–px histogram shows 16 in every bin instead of the charges from
+8.613×10⁻¹¹ to 8.613×10⁻¹⁰ C that a direct sum of q_ref·w gives, and splitting each macroparticle
+into two half-weight copies doubles every bin while the beam is unchanged. The numerical charge and
+moment diagnostics are correct.
+
+The script builds a deterministic beam of 64 weighted particles at the vertices of a box in (x, px,
+y, py, t, pt) for a γ = 7 proton reference, checks its total charge and emittances against analytic
+values, and draws the plot with two bins per axis using the installed `plot_phasespace()` function
+and the unmodified function from the ImpactX development branch. It compares each panel's displayed
+bins with charges summed directly as q_ref·w over the known sign categories. Repeating with each
+particle split into two half-weight copies, which leaves the beam unchanged, doubles the displayed
+bins. Set IMPACTX_SOURCE to a clone of the ImpactX repository.
+"""
 
 import os
 

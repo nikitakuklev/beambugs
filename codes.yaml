@@ -11,7 +11,10 @@ impactx:
     collective.md: Collective effects
     particles_io.md: Particles and I/O
     python_api.md: Python API
-  # Modules provided by the code's own package; other imports are listed per entry.
+  # Modules provided by the code's own package; other imports are listed on the code page.
   modules: [impactx, amrex]
-  # Reproducers that read the code's sources or git history take a clone path from this variable.
-  source_env: IMPACTX_SOURCE
+  # Shown once on the code page, above the generated list of extra packages.
+  run: |
+    Install the CPU build of ImpactX 26.10 (`pip install impactx-noacc==26.10`), on which
+    the reproducers ran. Download a reproducer and run it with `python <ID>.py`, one
+    script per process.

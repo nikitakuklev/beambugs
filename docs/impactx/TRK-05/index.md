@@ -12,26 +12,32 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-30 on development (`dfd49f22c34f`), source, CPU, double, serial |
+| Last reproduced | 2026-10-30 on ImpactX development (`dfd49f2`) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1740]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1741]], filed from this evidence |
 | Source | [`PolygonAperture.H#L167-L169`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/PolygonAperture.H#L167-L169) |
 
-A `PolygonAperture` with a nonzero period `repeat_x` (or `repeat_y`) folds coordinates into the central cell through their absolute value, which mirrors every negative coordinate. For a polygon that is not symmetric about `x = 0` (or `y = 0`), particles inside the aperture are removed and particles outside it can pass, whereas a periodic translation must leave a point already in the central period unchanged. For a rectangle `x ∈ [-0.3, 0.1]`, `y ∈ [-0.2, 0.2]` with `repeat_x=1`, a particle at `x = -0.2`, inside the rectangle, is removed; with `repeat_x=0` it survives. Symmetric polygons are unaffected.
+A `PolygonAperture` with a nonzero period `repeat_x` (or `repeat_y`) folds coordinates into the central cell through their absolute value, which mirrors every negative coordinate. For a polygon that is not symmetric about x = 0 (or y = 0), particles inside the aperture are removed and particles whose mirror image lies inside it pass, whereas repeating the aperture with a period must leave a point already in the central period unchanged. For a rectangle with x ∈ [−0.3, 0.1] m and y ∈ [−0.2, 0.2] m and `repeat_x=1`, a particle at x = −0.2 m, inside the rectangle, is removed; with `repeat_x=0` it survives. Polygons symmetric about the folded axis are unaffected.
 
-## Reproducer
-
-Both test points lie inside the central period \[-0.5, 0.5), so repeat\_x = 1 must not change which of them is inside the rectangle x in \[-0.3, 0.1\], y in \[-0.2, 0.2\].
-
-??? example "TRK-05.py"
+??? example "Reproducer: TRK-05.py"
 
     [Download TRK-05.py](TRK-05.py)
 
     ```python
-    """TRK-05: periodic PolygonAperture folds coordinates with abs() and mirrors asymmetric polygons.
+    """TRK-05: Periodic `PolygonAperture` mirrors asymmetric polygons
 
-    Both test points lie inside the central period [-0.5, 0.5), so repeat_x = 1 must not change
-    which of them is inside the rectangle x in [-0.3, 0.1], y in [-0.2, 0.2]."""
+    A `PolygonAperture` with a nonzero period `repeat_x` (or `repeat_y`) folds coordinates into the
+    central cell through their absolute value, which mirrors every negative coordinate. For a polygon
+    that is not symmetric about x = 0 (or y = 0), particles inside the aperture are removed and
+    particles whose mirror image lies inside it pass, whereas repeating the aperture with a period must
+    leave a point already in the central period unchanged. For a rectangle with x ∈ [−0.3, 0.1] m and y
+    ∈ [−0.2, 0.2] m and `repeat_x=1`, a particle at x = −0.2 m, inside the rectangle, is removed; with
+    `repeat_x=0` it survives. Polygons symmetric about the folded axis are unaffected.
+
+    The script tracks particles at x = −0.2 m (inside the rectangle) and x = 0.2 m (outside) through the
+    rectangular `PolygonAperture` with `repeat_x=1`. Both points lie in the central period [−0.5, 0.5)
+    m, so only the particle at x = −0.2 m may survive.
+    """
     import numpy as np
     from impactx import ImpactX, elements
 
@@ -82,5 +88,5 @@ Both test points lie inside the central period \[-0.5, 0.5), so repeat\_x = 1 mu
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed | `claude-opus-5-5` |  | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
 

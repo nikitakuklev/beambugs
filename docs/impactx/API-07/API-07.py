@@ -1,4 +1,23 @@
-"""API-07: PALS body offsets and active apertures discarded."""
+"""API-07: PALS import discards body offsets and active apertures
+
+Importing a PALS (Particle Accelerator Lattice Standard) lattice into ImpactX ignores body offsets
+(`BodyShiftP`) and apertures (`ApertureP`) on drifts and quadrupoles, without a warning. A body
+shift d displaces the element and its field, so a particle u is transported as M·(u − d) + d for
+element map M, and an active aperture removes particles outside its limits; native `ChrQuad(dx=d)`
+and a `Drift` followed by an `Aperture` give these results. For a γ = 5 proton, a 0.2 m quadrupole
+with `Kn1` = 2 m⁻² offset by 1 mm leaves an on-axis particle at normalized momentum pₓ = 0 instead
+of 3.947×10⁻⁴, and a 0.2 m drift with an active ±1 mm rectangular exit aperture passes all four test
+particles where two should be lost. The converter source ignores both property groups for every
+drift and quadrupole; an inactive aperture correctly has no effect.
+
+Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script checks that the installed PALS
+converter equals the pinned source in that clone, then imports, for a γ = 5 proton, a 0.2 m
+quadrupole (`Kn1` = 2 m⁻²) with horizontal body offsets of +1 mm and −0.6 mm, and a 0.2 m drift with
+a ±1 mm rectangular exit aperture, inactive and active. Quadrupole tracking is compared with M·(u −
+d) + d from a matrix exponential and with native `ChrQuad(dx=d)`; four particles with zero momenta,
+two of them outside the aperture, are compared with the survivors of direct inequalities and of a
+native `Drift` followed by an `Aperture`. The inactive aperture is the control.
+"""
 
 import os
 

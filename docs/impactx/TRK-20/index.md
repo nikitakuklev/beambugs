@@ -10,29 +10,37 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Tracking |
 | Priority | P4 |
-| Severity | Wrong physics (experimental, unsupported spin) |
+| Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`CFbend.H#L171-L184`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/CFbend.H#L171-L184)<br>[spin push](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/CFbend.H#L327-L345)<br>[manual](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2792-L2800) |
 
-With spin tracking enabled (experimental in ImpactX), `CFbend` divides its spin coupling by `k + (Gγh)²`, with `G` the magnetic anomaly and `h = 1/rc`, which vanishes when the vertical focusing frequency `sqrt(−k)` equals `|Gγh|`. The Thomas–BMT solution is finite at this coincidence. For built-in electrons at `γ = 0.5/G` (431.16) in a `CFbend` with `rc = 1 m`, `k = −0.25 m⁻²` and `L = 0.31 m`, every spin component becomes NaN, also on axis, while the orbit is correct. Near the coincidence the spins are finite but wrong: a test with `γ = 2`, `G = 0.25` and relative gradient detuning 1e-15 gives a spin error of 7.450e-5.
+With spin tracking enabled (experimental in ImpactX), `CFbend` divides its spin coupling by k + (Gγh)², for gradient k, magnetic anomaly G and curvature h = 1/`rc`, which vanishes when the vertical focusing frequency √(−k) equals |Gγh|. The Thomas–BMT solution stays finite there; on the design orbit it is a rotation by GγhL about the vertical axis over length L. For built-in electrons at γ = 0.5/G = 431.2 in a `CFbend` with `rc` = 1 m, `k` = −0.25 m⁻² and L = 0.31 m, every spin component becomes NaN, also on axis, while the orbit is correct. Near the coincidence the spins are finite but wrong: at γ = 2 with G = 0.25 and the gradient detuned by a relative 1e-15, the spin error is 7.450e-5.
 
-## Reproducer
-
-Requires scipy.
-
-One serial, double-precision simulation; deterministic particles; no output files. The independent oracle and beam harness are included in this file.
-
-??? example "TRK-20.py"
+??? example "Reproducer: TRK-20.py"
 
     [Download TRK-20.py](TRK-20.py)
 
     ```python
-    """TRK-20: CFbend spin coupling is singular at coincident frequencies.
+    """TRK-20: `CFbend` spin coupling is singular at coincident frequencies
 
-    One serial, double-precision simulation; deterministic particles; no output files.
-    The independent oracle and beam harness are included in this file.
+    With spin tracking enabled (experimental in ImpactX), `CFbend` divides its spin coupling by k +
+    (Gγh)², for gradient k, magnetic anomaly G and curvature h = 1/`rc`, which vanishes when the
+    vertical focusing frequency √(−k) equals |Gγh|. The Thomas–BMT solution stays finite there; on the
+    design orbit it is a rotation by GγhL about the vertical axis over length L. For built-in electrons
+    at γ = 0.5/G = 431.2 in a `CFbend` with `rc` = 1 m, `k` = −0.25 m⁻² and L = 0.31 m, every spin
+    component becomes NaN, also on axis, while the orbit is correct. Near the coincidence the spins are
+    finite but wrong: at γ = 2 with G = 0.25 and the gradient detuned by a relative 1e-15, the spin
+    error is 7.450e-5.
+
+    The script tracks 12 on-axis electrons carrying the three Cartesian unit spins through `CFbend` at
+    the exact coincidence (one and nine slices, reversed curvature, spin tracking off), at nominal
+    coincidences for a low-γ electron and a proton, and through `ExactCFbend` as a control, and compares
+    the exit spins with the design rotation. With the anomaly set to G = 0.25 at γ = 2, nine of the
+    particles are offset to y = 2 mm and `py` = −0.001 and tracked at relative detunings from ±1e-4 to
+    0, against a quadrature of the linearized Thomas–BMT generator in the design spin frame. The orbit
+    is checked against the linear vertical map in every case.
     """
 
     import os

@@ -12,32 +12,32 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Tags | <span class="bb-tag">extreme-regime</span> [?](../../methodology.md#tags) |
 | Source | [`ExactSbend.H#L230-L235`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactSbend.H#L230-L235) |
 
-`ExactSbend` with a very small nonzero bend angle `phi` loses precision, because the position update subtracts large bend-radius terms and nearly equal momenta. A 65-digit Lorentz-trajectory calculation gives the correct exit coordinates, which approach the exact drift as the angle goes to zero. For a proton at γ = 2 in `ExactSbend(ds=0.4, phi=1e-12, B=0)` (`phi` in degrees), `x` is 0.02190 m instead of 0.01782 m, an error of 4.075 mm; at `phi=1e-10` degrees the error is 0.02487 mm. Bends of exactly zero and of 10° are correct, and both curvature signs fail.
+`ExactSbend` with a very small nonzero bend angle `phi` loses precision, because its position update subtracts large bend-radius terms and nearly equal longitudinal momenta. A 65-digit calculation of the Lorentz trajectory to the exit plane gives the correct exit coordinates, which approach the exact drift as the angle goes to zero. For a proton at γ = 2 entering `ExactSbend(ds=0.4, phi=1e-12, B=0)` (`phi` in degrees) at x = 0.01 m with `px` = 0.02, `x` exits at 0.02190 m instead of 0.01782 m, an error of 4.075 mm; at `phi` = 1e-10 degrees the error is 0.02487 mm. Bends of exactly zero and of 10° are correct, and both curvature signs fail.
 
-## Reproducer
-
-Requires mpmath.
-
-Integrate Lorentz motion to the physical exit plane, in the laboratory frame.
-
-In a uniform vertical field h=qB/P0=phi/L, dpx/dZ=-h exactly. The exit plane is -sin(phi)\*X+cos(phi)\*Z=L\*sinc(phi). Integrating dX/dZ, dY/dZ and d(ct)/dZ avoids both enormous radii and subtracting momenta.
-
-??? example "TRK-15.py"
+??? example "Reproducer: TRK-15.py"
 
     [Download TRK-15.py](TRK-15.py)
 
     ```python
-    """TRK-15: Weak ExactSbend bends lose precision.
+    """TRK-15: Weak `ExactSbend` bends lose precision through cancellation
 
-    Integrate Lorentz motion to the physical exit plane, in the laboratory frame.
+    `ExactSbend` with a very small nonzero bend angle `phi` loses precision, because its position update
+    subtracts large bend-radius terms and nearly equal longitudinal momenta. A 65-digit calculation of
+    the Lorentz trajectory to the exit plane gives the correct exit coordinates, which approach the
+    exact drift as the angle goes to zero. For a proton at γ = 2 entering `ExactSbend(ds=0.4, phi=1e-12,
+    B=0)` (`phi` in degrees) at x = 0.01 m with `px` = 0.02, `x` exits at 0.02190 m instead of
+    0.01782 m, an error of 4.075 mm; at `phi` = 1e-10 degrees the error is 0.02487 mm. Bends of exactly
+    zero and of 10° are correct, and both curvature signs fail.
 
-    In a uniform vertical field h=qB/P0=phi/L, dpx/dZ=-h exactly. The
-    exit plane is -sin(phi)*X+cos(phi)*Z=L*sinc(phi). Integrating dX/dZ,
-    dY/dZ and d(ct)/dZ avoids both enormous radii and subtracting momenta.
+    The script tracks a proton at γ = 2 with all six coordinates nonzero through `ExactSbend(ds=0.4,
+    B=0)` with `phi` = 0, 10, 1e-3, 1e-6, 1e-8, 1e-10 and ±1e-12 degrees, and compares the exit
+    coordinates with a 65-digit integration of the motion in the uniform field, in the entrance
+    laboratory frame, up to the tilted exit plane. The 0° and 10° bends are the controls and must agree
+    to 3e-15.
     """
 
     import os
@@ -109,6 +109,9 @@ In a uniform vertical field h=qB/P0=phi/L, dpx/dZ=-h exactly. The exit plane is 
     length = 0.4
 
 
+    # In a uniform vertical field h = qB/P0 = phi/L, dpx/dZ = -h exactly. The exit plane is
+    # -sin(phi)*X + cos(phi)*Z = L*sinc(phi). Integrating dX/dZ, dY/dZ and d(ct)/dZ avoids both
+    # enormous radii and subtracting momenta.
     def lorentz_to_exit(phi, gamma):
         x, px, y, py, t, pt = map(mp.mpf, u)
         ds, phi, gamma = map(mp.mpf, (length, phi, gamma))

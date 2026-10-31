@@ -10,31 +10,38 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Python API |
 | Priority | P4 |
-| Severity | API hazard |
+| Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`helper.py#L35-L63`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/file_imports/python/helper.py#L35-L63)<br>[`simulation.py#L172-L213`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Run/simulation.py#L172-L213) |
 
-A simulation exported from the dashboard in envelope or reference tracking mode re-imports as particle tracking: the export writes only the tracking call (`track_envelope()` or `track_reference(ref)`), and the import does not read it and keeps its particle-tracking default. The regenerated commands then use `sim.add_particles(...)` and `sim.track_particles()`. The bundled envelope examples that the dashboard offers also import as particle tracking. An explicit tracking-mode assignment in the script preserves the mode.
+A simulation exported from the ImpactX dashboard in envelope or reference tracking mode re-imports as particle tracking: the export writes only the tracking call (`track_envelope()` or `track_reference(ref)`), and the import does not read it and keeps its particle-tracking default. The import is meant to restore the configuration the file describes, and that call identifies the tracking model directly. An envelope export, `sim.init_envelope(ref, distr)` followed by `sim.track_envelope()`, regenerates as `sim.add_particles(bunch_charge_C, distr, npart)` and `sim.track_particles()`, and the two bundled envelope examples the dashboard offers also import as particle tracking. The changed mode is visible in the interface; particle-mode exports and scripts with an explicit `tracking_mode` assignment keep their mode.
 
-## Reproducer
-
-Set `IMPACTX_SOURCE` to a clone of the ImpactX repository.
-
-Load complete, unmodified source modules using package shells to avoid the unavailable Trame UI. Only the reactive state object is replaced. Parser, defaults, parameter conversion and code generation are the real modules. Run one case per process. No output files are created.
-
-??? example "API-12.py"
+??? example "Reproducer: API-12.py"
 
     [Download API-12.py](API-12.py)
 
     ```python
-    """API-12: Dashboard tracking-mode round-trip loss; no web server is started.
+    """API-12: Dashboard reimports envelope and reference exports as particle tracking
 
-    Load complete, unmodified source modules using package shells to avoid the
-    unavailable Trame UI. Only the reactive state object is replaced. Parser,
-    defaults, parameter conversion and code generation are the real modules.
-    Run one case per process. No output files are created.
+    A simulation exported from the ImpactX dashboard in envelope or reference tracking mode re-imports
+    as particle tracking: the export writes only the tracking call (`track_envelope()` or
+    `track_reference(ref)`), and the import does not read it and keeps its particle-tracking default.
+    The import is meant to restore the configuration the file describes, and that call identifies the
+    tracking model directly. An envelope export, `sim.init_envelope(ref, distr)` followed by
+    `sim.track_envelope()`, regenerates as `sim.add_particles(bunch_charge_C, distr, npart)` and
+    `sim.track_particles()`, and the two bundled envelope examples the dashboard offers also import as
+    particle tracking. The changed mode is visible in the interface; particle-mode exports and scripts
+    with an explicit `tracking_mode` assignment keep their mode.
+
+    Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
+    parser and export modules from that clone behind package shells, replacing only the reactive state
+    object so that no Trame web UI or server is needed. For each of the three tracking modes it exports
+    a simulation, parses the export, applies the returned state and compares the regenerated tracking
+    commands with the original ones; it also imports the two bundled envelope examples. Particle mode
+    and an envelope export prefixed with an explicit `tracking_mode` assignment are the controls;
+    quadratic distribution parameters keep the test clear of the dashboard's Twiss-parsing defect.
     """
 
     import os

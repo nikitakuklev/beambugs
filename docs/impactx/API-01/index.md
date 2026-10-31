@@ -12,26 +12,32 @@ hide:
 | Priority | P1 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1726]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1727]], filed from this evidence |
 | Source | [`MADXParser.py#L2243-L2266`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/MADXParser.py#L2243-L2266)<br>[`getEtot()`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/MADXParser.py#L2664-L2666) |
 
-Importing a MAD-X lattice whose `BEAM` command gives the momentum `PC` instead of `ENERGY`, for example through `RefPart.load_file()`, leaves the reference total energy at the parser's 1 GeV default; `GAMMA`, `BETA` and `BRHO` are also ignored. MAD-X derives the total energy from these parameters, as `sqrt((pc)² + (mc²)²)` for `PC`, and native MAD-X 5.09.03 does so for the same input. A proton `BEAM, PC=2` is initialized at 61.73 MeV kinetic energy instead of 1271 MeV, so the reference velocity and rigidity are also wrong. Only the importer's general preview warning is printed, with no indication that `PC` was not used.
+When a MAD-X lattice's `BEAM` command gives the momentum `PC` instead of `ENERGY`, importing it into ImpactX (for example with `RefPart.load_file()`) leaves the reference total energy at the parser's 1 GeV default; `GAMMA`, `BETA` and `BRHO` are ignored the same way. MAD-X derives the total energy E from any of these, for `PC` as E = √((pc)² + (mc²)²), and native MAD-X does so for the same input. A proton `BEAM, PC=2` (2 GeV/c) starts at 61.73 MeV kinetic energy instead of 1271 MeV, so the reference velocity and rigidity are wrong too. Lattices that give `ENERGY` import correctly; the only warning printed is the importer's general preview notice, which does not mention `PC`.
 
-## Reproducer
-
-Expected total energy is sqrt((pc)^2 + (mc^2)^2). Equivalent ENERGY input checks the reference importer independently of the PC parameter.
-
-??? example "API-01.py"
+??? example "Reproducer: API-01.py"
 
     [Download API-01.py](API-01.py)
 
     ```python
-    """API-01: MAD-X PC input leaves the reference energy at its default.
+    """API-01: MAD-X `PC` leaves the reference energy at its default
 
-    Expected total energy is sqrt((pc)^2 + (mc^2)^2). Equivalent ENERGY input
-    checks the reference importer independently of the PC parameter.
+    When a MAD-X lattice's `BEAM` command gives the momentum `PC` instead of `ENERGY`, importing it into
+    ImpactX (for example with `RefPart.load_file()`) leaves the reference total energy at the parser's 1
+    GeV default; `GAMMA`, `BETA` and `BRHO` are ignored the same way. MAD-X derives the total energy E
+    from any of these, for `PC` as E = √((pc)² + (mc²)²), and native MAD-X does so for the same input. A
+    proton `BEAM, PC=2` (2 GeV/c) starts at 61.73 MeV kinetic energy instead of 1271 MeV, so the
+    reference velocity and rigidity are wrong too. Lattices that give `ENERGY` import correctly; the
+    only warning printed is the importer's general preview notice, which does not mention `PC`.
+
+    The script writes one-line MAD-X decks for a proton `BEAM` with `PC` = 2 and 3.25 GeV/c, loads each
+    with `RefPart.load_file()` and compares the reference kinetic energy with √((pc)² + (mc²)²) − mc²,
+    computed in 60-digit decimal arithmetic from the converter's proton mass. A deck giving the
+    equivalent `ENERGY` is the control and must match within 2×10⁻¹⁰ MeV.
     """
 
     import contextlib

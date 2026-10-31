@@ -12,20 +12,37 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1481]] |
 | Source | [`EmittanceInvariants.cpp#L119-L134`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/EmittanceInvariants.cpp#L119-L134)<br>[`CovarianceMatrixMath.H#L59-L90`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/CovarianceMatrixMath.H#L59-L90) |
 
-With eigenemittance diagnostics enabled, `beam_moments()` returns wrong eigenemittances, or three NaNs, when the beam's emittances differ widely or two are equal; both particle beams and `Envelope` are affected. The code forms the characteristic cubic from differences of trace invariants, which loses the small modes, and then evaluates `acos` without guarding its domain. For an uncoupled beam the documented eigenemittances equal the projected normalized rms emittances, which an independent Hermitian eigensolver reproduces to 5e-15. At γ = 2, an uncoupled beam with emittances 1e-8, 2e-8 and 1e-3 m gives eigenemittances 5.116e-8, 5.584e-8 and 1e-3 m, and emittances 1e-6, 1e-6 and 1e-3 m give three NaNs; a moderate spread (1e-6, 2e-6, 3e-6 m) is correct.
+With eigenemittance diagnostics enabled, `beam_moments()` returns wrong eigenemittances, or three NaNs, when the beam's emittances differ widely or two are equal, for both particle beams and `Envelope`. In the source, the characteristic cubic is formed from differences of trace invariants, which loses the small modes, and `acos` is then evaluated without guarding its domain. For an uncoupled beam the documented eigenemittances equal the projected normalized rms emittances, which an independent Hermitian eigensolver reproduces to within 5×10⁻¹⁵ relative. At γ = 2, an uncoupled beam with normalized emittances 0.01, 0.02 and 1000 µm gives eigenemittances 0.05116, 0.05584 and 1000 µm, and 1, 1 and 1000 µm give three NaNs. A moderate spread (1, 2 and 3 µm) is correct, as are the projected emittances.
 
-## Reproducer
-
-??? example "ENV-01.py"
+??? example "Reproducer: ENV-01.py"
 
     [Download ENV-01.py](ENV-01.py)
 
     ```python
-    """ENV-01: eigenemittance diagnostics corrupt small or repeated modes."""
+    """ENV-01: Eigenemittance diagnostics corrupt small or repeated modes
+
+    With eigenemittance diagnostics enabled, `beam_moments()` returns wrong eigenemittances, or three
+    NaNs, when the beam's emittances differ widely or two are equal, for both particle beams and
+    `Envelope`. In the source, the characteristic cubic is formed from differences of trace invariants,
+    which loses the small modes, and `acos` is then evaluated without guarding its domain. For an
+    uncoupled beam the documented eigenemittances equal the projected normalized rms emittances, which
+    an independent Hermitian eigensolver reproduces to within 5×10⁻¹⁵ relative. At γ = 2, an uncoupled
+    beam with normalized emittances 0.01, 0.02 and 1000 µm gives eigenemittances 0.05116, 0.05584 and
+    1000 µm, and 1, 1 and 1000 µm give three NaNs. A moderate spread (1, 2 and 3 µm) is correct, as are
+    the projected emittances.
+
+    The script builds diagonal covariance matrices at γ = 2 for three sets of normalized emittances (1,
+    2 and 3 µm as the control; 0.01, 0.02 and 1000 µm; 1, 1 and 1000 µm) and passes each to
+    `Envelope.beam_moments()` and, as twelve equal-weight particles with exactly that covariance, to the
+    particle `beam_moments()`. It compares the eigenemittances with the analytic values, which the
+    eigenvalues of the Hermitian matrix i·√Σ·J·√Σ confirm (Σ the normalized covariance, J the symplectic
+    form), and checks that the projected normalized emittances are exact. The control must pass in both
+    interfaces and the other two sets must fail.
+    """
 
     import os
 

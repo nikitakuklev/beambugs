@@ -1,7 +1,21 @@
-"""TRK-19: ExactCFbend reverses the skew-decapole horizontal kick.
+"""TRK-19: `ExactCFbend` reverses the skew-decapole horizontal kick
 
-One serial, double-precision simulation; deterministic particles; no output files.
-The independent oracle and beam harness are included in this file.
+`ExactCFbend` applies the skew-decapole (`k_skew[4]`) horizontal kick with the wrong sign: it is the
+negative of the derivative of the documented vector potential (Zolkin 2017, Table XI), while the
+vertical kick is correct. The map is therefore not symplectic, and an independent integration of the
+curvilinear Hamiltonian reproduces ImpactX to 1.3e-14 only with this sign reversed. For a proton at
+γ = 3.25 in a 0.15 m bend with curvature 2 m⁻¹ and skew strength 160 m⁻⁵, a particle at x = 0.08 m,
+y = −0.05 m exits with `px` off by 1.321e-4, and the Jacobian M violates the symplectic condition
+MᵀJM = J by 6.795e-4. Spin tracking (experimental in ImpactX) uses the same wrong field, with
+spin-component errors up to 7.899e-4. The error grows with strength and amplitude.
+
+The script tracks 25 protons, a centre point and a fourth-order finite-difference stencil around it,
+through the bend with integrator orders 2, 4 and 6, and measures the full-element Jacobian M. It
+checks MᵀJM = J and compares the centre exit with a DOP853 integration of the curvilinear
+Hamiltonian, with the correct and with the reversed horizontal kick; it also verifies symbolically
+that the code's kicks are the negative radial and the positive vertical derivative of the documented
+potential. Pure-bend, normal-decapole, skew-octupole and skew-sextupole cases are controls and must
+be symplectic.
 """
 
 import os

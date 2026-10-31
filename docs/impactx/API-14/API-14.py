@@ -1,7 +1,21 @@
-"""API-14: Harmonic-only MAD-X ring import loses RF time dependence.
+"""API-14: Harmonic-only MAD-X ring cavities import at zero frequency
 
-Self-contained energy-kick and native MAD-X checks; temporary decks are removed.
-One serial double-precision simulation per process, 16 deterministic particles.
+Importing into ImpactX a MAD-X ring whose `RFCAVITY` gives only the harmonic number h (`HARMON`),
+without `FREQ` or a beam `FREQ0`, creates a `ShortRF` with zero frequency and prints a warning.
+MAD-X derives the frequency from the ring circumference C as f = hβc/C, and native MAD-X does so for
+the same decks: a 1.4 GeV (total energy) proton ring with C = 73 m and h = 17 needs 51.82 MHz. For a
+0.73 MV cavity at zero crossing, the slope of the energy kick along the bunch is 0 instead of
+−7.630×10⁻⁴ m⁻¹, so the cavity gives no longitudinal focusing. Cavities with an explicit `FREQ` or
+`FREQ0` import correctly; a source comment requires `HARMON` and `FREQ0` together, but the
+importer's documentation does not.
+
+The script writes four closed MAD-X rings of four 90° bends and four straight sections, two of them
+as `SEQUENCE` layouts with gaps, for protons at 1.4 and 4.7 GeV and electrons at 0.05 GeV, with C =
+73 or 146 m, h = 17 to 51 and three RF phases. It imports each complete ring with a harmonic-only,
+an explicit-`FREQ` and an explicit-`FREQ0` cavity, injects 16 particles just before the RF kick and
+compares their six coordinates and the kick slope with the energy-kick map at f = hβc/C; native
+MAD-X, run through cpymad, must resolve the same frequency. The explicit-frequency cavities are the
+controls.
 """
 
 import os

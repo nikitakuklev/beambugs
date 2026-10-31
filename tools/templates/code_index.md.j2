@@ -12,12 +12,21 @@ Each entry links to its reproducer, the models that found and confirmed it, and 
 Machine-readable: [defects.json](defects.json).
 Tags are explained in [Methodology](../methodology.md#tags).
 
+## Running the reproducers
+
+{{ code.run }}
+{% if extras %}
+Some reproducers also need: {{ extras | join(', ') }}.
+{% endif %}
+
+## Defects
+
 <div class="bb-filters" data-column="Area"></div>
 
 | ID | Defect | Area | Priority | Severity | Last reproduced | Issue | PR |
 |---|---|---|---|---|---|---|---|
 {% for area, rows in areas.items() %}
 {% for e in rows %}
-| [{{ e.id }}]({{ e.id }}/index.md) | {{ e.title }}{% for t in e.tags %} <span class="bb-tag">{{ t }}</span>{% endfor %} | {{ e.area }} | {{ e.priority }} | {{ e.severity }} | {% if e.provenance.get('verified') %}{{ e.provenance.verified.date }} (`{{ e.provenance.verified.code.commit[:7] }}`){% endif %} | {{ links(e, 'issue') }} | {{ links(e, 'pull') }} |
+| [{{ e.id }}]({{ e.id }}/index.md) | {{ e.title }}{% for t in e.tags %} <span class="bb-tag">{{ t }}</span>{% endfor %} | {{ e.area }} | {{ e.priority }} | {{ e.severity }} | {% set r = e.last_reproduced %}{{ r.date }} (`{{ r.code.commit[:7] }}`{% if r.head %}, {{ r.code.ref.split()[-1] }}{% elif r.head_not_reproduced %}; not on {{ r.head_not_reproduced.code.ref.split()[-1] }}{% endif %}) | {{ links(e, 'issue') }} | {{ links(e, 'pull') }} |
 {% endfor %}
 {% endfor %}

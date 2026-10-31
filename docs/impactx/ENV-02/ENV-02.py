@@ -1,4 +1,22 @@
-"""ENV-02: Nonlinear DipEdge optics omit K5 fringe focusing at K1=0."""
+"""ENV-02: Nonlinear `DipEdge` optics omit `K5` fringe focusing
+
+For a `DipEdge` with the nonlinear fringe model, the linear transfer matrix that ImpactX reports
+omits the vertical focusing from the fringe-field integral `K5`, which the particle map includes.
+The reported matrix must equal the particle map's small-amplitude derivative, whose vertical
+focusing changes in proportion to g·`K5`·sin ψ/cos³ψ (ψ the pole-face angle, g the gap). For a
+proton of 1000 MeV kinetic energy with ψ = 0.2 rad, `rc` = 1 m, g = 0.1 m and `K1` = 0, raising `K5`
+from 0 to 0.1 changes the particle map's R₄₃ = ∂py/∂y by 0.002110 m⁻¹, matching an independent
+derivation from its generating function, while the reported matrix is unchanged. From the source,
+envelope tracking uses this same matrix; the particle map itself is not shown to be wrong.
+
+The script first checks zero-angle controls (`K1` = `K5` = 0), where the reported R₄₃ equals the
+particle map's derivative for both the linear and the nonlinear model. It then builds a realizable
+fringe with `K1` = 0 and `K5` = 0.1, whose field moments it verifies by Gauss–Hermite quadrature,
+pushes protons at small vertical offsets through the nonlinear `DipEdge` with `K5` = 0 and 0.1, and
+extracts R₄₃ by central differences with Richardson extrapolation. It compares that derivative with
+the analytic derivative of the generating function and checks that the reported R₄₃ does not change
+with `K5`.
+"""
 
 import os
 

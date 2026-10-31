@@ -12,21 +12,35 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1723]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1724]], filed from this evidence |
 | Source | [`Insert.cpp#L64-L74`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/transformation/Insert.cpp#L64-L74) |
 
-`insert_element_every_ds()`, which inserts a thin element such as a `Marker` at regular spacing by splitting the thick elements it falls in, gives each piece of a split `ExactSbend` the full original angle `phi`. Splitting a uniform sector bend must preserve its total deflection θ and its arc of radius `L/θ`, so a piece of length `Lᵢ` needs the angle `θ·Lᵢ/L`. A marker at the midpoint of a 1 m, 20° `ExactSbend` makes it bend by 40° in total, and markers every 0.3 m make 80°, while the path length stays 1 m. This holds both with `B=0` and with an explicit field; `Sbend`, `CFbend`, `Quad` and `ChrAcc` split exactly.
+`insert_element_every_ds()`, which places a thin element such as a `Marker` at regular spacing by splitting the thick elements it falls in, gives each piece of a split `ExactSbend` the full original angle `phi`. A uniform sector bend of length L and angle θ must keep its total deflection and its arc of radius L/θ when split, so a piece of length Lᵢ needs the angle θ·Lᵢ/L; the analytic exit coordinates of that arc fix the correct result. A marker at the midpoint of a 1 m, 20° `ExactSbend` makes it bend by 40° in total, and markers every 0.3 m make 80°, while the path length stays 1 m. Exact bends given by angle alone (`B=0`) or with an explicit field are affected; `Sbend`, `CFbend`, `Quad` and `ChrAcc` split exactly.
 
-## Reproducer
-
-??? example "API-03.py"
+??? example "Reproducer: API-03.py"
 
     [Download API-03.py](API-03.py)
 
     ```python
-    """API-03: An inert insertion must preserve an exact sector bend's reference arc."""
+    """API-03: Marker insertion multiplies an exact bend's angle
+
+    `insert_element_every_ds()`, which places a thin element such as a `Marker` at regular spacing by
+    splitting the thick elements it falls in, gives each piece of a split `ExactSbend` the full original
+    angle `phi`. A uniform sector bend of length L and angle θ must keep its total deflection and its
+    arc of radius L/θ when split, so a piece of length Lᵢ needs the angle θ·Lᵢ/L; the analytic exit
+    coordinates of that arc fix the correct result. A marker at the midpoint of a 1 m, 20° `ExactSbend`
+    makes it bend by 40° in total, and markers every 0.3 m make 80°, while the path length stays 1 m.
+    Exact bends given by angle alone (`B=0`) or with an explicit field are affected; `Sbend`, `CFbend`,
+    `Quad` and `ChrAcc` split exactly.
+
+    The script pushes a 1000 MeV proton reference particle through a 1 m, 20° `ExactSbend` given by
+    angle alone and through copies split by inert markers every 0.5 m and 0.3 m, and compares the exit
+    position, direction and path length with the analytic arc x = (L/θ)(cos θ − 1), z = (L/θ) sin θ. The
+    unsplit bend must match the arc within 2×10⁻¹⁵ (m or rad); as a control, setting each piece's angle
+    to θ·Lᵢ/L restores the arc to the same tolerance.
+    """
 
     import os
 

@@ -1,7 +1,21 @@
-"""API-13: MAD-X BV=-1 retains forward multipole polarity.
+"""API-13: MAD-X `BV=-1` retains forward straight-multipole polarity
 
-Self-contained analytic/ODE and native MAD-X checks; temporary decks are removed.
-One serial double-precision simulation per process, 16 deterministic particles.
+When ImpactX imports a MAD-X lattice for a reversed beam (`BV=-1`), straight normal and skew
+multipole strengths keep their forward-beam polarity, because the importer omits the `bv` factor.
+MAD-X defines `BV=-1` as reversing the magnetic force, native MAD-X applies it, and the importer's
+own documentation specifies the reversal; analytic maps and an independent integration of the
+equations of motion give the reversed result. For a 1.4 GeV (total energy) proton in a 0.23 m
+quadrupole with `k1` = 1.7 m⁻² and tilt 0.21 rad, a test particle exits with normalized momentum pₓ
+= −7.699×10⁻⁵ instead of +2.189×10⁻⁵. Body quadrupoles, sextupoles and octupoles and thin quadrupole
+through dodecapole terms are affected; forward beams and kickers import correctly.
+
+The script writes its own MAD-X decks and imports them with `lattice.load_file()` for both `BV`
+signs: tilted normal quadrupoles at 1.4 and 4.7 GeV with `k1` = ±1.7 m⁻² in the linear, paraxial and
+exact models, tilted mixed normal/skew thin multipoles of orders 1 to 5, and tilted mixed thick
+quadrupoles, sextupoles and octupoles. Sixteen particles are compared with analytic quadrupole
+matrices, thin kicks and a DOP853 integration of the unsplit Hamilton equations, all with strengths
+multiplied by `BV`; native MAD-X, run through cpymad, must agree with the same oracle. `BV=1`, a
+directly built negative-strength `Quad` and a `BV=-1` horizontal kicker are the controls.
 """
 
 import os

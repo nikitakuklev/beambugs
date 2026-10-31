@@ -1,6 +1,18 @@
-"""TRK-14: Weak nonzero ChrAcc acceleration loses precision.
+"""TRK-14: Weak nonzero `ChrAcc` acceleration corrupts transport and reference time
 
-Integrate the documented transverse-paraxial Hamiltonian at high precision.
+`ChrAcc` with a very small nonzero acceleration `ez` = qE/(mc²) (E the longitudinal electric field)
+divides a logarithm of a near-unity ratio and differences of nearly equal momenta by `ez`, so
+rounding corrupts the transverse map, the arrival time `t` and the reference time. A 65-digit
+quadrature of the documented Hamiltonian, regular at zero acceleration and matching ImpactX at
+`ez` = 0, gives the correct values. For a proton at γ = 2 entering a 0.4 m element with
+`ez` = 1e-14 m⁻¹ at x = 0.01 m, `px` = 0.02, `x` exits at 0.01846 m instead of 0.01782 m, `t` is off
+by 0.002584 m and the reference `ct` is 0.4663 m instead of 0.4619 m. At `ez` = 1e-16 m⁻¹ the
+particle is not moved and the reference `ct` stays 0. Both acceleration signs fail.
+
+The script tracks a proton at γ = 2 with all six coordinates nonzero through `ChrAcc(ds=0.4, bz=0)`
+for `ez` = 0, 1e-6, ±1e-10, ±1e-14 and 1e-16 m⁻¹, and compares the exit coordinates and the
+reference `ct` with a 65-digit quadrature of the paraxial Hamiltonian. The `ez` = 0 case is the
+control and must agree to 5e-16.
 """
 
 import os
@@ -72,6 +84,9 @@ u = np.array([0.01, 0.02, -0.015, 0.01, 0.03, -0.02])
 length = 0.4
 
 
+# Integrate the documented transverse-paraxial Hamiltonian at high precision: with
+# P(s) = sqrt((gamma0 - bg*pt + ez*s)^2 - 1), xf = xi + bg*px*int ds/P(s); the reference ct
+# integrates gamma_ref/P_ref and exit momenta scale by bg/P_ref(L).
 def expected(ez, gamma):
     x, px, y, py, t, pt = map(mp.mpf, u)
     g0, strength, ds = map(mp.mpf, (gamma, ez, length))

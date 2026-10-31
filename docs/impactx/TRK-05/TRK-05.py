@@ -1,7 +1,17 @@
-"""TRK-05: periodic PolygonAperture folds coordinates with abs() and mirrors asymmetric polygons.
+"""TRK-05: Periodic `PolygonAperture` mirrors asymmetric polygons
 
-Both test points lie inside the central period [-0.5, 0.5), so repeat_x = 1 must not change
-which of them is inside the rectangle x in [-0.3, 0.1], y in [-0.2, 0.2]."""
+A `PolygonAperture` with a nonzero period `repeat_x` (or `repeat_y`) folds coordinates into the
+central cell through their absolute value, which mirrors every negative coordinate. For a polygon
+that is not symmetric about x = 0 (or y = 0), particles inside the aperture are removed and
+particles whose mirror image lies inside it pass, whereas repeating the aperture with a period must
+leave a point already in the central period unchanged. For a rectangle with x ∈ [−0.3, 0.1] m and y
+∈ [−0.2, 0.2] m and `repeat_x=1`, a particle at x = −0.2 m, inside the rectangle, is removed; with
+`repeat_x=0` it survives. Polygons symmetric about the folded axis are unaffected.
+
+The script tracks particles at x = −0.2 m (inside the rectangle) and x = 0.2 m (outside) through the
+rectangular `PolygonAperture` with `repeat_x=1`. Both points lie in the central period [−0.5, 0.5)
+m, so only the particle at x = −0.2 m may survive.
+"""
 import numpy as np
 from impactx import ImpactX, elements
 

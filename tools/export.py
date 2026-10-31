@@ -1,12 +1,14 @@
 """Generate docs/<code>/ from a private upstream-defect ledger.
 
-Usage: python tools/export.py <code> [<code> ...]
+Usage: python tools/export.py [--check] <code> [<code> ...]
 
 The ledger location and area files come from codes.yaml. Everything under
 docs/<code>/, docs/defects.json and docs/index.md is regenerated; do not edit
-those files by hand. The ledger format is defined by the ledger's shared
-procedure (defect_hunting.md): entries `## <ID> — <title>` with bold fields,
-a YAML provenance block, an index table per area file and filed.md.
+those files by hand. --check parses the ledgers and reports the entries that
+miss the publication gate without writing anything. The ledger format is
+defined by the ledgers' shared procedure (defect_hunting.md): entries
+`## <ID> — <title>` with bold fields, a YAML provenance block, an index table
+per area file and filed.md.
 """
 
 from __future__ import annotations
@@ -36,6 +38,9 @@ ENTRY_HEADING = re.compile(r"^## ([A-Z]+-\d+) — (.+)$", re.MULTILINE)
 FIELD = re.compile(r"^\*\*([A-Z][^*\n]*?)\.\*\*[ \t]*", re.MULTILINE)
 YAML_BLOCK = re.compile(r"```yaml\n(.*?)\n```", re.DOTALL)
 UPSTREAM_RELATIONS = {"report", "fix", "discussion"}
+# Reproducer languages: code-fence name and the line-comment marker that opens
+# a non-Python script's description.
+LANGUAGES = {".py": ("python", None), ".jl": ("julia", "#"), ".sh": ("bash", "#")}
 TAGS = {
     "experimental",
     "extreme-regime",
@@ -81,6 +86,8 @@ class Entry:
             failures.append(f"models {sorted(self.models)}")
         if not self.fields.get("Summary"):
             failures.append("no Summary")
+        elif not script_matches(self):
+            failures.append("reproducer does not open with the title and Summary")
         return failures
 
 
@@ -197,30 +204,103 @@ def public_provenance(data: dict) -> dict:
 
 def repro_files(ledger: Path, entry_id: str) -> list[Path]:
     repro = ledger / "repro"
-    files = sorted(repro.glob(f"{entry_id}.py")) + sorted(
-        repro.glob(f"{entry_id}-*.py")
-    )
+    files = [
+        p
+        for pattern in (f"{entry_id}.*", f"{entry_id}-*.*")
+        for p in sorted(repro.glob(pattern))
+        if p.is_file()
+    ]
+    for p in files:
+        if p.suffix not in LANGUAGES:
+            raise LedgerError(f"{p}: unknown reproducer language {p.suffix!r}")
     if (repro / entry_id).is_dir():
         files.append(repro / entry_id)
-    return files
+    return files + helpers(repro, files)
 
 
-def describe(entry_id: str, source: str, filename: str) -> str:
-    """Script docstring as escaped Markdown paragraphs."""
-    doc = ast.get_docstring(ast.parse(source, filename))
+def helpers(repro: Path, files: list[Path]) -> list[Path]:
+    """Shared modules `repro/_<name>.py` that the Python reproducers import, transitively."""
+    found: list[Path] = []
+    queue = [f for f in files if f.suffix == ".py"]
+    while queue:
+        tree = ast.parse(queue.pop().read_text())
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                names = [a.name for a in node.names]
+            elif isinstance(node, ast.ImportFrom) and node.module and node.level == 0:
+                names = [node.module]
+            else:
+                continue
+            for name in names:
+                path = repro / f"{name}.py"
+                if name.startswith("_") and path.is_file() and path not in found:
+                    found.append(path)
+                    queue.append(path)
+    return found
+
+
+def leading_comment(source: str, marker: str) -> str:
+    """Leading comment block after an optional shebang; '#' alone separates paragraphs."""
+    lines = source.splitlines()
+    if lines and lines[0].startswith("#!"):
+        lines = lines[1:]
+    doc = []
+    for line in lines:
+        if not line.startswith(marker):
+            break
+        doc.append(line[len(marker) :].removeprefix(" "))
+    return "\n".join(doc)
+
+
+def description(source: str, filename: str) -> str:
+    """A reproducer's opening description (docstring or leading comment)."""
+    marker = LANGUAGES[Path(filename).suffix][1]
+    if marker is None:
+        doc = ast.get_docstring(ast.parse(source, filename))
+    else:
+        doc = leading_comment(source, marker)
     if not doc:
-        raise LedgerError(f"{filename}: reproducer has no docstring")
-    paragraphs = [" ".join(p.split()) for p in doc.split("\n\n") if p.strip()]
-    if paragraphs[0].startswith(f"{entry_id}:"):
-        # The main script's first line restates the entry title; a secondary
-        # script's first line names what it adds.
-        if Path(filename).stem == entry_id:
-            paragraphs = paragraphs[1:]
-        else:
-            first = paragraphs[0][len(entry_id) + 1 :].lstrip()
-            paragraphs[0] = first[:1].upper() + first[1:]
-    text = "\n\n".join(paragraphs)
-    return re.sub(r"([\\`*_\[\]<>#|])", r"\\\1", text)
+        raise LedgerError(f"{filename}: reproducer has no description")
+    return doc
+
+
+def script_matches(entry: Entry) -> bool:
+    """The main script opens with `<ID>: <title>`, then the entry's Summary verbatim."""
+    main = next((p for p in entry.repro if p.is_file() and p.stem == entry.id), None)
+    if main is None:
+        return True
+    paragraphs = [" ".join(p.split()) for p in description(main.read_text(), str(main)).split("\n\n")]
+    return paragraphs[:2] == [f"{entry.id}: {entry.title}", " ".join(entry.fields["Summary"].split())]
+
+
+def last_reproduced(provenance: dict, name: str) -> dict:
+    """Most recent execution: the development-branch run if it reproduced, else the latest
+    found/confirmed run. Only dated facts are stated: a branch head moves on."""
+
+    def code(c: dict) -> dict:
+        # A bare branch name ("development") is qualified with the code's name.
+        ref = c["ref"] if " " in c["ref"] else f"{name} {c['ref']}"
+        return {"ref": ref, "commit": str(c["commit"])[:12]}
+
+    verified = provenance.get("verified")
+    if verified and verified.get("result") not in ("reproduced", "not reproduced"):
+        raise LedgerError(f"verified.result {verified.get('result')!r}")
+    if verified and verified["result"] == "reproduced":
+        return {
+            "date": str(verified["date"]),
+            "code": code(verified["code"]),
+            "head": True,
+            "head_not_reproduced": None,
+        }
+    runs = provenance.get("found", []) + provenance.get("confirmed", [])
+    last = max(runs, key=lambda r: str(r["date"]))
+    failed = verified and {"date": str(verified["date"]), "code": code(verified["code"])}
+    return {
+        "date": str(last["date"]),
+        "code": code(last["code"]),
+        "head": False,
+        "head_not_reproduced": failed or None,
+    }
 
 
 def requirements(own_modules: set[str], files: list[Path]) -> list[str]:
@@ -228,7 +308,7 @@ def requirements(own_modules: set[str], files: list[Path]) -> list[str]:
     roots: set[str] = set()
     for path in files:
         sources = [path] if path.is_file() else sorted(path.rglob("*.py"))
-        for src in sources:
+        for src in (s for s in sources if s.suffix == ".py"):
             for node in ast.walk(ast.parse(src.read_text(), str(src))):
                 if isinstance(node, ast.Import):
                     roots.update(a.name.split(".")[0] for a in node.names)
@@ -327,11 +407,61 @@ def entry_record(entry: Entry, config: dict) -> dict:
         "locations": entry.locations,
         "upstream": entry.upstream,
         "provenance": public_provenance(entry.provenance),
+        "last_reproduced": last_reproduced(entry.provenance, config["name"]),
         "models": sorted(entry.models),
         "reproducers": [p.name for p in entry.repro],
-        "requirements": requirements(set(config["modules"]), entry.repro),
+        "requirements": requirements(
+            set(config["modules"]) | {p.stem for p in entry.repro}, entry.repro
+        ),
         "page": f"{entry.code}/{entry.id}/",
     }
+
+
+def render_entry(
+    entry: Entry, config: dict, env: jinja2.Environment
+) -> tuple[dict, str]:
+    """Public record and entry page; validates the reproducer descriptions."""
+    record = entry_record(entry, config)
+    sources, languages, inputs = {}, {}, []
+    for src in entry.repro:
+        if src.is_dir():
+            inputs += [
+                str(p.relative_to(src.parent))
+                for p in sorted(src.rglob("*"))
+                if p.is_file()
+            ]
+        else:
+            sources[src.name] = src.read_text()
+            description(sources[src.name], str(src))
+            languages[src.name] = LANGUAGES[src.suffix][0]
+    page = env.get_template("entry.md.j2").render(
+        e=record,
+        code=config,
+        sources=sources,
+        languages=languages,
+        inputs=inputs,
+        brief=entry.brief,
+    )
+    return record, page
+
+
+def report(
+    code: str, records: list[dict], excluded: list[tuple[str, list[str]]]
+) -> None:
+    print(f"{code}: published {len(records)}, excluded {len(excluded)}")
+    for entry_id, failures in excluded:
+        print(f"  {entry_id}: {'; '.join(failures)}")
+
+
+def check(code: str, config: dict, env: jinja2.Environment) -> None:
+    records, excluded = [], []
+    for entry in parse_ledger(code, config):
+        failures = entry.gate_failures()
+        if failures:
+            excluded.append((entry.id, failures))
+        else:
+            records.append(render_entry(entry, config, env)[0])
+    report(code, records, excluded)
 
 
 def export(code: str, config: dict, env: jinja2.Environment) -> list[dict]:
@@ -346,40 +476,20 @@ def export(code: str, config: dict, env: jinja2.Environment) -> list[dict]:
         if failures:
             excluded.append((entry.id, failures))
             continue
-        record = entry_record(entry, config)
+        record, text = render_entry(entry, config, env)
         page = out / entry.id
         page.mkdir()
-        sources, descriptions = {}, {}
         for src in entry.repro:
             if src.is_dir():
                 shutil.copytree(src, page / src.name)
             else:
                 shutil.copy2(src, page / src.name)
-                sources[src.name] = src.read_text()
-                descriptions[src.name] = describe(entry.id, sources[src.name], str(src))
-        source_env = config.get("source_env")
-        notes = []
-        extra = [r for r in record["requirements"] if r != "numpy"]
-        if extra:
-            notes.append(f"Requires {', '.join(extra)}.")
-        if source_env and any(source_env in t for t in sources.values()):
-            notes.append(
-                f"Set `{source_env}` to a clone of the {config['name']} repository."
-            )
-        (page / "index.md").write_text(
-            env.get_template("entry.md.j2").render(
-                e=record,
-                code=config,
-                sources=sources,
-                descriptions=descriptions,
-                note=" ".join(notes),
-                brief=entry.brief,
-            )
-        )
+        (page / "index.md").write_text(text)
         records.append(record)
     (out / "index.md").write_text(
         env.get_template("code_index.md.j2").render(
             code=config,
+            extras=sorted({r for rec in records for r in rec["requirements"]} - {"numpy"}),
             areas={
                 a: [r for r in records if r["area"] == a]
                 for a in config["areas"].values()
@@ -389,13 +499,13 @@ def export(code: str, config: dict, env: jinja2.Environment) -> list[dict]:
     (out / "defects.json").write_text(
         json.dumps(records, indent=1, ensure_ascii=False) + "\n"
     )
-    print(f"{code}: published {len(records)}, excluded {len(excluded)}")
-    for entry_id, failures in excluded:
-        print(f"  {entry_id}: {'; '.join(failures)}")
+    report(code, records, excluded)
     return records
 
 
 def main(argv: list[str]) -> None:
+    check_only = "--check" in argv
+    argv = [a for a in argv if a != "--check"]
     if not argv:
         raise SystemExit(__doc__)
     codes = yaml.safe_load((ROOT / "codes.yaml").read_text())
@@ -411,6 +521,10 @@ def main(argv: list[str]) -> None:
         trim_blocks=True,
         lstrip_blocks=True,
     )
+    if check_only:
+        for code in argv:
+            check(code, codes[code], env)
+        return
     for code in argv:
         export(code, codes[code], env)
     published = {}

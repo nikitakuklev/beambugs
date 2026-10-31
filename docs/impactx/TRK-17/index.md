@@ -10,31 +10,37 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Tracking |
 | Priority | P4 |
-| Severity | Wrong physics (experimental, unsupported spin) |
+| Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`SoftSol.H#L418-L462`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L418-L462)<br>[`map3()`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L477-L544)<br>[spin push](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L243-L295)<br>[soft-element contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/theory/softedge_elements.rst#L17-L29)<br>[spin contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2792-L2800) |
 
-With spin tracking enabled (experimental in ImpactX), `SoftSolenoid` omits the spin precession caused by the radial fringe field of a varying longitudinal field, because the spin map discards the field derivative. Maxwell's equations give the off-axis fields `bx = −x·b′/2`, `by = −y·b′/2` for normalized longitudinal field `b`, and an independent Thomas–BMT integration with these fields disagrees with ImpactX while the orbits agree; at vanishing anomaly the spin must follow the velocity, which ImpactX does not reproduce. For a proton at γ = 3.3, offset by 20 μm in an asymmetric 0.7 m field profile, the spin-vector error is about 1.55e-4. On-axis precession is correct; off-axis particles are affected.
+With spin tracking enabled (experimental in ImpactX), `SoftSolenoid` omits the spin precession caused by the radial fringe field of a varying longitudinal field, because its spin map discards the field derivative. Maxwell's equations give the off-axis transverse fields −x·b′/2 and −y·b′/2 for b the longitudinal field divided by the rigidity Bρ; an independent Thomas–BMT integration with these fields disagrees with ImpactX while the orbits agree, and at vanishing magnetic anomaly ImpactX's spin does not follow the velocity, as it must. For a proton at γ = 3.3 offset by 20 μm in an asymmetric 0.7 m field profile, the transverse spin error at the exit is 1.548e-4. On-axis precession is correct; off-axis particles are affected.
 
-## Reproducer
-
-Larmor focusing plus a BMT integral identity at field-free endpoints. The manual declares spin tracking experimental and unsupported.
-
-One serial, double-precision simulation per process; no output files.
-
-??? example "TRK-17.py"
+??? example "Reproducer: TRK-17.py"
 
     [Download TRK-17.py](TRK-17.py)
 
     ```python
-    """TRK-17: SoftSolenoid omits transverse fringe-field spin precession.
+    """TRK-17: `SoftSolenoid` omits transverse fringe-field spin precession
 
-    Larmor focusing plus a BMT integral identity at field-free endpoints.
-    The manual declares spin tracking experimental and unsupported.
+    With spin tracking enabled (experimental in ImpactX), `SoftSolenoid` omits the spin precession
+    caused by the radial fringe field of a varying longitudinal field, because its spin map discards the
+    field derivative. Maxwell's equations give the off-axis transverse fields −x·b′/2 and −y·b′/2 for b
+    the longitudinal field divided by the rigidity Bρ; an independent Thomas–BMT integration with these
+    fields disagrees with ImpactX while the orbits agree, and at vanishing magnetic anomaly ImpactX's
+    spin does not follow the velocity, as it must. For a proton at γ = 3.3 offset by 20 μm in an
+    asymmetric 0.7 m field profile, the transverse spin error at the exit is 1.548e-4. On-axis
+    precession is correct; off-axis particles are affected.
 
-    One serial, double-precision simulation per process; no output files.
+    The script tracks 16 particles with horizontal or vertical offsets, zero transverse momentum and
+    spin (0, 0, 1) through `SoftSolenoid` profiles whose field and slope vanish at both ends, b = 2
+    sin²(πz) over 1 m and an asymmetric sin⁴ profile over 0.7 m. It fits the exit transverse spin and
+    kinetic momentum per unit offset and compares them with a fourth-order Runge–Kutta solution of the
+    Larmor-frame orbit combined with an integral identity for the Thomas–BMT equation. Controls cover
+    zero field, both planes, field reversal, small and negative anomalies, smaller offsets and fields,
+    the SI field unit with four slices, and on-axis precession, which must agree.
     """
 
     import os

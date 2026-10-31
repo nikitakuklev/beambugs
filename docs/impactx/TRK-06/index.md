@@ -10,28 +10,35 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Tracking |
 | Priority | P2 |
-| Severity | Silent wrong result; crash or API hazard |
+| Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Discussed in | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1664#issuecomment-5706911843]] |
 | Source | [`CFbend.H#L133-L140`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/CFbend.H#L133-L140) |
 
-The linear `CFbend` returns NaN coordinates at valid zero focusing frequencies: `k = 0` gives NaN `y` and `py`, and `k = −1/rc²` (horizontal focusing cancelled, `k1 = −h²`) gives NaN `x`, `px` and `t`. The transfer functions have finite zero-frequency limits, and at `k = 0` the element must agree with `Sbend`. Near cancellation, division by the small horizontal focusing coefficient gives finite but wrong results: for `rc = 1/0.3 m`, `k = −0.09 m⁻²` and `ds = 0.7 m`, `x` is 0.0277 m instead of 0.0302 m and `t` is 0.0112 m instead of 0.0131 m. Zero-gradient bends and combined-function bends tuned to cancel horizontal focusing are affected.
+The linear `CFbend` returns NaN coordinates when a focusing frequency is zero: gradient `k` = 0 gives NaN `y` and `py`, and `k` = −1/`rc`² (bend radius `rc`), which cancels horizontal focusing, gives NaN `x`, `px` and `t`. The transfer functions have finite limits there, matched by `Sbend` at `k` = 0 and by a gradient raised by 1e-9 m⁻². When rounding leaves a residue of −1.4e-17 m⁻² in the horizontal focusing `k` + 1/`rc`², the result is finite but wrong: for `rc` = 1/0.3 m, `k` = −0.09 m⁻² and `ds` = 0.7 m, `x` is 0.02770 m instead of 0.03025 m and `t` is 0.01115 m instead of 0.01314 m. Zero-gradient bends and bends tuned to cancel horizontal focusing are affected.
 
-## Reproducer
-
-k = 0 is a sector bend (equal to Sbend); k = -1/rc^2 cancels horizontal focusing. Both maps are finite: sin(w L)/w -\> L, (1 - cos)/w^2 -\> L^2/2. A neighbouring k gives the limit. Exactly zero gives NaN; a rounding residue (h = 0.3: k = -h^2 leaves gx = -1.4e-17) gives finite wrong x and t.
-
-??? example "TRK-06.py"
+??? example "Reproducer: TRK-06.py"
 
     [Download TRK-06.py](TRK-06.py)
 
     ```python
-    """TRK-06: linear CFbend returns NaN when a focusing frequency is zero.
+    """TRK-06: Linear `CFbend` returns NaN at a zero focusing frequency
 
-    k = 0 is a sector bend (equal to Sbend); k = -1/rc^2 cancels horizontal focusing. Both maps are
-    finite: sin(w L)/w -> L, (1 - cos)/w^2 -> L^2/2. A neighbouring k gives the limit. Exactly zero
-    gives NaN; a rounding residue (h = 0.3: k = -h^2 leaves gx = -1.4e-17) gives finite wrong x and t."""
+    The linear `CFbend` returns NaN coordinates when a focusing frequency is zero: gradient `k` = 0
+    gives NaN `y` and `py`, and `k` = −1/`rc`² (bend radius `rc`), which cancels horizontal focusing,
+    gives NaN `x`, `px` and `t`. The transfer functions have finite limits there, matched by `Sbend` at
+    `k` = 0 and by a gradient raised by 1e-9 m⁻². When rounding leaves a residue of −1.4e-17 m⁻² in the
+    horizontal focusing `k` + 1/`rc`², the result is finite but wrong: for `rc` = 1/0.3 m,
+    `k` = −0.09 m⁻² and `ds` = 0.7 m, `x` is 0.02770 m instead of 0.03025 m and `t` is 0.01115 m instead
+    of 0.01314 m. Zero-gradient bends and bends tuned to cancel horizontal focusing are affected.
+
+    The script tracks one proton (938.3 MeV kinetic energy) with all six coordinates nonzero through
+    0.7 m `CFbend`s with `rc` = 3 m and `k` = 0, `rc` = 2 m and `k` = −0.25 m⁻², and `rc` = 1/0.3 m and
+    `k` = −0.3² m⁻². It compares the first with `Sbend(rc=3)` and the other two with a `CFbend` whose
+    `k` is raised by 1e-9 m⁻². The last case prints `rc` rounded to 3.333; a literal `rc` = 3.333 would
+    leave a horizontal focusing of about 1.8e-5 m⁻² and track correctly.
+    """
     import numpy as np
     from impactx import ImpactX, elements
 
@@ -67,6 +74,8 @@ k = 0 is a sector bend (equal to Sbend); k = -1/rc^2 cancels horizontal focusing
 
     u = [0.013, 0.021, -0.017, 0.008, 0.015, -0.03]
     bad = False
+    # Both zero-frequency maps are finite: sin(w L)/w -> L, (1 - cos(w L))/w^2 -> L^2/2. Exactly zero
+    # gives NaN; a rounding residue (h = 0.3: k = -h^2 leaves gx = -1.4e-17) gives finite wrong x and t.
     try:
         for rc, k, ref_el in [
             (3.0, 0.0, elements.Sbend(ds=0.7, rc=3.0)),
@@ -88,6 +97,6 @@ k = 0 is a sector bend (equal to Sbend); k = -1/rc^2 cancels horizontal focusing
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Found (silently wrong near-zero case) | `claude-opus-5-5` |  | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed | `claude-opus-5-5` |  | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Found (silently wrong near-zero case) | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
 

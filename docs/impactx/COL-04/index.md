@@ -12,27 +12,34 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Source | [`Gauss2p5dPush.cpp#L62-L147`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/Gauss2p5dPush.cpp#L62-L147)<br>[caller](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/Gauss2p5dPush.cpp#L240-L299)<br>[manual](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2462-L2480) |
 
-`Gauss2p5D` divides the integral over its initial interval `[0, gauss_taylor_delta]` by three a second time when it completes the Simpson quadrature, so the transverse forces carry a bias that does not vanish as the quadrature resolution increases. Direct integration of the Gaussian Coulomb convolution, checked against Gauss's law for a round beam, gives the correct forces. With `gauss_taylor_delta = 0.01`, 4001 quadrature points and a test particle at `(x, y) = (σx, 0.6σy)`, aspect ratio `σy/σx = 0.25` gives relative errors of −5.736e-5 in `px` and −1.648e-5 in `py`; aspect ratio 4 gives −2.312e-4 and −8.103e-4. At the default 101 points, ordinary Simpson discretization error adds to this bias.
+`Gauss2p5D` space charge computes its transverse forces with a quadrature that treats the initial interval [0, δ], δ = `gauss_taylor_delta`, separately, and divides that interval's contribution by three a second time when it completes the Simpson sum. The forces therefore carry a bias that does not vanish as the number of quadrature points grows. Direct integration of the Gaussian Coulomb convolution, checked against Gauss's law for a round beam, gives the correct forces. With δ = 0.01, 4001 points and a test particle at (x, y) = (σx, 0.6σy), aspect ratio σy/σx = 0.25 gives relative errors of −5.736×10⁻⁵ in px and −1.648×10⁻⁵ in py; aspect ratio 4 gives −2.312×10⁻⁴ and −8.103×10⁻⁴. At the default 101 points, ordinary Simpson discretization error adds to this bias.
 
-## Reproducer
-
-Requires scipy.
-
-Deterministic round/elliptical sources, an infinite-domain Coulomb integral, a cylindrical Gauss-law check, and length/species/energy controls. One serial CPU/double simulation; writes no files.
-
-??? example "COL-04.py"
+??? example "Reproducer: COL-04.py"
 
     [Download COL-04.py](COL-04.py)
 
     ```python
-    """COL-04: Gauss2p5D underweights the approximate initial quadrature interval.
+    """COL-04: `Gauss2p5D` underweights the initial quadrature interval
 
-    Deterministic round/elliptical sources, an infinite-domain Coulomb integral,
-    a cylindrical Gauss-law check, and length/species/energy controls.
-    One serial CPU/double simulation; writes no files.
+    `Gauss2p5D` space charge computes its transverse forces with a quadrature that treats the initial
+    interval [0, δ], δ = `gauss_taylor_delta`, separately, and divides that interval's contribution by
+    three a second time when it completes the Simpson sum. The forces therefore carry a bias that does
+    not vanish as the number of quadrature points grows. Direct integration of the Gaussian Coulomb
+    convolution, checked against Gauss's law for a round beam, gives the correct forces. With δ = 0.01,
+    4001 points and a test particle at (x, y) = (σx, 0.6σy), aspect ratio σy/σx = 0.25 gives relative
+    errors of −5.736×10⁻⁵ in px and −1.648×10⁻⁵ in py; aspect ratio 4 gives −2.312×10⁻⁴ and −8.103×10⁻⁴.
+    At the default 101 points, ordinary Simpson discretization error adds to this bias.
+
+    The script builds deterministic sources from eight-point elliptical rings in equal-charge
+    longitudinal bins, so that the model's measured widths are exact, and records the transverse kicks
+    of one `Gauss2p5D` kick on zero-weight test particles. It compares them with adaptive quadrature of
+    the Coulomb convolution (checked by Gauss's law for the round beam) and with a prediction that
+    applies the extra factor of one third to the initial interval, for a round beam and aspect ratios
+    0.25 and 4 over a scan of δ and quadrature points. A case with δ = 2×10⁻⁶, where the bias is
+    negligible, and a proton case with every length tripled serve as controls.
     """
 
     import os

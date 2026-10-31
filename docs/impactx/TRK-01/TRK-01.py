@@ -1,7 +1,17 @@
-"""TRK-01: ExactCFbend ignores the skew dipole k_skew[0] in orbital tracking.
+"""TRK-01: `ExactCFbend` ignores the skew dipole `k_skew[0]`
 
-Curvilinear skew dipole: Bx/(B rho) = ks/(1+h x), so dpy/ds = (1+h x) Bx/(B rho) = ks and an
-on-axis particle leaves with py = ks*L."""
+`ExactCFbend` leaves the skew-dipole coefficient `k_skew[0]` out of its orbital kick, so a skew
+dipole produces no vertical steering. In the element's curvilinear field model the skew dipole gives
+Bₓ/(Bρ) = kₛ/(1 + hx), with Bρ the magnetic rigidity, h the curvature and kₛ = `k_skew[0]`, so an
+on-axis particle must leave a body of length L with `py` = kₛ·L. For an on-axis proton in
+`ExactCFbend(ds=0.7, k_normal=[0.3], k_skew=[0.02])`, `py` is 0 instead of 0.01400, with one and
+with four slices. Any skew dipole or vertical corrector modelled inside an `ExactCFbend` gives no
+vertical kick.
+
+The script tracks one on-axis proton at 938.3 MeV kinetic energy (γ = 2) through
+`ExactCFbend(ds=0.7, k_normal=[0.3], k_skew=[0.02])` with a fourth-order integrator and 20 map
+steps, and compares the exit `py` with kₛ·L = 0.014.
+"""
 import numpy as np
 from impactx import ImpactX, elements
 
@@ -35,6 +45,8 @@ def track(lattice, coords, kin_MeV=938.27208816):
     return np.zeros((0, 6)) if df is None else df[COLS].to_numpy(copy=True)
 
 
+# Curvilinear skew dipole: Bx/(B rho) = ks/(1 + h x), so dpy/ds = (1 + h x) Bx/(B rho) = ks and an
+# on-axis particle leaves with py = ks*L.
 L, ks = 0.7, 0.02
 try:
     out = track([elements.ExactCFbend(ds=L, k_normal=[0.3], k_skew=[ks], int_order=4, mapsteps=20)], np.zeros(6))

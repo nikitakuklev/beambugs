@@ -12,25 +12,35 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1576]] |
 | Source | [`ExactDrift.H#L95-L96`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactDrift.H#L95-L96)<br>[particle map](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactDrift.H#L140-L153)<br>[`ReferenceParticle.H#L169-L185`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/ReferenceParticle.H#L169-L185)<br>[public model](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L1999-L2001)<br>[coordinate contract](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/docs/source/theory/coordinates_units.rst#L5-L13) |
 
-At low energy, `ExactDrift` shifts the arrival time `t` of particles at the reference energy and direction, because its longitudinal-momentum radical subtracts the separately rounded terms `(1/β−pt)²` and `1/(βγ)²`. A 90-digit evaluation shows that these particles keep their relative arrival times. For a proton (rest energy 938.27208816 MeV) at 1 keV kinetic energy, a 1 m drift adds 0.002379 m (7.9 ps) to `t` and shifts the bunch centroid; off-energy and inclined particles get timing errors up to 0.002454 m and transverse errors up to 1.013e-7 m. At 1000 MeV the errors are below 1e-16 m; at low energy their sign and size depend on floating-point rounding.
+At low energy, `ExactDrift` shifts the arrival time `t` of particles moving at the reference energy and direction, because its longitudinal-momentum radical subtracts the separately rounded terms (1/β − `pt`)² and 1/(βγ)², with β and γ those of the reference. Such particles must keep their relative arrival times, as a 90-digit evaluation of the drift confirms. For a proton (rest energy 938.27208816 MeV) at 1 keV kinetic energy, a 1 m drift adds 0.002379 m (7.9 ps) to `t`, shifting the bunch centroid; off-energy and inclined particles get timing errors up to 0.002454 m and transverse errors up to 1.013e-7 m. At 1000 MeV the errors stay below 1e-16 m; at low energy their sign and size depend on floating-point rounding.
 
-## Reproducer
-
-One serial, double-precision simulation; deterministic particles; no output files. The explicit rest mass is part of the fixture because stored gamma controls rounding.
-
-??? example "TRK-18.py"
+??? example "Reproducer: TRK-18.py"
 
     [Download TRK-18.py](TRK-18.py)
 
     ```python
-    """TRK-18: Low-energy ExactDrift corrupts co-moving arrival times.
+    """TRK-18: Low-energy `ExactDrift` corrupts co-moving arrival times
 
-    One serial, double-precision simulation; deterministic particles; no output files.
-    The explicit rest mass is part of the fixture because stored gamma controls rounding.
+    At low energy, `ExactDrift` shifts the arrival time `t` of particles moving at the reference energy
+    and direction, because its longitudinal-momentum radical subtracts the separately rounded terms (1/β
+    − `pt`)² and 1/(βγ)², with β and γ those of the reference. Such particles must keep their relative
+    arrival times, as a 90-digit evaluation of the drift confirms. For a proton (rest energy
+    938.27208816 MeV) at 1 keV kinetic energy, a 1 m drift adds 0.002379 m (7.9 ps) to `t`, shifting the
+    bunch centroid; off-energy and inclined particles get timing errors up to 0.002454 m and transverse
+    errors up to 1.013e-7 m. At 1000 MeV the errors stay below 1e-16 m; at low energy their sign and
+    size depend on floating-point rounding.
+
+    The script drifts nine protons with the rest energy fixed at 938.27208816 MeV, spread in x, y and
+    `t` but with zero momentum deviation, through a 1 m `ExactDrift` at kinetic energies from 1 eV to
+    1000 MeV, and compares them with a 90-digit evaluation in which the arrival-time difference is
+    rationalized so that zero deviation gives exactly zero. Further cases use the built-in proton mass,
+    neighbouring energies, other and signed lengths, slicing, a direct push, a scaled mass, momentum
+    spreads, `ChrDrift`, and the linear `Drift` and 1000 MeV controls, which must be exact. The rest
+    energy is fixed because the stored γ controls the rounding.
     """
 
     import os

@@ -1,4 +1,20 @@
-"""ENV-03: Geometric emittance labeled normalized."""
+"""ENV-03: Phase-space legends label geometric emittance as normalized
+
+The phase-space plot from `plot_phasespace()` labels its legends with the normalized-emittance
+symbols εₙ,x, εₙ,y and εₙ,t but displays the geometric emittances. ImpactX documents the normalized
+emittances as the diagnostic keys with an `n` suffix, equal to β₀γ₀ times the geometric values, with
+β₀ the reference speed over c and γ₀ the reference Lorentz factor. For a proton beam at γ₀ = 7, the
+x legend shows 168.7 nm while the normalized emittance is 1168 nm, a factor β₀γ₀ = 6.928. The
+numerical diagnostics are correct; only the plot annotation is wrong, by the factor β₀γ₀.
+
+The script builds a deterministic beam of 64 weighted particles at the vertices of a box in (x, px,
+y, py, t, pt) for a γ₀ = 7 proton reference, so that its geometric and normalized emittances follow
+analytically, and checks both sets of diagnostic keys against them. It draws the plot with the
+installed `plot_phasespace()` function and with the unmodified function from the ImpactX development
+branch, and asserts that each legend shows the geometric value under the normalized symbol.
+Repeating with each particle split into two half-weight copies, which leaves the emittances
+unchanged, gives the same mismatch. Set IMPACTX_SOURCE to a clone of the ImpactX repository.
+"""
 
 import os
 

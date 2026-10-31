@@ -13,9 +13,9 @@ hide:
 | Priority | {{ e.priority }} |
 | Severity | {{ e.severity }} |
 | Evidence | {{ e.level }} |
-{% if e.provenance.get('verified') %}
-| Last reproduced | {{ e.provenance.verified.date }} on {{ codeid(e.provenance.verified.code) }} |
-{% endif %}
+{% set r = e.last_reproduced %}
+{% set n = r.head_not_reproduced %}
+| Last reproduced | {{ r.date }} on {{ r.code.ref }} (`{{ r.code.commit[:7] }}`){% if n %}; not reproduced on {{ n.code.ref }} (`{{ n.code.commit[:7] }}`), {{ n.date }}{% endif %} |
 {% if e.tags %}
 | Tags | {% for t in e.tags %}<span class="bb-tag">{{ t }}</span> {% endfor %}[?](../../methodology.md#tags) |
 {% endif %}
@@ -39,26 +39,20 @@ hide:
 **Why no reproducer.** {{ e.justification }}
 
 {% endif %}
-## Reproducer
-
-{% if note %}
-{{ note }}
-
-{% endif %}
 {% for name, text in sources.items() %}
-{% if descriptions[name] %}
-{{ descriptions[name] }}
-
-{% endif %}
-??? example "{{ name }}"
+??? example "{{ 'Helper' if name.startswith('_') else 'Reproducer' }}: {{ name }}"
 
     [Download {{ name }}]({{ name }})
 
-    ```python
+    ```{{ languages[name] }}
 {{ text | indent(4, first=True) }}
     ```
 
 {% endfor %}
+{% if inputs %}
+Input files: {% for f in inputs %}[{{ f }}]({{ f }}){% if not loop.last %}, {% endif %}{% endfor %}.
+
+{% endif %}
 ## Provenance
 
 | Role | Model | Effort | Date | Code examined |

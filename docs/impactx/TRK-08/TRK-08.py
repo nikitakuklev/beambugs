@@ -1,6 +1,15 @@
-"""TRK-08: Sol with ks = 0 returns NaN positions instead of a drift.
+"""TRK-08: `Sol(ks=0)` returns NaN positions
 
-sin(ks L/2)/(ks/2) -> L as ks -> 0, so a switched-off solenoid is the linear drift."""
+A `Sol` with zero strength, `ks=0`, as when a solenoid is switched off in a scan or knob, returns
+NaN `x` and `y`, because the map divides by α = `ks`/2. The zero-field limit is a drift, since
+sin(αL)/α → L for length L, and both `Sol(ks=1e-9)` and `Drift` give it. A proton entering a 0.7 m
+`Sol(ks=0)` at `x` = 13 mm, `px` = 0.021, `y` = −17 mm and `py` = 0.008 exits with NaN `x` and `y`
+instead of 27.70 mm and −11.40 mm; the momenta and longitudinal coordinates are correct. Any lattice
+that contains a switched-off `Sol` is affected.
+
+The script tracks one proton (938.3 MeV kinetic energy) with all six coordinates nonzero through
+`Sol(ds=0.7, ks=0)` and through `Drift(ds=0.7)`, and compares the two exit vectors.
+"""
 import numpy as np
 from impactx import ImpactX, elements
 
@@ -36,6 +45,7 @@ def track(lattice, coords, kin_MeV=938.27208816):
 
 u = [0.013, 0.021, -0.017, 0.008, 0.015, -0.03]
 try:
+    # sin(ks L/2)/(ks/2) -> L as ks -> 0, so a switched-off solenoid is the linear drift.
     out = track([elements.Sol(ds=0.7, ks=0.0)], u)[0]
     exp = track([elements.Drift(ds=0.7)], u)[0]
     print(f"observed {np.round(out, 4).tolist()}\nexpected {np.round(exp, 4).tolist()}")

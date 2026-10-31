@@ -23,6 +23,7 @@ Site: https://nikitakuklev.github.io/beambugs/
 
 ```sh
 python tools/export.py impactx          # needs the private ledger named in codes.yaml
+python tools/export.py --check impactx  # parse and report the gate, write nothing
 mkdocs serve                            # BEAMBUGS_OFFLINE=1 skips GitHub state lookups
 ```
 

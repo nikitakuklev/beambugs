@@ -12,29 +12,35 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`lattice_helper.py#L217-L219`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/file_imports/python/lattice_helper.py#L217-L219)<br>[`parse()` and `parse_cleaned_lattice()`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/file_imports/python/lattice_helper.py#L30-L80)<br>[`sim.lattice.extend(cell * 3)`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/docs/source/usage/howto/lattice_manipulation.rst#L51-L65) |
 
-When the dashboard imports a Python input file whose lattice includes a repeated cell, such as `sim.lattice.extend(cell * 3)`, it drops the repetition without a message and accepts the preceding elements as the complete lattice. The ImpactX manual documents this form, and an importer that cannot evaluate it must report an incomplete import. A 0.4 m drift followed by three drift–quadrupole cells, 1.3 m in total, imports as the single 0.4 m drift, so the horizontal focusing term `R21` is 0 instead of −0.5510 m⁻¹; the same lattice written out element by element imports all seven elements.
+When the ImpactX dashboard imports a Python input file whose lattice includes a repeated cell, such as `sim.lattice.extend(cell * 3)`, it drops the repetition without a message and accepts the preceding elements as the complete lattice. The ImpactX manual documents this form, and an importer that cannot evaluate it must report an incomplete import. A 0.4 m drift followed by three cells of a 0.2 m drift and a 0.1 m quadrupole (k = 2 m⁻²), 1.3 m in total, imports as the single 0.4 m drift, so for a 10 MeV proton the transfer-matrix focusing term R₂₁ is 0 instead of the analytic −0.5510 m⁻¹. The same lattice written out element by element imports all seven elements, and a single unrepeated cell imports correctly.
 
-## Reproducer
-
-Set `IMPACTX_SOURCE` to a clone of the ImpactX repository.
-
-Load complete, unmodified source modules using package shells to avoid the unavailable Trame UI. Only the reactive state object is replaced. Parser, defaults, parameter conversion and code generation are the real modules. Run one case per process. No output files are created.
-
-??? example "API-11.py"
+??? example "Reproducer: API-11.py"
 
     [Download API-11.py](API-11.py)
 
     ```python
-    """API-11: Silent partial repeated-cell import; no web server is started.
+    """API-11: Dashboard silently accepts a partial lattice when repeated cells are unresolved
 
-    Load complete, unmodified source modules using package shells to avoid the
-    unavailable Trame UI. Only the reactive state object is replaced. Parser,
-    defaults, parameter conversion and code generation are the real modules.
-    Run one case per process. No output files are created.
+    When the ImpactX dashboard imports a Python input file whose lattice includes a repeated cell, such
+    as `sim.lattice.extend(cell * 3)`, it drops the repetition without a message and accepts the
+    preceding elements as the complete lattice. The ImpactX manual documents this form, and an importer
+    that cannot evaluate it must report an incomplete import. A 0.4 m drift followed by three cells of a
+    0.2 m drift and a 0.1 m quadrupole (k = 2 m⁻²), 1.3 m in total, imports as the single 0.4 m drift,
+    so for a 10 MeV proton the transfer-matrix focusing term R₂₁ is 0 instead of the analytic −0.5510
+    m⁻¹. The same lattice written out element by element imports all seven elements, and a single
+    unrepeated cell imports correctly.
+
+    Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
+    parser modules from that clone behind package shells, replacing only the reactive state object so
+    that no Trame web UI or server is needed, and imports an inline input that appends a 0.4 m drift and
+    then extends the lattice by `cell * 3`. It rebuilds the lattice from the parser's records and
+    compares its length and 6×6 transfer map for a 10 MeV proton with analytic drift and quadrupole
+    matrices, as it does for the original input executed directly; the import also must print no
+    message. The same input with the cells written out, and with a single cell, are the controls.
     """
 
     import os

@@ -1,8 +1,21 @@
-"""COL-04: Gauss2p5D underweights the approximate initial quadrature interval.
+"""COL-04: `Gauss2p5D` underweights the initial quadrature interval
 
-Deterministic round/elliptical sources, an infinite-domain Coulomb integral,
-a cylindrical Gauss-law check, and length/species/energy controls.
-One serial CPU/double simulation; writes no files.
+`Gauss2p5D` space charge computes its transverse forces with a quadrature that treats the initial
+interval [0, δ], δ = `gauss_taylor_delta`, separately, and divides that interval's contribution by
+three a second time when it completes the Simpson sum. The forces therefore carry a bias that does
+not vanish as the number of quadrature points grows. Direct integration of the Gaussian Coulomb
+convolution, checked against Gauss's law for a round beam, gives the correct forces. With δ = 0.01,
+4001 points and a test particle at (x, y) = (σx, 0.6σy), aspect ratio σy/σx = 0.25 gives relative
+errors of −5.736×10⁻⁵ in px and −1.648×10⁻⁵ in py; aspect ratio 4 gives −2.312×10⁻⁴ and −8.103×10⁻⁴.
+At the default 101 points, ordinary Simpson discretization error adds to this bias.
+
+The script builds deterministic sources from eight-point elliptical rings in equal-charge
+longitudinal bins, so that the model's measured widths are exact, and records the transverse kicks
+of one `Gauss2p5D` kick on zero-weight test particles. It compares them with adaptive quadrature of
+the Coulomb convolution (checked by Gauss's law for the round beam) and with a prediction that
+applies the extra factor of one third to the initial interval, for a round beam and aspect ratios
+0.25 and 4 over a scan of δ and quadrature points. A case with δ = 2×10⁻⁶, where the bias is
+negligible, and a proton case with every length tripled serve as controls.
 """
 
 import os

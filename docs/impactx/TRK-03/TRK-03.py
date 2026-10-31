@@ -1,7 +1,17 @@
-"""TRK-03: DipEdge(modify_ref_part=True) deflects the reference by the beam-normalized kick.
+"""TRK-03: `DipEdge(modify_ref_part=True)` deflects the reference by the beam-normalized kick
 
-beam px = dPx/P0 and ref px = Px/(m c), so moving the same fringe deflection onto the reference
-changes ref px by beta*gamma times the beam-side kick."""
+With the nonlinear `DipEdge` model and `modify_ref_part=True`, ImpactX adds the fringe kick,
+normalized to the reference momentum P₀, directly to the reference particle's `px`, which is stored
+in units of mc. Since P₀/(mc) = βγ, the reference must instead be deflected by βγ times the kick the
+beam receives with `modify_ref_part=False`. For `psi` = 0.25 rad, `rc` = 1 m, `g` = 0.1 m and a
+reference entering along the axis, the reference `px` is −0.004474 at every energy instead of
+−0.007749 at γ = 2 and −0.04452 at γ = 10. The reference deflection is too small above βγ = 1 and
+too large below; the kick applied to the beam with `modify_ref_part=False` is not affected.
+
+The script pushes an on-axis proton through `DipEdge(psi=0.25, rc=1, g=0.1, model="nonlinear")` at
+γ = 2 and γ = 10, first with `modify_ref_part=False` to obtain the beam kick in `px`, then with
+`modify_ref_part=True`, and compares the reference `px` with βγ times that kick.
+"""
 import numpy as np
 from impactx import ImpactX, elements
 
@@ -43,6 +53,8 @@ try:
         dpx = track([elements.DipEdge(**edge)], np.zeros(6), kin)[0, 1]
         track([elements.DipEdge(**edge, modify_ref_part=True)], np.zeros(6), kin)
         ref = sim.beam.ref
+        # beam px = dPx/P0 and ref px = Px/(m c), so moving the same fringe deflection onto the
+        # reference changes ref px by beta*gamma times the beam-side kick.
         print(f"gamma {gamma:g}: ref px observed {ref.px:.4g}, expected beta*gamma*dpx = {ref.beta_gamma * dpx:.4g}")
         bad |= abs(ref.px - ref.beta_gamma * dpx) > 1e-9
     print("DEFECT REPRODUCED" if bad else "NOT REPRODUCED")

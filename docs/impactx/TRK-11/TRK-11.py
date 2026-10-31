@@ -1,8 +1,20 @@
-"""TRK-11: integer factorial overflow corrupts multipole normalization.
+"""TRK-11: Integer factorial overflow corrupts multipole normalization
 
-With zero entrance transverse momentum, one second-order drift/kick/drift step
-evaluates its kick at the entrance x.  The exit momentum therefore has an exact
-discrete-map expectation, without treating a finite magnet as a thin limit.
+`Multipole` and `ExactMultipole` compute their factorial normalization in 32-bit integers, which
+overflow from 13! = 6227020800 on: thin `multipole=14` and above, and thick coefficients at index 13
+and above. At y = 0 a normal multipole of integrated strength K and power n (n = `multipole` − 1
+when thin) must change `px` by −K·xⁿ/n! with the exact factorial; one drift–kick–drift step of the
+thick element has the same exact expectation. On the tested CPU build, order-14 normal and skew
+kicks are 3.223 times too large (−0.003223 instead of −0.001 at x = 0.25 m), and order-18 kicks have
+the wrong sign and are 1.233e6 times too large. Orders up to 13 are correct; signed overflow makes
+higher-order values compiler-dependent.
+
+The script uses a reference particle with 1000 MeV rest energy and 1000 MeV kinetic energy, and
+particles at x = 0.25 m and 0.125 m with all other coordinates zero. For powers 12, 13 and 17 it
+pushes them through a thin `Multipole` and through a 0.2 m `ExactMultipole` with one second-order
+step, with a normal or skew strength chosen so that the exact kick at x = 0.25 m is 1e-3 (1e-8 for
+power 17), and compares the kicks with Python's exact factorial and with its 32-bit wrapped value.
+Power 12 (order 13) is the control and must be exact.
 """
 
 import ctypes
@@ -88,6 +100,9 @@ try:
                     ),
                 ),
             ]
+            # With zero entrance transverse momentum, the thick element's single second-order
+            # drift/kick/drift step evaluates its kick at the entrance x, so the exit momentum has
+            # this exact discrete-map expectation, without treating a finite magnet as a thin limit.
             positions = np.array([x, x / 2])
             expected = (
                 np.array([-normal, skew])

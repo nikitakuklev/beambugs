@@ -1,9 +1,20 @@
-"""API-08: Dashboard proton species import loss; no web server is started.
+"""API-08: Dashboard imports the bundled proton cyclotron with electron mass and charge
 
-Load complete, unmodified source modules using package shells to avoid the
-unavailable Trame UI. Only the reactive state object is replaced. Parser,
-defaults, parameter conversion and code generation are the real modules.
-Run one case per process. No output files are created.
+The ImpactX dashboard's import of Python input files ignores `set_species()` and keeps its electron
+mass and charge defaults, so the bundled `cyclotron/run_cyclotron.py` example, which sets a proton
+reference, imports as an electron. Importing a script must preserve the species it defines;
+replacing `set_species("proton")` with explicit mass and charge setters does preserve it. At the
+example's 4 keV kinetic energy K the imported magnetic rigidity is −2.137×10⁻⁴ T·m instead of
++9.139×10⁻³ T·m, the proton value of Bρ = √(K(K + 2mc²))/(qc). According to the parser source, every
+imported script that sets a non-electron species with `set_species()` is affected; explicit mass and
+charge setters import correctly.
+
+Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
+parser modules from that clone behind package shells, replacing only the reactive state object so
+that no Trame web UI or server is needed, and parses the bundled cyclotron example. It builds the
+original and the imported reference particle in the installed core and compares each rigidity with
+Bρ = √(K(K + 2mc²))/(qc) evaluated in 60-digit decimal arithmetic. The same example with
+`set_species("proton")` replaced by explicit mass and charge setters is the control.
 """
 
 import os

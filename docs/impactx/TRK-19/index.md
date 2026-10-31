@@ -10,29 +10,37 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Tracking |
 | Priority | P3 (spin P4) |
-| Severity | Wrong physics; experimental, unsupported spin |
+| Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`ExactCFbend.H#L379-L389`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactCFbend.H#L379-L389)<br>[manual](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L2073-L2099)<br>[`ExactCFbend.H#L506-L538`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/ExactCFbend.H#L506-L538)<br>[spin contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2792-L2800) |
 
-`ExactCFbend` applies the horizontal kick of the skew decapole, `k_skew[4]`, with the wrong sign: it is the negative of the derivative of the documented vector potential (Zolkin 2017, Table XI), while the vertical kick is correct. The map is therefore not symplectic, and an independent integration of the curvilinear Hamiltonian differs from ImpactX by exactly this term. For a proton at γ = 3.25, curvature 2 m⁻¹, `L=0.15 m`, `k4=160 m⁻⁵` and a particle at `x = 0.08 m`, `y = −0.05 m`, `px` is off by 1.321e-4 and the symplecticity residual is 6.795e-4. Spin tracking (experimental in ImpactX) uses the same wrong field, with spin-component errors of 7.899e-4. The error scales with skew-decapole strength and amplitude.
+`ExactCFbend` applies the skew-decapole (`k_skew[4]`) horizontal kick with the wrong sign: it is the negative of the derivative of the documented vector potential (Zolkin 2017, Table XI), while the vertical kick is correct. The map is therefore not symplectic, and an independent integration of the curvilinear Hamiltonian reproduces ImpactX to 1.3e-14 only with this sign reversed. For a proton at γ = 3.25 in a 0.15 m bend with curvature 2 m⁻¹ and skew strength 160 m⁻⁵, a particle at x = 0.08 m, y = −0.05 m exits with `px` off by 1.321e-4, and the Jacobian M violates the symplectic condition MᵀJM = J by 6.795e-4. Spin tracking (experimental in ImpactX) uses the same wrong field, with spin-component errors up to 7.899e-4. The error grows with strength and amplitude.
 
-## Reproducer
-
-Requires scipy, sympy.
-
-One serial, double-precision simulation; deterministic particles; no output files. The independent oracle and beam harness are included in this file.
-
-??? example "TRK-19.py"
+??? example "Reproducer: TRK-19.py"
 
     [Download TRK-19.py](TRK-19.py)
 
     ```python
-    """TRK-19: ExactCFbend reverses the skew-decapole horizontal kick.
+    """TRK-19: `ExactCFbend` reverses the skew-decapole horizontal kick
 
-    One serial, double-precision simulation; deterministic particles; no output files.
-    The independent oracle and beam harness are included in this file.
+    `ExactCFbend` applies the skew-decapole (`k_skew[4]`) horizontal kick with the wrong sign: it is the
+    negative of the derivative of the documented vector potential (Zolkin 2017, Table XI), while the
+    vertical kick is correct. The map is therefore not symplectic, and an independent integration of the
+    curvilinear Hamiltonian reproduces ImpactX to 1.3e-14 only with this sign reversed. For a proton at
+    γ = 3.25 in a 0.15 m bend with curvature 2 m⁻¹ and skew strength 160 m⁻⁵, a particle at x = 0.08 m,
+    y = −0.05 m exits with `px` off by 1.321e-4, and the Jacobian M violates the symplectic condition
+    MᵀJM = J by 6.795e-4. Spin tracking (experimental in ImpactX) uses the same wrong field, with
+    spin-component errors up to 7.899e-4. The error grows with strength and amplitude.
+
+    The script tracks 25 protons, a centre point and a fourth-order finite-difference stencil around it,
+    through the bend with integrator orders 2, 4 and 6, and measures the full-element Jacobian M. It
+    checks MᵀJM = J and compares the centre exit with a DOP853 integration of the curvilinear
+    Hamiltonian, with the correct and with the reversed horizontal kick; it also verifies symbolically
+    that the code's kicks are the negative radial and the positive vertical derivative of the documented
+    potential. Pure-bend, normal-decapole, skew-octupole and skew-sextupole cases are controls and must
+    be symplectic.
     """
 
     import os
@@ -352,23 +360,23 @@ One serial, double-precision simulation; deterministic particles; no output file
 
     ```
 
-ExactCFbend's skew-decapole field corrupts spin precession.
-
-Self-contained serial CPU/double check with deterministic particles. Compares against a Maxwell field reconstruction with a Cartesian Lorentz/Thomas-BMT integration and a curvilinear-potential DOP853 integration. Requires NumPy, SciPy, SymPy and impactx-noacc; writes no files. Spin tracking is experimental and explicitly unsupported. Each native child owns one simulation and has a 290-second timeout.
-
-??? example "TRK-19-spin.py"
+??? example "Reproducer: TRK-19-spin.py"
 
     [Download TRK-19-spin.py](TRK-19-spin.py)
 
     ```python
-    """TRK-19: ExactCFbend's skew-decapole field corrupts spin precession.
+    """TRK-19: the same skew-decapole field error in spin tracking
 
-    Self-contained serial CPU/double check with deterministic particles. Compares against a
-    Maxwell field reconstruction with a Cartesian Lorentz/Thomas-BMT integration and
-    a curvilinear-potential DOP853 integration.
-    Requires NumPy, SciPy, SymPy and impactx-noacc; writes no files. Spin tracking
-    is experimental and explicitly unsupported. Each native child owns one
-    simulation and has a 290-second timeout.
+    With spin tracking enabled, the script tracks 12 protons that share the principal fixture's orbit
+    and carry the three Cartesian unit spins through the same `ExactCFbend`, in 20 cases that each run
+    in a fresh single-threaded child process: coarser and finer steps, slicing, integrator orders 2 and
+    4, and a second fixture with negative curvature whose strength, length, energy, anomaly, field unit
+    and species are varied, plus a pure dipole, an on-axis particle and spin tracking disabled. It
+    compares the exit spins with a Cartesian Lorentz and Thomas–BMT integration to the exit plane in
+    three field models: the physical field reconstructed from Maxwell's equations, the physical field
+    along the implemented orbit, and the implemented field, which must reproduce ImpactX. A moving-frame
+    integration of the documented potential cross-checks the physical result, and the pure-dipole and
+    on-axis cases must agree with it.
     """
 
     import argparse

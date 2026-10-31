@@ -1,7 +1,18 @@
-"""TRK-07: ExactCFbend with zero dipole strength (a straight quadrupole) returns NaN.
+"""TRK-07: `ExactCFbend` with `k_normal[0]=0` returns NaN
 
-With k_normal[0] = 0 the curvilinear field reduces to the straight quadrupole, so the result must
-match ExactQuad with the same strength and integrator."""
+An `ExactCFbend` with zero dipole strength, `k_normal[0]=0`, and any coefficient slot above the
+dipole, even one set to zero, returns NaN in `x`, `px`, `y`, `py` and `t`, because its multipole
+kick divides by a bend radius stored as zero. At zero curvature the element must reduce to the
+corresponding straight multipole; for a quadrupole that is `ExactQuad`, which agrees with an
+independent integration of the square-root (exact) Hamiltonian. For a proton with all six
+coordinates nonzero, `ExactCFbend(ds=0.7, k_normal=[0, 0.8])` gives NaN, while `ExactQuad(ds=0.7,
+k=0.8)` with the same integrator gives `x` = 0.02394 m, `px` = 0.01032 and `y` = −0.01456 m. An
+element with only the dipole coefficient, `k_normal=[0]`, stays finite.
+
+The script tracks one proton (938.3 MeV kinetic energy) with all six coordinates nonzero through
+`ExactCFbend(ds=0.7, k_normal=[0, 0.8], k_skew=[0, 0])` and through `ExactQuad(ds=0.7, k=0.8)`, both
+with a sixth-order integrator and 50 map steps, and compares the two exit vectors.
+"""
 import numpy as np
 from impactx import ImpactX, elements
 

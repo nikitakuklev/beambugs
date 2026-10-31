@@ -12,21 +12,37 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`pals_to_impactx.py#L100-L130`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/pals_to_impactx.py#L100-L130) |
 
-Importing a PALS lattice ignores body offsets (`BodyShiftP`) and apertures (`ApertureP`) on drifts and quadrupoles, without a warning. A body shift displaces the element and its field, so transport becomes `M·(u − d) + d` for map `M` and offset `d`, and an active aperture removes particles outside its limits; native `ChrQuad(dx=d)` and `Drift` followed by `Aperture` give these results. For a γ = 5 proton, a quadrupole (`L = 0.2 m`, `Kn1 = 2 m⁻²`) offset by 1 mm gives an on-axis particle `px = 0` instead of 3.947e-4, and a drift with an active ±1 mm rectangular exit aperture passes all four test particles where two should be removed. Misalignment and aperture models read from PALS files are lost.
+Importing a PALS (Particle Accelerator Lattice Standard) lattice into ImpactX ignores body offsets (`BodyShiftP`) and apertures (`ApertureP`) on drifts and quadrupoles, without a warning. A body shift d displaces the element and its field, so a particle u is transported as M·(u − d) + d for element map M, and an active aperture removes particles outside its limits; native `ChrQuad(dx=d)` and a `Drift` followed by an `Aperture` give these results. For a γ = 5 proton, a 0.2 m quadrupole with `Kn1` = 2 m⁻² offset by 1 mm leaves an on-axis particle at normalized momentum pₓ = 0 instead of 3.947×10⁻⁴, and a 0.2 m drift with an active ±1 mm rectangular exit aperture passes all four test particles where two should be lost. The converter source ignores both property groups for every drift and quadrupole; an inactive aperture correctly has no effect.
 
-## Reproducer
-
-Requires pals_schema, scipy. Set `IMPACTX_SOURCE` to a clone of the ImpactX repository.
-
-??? example "API-07.py"
+??? example "Reproducer: API-07.py"
 
     [Download API-07.py](API-07.py)
 
     ```python
-    """API-07: PALS body offsets and active apertures discarded."""
+    """API-07: PALS import discards body offsets and active apertures
+
+    Importing a PALS (Particle Accelerator Lattice Standard) lattice into ImpactX ignores body offsets
+    (`BodyShiftP`) and apertures (`ApertureP`) on drifts and quadrupoles, without a warning. A body
+    shift d displaces the element and its field, so a particle u is transported as M·(u − d) + d for
+    element map M, and an active aperture removes particles outside its limits; native `ChrQuad(dx=d)`
+    and a `Drift` followed by an `Aperture` give these results. For a γ = 5 proton, a 0.2 m quadrupole
+    with `Kn1` = 2 m⁻² offset by 1 mm leaves an on-axis particle at normalized momentum pₓ = 0 instead
+    of 3.947×10⁻⁴, and a 0.2 m drift with an active ±1 mm rectangular exit aperture passes all four test
+    particles where two should be lost. The converter source ignores both property groups for every
+    drift and quadrupole; an inactive aperture correctly has no effect.
+
+    Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script checks that the installed PALS
+    converter equals the pinned source in that clone, then imports, for a γ = 5 proton, a 0.2 m
+    quadrupole (`Kn1` = 2 m⁻²) with horizontal body offsets of +1 mm and −0.6 mm, and a 0.2 m drift with
+    a ±1 mm rectangular exit aperture, inactive and active. Quadrupole tracking is compared with M·(u −
+    d) + d from a matrix exponential and with native `ChrQuad(dx=d)`; four particles with zero momenta,
+    two of them outside the aperture, are compared with the survivors of direct inequalities and of a
+    native `Drift` followed by an `Aperture`. The inactive aperture is the control.
+    """
 
     import os
 

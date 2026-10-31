@@ -12,24 +12,30 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Source | [`WakeConvolution.cpp#L36-L49`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/wakefields/WakeConvolution.cpp#L36-L49)<br>[`WakeConvolution.H#L56-L66`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/wakefields/WakeConvolution.H#L56-L66) |
 
-The Python helper `impactx.wakeconvolution.w_t_rf` uses the bracket `u·exp(−u)`, with `u = sqrt(s/s0)`, where the cited Bane model has `1 − (1+u)·exp(−u)`; its documentation also calls it a resistive-wall wake, although it is the short-range dipole wake of a periodic accelerating structure, and states units of V/m/pC/mm although it returns SI. Bane (SLAC-PUB-9663, 2003, Eqs. 15–16) gives the correct form, which rises linearly in `s`, whereas the implemented one starts as `sqrt(s)`. For an NLC-like cell (`a = 4.92 mm`, `g = 6.89 mm`, `L = 8.75 mm`) the wake is 19.34 times too large at `s/s0 = 0.01` and 1.392 times at `s/s0 = 1`. Built-in tracking does not call this function; users who call it directly are affected.
+The Python helper `impactx.wakeconvolution.w_t_rf`, the short-range dipole wake W⊥(s) of a periodic accelerating structure at distance s behind the source, uses the bracket u·e⁻ᵘ with u = √(s/s₀) (s₀ a fitted length), where the cited Bane model (SLAC-PUB-9663, 2003, Eqs. 15–16) has 1 − (1 + u)·e⁻ᵘ. Bane's form rises linearly in s at short range; the implemented one starts as √s. For a cell resembling the Next Linear Collider design (iris radius 4.92 mm, gap 6.89 mm, period 8.75 mm) the wake is 19.34 times too large at s/s₀ = 0.01 and 1.392 times at s/s₀ = 1. Its documentation also calls it a resistive-wall wake and states units of V/m/pC/mm although it returns SI. Built-in tracking does not call it; only direct callers are affected.
 
-## Reproducer
-
-Bane, SLAC-PUB-9663 (2003): W\_perp(s) = 4 Z0 c s0 / (pi a^4) \* \[1 - (1 + u) exp(-u)\], u = sqrt(s/s0), s0 = 0.169 a^1.79 g^0.38 / L^1.17. Its short-range limit is 2 Z0 c s / (pi a^4) (linear in s).
-
-??? example "COL-03.py"
+??? example "Reproducer: COL-03.py"
 
     [Download COL-03.py](COL-03.py)
 
     ```python
-    """COL-03: wakeconvolution.w_t_rf has the wrong functional form.
+    """COL-03: `wakeconvolution.w_t_rf` has the wrong functional form
 
-    Bane, SLAC-PUB-9663 (2003): W_perp(s) = 4 Z0 c s0 / (pi a^4) * [1 - (1 + u) exp(-u)], u = sqrt(s/s0),
-    s0 = 0.169 a^1.79 g^0.38 / L^1.17. Its short-range limit is 2 Z0 c s / (pi a^4) (linear in s).
+    The Python helper `impactx.wakeconvolution.w_t_rf`, the short-range dipole wake W⊥(s) of a periodic
+    accelerating structure at distance s behind the source, uses the bracket u·e⁻ᵘ with u = √(s/s₀) (s₀
+    a fitted length), where the cited Bane model (SLAC-PUB-9663, 2003, Eqs. 15–16) has 1 − (1 + u)·e⁻ᵘ.
+    Bane's form rises linearly in s at short range; the implemented one starts as √s. For a cell
+    resembling the Next Linear Collider design (iris radius 4.92 mm, gap 6.89 mm, period 8.75 mm) the
+    wake is 19.34 times too large at s/s₀ = 0.01 and 1.392 times at s/s₀ = 1. Its documentation also
+    calls it a resistive-wall wake and states units of V/m/pC/mm although it returns SI. Built-in
+    tracking does not call it; only direct callers are affected.
+
+    The script evaluates `w_t_rf` for that cell at s/s₀ = 0.01 and 1, with s₀ from the same fit the code
+    uses. It compares the result with Bane's formula evaluated with the free-space impedance Z₀ = 377 Ω
+    that ImpactX uses.
     """
     import numpy as np
     from impactx import wakeconvolution
@@ -42,6 +48,7 @@ Bane, SLAC-PUB-9663 (2003): W\_perp(s) = 4 Z0 c s0 / (pi a^4) \* \[1 - (1 + u) e
     for x in (0.01, 1.0):
         s = x * s0
         u = np.sqrt(x)
+        # Bane, SLAC-PUB-9663 (2003), Eqs. 15-16; short-range limit 2 Z0 c s / (pi a^4), linear in s.
         expected = 4 * Z0 * c * s0 / (np.pi * a**4) * (1 - (1 + u) * np.exp(-u))
         observed = wakeconvolution.w_t_rf(s, a, g, L)
         print(f"s/s0 = {x:g}: observed {observed:.4g}, expected {expected:.4g}, ratio {observed / expected:.4g}")
@@ -55,5 +62,5 @@ Bane, SLAC-PUB-9663 (2003): W\_perp(s) = 4 Z0 c s0 / (pi a^4) \* \[1 - (1 + u) e
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed | `claude-opus-5-5` |  | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
 

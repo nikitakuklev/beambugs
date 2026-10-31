@@ -12,24 +12,31 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Source | [`ExactCFbend.H#L340-L342`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactCFbend.H#L340-L342) |
 
-An `ExactCFbend` with zero dipole strength (`k_normal[0]=0`) and a quadrupole or higher coefficient returns NaN in `x`, `px`, `y`, `py` and `t`, because its multipole kick divides by a bend radius stored as zero. At zero curvature the element must reduce to the corresponding straight multipole. `ExactCFbend(ds=0.7, k_normal=[0, 0.8])` gives NaN, while `ExactQuad(k=0.8)` with the same integrator gives `x = 0.0239 m`, `px = 0.0103`, `y = −0.0146 m`. An element with only the dipole coefficient stays finite.
+An `ExactCFbend` with zero dipole strength, `k_normal[0]=0`, and any coefficient slot above the dipole, even one set to zero, returns NaN in `x`, `px`, `y`, `py` and `t`, because its multipole kick divides by a bend radius stored as zero. At zero curvature the element must reduce to the corresponding straight multipole; for a quadrupole that is `ExactQuad`, which agrees with an independent integration of the square-root (exact) Hamiltonian. For a proton with all six coordinates nonzero, `ExactCFbend(ds=0.7, k_normal=[0, 0.8])` gives NaN, while `ExactQuad(ds=0.7, k=0.8)` with the same integrator gives `x` = 0.02394 m, `px` = 0.01032 and `y` = −0.01456 m. An element with only the dipole coefficient, `k_normal=[0]`, stays finite.
 
-## Reproducer
-
-With k\_normal\[0\] = 0 the curvilinear field reduces to the straight quadrupole, so the result must match ExactQuad with the same strength and integrator.
-
-??? example "TRK-07.py"
+??? example "Reproducer: TRK-07.py"
 
     [Download TRK-07.py](TRK-07.py)
 
     ```python
-    """TRK-07: ExactCFbend with zero dipole strength (a straight quadrupole) returns NaN.
+    """TRK-07: `ExactCFbend` with `k_normal[0]=0` returns NaN
 
-    With k_normal[0] = 0 the curvilinear field reduces to the straight quadrupole, so the result must
-    match ExactQuad with the same strength and integrator."""
+    An `ExactCFbend` with zero dipole strength, `k_normal[0]=0`, and any coefficient slot above the
+    dipole, even one set to zero, returns NaN in `x`, `px`, `y`, `py` and `t`, because its multipole
+    kick divides by a bend radius stored as zero. At zero curvature the element must reduce to the
+    corresponding straight multipole; for a quadrupole that is `ExactQuad`, which agrees with an
+    independent integration of the square-root (exact) Hamiltonian. For a proton with all six
+    coordinates nonzero, `ExactCFbend(ds=0.7, k_normal=[0, 0.8])` gives NaN, while `ExactQuad(ds=0.7,
+    k=0.8)` with the same integrator gives `x` = 0.02394 m, `px` = 0.01032 and `y` = −0.01456 m. An
+    element with only the dipole coefficient, `k_normal=[0]`, stays finite.
+
+    The script tracks one proton (938.3 MeV kinetic energy) with all six coordinates nonzero through
+    `ExactCFbend(ds=0.7, k_normal=[0, 0.8], k_skew=[0, 0])` and through `ExactQuad(ds=0.7, k=0.8)`, both
+    with a sixth-order integrator and 50 map steps, and compares the two exit vectors.
+    """
     import numpy as np
     from impactx import ImpactX, elements
 
@@ -79,5 +86,5 @@ With k\_normal\[0\] = 0 the curvilinear field reduces to the straight quadrupole
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed | `claude-opus-5-5` |  | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
 

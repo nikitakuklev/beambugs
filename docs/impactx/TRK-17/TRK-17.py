@@ -1,9 +1,21 @@
-"""TRK-17: SoftSolenoid omits transverse fringe-field spin precession.
+"""TRK-17: `SoftSolenoid` omits transverse fringe-field spin precession
 
-Larmor focusing plus a BMT integral identity at field-free endpoints.
-The manual declares spin tracking experimental and unsupported.
+With spin tracking enabled (experimental in ImpactX), `SoftSolenoid` omits the spin precession
+caused by the radial fringe field of a varying longitudinal field, because its spin map discards the
+field derivative. Maxwell's equations give the off-axis transverse fields −x·b′/2 and −y·b′/2 for b
+the longitudinal field divided by the rigidity Bρ; an independent Thomas–BMT integration with these
+fields disagrees with ImpactX while the orbits agree, and at vanishing magnetic anomaly ImpactX's
+spin does not follow the velocity, as it must. For a proton at γ = 3.3 offset by 20 μm in an
+asymmetric 0.7 m field profile, the transverse spin error at the exit is 1.548e-4. On-axis
+precession is correct; off-axis particles are affected.
 
-One serial, double-precision simulation per process; no output files.
+The script tracks 16 particles with horizontal or vertical offsets, zero transverse momentum and
+spin (0, 0, 1) through `SoftSolenoid` profiles whose field and slope vanish at both ends, b = 2
+sin²(πz) over 1 m and an asymmetric sin⁴ profile over 0.7 m. It fits the exit transverse spin and
+kinetic momentum per unit offset and compares them with a fourth-order Runge–Kutta solution of the
+Larmor-frame orbit combined with an integral identity for the Thomas–BMT equation. Controls cover
+zero field, both planes, field reversal, small and negative anomalies, smaller offsets and fields,
+the SI field unit with four slices, and on-axis precession, which must agree.
 """
 
 import os

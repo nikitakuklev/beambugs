@@ -1,8 +1,19 @@
-"""TRK-16: Rolled bends omit the leading vertical steering.
+"""TRK-16: Rolled `ThinDipole`, `Sbend` and `ExactSbend` omit vertical steering
 
-Lorentz impulse and independent lab-frame circular-orbit exit-plane checks.
+Setting `rotation`, a roll about the beam axis, on a `ThinDipole`, `Sbend` or `ExactSbend` produces
+no vertical steering. The manual describes `rotation` as a rotation error, and the Lorentz force in
+a bend of angle θ rolled by α then gives a vertical kick `py` = −θ·sin α to leading order in θ;
+ImpactX gives `py` = 0. A 3 mrad bend rolled by 20 mrad misses a kick of −6.000e-5 (60 μrad), about
+60 μm after a 1 m drift, so roll-error studies lose the leading vertical effect of rolled dipoles.
+Examples and the MAD-X importer also use `rotation` as a design roll, under which the reference
+orbit must bend vertically; under either reading the orbit stays in the horizontal plane.
 
-One serial, double-precision simulation per process; no output files.
+The script tracks 16 on-axis protons at design energy, with distinct arrival times, through each
+rolled bend class for several bend and roll angles (including zero roll), signed radii, energies
+from γ = 1.2 to 7 and slice counts, and compares `py` with the Lorentz impulse −θ·sin α and with the
+exit of the exact circular orbit in the tilted uniform field. A rolled `Kicker` confirms the shared
+roll sign convention, a `ThinDipole` particle with nonzero `pt` shows that the roll does reach the
+element, and an electron through an `ExactSbend` with an explicit field covers that branch.
 """
 
 import os

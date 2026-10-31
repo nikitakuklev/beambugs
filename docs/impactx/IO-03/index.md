@@ -12,21 +12,32 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Source | [`ImpactXParticleContainer.py#L83-L95`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L83-L95)<br>[`L117-L125`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L117-L125)<br>[`L252`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L252) |
 
-`plot_phasespace()` multiplies the longitudinal momentum `pt` (the energy deviation `−ΔE/(P₀c)`, dimensionless) by 1000, the factor used for the transverse mrad conversion, while the axis label states units of `p₀c` without a scale factor. The documented coordinate definition makes `pt` dimensionless, so a per-mille display must state its factor. A beam with `pt = ±0.004` is plotted at `±4`. Tracking and stored coordinates are unaffected; values read from the plot are 1000 times too large.
+The phase-space plot from `plot_phasespace()` multiplies the longitudinal momentum pt, the energy deviation −ΔE/(P₀c) with P₀ the reference momentum, by 1000, the factor it uses to convert transverse momenta to mrad, while the axis label states units of p₀c with no scale factor. ImpactX documents pt as dimensionless, so a per-mille display must state its factor. A beam with pt = ±0.004 is plotted at ±4. Tracking and stored coordinates are unaffected; values read from the plot are 1000 times too large.
 
-## Reproducer
-
-Requires matplotlib. Set `IMPACTX_SOURCE` to a clone of the ImpactX repository.
-
-??? example "IO-03.py"
+??? example "Reproducer: IO-03.py"
 
     [Download IO-03.py](IO-03.py)
 
     ```python
-    """IO-03: Longitudinal plot scale and units disagree by 1000."""
+    """IO-03: Longitudinal plot scale and units disagree by 1000
+
+    The phase-space plot from `plot_phasespace()` multiplies the longitudinal momentum pt, the energy
+    deviation −ΔE/(P₀c) with P₀ the reference momentum, by 1000, the factor it uses to convert
+    transverse momenta to mrad, while the axis label states units of p₀c with no scale factor. ImpactX
+    documents pt as dimensionless, so a per-mille display must state its factor. A beam with
+    pt = ±0.004 is plotted at ±4. Tracking and stored coordinates are unaffected; values read from the
+    plot are 1000 times too large.
+
+    The script builds a deterministic beam of 64 weighted particles at the vertices of a box in (x, px,
+    y, py, t, pt), with pt = ±0.004, for a γ = 7 proton reference, and draws the plot with the installed
+    `plot_phasespace()` function and the unmodified function from the ImpactX development branch. It
+    reads the longitudinal panel's image extent and axis label and checks that the extent is ±4 while
+    the label carries no scale factor; splitting each particle into two half-weight copies gives the
+    same result. Set IMPACTX_SOURCE to a clone of the ImpactX repository.
+    """
 
     import os
 

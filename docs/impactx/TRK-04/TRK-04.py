@@ -1,7 +1,21 @@
-"""TRK-04: soft-edge elements followed by their reverse() do not return the beam in a lattice.
+"""TRK-04: Soft-edge elements and their `reverse()` do not cancel in a lattice
 
-reverse() is documented to undo the original element. Tracking [element, reversed copy] must
-return every particle to its initial coordinates. Constant profiles exclude profile parity."""
+A `SoftQuadrupole`, `SoftSolenoid` or `RFCavity` followed by its `reverse()` copy in a lattice does
+not return particles to their initial coordinates, although the manual documents `reverse()` as
+undoing the original element. Lattice tracking resets the field-profile origin at each element, so
+the reversed element (negative `ds`) integrates outside its field profile; with a flat profile it
+reduces to a drift of length −`ds`. Pushing the reversed element directly, which keeps the forward
+element's profile origin, closes the round trip to 2.1e-16. With a constant profile
+(`cos_coefficients=[2]`, `ds` = 0.7 m), the largest coordinate error after the pair, in metres or
+normalized momentum, is 0.01080 for `SoftQuadrupole`, 0.004498 for `SoftSolenoid` and 0.002723 for
+`RFCavity`. Any lattice containing a reversed soft-edge element is affected.
+
+For each of the three classes, the script tracks one proton (938.3 MeV kinetic energy) with all six
+coordinates nonzero through a two-element lattice, the element and its `reverse()` copy, with a
+constant profile, `ds` = 0.7 m and 100 map steps. It reports the largest difference between final
+and initial coordinates, which must be 0. The constant profile rules out profile asymmetry as an
+explanation.
+"""
 import numpy as np
 from impactx import ImpactX, elements
 

@@ -1,9 +1,22 @@
-"""API-16: Equal dashboard element dictionaries retain stale shared lengths.
+"""API-16: Dashboard variable refresh leaves equal elements at stale lengths
 
-Load unchanged upstream modules and drain registered backend handlers. Trame UI
-construction is substituted; complete browser scheduling is outside this check.
-Compares the exported lattice with an analytic drift.
-No files are written; generated lattice text travels through stdin to fresh children.
+In the ImpactX dashboard, when several equal elements, such as identical drifts, have their lengths
+bound to one lattice variable, changing the variable can leave some of them at the old length,
+because the update finds elements by value equality instead of identity. Every bound parameter must
+take the variable's current value, so N drifts bound to a length L total N·L. For eight equal drifts
+bound in reverse order and changed from 0.125 m to 0.375 m, the exported lattice is 2.5 m long
+instead of 3 m, and a test particle at γ = 3.5 exits at x = −1.600 mm instead of −1.700 mm, with no
+error shown. Binding in index order or giving the drifts distinct names avoids it, and two further
+explicit refreshes restore the lengths.
+
+Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads fifteen unmodified
+dashboard modules from that clone, each checked equal to the installed copy, substitutes only the
+Trame UI construction and a state object that delivers every registered server-side handler, and
+drives the dashboard controls to create equal drifts, bind their lengths to a variable L and change
+L. It exports each lattice with the dashboard's generator, tracks twelve particles at γ = 3.5
+through it in a fresh child process and compares them with N drifts of the new length. Eight drifts
+bound in reverse order, and five and four with L decreased and increased, show the bug; forward
+binding order and distinct names are the controls.
 """
 
 import os

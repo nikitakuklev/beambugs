@@ -12,26 +12,32 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1729]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1730]], filed from this evidence |
 | Source | [`DipEdge.H#L345-L353`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/DipEdge.H#L345-L353) |
 
-In the nonlinear `DipEdge` model with `modify_ref_part=True`, the reference-particle update adds the fringe kick, which is normalized to the reference momentum P₀, directly to the reference `px`, which is stored in units of mc. For a reference entering along the axis, the kick in mc units must be βγ times the beam-normalized kick. With `psi=0.25 rad`, `rc=1 m` and `g=0.1 m`, the reference `px` is −0.004474 at every energy instead of −0.007749 at γ = 2 and −0.04452 at γ = 10. The reference deflection is wrong by the factor βγ: too small above βγ = 1 and too large below.
+With the nonlinear `DipEdge` model and `modify_ref_part=True`, ImpactX adds the fringe kick, normalized to the reference momentum P₀, directly to the reference particle's `px`, which is stored in units of mc. Since P₀/(mc) = βγ, the reference must instead be deflected by βγ times the kick the beam receives with `modify_ref_part=False`. For `psi` = 0.25 rad, `rc` = 1 m, `g` = 0.1 m and a reference entering along the axis, the reference `px` is −0.004474 at every energy instead of −0.007749 at γ = 2 and −0.04452 at γ = 10. The reference deflection is too small above βγ = 1 and too large below; the kick applied to the beam with `modify_ref_part=False` is not affected.
 
-## Reproducer
-
-beam px = dPx/P0 and ref px = Px/(m c), so moving the same fringe deflection onto the reference changes ref px by beta\*gamma times the beam-side kick.
-
-??? example "TRK-03.py"
+??? example "Reproducer: TRK-03.py"
 
     [Download TRK-03.py](TRK-03.py)
 
     ```python
-    """TRK-03: DipEdge(modify_ref_part=True) deflects the reference by the beam-normalized kick.
+    """TRK-03: `DipEdge(modify_ref_part=True)` deflects the reference by the beam-normalized kick
 
-    beam px = dPx/P0 and ref px = Px/(m c), so moving the same fringe deflection onto the reference
-    changes ref px by beta*gamma times the beam-side kick."""
+    With the nonlinear `DipEdge` model and `modify_ref_part=True`, ImpactX adds the fringe kick,
+    normalized to the reference momentum P₀, directly to the reference particle's `px`, which is stored
+    in units of mc. Since P₀/(mc) = βγ, the reference must instead be deflected by βγ times the kick the
+    beam receives with `modify_ref_part=False`. For `psi` = 0.25 rad, `rc` = 1 m, `g` = 0.1 m and a
+    reference entering along the axis, the reference `px` is −0.004474 at every energy instead of
+    −0.007749 at γ = 2 and −0.04452 at γ = 10. The reference deflection is too small above βγ = 1 and
+    too large below; the kick applied to the beam with `modify_ref_part=False` is not affected.
+
+    The script pushes an on-axis proton through `DipEdge(psi=0.25, rc=1, g=0.1, model="nonlinear")` at
+    γ = 2 and γ = 10, first with `modify_ref_part=False` to obtain the beam kick in `px`, then with
+    `modify_ref_part=True`, and compares the reference `px` with βγ times that kick.
+    """
     import numpy as np
     from impactx import ImpactX, elements
 
@@ -73,6 +79,8 @@ beam px = dPx/P0 and ref px = Px/(m c), so moving the same fringe deflection ont
             dpx = track([elements.DipEdge(**edge)], np.zeros(6), kin)[0, 1]
             track([elements.DipEdge(**edge, modify_ref_part=True)], np.zeros(6), kin)
             ref = sim.beam.ref
+            # beam px = dPx/P0 and ref px = Px/(m c), so moving the same fringe deflection onto the
+            # reference changes ref px by beta*gamma times the beam-side kick.
             print(f"gamma {gamma:g}: ref px observed {ref.px:.4g}, expected beta*gamma*dpx = {ref.beta_gamma * dpx:.4g}")
             bad |= abs(ref.px - ref.beta_gamma * dpx) > 1e-9
         print("DEFECT REPRODUCED" if bad else "NOT REPRODUCED")
@@ -86,5 +94,5 @@ beam px = dPx/P0 and ref px = Px/(m c), so moving the same fringe deflection ont
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed | `claude-opus-5-5` |  | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
 

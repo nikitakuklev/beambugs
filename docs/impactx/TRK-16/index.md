@@ -10,33 +10,36 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Tracking |
 | Priority | P1 |
-| Severity | Wrong physics (rotation-error reading) |
+| Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Tags | <span class="bb-tag">contract-unsettled</span> [?](../../methodology.md#tags) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1725]], filed from this evidence |
 | Source | [`ThinDipole.H#L154-L193`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ThinDipole.H#L154-L193)<br>[`Sbend.H#L178-L284`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/Sbend.H#L178-L284)<br>[`ExactSbend.H#L166-L305`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactSbend.H#L166-L305)<br>[alignment wrapper](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/mixin/beamoptic.H#L440-L507)<br>[`Sbend`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1855-L1859)<br>[`ExactSbend`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1910-L1914)<br>[`ThinDipole`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2325-L2329)<br>[reference-trajectory contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/theory/concepts.rst#L9-L20) |
 
-Setting `rotation` (a roll about the beam axis) on a `ThinDipole`, `Sbend` or `ExactSbend` produces no vertical steering. Under the manual's rotation-error convention, a bend of angle θ rolled by α must give the small-angle kick `py = −θ·sin α`, and ImpactX gives `py = 0`. A 3 mrad bend rolled by 20 mrad misses a kick of −6.000e-5, about 60 μm after a 1 m drift. Examples and the MAD-X importer also use `rotation` as a design roll, under which the reference orbit must bend vertically; under both readings the orbit stays in the horizontal plane.
+Setting `rotation`, a roll about the beam axis, on a `ThinDipole`, `Sbend` or `ExactSbend` produces no vertical steering. The manual describes `rotation` as a rotation error, and the Lorentz force in a bend of angle θ rolled by α then gives a vertical kick `py` = −θ·sin α to leading order in θ; ImpactX gives `py` = 0. A 3 mrad bend rolled by 20 mrad misses a kick of −6.000e-5 (60 μrad), about 60 μm after a 1 m drift, so roll-error studies lose the leading vertical effect of rolled dipoles. Examples and the MAD-X importer also use `rotation` as a design roll, under which the reference orbit must bend vertically; under either reading the orbit stays in the horizontal plane.
 
-## Reproducer
-
-Requires scipy.
-
-Lorentz impulse and independent lab-frame circular-orbit exit-plane checks.
-
-One serial, double-precision simulation per process; no output files.
-
-??? example "TRK-16.py"
+??? example "Reproducer: TRK-16.py"
 
     [Download TRK-16.py](TRK-16.py)
 
     ```python
-    """TRK-16: Rolled bends omit the leading vertical steering.
+    """TRK-16: Rolled `ThinDipole`, `Sbend` and `ExactSbend` omit vertical steering
 
-    Lorentz impulse and independent lab-frame circular-orbit exit-plane checks.
+    Setting `rotation`, a roll about the beam axis, on a `ThinDipole`, `Sbend` or `ExactSbend` produces
+    no vertical steering. The manual describes `rotation` as a rotation error, and the Lorentz force in
+    a bend of angle θ rolled by α then gives a vertical kick `py` = −θ·sin α to leading order in θ;
+    ImpactX gives `py` = 0. A 3 mrad bend rolled by 20 mrad misses a kick of −6.000e-5 (60 μrad), about
+    60 μm after a 1 m drift, so roll-error studies lose the leading vertical effect of rolled dipoles.
+    Examples and the MAD-X importer also use `rotation` as a design roll, under which the reference
+    orbit must bend vertically; under either reading the orbit stays in the horizontal plane.
 
-    One serial, double-precision simulation per process; no output files.
+    The script tracks 16 on-axis protons at design energy, with distinct arrival times, through each
+    rolled bend class for several bend and roll angles (including zero roll), signed radii, energies
+    from γ = 1.2 to 7 and slice counts, and compares `py` with the Lorentz impulse −θ·sin α and with the
+    exit of the exact circular orbit in the tilted uniform field. A rolled `Kicker` confirms the shared
+    roll sign convention, a `ThinDipole` particle with nonzero `pt` shows that the roll does reach the
+    element, and an electron through an `ExactSbend` with an explicit field covers that branch.
     """
 
     import os

@@ -1,6 +1,21 @@
-"""TRK-12: Buncher uses the wrong transverse fields for spin transport.
+"""TRK-12: `Buncher` uses the wrong transverse fields for spin transport
 
-Linear-in-offset spin response, with a compact RF field profile oracle.
+With spin tracking enabled (experimental in ImpactX), `Buncher` replaces the transverse RF fields
+with an effective magnetic field that reproduces the orbital kick but not the Thomas–BMT spin
+precession. Maxwell's near-axis fields of a localized axisymmetric RF field give a spin rotation
+about the vertical axis of −Ax/[2(γ + 1)] for a particle at offset x, with A = `k`·`V`, independent
+of the magnetic anomaly; a 65-digit quadrature confirms it. For a proton at γ = 2 in
+`Buncher(V=0.01, k=2)`, the spin rotation per metre of offset is +0.01529 rad/m instead of
+−0.003333 rad/m, wrong in sign and magnitude. The orbital kick is correct; the spin error persists
+for electrons, at γ = 10 and at low voltage.
+
+The script tracks two particles at x = ±offset with initial spin (0, 0, 1) through `Buncher(k=2)`
+and takes the spin-rotation and `px` slopes per metre of offset. It compares them with the
+Maxwell–Thomas–BMT and Maxwell–Lorentz responses, integrated at 65 digits over a cosine-squared
+field profile and checked against the closed forms, for protons at γ = 2 with `V` = 0.01 and 1e-6,
+electrons at γ = 2 and protons at γ = 10, at offsets of 1 mm and 10 µm. It also confirms that the
+observed spin slope equals A(1 + aγ)/[2(γ² − 1)], with a the species anomaly, the value the
+effective field produces.
 """
 
 import os

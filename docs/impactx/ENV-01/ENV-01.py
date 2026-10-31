@@ -1,4 +1,23 @@
-"""ENV-01: eigenemittance diagnostics corrupt small or repeated modes."""
+"""ENV-01: Eigenemittance diagnostics corrupt small or repeated modes
+
+With eigenemittance diagnostics enabled, `beam_moments()` returns wrong eigenemittances, or three
+NaNs, when the beam's emittances differ widely or two are equal, for both particle beams and
+`Envelope`. In the source, the characteristic cubic is formed from differences of trace invariants,
+which loses the small modes, and `acos` is then evaluated without guarding its domain. For an
+uncoupled beam the documented eigenemittances equal the projected normalized rms emittances, which
+an independent Hermitian eigensolver reproduces to within 5×10⁻¹⁵ relative. At γ = 2, an uncoupled
+beam with normalized emittances 0.01, 0.02 and 1000 µm gives eigenemittances 0.05116, 0.05584 and
+1000 µm, and 1, 1 and 1000 µm give three NaNs. A moderate spread (1, 2 and 3 µm) is correct, as are
+the projected emittances.
+
+The script builds diagonal covariance matrices at γ = 2 for three sets of normalized emittances (1,
+2 and 3 µm as the control; 0.01, 0.02 and 1000 µm; 1, 1 and 1000 µm) and passes each to
+`Envelope.beam_moments()` and, as twelve equal-weight particles with exactly that covariance, to the
+particle `beam_moments()`. It compares the eigenemittances with the analytic values, which the
+eigenvalues of the Hermitian matrix i·√Σ·J·√Σ confirm (Σ the normalized covariance, J the symplectic
+form), and checks that the projected normalized emittances are exact. The control must pass in both
+interfaces and the other two sets must fail.
+"""
 
 import os
 

@@ -12,23 +12,36 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-30 on development (`dfd49f22c34f`), source, CPU, double, serial |
+| Last reproduced | 2026-10-30 on ImpactX development (`dfd49f2`) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1742]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1743]], filed from this evidence |
 | Source | [`ChrPlasmaLens.H#L219-L223`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrPlasmaLens.H#L219-L223) |
 
-In a defocusing `ChrPlasmaLens` (negative strength `k`), one arrival-time term proportional to `(x²+y²)·ds` keeps the sign of the focusing branch, so the arrival-time coordinate `t` is wrong and the map is not symplectic. Independent integration of the element's documented Hamiltonian (second order in the transverse variables, exact in `pt`) gives the correct `t` and predicts the observed error to 2e-15 m; the transverse map and focusing lenses are correct. For a proton at γ = 2 with `ds=0.4 m`, `k=-2 m⁻²`, `x = 0.01 m` and `y = -0.015 m`, `t` is off by 1.459e-4 m with one slice and 1.713e-4 m with four, and the symplecticity residual is 0.01347.
+In a defocusing `ChrPlasmaLens` (negative strength `k`), one arrival-time term proportional to (x² + y²)·`ds` keeps the sign of the focusing branch, so the arrival-time coordinate `t` is wrong and the map is not symplectic. Integrating the element's documented Hamiltonian (second order in the transverse variables, exact in `pt`) gives the correct `t`; the observed error equals the sign-flipped term to 2e-15 m. For a proton at γ = 2 with `ds` = 0.4 m, `k` = −2 m⁻², x = 0.01 m and y = −0.015 m, `t` is off by 1.459e-4 m with one slice and 1.713e-4 m with four, and the map's Jacobian M violates the symplectic condition MᵀJM = J by 0.01347. The transverse map and focusing lenses are correct.
 
-## Reproducer
-
-Requires scipy.
-
-??? example "TRK-10.py"
+??? example "Reproducer: TRK-10.py"
 
     [Download TRK-10.py](TRK-10.py)
 
     ```python
-    """TRK-10: defocusing ChrPlasmaLens has an incorrect arrival-time term."""
+    """TRK-10: Defocusing `ChrPlasmaLens` has the wrong arrival-time sign term
+
+    In a defocusing `ChrPlasmaLens` (negative strength `k`), one arrival-time term proportional to (x² +
+    y²)·`ds` keeps the sign of the focusing branch, so the arrival-time coordinate `t` is wrong and the
+    map is not symplectic. Integrating the element's documented Hamiltonian (second order in the
+    transverse variables, exact in `pt`) gives the correct `t`; the observed error equals the
+    sign-flipped term to 2e-15 m. For a proton at γ = 2 with `ds` = 0.4 m, `k` = −2 m⁻², x = 0.01 m and
+    y = −0.015 m, `t` is off by 1.459e-4 m with one slice and 1.713e-4 m with four, and the map's
+    Jacobian M violates the symplectic condition MᵀJM = J by 0.01347. The transverse map and focusing
+    lenses are correct.
+
+    The script tracks protons through `ChrPlasmaLens` with both signs of `k`, at γ = 2 (`ds` = 0.4 m,
+    |`k`| = 2 m⁻²) and γ = 2.7 (`ds` = 0.31 m, |`k`| = 0.7 m⁻²), with one and four slices. It compares
+    the exit coordinates with a DOP853 integration of the Hamiltonian, itself checked against the
+    closed-form transverse flow, and the `t` error with the sign-flipped term summed over slices; a
+    fourth-order finite-difference Jacobian gives the symplecticity residual. The focusing lenses are
+    the control and must pass both checks.
+    """
 
     import os
 

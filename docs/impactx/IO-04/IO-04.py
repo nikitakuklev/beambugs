@@ -1,8 +1,22 @@
-"""IO-04: Thermal negative-charge initialization returns NaN positions.
+"""IO-04: `Thermal` negative-charge initialization returns NaN positions
 
-Fresh serial child per sample, with seed 1 and one simulation per process.
-Temporary arrays beside this script support paired checks and are removed on exit.
-The independent Poisson-Boltzmann ODE checks existence and charge symmetry.
+Initializing a `Thermal` distribution for a negatively charged species, such as electrons or H⁻,
+with positive focusing strength k and nonzero bunch charge returns NaN for every particle position,
+while the momenta are finite and the call returns normally. In the source, the radius calculation
+raises a self-field coefficient formed with the signed species charge to the power 2/3. Reversing
+the charge sign leaves the repulsive self-force unchanged, so the distribution must equal that of
+the opposite charge; an independent integration of Gauss's law with a Boltzmann density gives that
+finite solution. In the tested electron and H⁻ cases all 2049 positions are NaN, while positive
+species give finite positions and, at zero bunch charge, both signs give identical results.
+
+The script initializes `Thermal` distributions of 2049 particles for protons, H⁻, positrons and
+electrons at equal γ and intensity, for fixed-mass charges Z = ±1 and ±2, at zero and 10⁻²⁰ C bunch
+charge, and for a second parameter set with a halo, each in a fresh child process with the same
+random seed. It checks that every negative-charge case with nonzero bunch charge has all positions
+NaN and finite momenta, that the other cases are finite, and that opposite-sign pairs share
+identical momenta. For opposite-sign pairs it integrates the spherical Gauss-law and
+Boltzmann-density equations and requires identical finite solutions for both signs. Temporary arrays
+are written beside the script and removed on exit.
 """
 
 import os

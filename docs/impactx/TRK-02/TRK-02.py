@@ -1,8 +1,19 @@
-"""TRK-02: RFCavity spin transport rotates spin without a field and with a wrong energy factor.
+"""TRK-02: `RFCavity` spin transport rotates spin without a field and uses `sqrt(1+pt²)` for βγ
 
-Thomas-BMT: dS/ds = 0 where the field vanishes. At the entrance of a cavity with on-axis field
-escale*ez (ez = cos_coefficients[0]/2, the Fourier a0/2 term; phase 0), a particle with px precesses at
-|dSx/ds| = escale*ez*px*(G + 1/(gamma+1)) (longitudinal E-field term).
+With spin tracking enabled (experimental in ImpactX), `RFCavity` rotates the spin incorrectly: one
+spin-coupling term omits the on-axis field profile, and two divide by √(1 + γ²) instead of the
+reference momentum βγ. Thomas–BMT spin precession vanishes where the field is zero and starts at the
+entrance with rate |dSₓ/ds| = E·`px`·(G + 1/(γ + 1)) for on-axis field E and magnetic anomaly G. For
+a proton at γ = 2, a cavity with `cos_coefficients=[0]` (no field) turns the spin from (0, 0, 1) to
+(−0.002864, −0.001091, 1.000); with E = 0.2 m⁻¹ and `px` = 0.001, the entrance rate is 3.294e-4 m⁻¹
+instead of 4.252e-4 m⁻¹. Settings describing the same field give the same orbit but different spins;
+the orbit is unaffected.
+
+The script enables spin tracking and tracks a proton at 938.3 MeV kinetic energy (γ = 2) with
+initial spin (0, 0, 1). It first pushes an off-axis particle through a 0.7 m cavity with zero
+on-axis field, where the spin must stay (0, 0, 1); it then pushes a particle with `px` = 0.001
+through a 0.1 µm cavity with a constant profile (`cos_coefficients=[2]`, `escale` = 0.2) and
+compares |Sₓ|/L with the Thomas–BMT entrance rate. The printed ratio of the two equals βγ/√(1 + γ²).
 """
 import numpy as np
 from impactx import ImpactX, elements
@@ -43,6 +54,8 @@ try:
     s, ref = spin_after(elements.RFCavity(ds=L, escale=0.2, freq=1e8, phase=0.0, cos_coefficients=[2.0],
                                           sin_coefficients=[0.0], mapsteps=10), [0, px, 0, 0, 0, 0])
     g = ref.gamma
+    # On-axis field escale*ez with ez = cos_coefficients[0]/2 (the Fourier a0/2 term), phase 0. The
+    # longitudinal E-field term of Thomas-BMT gives |dSx/ds| = escale*ez*px*(G + 1/(gamma+1)).
     expected = 0.2 * (2.0 / 2) * px * (ref.gyromagnetic_anomaly + 1 / (g + 1))
     ratio = abs(s[0] / L) / expected
     print(f"entrance |dSx/ds| observed {abs(s[0] / L):.4g}, expected {expected:.4g}; ratio {ratio:.4g} "

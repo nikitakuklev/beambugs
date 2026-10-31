@@ -1,9 +1,22 @@
-"""COL-05: the 3D PIC beta interface loses the supplied Lorentz factor.
+"""COL-05: The 3D PIC beta interface loses the supplied Lorentz factor
 
-Uniform-sphere Lorentz similarity, exact continuum interior field, and matched
-low-energy squeezed-source controls isolate the beta reconstruction loss.
-Fresh serial CPU/double child per native case, timeout 290 s. Requires Python
-3.13 math.fma; writes no files.
+For 3D FFT particle-in-cell space charge, ImpactX passes only the rounded velocity β = √(1 − 1/γ²)
+to the WarpX/ABLASTR Poisson solver, which reconstructs the Lorentz factor γ from it, while
+ImpactX's own coordinate transforms keep the original γ. Lorentz similarity requires the transverse
+kick scaled by (βγ)² to stay unchanged for a fixed rest-frame source and mesh. At γ = 6.000×10⁷
+(30.66 TeV electrons) the solver uses γ = 4.745×10⁷, and for a uniform sphere on a 64³ mesh the
+rescaled transverse kick is 9.642% low, on a normalized kick of only 1.735×10⁻²⁰. The error shrinks
+at lower energy, to 2.716×10⁻⁹ at γ = 10⁴; no consequential error at ordinary energies is
+established.
+
+The script gives a cold uniform electron sphere (radius 1.3 mm, 0.7 pC) one 19 mm 3D FFT
+space-charge kick at γ = 7 and at high γ, with identical rest-frame sources and meshes, and compares
+the (βγ)²-scaled kicks on zero-weight tracers, which must be equal. It reproduces the high-γ result
+with a γ = 7 source squeezed longitudinally and scaled in charge by the ratio of reconstructed to
+true γ, and compares the deficit with the exact interior field of the corresponding ellipsoid; the
+sphere's exact field checks the baseline. A γ = 10⁴ control checks that the installed build
+reconstructs γ with a fused multiply-add, which needs Python 3.13 for `math.fma`. Each native case
+runs in a fresh child process.
 """
 
 import os

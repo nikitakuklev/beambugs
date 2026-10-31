@@ -1,5 +1,9 @@
 /* Wider content area for the defect tables. */
-.md-grid { max-width: 1600px; }
+.md-grid { max-width: 1920px; }
+/* Narrow navigation sidebar (Material's default is 12.1rem) leaves the width to the tables. */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary { width: 8.5rem; }
+}
 /* Defect tables span the content width. */
 .md-typeset__table { width: 100%; }
 .md-typeset__table table:not([class]) { display: table; width: 100%; }

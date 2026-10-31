@@ -12,26 +12,34 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Source | [`madx_to_impactx.py#L766-L798`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L766-L798)<br>[sextupole/octupole branches](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1327-L1370)<br>[thin-multipole branch](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1375-L1435)<br>[`read_lattice()`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1604-L1632)<br>[`bv` contract](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L80-L83) |
 
-When a MAD-X lattice for a reversed beam (`BV=-1`) is imported, straight normal and skew multipole strengths keep their forward-beam polarity, because the importer omits the `bv` factor. MAD-X defines `BV=-1` as reversing the magnetic force, native MAD-X 5.09.03 applies it, and the importer's documentation specifies the reversal. Body quadrupoles, sextupoles and octupoles and thin quadrupole through dodecapole terms are affected. For a 1.4 GeV (total energy) proton in a 0.23 m quadrupole with `k1 = 1.7 m⁻²` and tilt 0.21 rad, a test particle exits with `px = −7.699e-5` instead of +2.189e-5. Kickers import with the correct polarity.
+When ImpactX imports a MAD-X lattice for a reversed beam (`BV=-1`), straight normal and skew multipole strengths keep their forward-beam polarity, because the importer omits the `bv` factor. MAD-X defines `BV=-1` as reversing the magnetic force, native MAD-X applies it, and the importer's own documentation specifies the reversal; analytic maps and an independent integration of the equations of motion give the reversed result. For a 1.4 GeV (total energy) proton in a 0.23 m quadrupole with `k1` = 1.7 m⁻² and tilt 0.21 rad, a test particle exits with normalized momentum pₓ = −7.699×10⁻⁵ instead of +2.189×10⁻⁵. Body quadrupoles, sextupoles and octupoles and thin quadrupole through dodecapole terms are affected; forward beams and kickers import correctly.
 
-## Reproducer
-
-Requires cpymad, scipy.
-
-Self-contained analytic/ODE and native MAD-X checks; temporary decks are removed. One serial double-precision simulation per process, 16 deterministic particles.
-
-??? example "API-13.py"
+??? example "Reproducer: API-13.py"
 
     [Download API-13.py](API-13.py)
 
     ```python
-    """API-13: MAD-X BV=-1 retains forward multipole polarity.
+    """API-13: MAD-X `BV=-1` retains forward straight-multipole polarity
 
-    Self-contained analytic/ODE and native MAD-X checks; temporary decks are removed.
-    One serial double-precision simulation per process, 16 deterministic particles.
+    When ImpactX imports a MAD-X lattice for a reversed beam (`BV=-1`), straight normal and skew
+    multipole strengths keep their forward-beam polarity, because the importer omits the `bv` factor.
+    MAD-X defines `BV=-1` as reversing the magnetic force, native MAD-X applies it, and the importer's
+    own documentation specifies the reversal; analytic maps and an independent integration of the
+    equations of motion give the reversed result. For a 1.4 GeV (total energy) proton in a 0.23 m
+    quadrupole with `k1` = 1.7 m⁻² and tilt 0.21 rad, a test particle exits with normalized momentum pₓ
+    = −7.699×10⁻⁵ instead of +2.189×10⁻⁵. Body quadrupoles, sextupoles and octupoles and thin quadrupole
+    through dodecapole terms are affected; forward beams and kickers import correctly.
+
+    The script writes its own MAD-X decks and imports them with `lattice.load_file()` for both `BV`
+    signs: tilted normal quadrupoles at 1.4 and 4.7 GeV with `k1` = ±1.7 m⁻² in the linear, paraxial and
+    exact models, tilted mixed normal/skew thin multipoles of orders 1 to 5, and tilted mixed thick
+    quadrupoles, sextupoles and octupoles. Sixteen particles are compared with analytic quadrupole
+    matrices, thin kicks and a DOP853 integration of the unsplit Hamilton equations, all with strengths
+    multiplied by `BV`; native MAD-X, run through cpymad, must agree with the same oracle. `BV=1`, a
+    directly built negative-strength `Quad` and a `BV=-1` horizontal kicker are the controls.
     """
 
     import os

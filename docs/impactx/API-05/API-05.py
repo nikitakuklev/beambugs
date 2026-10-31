@@ -1,4 +1,22 @@
-"""API-05: Survey reverses normalized quadrupole focusing for negative charge."""
+"""API-05: Survey reverses normalized-quadrupole focusing for negative charge
+
+`plot_survey()` draws each quadrupole above or below the axis according to the sign of `k`·charge,
+but `Quad.k` and `ChrQuad(unit=0).k` are already normalized by the signed rigidity, so a positive
+`k` focuses horizontally for either charge. The plot's docstring defines a positive height as
+horizontal focusing, and particle tracking and the analytic transfer matrix confirm the focusing
+direction for both charges. A 0.5 m `Quad` with `k` = 1 m⁻² focuses a 1000 MeV electron exactly as
+it does a proton (matrix element R₂₁ = −0.4794 m⁻¹), yet it is drawn with height −0.8 instead of
++0.8. For electrons and other negative species every `Quad` and normalized `ChrQuad` is drawn
+reversed; tracking is correct, and `ChrQuad` with a physical gradient (`unit=1`) is drawn correctly.
+
+The script builds 0.5 m `Quad`, `ChrQuad(unit=0)` and `ChrQuad(unit=1)` elements with normalized
+strength k = ±1 m⁻² (the `unit=1` gradient scaled by the rigidity) for 1000 MeV protons and
+electrons, and checks R₂₁ from the reported linear map and from a pushed particle at x = 1 µm
+against the analytic −√k sin(√k L) or √(−k) sinh(√(−k) L). It then reads each rectangle's height
+from `plot_survey()`, drawn with Matplotlib's noninteractive backend, and expects +0.8 for k > 0 and
+−0.8 for k < 0. Protons and the `unit=1` elements are the controls; the four normalized electron
+cases are drawn reversed.
+"""
 
 import os
 from pathlib import Path

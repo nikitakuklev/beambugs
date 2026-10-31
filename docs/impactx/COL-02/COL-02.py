@@ -1,7 +1,16 @@
-"""COL-02: incoherent synchrotron radiation uses the electron classical radius for every species.
+"""COL-02: ISR uses the electron classical radius for every species
 
-Classical loss in a bend of radius R over ds (ultrarelativistic): dP/P = (2/3) r_q (beta gamma)^3 ds / R^2,
-with the species radius r_q = q^2 / (4 pi eps0 m c^2). For a proton r_e / r_p = m_p / m_e = 1836.
+With incoherent synchrotron radiation (ISR) enabled, ImpactX uses the electron classical radius for
+every species, although the radiated power scales with the species radius r_q = q²/(4πε₀mc²).
+Classical radiation theory gives the ultrarelativistic fractional momentum loss over a path ds at
+bending radius ρ as (2/3)·r_q·(βγ)³·ds/ρ². A 7 TeV (kinetic) proton reference over 100 m at
+ρ = 2800 m loses 9.954×10⁻⁹ of its momentum instead of 5.421×10⁻¹², 1836 times too much. Electrons
+are correct, but ISR accepts any species, and an ion of mass M and charge Ze radiates M/(Z²mₑ) times
+too much; from the source, the same radius also sets the quantum-excitation variance.
+
+The script tracks a 7 TeV proton reference through a 100 m `ExactSbend` with ρ = 2800 m, with
+first-order ISR applied to the reference particle. It compares the reference's fractional momentum
+loss with the classical formula evaluated with the proton radius.
 """
 import numpy as np
 from impactx import ImpactX, elements
@@ -23,6 +32,9 @@ try:
     sim.beam.add_n_particles(x=z, y=z, t=z, px=z, py=z, pt=z, qm=ref.qm_ratio_SI, bunch_charge=1e-15)
     R, ds = 2800.0, 100.0
     bg = ref.beta_gamma
+    # Classical ultrarelativistic loss in a bend of radius R over ds:
+    # dP/P = (2/3) r_q (beta gamma)^3 ds / R^2, species radius r_q = q^2 / (4 pi eps0 m c^2).
+    # For a proton r_e / r_p = m_p / m_e = 1836.
     r_p = ref.charge**2 / (4 * np.pi * epsilon_0 * ref.mass * c**2)
     expected = 2 / 3 * r_p * bg**3 * ds / R**2
     sim.lattice.append(elements.ExactSbend(ds=ds, phi=np.degrees(ds / R)))
