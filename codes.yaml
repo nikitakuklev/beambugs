@@ -36,3 +36,18 @@ xsuite:
     0.12.5) and build its prebuilt CPU kernels with `xsuite-prebuild regenerate`.
     Download a reproducer together with the `_*.py` helpers shown beside it and run
     `python <ID>.py`, one script per process.
+scibmad:
+  name: SciBmad
+  homepage: https://github.com/bmad-sim/SciBmad.jl
+  repository: bmad-sim/SciBmad.jl
+  ledger: /mnt/apollo/ref_docs/scibmad/upstream_defects
+  areas:
+    tracking.md: Tracking
+    optics_maps.md: Optics and maps
+    collective.md: Collective effects and spin
+    lattice_api.md: Lattice and API
+  modules: []
+  run: |
+    Install Julia 1.13 and the packages `SciBmad` (0.6.0), `SpaceCharge` and `ForwardDiff`.
+    Download a reproducer and run it with `julia <ID>.jl`, one script per process and one
+    thread (`JULIA_NUM_THREADS=1`).

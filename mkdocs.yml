@@ -23,6 +23,7 @@ nav:
   - Codes:
       - ImpactX: impactx/index.md
       - Xsuite: xsuite/index.md
+      - SciBmad: scibmad/index.md
 
 hooks:
   - hooks/upstream_state.py
