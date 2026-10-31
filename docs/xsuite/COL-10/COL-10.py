@@ -1,0 +1,80 @@
+"""COL-10: Noninterpolated loss maps discard coordinate reversal
+
+For a reversed line (`line_is_reversed=True`), a non-interpolated loss map computes the reflected
+aperture position L − s, with L the circumference, and then overwrites it with the unreflected
+expression, so the flag has no effect on aperture positions. The intended reflection is explicit in
+the code. An interior aperture at 4 m, with neighbour midpoints at 2.5 and 6.5 m, has centre 4.5 m,
+which must become 7.5 m in a reversed 12 m ring; the reversed map reports 4.5 m. Users who build
+non-interpolated loss maps for reversed lines get every aperture loss at an unreflected position.
+
+The script tracks three protons into apertures at 1, 4 and 9 m and builds forward and reversed loss
+maps from these losses. It checks the forward centre of the interior aperture `ap1`, whose cell does
+not cross the ring boundary, and compares its reversed centre, looked up by name, with L minus that
+centre. It requires the installed prebuilt kernels (compilation is forbidden).
+"""
+
+from _prebuilt import CTX, identity, kernels, np, report, xc, xt
+
+identity()
+line = xt.Line(
+    elements=[
+        xt.Drift(length=1),
+        xt.LimitRect(min_x=-0.004, max_x=0.004),
+        xt.Drift(length=3),
+        xt.LimitRect(min_x=-0.002, max_x=0.002),
+        xt.Drift(length=5),
+        xt.LimitRect(min_x=-0.0007, max_x=0.0007),
+        xt.Drift(length=3),
+    ],
+    element_names=["d0", "ap0", "d1", "ap1", "d2", "ap2", "d3"],
+)
+line.particle_ref = xt.Particles(p0c=2e9, pdg_id=2212)
+line.build_tracker(_context=CTX)
+p = xt.Particles(_context=CTX, p0c=2e9, pdg_id=2212, x=[0.005, 0.003, 0.001])
+line.track(p)
+order = np.argsort(p.particle_id)
+print(
+    "TRACKED states=",
+    np.asarray(p.state)[order],
+    "at_element=",
+    np.asarray(p.at_element)[order],
+    "s=",
+    np.asarray(p.s)[order],
+)
+np.testing.assert_array_equal(np.asarray(p.state)[order], [0, 0, 0])
+np.testing.assert_array_equal(np.asarray(p.at_element)[order], [1, 3, 5])
+np.testing.assert_array_equal(np.asarray(p.s)[order], [1, 4, 9])
+
+
+def lossmap(part, reversed=False):
+    return xc.LossMap(
+        line=line,
+        part=part,
+        line_is_reversed=reversed,
+        interpolation=False,
+        correct_aperture_absorption=False,
+        verbose=False,
+    )
+
+
+forward = lossmap(p.copy())
+reverse = lossmap(p.copy(), reversed=True)
+data = forward.aperture_losses
+L = line.get_length()
+# Compare the interior aperture independently of the periodic-boundary defect: its midpoint and
+# length do not cross the periodic boundary, so its expected centre is correct.
+revdata = reverse.aperture_losses
+rev_by_name = dict(zip(revdata["name"], revdata["s"]))
+print(
+    "INTERIOR ap1 forward=",
+    data["s"][1],
+    "reverse=",
+    rev_by_name["ap1"],
+    "expected_reverse=",
+    L - data["s"][1],
+)
+assert data["s"][1] == 4.5
+assert L - data["s"][1] == 7.5
+
+kernels()
+report({"reversed interior centre": (rev_by_name["ap1"], L - data["s"][1])}, rtol=0, atol=0)

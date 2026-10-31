@@ -22,6 +22,7 @@ nav:
   - Methodology: methodology.md
   - Codes:
       - ImpactX: impactx/index.md
+      - Xsuite: xsuite/index.md
 
 hooks:
   - hooks/upstream_state.py

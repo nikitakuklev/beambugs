@@ -1,0 +1,90 @@
+"""IO-09: RF phase setter leaves cached bucket geometry stale
+
+After an `RFBucket`'s geometry has been read, setting the RF phase `phi_offset_list` leaves the
+cached stable points and bucket boundaries unchanged, and the synchrotron tune Qₛ is recalculated
+from the new phase and the stale stable point, giving an inconsistent value. For a 100 m
+accelerating proton bucket with Lorentz factor γ = 10, harmonic 10, voltage 1 MV and acceleration
+fraction 0.5, changing the phase from 0 to 0.4 rad leaves the stable point at −0.8333 m instead of
+−0.1967 m. Fresh construction and the analytic translation give the new geometry and an unchanged Qₛ
+= 1.156×10⁻³, while the stale-root calculation gives 9.643×10⁻⁴. Setting the phase before reading
+geometry, or calling `add_fields([], [])`, gives correct results.
+
+The script builds a 100 m proton bucket with γ = 10, harmonic 10, voltage 1 MV, momentum compaction
+0.001 and acceleration fraction 0.5, reads its stable point, boundaries and Qₛ, then changes the
+phase from 0 to 0.4 rad. It compares the cached values with a freshly built bucket and with the
+analytic translation of the stable point, boundaries and tune, and shows that the stale stable point
+has nonzero total force. Setting the phase before any geometry is read, and calling `add_fields([],
+[])` after the change, are controls that must give the fresh result.
+"""
+
+from _prebuilt import identity, np, xt
+from scipy.constants import c, e
+from xpart.longitudinal.rf_bucket import RFBucket
+
+identity()
+print("EXECUTION Python only; no tracking kernels invoked")
+C, gamma, h, V = 100.0, 10.0, 10.0, 1e6
+mass = xt.PROTON_MASS_EV * e / c**2
+beta = np.sqrt(1 - gamma**-2)
+a = 0.5
+phase_change = 0.4
+
+
+def bucket(phase):
+    return RFBucket(
+        C,
+        gamma,
+        mass,
+        e,
+        [0.001],
+        a * V * e / (beta * c),
+        [h],
+        [V],
+        [phase],
+        zeta0=None,
+    )
+
+
+cached = bucket(0.0)
+old_s = cached.z_sfp.copy()
+old_bounds = np.array([cached.z_left, cached.z_right])
+old_tune = cached.Q_s.copy()
+cached.phi_offset_list = np.array([phase_change])
+fresh = bucket(phase_change)
+expected_s = (phase_change - np.arcsin(a)) * C / (2 * np.pi * h)
+shift = phase_change * C / (2 * np.pi * h)
+expected_tune = np.sqrt(
+    -e * cached.eta0 * h * V * np.sqrt(1 - a * a) / (2 * np.pi * cached.p0 * beta * c)
+)
+print("stable cached/fresh/analytic", cached.z_sfp, fresh.z_sfp, expected_s)
+print(
+    "bounds cached",
+    [cached.z_left, cached.z_right],
+    "fresh",
+    [fresh.z_left, fresh.z_right],
+    "expected shift",
+    shift,
+)
+print(
+    "force_at_cached_stable / RF_amplitude",
+    cached.total_force(cached.z_sfp) / (e * V / C),
+)
+print("Qs cached/fresh/analytic", cached.Q_s, fresh.Q_s, expected_tune)
+np.testing.assert_allclose(fresh.z_sfp, expected_s, rtol=0, atol=3e-13)
+np.testing.assert_allclose([fresh.z_left, fresh.z_right], old_bounds + shift, rtol=0, atol=3e-12)
+np.testing.assert_allclose(fresh.Q_s, expected_tune, rtol=2e-14, atol=0)
+np.testing.assert_array_equal(cached.z_sfp, old_s)
+np.testing.assert_array_equal([cached.z_left, cached.z_right], old_bounds)
+assert abs(float(cached.total_force(cached.z_sfp)[0]) / (e * V / C)) > 0.2
+# Falsification control: same setter before the cache is populated is correct.
+uncached = bucket(0.0)
+uncached.phi_offset_list = np.array([phase_change])
+np.testing.assert_allclose(uncached.z_sfp, fresh.z_sfp, rtol=0, atol=3e-13)
+# add_fields explicitly invalidates the geometry caches (an available workaround).
+cached.add_fields([], [])
+np.testing.assert_allclose(cached.z_sfp, fresh.z_sfp, rtol=0, atol=3e-13)
+np.testing.assert_allclose(
+    [cached.z_left, cached.z_right], [fresh.z_left, fresh.z_right], rtol=0, atol=3e-12
+)
+np.testing.assert_allclose(cached.Q_s, expected_tune, rtol=2e-14, atol=0)
+print("DEFECT REPRODUCED")

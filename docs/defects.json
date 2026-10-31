@@ -4332,5 +4332,5103 @@
    "numpy"
   ],
   "page": "impactx/API-18/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-01",
+  "title": "Solenoid body ignores per-particle charge-to-mass scaling",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "Xtrack's `UniformSolenoid` and a constant-profile `VariableSolenoid` move every particle along the reference-species trajectory, ignoring its charge-to-mass ratio relative to the reference species, χ. Because the solenoid strength `ks` is normalized to the reference rigidity, a particle with ratio χ must see χ·`ks`; the exact solenoid map and an independent integration of the Lorentz force both require this. A 1 GeV/c particle with twice the reference charge and the same mass (χ = 2) entering a 0.7 m solenoid with `ks` = 0.8 m⁻¹ at x = 3 mm exits at y = −0.7968 mm instead of −1.350 mm. Beams that mix species or charge states are affected; reference-species particles are tracked correctly.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`track_solenoid_single_particle`, track_magnet_drift.h:468–531",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_drift.h#L468-L531"
+   },
+   {
+    "label": "entrance potential at track_magnet_edge.h:72–75",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_edge.h#L72-L75"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-01.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-01/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-02",
+  "title": "Tracking optimization drops a full bend's multipole fringe",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`Line.optimize_for_tracking()` replaces the full edge of a sliced `Bend` with a dipole-only edge, silently dropping the fringe field of the bend's quadrupole component. Optimization should leave the sliced map unchanged, and the unoptimized line agrees with the manual's multipole-fringe generating function. For a straight 0.4 m `Bend` with no dipole field, quadrupole strength `k1` = 0.7 m⁻², a full entrance edge and `Teapot(1)` slicing, a particle entering at (x, y) = (20, 10) mm with normalized momenta (`px`, `py`) = (0.001, −0.002) exits at y = 9.738 mm instead of 9.737 mm, 0.9015 µm too high. Entrance and exit edges with a normal quadrupole component are both affected; without one, optimization preserves the map.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ThinSliceBendEntry.get_equivalent_element`, slice_elements_edge.py:52–73",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_edge.py#L52-L73"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "xsuite/xtrack",
+    "number": 911,
+    "kind": "pull",
+    "url": "https://github.com/xsuite/xtrack/pull/911",
+    "relation": "fix"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-02.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-02/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-03",
+  "title": "RF-derived linear segment map produces NaNs for electrons",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`LineSegmentMap` with `longitudinal_mode='linear_fixed_rf'` gives an electron NaN longitudinal coordinates at a valid, stable RF phase. Xsuite's RF convention uses the magnitude of the reference charge, so the analytic linear synchrotron rotation is the same for electrons and positrons of equal momentum. For a 1 GeV/c electron starting 1 mm ahead of the reference in a 1 m segment with 1 MV at 100 MHz, momentum compaction 0.01 and RF phase π, the expected exit position `zeta` is 1.000 mm and its normalized conjugate momentum `pzeta` is 2.096 × 10⁻⁶; both come out NaN. Tracking the element on its own leaves the particle alive, while the default `Line.track()` marks it lost; positrons are tracked correctly.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`longitudinal_motion`, linesegmentmap.h:282–304",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/linesegmentmap.h#L282-L304"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-03.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/TRK-03/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-04",
+  "title": "Optimizing RF slices drops roll and phase taper",
+  "area": "Tracking",
+  "priority": "P1",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`Line.optimize_for_tracking()` drops the roll of sliced `CrabCavity` elements and the `phase_taper` of sliced `Cavity` elements. Rotating the transverse kick by the roll angle and applying the RF sine law to the tapered phase give the correct kicks, and the unoptimized slices reproduce them. A 1 GeV/c proton through a 1 m, 1 MV crab cavity at zero frequency, phase π/2 and roll π/2 exits displaced 0.5000 mm horizontally instead of vertically. Through a 1 MV accelerating cavity at zero frequency with phase 0.2 rad and taper 0.3 rad, it gains 198.7 keV instead of 479.4 keV. Rolled crab cavities are affected, and so are phase-tapered cavities when the mean-radiation configuration enables the taper.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ThinSliceCrabCavity.get_equivalent_element`, slice_elements_thin.py:162–173",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_thin.py#L162-L173"
+   },
+   {
+    "label": "`ThinSliceCavity` converter",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_thin.py#L139-L149"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "low",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-04.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-04/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-05",
+  "title": "Sliced thick Multipole repeats the full reference bend angle",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "Thin slicing of a `Multipole(isthick=True)` applies the element's full reference bend angle `hxl` in every slice, so each extra slice adds spurious bending. At the reference momentum, a dipole kick `knl[0]` equal to `hxl` cancels the reference-frame kick exactly, so a particle starting on the reference orbit must stay there for any number of slices. For a 1 m element with `knl[0]` = `hxl` = 0.01 rad and a 1 GeV/c proton, four slices give x = 15.00 mm and normalized horizontal momentum `px` = 0.03000 instead of zero for both. The unsliced element and a single slice keep the particle on axis; thick multipoles with a nonzero reference angle sliced into several pieces are affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`thin_slice_multipole.h`",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/thin_slice_multipole.h#L22-L48"
+   },
+   {
+    "label": "`track_magnet_particles`",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet.h#L338-L369"
+   },
+   {
+    "label": "reference-frame kick",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_kick.h#L151-L160"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "low",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-05.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-05/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-06",
+  "title": "Zero linear chromaticity shifts the quadratic coefficient into the linear slot",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`LineSegmentMap` treats a scalar second tune derivative `ddqx` or `ddqy` as a first derivative when the matching linear chromaticity `dqx` or `dqy` is exactly zero. A specified second derivative must make the tune depend quadratically, and therefore evenly, on the relative momentum deviation δ. With `qx` = 0.2, `dqx` = 0, `ddqx` = 2.4 and initial x = 1 mm, the exit position is 0.5776 mm at δ = −2% and 0.01257 mm at δ = +2%, instead of 0.3061 mm at both. The analytic rotation and the equivalent derivative array `dnqx=[0.2, 0, 2.4]` agree on the correct value, so specifying arrays avoids the bug; the vertical keywords have the same defect.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`LineSegmentMap.__init__`, line_segment_map.py:270–291",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/line_segment_map.py#L270-L291"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-06.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-06/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-07",
+  "title": "Optimization disables radiation in curved-body RBend slices",
+  "area": "Tracking",
+  "priority": "P1",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`Line.optimize_for_tracking()` silently turns off the configured mean synchrotron radiation in thin slices of a curved-body `RBend`. The classical radiated power predicts a finite energy loss, the unoptimized slices reproduce it, and an equivalent sector `Bend` keeps it after optimization. For a 3 GeV/c electron in a rectangular bend with 1 m arc length, bend angle 0.01 rad and `Teapot(1)` slicing, optimization changes the energy loss from 114.0 eV to zero. Optimized curved-body rectangular bends with mean radiation are affected; the `straight-body` model bypasses this conversion.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ThinSliceRBend.get_equivalent_element`, slice_elements_thin.py:220–242",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_thin.py#L220-L242"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "low",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-07.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-07/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-08",
+  "title": "SplineBoris omits species factors in physical charge and momentum",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`SplineBoris` omits the particle's charge and mass ratios when converting normalized coordinates to physical charge and momentum, so non-reference species get wrong deflections and flight times. The Lorentz impulse in a uniform field scales with the charge-to-mass ratio relative to the reference species, χ, and relativistic kinematics gives field-free particles of equal normalized velocity equal arrival times. Over 0.5 m in a 0.1 T vertical field at reference momentum 1 GeV/c, a particle with twice the reference charge and the same mass (χ = 2) gets normalized horizontal momentum −0.01499 instead of −0.02998. Field-free, doubling both mass and charge gives a longitudinal displacement of −0.5000 m instead of zero. Reference-species particles are tracked correctly, and finer integration removes neither error.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`track_splineboris.h:69–85`",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_splineboris.h#L69-L85"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-08.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/TRK-08/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-09",
+  "title": "Solenoid spin tracking uses the wrong kinetic momentum",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "Spin tracking in the body of a `UniformSolenoid` takes the particle direction from the canonical momentum plus the vector potential (`px + ax`, `py + ay`) instead of their difference, the kinetic momentum. For motion along the field, the Thomas–BMT spin-precession equation gives a pure rotation about the field axis and no longitudinal spin. A 1 GeV/c proton (anomalous magnetic moment G = 1.793) entering a 0.7 m solenoid with `ks` = 0.8 m⁻¹ at (x, y) = (50, 20) mm, with zero transverse kinetic momentum and spin along x, exits with longitudinal spin −0.007126 instead of zero. Edge maps are off, and sixteen body pieces give the same result; orbit, spin length and the G = 0 case are correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`magnet_spin`, track_magnet_radiation.h:141–166",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_radiation.h#L141-L166"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "xsuite/xtrack",
+    "number": 923,
+    "kind": "pull",
+    "url": "https://github.com/xsuite/xtrack/pull/923",
+    "relation": "fix"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "source-compiled HEAD package set, CPU, serial"
+    },
+    "result": "not reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-30",
+   "code": {
+    "ref": "xtrack 0.118.2",
+    "commit": "ad5e808cdc5b"
+   },
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b"
+    }
+   }
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-09.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-09/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-10",
+  "title": "Linear dipole-edge finite-gap focusing has wrong species scaling",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`DipoleEdge(model='linear')` applies the particle's charge-to-mass ratio relative to the reference species, χ, to its vertical edge kick but not inside the finite-gap angle correction, so non-reference species get wrong vertical focusing. The analytic fringe formula, and the equivalence between scaling the charge and scaling the field, require the leading zero-face-angle kick to scale with charge squared at fixed mass and momentum. With dipole strength `k` = 0.1 m⁻¹, half-gap `hgap` = 0.02 m, fringe integral `fint` = 0.5, zero face angle and y = 10 µm, a 1 GeV/c particle with twice the reference charge gets normalized vertical momentum 4.000 × 10⁻⁹ instead of 8.000 × 10⁻⁹. Reference-species and zero-gap edges are correct, and the tested `full` edge model scales correctly.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`DipoleEdge._update_r21_r43`, dipole_edge.py:126–134",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/dipole_edge.py#L126-L134"
+   },
+   {
+    "label": "`DipoleEdgeLinear_single_particle`",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_dipole_edge_linear.h#L30-L38"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-10.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-10/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-11",
+  "title": "Elens has inverted species scaling and extra momentum dependence",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "The annular `Elens` kick shrinks when the particle charge grows and carries an extra dependence on the relative momentum deviation δ. Gauss's law and the magnetic force of the counter-propagating electron beam require the normalized kick to scale with the particle's charge-to-mass ratio relative to the reference species, χ, and the physical velocity factor. For a 3.7 A, 1.3 m, 10 kV lens with radii 1 and 4 mm, a 1 GeV/c particle at (x, y) = (2, 0.4) mm with twice the reference charge and the same mass gets normalized horizontal momentum −1.173 × 10⁻⁴ instead of −4.693 × 10⁻⁴. Non-reference species and off-momentum reference particles are affected; at δ = +20% the reference-species kick is 1.200 times too large.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Elens_track_local_particle`, elens.h:110–135",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/elens.h#L110-L135"
+   },
+   {
+    "label": "electron-lens force",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L3341-L3385"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "source-compiled HEAD package set, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "f09e0fbda37b"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-11.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-11/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-12",
+  "title": "Wire kicks omit particle charge-to-mass scaling",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`Wire` gives every particle the reference-species kick regardless of its charge or mass, so even opposite charges bend the same way. Integrating the Biot–Savart field of the finite wire shows that the normalized kick must scale with the particle's charge-to-mass ratio relative to the reference species, χ. For a 7 A wire of physical length 0.7 m and interaction length 1.1 m at (x, y) = (−1, 0.2) mm, a 1 GeV/c particle at (2, 0.5) mm with twice the reference charge and the same mass gets normalized horizontal momentum −9.696 × 10⁻⁵ instead of −1.939 × 10⁻⁴. Reference-species and off-momentum particles are tracked correctly; any species set through `charge_ratio` or `mass_ratio` is affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Wire_track_local_particle`, wire.h:33–50",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/wire.h#L33-L50"
+   },
+   {
+    "label": "species-coordinate Hamiltonian",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L321-L466"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "source-compiled HEAD package set, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "f09e0fbda37b"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-12.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-12/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-13",
+  "title": "Exciter activates before its stated starting time",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`Exciter` applies its first waveform sample to particles arriving less than one sample period before `start_turn`. The documented start time, and an independent calculation of which sample covers each arrival time, require no excitation before then. With `start_turn` = 5, revolution frequency 1 MHz, sampling frequency 0.25 MHz, `knl=[2.5e-6]` and first sample 0.75, the reference particle receives normalized horizontal momentum −1.875 × 10⁻⁶ at turn 4 instead of zero. Early arrivals are affected, and when sampling is slower than revolution the kick can start a whole turn early; samples within the waveform, arrivals more than one sample period early and times after the waveform ends are handled correctly.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Exciter_track_local_particle`, exciter.h:43–47",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/exciter.h#L43-L47"
+   },
+   {
+    "label": "`start_turn` contract",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/exciter.py#L33-L36"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "source-compiled HEAD package set, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "f09e0fbda37b"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-13.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-13/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-14",
+  "title": "Elens residual kicks fail forward/backward tracking",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Backtracking through an `Elens` repeats its hollow-core residual kicks instead of undoing them, so a forward-then-backward round trip doubles the residual momentum. The inverse of a constant momentum kick has the opposite sign, and an explicit inverse element with both residual kicks negated restores the initial state exactly. For a 1.4 m, 3 A, 12 kV lens with radii 1 and 4 mm and residual normalized kicks (2.3, −4.1) × 10⁻⁷, a 1 GeV/c proton in the core returns with normalized transverse momenta (`px`, `py`) = (4.600, −8.200) × 10⁻⁷ instead of zero. Backtracking a lens with nonzero residual kicks is affected; the annular electron-lens force round-trips correctly.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Elens_track_local_particle`, elens.h:137–147",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/elens.h#L137-L147"
+   },
+   {
+    "label": "`Elens` class advertises `has_backtrack=True`",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elens.py#L47"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "source-compiled HEAD package set, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "f09e0fbda37b"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-14.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-14/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-15",
+  "title": "Zero horizontal focusing loses accelerated-path terms",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "A straight `Bend` with zero quadrupole strength, a nonzero distributed dipole strength `k0` and `model='mat-kick-mat'` omits path-length terms from its longitudinal coordinate ζ when the horizontal focusing is zero. Integrating the squared transverse slope in the stated Hamiltonian gives a finite flight-time contribution and an invertible map. For a 2.3 GeV/c proton with zero initial slopes and momentum deviation, a 1.7 m bend with `k0` = 0.03 m⁻¹ and one uniform kick gives ζ = −0.2764 mm instead of −0.7370 mm. Adding more kicks, which carry no field here, changes the error, and forward-then-backward tracking does not return to the start. The transverse map and the zero-field case are correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`track_expanded_combined_dipole_quad_single_particle`, track_magnet_drift.h:202–235",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_drift.h#L202-L235"
+   },
+   {
+    "label": "expanded-map Hamiltonian",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L1105-L1119"
+   },
+   {
+    "label": "displayed degenerate path length",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L1220-L1226"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "source-compiled HEAD package set, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "f09e0fbda37b"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-15.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/TRK-15/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-16",
+  "title": "Quantum photon rate omits reference charge squared",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "The `quantum` and `quantum-kick` synchrotron-radiation modes omit the square of the reference charge from the photon emission rate, underestimating emission for multiply charged reference particles. The Liénard radiated power and an independent integration of the photon spectrum require the rate to scale with charge squared at fixed curvature. For a reference particle of charge 6e (six elementary charges), rest energy 11.18 GeV and momentum 250 TeV/c over 600 m at curvature 2 × 10⁻⁵ m⁻¹, a `Multipole` emits on average 2.822 photons per particle instead of 101.8. An unsliced `Bend` with the same parameters loses 57.02 eV on average in `quantum` mode instead of 2075 eV, which mean-radiation tracking gives. Unit-charge references are correct; all tested particles had the reference species.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`synrad_average_number_of_photons`, synrad_spectrum.h:209–219",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/headers/synrad_spectrum.h#L209-L219"
+   },
+   {
+    "label": "total-energy sampler",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/headers/synrad_spectrum.h#L409-L433"
+   },
+   {
+    "label": "individual-photon sampler",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/headers/synrad_spectrum.h#L463-L499"
+   },
+   {
+    "label": "radiation laws",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L5872-L5917"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "source-compiled HEAD package set, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "f09e0fbda37b"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-16.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/TRK-16/"
+ },
+ {
+  "code": "xsuite",
+  "id": "TRK-17",
+  "title": "Off-origin polygon apertures retain particles outside their boundary",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "On serial CPU, `LimitPolygon` also accepts a disk around its local origin when the polygon lies away from that origin, so particles outside the aperture survive. Independent convex half-plane tests give the correct acceptance, and writing the same geometry as centered vertices plus an element translation restores it. For a rectangle spanning 4–8 mm horizontally and ±1.5 mm vertically before rotation, 358 of 2114 sampled particles survive instead of 56, and all 302 false survivors lie in the spurious 4 mm-radius disk. Both vertex orderings and line tracking are affected. Source inspection also finds that on GPU a particle exactly at the local origin bypasses the test; GPU execution is untested.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`LimitPolygon_track_local_particle`, limitpolygon.h:24–89",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/limitpolygon.h#L24-L89"
+   },
+   {
+    "label": "vertex contract and constructor",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/limit_polygon.py#L12-L128"
+   },
+   {
+    "label": "centroid tests",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/tests/test_apertures.py#L397-L416"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "source-compiled HEAD package set, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "f09e0fbda37b"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-17.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/TRK-17/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-01",
+  "title": "Native Taylor maps silently omit RFMultipole and CrabCavity kicks",
+  "area": "Optics and matching",
+  "priority": "P4",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [
+   "experimental"
+  ],
+  "summary": "Tracking an `RFMultipole` or `CrabCavity` with the experimental `ParticlesTpsa` API, which propagates native truncated-power-series (Taylor) maps, silently drops the element's transverse kick and the energy change that goes with it. The RF potential predicts both kicks, and ordinary particle tracking reproduces them. For a 1 GeV/c proton at x = 3 mm crossing a 1 MV, 100 MHz crab cavity at phase π/4 rad, the map gives zero normalized horizontal momentum pₓ and relative momentum change δ instead of 7.071 × 10⁻⁴ and −6.097 × 10⁻⁶; an RF dipole with `knl[0]` = 0.001 likewise loses its opposite kick. Users of native Taylor maps are affected; ordinary finite-difference `Line.twiss()` is not shown to fail.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`track_rf_kick_single_particle`, track_rf.h:68–169",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_rf.h#L68-L169"
+   },
+   {
+    "label": "`TPSA_SUPPORTED_ELEMENTS`",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/prebuilt_kernel_definitions/element_types.py#L127-L148"
+   },
+   {
+    "label": "public API",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/apireference.rst#L1090-L1126"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-01.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/OPT-01/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-02",
+  "title": "Native Taylor maps ignore an absolute-time cavity's RF clock",
+  "area": "Optics and matching",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [
+   "experimental",
+   "known-limitation"
+  ],
+  "summary": "Tracking a `Cavity` with `absolute_time=True` through the experimental `ParticlesTpsa` API, which propagates native truncated-power-series (Taylor) maps, silently ignores the absolute RF clock and so uses the wrong RF phase. The absolute-arrival-time definition and the relativistic energy–momentum relation give the correct kick, and ordinary particle tracking reproduces it. For a 1 GeV/c proton at zero position and RF phase, a 1 MV, 100 MHz cavity with `time_s` = 2.5 ns gives a relative momentum change δ of zero instead of 1.371 × 10⁻³, a 1.000 MeV energy gain; relative-time controls are correct. A source comment acknowledges the restriction, but the public interface accepts the configuration without warning or rejection.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`track_rf.h:51–58`",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_rf.h#L51-L58"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-02.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-02/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-03",
+  "title": "Solenoid Taylor map has zero strength sensitivity at zero field",
+  "area": "Optics and matching",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [
+   "experimental"
+  ],
+  "summary": "Expanding a `UniformSolenoid` about zero field, with its normalized strength `ks` as a parameter of the experimental `ParticlesTpsa` API for native truncated-power-series (Taylor) maps, returns zero orbit sensitivity to that strength. Differentiating the exact solenoid map gives a nonzero response, confirmed by central differences of ordinary particle tracking. For a 0.7 m solenoid and a 1 GeV/c proton starting at x = 3 mm with all other coordinates zero, the derivative of vertical position y with respect to `ks` is 0 instead of −1.050 × 10⁻³ m². A calculation using this derivative, such as an optimizer starting from a switched-off solenoid, sees no response; tested expansions about nonzero field agree with numerical differentiation.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`track_magnet_drift.h:475–482`",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_drift.h#L475-L482"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-03.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "madng-tpsa",
+   "numpy"
+  ],
+  "page": "xsuite/OPT-03/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-04",
+  "title": "Finite-difference transfer matrices reset the supplied RF clock",
+  "area": "Optics and matching",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "The finite-difference transfer matrix (`get_R_matrix`) and open Twiss propagation drop the supplied orbit's clock `time_s`, resetting the RF clock of an absolute-time cavity. Shifting the clock while compensating with the cavity phase leaves tracking and its derivatives unchanged, as the analytic RF focusing and central differences that keep the full particle state confirm. For a 1 GeV/c proton and a 1 MV, 100 MHz cavity with a compensated clock phase of π/3 rad, the longitudinal focusing term, the change of momentum coordinate `pzeta` per longitudinal offset `zeta`, is −1.970 × 10⁻³ m⁻¹ instead of −3.941 × 10⁻³ m⁻¹, and open Twiss generates `pzeta` = −1.188 × 10⁻³ instead of zero. Supplied nonzero clocks are affected; zero-clock controls pass.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`get_R_matrix`, transfer_matrices.py:54–69",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/transfer_matrices.py#L54-L69"
+   },
+   {
+    "label": "reference-field copy",
+    "url": "https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/build_particles.py#L301-L313"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-04.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/OPT-04/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-05",
+  "title": "4D Twiss retains RF energy kicks from LineSegmentMap",
+  "area": "Optics and matching",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`twiss4d()` keeps the RF energy kicks of a `LineSegmentMap` in its longitudinal modes `linear_fixed_rf` and `nonlinear`, although 4D (transverse-only) optics assumes fixed energy. With RF off, 4D optics requires constant momentum, and a frozen segment followed by an ordinary cavity satisfies it. For a 1 GeV/c proton through a 1 m segment with tunes 0.2 and 0.3, 1 MV at 100 MHz, momentum compaction 0.01 and initial longitudinal offset 1 mm, the exit relative momentum deviation δ is −3.940 × 10⁻⁶ in `linear_fixed_rf` and −3.941 × 10⁻⁶ in `nonlinear` mode instead of zero. Periodic and open Twiss are both affected; the `linear_fixed_qs` mode and the ordinary cavity keep the momentum fixed.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`longitudinal_motion`, linesegmentmap.h:240–305",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/linesegmentmap.h#L240-L305"
+   },
+   {
+    "label": "4D Twiss sets explicitly",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_defaults_and_input_preparation.py#L412-L413"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-05.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-05/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-06",
+  "title": "A subrange's second-order chromaticity depends on its absolute s position",
+  "area": "Optics and matching",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "A periodic Twiss over a named subrange of a line reports a second-order chromaticity that depends on the range's absolute longitudinal position s. Differentiating the prescribed tune polynomial twice gives the correct value, and moving an otherwise unchanged range along s cannot change it. For a 2 m `LineSegmentMap` with horizontal tune Qₓ(δ) = 0.2 + 1.2δ + 1.2δ², δ being the relative momentum deviation, a 10 m drift placed before it, outside the selected range and not tracked, changes the reported `ddqx` (d²Qₓ/dδ²) from 2.400 to 86.40, a factor of 36.00 for both finite-difference steps tried. Constant-energy periodic ranges that start after s = 0 are affected; the tune, the first-order chromaticity and the drift-free control are correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`_get_chromatic_functions`, chromatic_functions.py:110–134",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/chromatic_functions.py#L110-L134"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-06.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-06/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-07",
+  "title": "Periodic subrange slip factor uses the full parent line length",
+  "area": "Optics and matching",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "Periodic Twiss on a subrange of a line divides the longitudinal response by the length of the whole parent line, corrupting the reported slip factor η and momentum compaction. Both are defined with the length of the selected periodic map, and the computed transfer matrix agrees with that local map. For a 2 m `LineSegmentMap` with momentum compaction 0.02, zero RF voltage and a 1 GeV/c proton reference, adding an untracked 10 m prefix changes η from −0.4482 to −0.07470 and the momentum compaction from 0.02000 to 0.3935, although these dimensionless quantities should not change. Constant-energy 4D periodic subranges with unused prefixes or suffixes are affected; the selected matrix itself stays correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`_add_periodic_solution_data_to_twiss_result`, twiss_postprocess_and_complem_results.py:30–71",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_postprocess_and_complem_results.py#L30-L71"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-07.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-07/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-08",
+  "title": "Extracted Twiss init loses a downstream reference-momentum change",
+  "area": "Optics and matching",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`TwissTable.get_twiss_init()` loses a reference-momentum change that lies between the table start and the selected row, so an open Twiss restarted from the extracted initial conditions follows a particle with a different physical momentum and orbit. `ReferenceEnergyChange` only changes the normalization, so exact momentum identities and drift transport require the restarted and uninterrupted trajectories to agree. Starting at 1 GeV/c with x = 3 mm and normalized horizontal momentum pₓ = 0.001, rebasing to 2 GeV/c and restarting before a 1 m exact drift gives a final x of 6.069 mm instead of 4.000 mm; the extracted reference momentum is 1.000 GeV/c instead of 2.000 GeV/c. Restarts after reference changes are affected; without a change the restart is correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`TwissTable.get_twiss_init`, twiss_table.py:359–369",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_table.py#L359-L369"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-08.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-08/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-09",
+  "title": "Sliced decelerating cavities are counted as synchrotron-radiation loss",
+  "area": "Optics and matching",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "With `radiation_analysis=True`, Twiss counts the kicks of decelerating `ThinSliceCavity` elements as synchrotron-radiation energy loss, although it excludes the equivalent unsliced `Cavity`. Monitoring the energy change element by element isolates the bend's radiation and shows that slicing leaves it unchanged. In a 3 GeV/c electron ring with a 1 m, 0.01 rad bend and a 10 kV decelerating cavity, slicing each cavity into one Teapot slice changes the reported loss from 114.0 eV to 10.11 keV instead of keeping 114.0 eV; the excess is the full 10.00 keV RF deceleration. Radiation diagnostics with thin decelerating cavity slices are affected; accelerating kicks and zero-deceleration controls show no such excess.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`_get_eneloss_and_damping_rates`, radiation.py:21–32",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L21-L32"
+   },
+   {
+    "label": "`radiation_analysis=True` output",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss.py#L354-L362"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels, CPU, double, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-09.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-09/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-10",
+  "title": "Sequential step clipping violates earlier variable bounds",
+  "area": "Optics and matching",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`Line.match()` can accept an iteration that exceeds an earlier variable's `Vary.max_step`, because clipping a later variable rescales the already clipped step vector and enlarges it. A common scale factor must satisfy every bound at once and not depend on variable order. For dimensionless variables a and b starting at 0, with targets 6 and 12 and maximum steps 0.2 and 0.8, the accepted changes are 0.4000 and 0.8000 instead of the correctly scaled 0.2000 and 0.4000: a moves twice its allowed amount, while reversing the variable order gives the correct result. Several simultaneously limited variables are affected even with unit weights, and the violation occurs in an accepted iteration, not only in a trial evaluation.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "MeritFunctionForMatch._clip_to_max_steps, optimize.py:417–425",
+    "url": "https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/optimize/optimize.py#L417-L425"
+   },
+   {
+    "label": "Vary.max_step contract",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/match.py#L461-L462"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xdeps 0.10.21",
+      "commit": "73147cf7d9f1",
+      "build": "installed wheels, Python only (no tracking kernels), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xdeps 0.10.21",
+      "commit": "73147cf7d9f1",
+      "build": "installed wheels, Python only (no tracking kernels), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xdeps main",
+     "commit": "64847952ef3a",
+     "build": "HEAD source archives of all seven packages, local xdeps extension build, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xdeps main",
+    "commit": "64847952ef3a"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-10.py",
+   "_matching.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-10/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-11",
+  "title": "Variable weights distort physical maximum steps",
+  "area": "Optics and matching",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Giving a matching variable a `weight` other than one changes its effective `max_step` in the variable's own units. The solver works in weighted coordinates, so converting back to the variable must convert the maximum step too, leaving the accepted physical bound independent of weight. For a dimensionless variable starting at 3, targeting 20 and limited to `max_step` = 0.2, one accepted `Line.match()` iteration changes it by 2.000 with weight 10 and by 0.02000 with weight 0.1, instead of 0.2000. Weighted variables can therefore exceed the requested bound or be needlessly restricted; unit weight is correct, and a single variable suffices to trigger the error.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "MeritFunctionForMatch._clip_to_max_steps, optimize.py:417–425",
+    "url": "https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/optimize/optimize.py#L417-L425"
+   },
+   {
+    "label": "_x_to_knobs, optimize.py:220",
+    "url": "https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/optimize/optimize.py#L220"
+   },
+   {
+    "label": "Vary.max_step contract",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/match.py#L461-L462"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xdeps 0.10.21",
+      "commit": "73147cf7d9f1",
+      "build": "installed wheels, Python only (no tracking kernels), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xdeps 0.10.21",
+      "commit": "73147cf7d9f1",
+      "build": "installed wheels, Python only (no tracking kernels), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xdeps main",
+     "commit": "64847952ef3a",
+     "build": "HEAD source archives of all seven packages, local xdeps extension build, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xdeps main",
+    "commit": "64847952ef3a"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-11.py",
+   "_matching.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-11/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-12",
+  "title": "Knob construction applies absolute limits to additive corrections",
+  "area": "Optics and matching",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`match_knob()` applies a variable's absolute `Vary.limits` to the additive correction it solves for, without subtracting the variable's starting value. The correction's allowed interval must be the limits shifted by that starting value, and ordinary matching respects the absolute bounds. For a dimensionless variable starting at 8 with limits [−10, 10] and target 12, the generated knob reaches 12.00 instead of stopping at the allowed maximum 10.00. Conversely, starting at 8 with valid limits [7, 10] and target 9 fails during knob setup. Knob construction from a nonzero starting value is affected at the matched endpoint itself, without extrapolation or later combination of knobs.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "KnobOptimizer.__init__, match.py:1334–1351",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/match.py#L1334-L1351"
+   },
+   {
+    "label": "Vary.limits contract",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/match.py#L454-L456"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, Python only (no tracking kernels), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, Python only (no tracking kernels), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "HEAD source archives of all seven packages, local xdeps extension build, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "f09e0fbda37b"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-12.py",
+   "_matching.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-12/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-13",
+  "title": "Reversed Twiss tables reconstruct incorrect transverse transfer maps",
+  "area": "Optics and matching",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Transverse transfer matrices reconstructed from `TwissTable.reverse()` or `Line.twiss(reverse=True)` give the wrong reversed transport, including spurious focusing in a drift. Analytic drift and thin-lens matrices, transformed into the documented reverse frame, agree with native backtracking and require a reversed drift to keep a positive length. For a 1.7 GeV/c proton line containing 0.7600 m of drift, with initial horizontal beta function 0.7 m and alpha −0.8, the reconstructed response of position to normalized momentum, R₁₂, is −0.7600 m instead of +0.7600 m, and the response of momentum to position, R₂₁, is 2.035 m⁻¹ instead of zero. Both reconstruction APIs and marker subintervals are affected in the tested uncoupled channels; forward reconstruction passes.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`TwissTable.reverse`, twiss_table.py:984–1111",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_table.py#L984-L1111"
+   },
+   {
+    "label": "matrix reconstruction APIs, lines 775–881",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_table.py#L775-L881"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "HEAD source archives of all seven packages, kernels compiled from source, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "f09e0fbda37b"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-13.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-13/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-14",
+  "title": "Full radiation equilibrium covariance omits accumulated diffusion",
+  "area": "Optics and matching",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Full radiation analysis transports the reported equilibrium beam covariance with damping alone, omitting the accumulated photon diffusion, so beam variances differ at the two ends of the same periodic boundary. At equilibrium, damped transport plus diffusion must reproduce the starting covariance, whatever its absolute normalization. In a 144 m, 24-cell electron ring at 7 GeV/c with 48 bends and a 50 MV cavity, the horizontal variance ends at 7.660 × 10⁻⁵ m² instead of its starting 7.695 × 10⁻⁵ m², a 0.4538% deficit. The defect affects `eq_beam_covariance_matrix` from `radiation_method='full'`, also with lattice functions disabled; it establishes failed periodic closure, not the absolute accuracy of the starting covariance or scalar emittances.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`_get_equilibrium_emittance_full`, radiation.py:244–357",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L244-L357"
+   },
+   {
+    "label": "public analysis caller",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_postprocess_and_complem_results.py#L168-L231"
+   },
+   {
+    "label": "equilibrium balance",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L6064-L6094"
+   },
+   {
+    "label": "FCC-ee local beam-size comparison",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/examples/fcc_ee/001_match_emittance.py#L83-L110"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "HEAD source archives of all seven packages, kernels compiled from source, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "f09e0fbda37b"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-14.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/OPT-14/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-15",
+  "title": "Closest tune approach is inflated across an integer boundary",
+  "area": "Optics and matching",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Twiss inflates `c_minus`, the closest-tune-approach coefficient, when two nearby eigentunes straddle an integer. An analytic coupled-oscillator calculation and an independent eigenfrequency scan show that shifting both tunes together must preserve their minimum separation. For eigentunes 0.9920 and 1.006, mixing angle 0.07 rad and modal beta function 2.7 m, `c_minus` is 0.1376 instead of 0.001954, too large by a factor 70.43; shifting both tunes by ±0.09 restores the correct value. The tested 4D and 6D periodic calculations with positive line length and pure difference coupling are affected, including the complex coupling magnitudes; tracking maps, eigentunes and projected beta functions remain correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`_add_periodic_solution_data_to_twiss_result`, twiss_postprocess_and_complem_results.py:99–148",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_postprocess_and_complem_results.py#L99-L148"
+   },
+   {
+    "label": "closest tune approach coefficient",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss.py#L333-L337"
+   },
+   {
+    "label": "coupling manual",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/linear_coupling.tex#L139-L174"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "f09e0fbda37b",
+     "build": "HEAD source archives of all seven packages, kernels compiled from source, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "f09e0fbda37b"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-15.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-15/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-01",
+  "title": "q-Gaussian normalization overflows near the Gaussian limit",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`LongitudinalProfileQGaussian` normalizes the q-Gaussian line density with gamma functions whose numerator and denominator overflow separately, so for an index `q` near, but not equal to, 1 the density and the space-charge kicks it drives are NaN. The normalization itself is finite, as a log-beta-function evaluation and adaptive quadrature confirm. For a unit-population, unit-RMS profile at `q` = 0.999 and 1.001, the centre density is NaN instead of 0.3988 and 0.3991 m⁻¹, and a 1 GeV/c proton at x = 1 mm in a Gaussian space-charge lens gets `px` NaN instead of 2.561 × 10⁻⁵ and 2.562 × 10⁻⁵. NumPy warns, but tracking completes. Tested values from 0.995 to 1.005 fail except within 10⁻⁶ of 1, where an intentional Gaussian approximation applies; 0.99 and 1.01 are correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`LongitudinalProfileQGaussian.cq_from_q`, qgaussian.py:45–58",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/longitudinal_profiles/qgaussian.py#L45-L58"
+   },
+   {
+    "label": "manual's q-Gaussian formula",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L411-L439"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel and main worktree, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed packages, kernels compiled from installed source, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xfields main",
+     "commit": "223b4fa134a1",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xfields main",
+    "commit": "223b4fa134a1"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-01.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/COL-01/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-02",
+  "title": "Displaced Gaussian space charge integrates the wrong longitudinal-kick ray",
+  "area": "Collective effects",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`SpaceChargeBiGaussian` computes the longitudinal kick by integrating the transverse field along a ray from the origin to (|x|, |y|), so a particle at a negative coordinate receives the kick of its mirror point. For a beam displaced from the axis (`mean_x` or `mean_y` nonzero), the manual's signed ray, an analytic exponential-integral potential and adaptive quadrature give different kicks on the two sides. For a 1 GeV/c proton beam (population 10¹⁰, `sigma_z` = 0.1 m, transverse RMS 1 mm) displaced by 2 mm, particles at x = ±1 mm in a 1 m lens get identical kicks in the relative momentum deviation δ: the difference is 0 instead of 2.668 × 10⁻⁷. Frozen off-centre beams with longitudinal kicks are affected; transverse kicks and centred beams are correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`SpaceChargeBiGaussian_track_local_particle`, spacechargebigaussian.h:53–93",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/spacecharge_src/spacechargebigaussian.h#L53-L93"
+   },
+   {
+    "label": "manual prescribes the signed ray",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L302-L323"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel and main worktree, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed packages, kernels compiled from installed source, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xfields main",
+     "commit": "223b4fa134a1",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xfields main",
+    "commit": "223b4fa134a1"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-02.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/COL-02/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-03",
+  "title": "Particle-to-mesh deposition omits source charge ratios",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [
+   "known-limitation"
+  ],
+  "summary": "When `update_from_particles` deposits an Xtrack `Particles` object onto a particle-in-cell mesh, each macroparticle contributes `weight`·`q0`·e without its `charge_ratio` (q/`q0`, its charge relative to the reference charge). Cloud-in-cell deposition must conserve the physical charge e·Σ `weight`·`q0`·`charge_ratio`, as the explicit-array input path does. For live particles of weights 3 and 7 on a 9³ mesh with `q0` = 1, charge ratios 0.5, 1 and 2 all deposit 10 elementary charges instead of 5, 10 and 20. Mesh space-charge and beam-beam solvers receive this wrong source density; particles with the reference charge are unaffected, and a source comment acknowledges the missing charge ratios.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`p2m_rectmesh3d_xparticles`, charge_deposition.h:120–136",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/fieldmaps/interpolated_src/charge_deposition.h#L120-L136"
+   },
+   {
+    "label": "`update_from_particles` API",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/fieldmaps/interpolated.py#L311-L381"
+   },
+   {
+    "label": "particle contract",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L216-L235"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel and main worktree, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed packages, kernels compiled from installed source, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xfields main",
+     "commit": "223b4fa134a1",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xfields main",
+    "commit": "223b4fa134a1"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-03.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-03/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-04",
+  "title": "CollectiveMonitor slice emittance omits the covariance square",
+  "area": "Collective effects",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "`CollectiveMonitor` computes each slice's emittance as √(var(x)·var(px) − cov(x, px)), subtracting the covariance instead of its square. The RMS emittance is the square root of the covariance-matrix determinant, which an area-preserving shear leaves unchanged, and the slicer's own variances and covariance give that value directly. For four 1 GeV/c protons with x = ±1 mm, `px` = ±2 × 10⁻⁴ and a shear `px` → `px` + a·x, the normalized emittance is 2.132 × 10⁻⁷ m for every a, but the monitor reports 4.766 × 10⁻⁴ m, about 2236 times too large, at a = −0.2 and NaN with a warning at a = +0.2. Correlated slices are affected in x, y and ζ; uncorrelated slices and the slice moments are correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`CollectiveMonitor._update_slice_buffer`, collective_monitor.py:348–364",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/collective_monitor.py#L348-L364"
+   },
+   {
+    "label": "`UniformBinSlicer.cov`",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/slicers/uniform.py#L319-L333"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel and main worktree, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed packages, kernels compiled from installed source, CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xfields main",
+     "commit": "223b4fa134a1",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xfields main",
+    "commit": "223b4fa134a1"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-04.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-04/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-05",
+  "title": "Strong-strong 2D beam-beam moments include lost particles",
+  "area": "Collective effects",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "In 2D strong-strong beam-beam, `BeamBeamBiGaussian2D.compute_spacial_moments` sums every stored particle row without checking `particles.state`, so lost particles enter the population, centroid and size passed to the opposing beam. Removing a lost particle cannot change the collision, and with lost rows excluded the kicks agree with the analytic round-Gaussian field and the manual's beam-beam Lorentz factor. For four live 1 GeV/c protons at x, y = ±1 mm (weight 10¹⁰ each) plus one lost particle at x = 20 mm, the exchanged population is 5 × 10¹⁰ instead of 4 × 10¹⁰, the horizontal variance 6.480 × 10⁻⁵ m² instead of 1.000 × 10⁻⁶ m², and one opposing particle's horizontal kick +6.845 × 10⁻⁶ instead of −1.994 × 10⁻⁵. Strong-strong 2D simulations with particle losses are affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`BeamBeamBiGaussian2D.compute_spacial_moments`, beambeam2d.py:272–283",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/beambeam2d.py#L272-L283"
+   },
+   {
+    "label": "collective pipeline",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/beambeam2d.py#L238-L266"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel and main worktree, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "low",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel and main worktree, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xfields main",
+     "commit": "223b4fa134a1",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xfields main",
+    "commit": "223b4fa134a1"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-05.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-05/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-06",
+  "title": "2.5D FFT space charge: the longitudinal kick of a nonuniform bunch violates geometric similarity",
+  "area": "Collective effects",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "contract-unsettled"
+  ],
+  "summary": "With either 2.5D FFT solver and `apply_z_kick=True`, `SpaceCharge3D` differentiates slice potentials whose transverse reference length is fixed at 1 m. The manual explicitly chooses this reference, but changing it adds a longitudinal force wherever the line density varies. Doubling every length of an electron bunch with Lorentz factor γ = 10 should leave the scaled longitudinal kick unchanged by free-space Coulomb similarity, but changes it by 7.868%. For a γ = 7 electron bunch with transverse RMS size 0.4 mm and longitudinal RMS 20 mm, the on-axis kick in the relative momentum deviation δ at 0.75 longitudinal RMS is 9.177 × 10⁻¹⁰, versus 6.680 × 10⁻¹⁰ from the exact 3D field, a 37.38% discrepancy. Transverse kicks are unaffected; constant line density or `apply_z_kick=False` removes the effect.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`primitive_func_2p5d`, fftsolvers.py:321–327",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/solvers/fftsolvers.py#L321-L327"
+   },
+   {
+    "label": ":173",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/solvers/fftsolvers.py#L173"
+   },
+   {
+    "label": ":230",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/solvers/fftsolvers.py#L230"
+   },
+   {
+    "label": "`SpaceCharge3D_track_local_particle`, spacecharge3d.h:55–60",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/spacecharge_src/spacecharge3d.h#L55-L60"
+   },
+   {
+    "label": "manual's modulated-2D kick",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L302-L310"
+   },
+   {
+    "label": "xfields.tex:3907–3936",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L3907-L3936"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-27",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1"
+     },
+     "scope": "physics of the 2.5D reference length, from reading the Xfields solver source; no Xfields execution"
+    },
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed packages, kernels compiled from installed source, CPU, double, serial"
+     },
+     "scope": "longitudinal kick of both 2.5D solvers for a nonuniform line density with apply_z_kick enabled, free space"
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xfields main",
+     "commit": "3f06c8791ea5",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xfields main",
+    "commit": "3f06c8791ea5"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-06.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-06/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-07",
+  "title": "Loss-map periodic aperture cells have negative lengths",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "For a non-interpolated loss map (`interpolation=False`), `LossMap` bounds each aperture cell by the midpoints to its neighbours without wrapping the first and last neighbours around the ring. Those two cells get negative lengths and displaced centres, whereas periodic midpoint cells must have positive lengths summing to the circumference. For apertures at 1, 4 and 9 m in a 12 m ring, the lengths are −2.5, 4 and −1.5 m instead of 3.5, 4 and 4.5 m, summing to 0 instead of 12 m, and the end-cell centres are 3.75 and 5.75 m instead of 0.75 and 8.75 m. Non-interpolated ring loss maps report wrong loss densities and positions in the boundary cells; interior cells are correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`LossMap._create_aperture_pos_dict`, lossmap.py:863–888",
+    "url": "https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L863-L888"
+   },
+   {
+    "label": "loss-density normalization",
+    "url": "https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/plot.py#L215-L230"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xcoll main",
+     "commit": "64e13f596c87",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xcoll main",
+    "commit": "64e13f596c87"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-07.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-07/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-08",
+  "title": "Loss-map initial energy double-counts preceding batches",
+  "area": "Collective effects",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`LossMap.add_particles` adds the energy of the whole accumulated population to `tot_energy_initial` on every call, so a loss map built from several batches counts the earlier batches again. The initial energy is additive: splitting an ensemble into batches or reordering them must not change it. For seven primary protons at 3 TeV/c, the merged map reports 2.100 × 10¹³ eV, batches of 2 then 5 report 2.700 × 10¹³ eV and 5 then 2 report 3.600 × 10¹³ eV; two equal batches report 3 times one batch's energy instead of 2. `num_initial` is correct, and loss maps filled in a single call are unaffected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`LossMap.add_particles`, lossmap.py:496–497",
+    "url": "https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L496-L497"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xcoll main",
+     "commit": "64e13f596c87",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xcoll main",
+    "commit": "64e13f596c87"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-08.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-08/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-09",
+  "title": "Noninterpolated aperture losses are omitted from total energy",
+  "area": "Collective effects",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "In a non-interpolated loss map (`interpolation=False`), `LossMap.tot_energy_aperture` sums the binned aperture store, although this mode records aperture energies in unbinned storage, so it returns zero and `tot_energy` omits all aperture losses. With no collimator losses both totals must equal the sum of the per-aperture energies that `aperture_losses` reports, which match the mass-shell energy 3·√((p₀c)² + m²), with p₀ the momentum and m the proton rest energy. For three 2 GeV/c protons lost at the apertures of a 12 m ring, the per-aperture energies sum to 6.627 × 10⁹ eV, while `tot_energy_aperture` and `tot_energy` are both 0. Non-interpolated loss maps with aperture losses are affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`LossMap.tot_energy_aperture`, lossmap.py:140–154",
+    "url": "https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L140-L154"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xcoll main",
+     "commit": "64e13f596c87",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xcoll main",
+    "commit": "64e13f596c87"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-09.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-09/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-10",
+  "title": "Noninterpolated loss maps discard coordinate reversal",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "For a reversed line (`line_is_reversed=True`), a non-interpolated loss map computes the reflected aperture position L − s, with L the circumference, and then overwrites it with the unreflected expression, so the flag has no effect on aperture positions. The intended reflection is explicit in the code. An interior aperture at 4 m, with neighbour midpoints at 2.5 and 6.5 m, has centre 4.5 m, which must become 7.5 m in a reversed 12 m ring; the reversed map reports 4.5 m. Users who build non-interpolated loss maps for reversed lines get every aperture loss at an unreflected position.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`LossMap._create_aperture_pos_dict`, lossmap.py:881–885",
+    "url": "https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L881-L885"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xcoll main",
+     "commit": "64e13f596c87",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xcoll main",
+    "commit": "64e13f596c87"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-10.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-10/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-11",
+  "title": "Interpolated electron lens omits the transit-speed factor",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`ElectronLensInterpolated` omits the inverse particle-speed factor from the transit time and uses the reference speed throughout, so kicks are too small by the factor β₀, the reference speed over c, already at zero relative momentum deviation δ. Integrating the Lorentz force of the counter-propagating electrons over the transit time L/(βc), with the same stored field derivative, gives the correct impulse. For a 0.6 A, 15 kV, 0.8 m lens and a 600 MeV/c proton (β₀ = 0.5387), `px` is −3.870 × 10⁻⁵ instead of −7.184 × 10⁻⁵, and at δ = 0.25 the kick stays unchanged instead of becoming 0.8784 times the reference kick. Lower-speed beams and off-momentum particles are affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ElectronLensInterpolated_track_local_particle`, electronlens_interpolated.h:46–57",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/electronlens_src/electronlens_interpolated.h#L46-L57"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xfields main",
+     "commit": "3f06c8791ea5",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xfields main",
+    "commit": "3f06c8791ea5"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-11.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/COL-11/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-12",
+  "title": "ElectronCloud applies inconsistent reference-charge factors",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`ElectronCloud` multiplies its longitudinal kick by the reference charge `q0` but not its transverse kicks, so for `q0` ≠ 1 the kicks no longer derive from one scalar potential and the map is not symplectic. Kicks from a single potential have equal mixed derivatives, ∂(Δpx)/∂ζ = ∂(Δpζ)/∂x, and the canonical energy coordinate `pzeta` (pζ) carries no charge factor. For a 3 GeV/c reference in a 0.7 m element with potential 0.031·xζ − 0.017·yζ, ∂(Δpx)/∂ζ is −0.02170, while ∂(Δpζ)/∂x is −0.04340 for `q0` = 2 and +0.04340 for `q0` = −2 instead of −0.02170. A negative reference charge reverses only the longitudinal kick; references with `q0` = 1 are unaffected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ElectronCloud_track_local_particle`, electroncloud.h:45–57",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/electroncloud_src/electroncloud.h#L45-L57"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xfields main",
+     "commit": "3f06c8791ea5",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xfields main",
+    "commit": "3f06c8791ea5"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-12.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-12/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-13",
+  "title": "Everest deposited-energy accumulators omit macroparticle weights",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "`EverestCollimator` adds each particle's energy loss to its deposited-energy counters without the macroparticle `weight`, the number of physical particles a macroparticle represents. The deposited energy is the sum of `weight` times energy loss, the weighting Xcoll's Geant4 interface applies to the same counters. For 20 protons at 400 GeV/c through 0.6 mm of carbon-fibre composite with fixed random seeds, weights 1 to 5 give a primary deposit of 2.865 × 10⁶ eV, the same as unit weights, instead of 8.653 × 10⁶ eV. Simulations with non-unit macroparticle weights are affected; by source reading, the secondary-particle counter, `EverestBlock` and `EverestCrystal` contain the same expression.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`EverestCollimator_track_local_particle`, everest_collimator.h:226–234",
+    "url": "https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/beam_elements/elements_src/everest_collimator.h#L226-L234"
+   },
+   {
+    "label": "Geant4 accumulator",
+    "url": "https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/scattering_routines/geant4/track.py#L128-L129"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xcoll main",
+     "commit": "64e13f596c87",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xcoll main",
+    "commit": "64e13f596c87"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-13.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-13/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-14",
+  "title": "Loss-map primary energy uses secondary deposits",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "The collimator summary of `LossMap` computes the primary energy `e_prim` from the absorbed primary energy plus the secondary-particle deposit counter, instead of the primary one. The Everest kernel accumulates primary and secondary deposits separately, so without absorption `e_prim` must equal the primary counter. For 20 protons at 400 GeV/c through 0.6 mm of carbon-fibre composite without absorption, an all-primary batch reports `e_prim` = 0 instead of 2.865 × 10⁶ eV, and an all-secondary batch 2.865 × 10⁶ eV instead of 0. The total collimator energy is correct; its split into primary and secondary deposits is wrong.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`LossMap._make_coll_summary`, lossmap.py:698–701",
+    "url": "https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L698-L701"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xcoll main",
+     "commit": "64e13f596c87",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xcoll main",
+    "commit": "64e13f596c87"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-14.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-14/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-15",
+  "title": "Loss-map export drops deposits without absorbed particles",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`LossMap` exports a collimator row only when particles were absorbed in it (`summary.n` > 0), so energy deposited by particles that leave the collimator is lost through `to_json` and `from_json`. The summary holds that energy before export, and a round trip must preserve it. For 20 protons at 400 GeV/c through 0.6 mm of carbon-fibre composite with no absorption, the collimator's 2.865 × 10⁶ eV becomes 0 after export and reload. The restored map still compares equal to the original, because equality compares the same filtered export. Saved loss maps miss the deposits of every collimator in which no particle was absorbed.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`LossMap.lossmap`, lossmap.py:161–172",
+    "url": "https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L161-L172"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xcoll 0.12.5",
+      "commit": "64e13f596c87",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xcoll main",
+     "commit": "64e13f596c87",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xcoll main",
+    "commit": "64e13f596c87"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-15.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-15/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-16",
+  "title": "Touschek Monte Carlo diagnostic omits sampled angular width",
+  "area": "Collective effects",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "`TouschekScatter` samples the polar scattering angle θ uniformly between `theta_min` and `theta_max` and the azimuth over π, but always uses the Monte Carlo volume π² instead of π·(θₘₐₓ − θₘᵢₙ). With matched random samples for 1.4 GeV/c electrons, narrowing the interval around π/2 from 2⁻²⁰ to 2⁻²⁴ rad leaves the diagnostic `total_mc_rate` at 7464 s⁻¹, whereas the manual's uniform Monte Carlo estimator, which includes the sampled volume, gives 0.002266 and 0.0001416 s⁻¹, a 16-fold reduction. Returned particle weights are normalized to the Piwinski rate, so the factor cancels there; by source reading, `ignored_rate` inherits the diagnostic error. For the default interval the excess is 0.01000% by algebra, not separately executed.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`TouschekScatter` prefactor, touschek.h:374–376",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/touschek_src/touschek.h#L374-L376"
+   },
+   {
+    "label": "angular sampling, lines 443–446",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/touschek_src/touschek.h#L443-L446"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xfields main",
+     "commit": "3f06c8791ea5",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xfields main",
+    "commit": "3f06c8791ea5"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-16.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-16/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-17",
+  "title": "All-lost tracking calls freeze wake history",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`WakeTracker.track` returns early when no particle is alive, before advancing the stored wake-source history, so a turn in which the whole bunch is lost does not age the history. A turn without sources must still age it, as calls with live particles outside the slicing window or with zero weight do, and direct convolution gives the expected delays and expiry. With a three-turn history in a 20 m ring and a 1.4 GeV/c proton source of weight 5, a witness one empty turn later receives `px` = 4.024 × 10⁻⁹ instead of 2.441 × 10⁻⁹, and two empty turns later 4.024 × 10⁻⁹ instead of 0, after the source should have expired. Users who keep calling a wake tracker on fully lost bunches are affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`WakeTracker.track`, waketracker.py:125–150",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/waketracker/waketracker.py#L125-L150"
+   },
+   {
+    "label": "advancing its moments history",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/element_with_slicer.py#L213"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xfields main",
+     "commit": "3f06c8791ea5",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xfields main",
+    "commit": "3f06c8791ea5"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-17.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/COL-17/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-18",
+  "title": "Round-beam variance derivatives use an absolute near-axis cutoff",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "For round beam slices whose width changes along the collision, `compute_Gx_Gy` uses on-axis variance derivatives inside a fixed radius of 100 nm, corrupting the width contribution of 3D beam-beam to `pzeta`. Gauss's law and the Gaussian heat equation require the radial dependence exp(−r²/(2σ²)), with σ the RMS beam size; integrating the longitudinal derivative of the executed transverse kick along the radius confirms it. For 9 GeV/c positrons and an expanding 35 nm slice, the width kick at r = 2σ is 7.840 × 10⁻¹¹ instead of 1.061 × 10⁻¹¹, a factor e² too large; at σ = 35 µm and r = 99.9 nm the relative error is 4.073 × 10⁻⁶. Transverse kicks are correct; by source reading, coupled beams and crossing angles share the cutoff.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`compute_Gx_Gy`, compute_gx_gy.h:25–35",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/fieldmaps/bigaussian_src/compute_gx_gy.h#L25-L35"
+   },
+   {
+    "label": "synchro-beam energy kick",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/beambeam_src/beambeam3d.h#L263-L281"
+   },
+   {
+    "label": "Gaussian potential derivatives and round expressions",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L938-L994"
+   },
+   {
+    "label": "longitudinal map",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L1005-L1038"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xfields main",
+     "commit": "3f06c8791ea5",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xfields main",
+    "commit": "3f06c8791ea5"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-18.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/COL-18/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-19",
+  "title": "B&M applies an extra beta factor to momentum dispersion",
+  "area": "Collective effects",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`BjorkenMtingwaIBS`, the Bjorken–Mtingwa (B&M) model of intrabeam-scattering growth rates, multiplies the dispersions and their slopes in both planes by the relativistic reference speed β₀. Xtrack supplies them as derivatives with respect to the relative momentum deviation δ, which the manual's collision matrices use unscaled; integrating the collision matrix with Carlson elliptic integrals gives the correct rates and agrees with Xfields' Nagaitsev model at zero vertical dispersion. For protons at β₀ = 0.45 with beta function βₓ = 8 m, dispersion Dₓ = 1.7 m and slope Dₓ′ = 0.11, the longitudinal cooling rate is −2.890 × 10⁻³ s⁻¹ instead of −2.596 × 10⁻³ s⁻¹, 11.36% too large in magnitude; at β₀ = 0.75 the error is 22.43%. Non-ultrarelativistic beams with dispersion are affected; depending on the case, a rate's magnitude rises or falls.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`BjorkenMtingwaIBS._a`, _analytical.py:898–921",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L898-L921"
+   },
+   {
+    "label": "`_constants`",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L1418-L1458"
+   },
+   {
+    "label": "segment map",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/linesegmentmap.h#L44-L81"
+   },
+   {
+    "label": "off-momentum differences",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/chromatic_functions.py#L124-L135"
+   },
+   {
+    "label": "manual's collision matrices",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L2637-L2700"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xfields main",
+     "commit": "3f06c8791ea5",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xfields main",
+    "commit": "3f06c8791ea5"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-19.py",
+   "_ibs.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/COL-19/"
+ },
+ {
+  "code": "xsuite",
+  "id": "COL-20",
+  "title": "Zero horizontal dispersion invariant creates a NaN B&M rate",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "`BjorkenMtingwaIBS` divides by the horizontal dispersion invariant Hₓ, which is zero where both the dispersion `dx` and its slope `dpx` vanish, so one such sampled location makes the horizontal growth rate Kₓ NaN. The collision-matrix integral is regular there for positive emittances and momentum spread, and independent Carlson-integral and Nagaitsev evaluations give finite rates. For protons at reference speed β₀ = 0.45 (in units of c) with zero dispersion, Kₓ is NaN instead of −2.872 × 10⁻³ s⁻¹; in a three-segment line with only one zero-invariant location, it is NaN instead of −7.397 × 10⁻⁴ s⁻¹. NumPy emits division warnings and the other planes stay finite; a nonzero `dpx` avoids the singularity even when `dx` = 0.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`BjorkenMtingwaIBS._ax`, _analytical.py:1064–1075",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L1064-L1075"
+   },
+   {
+    "label": "`_bx`:1122–1139",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L1122-L1139"
+   },
+   {
+    "label": "plane constant",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L1455-L1458"
+   },
+   {
+    "label": "horizontal integrand",
+    "url": "https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L1582-L1589"
+   },
+   {
+    "label": "matrix integral",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L2641-L2700"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xfields 0.27.5",
+      "commit": "223b4fa134a1",
+      "build": "installed wheel, prebuilt kernels, compilation forbidden, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xfields main",
+     "commit": "3f06c8791ea5",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xfields main",
+    "commit": "3f06c8791ea5"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-20.py",
+   "_ibs.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/COL-20/"
+ },
+ {
+  "code": "xsuite",
+  "id": "IO-01",
+  "title": "Single-harmonic longitudinal generation uses proton mass for other species",
+  "area": "Lattices, particles and I/O",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "With `engine='single-rf-harmonic'`, `generate_longitudinal_coordinates` samples the energy coordinate p_τ (`ptau`) for the requested reference particle, but converts it to the relative momentum deviation δ (`delta`) through a temporary `Particles` built without the reference mass, so the default proton mass is used for every species. The relativistic relation δ = √(1 + p_τ² + 2p_τ/β₀) − 1, with the reference speed β₀ = v/c of the actual species, gives the correct value, and the proton case agrees with it. For a 5 MeV/c positron bunch matched to 1 kV RF at harmonic 1 in a 100 m line, one particle gets δ = 0.03520 instead of 1.919×10⁻⁴, another 0.1245 instead of 7.083×10⁻⁴. Positions `zeta` are correct; nonproton references are affected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`generate_longitudinal_coordinates`, generate_longitudinal.py:450–482",
+    "url": "https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L450-L482"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xpart 0.23.23",
+      "commit": "2633e528018a",
+      "build": "installed packages, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "low",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xpart 0.23.23",
+      "commit": "2633e528018a",
+      "build": "installed packages, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xpart main",
+     "commit": "2633e528018a",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xpart main",
+    "commit": "2633e528018a"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-01.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/IO-01/"
+ },
+ {
+  "code": "xsuite",
+  "id": "IO-03",
+  "title": "Checkpoint loading restores RNG words onto reordered particle coordinates",
+  "area": "Lattices, particles and I/O",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "On CPU, loading a checkpoint with `Particles.from_dict(load_rng_state=True)` and default options reorders the coordinates into active-then-lost order but restores the saved random-number-generator (RNG) words in their original slot order. In checkpoints with lost rows before live rows, some live particles therefore continue another particle's saved random stream, while the persistence contract and an uninterrupted copy require each particle to keep its own. With seeds 11, 22, 33 and 44 and particle 1 lost, live particle 2 draws 0.1720 instead of 0.6269, and particle 3 draws 0.6269 instead of 0.1897. Coordinates keep their particle IDs, but restarted stochastic trajectories change; all-active checkpoints and loading with `_no_reorganize=True` preserve the associations.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Particles.from_dict`, particles.py:485–498",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L485-L498"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-03.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/IO-03/"
+ },
+ {
+  "code": "xsuite",
+  "id": "IO-04",
+  "title": "Renaming a MAD-X deferred variable freezes its contribution to imported dependants",
+  "area": "Lattices, particles and I/O",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "When a MAD-X lattice is imported with deferred expressions and a variable-renaming map (`replace_in_expr`), `MadLoader` renames variables inside expressions but registers each deferred expression under its original name, so the renamed variable keeps only its initial value. A later knob change must propagate, as an independent MAD-X session and the analytic relation confirm. Importing `base_a = 2e-4; derived_a := 2*base_a` and a horizontal kicker with `kick := derived_a`, renaming both variables to `base_b` and `derived_b` and then setting `base_b = 3e-4` leaves `derived_b` and the tracked horizontal momentum `px` at 4.000×10⁻⁴ instead of 6.000×10⁻⁴. Initial values are correct and renaming only numeric variables works; renamed deferred variables stay frozen while other terms of downstream expressions keep updating.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`MadLoader.init_line_expressions`, mad_loader.py:437–461",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/mad_loader.py#L437-L461"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-04.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "cpymad",
+   "numpy"
+  ],
+  "page": "xsuite/IO-04/"
+ },
+ {
+  "code": "xsuite",
+  "id": "IO-05",
+  "title": "MAD-X bend roll errors are imported as design tilts",
+  "area": "Lattices, particles and I/O",
+  "priority": "P1",
+  "severity": "Wrong physics",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "Xtrack's MAD-X importer (via cpymad, the Python interface to MAD-X) adds a bend's `EALIGN` roll `DPSI` to its design tilt in `rot_s_rad`, rotating the reference bending plane instead of applying an alignment roll in the unchanged design frame. A pure sector-bend roll must produce vertical steering, as MAD-X and an Xtrack control using `rot_s_rad_no_frame` establish. For a 1 m `SBEND` of angle 0.001 rad with `DPSI` = 0.01 rad, zero design tilt and beam-direction flag `bv = 1`, the exit vertical momentum `py` is below 8×10⁻²¹ instead of −1.000×10⁻⁵, and the exit `y` is 3.253×10⁻²¹ m instead of −5.000×10⁻⁶ m. MAD-X sector-bend roll-error studies lose essentially all this vertical steering.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Alignment`, mad_loader.py:403–420",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/mad_loader.py#L403-L420"
+   },
+   {
+    "label": "`make_composite_element`, lines 723–729",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/mad_loader.py#L723-L729"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "low",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-05.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "cpymad",
+   "numpy"
+  ],
+  "page": "xsuite/IO-05/"
+ },
+ {
+  "code": "xsuite",
+  "id": "IO-06",
+  "title": "Negative-charge reference rigidity fails a constructor round trip",
+  "area": "Lattices, particles and I/O",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Probe-pinned",
+  "tags": [],
+  "summary": "Constructing `Particles` from the reference rigidity `rigidity0` computes the momentum from `rigidity0`·|q₀|·c, while the `rigidity0` getter and setter use the signed reference charge q₀, so a negative-charge reference's own reported rigidity reconstructs a negative momentum. The manual defines signed rigidity, and property-to-constructor round trips must preserve the reference state. For electron-mass references with q₀ = −1 or −2 at 1 GeV/c, the constructor returns the reference momentum `p0c` = −1.000×10⁹ eV and reference speed β₀ = v/c = −1.000, while the particle remains alive; the correct momentum and speed are positive. Positive-charge construction, the linked rigidity setter, and construction from `p0c` or `energy0` pass their controls.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`Particles._update_refs`, particles.py:1704–1708",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L1704-L1708"
+   },
+   {
+    "label": "`rigidity0` getter and linked setter",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L1342-L1360"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-26",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-30",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-26",
+    "code": {
+     "ref": "xtrack main",
+     "commit": "3cd8bfca8d7c",
+     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-26",
+   "code": {
+    "ref": "xtrack main",
+    "commit": "3cd8bfca8d7c"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-06.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/IO-06/"
+ },
+ {
+  "code": "xsuite",
+  "id": "IO-07",
+  "title": "Manager.copy disconnects containers from dependency tasks",
+  "area": "Lattices, particles and I/O",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "In Xdeps, the dependency-graph library behind Xtrack's deferred expressions, `Manager.copy` deep-copies the containers, the tasks (expressions computing dependent values) and the dependency maps separately, so the returned containers and tasks refer to different copies and references into the copy stay bound to a hidden manager. `Manager.set_value` promises to update the target and run its dependent tasks, and `copy.deepcopy` of the whole manager keeps the copied graph connected. With `a.output = a.input * b.gain`, `a.input` = 4 and `b.gain` = 2.5, setting the copied gain to 7 leaves the copied output at 10 instead of 28; redefining it as `9 * a.input` and setting the input to 6 then gives 42 instead of 54. Users who copy a dependency manager directly are affected; no Xtrack element, matching or tracking path was tested.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "Manager.copy, tasks.py:518–527",
+    "url": "https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/tasks.py#L518-L527"
+   },
+   {
+    "label": "Manager.set_value",
+    "url": "https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/tasks.py#L239-L253"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xdeps 0.10.21",
+      "commit": "73147cf7d9f1",
+      "build": "installed packages, Python only, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xdeps 0.10.21",
+      "commit": "73147cf7d9f1",
+      "build": "installed packages, Python only, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xdeps main",
+     "commit": "64847952ef3a",
+     "build": "HEAD source archives, Python only (launcher set forced kernel compilation; no kernel executed), serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xdeps main",
+    "commit": "64847952ef3a"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-07.py"
+  ],
+  "requirements": [],
+  "page": "xsuite/IO-07/"
+ },
+ {
+  "code": "xsuite",
+  "id": "IO-08",
+  "title": "Accelerating RF contour emittance uses symmetric turning points",
+  "area": "Lattices, particles and I/O",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "With an explicit `z`, `RFBucket.emittance_single_particle` computes a contour's longitudinal emittance assuming turning points symmetric about the stable point, although acceleration makes them asymmetric. Solving the tilted single-harmonic potential for both turning points and integrating with two independent quadratures gives the closed-contour area. For a 100 m proton bucket with Lorentz factor γ = 10, harmonic 10, voltage 1 MV and momentum compaction 0.001, requesting `z` = 0.6 m with the default `sigma` = 2 gives 1.238 eV·s instead of 1.288 eV·s (3.882% low) at acceleration fraction a = +0.5, and 0.9808 eV·s instead of 0.9465 eV·s (3.620% high) at a = −0.5. Here a is the energy gain per turn divided by the peak RF energy gain. The stationary single-harmonic control passes.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "RFBucket.emittance_single_particle, rf_bucket.py:539–557",
+    "url": "https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/rf_bucket.py#L539-L557"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xpart 0.23.23",
+      "commit": "2633e528018a",
+      "build": "installed packages, Python only, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xpart 0.23.23",
+      "commit": "2633e528018a",
+      "build": "installed packages, Python only, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xpart main",
+     "commit": "2633e528018a",
+     "build": "HEAD source archives, Python only (launcher set forced kernel compilation; no kernel executed), serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xpart main",
+    "commit": "2633e528018a"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-08.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/IO-08/"
+ },
+ {
+  "code": "xsuite",
+  "id": "IO-09",
+  "title": "RF phase setter leaves cached bucket geometry stale",
+  "area": "Lattices, particles and I/O",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "After an `RFBucket`'s geometry has been read, setting the RF phase `phi_offset_list` leaves the cached stable points and bucket boundaries unchanged, and the synchrotron tune Qₛ is recalculated from the new phase and the stale stable point, giving an inconsistent value. For a 100 m accelerating proton bucket with Lorentz factor γ = 10, harmonic 10, voltage 1 MV and acceleration fraction 0.5, changing the phase from 0 to 0.4 rad leaves the stable point at −0.8333 m instead of −0.1967 m. Fresh construction and the analytic translation give the new geometry and an unchanged Qₛ = 1.156×10⁻³, while the stale-root calculation gives 9.643×10⁻⁴. Setting the phase before reading geometry, or calling `add_fields([], [])`, gives correct results.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "RFBucket.phi_offset_list setter and cached fixed points, rf_bucket.py:164–190",
+    "url": "https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/rf_bucket.py#L164-L190"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xpart 0.23.23",
+      "commit": "2633e528018a",
+      "build": "installed packages, Python only, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xpart 0.23.23",
+      "commit": "2633e528018a",
+      "build": "installed packages, Python only, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xpart main",
+     "commit": "2633e528018a",
+     "build": "HEAD source archives, Python only (launcher set forced kernel compilation; no kernel executed), serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xpart main",
+    "commit": "2633e528018a"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-09.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/IO-09/"
+ },
+ {
+  "code": "xsuite",
+  "id": "IO-10",
+  "title": "Linear longitudinal matching omits position-momentum correlation",
+  "area": "Lattices, particles and I/O",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "The linear engine of `generate_longitudinal_coordinates` samples independent Gaussian `zeta` and `delta` with RMS momentum spread σ_δ = σ_z/|β_z|, where σ_z is the RMS bunch length and β_z (`bets0`) the periodic longitudinal beta function, discarding the position-momentum correlation and momentum variance required by a nonzero periodic longitudinal alpha. An independent covariance solve establishes the stationary ellipse. For 3 GeV/c protons on segments with (`bets`, `qs`) = (7 m, 0.045) and (21 m, 0.08), and σ_z = 3×10⁻⁴ m, the sampled bunch-length variance after one turn is 0.8108 of its initial value instead of 1. The matched-Gaussian-bunch wrapper reproduces the mismatch; the multibunch wrapper shares the sampler by source reading. Strong focusing magnifies the effect, while a weak synchrotron tune of 1.429×10⁻³ still gives a relative variance change of 3.790×10⁻⁵.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`generate_longitudinal_coordinates`, generate_longitudinal.py:371–390",
+    "url": "https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L371-L390"
+   },
+   {
+    "label": "line characterization",
+    "url": "https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L23-L140"
+   },
+   {
+    "label": "public contract",
+    "url": "https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L175-L195"
+   },
+   {
+    "label": "matched-bunch wrapper",
+    "url": "https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/matched_gaussian.py#L171-L215"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xpart 0.23.23",
+      "commit": "2633e528018a",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "xpart 0.23.23",
+      "commit": "2633e528018a",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xpart main",
+     "commit": "2633e528018a",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xpart main",
+    "commit": "2633e528018a"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-10.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/IO-10/"
+ },
+ {
+  "code": "xsuite",
+  "id": "CTX-01",
+  "title": "CPU linked-array views bypass dependent-state updates",
+  "area": "Contexts and kernels",
+  "priority": "P1",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Writing through a shared CPU slice of `Particles.delta` changes the relative momentum deviation δ without updating the dependent energy and momentum fields, so subsequent tracking uses inconsistent coordinates. Relativistic kinematics and the expanded-drift map require those fields to change together, as direct indexed assignment does. Setting a 1 GeV/c proton to δ = 0.3 through a view, then tracking 1.7 m with normalized horizontal momentum `px` = 0.0008, gives x = 1.360 mm instead of 1.046 mm. Strided views, the output of NumPy universal functions (`out=`) and aliased in-place writes also bypass updates, and slices of read-only arrays accept prohibited writes. NumPy-backed CPU arrays are affected; direct indexed assignment preserves the required consistency.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`LinkedArrayCpu`, context_cpu.py:172–187",
+    "url": "https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/xobjects/context_cpu.py#L172-L187"
+   },
+   {
+    "label": "`BaseLinkedArray.__setitem__`, linkedarray.py:27–36",
+    "url": "https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/xobjects/linkedarray.py#L27-L36"
+   },
+   {
+    "label": "`Particles.delta` setter",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L1213-L1225"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xobjects 0.7.2",
+      "commit": "dfe34ae824bd",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xobjects 0.7.2",
+      "commit": "dfe34ae824bd",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xobjects main",
+     "commit": "dfe34ae824bd",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xobjects main",
+    "commit": "dfe34ae824bd"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "CTX-01.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/CTX-01/"
+ },
+ {
+  "code": "xsuite",
+  "id": "CTX-02",
+  "title": "Copied nested fields disconnect from parent storage",
+  "area": "Contexts and kernels",
+  "priority": "P1",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Copying a `SpaceChargeBiGaussian` and changing its public longitudinal-profile population leaves the tracking kernel using the old intensity, because the copied child fields are disconnected from the parent's storage. At fixed geometry the kick must scale linearly with population, as a freshly constructed control confirms. For a 0.7 m element with longitudinal RMS size 0.13 m and transverse RMS size 1.2 mm, increasing the population from 7.000×10⁹ to 1.750×10¹⁰ leaves a 1.3 GeV/c proton at the bunch center and x = 0.7 mm with normalized horizontal momentum `px` = 3.145×10⁻⁶ instead of 7.862×10⁻⁶. Both default-buffer and same-buffer copies fail. The tested scope is embedded fields copied by `HybridClass.copy()` on serial CPU; the original object remains unchanged.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "HybridClass.copy, hybrid_class.py:344–360",
+    "url": "https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/xobjects/hybrid_class.py#L344-L360"
+   },
+   {
+    "label": "nested-object tests",
+    "url": "https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/tests/test_hybrid_class.py#L95-L138"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xobjects 0.7.2",
+      "commit": "dfe34ae824bd",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-28",
+     "code": {
+      "ref": "xobjects 0.7.2",
+      "commit": "dfe34ae824bd",
+      "build": "installed packages, prebuilt kernels, CPU, serial"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-10-29",
+    "code": {
+     "ref": "xobjects main",
+     "commit": "dfe34ae824bd",
+     "build": "HEAD source archives, forced kernel compilation, CPU, serial"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-10-29",
+   "code": {
+    "ref": "xobjects main",
+    "commit": "dfe34ae824bd"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "CTX-02.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/CTX-02/"
  }
 ]

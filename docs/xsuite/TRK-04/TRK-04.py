@@ -1,0 +1,86 @@
+"""TRK-04: Optimizing RF slices drops roll and phase taper
+
+`Line.optimize_for_tracking()` drops the roll of sliced `CrabCavity` elements and the `phase_taper`
+of sliced `Cavity` elements. Rotating the transverse kick by the roll angle and applying the RF sine
+law to the tapered phase give the correct kicks, and the unoptimized slices reproduce them. A 1
+GeV/c proton through a 1 m, 1 MV crab cavity at zero frequency, phase π/2 and roll π/2 exits
+displaced 0.5000 mm horizontally instead of vertically. Through a 1 MV accelerating cavity at zero
+frequency with phase 0.2 rad and taper 0.3 rad, it gains 198.7 keV instead of 479.4 keV. Rolled crab
+cavities are affected, and so are phase-tapered cavities when the mean-radiation configuration
+enables the taper.
+
+The script slices each cavity with `Teapot(1)` and tracks a proton through it before and after
+optimization. For the crab cavity it expects the kick V/p0c·(cos roll, sin roll) at mid-element
+followed by a half-length drift; for the tapered cavity it expects the energy gain V·sin(phase +
+taper), with the kernel configured for mean radiation so that the taper term is active (the line
+contains no radiating element). The unoptimized lines and an unrolled crab cavity after optimization
+must agree.
+"""
+
+import numpy as np
+import xtrack as xt
+
+RTOL, ATOL = 2e-13, 2e-16
+
+
+def coordinates(particle):
+    return np.array([getattr(particle, key)[0] for key in ("x", "px", "y", "py")])
+
+
+def evaluate():
+    cases = {}
+    for roll in (0, np.pi / 2):
+        line = xt.Line(
+            elements={
+                "crab": xt.CrabCavity(
+                    length=1,
+                    crab_voltage=1e6,
+                    frequency=0,
+                    phase=np.pi / 2,
+                    rot_s_rad=roll,
+                )
+            }
+        )
+        line.particle_ref = xt.Particles(p0c=1e9)
+        line.slice_thick_elements(slicing_strategies=[xt.Strategy(xt.Teapot(1))])
+        line.build_tracker()
+        px, py = 0.001 * np.cos(roll), 0.001 * np.sin(roll)
+        expected = np.array([0.5 * px, px, 0.5 * py, py])
+        before = xt.Particles(p0c=1e9)
+        line.track(before)
+        np.testing.assert_allclose(coordinates(before), expected, rtol=RTOL, atol=ATOL)
+        line.optimize_for_tracking(verbose=False)
+        after = xt.Particles(p0c=1e9)
+        line.track(after)
+        assert after.state[0] == 1
+        if roll == 0:
+            np.testing.assert_allclose(coordinates(after), expected, rtol=RTOL, atol=ATOL)
+        cases[f"optimized roll={roll}, x,px,y,py"] = coordinates(after), expected
+    line = xt.Line(
+        elements={"c": xt.Cavity(length=1, voltage=1e6, frequency=0, phase=0.2, phase_taper=0.3)}
+    )
+    line.particle_ref = xt.Particles(p0c=1e9)
+    line.slice_thick_elements(slicing_strategies=[xt.Strategy(xt.Teapot(1))])
+    # Phase taper is enabled only in the radiation-capable kernel configuration.
+    line.configure_radiation(model="mean")
+    before = xt.Particles(p0c=1e9)
+    line.track(before)
+    expected_ptau = 0.001 * np.sin(0.5)
+    np.testing.assert_allclose(before.ptau[0], expected_ptau, rtol=RTOL, atol=ATOL)
+    line.optimize_for_tracking(verbose=False)
+    after = xt.Particles(p0c=1e9)
+    line.track(after)
+    assert after.state[0] == 1
+    cases["optimized Cavity with phase_taper=0.3, ptau"] = after.ptau[0], expected_ptau
+    return cases
+
+
+if __name__ == "__main__":
+    from _common import prepare, report
+
+    prepare(radiation="off for crab; mean configuration for cavity phase taper")
+    print(
+        "Expected: rotated kick (px,py)=V/p0c*(cos(roll),sin(roll)), followed by a half-length drift."
+    )
+    print("Expected tapered cavity energy: ptau=V/p0c*sin(phase+phase_taper).")
+    report(evaluate(), rtol=RTOL, atol=ATOL)
