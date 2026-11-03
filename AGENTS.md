@@ -17,21 +17,26 @@ ledger, the templates or the exporter, then regenerate.
 | `locations` | Source permalinks of the faulty code. |
 | `upstream` | Linked issues and PRs: `repository`, `number`, `kind`, `url`, `relation` (`filed` from this evidence, or `existing report`). Live state is shown on the site only. |
 | `provenance` | `found` and `confirmed` lists (`model`, `effort`, `date`, `code` {`ref`, `commit`, `build`}, optional `scope`), `verified` (last head reproduction). |
+| `last_reproduced` | Most recent reproducing run: `date`, `code` {`ref`, `commit`}, `head` (true if it was the development head), `head_not_reproduced` (the head run, when it no longer reproduces). |
 | `models` | Distinct models in `found` and `confirmed`. |
-| `reproducers`, `requirements` | Script names in `docs/<code>/<ID>/` and third-party Python packages they import besides the code itself. |
+| `reproducers`, `requirements` | File names in `docs/<code>/<ID>/` (`<ID>*.py`/`.jl`/`.sh` scripts and the `_*.py` helpers they import) and third-party Python packages they import besides the code itself. |
 | `page` | Entry page path. |
 
 ## Running a reproducer
 
-Install the code and the record's `requirements`, then run the script from any directory. It ends with `DEFECT REPRODUCED` or
-`NOT REPRODUCED`; a nonzero exit status means the run failed. Scripts that use
-the code's sources read a clone path from `source_env` in `codes.yaml`.
+Install the code as described under "Running the reproducers" on its code page
+(the `run` text in `codes.yaml`) and the record's `requirements`. Download the
+script with its `_*.py` helpers and run it from any directory, one script per
+process. It ends with `DEFECT REPRODUCED` or `NOT REPRODUCED`; a nonzero exit
+status means the run failed. Scripts that read the code's sources state the
+environment variable they need in their opening description.
 
 ## Changing the site
 
 - Exporter rules: an entry is published only if it passes the gate in
   `Entry.gate_failures` (level, reproducer or justification, two distinct
-  models, summary). The exporter fails on malformed ledger input instead of
+  models, summary, a main script that opens with `<ID>: <title>` and the
+  Summary verbatim). `--check` reports the gate without writing. The exporter fails on malformed ledger input instead of
   skipping it.
 - `[[gh:owner/repo#N]]` in generated Markdown is rendered by
   `hooks/upstream_state.py` with the live GitHub state; API failures stop the
