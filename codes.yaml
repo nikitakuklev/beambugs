@@ -51,3 +51,25 @@ scibmad:
     Install Julia 1.13 and the packages `SciBmad` (0.6.0), `SpaceCharge` and `ForwardDiff`.
     Download a reproducer and run it with `julia <ID>.jl`, one script per process and one
     thread (`JULIA_NUM_THREADS=1`).
+elegant:
+  name: Elegant
+  homepage: https://github.com/rtsoliday/elegant
+  repository: rtsoliday/elegant
+  ledger: /mnt/apollo/ref_docs/elegant/upstream_defects
+  areas:
+    tracking.md: Tracking
+    optics.md: Optics
+    collective.md: Collective effects
+    scattering.md: Scattering and pressure
+    lattice_io.md: Lattices, particles and I/O
+  modules: []
+  run: |
+    Build serial Elegant, Pelegant and the SDDS tools from rtsoliday/elegant master
+    `0355dd6aca12` and rtsoliday/SDDS master `a3f730a14c49`, on which the reproducers ran
+    (CPU, Open MPI, no CUDA). Put the `elegant` and SDDS `bin` directories on `PATH` and set
+    `RPN_DEFNS` to the `defns.rpn` file of SDDS; Elegant does not start without it. Download a
+    reproducer with the `_*.py` helpers shown beside it and run `python <ID>.py`, which runs
+    serial Elegant; `--mpi` adds a 3-rank Pelegant run (needs `mpirun`), and entries that occur
+    only under MPI always run Pelegant with a serial control. SCT-01 also needs Valgrind,
+    DOC-01 an Elegant source checkout named by `ELEGANT_SOURCE`, and IO-02 to IO-04 `gcc`
+    with the SDDS libraries of the build.

@@ -1,0 +1,390 @@
+---
+title: "COL-26: MPI TRWAKE combines different bunches when ranks skip locally empty bunches"
+hide:
+  - toc
+---
+
+# COL-26 — MPI TRWAKE combines different bunches when ranks skip locally empty bunches
+
+| | |
+|---|---|
+| Code | [Elegant](../index.md) · Collective effects |
+| Priority | P2 |
+| Severity | Wrong physics |
+| Evidence | Reproduced, independently rechecked |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
+| Source | [local-empty skip, trwake.c:86–88](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L86-L88)<br>[global extrema, trwake.c:118–121](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L118-L121)<br>[length check, trwake.c:122–128](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L122-L128)<br>[binned check, trwake.c:171–176](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L171-L176)<br>[histogram sum, trwake.c:206–213](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L206-L213)<br>[global bunch range, lrwake.c:74–84](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L74-L84)<br>[local bunch counts, lrwake.c:149–166](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L149-L166)<br>[bunch-mode input, elegant.tex:481–506](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L481-L506)<br>[bunched mode, trwake.tex:59–62](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/trwake.tex#L59-L62)<br>[BUNCHED_BEAM_MODE, track_data.c:2612](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2612)<br>[TRWAKE caller, do_tracking.c:2483–2486](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2483-L2486)<br>[CHARGE, do_tracking.c:1441–1457](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L1441-L1457)<br>[row partition, SDDS_MPI_binary.c:2235–2252](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/SDDSlib/SDDS_MPI_binary.c#L2235-L2252) |
+
+With automatic bins and bunch mode, TRWAKE tracking under MPI (Pelegant) combines different bunches when each of two tracking ranks holds one whole bunch. Skipping locally empty bunches pairs reductions for different bunches; the correct same-bunch causal sum is recovered by serial tracking and by distributing both bunches across both ranks. For two 16.00 pC bunches 80.00 ps apart, the second bunch's last particle receives a horizontal slope kick of 1.364×10⁻⁶ instead of 1.670×10⁻⁷. At 800.0 ps separation, the grouped MPI run aborts even though each bunch individually fits within the 512.0 ps wake table.
+
+??? example "Reproducer: COL-26.py"
+
+    [Download COL-26.py](COL-26.py)
+
+    ```python
+    """COL-26: MPI TRWAKE combines different bunches when ranks skip locally empty bunches
+
+    With automatic bins and bunch mode, TRWAKE tracking under MPI (Pelegant) combines different bunches
+    when each of two tracking ranks holds one whole bunch. Skipping locally empty bunches pairs
+    reductions for different bunches; the correct same-bunch causal sum is recovered by serial tracking
+    and by distributing both bunches across both ranks. For two 16.00 pC bunches 80.00 ps apart, the
+    second bunch's last particle receives a horizontal slope kick of 1.364×10⁻⁶ instead of 1.670×10⁻⁷.
+    At 800.0 ps separation, the grouped MPI run aborts even though each bunch individually fits within
+    the 512.0 ps wake table.
+
+    The script tracks two 16-particle bunches through one dipole TRWAKE with a linear causal wake and
+    automatic bins, with the bunches 80 ps, 160 ps and 800 ps apart. The correct kick is a direct causal
+    pair sum over the particles of the same bunch. In one input row order both tracking ranks hold part
+    of each bunch; in the other each of the two ranks holds one whole bunch. A second prediction sums over both bunches; serial runs and the first row order are the controls,
+    and the 800 ps separation exceeds the wake table although each bunch separately fits within it.
+    """
+
+    import sys
+
+    import numpy as np
+    from _elegant import RunFailure, modes, particles, run, verdict
+
+    REST_EV = 510999.06  # SDDS constants.h: electron rest energy, eV
+    P = 36.0  # electron momentum, units of m_e c
+    SLOPE = 2e25  # V/C/m per s; Wx(tau) = SLOPE tau for tau >= 0, Wy = Wx/2, W(0) = 0
+    CHARGE = 16e-12  # C per bunch
+    SPACING, POINTS = 2e-12, 257  # wake table: 512 ps long
+    OFFSETS = np.repeat([0, 4, 8, 12], 4) * 1e-12  # s, arrival times within a bunch
+    N = len(OFFSETS)  # particles per bunch
+    X = np.repeat([0.8e-3, 1.6e-3], N)  # m; the second bunch is displaced twice as far
+    Y = -X / 2
+    RTOL, ATOL = 3e-12, 1e-19
+
+
+    def wake_table():
+        """ASCII SDDS table of Wx, Wy on POINTS points of spacing SPACING."""
+        rows = "".join(
+            f"{tau!r} {SLOPE * tau!r} {0.5 * SLOPE * tau!r}\n"
+            for tau in (float(n) * SPACING for n in range(POINTS))
+        )
+        return (
+            "SDDS1\n"
+            "&column name=time, units=s, type=double &end\n"
+            "&column name=wx, units=V/C/m, type=double &end\n"
+            "&column name=wy, units=V/C/m, type=double &end\n"
+            "&data mode=ascii, no_row_counts=1 &end\n" + rows
+        )
+
+
+    def times(gap):
+        return np.concatenate([OFFSETS + 1e-9, OFFSETS + 1e-9 + gap])
+
+
+    def kicks(mode, layout, gap):
+        """Slope kicks (xp, yp) of the 2N particles, ordered by particle ID."""
+        ids = np.arange(1, 2 * N + 1)
+        if layout == "grouped":
+            order = np.arange(2 * N)  # first rank: bunch 1, second rank: bunch 2
+        else:
+            # Both ranks get two of the four particles at each time of each bunch.
+            half = np.arange(N).reshape(4, 4)[:, :2].ravel()
+            other = np.arange(N).reshape(4, 4)[:, 2:].ravel()
+            order = np.r_[half, half + N, other, other + N]
+        beam = {
+            "x": X[order],
+            "y": Y[order],
+            "t": times(gap)[order],
+            "p": np.full(2 * N, P),
+            "particleID": ids[order],
+            "IDSlotsPerBunch": N,
+        }
+        lattice = (
+            f"Q: CHARGE,TOTAL={2 * CHARGE!r}\n"
+            'W: TRWAKE,INPUTFILE="wake.sdds",TCOLUMN="time",WXCOLUMN="wx",WYCOLUMN="wy",'
+            "N_BINS=0,SMOOTHING=0,INTERPOLATE=0,BUNCHED_BEAM_MODE=1\n"
+            "BL: LINE=(Q,W)\n"
+        )
+        commands = (
+            "&global_settings echo_namelists=0 &end\n"
+            f"&run_setup lattice=lattice.lte,use_beamline=BL,p_central={P!r},output=out.sdds &end\n"
+            "&run_control n_steps=1,n_passes=1 &end\n"
+            "&sdds_beam input=beam.sdds,use_bunched_mode=1,track_pages_separately=0 &end\n"
+            "&track &end\n"
+        )
+        result = run(
+            {"lattice.lte": lattice, "run.ele": commands, "wake.sdds": wake_table()},
+            mode,
+            {"beam.sdds": beam},
+        )
+        out = particles(result["out.sdds"])
+        if not np.array_equal(out["particleID"], ids):
+            sys.exit(f"{mode}: particles lost")
+        # The wake changes only the slopes, which start at zero.
+        return np.column_stack([out["xp"], out["yp"]])
+
+
+    def pair_sum(gap, bunched):
+        """Slope kicks (xp, yp) of the 2N particles from a direct causal pair sum.
+
+        Particle i receives dq'_i = (Q/N) sum_j q_j W_q(t_i - t_j)/(E0 p) for q = x, y, summed over the
+        particles j that arrive no later than i (W(0) = 0), with Q/N the macroparticle charge, q_j the
+        source's offset and E0 the electron rest energy in eV. Bunch mode restricts j to the particles
+        of i's own bunch. The times lie on the wake table's grid, so no interpolation enters.
+        """
+        t = times(gap)
+        delay = np.maximum(t[:, None] - t[None, :], 0.0)
+        if bunched:
+            bunch = np.arange(2 * N) // N
+            delay = delay * (bunch[:, None] == bunch[None, :])
+        scale = (CHARGE / N) * SLOPE / (REST_EV * P)
+        return scale * np.column_stack([delay @ X, 0.5 * (delay @ Y)])
+
+
+    def fmt(values):
+        return "[" + ", ".join(f"{v:.16g}" for v in np.ravel(values) + 0.0) + "]"
+
+
+    def compare(label, observed, expected):
+        """Print the kicks of the second bunch's head and tail; True when all particles agree."""
+        for index in (N, 2 * N - 1):
+            print(
+                f"{label}, particle {index + 1}: "
+                f"observed={fmt(observed[index])} expected={fmt(expected[index])}"
+            )
+        return bool(np.allclose(observed, expected, rtol=RTOL, atol=ATOL))
+
+
+    TABLE = (POINTS - 1) * SPACING  # s, length of the wake table
+    # Printed by Elegant when the global time extrema span more than the table; in MPI runs the
+    # message is intermittently lost, so the exit status is the primary evidence.
+    LONG_BEAM = "The beam is longer than the transverse wake function"
+
+    defect = False
+    mixing_validated = False  # a grouped MPI run followed the merged-bunch prediction
+    for mode in ("serial", *modes(mpi_only=True)):
+        for gap in (80e-12, 160e-12, 800e-12):
+            expected = pair_sum(gap, True)
+            merged = pair_sum(gap, False)
+            for layout in ("interleaved", "grouped"):
+                label = f"{mode} {layout} rows, bunches {gap * 1e12:g} ps apart"
+                faulty = mode == "mpi" and layout == "grouped"
+                try:
+                    observed = kicks(mode, layout, gap)
+                except RunFailure as error:
+                    # The two bunches span 812 ps in all, more than the 512 ps wake table, although
+                    # each is 12 ps long and a bunch never needs the delay between bunches. Only exit
+                    # status 1 with a validated mixing result or the table-length diagnostic counts.
+                    if not (
+                        faulty
+                        and gap > TABLE
+                        and error.status == 1
+                        and (mixing_validated or LONG_BEAM in error.log)
+                    ):
+                        raise
+                    print(f"{label}: run exited with status 1; expected status 0")
+                    defect = True
+                    continue
+                agrees = compare(label, observed, expected)
+                if not faulty:
+                    if not agrees:
+                        sys.exit(f"{label}: control disagrees with the pair sum; invalid comparison")
+                    continue
+                if gap > TABLE:
+                    # The merged-bunch prediction needs wake delays beyond the table: not evaluated.
+                    if not agrees:
+                        sys.exit(f"{label}: the run completed with kicks that differ from the pair sum")
+                    continue
+                # Cause: the ranks' histograms of different bunches are added, which is the pair sum
+                # over both bunches.
+                print(f"{label}, particle {2 * N}: merged-bunch prediction={fmt(merged[2 * N - 1])}")
+                follows_merge = np.allclose(observed, merged, rtol=RTOL, atol=ATOL)
+                if not agrees and not follows_merge:
+                    sys.exit(f"{label}: kicks follow neither the pair sum nor the merged bunches")
+                mixing_validated |= not agrees
+                if gap == 80e-12:
+                    print(
+                        f"{label}: tail kick is {observed[2 * N - 1, 0] / expected[2 * N - 1, 0]:.3f} "
+                        "times the correct value"
+                    )
+                defect |= not agrees
+    print(f"comparison: rtol={RTOL:g}, atol={ATOL:g}")
+    verdict(defect)
+
+    ```
+
+??? example "Helper: _elegant.py"
+
+    [Download _elegant.py](_elegant.py)
+
+    ```python
+    """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
+
+    `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
+    Each run uses a fresh temporary directory and one numerical thread.
+    """
+
+    from __future__ import annotations
+
+    import argparse
+    import contextlib
+    import io
+    import os
+    import shutil
+    import subprocess
+    import sys
+    import tempfile
+    from pathlib import Path
+    from typing import Any
+
+    import numpy as np
+    import pysdds
+
+    MPI_RANKS = 3
+    TIMEOUT = 600  # seconds per native run
+
+
+    class RunFailure(RuntimeError):
+        """A native run that exited with a nonzero status; `log` is its full stdout and stderr."""
+
+        def __init__(self, program: str, status: int, log: str):
+            super().__init__(f"{program} exited with status {status}:\n{log[-3000:]}")
+            self.program, self.status, self.log = program, status, log
+
+
+    def modes(mpi_only: bool = False) -> tuple[str, ...]:
+        """Execution modes from the command line: serial, plus 3-rank Pelegant with --mpi.
+
+        An MPI-only defect always runs Pelegant; --mpi is then implied.
+        """
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--mpi", action="store_true", help="also run 3-rank Pelegant")
+        args = parser.parse_args()
+        if mpi_only:
+            return ("mpi",)
+        return ("serial", "mpi") if args.mpi else ("serial",)
+
+
+    def write_beam(path: Path, beam: Any) -> None:
+        """Binary SDDS particle file; Pelegant reads only binary input.
+
+        `beam` is one page or a list of pages. In a page, array values are columns (integer arrays
+        such as particleID become SDDS long) and scalar values are parameters (for example
+        IDSlotsPerBunch); all pages need the same keys. Columns x, xp, y, yp, t, p default to zero;
+        p is in units of m c of the species.
+        """
+        pages: list[dict[str, Any]] = [beam] if isinstance(beam, dict) else list(beam)
+        arrays = [{k: np.asarray(v) for k, v in page.items() if np.ndim(v) == 1} for page in pages]
+        counts = [len(next(iter(a.values()))) for a in arrays]
+        units = {"x": "m", "xp": "", "y": "m", "yp": "", "t": "s", "p": "m$be$nc"}
+        sdds = pysdds.SDDSFile(add_data_nm=True)
+        sdds.mode = "binary"
+        sdds.n_pages = len(pages)
+        for name in dict.fromkeys([*units, *arrays[0]]):
+            data = [a.get(name, np.zeros(n)) for a, n in zip(arrays, counts, strict=True)]
+            if np.issubdtype(data[0].dtype, np.integer):
+                sdds.add_column(name, "long", data=[d.astype(np.int32) for d in data])
+            else:
+                data = [d.astype(np.float64) for d in data]
+                sdds.add_column(name, "double", units=units.get(name, ""), data=data)
+        for name, value in pages[0].items():
+            if np.ndim(value) != 0:
+                continue
+            values = [page[name] for page in pages]
+            # pysdds checks the exact NumPy scalar type, despite its Python-scalar annotation.
+            if isinstance(value, (int, np.integer)):
+                data = [np.int32(v) for v in values]
+                sdds.add_parameter(name, "long", data=data)  # ty: ignore[invalid-argument-type]
+            else:
+                sdds.add_parameter(name, "double", data=[np.float64(v) for v in values])
+        # pysdds 0.6.0 prints every parameter value while validating; keep the output clean.
+        with contextlib.redirect_stdout(io.StringIO()):
+            pysdds.write(sdds, path, overwrite=True)
+
+
+    def run(
+        files: dict[str, str],
+        mode: str = "serial",
+        beams: dict[str, Any] | None = None,
+        command: str = "run.ele",
+        outputs: tuple[str, ...] = ("out.sdds",),
+    ) -> dict:
+        """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
+
+        files: text inputs by name (lattice, command file, tables); beams: particle pages by file
+        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        """
+        if "RPN_DEFNS" not in os.environ:
+            sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
+        program = "elegant" if mode == "serial" else "Pelegant"
+        if shutil.which(program) is None or (mode == "mpi" and shutil.which("mpirun") is None):
+            sys.exit(f"{program}{' and mpirun' if mode == 'mpi' else ''} must be on PATH.")
+        argv = [program, command]
+        if mode == "mpi":
+            argv = [
+                "mpirun",
+                "--oversubscribe",
+                "--bind-to",
+                "none",
+                "-x",
+                "RPN_DEFNS",
+                "-x",
+                "OMP_NUM_THREADS",
+                "-n",
+                str(MPI_RANKS),
+                *argv,
+            ]
+        env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")
+        with tempfile.TemporaryDirectory(prefix="elegant-repro-") as tmp:
+            work = Path(tmp)
+            for name, text in files.items():
+                (work / name).write_text(text)
+            for name, columns in (beams or {}).items():
+                write_beam(work / name, columns)
+            try:
+                done = subprocess.run(
+                    argv,
+                    cwd=work,
+                    env=env,
+                    capture_output=True,
+                    text=True,
+                    timeout=TIMEOUT,
+                    check=False,
+                )
+            except subprocess.TimeoutExpired:
+                raise RuntimeError(f"{program} exceeded {TIMEOUT} s") from None
+            log = done.stdout + done.stderr
+            if done.returncode:
+                raise RunFailure(program, done.returncode, log)
+            result: dict = {"log": log}
+            for name in outputs:
+                result[name] = pysdds.read(work / name)
+        return result
+
+
+    def particles(sdds, page: int = 0) -> dict[str, np.ndarray]:
+        """Columns of one page, rows ordered by particleID when present (MPI output order varies).
+
+        Raises RuntimeError when a coordinate column (x, xp, y, yp, t, p) holds a nonfinite value: such
+        output is an invalid run, not evidence for a numerical discrepancy.
+        """
+        names = [c.name for c in sdds.columns]
+        data = {n: np.asarray(sdds[page, n]) for n in names}
+        for n in ("x", "xp", "y", "yp", "t", "p"):
+            if n in data and not np.all(np.isfinite(data[n])):
+                raise RuntimeError(f"Elegant output column {n} holds nonfinite values")
+        if "particleID" in data:
+            order = np.argsort(data["particleID"], kind="stable")
+            data = {n: v[order] for n, v in data.items()}
+        return data
+
+
+    def verdict(defect: bool) -> None:
+        print("DEFECT REPRODUCED" if defect else "NOT REPRODUCED")
+
+    ```
+
+## Provenance
+
+| Role | Model | Effort | Date | Code examined |
+|---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-11-03 | master (`0355dd6aca12`), source reading, not executed for this claim |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-03 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial control and 3-rank Pelegant |
+

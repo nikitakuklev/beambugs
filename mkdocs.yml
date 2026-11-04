@@ -24,6 +24,7 @@ nav:
       - ImpactX: impactx/index.md
       - Xsuite: xsuite/index.md
       - SciBmad: scibmad/index.md
+      - Elegant: elegant/index.md
 
 hooks:
   - hooks/upstream_state.py
