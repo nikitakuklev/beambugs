@@ -2116,7 +2116,7 @@
       "commit": "b701a6e9d1f9",
       "build": "source, CPU, double, serial"
      },
-     "scope": "filing-text review and development-build numbers"
+     "scope": "development-build numbers"
     }
    ],
    "verified": {
@@ -4286,7 +4286,7 @@
       "commit": "615921c6867c",
       "build": "impactx-noacc wheel, CPU, double, serial"
      },
-     "scope": "LinearMap duplication, source-only, as an API-03 extension"
+     "scope": "LinearMap duplication; source only"
     }
    ],
    "confirmed": [
@@ -7694,7 +7694,7 @@
       "ref": "xfields 0.27.5",
       "commit": "223b4fa134a1"
      },
-     "scope": "physics of the 2.5D reference length, from reading the Xfields solver source; no Xfields execution"
+     "scope": "2.5D longitudinal reference-length dependence; source only"
     },
     {
      "model": "gpt-6.1-sol",
@@ -7705,7 +7705,7 @@
       "commit": "223b4fa134a1",
       "build": "installed packages, kernels compiled from installed source, CPU, double, serial"
      },
-     "scope": "longitudinal kick of both 2.5D solvers for a nonuniform line density with apply_z_kick enabled, free space"
+     "scope": "both 2.5D solvers' free-space longitudinal kick, nonuniform line density"
     }
    ],
    "verified": {
@@ -11094,7 +11094,7 @@
       "commit": "65e343f9afda",
       "build": "release clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64"
      },
-     "scope": "(a) callback signature"
+     "scope": "callback signature"
     },
     {
      "model": "gpt-6-astra",
@@ -11105,7 +11105,7 @@
       "commit": "65e343f9afda",
       "build": "release clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64"
      },
-     "scope": "(b) Yoshida docstring"
+     "scope": "Yoshida docstring"
     }
    ],
    "confirmed": [
@@ -11118,7 +11118,7 @@
       "commit": "65e343f9afda",
       "build": "release clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64"
      },
-     "scope": "(a) callback signature"
+     "scope": "callback signature"
     },
     {
      "model": "gpt-6-sol",
@@ -11129,7 +11129,7 @@
       "commit": "65e343f9afda",
       "build": "release clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64"
      },
-     "scope": "(b) Yoshida docstring"
+     "scope": "Yoshida docstring"
     },
     {
      "model": "claude-opus-5-5",
@@ -16473,7 +16473,7 @@
       "commit": "ae3046330572",
       "build": "source, Julia 1.13.2, CPU, Float64, serial"
      },
-     "scope": "unused padding planes of the shifted kernel contaminate the FFT (cause A)"
+     "scope": "FFT contamination from unused shifted-kernel padding planes"
     },
     {
      "model": "gpt-6-sol",
@@ -16484,7 +16484,7 @@
       "commit": "ae3046330572",
       "build": "source, Julia 1.13.2, CPU, Float64, serial"
      },
-     "scope": "cancellation in the eight-corner difference of the shifted kernel (cause B)"
+     "scope": "eight-corner cancellation in the shifted kernel"
     }
    ],
    "confirmed": [
@@ -19275,7 +19275,7 @@
       "commit": "19b8afb46a40",
       "build": "production bmad_to_scibmad 20261020-0, Julia 1.13.2, installed SciBmad 0.6.0 package set (SciBmad 62399f930847, BeamTracking 65e343f9afda, Beamlines 35fe0162c72d), CPU"
      },
-     "scope": "roll, is_on, z_rot and t_offset names (LAT-19-b.jl)"
+     "scope": "roll, is_on, z_rot and t_offset names"
     }
    ]
   },
@@ -20105,7 +20105,7 @@
       "commit": "d177ff5347c7",
       "build": "source reading, not executed for this claim"
      },
-     "scope": "fringes receive the stored K1, not the pole-tip conversion"
+     "scope": "stored K1 in pole-tip fringes"
     },
     {
      "model": "gpt-6-astra",
@@ -20116,7 +20116,7 @@
       "commit": "d177ff5347c7",
       "build": "source with SDDS 3fa650ee9a1c, CPU, serial"
      },
-     "scope": "a matrix request overwrites K1 and changes later fringe tracking"
+     "scope": "K1 mutation and fringe tracking after a matrix request"
     },
     {
      "model": "gpt-6-astra",
@@ -20930,7 +20930,7 @@
       "commit": "0355dd6aca12",
       "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
      },
-     "scope": "documentation scope, the manual's unqualified symplecticity recommendation"
+     "scope": "manual's unqualified symplecticity recommendation"
     }
    ],
    "verified": {
@@ -22464,7 +22464,7 @@
       "commit": "d177ff5347c7",
       "build": "source with SDDS 3fa650ee9a1c, CPU, serial"
      },
-     "scope": "edge parity read from the body order array; an edge-only table terminates the run"
+     "scope": "edge parity from body orders; edge-only run termination"
     },
     {
      "model": "gpt-6-astra",
@@ -22475,7 +22475,7 @@
       "commit": "0355dd6aca12",
       "build": "source reading, not executed for this claim"
      },
-     "scope": "shorter body table, source-only incidental observation"
+     "scope": "shorter body tables"
     }
    ],
    "confirmed": [
@@ -22488,7 +22488,7 @@
       "commit": "0355dd6aca12",
       "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
      },
-     "scope": "empty or shorter body table, run stops or edge kicks wrong"
+     "scope": "run failure or wrong kicks with empty or shorter body tables"
     }
    ],
    "verified": {
@@ -23120,7 +23120,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "cause in the source and comparison with CSBEND and the rolled-dipole estimate"
+     "scope": "entrance-transform omission and rolled-dipole comparison"
     }
    ],
    "confirmed": [
@@ -23560,7 +23560,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "untilted CCBENDs; a nonzero design TILT forces reoptimization and masks the defect"
+     "scope": "untilted CCBENDs"
     }
    ],
    "verified": {
@@ -23762,7 +23762,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "FSE_DIPOLE and XKICK; the claimed YKICK cancellation was refuted"
+     "scope": "FSE_DIPOLE and XKICK; not YKICK"
     }
    ],
    "verified": {
@@ -23950,7 +23950,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "comparison with the normal-quadrupole loss and an independent integration"
+     "scope": "radial lens loss versus normal quadrupole and integration"
     }
    ],
    "confirmed": [
@@ -24057,7 +24057,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "the first-kick phase reference that moves the crest away from PHASE=90; the claimed need for pi-mode cell alternation was not upheld"
+     "scope": "first-kick phase reference and PHASE=90 crest offset"
     }
    ],
    "verified": {
@@ -24344,7 +24344,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "zero-length cavity (kick method), judged against resonant-fill physics without an explicit manual equation"
+     "scope": "zero-length cavity (kick method)"
     }
    ],
    "verified": {
@@ -26507,8 +26507,7 @@
       "ref": "master",
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
-     },
-     "scope": "cause in source and executed verification"
+     }
     }
    ],
    "confirmed": [
@@ -27353,7 +27352,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "noted, source (KSEXT moments radiation zero in its steering-kick decks, traced to the length check)"
+     "scope": "zero KSEXT moments radiation in steering-kick cases"
     },
     {
      "model": "claude-opus-5-5",
@@ -27606,7 +27605,7 @@
       "commit": "7514db36f764",
       "build": "source reading, not executed for this claim"
      },
-     "scope": "noted while writing SCT-21; traced the missing species sign in the rf_setup phase"
+     "scope": "missing species sign in rf_setup phase; source only"
     }
    ],
    "confirmed": [
@@ -28259,7 +28258,7 @@
       "commit": "7514db36f764",
       "build": "source reading, not executed for this claim"
      },
-     "scope": "noted the manual's sequence line against the source guard while placing the command before twiss_output in its decks"
+     "scope": "command-order mismatch; source only"
     },
     {
      "model": "claude-opus-5-5",
@@ -28859,7 +28858,7 @@
       "commit": "75a2e1a1a58b",
       "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
      },
-     "scope": "force discrepancy and the single-precision reciprocal candidate"
+     "scope": "force discrepancy"
     },
     {
      "model": "gpt-6.1-sol",
@@ -30373,7 +30372,7 @@
       "commit": "75a2e1a1a58b",
       "build": "source reading, not executed for this claim"
      },
-     "scope": "source-only lead"
+     "scope": "whole-bunch size normalization; source only"
     }
    ],
    "confirmed": [
@@ -31703,8 +31702,7 @@
       "ref": "master",
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
-     },
-     "scope": "executed verification"
+     }
     }
    ],
    "confirmed": [
@@ -31819,7 +31817,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "executed verification of the agy statement"
+     "scope": "serial single-particle tracking"
     }
    ],
    "confirmed": [
@@ -31935,7 +31933,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "executed verification"
+     "scope": "FSE-insensitive CSR wake"
     }
    ],
    "confirmed": [
@@ -31948,7 +31946,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "nominal radius in the CSR strength, the bend slippage and the IGF argument; not the proposed ANGLE/FSE equivalence"
+     "scope": "nominal radius in CSR strength, slippage and IGF argument"
     }
    ],
    "verified": {
@@ -32060,8 +32058,7 @@
       "ref": "master",
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
-     },
-     "scope": "executed verification"
+     }
     }
    ],
    "confirmed": [
@@ -32186,7 +32183,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "executed verification"
+     "scope": "unattenuated peak-to-peak spread kick"
     }
    ],
    "confirmed": [
@@ -32199,7 +32196,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "uninitialized wavelength indices; not a reliably zero wavelength or a NULL dereference"
+     "scope": "uninitialized wavelength indices"
     }
    ],
    "verified": {
@@ -32279,8 +32276,7 @@
       "ref": "master",
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
-     },
-     "scope": "executed verification"
+     }
     }
    ],
    "confirmed": [
@@ -32388,8 +32384,7 @@
       "ref": "master",
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
-     },
-     "scope": "executed verification"
+     }
     }
    ],
    "confirmed": [
@@ -32593,7 +32588,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "executed verification"
+     "scope": "quadrupole omission at small nonzero bend angle"
     }
    ],
    "confirmed": [
@@ -32716,7 +32711,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "bend and both drift kick paths; an implementation defect, not an established binning convention"
+     "scope": "bend and both drift kick paths"
     }
    ],
    "verified": {
@@ -32948,7 +32943,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "isolated bunches whose periodic images have an appreciable field; LSCDRIFT executed, the window depends on extrema, macroparticle count and bins"
+     "scope": "LSCDRIFT for isolated bunches with appreciable image fields"
     }
    ],
    "verified": {
@@ -33058,7 +33053,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "half-bin endpoint excess for full-origin wake data, including CORGPIPE's built-in table; not that every WAKE input is wrong"
+     "scope": "endpoint excess for full-origin WAKE and CORGPIPE data"
     }
    ],
    "verified": {
@@ -33477,7 +33472,7 @@
       "commit": "0355dd6aca12",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "source observation of the missing restoration loop; no execution for this claim"
+     "scope": "missing histogram restoration loop; source only"
     }
    ],
    "confirmed": [
@@ -33658,7 +33653,7 @@
       "commit": "0355dd6aca12",
       "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
      },
-     "scope": "serial T1/T2 buffer-reuse observation; MPI runs in this session concerned other entries"
+     "scope": "serial T1/T2 buffer reuse"
     }
    ],
    "confirmed": [
@@ -33949,7 +33944,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "a WAKE documentation defect; the non-trimming implementation is not shown to be physically wrong"
+     "scope": "WAKE documentation mismatch"
     }
    ],
    "verified": {
@@ -34046,8 +34041,7 @@
       "ref": "master",
       "commit": "75a2e1a1a58b",
       "build": "source reading, not executed for this claim"
-     },
-     "scope": "source reading"
+     }
     },
     {
      "model": "gpt-6.1-sol",
@@ -34057,8 +34051,7 @@
       "ref": "master",
       "commit": "75a2e1a1a58b",
       "build": "source reading, not executed for this claim"
-     },
-     "scope": "source reading"
+     }
     }
    ],
    "verified": {
@@ -35462,7 +35455,7 @@
       "commit": "0355dd6aca12",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "forced-MCS width with RHO input; elastic and recoil rate factor by source reading"
+     "scope": "RHO forced-MCS width; rate factors by source only"
     }
    ],
    "confirmed": [
@@ -35485,7 +35478,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "forced-MCS width with RHO input; elastic and recoil rates for pressure and RHO input"
+     "scope": "RHO forced-MCS width; pressure/RHO elastic and recoil rates"
     }
    ],
    "verified": {
@@ -35678,7 +35671,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "equilibria below the ε₀/(1+κ) bound, that is weak IBS with τx > τy"
+     "scope": "equilibria below ε₀/(1+κ), weak IBS with τx > τy"
     }
    ],
    "verified": {
@@ -35789,7 +35782,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "IBSCATTER rates through zibs.c; the claim that moments_output shares them was refuted"
+     "scope": "IBSCATTER rates; not moments_output"
     }
    ],
    "verified": {
@@ -36000,7 +35993,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "the rate normalization; a species-dependent error in the generated coordinates was not established"
+     "scope": "species-dependent rate normalization"
     }
    ],
    "verified": {
@@ -36246,7 +36239,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "the unstable rates and distorted weights for an aperture inside the sampled spread; it refuted a missing sample-count normalization"
+     "scope": "rates and weights with aperture inside sampled spread"
     }
    ],
    "verified": {
@@ -36532,7 +36525,7 @@
       "commit": "0355dd6aca12",
       "build": "source with SDDS a3f730a14c49, CPU, serial and 5-rank Pelegant"
      },
-     "scope": "C4, constant-energy Piwinski rates, serial only"
+     "scope": "constant-energy Piwinski rates, serial only"
     }
    ],
    "confirmed": [
@@ -36545,7 +36538,7 @@
       "commit": "0355dd6aca12",
       "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
      },
-     "scope": "C4, constant-energy Piwinski rates, serial only"
+     "scope": "constant-energy Piwinski rates, serial only"
     }
    ]
   },

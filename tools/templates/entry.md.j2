@@ -67,7 +67,7 @@ Input files: {% for f in inputs %}[{{ f }}]({{ f }}){% if not loop.last %}, {% e
 |---|---|---|---|---|
 {% for role in ['found', 'confirmed'] %}
 {% for p in e.provenance[role] %}
-| {{ role | capitalize }}{% if p.get('scope') %} ({{ p.scope }}){% endif %} | `{{ p.model }}` | {{ p.get('effort', '') }} | {{ p.date }} | {{ codeid(p.code) if p.get('code') else '' }} |
+| {{ role | capitalize }}{% if p.get('scope') %}<br><small>{{ p.scope }}</small>{% endif %} | `{{ p.model }}` | {{ p.get('effort', '') }} | {{ p.date }} | {{ codeid(p.code) if p.get('code') else '' }} |
 {% endfor %}
 {% endfor %}
 

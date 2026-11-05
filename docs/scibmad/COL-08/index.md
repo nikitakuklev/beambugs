@@ -159,7 +159,7 @@ hide:
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found (unused padding planes of the shifted kernel contaminate the FFT (cause A)) | `gpt-6-astra` | xhigh | 2026-10-22 | SpaceCharge 1.3.0 (`ae3046330572`), source, Julia 1.13.2, CPU, Float64, serial |
-| Found (cancellation in the eight-corner difference of the shifted kernel (cause B)) | `gpt-6-sol` | xhigh | 2026-10-22 | SpaceCharge 1.3.0 (`ae3046330572`), source, Julia 1.13.2, CPU, Float64, serial |
+| Found<br><small>FFT contamination from unused shifted-kernel padding planes</small> | `gpt-6-astra` | xhigh | 2026-10-22 | SpaceCharge 1.3.0 (`ae3046330572`), source, Julia 1.13.2, CPU, Float64, serial |
+| Found<br><small>eight-corner cancellation in the shifted kernel</small> | `gpt-6-sol` | xhigh | 2026-10-22 | SpaceCharge 1.3.0 (`ae3046330572`), source, Julia 1.13.2, CPU, Float64, serial |
 | Confirmed | `claude-opus-5-5` | high | 2026-10-22 | SpaceCharge 1.3.0 (`ae3046330572`), source, Julia 1.13.2, CPU, Float64, serial |
 

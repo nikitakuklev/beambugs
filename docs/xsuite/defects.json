@@ -3360,7 +3360,7 @@
       "ref": "xfields 0.27.5",
       "commit": "223b4fa134a1"
      },
-     "scope": "physics of the 2.5D reference length, from reading the Xfields solver source; no Xfields execution"
+     "scope": "2.5D longitudinal reference-length dependence; source only"
     },
     {
      "model": "gpt-6.1-sol",
@@ -3371,7 +3371,7 @@
       "commit": "223b4fa134a1",
       "build": "installed packages, kernels compiled from installed source, CPU, double, serial"
      },
-     "scope": "longitudinal kick of both 2.5D solvers for a nonuniform line density with apply_z_kick enabled, free space"
+     "scope": "both 2.5D solvers' free-space longitudinal kick, nonuniform line density"
     }
    ],
    "verified": {

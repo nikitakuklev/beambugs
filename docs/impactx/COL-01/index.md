@@ -97,8 +97,8 @@ With `2p5D` particle-in-cell space charge, the longitudinal kick multiplies the 
 |---|---|---|---|---|
 | Found | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
 | Confirmed | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed (physics review of the reference length) | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`) |
-| Confirmed (validity review) | `gpt-6-astra` | xhigh | 2026-10-28 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed (validity review) | `claude-opus-5-5` | high | 2026-10-28 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed (filing-text review and development-build numbers) | `gpt-6-astra` | xhigh | 2026-10-28 | development (`b701a6e9d1f9`), source, CPU, double, serial |
+| Confirmed<br><small>physics review of the reference length</small> | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`) |
+| Confirmed<br><small>validity review</small> | `gpt-6-astra` | xhigh | 2026-10-28 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed<br><small>validity review</small> | `claude-opus-5-5` | high | 2026-10-28 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed<br><small>development-build numbers</small> | `gpt-6-astra` | xhigh | 2026-10-28 | development (`b701a6e9d1f9`), source, CPU, double, serial |
 

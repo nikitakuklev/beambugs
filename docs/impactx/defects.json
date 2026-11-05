@@ -2116,7 +2116,7 @@
       "commit": "b701a6e9d1f9",
       "build": "source, CPU, double, serial"
      },
-     "scope": "filing-text review and development-build numbers"
+     "scope": "development-build numbers"
     }
    ],
    "verified": {
@@ -4286,7 +4286,7 @@
       "commit": "615921c6867c",
       "build": "impactx-noacc wheel, CPU, double, serial"
      },
-     "scope": "LinearMap duplication, source-only, as an API-03 extension"
+     "scope": "LinearMap duplication; source only"
     }
    ],
    "confirmed": [

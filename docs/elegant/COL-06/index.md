@@ -144,8 +144,8 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found (force discrepancy and the single-precision reciprocal candidate) | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
-| Found (force discrepancy) | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
+| Found<br><small>force discrepancy</small> | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
+| Found<br><small>force discrepancy</small> | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Found | `gpt-6-astra` | xhigh | 2026-11-04 | SDDS master (`a3f730a14c49`), Elegant 0355dd6aca12 source, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | SDDS master (`a60b9bbed7cc`), Elegant 75a2e1a1a58b source, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | SDDS master (`a60b9bbed7cc`), Elegant 75a2e1a1a58b source, CPU, serial and 3-rank Pelegant |

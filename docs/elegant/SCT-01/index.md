@@ -164,6 +164,6 @@ Download these shared helpers into the same directory as the reproducer scripts:
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
-| Confirmed (source reading) | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
-| Confirmed (source reading) | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
+| Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
+| Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
 

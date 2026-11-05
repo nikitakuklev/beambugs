@@ -1345,7 +1345,7 @@
       "commit": "65e343f9afda",
       "build": "release clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64"
      },
-     "scope": "(a) callback signature"
+     "scope": "callback signature"
     },
     {
      "model": "gpt-6-astra",
@@ -1356,7 +1356,7 @@
       "commit": "65e343f9afda",
       "build": "release clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64"
      },
-     "scope": "(b) Yoshida docstring"
+     "scope": "Yoshida docstring"
     }
    ],
    "confirmed": [
@@ -1369,7 +1369,7 @@
       "commit": "65e343f9afda",
       "build": "release clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64"
      },
-     "scope": "(a) callback signature"
+     "scope": "callback signature"
     },
     {
      "model": "gpt-6-sol",
@@ -1380,7 +1380,7 @@
       "commit": "65e343f9afda",
       "build": "release clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64"
      },
-     "scope": "(b) Yoshida docstring"
+     "scope": "Yoshida docstring"
     },
     {
      "model": "claude-opus-5-5",
@@ -6724,7 +6724,7 @@
       "commit": "ae3046330572",
       "build": "source, Julia 1.13.2, CPU, Float64, serial"
      },
-     "scope": "unused padding planes of the shifted kernel contaminate the FFT (cause A)"
+     "scope": "FFT contamination from unused shifted-kernel padding planes"
     },
     {
      "model": "gpt-6-sol",
@@ -6735,7 +6735,7 @@
       "commit": "ae3046330572",
       "build": "source, Julia 1.13.2, CPU, Float64, serial"
      },
-     "scope": "cancellation in the eight-corner difference of the shifted kernel (cause B)"
+     "scope": "eight-corner cancellation in the shifted kernel"
     }
    ],
    "confirmed": [
@@ -9526,7 +9526,7 @@
       "commit": "19b8afb46a40",
       "build": "production bmad_to_scibmad 20261020-0, Julia 1.13.2, installed SciBmad 0.6.0 package set (SciBmad 62399f930847, BeamTracking 65e343f9afda, Beamlines 35fe0162c72d), CPU"
      },
-     "scope": "roll, is_on, z_rot and t_offset names (LAT-19-b.jl)"
+     "scope": "roll, is_on, z_rot and t_offset names"
     }
    ]
   },

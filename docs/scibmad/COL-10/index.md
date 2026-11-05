@@ -95,5 +95,5 @@ The intrabeam scattering (IBS) kick takes its bunch statistics before the elemen
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `claude-opus-5-5` | high | 2026-10-23 | BeamTracking main (`d8e45fdc25db`), source, Julia 1.13.2, CPU, Float64, serial |
-| Confirmed (same-element entrance-aperture timing) | `gpt-6-astra` | xhigh | 2026-10-23 | BeamTracking main (`d8e45fdc25db`), source, Julia 1.13.2, CPU, Float64, serial |
+| Confirmed<br><small>same-element entrance-aperture timing</small> | `gpt-6-astra` | xhigh | 2026-10-23 | BeamTracking main (`d8e45fdc25db`), source, Julia 1.13.2, CPU, Float64, serial |
 

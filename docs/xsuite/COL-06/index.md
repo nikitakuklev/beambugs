@@ -110,6 +110,6 @@ Download these shared helpers into the same directory as the reproducer scripts:
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `claude-opus-5-5` | high | 2026-10-27 | xfields 0.27.5 (`223b4fa134a1`), installed wheel, CPU, serial |
-| Confirmed (physics of the 2.5D reference length, from reading the Xfields solver source; no Xfields execution) | `gpt-6-astra` | xhigh | 2026-10-27 | xfields 0.27.5 (`223b4fa134a1`) |
-| Confirmed (longitudinal kick of both 2.5D solvers for a nonuniform line density with apply_z_kick enabled, free space) | `gpt-6.1-sol` | xhigh | 2026-10-30 | xfields 0.27.5 (`223b4fa134a1`), installed packages, kernels compiled from installed source, CPU, double, serial |
+| Confirmed<br><small>2.5D longitudinal reference-length dependence; source only</small> | `gpt-6-astra` | xhigh | 2026-10-27 | xfields 0.27.5 (`223b4fa134a1`) |
+| Confirmed<br><small>both 2.5D solvers' free-space longitudinal kick, nonuniform line density</small> | `gpt-6.1-sol` | xhigh | 2026-10-30 | xfields 0.27.5 (`223b4fa134a1`), installed packages, kernels compiled from installed source, CPU, double, serial |
 
