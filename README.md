@@ -12,12 +12,18 @@ Site: https://nikitakuklev.github.io/beambugs/
 | Path | Content |
 |---|---|
 | `docs/<code>/<ID>/` | Entry page (`index.md`) and its reproducer scripts. Generated. |
+| `docs/<code>/helpers/` | Shared `_*.py` helpers, published once per code, and a source-viewing page (`index.md`). Generated. |
 | `docs/<code>/index.md`, `docs/<code>/defects.json` | Per-code table and records. Generated. |
 | `docs/defects.json`, `docs/index.md` | All records and the home page. Generated. |
 | `docs/methodology.md` | Criteria, levels, severity, priority. Hand-written. |
 | `codes.yaml` | Exported codes: names, upstream repository, ledger location, area files. |
 | `tools/export.py`, `tools/templates/` | Exporter from the private ledgers. |
 | `hooks/upstream_state.py` | Build hook that shows the current state of linked issues and PRs. |
+
+Entry pages link to the source and download of every helper their scripts need,
+including helpers imported by other helpers. Save these files beside the
+downloaded scripts. In `defects.json`, `reproducers` contains download paths
+relative to the entry's `page`, with helpers at `../helpers/<name>.py`.
 
 ## Regenerate and build
 

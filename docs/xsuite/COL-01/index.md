@@ -17,6 +17,10 @@ hide:
 
 `LongitudinalProfileQGaussian` normalizes the q-Gaussian line density with gamma functions whose numerator and denominator overflow separately, so for an index `q` near, but not equal to, 1 the density and the space-charge kicks it drives are NaN. The normalization is finite, as a log-beta-function evaluation and adaptive quadrature confirm. For a unit-population, unit-RMS profile at `q` = 0.999 and 1.001, the centre density is NaN instead of 0.3988 and 0.3991 m⁻¹, and a 1 GeV/c proton at x = 1 mm in a Gaussian space-charge lens gets `px` NaN instead of 2.561 × 10⁻⁵ and 2.562 × 10⁻⁵. Values from 0.995 to 1.005 fail except within 10⁻⁶ of 1, where an intentional Gaussian approximation applies; 0.99 and 1.01 are correct.
 
+Download these shared helpers into the same directory as the reproducer scripts:
+
+- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+
 ??? example "Reproducer: COL-01.py"
 
     [Download COL-01.py](COL-01.py)
@@ -119,66 +123,6 @@ hide:
             "Expected: finite normalized q-Gaussian density, its analytic derivative, and the round-beam Lorentz kick."
         )
         report(evaluate(), rtol=RTOL, atol=ATOL)
-
-    ```
-
-??? example "Helper: _common.py"
-
-    [Download _common.py](_common.py)
-
-    ```python
-    """Shared setup and output for the defect reproducers.
-
-    `prepare()` moves to a fresh temporary working directory, where CFFI compiles the kernels, and
-    prints the package versions and context; `report()` prints the observed and expected rows and the
-    verdict line.
-    """
-
-    import atexit
-    import importlib
-    import importlib.metadata
-    import os
-    import platform
-    import shutil
-    import tempfile
-    from pathlib import Path
-
-    import numpy as np
-    import xobjects as xo
-
-
-    def prepare(*, radiation="off", random_seed=None):
-        # CFFI compiles into cwd; keep generated files outside the source trees.
-        scratch = Path(tempfile.mkdtemp(prefix="xsuite-repro-"))
-        atexit.register(shutil.rmtree, scratch, ignore_errors=True)
-        os.chdir(scratch)
-        xo.settings.allow_kernel_compilation = True
-        print(f"Python {platform.python_version()}; {platform.platform()}")
-        for name in ("xsuite", "xtrack", "xobjects", "xdeps", "xpart", "xfields", "xcoll"):
-            module = importlib.import_module(name)
-            print(f"{name} {module.__version__}: {module.__file__}")
-        for name in ("numpy", "scipy", "madng-tpsa", "cffi"):
-            print(f"{name} {importlib.metadata.version(name)}")
-        randomness = (
-            "deterministic, no random seed"
-            if random_seed is None
-            else f"fixed RNG seed(s)={random_seed}"
-        )
-        print(f"ContextCpu, serial; radiation={radiation}; {randomness}")
-        print(
-            f"allow_kernel_compilation={xo.settings.allow_kernel_compilation}; "
-            f"force_kernel_compilation={xo.settings.force_kernel_compilation}"
-        )
-
-
-    def report(cases, *, rtol, atol):
-        np.set_printoptions(precision=15, linewidth=140)
-        mismatch = False
-        for label, (observed, expected) in cases.items():
-            print(f"{label}: observed={np.asarray(observed)} expected={np.asarray(expected)}")
-            mismatch |= not np.allclose(observed, expected, rtol=rtol, atol=atol)
-        print(f"comparison: rtol={rtol:g}, atol={atol:g}")
-        print("DEFECT REPRODUCED" if mismatch else "NOT REPRODUCED")
 
     ```
 

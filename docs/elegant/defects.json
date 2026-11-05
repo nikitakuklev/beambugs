@@ -103,7 +103,7 @@
   ],
   "reproducers": [
    "TRK-01.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -331,7 +331,7 @@
   "reproducers": [
    "TRK-03.py",
    "TRK-03-fse.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -449,7 +449,7 @@
   ],
   "reproducers": [
    "TRK-05.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -577,7 +577,7 @@
   ],
   "reproducers": [
    "TRK-06.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -673,7 +673,7 @@
   ],
   "reproducers": [
    "TRK-07.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -791,7 +791,7 @@
   ],
   "reproducers": [
    "TRK-08.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -929,7 +929,7 @@
   ],
   "reproducers": [
    "TRK-09.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -1043,7 +1043,7 @@
   ],
   "reproducers": [
    "TRK-10.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -1173,7 +1173,7 @@
   ],
   "reproducers": [
    "TRK-11.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -1271,7 +1271,7 @@
   ],
   "reproducers": [
    "TRK-13.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -1378,7 +1378,7 @@
   ],
   "reproducers": [
    "TRK-14.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -1470,7 +1470,7 @@
   ],
   "reproducers": [
    "TRK-15.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -1558,7 +1558,7 @@
   ],
   "reproducers": [
    "TRK-16.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -1650,7 +1650,7 @@
   ],
   "reproducers": [
    "TRK-17.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -1738,7 +1738,7 @@
   ],
   "reproducers": [
    "TRK-18.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -1841,7 +1841,7 @@
   ],
   "reproducers": [
    "TRK-19.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -1935,7 +1935,7 @@
   ],
   "reproducers": [
    "TRK-20.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -2034,7 +2034,7 @@
   ],
   "reproducers": [
    "TRK-21.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -2128,7 +2128,7 @@
   ],
   "reproducers": [
    "TRK-22.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -2226,8 +2226,8 @@
   ],
   "reproducers": [
    "TRK-23.py",
-   "_elegant.py",
-   "_multipole.py"
+   "../helpers/_elegant.py",
+   "../helpers/_multipole.py"
   ],
   "requirements": [
    "numpy",
@@ -2372,8 +2372,8 @@
   ],
   "reproducers": [
    "TRK-24.py",
-   "_elegant.py",
-   "_multipole.py"
+   "../helpers/_elegant.py",
+   "../helpers/_multipole.py"
   ],
   "requirements": [
    "numpy",
@@ -2482,8 +2482,8 @@
   ],
   "reproducers": [
    "TRK-25.py",
-   "_elegant.py",
-   "_multipole.py"
+   "../helpers/_elegant.py",
+   "../helpers/_multipole.py"
   ],
   "requirements": [
    "numpy",
@@ -2601,7 +2601,7 @@
   ],
   "reproducers": [
    "TRK-26.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -2699,7 +2699,7 @@
   ],
   "reproducers": [
    "TRK-27.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -2807,8 +2807,8 @@
   ],
   "reproducers": [
    "TRK-28.py",
-   "_elegant.py",
-   "_sole.py"
+   "../helpers/_elegant.py",
+   "../helpers/_sole.py"
   ],
   "requirements": [
    "numpy",
@@ -2897,8 +2897,8 @@
   ],
   "reproducers": [
    "TRK-29.py",
-   "_elegant.py",
-   "_sole.py"
+   "../helpers/_elegant.py",
+   "../helpers/_sole.py"
   ],
   "requirements": [
    "numpy",
@@ -3045,8 +3045,8 @@
   ],
   "reproducers": [
    "TRK-30.py",
-   "_elegant.py",
-   "_sole.py"
+   "../helpers/_elegant.py",
+   "../helpers/_sole.py"
   ],
   "requirements": [
    "numpy",
@@ -3146,8 +3146,8 @@
   ],
   "reproducers": [
    "TRK-31.py",
-   "_elegant.py",
-   "_sole.py"
+   "../helpers/_elegant.py",
+   "../helpers/_sole.py"
   ],
   "requirements": [
    "numpy",
@@ -3246,7 +3246,7 @@
   ],
   "reproducers": [
    "TRK-32.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -3364,7 +3364,7 @@
   ],
   "reproducers": [
    "TRK-33.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -3474,7 +3474,7 @@
   ],
   "reproducers": [
    "TRK-34.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -3558,7 +3558,7 @@
   ],
   "reproducers": [
    "TRK-35.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -3674,7 +3674,7 @@
   ],
   "reproducers": [
    "TRK-36.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -3778,7 +3778,7 @@
   ],
   "reproducers": [
    "TRK-37.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -3875,8 +3875,8 @@
   ],
   "reproducers": [
    "TRK-38.py",
-   "_csbend_fse.py",
-   "_elegant.py"
+   "../helpers/_csbend_fse.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -3968,8 +3968,8 @@
   ],
   "reproducers": [
    "TRK-39.py",
-   "_csbend_fse.py",
-   "_elegant.py"
+   "../helpers/_csbend_fse.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -4076,7 +4076,7 @@
   ],
   "reproducers": [
    "TRK-40.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -4170,7 +4170,7 @@
   ],
   "reproducers": [
    "TRK-41.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -4272,8 +4272,8 @@
   ],
   "reproducers": [
    "TRK-42.py",
-   "_elegant.py",
-   "_rfca_lens.py"
+   "../helpers/_elegant.py",
+   "../helpers/_rfca_lens.py"
   ],
   "requirements": [
    "numpy",
@@ -4365,8 +4365,8 @@
   ],
   "reproducers": [
    "TRK-43.py",
-   "_elegant.py",
-   "_rfca_lens.py"
+   "../helpers/_elegant.py",
+   "../helpers/_rfca_lens.py"
   ],
   "requirements": [
    "numpy",
@@ -4457,7 +4457,7 @@
   ],
   "reproducers": [
    "TRK-44.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -4574,7 +4574,7 @@
   ],
   "reproducers": [
    "TRK-45.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -4653,7 +4653,7 @@
   ],
   "reproducers": [
    "TRK-46.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -4750,7 +4750,7 @@
   ],
   "reproducers": [
    "TRK-47.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -4868,7 +4868,7 @@
   ],
   "reproducers": [
    "DOC-05.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -4987,7 +4987,7 @@
   ],
   "reproducers": [
    "OPT-01.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -5101,7 +5101,7 @@
   ],
   "reproducers": [
    "OPT-02.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -5253,7 +5253,7 @@
   ],
   "reproducers": [
    "OPT-03.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -5369,7 +5369,7 @@
   ],
   "reproducers": [
    "OPT-04.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -5495,8 +5495,8 @@
   ],
   "reproducers": [
    "OPT-05.py",
-   "_cubic_optics.py",
-   "_elegant.py"
+   "../helpers/_cubic_optics.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -5608,8 +5608,8 @@
   ],
   "reproducers": [
    "OPT-06.py",
-   "_cubic_optics.py",
-   "_elegant.py"
+   "../helpers/_cubic_optics.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -5741,8 +5741,8 @@
   ],
   "reproducers": [
    "OPT-07.py",
-   "_cubic_optics.py",
-   "_elegant.py"
+   "../helpers/_cubic_optics.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -5860,7 +5860,7 @@
   ],
   "reproducers": [
    "OPT-09.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -5988,7 +5988,7 @@
   ],
   "reproducers": [
    "OPT-11.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -6116,7 +6116,7 @@
   ],
   "reproducers": [
    "OPT-12.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -6246,8 +6246,8 @@
   ],
   "reproducers": [
    "OPT-13.py",
-   "_elegant.py",
-   "_matr.py"
+   "../helpers/_elegant.py",
+   "../helpers/_matr.py"
   ],
   "requirements": [
    "numpy",
@@ -6335,7 +6335,7 @@
   ],
   "reproducers": [
    "OPT-14.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -6427,7 +6427,7 @@
   ],
   "reproducers": [
    "OPT-15.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -6523,7 +6523,7 @@
   ],
   "reproducers": [
    "OPT-16.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -6634,7 +6634,7 @@
   ],
   "reproducers": [
    "OPT-17.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -6736,7 +6736,7 @@
   ],
   "reproducers": [
    "OPT-18.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -6824,7 +6824,7 @@
   ],
   "reproducers": [
    "OPT-19.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -6916,7 +6916,7 @@
   ],
   "reproducers": [
    "OPT-20.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -7009,7 +7009,7 @@
   ],
   "reproducers": [
    "OPT-21.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -7097,7 +7097,7 @@
   ],
   "reproducers": [
    "OPT-22.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -7196,7 +7196,7 @@
   ],
   "reproducers": [
    "OPT-23.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -7289,7 +7289,7 @@
   ],
   "reproducers": [
    "OPT-24.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -7377,7 +7377,7 @@
   ],
   "reproducers": [
    "OPT-25.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -7489,7 +7489,7 @@
   ],
   "reproducers": [
    "OPT-26.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -7604,7 +7604,7 @@
   ],
   "reproducers": [
    "OPT-27.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -7731,7 +7731,7 @@
   ],
   "reproducers": [
    "OPT-28.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -7874,7 +7874,7 @@
   ],
   "reproducers": [
    "OPT-29.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -7971,7 +7971,7 @@
   ],
   "reproducers": [
    "OPT-30.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -8104,7 +8104,7 @@
   ],
   "reproducers": [
    "OPT-31.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -8198,8 +8198,8 @@
   ],
   "reproducers": [
    "DOC-01.py",
-   "_elegant.py",
-   "_matr.py"
+   "../helpers/_elegant.py",
+   "../helpers/_matr.py"
   ],
   "requirements": [
    "numpy",
@@ -8295,7 +8295,7 @@
   ],
   "reproducers": [
    "DOC-10.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -8394,7 +8394,7 @@
   ],
   "reproducers": [
    "DOC-11.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -8490,7 +8490,7 @@
   ],
   "reproducers": [
    "COL-02.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -8629,8 +8629,8 @@
   ],
   "reproducers": [
    "COL-03.py",
-   "_elegant.py",
-   "_scring.py"
+   "../helpers/_elegant.py",
+   "../helpers/_scring.py"
   ],
   "requirements": [
    "numpy",
@@ -8771,8 +8771,8 @@
   ],
   "reproducers": [
    "COL-04.py",
-   "_elegant.py",
-   "_scring.py"
+   "../helpers/_elegant.py",
+   "../helpers/_scring.py"
   ],
   "requirements": [
    "numpy",
@@ -8875,8 +8875,8 @@
   ],
   "reproducers": [
    "COL-05.py",
-   "_elegant.py",
-   "_scring.py"
+   "../helpers/_elegant.py",
+   "../helpers/_scring.py"
   ],
   "requirements": [
    "numpy",
@@ -9015,8 +9015,8 @@
   ],
   "reproducers": [
    "COL-06.py",
-   "_elegant.py",
-   "_scring.py"
+   "../helpers/_elegant.py",
+   "../helpers/_scring.py"
   ],
   "requirements": [
    "numpy",
@@ -9147,7 +9147,7 @@
   ],
   "reproducers": [
    "COL-07.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -9277,8 +9277,8 @@
   ],
   "reproducers": [
    "COL-08.py",
-   "_elegant.py",
-   "_ztransverse.py"
+   "../helpers/_elegant.py",
+   "../helpers/_ztransverse.py"
   ],
   "requirements": [
    "numpy",
@@ -9416,8 +9416,8 @@
   ],
   "reproducers": [
    "COL-09.py",
-   "_elegant.py",
-   "_ztransverse.py"
+   "../helpers/_elegant.py",
+   "../helpers/_ztransverse.py"
   ],
   "requirements": [
    "numpy",
@@ -9537,7 +9537,7 @@
   ],
   "reproducers": [
    "COL-11.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -9635,7 +9635,7 @@
   ],
   "reproducers": [
    "COL-12.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -9725,7 +9725,7 @@
   ],
   "reproducers": [
    "COL-13.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -9809,7 +9809,7 @@
   ],
   "reproducers": [
    "COL-14.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -9901,7 +9901,7 @@
   ],
   "reproducers": [
    "COL-15.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -9997,7 +9997,7 @@
   ],
   "reproducers": [
    "COL-16.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -10089,7 +10089,7 @@
   ],
   "reproducers": [
    "COL-17.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -10173,9 +10173,9 @@
   ],
   "reproducers": [
    "COL-18.py",
-   "_elegant.py",
-   "_scmult_ring.py",
-   "_scring.py"
+   "../helpers/_elegant.py",
+   "../helpers/_scmult_ring.py",
+   "../helpers/_scring.py"
   ],
   "requirements": [
    "numpy",
@@ -10276,8 +10276,8 @@
   ],
   "reproducers": [
    "COL-19.py",
-   "_elegant.py",
-   "_scmult_ring.py"
+   "../helpers/_elegant.py",
+   "../helpers/_scmult_ring.py"
   ],
   "requirements": [
    "numpy",
@@ -10403,7 +10403,7 @@
   ],
   "reproducers": [
    "COL-20.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -10498,7 +10498,7 @@
   ],
   "reproducers": [
    "COL-21.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -10600,7 +10600,7 @@
   ],
   "reproducers": [
    "COL-22.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -10707,8 +10707,8 @@
   ],
   "reproducers": [
    "COL-23.py",
-   "_elegant.py",
-   "_trwake.py"
+   "../helpers/_elegant.py",
+   "../helpers/_trwake.py"
   ],
   "requirements": [
    "numpy",
@@ -10897,8 +10897,8 @@
   "reproducers": [
    "COL-24.py",
    "COL-24-mpi.py",
-   "_elegant.py",
-   "_trwake.py"
+   "../helpers/_elegant.py",
+   "../helpers/_trwake.py"
   ],
   "requirements": [
    "numpy",
@@ -11024,7 +11024,7 @@
   ],
   "reproducers": [
    "COL-26.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -11122,7 +11122,7 @@
   ],
   "reproducers": [
    "COL-27.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -11249,7 +11249,7 @@
   ],
   "reproducers": [
    "COL-28.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -11341,8 +11341,8 @@
   ],
   "reproducers": [
    "COL-29.py",
-   "_elegant.py",
-   "_scinsert.py"
+   "../helpers/_elegant.py",
+   "../helpers/_scinsert.py"
   ],
   "requirements": [
    "numpy",
@@ -11434,8 +11434,8 @@
   ],
   "reproducers": [
    "COL-30.py",
-   "_elegant.py",
-   "_scinsert.py"
+   "../helpers/_elegant.py",
+   "../helpers/_scinsert.py"
   ],
   "requirements": [
    "numpy",
@@ -11519,8 +11519,8 @@
   ],
   "reproducers": [
    "COL-31.py",
-   "_elegant.py",
-   "_scinsert.py"
+   "../helpers/_elegant.py",
+   "../helpers/_scinsert.py"
   ],
   "requirements": [
    "numpy",
@@ -11608,8 +11608,8 @@
   ],
   "reproducers": [
    "COL-32.py",
-   "_elegant.py",
-   "_scinsert.py"
+   "../helpers/_elegant.py",
+   "../helpers/_scinsert.py"
   ],
   "requirements": [
    "numpy",
@@ -11719,7 +11719,7 @@
   ],
   "reproducers": [
    "COL-33.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -11830,8 +11830,8 @@
   ],
   "reproducers": [
    "COL-34.py",
-   "_csr.py",
-   "_elegant.py"
+   "../helpers/_csr.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -11946,8 +11946,8 @@
   ],
   "reproducers": [
    "COL-35.py",
-   "_csr.py",
-   "_elegant.py"
+   "../helpers/_csr.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -12062,8 +12062,8 @@
   ],
   "reproducers": [
    "COL-36.py",
-   "_csr.py",
-   "_elegant.py"
+   "../helpers/_csr.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -12187,8 +12187,8 @@
   ],
   "reproducers": [
    "COL-37.py",
-   "_csr.py",
-   "_elegant.py"
+   "../helpers/_csr.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -12313,8 +12313,8 @@
   ],
   "reproducers": [
    "COL-38.py",
-   "_csr.py",
-   "_elegant.py"
+   "../helpers/_csr.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -12406,8 +12406,8 @@
   ],
   "reproducers": [
    "COL-39.py",
-   "_csr.py",
-   "_elegant.py"
+   "../helpers/_csr.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -12515,8 +12515,8 @@
   ],
   "reproducers": [
    "COL-40.py",
-   "_csr.py",
-   "_elegant.py"
+   "../helpers/_csr.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -12614,8 +12614,8 @@
   ],
   "reproducers": [
    "COL-41.py",
-   "_csr.py",
-   "_elegant.py"
+   "../helpers/_csr.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -12720,8 +12720,8 @@
   ],
   "reproducers": [
    "COL-42.py",
-   "_csr.py",
-   "_elegant.py"
+   "../helpers/_csr.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -12829,8 +12829,8 @@
   ],
   "reproducers": [
    "COL-43.py",
-   "_csr.py",
-   "_elegant.py"
+   "../helpers/_csr.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -12940,8 +12940,8 @@
   ],
   "reproducers": [
    "COL-44.py",
-   "_elegant.py",
-   "_lsc.py"
+   "../helpers/_elegant.py",
+   "../helpers/_lsc.py"
   ],
   "requirements": [
    "numpy",
@@ -13061,8 +13061,8 @@
   ],
   "reproducers": [
    "COL-45.py",
-   "_elegant.py",
-   "_lsc.py"
+   "../helpers/_elegant.py",
+   "../helpers/_lsc.py"
   ],
   "requirements": [
    "numpy",
@@ -13171,8 +13171,8 @@
   ],
   "reproducers": [
    "COL-46.py",
-   "_elegant.py",
-   "_wake.py"
+   "../helpers/_elegant.py",
+   "../helpers/_wake.py"
   ],
   "requirements": [
    "numpy",
@@ -13281,7 +13281,7 @@
   ],
   "reproducers": [
    "COL-47.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -13396,7 +13396,7 @@
   ],
   "reproducers": [
    "COL-48.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -13504,7 +13504,7 @@
   ],
   "reproducers": [
    "COL-49.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -13593,8 +13593,8 @@
   ],
   "reproducers": [
    "COL-50.py",
-   "_csr.py",
-   "_elegant.py"
+   "../helpers/_csr.py",
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -13682,7 +13682,7 @@
   ],
   "reproducers": [
    "COL-51.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -13774,7 +13774,7 @@
   ],
   "reproducers": [
    "COL-52.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -13863,7 +13863,7 @@
   ],
   "reproducers": [
    "DOC-04.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -13964,8 +13964,8 @@
   ],
   "reproducers": [
    "DOC-06.py",
-   "_elegant.py",
-   "_wake.py"
+   "../helpers/_elegant.py",
+   "../helpers/_wake.py"
   ],
   "requirements": [
    "numpy",
@@ -14062,8 +14062,8 @@
   ],
   "reproducers": [
    "DOC-07.py",
-   "_elegant.py",
-   "_wake.py"
+   "../helpers/_elegant.py",
+   "../helpers/_wake.py"
   ],
   "requirements": [
    "numpy",
@@ -14171,7 +14171,7 @@
   ],
   "reproducers": [
    "SCT-01.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -14267,7 +14267,7 @@
   ],
   "reproducers": [
    "SCT-02.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -14378,7 +14378,7 @@
   ],
   "reproducers": [
    "SCT-03.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -14500,8 +14500,8 @@
   ],
   "reproducers": [
    "SCT-04.py",
-   "_elegant.py",
-   "_matter.py"
+   "../helpers/_elegant.py",
+   "../helpers/_matter.py"
   ],
   "requirements": [
    "numpy",
@@ -14637,8 +14637,8 @@
   ],
   "reproducers": [
    "SCT-05.py",
-   "_elegant.py",
-   "_matter.py"
+   "../helpers/_elegant.py",
+   "../helpers/_matter.py"
   ],
   "requirements": [
    "numpy",
@@ -14732,8 +14732,8 @@
   ],
   "reproducers": [
    "SCT-06.py",
-   "_elegant.py",
-   "_matter.py"
+   "../helpers/_elegant.py",
+   "../helpers/_matter.py"
   ],
   "requirements": [
    "numpy",
@@ -14847,8 +14847,8 @@
   ],
   "reproducers": [
    "SCT-07.py",
-   "_elegant.py",
-   "_ibs_ring.py"
+   "../helpers/_elegant.py",
+   "../helpers/_ibs_ring.py"
   ],
   "requirements": [
    "numpy",
@@ -14958,8 +14958,8 @@
   ],
   "reproducers": [
    "SCT-08.py",
-   "_elegant.py",
-   "_ibs_ring.py"
+   "../helpers/_elegant.py",
+   "../helpers/_ibs_ring.py"
   ],
   "requirements": [
    "numpy",
@@ -15051,7 +15051,7 @@
   ],
   "reproducers": [
    "SCT-10.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -15143,7 +15143,7 @@
   ],
   "reproducers": [
    "SCT-11.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -15249,7 +15249,7 @@
   ],
   "reproducers": [
    "SCT-12.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -15341,8 +15341,8 @@
   ],
   "reproducers": [
    "SCT-13.py",
-   "_elegant.py",
-   "_matter_model.py"
+   "../helpers/_elegant.py",
+   "../helpers/_matter_model.py"
   ],
   "requirements": [
    "numpy",
@@ -15473,8 +15473,8 @@
   ],
   "reproducers": [
    "SCT-14.py",
-   "_elegant.py",
-   "_matter_model.py"
+   "../helpers/_elegant.py",
+   "../helpers/_matter_model.py"
   ],
   "requirements": [
    "numpy",
@@ -15599,8 +15599,8 @@
   ],
   "reproducers": [
    "SCT-15.py",
-   "_elegant.py",
-   "_matter_model.py"
+   "../helpers/_elegant.py",
+   "../helpers/_matter_model.py"
   ],
   "requirements": [
    "numpy",
@@ -15684,8 +15684,8 @@
   ],
   "reproducers": [
    "SCT-16.py",
-   "_elegant.py",
-   "_matter_model.py"
+   "../helpers/_elegant.py",
+   "../helpers/_matter_model.py"
   ],
   "requirements": [
    "numpy",
@@ -15791,7 +15791,7 @@
   ],
   "reproducers": [
    "SCT-17.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -15902,7 +15902,7 @@
   ],
   "reproducers": [
    "SCT-18.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -16004,7 +16004,7 @@
   ],
   "reproducers": [
    "SCT-19.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -16113,7 +16113,7 @@
   ],
   "reproducers": [
    "SCT-20.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -16222,7 +16222,7 @@
   ],
   "reproducers": [
    "SCT-21.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -16359,7 +16359,7 @@
   ],
   "reproducers": [
    "SCT-22.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -16451,7 +16451,7 @@
   ],
   "reproducers": [
    "SCT-23.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -16560,7 +16560,7 @@
   ],
   "reproducers": [
    "SCT-24.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -16649,7 +16649,7 @@
   ],
   "reproducers": [
    "SCT-25.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -16756,7 +16756,7 @@
   ],
   "reproducers": [
    "IO-01.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",
@@ -16856,8 +16856,8 @@
   ],
   "reproducers": [
    "IO-02.py",
-   "_elegant.py",
-   "_sdds.py"
+   "../helpers/_elegant.py",
+   "../helpers/_sdds.py"
   ],
   "requirements": [
    "numpy",
@@ -16945,8 +16945,8 @@
   ],
   "reproducers": [
    "IO-03.py",
-   "_elegant.py",
-   "_sdds.py"
+   "../helpers/_elegant.py",
+   "../helpers/_sdds.py"
   ],
   "requirements": [
    "numpy",
@@ -17035,8 +17035,8 @@
   ],
   "reproducers": [
    "IO-04.py",
-   "_elegant.py",
-   "_sdds.py"
+   "../helpers/_elegant.py",
+   "../helpers/_sdds.py"
   ],
   "requirements": [
    "numpy",
@@ -17128,7 +17128,7 @@
   ],
   "reproducers": [
    "IO-05.py",
-   "_elegant.py"
+   "../helpers/_elegant.py"
   ],
   "requirements": [
    "numpy",

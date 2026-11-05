@@ -17,6 +17,10 @@ hide:
 
 On CPU, loading a checkpoint with `Particles.from_dict(load_rng_state=True)` and default options reorders the coordinates into active-then-lost order but restores the saved random-number-generator (RNG) words in their original slot order. In checkpoints with lost rows before live rows, some live particles therefore continue another particle's saved random stream, while the persistence contract and an uninterrupted copy require each particle to keep its own. With seeds 11, 22, 33 and 44 and particle 1 lost, live particle 2 draws 0.1720 instead of 0.6269, and particle 3 draws 0.6269 instead of 0.1897. Coordinates keep their particle IDs, but restarted stochastic trajectories change; all-active checkpoints and loading with `_no_reorganize=True` preserve the associations.
 
+Download these shared helpers into the same directory as the reproducer scripts:
+
+- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+
 ??? example "Reproducer: IO-03.py"
 
     [Download IO-03.py](IO-03.py)
@@ -97,66 +101,6 @@ On CPU, loading a checkpoint with `Particles.from_dict(load_rng_state=True)` and
             "An all-active round trip and the saved JSON contents are checked before the loss-layout case."
         )
         report(evaluate(), rtol=RTOL, atol=ATOL)
-
-    ```
-
-??? example "Helper: _common.py"
-
-    [Download _common.py](_common.py)
-
-    ```python
-    """Shared setup and output for the defect reproducers.
-
-    `prepare()` moves to a fresh temporary working directory, where CFFI compiles the kernels, and
-    prints the package versions and context; `report()` prints the observed and expected rows and the
-    verdict line.
-    """
-
-    import atexit
-    import importlib
-    import importlib.metadata
-    import os
-    import platform
-    import shutil
-    import tempfile
-    from pathlib import Path
-
-    import numpy as np
-    import xobjects as xo
-
-
-    def prepare(*, radiation="off", random_seed=None):
-        # CFFI compiles into cwd; keep generated files outside the source trees.
-        scratch = Path(tempfile.mkdtemp(prefix="xsuite-repro-"))
-        atexit.register(shutil.rmtree, scratch, ignore_errors=True)
-        os.chdir(scratch)
-        xo.settings.allow_kernel_compilation = True
-        print(f"Python {platform.python_version()}; {platform.platform()}")
-        for name in ("xsuite", "xtrack", "xobjects", "xdeps", "xpart", "xfields", "xcoll"):
-            module = importlib.import_module(name)
-            print(f"{name} {module.__version__}: {module.__file__}")
-        for name in ("numpy", "scipy", "madng-tpsa", "cffi"):
-            print(f"{name} {importlib.metadata.version(name)}")
-        randomness = (
-            "deterministic, no random seed"
-            if random_seed is None
-            else f"fixed RNG seed(s)={random_seed}"
-        )
-        print(f"ContextCpu, serial; radiation={radiation}; {randomness}")
-        print(
-            f"allow_kernel_compilation={xo.settings.allow_kernel_compilation}; "
-            f"force_kernel_compilation={xo.settings.force_kernel_compilation}"
-        )
-
-
-    def report(cases, *, rtol, atol):
-        np.set_printoptions(precision=15, linewidth=140)
-        mismatch = False
-        for label, (observed, expected) in cases.items():
-            print(f"{label}: observed={np.asarray(observed)} expected={np.asarray(expected)}")
-            mismatch |= not np.allclose(observed, expected, rtol=rtol, atol=atol)
-        print(f"comparison: rtol={rtol:g}, atol={atol:g}")
-        print("DEFECT REPRODUCED" if mismatch else "NOT REPRODUCED")
 
     ```
 

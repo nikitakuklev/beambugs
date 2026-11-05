@@ -17,6 +17,10 @@ hide:
 
 Constructing `Particles` from the reference rigidity `rigidity0` computes the momentum from `rigidity0`·|q₀|·c, while the `rigidity0` getter and setter use the signed reference charge q₀, so a negative-charge reference's own reported rigidity reconstructs a negative momentum. The manual defines signed rigidity, and property-to-constructor round trips must preserve the reference state. For electron-mass references with q₀ = −1 or −2 at 1 GeV/c, the constructor returns the reference momentum `p0c` = −1.000×10⁹ eV and reference speed β₀ = v/c = −1.000, while the particle remains alive; the correct momentum and speed are positive. Positive-charge construction, the linked rigidity setter, and construction from `p0c` or `energy0` pass their controls.
 
+Download these shared helpers into the same directory as the reproducer scripts:
+
+- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+
 ??? example "Reproducer: IO-06.py"
 
     [Download IO-06.py](IO-06.py)
@@ -78,66 +82,6 @@ Constructing `Particles` from the reference rigidity `rigidity0` computes the mo
             "Signed Lorentz rigidity and positive-charge controls are checked first; no convention change can justify a failed round trip."
         )
         report(evaluate(), rtol=RTOL, atol=ATOL)
-
-    ```
-
-??? example "Helper: _common.py"
-
-    [Download _common.py](_common.py)
-
-    ```python
-    """Shared setup and output for the defect reproducers.
-
-    `prepare()` moves to a fresh temporary working directory, where CFFI compiles the kernels, and
-    prints the package versions and context; `report()` prints the observed and expected rows and the
-    verdict line.
-    """
-
-    import atexit
-    import importlib
-    import importlib.metadata
-    import os
-    import platform
-    import shutil
-    import tempfile
-    from pathlib import Path
-
-    import numpy as np
-    import xobjects as xo
-
-
-    def prepare(*, radiation="off", random_seed=None):
-        # CFFI compiles into cwd; keep generated files outside the source trees.
-        scratch = Path(tempfile.mkdtemp(prefix="xsuite-repro-"))
-        atexit.register(shutil.rmtree, scratch, ignore_errors=True)
-        os.chdir(scratch)
-        xo.settings.allow_kernel_compilation = True
-        print(f"Python {platform.python_version()}; {platform.platform()}")
-        for name in ("xsuite", "xtrack", "xobjects", "xdeps", "xpart", "xfields", "xcoll"):
-            module = importlib.import_module(name)
-            print(f"{name} {module.__version__}: {module.__file__}")
-        for name in ("numpy", "scipy", "madng-tpsa", "cffi"):
-            print(f"{name} {importlib.metadata.version(name)}")
-        randomness = (
-            "deterministic, no random seed"
-            if random_seed is None
-            else f"fixed RNG seed(s)={random_seed}"
-        )
-        print(f"ContextCpu, serial; radiation={radiation}; {randomness}")
-        print(
-            f"allow_kernel_compilation={xo.settings.allow_kernel_compilation}; "
-            f"force_kernel_compilation={xo.settings.force_kernel_compilation}"
-        )
-
-
-    def report(cases, *, rtol, atol):
-        np.set_printoptions(precision=15, linewidth=140)
-        mismatch = False
-        for label, (observed, expected) in cases.items():
-            print(f"{label}: observed={np.asarray(observed)} expected={np.asarray(expected)}")
-            mismatch |= not np.allclose(observed, expected, rtol=rtol, atol=atol)
-        print(f"comparison: rtol={rtol:g}, atol={atol:g}")
-        print("DEFECT REPRODUCED" if mismatch else "NOT REPRODUCED")
 
     ```
 

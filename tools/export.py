@@ -212,7 +212,7 @@ def public_provenance(data: dict) -> dict:
     def clean(item: dict) -> dict:
         return {k: v for k, v in item.items() if k not in ("session", "evidence")}
 
-    out = {
+    out: dict = {
         role: [clean(i) for i in data.get(role, [])] for role in ("found", "confirmed")
     }
     if "verified" in data:
@@ -255,6 +255,11 @@ def helpers(repro: Path, files: list[Path]) -> list[Path]:
                     found.append(path)
                     queue.append(path)
     return found
+
+
+def is_helper(path: Path) -> bool:
+    """Only imported repro/_*.py modules are shared; entry scripts keep their ID names."""
+    return path.name.startswith("_") and path.suffix == ".py"
 
 
 def leading_comment(source: str, marker: str) -> str:
@@ -430,7 +435,10 @@ def entry_record(entry: Entry, config: dict) -> dict:
         "provenance": public_provenance(entry.provenance),
         "last_reproduced": last_reproduced(entry.provenance, config["name"]),
         "models": sorted(entry.models),
-        "reproducers": [p.name for p in entry.repro],
+        # Download paths are relative to the entry page, including transitive helpers.
+        "reproducers": [
+            f"../helpers/{p.name}" if is_helper(p) else p.name for p in entry.repro
+        ],
         "requirements": requirements(
             set(config["modules"]) | {p.stem for p in entry.repro}, entry.repro
         ),
@@ -460,6 +468,7 @@ def render_entry(
         code=config,
         sources=sources,
         languages=languages,
+        helper_names=[p.name for p in entry.repro if is_helper(p)],
         inputs=inputs,
         brief=entry.brief,
     )
@@ -492,6 +501,7 @@ def export(code: str, config: dict, env: jinja2.Environment) -> list[dict]:
         shutil.rmtree(out)
     out.mkdir(parents=True)
     records, excluded = [], []
+    shared: set[Path] = set()
     for entry in entries:
         failures = entry.gate_failures()
         if failures:
@@ -501,18 +511,31 @@ def export(code: str, config: dict, env: jinja2.Environment) -> list[dict]:
         page = out / entry.id
         page.mkdir()
         for src in entry.repro:
-            if src.is_dir():
+            if is_helper(src):
+                shared.add(src)
+            elif src.is_dir():
                 shutil.copytree(src, page / src.name)
             else:
                 shutil.copy2(src, page / src.name)
         (page / "index.md").write_text(text)
         records.append(record)
+    if shared:
+        helper_dir = out / "helpers"
+        helper_dir.mkdir()
+        for src in sorted(shared):
+            shutil.copy2(src, helper_dir / src.name)
+        (helper_dir / "index.md").write_text(
+            env.get_template("helpers.md.j2").render(
+                code=config,
+                sources={src.name: src.read_text() for src in sorted(shared)},
+            )
+        )
     # Default table order: priority (P0 first), then severity, then the ledger's
     # area and entry order (records are already in that order; sorted() is stable).
     by_impact = sorted(
         records,
         key=lambda r: (
-            int(PRIORITY.match(r["priority"]).group(1)),
+            int(r["priority"][1]),  # parse_ledger validates the P0..P5 prefix.
             SEVERITIES.index(r["severity"]),
         ),
     )

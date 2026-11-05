@@ -1,0 +1,24 @@
+---
+title: "{{ code.name }} shared helpers"
+---
+
+# {{ code.name }} shared helpers
+
+These modules support the [{{ code.name }} reproducers](../index.md).
+Each entry links all the helpers it needs, including those imported by another helper.
+Save the linked helpers in the same directory as the downloaded reproducer scripts.
+
+{% for name, text in sources.items() %}
+## `{{ name }}` { #{{ name[:-3] }} }
+
+[Download {{ name }}]({{ name }})
+
+??? example "Source: {{ name }}"
+
+    ```python
+{{ text | indent(4, first=True) }}
+    ```
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}

@@ -18,6 +18,10 @@ hide:
 
 With either 2.5D FFT solver and `apply_z_kick=True`, `SpaceCharge3D` differentiates slice potentials whose transverse reference length is fixed at 1 m. Changing this reference adds a longitudinal force wherever the line density varies. Doubling every length of an electron bunch with Lorentz factor γ = 10 should leave the scaled longitudinal kick unchanged by free-space Coulomb similarity, but changes it by 7.868%. For a γ = 7 electron bunch with transverse RMS size 0.4 mm and longitudinal RMS 20 mm, the on-axis kick in the relative momentum deviation δ at 0.75 longitudinal RMS is 9.177 × 10⁻¹⁰, versus 6.680 × 10⁻¹⁰ from the exact 3D field, a 37.38% discrepancy. Transverse kicks are unaffected; constant line density or `apply_z_kick=False` removes it.
 
+Download these shared helpers into the same directory as the reproducer scripts:
+
+- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+
 ??? example "Reproducer: COL-06.py"
 
     [Download COL-06.py](COL-06.py)
@@ -98,66 +102,6 @@ With either 2.5D FFT solver and `apply_z_kick=True`, `SpaceCharge3D` differentia
             "fields by 1/a**2 and the kick length by a, so a*(kick) is invariant."
         )
         report(evaluate(), rtol=0, atol=1e-12)
-
-    ```
-
-??? example "Helper: _common.py"
-
-    [Download _common.py](_common.py)
-
-    ```python
-    """Shared setup and output for the defect reproducers.
-
-    `prepare()` moves to a fresh temporary working directory, where CFFI compiles the kernels, and
-    prints the package versions and context; `report()` prints the observed and expected rows and the
-    verdict line.
-    """
-
-    import atexit
-    import importlib
-    import importlib.metadata
-    import os
-    import platform
-    import shutil
-    import tempfile
-    from pathlib import Path
-
-    import numpy as np
-    import xobjects as xo
-
-
-    def prepare(*, radiation="off", random_seed=None):
-        # CFFI compiles into cwd; keep generated files outside the source trees.
-        scratch = Path(tempfile.mkdtemp(prefix="xsuite-repro-"))
-        atexit.register(shutil.rmtree, scratch, ignore_errors=True)
-        os.chdir(scratch)
-        xo.settings.allow_kernel_compilation = True
-        print(f"Python {platform.python_version()}; {platform.platform()}")
-        for name in ("xsuite", "xtrack", "xobjects", "xdeps", "xpart", "xfields", "xcoll"):
-            module = importlib.import_module(name)
-            print(f"{name} {module.__version__}: {module.__file__}")
-        for name in ("numpy", "scipy", "madng-tpsa", "cffi"):
-            print(f"{name} {importlib.metadata.version(name)}")
-        randomness = (
-            "deterministic, no random seed"
-            if random_seed is None
-            else f"fixed RNG seed(s)={random_seed}"
-        )
-        print(f"ContextCpu, serial; radiation={radiation}; {randomness}")
-        print(
-            f"allow_kernel_compilation={xo.settings.allow_kernel_compilation}; "
-            f"force_kernel_compilation={xo.settings.force_kernel_compilation}"
-        )
-
-
-    def report(cases, *, rtol, atol):
-        np.set_printoptions(precision=15, linewidth=140)
-        mismatch = False
-        for label, (observed, expected) in cases.items():
-            print(f"{label}: observed={np.asarray(observed)} expected={np.asarray(expected)}")
-            mismatch |= not np.allclose(observed, expected, rtol=rtol, atol=atol)
-        print(f"comparison: rtol={rtol:g}, atol={atol:g}")
-        print("DEFECT REPRODUCED" if mismatch else "NOT REPRODUCED")
 
     ```
 

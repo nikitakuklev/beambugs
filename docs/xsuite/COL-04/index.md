@@ -17,6 +17,10 @@ hide:
 
 `CollectiveMonitor` computes each slice's emittance as √(var(x)·var(px) − cov(x, px)), subtracting the covariance instead of its square. The RMS emittance is the square root of the covariance-matrix determinant, which an area-preserving shear leaves unchanged, and the slicer's own variances and covariance give that value directly. For four 1 GeV/c protons with x = ±1 mm, `px` = ±2 × 10⁻⁴ and a shear `px` → `px` + a·x, the normalized emittance is 2.132 × 10⁻⁷ m for every a, but the monitor reports 4.766 × 10⁻⁴ m, about 2236 times too large, at a = −0.2 and NaN with a warning at a = +0.2. The error appears in x, y and ζ; uncorrelated slices and the slice moments are correct.
 
+Download these shared helpers into the same directory as the reproducer scripts:
+
+- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+
 ??? example "Reproducer: COL-04.py"
 
     [Download COL-04.py](COL-04.py)
@@ -111,66 +115,6 @@ hide:
         )
         print("Both signs of the shear and both single/multiple-bunch monitor branches are checked.")
         report(evaluate(), rtol=RTOL, atol=ATOL)
-
-    ```
-
-??? example "Helper: _common.py"
-
-    [Download _common.py](_common.py)
-
-    ```python
-    """Shared setup and output for the defect reproducers.
-
-    `prepare()` moves to a fresh temporary working directory, where CFFI compiles the kernels, and
-    prints the package versions and context; `report()` prints the observed and expected rows and the
-    verdict line.
-    """
-
-    import atexit
-    import importlib
-    import importlib.metadata
-    import os
-    import platform
-    import shutil
-    import tempfile
-    from pathlib import Path
-
-    import numpy as np
-    import xobjects as xo
-
-
-    def prepare(*, radiation="off", random_seed=None):
-        # CFFI compiles into cwd; keep generated files outside the source trees.
-        scratch = Path(tempfile.mkdtemp(prefix="xsuite-repro-"))
-        atexit.register(shutil.rmtree, scratch, ignore_errors=True)
-        os.chdir(scratch)
-        xo.settings.allow_kernel_compilation = True
-        print(f"Python {platform.python_version()}; {platform.platform()}")
-        for name in ("xsuite", "xtrack", "xobjects", "xdeps", "xpart", "xfields", "xcoll"):
-            module = importlib.import_module(name)
-            print(f"{name} {module.__version__}: {module.__file__}")
-        for name in ("numpy", "scipy", "madng-tpsa", "cffi"):
-            print(f"{name} {importlib.metadata.version(name)}")
-        randomness = (
-            "deterministic, no random seed"
-            if random_seed is None
-            else f"fixed RNG seed(s)={random_seed}"
-        )
-        print(f"ContextCpu, serial; radiation={radiation}; {randomness}")
-        print(
-            f"allow_kernel_compilation={xo.settings.allow_kernel_compilation}; "
-            f"force_kernel_compilation={xo.settings.force_kernel_compilation}"
-        )
-
-
-    def report(cases, *, rtol, atol):
-        np.set_printoptions(precision=15, linewidth=140)
-        mismatch = False
-        for label, (observed, expected) in cases.items():
-            print(f"{label}: observed={np.asarray(observed)} expected={np.asarray(expected)}")
-            mismatch |= not np.allclose(observed, expected, rtol=rtol, atol=atol)
-        print(f"comparison: rtol={rtol:g}, atol={atol:g}")
-        print("DEFECT REPRODUCED" if mismatch else "NOT REPRODUCED")
 
     ```
 

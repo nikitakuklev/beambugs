@@ -19,17 +19,22 @@ ledger, the templates or the exporter, then regenerate.
 | `provenance` | `found` and `confirmed` lists (`model`, `effort`, `date`, `code` {`ref`, `commit`, `build`}, optional `scope`), `verified` (last head reproduction). |
 | `last_reproduced` | Most recent reproducing run: `date`, `code` {`ref`, `commit`}, `head` (true if it was the development head), `head_not_reproduced` (the head run, when it no longer reproduces). |
 | `models` | Distinct models in `found` and `confirmed`. |
-| `reproducers`, `requirements` | File names in `docs/<code>/<ID>/` (`<ID>*.py`/`.jl`/`.sh` scripts and the `_*.py` helpers they import) and third-party Python packages they import besides the code itself. |
+| `reproducers` | Download paths relative to `page`: `<ID>*.py`/`.jl`/`.sh` scripts and input directories are local to the entry; imported `_*.py` helpers (including transitive imports) use `../helpers/<name>.py`. |
+| `requirements` | Third-party Python packages the reproducer and its helpers import besides the code itself. |
 | `page` | Entry page path. |
 
 ## Running a reproducer
 
 Install the code as described under "Running the reproducers" on its code page
 (the `run` text in `codes.yaml`) and the record's `requirements`. Download the
-script with its `_*.py` helpers and run it from any directory, one script per
-process. It ends with `DEFECT REPRODUCED` or `NOT REPRODUCED`; a nonzero exit
+script and save its linked `_*.py` helpers in the same local directory, then
+run it from any directory, one script per process. It ends with
+`DEFECT REPRODUCED` or `NOT REPRODUCED`; a nonzero exit
 status means the run failed. Scripts that read the code's sources state the
 environment variable they need in their opening description.
+
+Helpers are published once per code in `docs/<code>/helpers/`; its `index.md`
+shows their source. Entry pages link to each required helper's source and download.
 
 ## Changing the site
 

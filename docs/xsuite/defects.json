@@ -71,7 +71,7 @@
   ],
   "reproducers": [
    "TRK-01.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -154,7 +154,7 @@
   ],
   "reproducers": [
    "TRK-02.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -229,7 +229,7 @@
   ],
   "reproducers": [
    "TRK-03.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -309,7 +309,7 @@
   ],
   "reproducers": [
    "TRK-04.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -392,7 +392,7 @@
   ],
   "reproducers": [
    "TRK-05.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -467,7 +467,7 @@
   ],
   "reproducers": [
    "TRK-06.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -542,7 +542,7 @@
   ],
   "reproducers": [
    "TRK-07.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -617,7 +617,7 @@
   ],
   "reproducers": [
    "TRK-08.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -707,7 +707,7 @@
   ],
   "reproducers": [
    "TRK-09.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -786,7 +786,7 @@
   ],
   "reproducers": [
    "TRK-10.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -865,8 +865,8 @@
   ],
   "reproducers": [
    "TRK-11.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -945,8 +945,8 @@
   ],
   "reproducers": [
    "TRK-12.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -1025,8 +1025,8 @@
   ],
   "reproducers": [
    "TRK-13.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -1105,8 +1105,8 @@
   ],
   "reproducers": [
    "TRK-14.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -1189,8 +1189,8 @@
   ],
   "reproducers": [
    "TRK-15.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -1278,8 +1278,8 @@
   ],
   "reproducers": [
    "TRK-16.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -1365,8 +1365,8 @@
   ],
   "reproducers": [
    "TRK-17.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -1486,8 +1486,8 @@
   ],
   "reproducers": [
    "TRK-18.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -1573,7 +1573,7 @@
   ],
   "reproducers": [
    "OPT-01.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -1652,7 +1652,7 @@
   ],
   "reproducers": [
    "OPT-02.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -1729,7 +1729,7 @@
   ],
   "reproducers": [
    "OPT-03.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "madng-tpsa",
@@ -1809,7 +1809,7 @@
   ],
   "reproducers": [
    "OPT-04.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -1889,7 +1889,7 @@
   ],
   "reproducers": [
    "OPT-05.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -1964,7 +1964,7 @@
   ],
   "reproducers": [
    "OPT-06.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -2039,7 +2039,7 @@
   ],
   "reproducers": [
    "OPT-07.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -2114,7 +2114,7 @@
   ],
   "reproducers": [
    "OPT-08.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -2193,7 +2193,7 @@
   ],
   "reproducers": [
    "OPT-09.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -2272,9 +2272,9 @@
   ],
   "reproducers": [
    "OPT-10.py",
-   "_matching.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_matching.py",
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -2357,9 +2357,9 @@
   ],
   "reproducers": [
    "OPT-11.py",
-   "_matching.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_matching.py",
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -2438,9 +2438,9 @@
   ],
   "reproducers": [
    "OPT-12.py",
-   "_matching.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_matching.py",
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -2519,8 +2519,8 @@
   ],
   "reproducers": [
    "OPT-13.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -2607,8 +2607,8 @@
   ],
   "reproducers": [
    "OPT-14.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -2692,8 +2692,8 @@
   ],
   "reproducers": [
    "OPT-15.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -2791,8 +2791,8 @@
   ],
   "reproducers": [
    "OPT-16.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -2886,8 +2886,8 @@
   ],
   "reproducers": [
    "OPT-17.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -2967,7 +2967,7 @@
   ],
   "reproducers": [
    "COL-01.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -3047,7 +3047,7 @@
   ],
   "reproducers": [
    "COL-02.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -3133,7 +3133,7 @@
   ],
   "reproducers": [
    "COL-03.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -3212,7 +3212,7 @@
   ],
   "reproducers": [
    "COL-04.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -3291,7 +3291,7 @@
   ],
   "reproducers": [
    "COL-05.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -3400,7 +3400,7 @@
   ],
   "reproducers": [
    "COL-06.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -3479,8 +3479,8 @@
   ],
   "reproducers": [
    "COL-07.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -3555,8 +3555,8 @@
   ],
   "reproducers": [
    "COL-08.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -3631,8 +3631,8 @@
   ],
   "reproducers": [
    "COL-09.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -3707,8 +3707,8 @@
   ],
   "reproducers": [
    "COL-10.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -3783,8 +3783,8 @@
   ],
   "reproducers": [
    "COL-11.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -3860,8 +3860,8 @@
   ],
   "reproducers": [
    "COL-12.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -3942,8 +3942,8 @@
   ],
   "reproducers": [
    "COL-13.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -4018,8 +4018,8 @@
   ],
   "reproducers": [
    "COL-14.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -4094,8 +4094,8 @@
   ],
   "reproducers": [
    "COL-15.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -4176,8 +4176,8 @@
   ],
   "reproducers": [
    "COL-16.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -4256,8 +4256,8 @@
   ],
   "reproducers": [
    "COL-17.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -4347,8 +4347,8 @@
   ],
   "reproducers": [
    "COL-18.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -4439,9 +4439,9 @@
   ],
   "reproducers": [
    "COL-19.py",
-   "_ibs.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_ibs.py",
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -4533,9 +4533,9 @@
   ],
   "reproducers": [
    "COL-20.py",
-   "_ibs.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_ibs.py",
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -4611,7 +4611,7 @@
   ],
   "reproducers": [
    "IO-01.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -4687,7 +4687,7 @@
   ],
   "reproducers": [
    "IO-03.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -4762,7 +4762,7 @@
   ],
   "reproducers": [
    "IO-04.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "cpymad",
@@ -4842,7 +4842,7 @@
   ],
   "reproducers": [
    "IO-05.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "cpymad",
@@ -4922,7 +4922,7 @@
   ],
   "reproducers": [
    "IO-06.py",
-   "_common.py"
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -5074,8 +5074,8 @@
   ],
   "reproducers": [
    "IO-08.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -5151,8 +5151,8 @@
   ],
   "reproducers": [
    "IO-09.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy",
@@ -5242,8 +5242,8 @@
   ],
   "reproducers": [
    "IO-10.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -5326,8 +5326,8 @@
   ],
   "reproducers": [
    "CTX-01.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"
@@ -5406,8 +5406,8 @@
   ],
   "reproducers": [
    "CTX-02.py",
-   "_prebuilt.py",
-   "_common.py"
+   "../helpers/_prebuilt.py",
+   "../helpers/_common.py"
   ],
   "requirements": [
    "numpy"

@@ -18,6 +18,10 @@ hide:
 
 Expanding a `UniformSolenoid` about zero field, with its normalized strength `ks` as a parameter of the experimental `ParticlesTpsa` API for native truncated-power-series (Taylor) maps, returns zero orbit sensitivity to that strength. Differentiating the exact solenoid map gives a nonzero response, confirmed by central differences of ordinary particle tracking. For a 0.7 m solenoid and a 1 GeV/c proton starting at x = 3 mm with all other coordinates zero, the derivative of vertical position y with respect to `ks` is 0 instead of −1.050 × 10⁻³ m². A calculation using this derivative, such as an optimizer starting from a switched-off solenoid, sees no response; tested expansions about nonzero field agree with numerical differentiation.
 
+Download these shared helpers into the same directory as the reproducer scripts:
+
+- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+
 ??? example "Reproducer: OPT-03.py"
 
     [Download OPT-03.py](OPT-03.py)
@@ -79,66 +83,6 @@ Expanding a `UniformSolenoid` about zero field, with its normalized strength `ks
         prepare()
         print("Expected: dy/dks=-L*x0/2=-0.00105; checked by central differences at h=1e-5 and 5e-6.")
         report(evaluate(), rtol=RTOL, atol=ATOL)
-
-    ```
-
-??? example "Helper: _common.py"
-
-    [Download _common.py](_common.py)
-
-    ```python
-    """Shared setup and output for the defect reproducers.
-
-    `prepare()` moves to a fresh temporary working directory, where CFFI compiles the kernels, and
-    prints the package versions and context; `report()` prints the observed and expected rows and the
-    verdict line.
-    """
-
-    import atexit
-    import importlib
-    import importlib.metadata
-    import os
-    import platform
-    import shutil
-    import tempfile
-    from pathlib import Path
-
-    import numpy as np
-    import xobjects as xo
-
-
-    def prepare(*, radiation="off", random_seed=None):
-        # CFFI compiles into cwd; keep generated files outside the source trees.
-        scratch = Path(tempfile.mkdtemp(prefix="xsuite-repro-"))
-        atexit.register(shutil.rmtree, scratch, ignore_errors=True)
-        os.chdir(scratch)
-        xo.settings.allow_kernel_compilation = True
-        print(f"Python {platform.python_version()}; {platform.platform()}")
-        for name in ("xsuite", "xtrack", "xobjects", "xdeps", "xpart", "xfields", "xcoll"):
-            module = importlib.import_module(name)
-            print(f"{name} {module.__version__}: {module.__file__}")
-        for name in ("numpy", "scipy", "madng-tpsa", "cffi"):
-            print(f"{name} {importlib.metadata.version(name)}")
-        randomness = (
-            "deterministic, no random seed"
-            if random_seed is None
-            else f"fixed RNG seed(s)={random_seed}"
-        )
-        print(f"ContextCpu, serial; radiation={radiation}; {randomness}")
-        print(
-            f"allow_kernel_compilation={xo.settings.allow_kernel_compilation}; "
-            f"force_kernel_compilation={xo.settings.force_kernel_compilation}"
-        )
-
-
-    def report(cases, *, rtol, atol):
-        np.set_printoptions(precision=15, linewidth=140)
-        mismatch = False
-        for label, (observed, expected) in cases.items():
-            print(f"{label}: observed={np.asarray(observed)} expected={np.asarray(expected)}")
-            mismatch |= not np.allclose(observed, expected, rtol=rtol, atol=atol)
-        print(f"comparison: rtol={rtol:g}, atol={atol:g}")
-        print("DEFECT REPRODUCED" if mismatch else "NOT REPRODUCED")
 
     ```
 

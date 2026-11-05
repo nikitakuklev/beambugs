@@ -17,6 +17,10 @@ hide:
 
 Xtrack's MAD-X importer (via cpymad, the Python interface to MAD-X) adds a bend's `EALIGN` roll `DPSI` to its design tilt in `rot_s_rad`, rotating the reference bending plane instead of applying an alignment roll in the unchanged design frame. A pure sector-bend roll must produce vertical steering, as MAD-X and an Xtrack control using `rot_s_rad_no_frame` establish. For a 1 m `SBEND` of angle 0.001 rad with `DPSI` = 0.01 rad, zero design tilt and beam-direction flag `bv = 1`, the exit vertical momentum `py` is below 8×10⁻²¹ instead of −1.000×10⁻⁵, and the exit `y` is 3.253×10⁻²¹ m instead of −5.000×10⁻⁶ m. MAD-X sector-bend roll-error studies lose essentially all this vertical steering.
 
+Download these shared helpers into the same directory as the reproducer scripts:
+
+- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+
 ??? example "Reproducer: IO-05.py"
 
     [Download IO-05.py](IO-05.py)
@@ -113,66 +117,6 @@ Xtrack's MAD-X importer (via cpymad, the Python interface to MAD-X) adds a bend'
             "Zero-roll, opposite-roll, two bend angles and explicitly specified physical-roll controls are checked."
         )
         report(evaluate(), rtol=RTOL, atol=ATOL)
-
-    ```
-
-??? example "Helper: _common.py"
-
-    [Download _common.py](_common.py)
-
-    ```python
-    """Shared setup and output for the defect reproducers.
-
-    `prepare()` moves to a fresh temporary working directory, where CFFI compiles the kernels, and
-    prints the package versions and context; `report()` prints the observed and expected rows and the
-    verdict line.
-    """
-
-    import atexit
-    import importlib
-    import importlib.metadata
-    import os
-    import platform
-    import shutil
-    import tempfile
-    from pathlib import Path
-
-    import numpy as np
-    import xobjects as xo
-
-
-    def prepare(*, radiation="off", random_seed=None):
-        # CFFI compiles into cwd; keep generated files outside the source trees.
-        scratch = Path(tempfile.mkdtemp(prefix="xsuite-repro-"))
-        atexit.register(shutil.rmtree, scratch, ignore_errors=True)
-        os.chdir(scratch)
-        xo.settings.allow_kernel_compilation = True
-        print(f"Python {platform.python_version()}; {platform.platform()}")
-        for name in ("xsuite", "xtrack", "xobjects", "xdeps", "xpart", "xfields", "xcoll"):
-            module = importlib.import_module(name)
-            print(f"{name} {module.__version__}: {module.__file__}")
-        for name in ("numpy", "scipy", "madng-tpsa", "cffi"):
-            print(f"{name} {importlib.metadata.version(name)}")
-        randomness = (
-            "deterministic, no random seed"
-            if random_seed is None
-            else f"fixed RNG seed(s)={random_seed}"
-        )
-        print(f"ContextCpu, serial; radiation={radiation}; {randomness}")
-        print(
-            f"allow_kernel_compilation={xo.settings.allow_kernel_compilation}; "
-            f"force_kernel_compilation={xo.settings.force_kernel_compilation}"
-        )
-
-
-    def report(cases, *, rtol, atol):
-        np.set_printoptions(precision=15, linewidth=140)
-        mismatch = False
-        for label, (observed, expected) in cases.items():
-            print(f"{label}: observed={np.asarray(observed)} expected={np.asarray(expected)}")
-            mismatch |= not np.allclose(observed, expected, rtol=rtol, atol=atol)
-        print(f"comparison: rtol={rtol:g}, atol={atol:g}")
-        print("DEFECT REPRODUCED" if mismatch else "NOT REPRODUCED")
 
     ```
 

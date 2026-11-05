@@ -17,6 +17,10 @@ hide:
 
 `twiss4d()` keeps the RF energy kicks of a `LineSegmentMap` in its longitudinal modes `linear_fixed_rf` and `nonlinear`, although 4D (transverse-only) optics assumes fixed energy. With RF off, 4D optics requires constant momentum, and a frozen segment followed by an ordinary cavity satisfies it. For a 1 GeV/c proton through a 1 m segment with tunes 0.2 and 0.3, 1 MV at 100 MHz, momentum compaction 0.01 and initial longitudinal offset 1 mm, the exit relative momentum deviation δ is −3.940 × 10⁻⁶ in `linear_fixed_rf` and −3.941 × 10⁻⁶ in `nonlinear` mode instead of zero. Periodic and open Twiss are both affected; the `linear_fixed_qs` mode and the ordinary cavity keep the momentum fixed.
 
+Download these shared helpers into the same directory as the reproducer scripts:
+
+- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+
 ??? example "Reproducer: OPT-05.py"
 
     [Download OPT-05.py](OPT-05.py)
@@ -91,66 +95,6 @@ hide:
         print("Expected: 4D Twiss suppresses RF energy kicks, so delta stays zero.")
         print("Ordinary Cavity and linear_fixed_qs controls must obey the same invariant.")
         report(evaluate(), rtol=RTOL, atol=ATOL)
-
-    ```
-
-??? example "Helper: _common.py"
-
-    [Download _common.py](_common.py)
-
-    ```python
-    """Shared setup and output for the defect reproducers.
-
-    `prepare()` moves to a fresh temporary working directory, where CFFI compiles the kernels, and
-    prints the package versions and context; `report()` prints the observed and expected rows and the
-    verdict line.
-    """
-
-    import atexit
-    import importlib
-    import importlib.metadata
-    import os
-    import platform
-    import shutil
-    import tempfile
-    from pathlib import Path
-
-    import numpy as np
-    import xobjects as xo
-
-
-    def prepare(*, radiation="off", random_seed=None):
-        # CFFI compiles into cwd; keep generated files outside the source trees.
-        scratch = Path(tempfile.mkdtemp(prefix="xsuite-repro-"))
-        atexit.register(shutil.rmtree, scratch, ignore_errors=True)
-        os.chdir(scratch)
-        xo.settings.allow_kernel_compilation = True
-        print(f"Python {platform.python_version()}; {platform.platform()}")
-        for name in ("xsuite", "xtrack", "xobjects", "xdeps", "xpart", "xfields", "xcoll"):
-            module = importlib.import_module(name)
-            print(f"{name} {module.__version__}: {module.__file__}")
-        for name in ("numpy", "scipy", "madng-tpsa", "cffi"):
-            print(f"{name} {importlib.metadata.version(name)}")
-        randomness = (
-            "deterministic, no random seed"
-            if random_seed is None
-            else f"fixed RNG seed(s)={random_seed}"
-        )
-        print(f"ContextCpu, serial; radiation={radiation}; {randomness}")
-        print(
-            f"allow_kernel_compilation={xo.settings.allow_kernel_compilation}; "
-            f"force_kernel_compilation={xo.settings.force_kernel_compilation}"
-        )
-
-
-    def report(cases, *, rtol, atol):
-        np.set_printoptions(precision=15, linewidth=140)
-        mismatch = False
-        for label, (observed, expected) in cases.items():
-            print(f"{label}: observed={np.asarray(observed)} expected={np.asarray(expected)}")
-            mismatch |= not np.allclose(observed, expected, rtol=rtol, atol=atol)
-        print(f"comparison: rtol={rtol:g}, atol={atol:g}")
-        print("DEFECT REPRODUCED" if mismatch else "NOT REPRODUCED")
 
     ```
 

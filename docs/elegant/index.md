@@ -17,7 +17,9 @@ Build serial Elegant, Pelegant and the SDDS tools from rtsoliday/elegant master
 `0355dd6aca12` and rtsoliday/SDDS master `a3f730a14c49`, on which the reproducers ran
 (CPU, Open MPI, no CUDA). Put the `elegant` and SDDS `bin` directories on `PATH` and set
 `RPN_DEFNS` to the `defns.rpn` file of SDDS; Elegant does not start without it. Download a
-reproducer with the `_*.py` helpers shown beside it and run `python <ID>.py`, which runs
+reproducer and the `_*.py` helpers linked on its entry page from the shared
+[helpers directory](helpers/index.md). Save the helpers beside the script and run
+`python <ID>.py`, which runs
 serial Elegant; `--mpi` adds a 3-rank Pelegant run (needs `mpirun`), and entries that occur
 only under MPI (COL-02, COL-20, COL-26, IO-01, SCT-02, SCT-03, SCT-24) always run Pelegant with a
 serial control. SCT-24 uses five ranks to exercise distributed IBSCATTER integration;
