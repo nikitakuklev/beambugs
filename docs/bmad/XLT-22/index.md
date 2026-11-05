@@ -84,5 +84,5 @@ Download these shared helpers into the same directory as the reproducer scripts:
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `claude-opus-5-5` | high | 2026-10-22 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
-| Confirmed (Untilted bend vkick: independent Lorentz integration and MAD-X TWISS/TRACK) | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
+| Confirmed<br><small>untilted bend vkick in MAD-X TWISS/TRACK</small> | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
 

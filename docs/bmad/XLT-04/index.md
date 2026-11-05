@@ -72,5 +72,5 @@ Download these shared helpers into the same directory as the reproducer scripts:
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `gpt-6-astra` | xhigh | 2026-10-28 | 20261020-0 (`19b8afb46a40`), source-matched 20261021-0 (d00a8f17e55a) libraries, production, CPU, double, serial |
-| Confirmed (undefined polarization-table interpolation output) | `gpt-6.1-sol` | xhigh | 2026-10-28 | 20261020-0 (`19b8afb46a40`), source-matched 20261021-0 (d00a8f17e55a) libraries, production, CPU, double, serial |
+| Confirmed<br><small>undefined polarization-table interpolation output</small> | `gpt-6.1-sol` | xhigh | 2026-10-28 | 20261020-0 (`19b8afb46a40`), source-matched 20261021-0 (d00a8f17e55a) libraries, production, CPU, double, serial |
 

@@ -110,7 +110,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found (source/contract discrepancy) | `gemini-4-argon-high` |  | 2026-10-20 | 20261020-0 (`19b8afb46a40`) |
-| Confirmed (source/contract discrepancy) | `gpt-6-astra` | xhigh | 2026-10-20 | 20261020-0 (`19b8afb46a40`) |
-| Confirmed (production three-slice transverse and longitudinal geometry with quadratic/cubic crabbing and tilt) | `gpt-6.1-sol` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
+| Found<br><small>source check</small> | `gemini-4-argon-high` |  | 2026-10-20 | 20261020-0 (`19b8afb46a40`) |
+| Confirmed<br><small>source check</small> | `gpt-6-astra` | xhigh | 2026-10-20 | 20261020-0 (`19b8afb46a40`) |
+| Confirmed<br><small>three-slice quadratic/cubic crab geometry and tilt</small> | `gpt-6.1-sol` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
 

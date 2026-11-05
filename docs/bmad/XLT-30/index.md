@@ -101,6 +101,6 @@ Download these shared helpers into the same directory as the reproducer scripts:
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `gpt-6-astra` | xhigh | 2026-10-24 | madx-ksl-sign, source, production, CPU, double, serial |
-| Confirmed (whole-element multipole tilt in MAD-X export) | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
-| Confirmed (tilted reference-bend and thick-element error extensions) | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Confirmed<br><small>whole-element multipole tilt in MAD-X export</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Confirmed<br><small>tilted reference-bend and thick-element error extensions</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
 

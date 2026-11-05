@@ -1803,7 +1803,7 @@
       "ref": "ptc-cavity-phase-update",
       "commit": "b48e02e3d9fa"
      },
-     "scope": "independent source check of inverse voltage and phase conversions"
+     "scope": "inverse voltage and phase conversions (source check)"
     }
    ],
    "verified": {
@@ -3650,7 +3650,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -3662,7 +3662,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -3831,7 +3831,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -3843,7 +3843,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -3925,7 +3925,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -3937,7 +3937,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -4185,7 +4185,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -4197,7 +4197,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -4382,7 +4382,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "native skew-multipole kick and finite-difference derivative; PTC and Taylor controls"
+     "scope": "native skew-multipole kicks and derivatives"
     },
     {
      "model": "claude-opus-5-5",
@@ -4754,7 +4754,7 @@
       "commit": "19b8afb46a40",
       "build": "source-matched 20261021-0 (d00a8f17e55a) libraries, production, CPU, double, serial"
      },
-     "scope": "native Lie mean-loss flag, separated from duplicated radiation kicks"
+     "scope": "planar-wiggler mean-loss flag in native Lie tracking"
     }
    ],
    "verified": {
@@ -5535,7 +5535,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "Built-in tracking-error return and switch restoration, with successful-call and incoming-false controls."
+     "scope": "built-in tracking errors and fluctuation-switch restoration"
     }
    ],
    "verified": {
@@ -6340,7 +6340,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -6352,7 +6352,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -6436,7 +6436,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -6448,7 +6448,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -6533,7 +6533,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -6545,7 +6545,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -6556,7 +6556,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "literal denominator definition; leading weak-RF approximation retained"
+     "scope": "weak-RF bunch-length denominator definition"
     }
    ],
    "verified": {
@@ -6630,7 +6630,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -6642,7 +6642,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -6739,7 +6739,7 @@
       "ref": "ibs-ion-classical-radius",
       "commit": "886607535af8"
      },
-     "scope": "source/algebra discovery of missing ion charge-squared radiation scaling"
+     "scope": "ion charge-squared radiation scaling (source check)"
     }
    ],
    "confirmed": [
@@ -6932,7 +6932,7 @@
       "ref": "20261021-0",
       "commit": "d00a8f17e55a"
      },
-     "scope": "source lead for skew/rotated strengths in srdt"
+     "scope": "srdt skew/rotated multipole strengths (source check)"
     }
    ],
    "confirmed": [
@@ -6955,7 +6955,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "thin skew and rotated sextupole terms by independent analytic open-line test"
+     "scope": "thin skew and rotated sextupole driving terms"
     }
    ],
    "verified": {
@@ -7038,7 +7038,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "ab_multipole and sad_mult NaNs against independent open-line thin-potential values"
+     "scope": "ab_multipole and sad_mult thin-sextupole NaNs"
     }
    ],
    "verified": {
@@ -7125,7 +7125,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "rank-one solver failure on a separate 20-variable ring; thin weight and chromatic targets by source"
+     "scope": "rank-one solver failure; thin weights/targets source-only"
     }
    ],
    "verified": {
@@ -7216,7 +7216,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "per-element direct/cache factors against analytic single-element values; missing assignments by source"
+     "scope": "per-element direct/cache factors; unset fields source-only"
     }
    ],
    "verified": {
@@ -7302,7 +7302,7 @@
       "ref": "20261021-0",
       "commit": "d00a8f17e55a"
      },
-     "scope": "source check of reference-species coefficients; track1_radiation extension is source-only"
+     "scope": "reference-species radiation coefficients (source check)"
     },
     {
      "model": "gpt-6-astra",
@@ -7313,7 +7313,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "deterministic reference-species dependence on the unmodified production library"
+     "scope": "deterministic reference-species radiation dependence"
     }
    ],
    "verified": {
@@ -7582,7 +7582,7 @@
       "commit": "19b8afb46a40",
       "build": "source-matched 20261021-0 (d00a8f17e55a) libraries, production, CPU, double, serial"
      },
-     "scope": "horizontal transverse Jacobian block; horizontal momentum derivative has source support"
+     "scope": "horizontal Jacobian block; momentum derivative source-only"
     }
    ],
    "verified": {
@@ -8038,7 +8038,7 @@
       "commit": "19b8afb46a40",
       "build": "source-matched 20261021-0 (d00a8f17e55a) libraries, production, CPU, double, serial"
      },
-     "scope": "averaged planar/helical I0; undulator/shared dispatch extensions have source support"
+     "scope": "averaged planar/helical I0; shared dispatches source-only"
     }
    ],
    "verified": {
@@ -9402,7 +9402,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -9414,7 +9414,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -9492,7 +9492,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -9504,7 +9504,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -9593,7 +9593,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -9605,7 +9605,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -9687,7 +9687,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -9699,7 +9699,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -9789,7 +9789,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -9801,7 +9801,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -10650,7 +10650,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6-astra",
@@ -10660,7 +10660,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -10673,7 +10673,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial libraries, OpenMP=1; application Open MPI 5.0.10, 2 ranks on one CPU"
      },
-     "scope": "execution of the touschek_background program"
+     "scope": "compression-dependent energy-spread propagation"
     }
    ],
    "verified": {
@@ -10751,7 +10751,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -10763,7 +10763,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -10850,7 +10850,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -10862,7 +10862,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -10951,7 +10951,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -10963,7 +10963,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -11059,7 +11059,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -11071,7 +11071,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -11155,7 +11155,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -11167,7 +11167,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -11250,7 +11250,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -11262,7 +11262,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -11337,7 +11337,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -11349,7 +11349,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -11360,7 +11360,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "production lifetime averaging with parsed periodic FODO optics and independent endpoint quadrature"
+     "scope": "Touschek lifetime averaging"
     }
    ],
    "verified": {
@@ -11432,7 +11432,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -11444,7 +11444,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -11455,7 +11455,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "production three- and five-slice positions versus independently integrated Gaussian charge centroids"
+     "scope": "three- and five-slice Gaussian charge centroids"
     }
    ],
    "verified": {
@@ -11523,7 +11523,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -11535,7 +11535,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -11546,7 +11546,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "production three-slice transverse and longitudinal geometry with quadratic/cubic crabbing and tilt"
+     "scope": "three-slice quadratic/cubic crab geometry and tilt"
     }
    ],
    "verified": {
@@ -11621,7 +11621,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -11633,7 +11633,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -11720,7 +11720,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -11732,7 +11732,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -11743,7 +11743,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "production unequal-speed kinematic kick versus exact energy-momentum conservation at the waist"
+     "scope": "unequal-speed kinematic kick at the waist"
     }
    ],
    "verified": {
@@ -11810,7 +11810,7 @@
       "ref": "ibs-ion-classical-radius",
       "commit": "1bf1982abf8e"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -11822,7 +11822,7 @@
       "ref": "20261021-0",
       "commit": "d00a8f17e55a"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6-astra",
@@ -11833,7 +11833,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "on-reference-momentum emittance conversion; full driver with diagnostic output"
+     "scope": "on-reference-momentum emittance conversion"
     }
    ],
    "verified": {
@@ -11909,7 +11909,7 @@
       "ref": "ibs-ion-classical-radius",
       "commit": "1bf1982abf8e"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -11921,7 +11921,7 @@
       "ref": "20261021-0",
       "commit": "d00a8f17e55a"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6-astra",
@@ -11932,7 +11932,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "ISR variance charge scaling in the production ibs_linac executable"
+     "scope": "ISR variance charge scaling"
     }
    ],
    "verified": {
@@ -12038,7 +12038,7 @@
       "commit": "d00a8f17e55a",
       "build": "source, production, CPU, double, serial"
      },
-     "scope": "bl_via_vlassov charge-state extension"
+     "scope": "Vlasov bunch-length charge-state scaling"
     }
    ],
    "verified": {
@@ -12287,7 +12287,7 @@
       "ref": "20261021-0",
       "commit": "d00a8f17e55a"
      },
-     "scope": "source lead for the maximum-impact-parameter cap"
+     "scope": "maximum-impact-parameter cap (source check)"
     }
    ],
    "confirmed": [
@@ -12310,7 +12310,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "classic-log density cap by independent density scaling; option-2 upper cutoff by source"
+     "scope": "classic-log density cap; option 2 by source only"
     }
    ],
    "verified": {
@@ -13563,7 +13563,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -13575,7 +13575,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -13586,7 +13586,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "supplied-wake equation/implementation normalization and unchanged longitudinal beta/z"
+     "scope": "supplied-wake normalization and stale longitudinal beta/z"
     }
    ],
    "verified": {
@@ -13760,7 +13760,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -13772,7 +13772,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -13783,7 +13783,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "manual example damping, independent legacy-Q control and mode decay"
+     "scope": "example damping and mode decay"
     }
    ],
    "verified": {
@@ -13869,7 +13869,7 @@
       "ref": "20261021-0",
       "commit": "d00a8f17e55a"
      },
-     "scope": "source lead for wake charge-state scaling"
+     "scope": "wake charge-state scaling (source check)"
     }
    ],
    "confirmed": [
@@ -13892,7 +13892,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "longitudinal modal, table and LR charge/sign scaling by independent execution; transverse and self-kick charge factors by source"
+     "scope": "longitudinal wake charge/sign scaling; transverse by source only"
     }
    ],
    "verified": {
@@ -14171,7 +14171,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "noncommuting matrix contract, explicit kick tracking and bunch-length invariance"
+     "scope": "matrix kick order and bunch-length invariance"
     }
    ],
    "verified": {
@@ -15739,7 +15739,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -15751,7 +15751,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -16026,7 +16026,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -16038,7 +16038,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -18266,7 +18266,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "normal and skew array import; independent order-2/order-3 fixtures and analytic-kick controls"
+     "scope": "normal and skew multipole-array import"
     }
    ],
    "verified": {
@@ -18800,7 +18800,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "thin rfcavity electron export, matched clocks, phase and arrival-time signs; manual phase rule"
+     "scope": "thin electron rfcavity export with matched clocks"
     }
    ],
    "verified": {
@@ -18882,7 +18882,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -18894,7 +18894,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -18905,7 +18905,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "CLI/API aperture documentation versus runtime suppression; independent direct writer-API fixture"
+     "scope": "CLI/API noaperture documentation and output"
     }
    ],
    "verified": {
@@ -19007,7 +19007,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "all five class-name mappings; direct key-lookup and class-only parser controls"
+     "scope": "five Elegant-to-Bmad element-class mappings"
     }
    ],
    "verified": {
@@ -19282,7 +19282,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "Untilted bend vkick: independent Lorentz integration and MAD-X TWISS/TRACK"
+     "scope": "untilted bend vkick in MAD-X TWISS/TRACK"
     }
    ],
    "verified": {
@@ -20023,7 +20023,7 @@
       "ref": "20261021-0",
       "commit": "d00a8f17e55a"
      },
-     "scope": "source lead for SAD reference-bend translation"
+     "scope": "SAD reference-bend translation (source check)"
     }
    ],
    "confirmed": [
@@ -20046,7 +20046,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "Reference-status information loss, analytic survey and Bmad SAD round trip"
+     "scope": "SAD reference-bend export and Bmad round trip"
     }
    ],
    "verified": {
@@ -20137,7 +20137,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "Straight-reference dipole kick omission; source loop excludes order zero"
+     "scope": "straight-reference dipole kick omission"
     }
    ],
    "verified": {
@@ -20223,7 +20223,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "Repeated thin multipole: undefined name and independent polynomial control"
+     "scope": "undefined names for repeated thin multipoles"
     }
    ],
    "verified": {
@@ -20302,7 +20302,7 @@
       "ref": "20261021-0",
       "commit": "d00a8f17e55a"
      },
-     "scope": "source lead for zero-length SAD rotation"
+     "scope": "zero-length SAD magnet rotation (source check)"
     }
    ],
    "confirmed": [
@@ -20325,7 +20325,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "QUAD, SEXT and OCT rotation sign: finite differences of magnetic potential"
+     "scope": "zero-length QUAD, SEXT and OCT rotation signs"
     }
    ],
    "verified": {
@@ -20429,7 +20429,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "K0 status, ROTATE/DROTATE and ANGLE failures; canonical thin-map control"
+     "scope": "K0 status, ROTATE/DROTATE and ANGLE failures"
     }
    ],
    "verified": {
@@ -22384,7 +22384,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -22396,7 +22396,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -22568,7 +22568,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     }
    ],
    "confirmed": [
@@ -22580,7 +22580,7 @@
       "ref": "20261020-0",
       "commit": "19b8afb46a40"
      },
-     "scope": "source/contract discrepancy"
+     "scope": "source check"
     },
     {
      "model": "gpt-6.1-sol",
@@ -22670,7 +22670,7 @@
       "ref": "20261021-0",
       "commit": "d00a8f17e55a"
      },
-     "scope": "source and convention lead for conjugate normal-form terms"
+     "scope": "normal-form conjugation convention (source check)"
     }
    ],
    "confirmed": [
@@ -22683,7 +22683,7 @@
       "commit": "c4c629fc9071",
       "build": "source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1"
      },
-     "scope": "geometric h300000 and h210000 conjugation from independent matrix optics and polynomial expansion"
+     "scope": "geometric h300000 and h210000 conjugation"
     },
     {
      "model": "claude-opus-5-5",

@@ -114,7 +114,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found (source/contract discrepancy) | `gpt-6-astra` | xhigh | 2026-10-20 | 20261020-0 (`19b8afb46a40`) |
-| Confirmed (source/contract discrepancy) | `gpt-6.1-sol` | xhigh | 2026-10-20 | 20261020-0 (`19b8afb46a40`) |
-| Confirmed (manual forward conjugation, exact rational symplectic counterexample) | `gpt-6.1-sol` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`) |
+| Found<br><small>source check</small> | `gpt-6-astra` | xhigh | 2026-10-20 | 20261020-0 (`19b8afb46a40`) |
+| Confirmed<br><small>source check</small> | `gpt-6.1-sol` | xhigh | 2026-10-20 | 20261020-0 (`19b8afb46a40`) |
+| Confirmed<br><small>manual forward conjugation, exact rational symplectic counterexample</small> | `gpt-6.1-sol` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`) |
 

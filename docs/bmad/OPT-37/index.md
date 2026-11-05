@@ -94,5 +94,5 @@ Download these shared helpers into the same directory as the reproducer scripts:
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `gpt-6-astra` | xhigh | 2026-10-29 | 20261020-0 (`19b8afb46a40`), source-matched 20261021-0 (d00a8f17e55a) libraries, production, CPU, double, serial |
-| Confirmed (averaged planar/helical I0; undulator/shared dispatch extensions have source support) | `gpt-6.1-sol` | xhigh | 2026-10-29 | 20261020-0 (`19b8afb46a40`), source-matched 20261021-0 (d00a8f17e55a) libraries, production, CPU, double, serial |
+| Confirmed<br><small>averaged planar/helical I0; shared dispatches source-only</small> | `gpt-6.1-sol` | xhigh | 2026-10-29 | 20261020-0 (`19b8afb46a40`), source-matched 20261021-0 (d00a8f17e55a) libraries, production, CPU, double, serial |
 

@@ -166,7 +166,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found (source and convention lead for conjugate normal-form terms) | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`) |
-| Confirmed (geometric h300000 and h210000 conjugation from independent matrix optics and polynomial expansion) | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
+| Found<br><small>normal-form conjugation convention (source check)</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`) |
+| Confirmed<br><small>geometric h300000 and h210000 conjugation</small> | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
 | Confirmed | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
 

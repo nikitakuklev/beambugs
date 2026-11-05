@@ -191,6 +191,6 @@ Download these shared helpers into the same directory as the reproducer scripts:
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `gpt-6.1-sol` | xhigh | 2026-10-24 | symp-lie-bmad-radiation (`057b5bb2f83a`), source, production, CPU, double, serial |
-| Confirmed (source check of reference-species coefficients; track1_radiation extension is source-only) | `claude-opus-5-5` | high | 2026-10-24 | 20261021-0 (`d00a8f17e55a`) |
-| Confirmed (deterministic reference-species dependence on the unmodified production library) | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
+| Confirmed<br><small>reference-species radiation coefficients (source check)</small> | `claude-opus-5-5` | high | 2026-10-24 | 20261021-0 (`d00a8f17e55a`) |
+| Confirmed<br><small>deterministic reference-species radiation dependence</small> | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
 

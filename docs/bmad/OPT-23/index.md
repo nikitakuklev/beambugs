@@ -232,7 +232,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found (source/algebra discovery of missing ion charge-squared radiation scaling) | `gpt-6-astra` | xhigh | 2026-10-24 | ibs-ion-classical-radius (`886607535af8`) |
-| Confirmed (radiation_integrals ion scaling) | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
-| Confirmed (symp_lie_bmad ion scaling) | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Found<br><small>ion charge-squared radiation scaling (source check)</small> | `gpt-6-astra` | xhigh | 2026-10-24 | ibs-ion-classical-radius (`886607535af8`) |
+| Confirmed<br><small>radiation_integrals ion scaling</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Confirmed<br><small>symp_lie_bmad ion scaling</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
 

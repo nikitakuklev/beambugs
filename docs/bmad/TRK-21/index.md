@@ -79,5 +79,5 @@ Download these shared helpers into the same directory as the reproducer scripts:
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
 | Found | `claude-opus-5-5` | high | 2026-10-22 | ptc-cavity-phase-update (`0a293736d062`), source, production, CPU, double, serial |
-| Confirmed (independent source check of inverse voltage and phase conversions) | `gpt-6.1-sol` | xhigh | 2026-10-22 | ptc-cavity-phase-update (`b48e02e3d9fa`) |
+| Confirmed<br><small>inverse voltage and phase conversions (source check)</small> | `gpt-6.1-sol` | xhigh | 2026-10-22 | ptc-cavity-phase-update (`b48e02e3d9fa`) |
 

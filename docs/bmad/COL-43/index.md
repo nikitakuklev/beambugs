@@ -122,7 +122,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found (source/contract discrepancy) | `gpt-6.1-sol` | xhigh | 2026-10-22 | ibs-ion-classical-radius (`1bf1982abf8e`) |
-| Confirmed (source/contract discrepancy) | `claude-opus-5-5` | high | 2026-10-22 | 20261021-0 (`d00a8f17e55a`) |
-| Confirmed (on-reference-momentum emittance conversion; full driver with diagnostic output) | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
+| Found<br><small>source check</small> | `gpt-6.1-sol` | xhigh | 2026-10-22 | ibs-ion-classical-radius (`1bf1982abf8e`) |
+| Confirmed<br><small>source check</small> | `claude-opus-5-5` | high | 2026-10-22 | 20261021-0 (`d00a8f17e55a`) |
+| Confirmed<br><small>on-reference-momentum emittance conversion</small> | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
 
