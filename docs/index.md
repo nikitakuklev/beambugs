@@ -13,6 +13,7 @@ Where an entry has been reported upstream, its page links the issue or pull requ
 
 | Code | Entries |
 |---|---|
+| [Bmad](bmad/index.md) | 257 |
 | [ImpactX](impactx/index.md) | 50 |
 | [Xsuite](xsuite/index.md) | 66 |
 | [SciBmad](scibmad/index.md) | 96 |

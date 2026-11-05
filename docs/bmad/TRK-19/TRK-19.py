@@ -1,0 +1,54 @@
+"""TRK-19: Native lcavity body kicks omit the tracked/reference charge ratio
+
+A positron tracked through an electron-reference linear cavity receives the electron energy-kick sign. The native body kick omits the tracked-to-reference charge ratio required by the cavity equation. In a thin 10 kV traveling-wave cavity at crest, a positron 10% above the 1 MeV/c reference gains 10.00 keV instead of losing 10.00 keV. The electron linear-cavity case and both charge signs in an RF cavity agree with the voltage law.
+
+The script tracks both charge signs through thin RF and linear cavities at crest, using BMAD_DIST. It checks survival, species, endpoint reference, beta, clock and transverse coordinates before comparing the energy changes with the charge-scaled voltage.
+"""
+
+from _bmad import compare, fortran, verdict
+from _rf_and_spin import control, rows
+
+PROGRAM = """program charge
+use bmad
+implicit none
+type(lat_struct) lat
+type(coord_struct) a,b
+integer i,j,particle_kind
+real(rp) v(6),gain
+logical err
+call bmad_parser('lat.bmad',lat,err_flag=err)
+if (err) error stop 'parse'
+v=0; v(6)=0.1_rp
+do i=1,2
+ do j=1,2
+  particle_kind=electron$
+  if(j==2) particle_kind=positron$
+  call init_coord(a,v,lat%ele(i),upstream_end$,particle=particle_kind)
+  call convert_pc_to(a%p0c*(1+a%vec(6)),particle_kind,beta=a%beta)
+  call track1(a,lat%ele(i),lat%param,b,err_flag=err)
+  if(err .or. b%state/=alive$ .or. b%species/=particle_kind) error stop 'track'
+  gain=hypot(b%p0c*(1+b%vec(6)),mass_of(particle_kind))-hypot(a%p0c*(1+a%vec(6)),mass_of(particle_kind))
+  write(*,'(a,i0,i0,*(es25.16,1x))') 'RESULT case',i,j,gain,b%p0c,lat%ele(i)%value(p0c$), &
+   b%beta,b%p0c*(1+b%vec(6))/hypot(b%p0c*(1+b%vec(6)),mass_of(particle_kind)),a%t,b%t,b%vec(1:5)
+ enddo
+enddo
+end program
+"""
+LATTICE = """no_digested
+parameter[particle]=electron
+parameter[p0c]=1e6
+parameter[geometry]=open
+r: rfcavity, l=0, voltage=1e4, rf_frequency=1e8, phi0=0.25
+c: lcavity, l=0, voltage=1e4, rf_frequency=1e8, phi0=0, cavity_type=traveling_wave
+ln: line=(r,c)
+use,ln
+"""
+d = rows(fortran(PROGRAM, files={"lat.bmad": LATTICE}).log)
+for key, row in d.items():
+    control(f"{key} endpoint reference (eV/c)", row[1], row[2], atol=1e-8)
+    control(f"{key} beta from momentum", row[3], row[4], atol=3e-15)
+    control(f"{key} clock (s)", row[5:7], [0, 0], atol=2e-23)
+    control(f"{key} first five coordinates", row[7:], [0] * 5, atol=2e-16)
+for key, gain in [("case11", 1e4), ("case12", -1e4), ("case21", 1e4)]:
+    control(f"{key} energy gain (eV), relative charge times voltage", d[key][0], gain, atol=8e-10)
+verdict(compare("lcavity positron gain (eV), q/q_ref times V", d["case22"][0], -1e4, atol=8e-10))
