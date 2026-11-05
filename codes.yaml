@@ -1,5 +1,45 @@
 # Codes exported into beambugs. `ledger` is the private ledger directory the
 # exporter reads; it is only needed to regenerate docs/, not to build the site.
+bmad:
+  name: Bmad
+  homepage: https://www.classe.cornell.edu/bmad/
+  repository: bmad-sim/bmad-ecosystem
+  ledger: /mnt/apollo/ref_docs/bmad/upstream_defects
+  areas:
+    tracking.md: Tracking, RF, fields and spin
+    optics.md: Optics
+    collective.md: Collective effects
+    lattice_io.md: Lattices, particles and I/O
+    translators.md: Translators
+    tao.md: Tao
+  modules: []
+  run: |
+    Build Bmad ecosystem release `20261031-0` (`c4c629fc9071`) from source, including
+    Tao, `bmad_to_mad_sad_elegant` and the regression executables. The reproducers ran
+    with GNU Fortran 15.3.0, double precision, OpenMP enabled and serial Bmad libraries. Configure
+    `util/dist_prefs` for GNU Fortran and the installed dependencies, source
+    `util/dist_source_me`, run `util/dist_build_production`, then run `mk` inside
+    `regression_tests`. Keep the complete build tree, including its CMake compile/link
+    recipes, libraries and Fortran module files. Set `BMAD_DIST` to that tree's absolute
+    path (the directory containing `production` and `regression_tests`). Source-reading
+    and importer scripts also require `BMAD_SOURCE`, the matching ecosystem source tree;
+    a distribution build containing its archived sources can serve both variables.
+
+    The Touschek-background reproducer (COL-30) also needs `libbsim.a` in the production
+    build and Open MPI's `mpifort` and `mpiexec` on `PATH`, compatible with the build's
+    Fortran compiler (the run used Open MPI 5.0.10). It compiles the unchanged
+    `touschek_background` sources from `BMAD_SOURCE` in a temporary directory and runs
+    two MPI ranks against the serial libraries. Select one allowed CPU with
+    `taskset -c <cpu> python COL-30.py`; both ranks share that CPU with one thread each.
+
+    Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
+    [helpers directory](helpers/index.md). Save the helpers beside the script and run
+    `python <ID>.py`, one script per process with `OMP_NUM_THREADS=1`. NumPy is required;
+    the additional Python packages are listed below. MAD-X checks use cpymad 1.19.0
+    with MAD-X 5.09.03. Elegant checks require serial Elegant and SDDS (the runs used
+    rtsoliday/elegant `0355dd6aca12` and rtsoliday/SDDS `a3f730a14c49`), with their bin
+    directories on `PATH`, `ELEGANT_BIN` set to the Elegant executable, and `RPN_DEFNS`
+    set to SDDS's `defns.rpn`. Those checks use pysdds; HDF5 checks use h5py.
 impactx:
   name: ImpactX
   homepage: https://impactx.readthedocs.io

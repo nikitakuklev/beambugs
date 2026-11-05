@@ -1,4 +1,4 @@
-{% macro codeid(c) %}{{ c.ref }} (`{{ c.commit }}`){% if c.get('build') %}, {{ c.build }}{% endif %}{% endmacro %}
+{% macro codeid(c) %}{{ c.ref }}{% if c.get('commit') %} (`{{ c.commit }}`){% endif %}{% if c.get('build') %}, {{ c.build }}{% endif %}{% endmacro %}
 ---
 title: "{{ e.id }}: {{ e.title | replace('"', '\\"') | replace('`', '') }}"
 hide:

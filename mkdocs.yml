@@ -21,6 +21,7 @@ nav:
   - Home: index.md
   - Methodology: methodology.md
   - Codes:
+      - Bmad: bmad/index.md
       - ImpactX: impactx/index.md
       - Xsuite: xsuite/index.md
       - SciBmad: scibmad/index.md

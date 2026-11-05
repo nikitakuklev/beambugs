@@ -1,0 +1,60 @@
+"""XLT-32: Elegant export drops order-zero multipole components
+
+Exporting order-zero multipole components to Elegant removes their dipole kicks. An ab_multipole with vertical dipole component a₀ = 0.0007300 should change normalized vertical momentum by 0.0007300, but its export gives zero; a straight-reference K0L dipole is likewise lost. When the omitted component belongs to a thick element’s generated end multipoles, an undefined element name also makes Elegant reject the lattice. Handwritten order-zero MULT elements restore the missing kicks in Elegant.
+
+The script exports normal and skew order-zero examples and runs Elegant using ELEGANT_BIN and RPN_DEFNS. It compares the kicks with Bmad and handwritten order-zero MULT controls, and checks the thick-element rejection and missing reference geometry.
+"""
+
+import math
+import re
+
+from _bmad import compare, verdict
+from _s3_24_translations import elegant_track, lattice, undefined_names
+from _s4_17_translations import export, track
+
+bad = False
+for label, ele, tilt, expected in [
+    ("a0", "ab_multipole,a0=.00073", -math.pi / 2, [0, 0.00073]),
+    (
+        "k0 straight",
+        "multipole,k0l=.00073,k0l_status=straight_reference,k1l=.5,tracking_method=symp_lie_ptc",
+        0,
+        [-0.00073, 0],
+    ),
+]:
+    lat = lattice(ele)
+    native, _ = track(lat, start=(0, 0, 0, 0, 0, 0))
+    if compare(label + " Bmad kick control", native["ORBIT"][[1, 3]], expected, atol=3e-15):
+        raise RuntimeError("Native kick control failed")
+    text = export(lat, "elegant")
+    actual = elegant_track(text, x=0, y=0)
+    if actual is None:
+        raise RuntimeError("Unexpected Elegant rejection")
+    bad |= compare(label + " Elegant kick", actual[[1, 3]], expected, atol=3e-15)
+    # Build the supported map independently of the export so that a corrected
+    # writer does not receive a second copy of its restored dipole kick.
+    hand = f"M0: mult,knl=.00073,tilt={tilt},order=0\nLAT: line=(M0)\n"
+    control = elegant_track(hand, x=0, y=0)
+    if control is None or compare(
+        label + " handwritten ORDER=0 control", control[[1, 3]], expected, atol=3e-15
+    ):
+        raise RuntimeError("Order-zero receiving-code control failed")
+text = export(lattice("quadrupole,l=.5,a0=.00073,scale_multipoles=F"), "elegant")
+missing, line = undefined_names(text)
+print(f"thick a0 beamline: {line}; undefined={missing}")
+if missing:
+    if missing != ["QMULTIPOLE_1"]:
+        raise RuntimeError("Unexpected undefined names")
+    bad |= elegant_track(text, x=0, y=0, rejected=missing[0]) is None
+lat = lattice("multipole,k0l=.00073,k0l_status=bends_reference,k1l=.5", "d:drift,l=1", "m,d")
+native, _ = track(lat, start=(0, 0, 0, 0, 0, 0))
+# floor_w_mat_to_angles wraps theta with modulo2(theta, pi). Adding/subtracting
+# pi shifts this angle by 1.026e-16 rad; allow one ulp at pi over the 1 m drift.
+if compare("native reference-bend floor x (m)", native["FLOOR"][0], -math.sin(0.00073), atol=5e-16):
+    raise RuntimeError("Reference-bend floor control failed")
+text = export(lat, "elegant")
+orders = [int(v) for v in re.findall(r"order\s*=\s*(\d+)", text)]
+print(
+    f"reference-bend export orders={orders}; expected explicit reference-bend support or diagnostic"
+)
+verdict(bad)
