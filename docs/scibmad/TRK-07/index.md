@@ -68,9 +68,9 @@ For multiply charged ions, the rigidity conversions `R_to_gamma` and `R_to_v` re
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-22 | BeamTracking 0.8.7 (`65e343f9afda`), release clones (Beamlines 0.11.0 35fe0162c72d), scibmad-ref environment, Julia 1.13.2, CPU, Float64 |
-| Found | `gpt-6-sol` | xhigh | 2026-10-22 | BeamTracking 0.8.7 (`65e343f9afda`), release clones (Beamlines 0.11.0 35fe0162c72d), scibmad-ref environment, Julia 1.13.2, CPU, Float64 |
-| Confirmed | `gpt-6-astra` | xhigh | 2026-10-22 | BeamTracking 0.8.7 (`65e343f9afda`), release clones (Beamlines 0.11.0 35fe0162c72d), scibmad-ref environment, Julia 1.13.2, CPU, Float64 |
-| Confirmed | `gpt-6-sol` | xhigh | 2026-10-22 | BeamTracking 0.8.7 (`65e343f9afda`), release clones (Beamlines 0.11.0 35fe0162c72d), scibmad-ref environment, Julia 1.13.2, CPU, Float64 |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | BeamTracking 0.8.7 (`65e343f9afda`), release clones (Beamlines 0.11.0 35fe0162c72d), scibmad-ref environment, Julia 1.13.2, CPU, Float64 |
+| Found | `gpt-6-astra` | xhigh | 2026-10-22 | BeamTracking 0.8.7 (`65e343f9afda`), release sources (Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float64 |
+| Found | `gpt-6-sol` | xhigh | 2026-10-22 | BeamTracking 0.8.7 (`65e343f9afda`), release sources (Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float64 |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-22 | BeamTracking 0.8.7 (`65e343f9afda`), release sources (Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float64 |
+| Confirmed | `gpt-6-sol` | xhigh | 2026-10-22 | BeamTracking 0.8.7 (`65e343f9afda`), release sources (Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float64 |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | BeamTracking 0.8.7 (`65e343f9afda`), release sources (Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float64 |
 

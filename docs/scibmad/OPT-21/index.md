@@ -69,6 +69,6 @@ hide:
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-23 | SciBmad main (`5f0fb83ac889`), pinned source clones and main worktrees, Julia 1.13.2, CPU, Float64 |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-23 | SciBmad main (`5f0fb83ac889`), pinned source clones and main worktrees, Julia 1.13.2, CPU, Float64 |
+| Found | `gpt-6-astra` | xhigh | 2026-10-23 | SciBmad main (`5f0fb83ac889`), pinned and main-branch sources, Julia 1.13.2, CPU, Float64 |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-23 | SciBmad main (`5f0fb83ac889`), pinned and main-branch sources, Julia 1.13.2, CPU, Float64 |
 

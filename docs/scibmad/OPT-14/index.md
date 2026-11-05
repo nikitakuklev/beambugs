@@ -57,7 +57,7 @@ BatchSolve's batched `newton` returns stale `f` and `jac` for lanes (problems in
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-22 | BatchSolve 0.1.5 (`ac41c095255d`), release tag clones, Julia 1.13.2 guide wrapper, CPU, Float64 |
-| Confirmed | `gpt-6-sol` | xhigh | 2026-10-22 | BatchSolve 0.1.5 (`ac41c095255d`), release tag clones, Julia 1.13.2 guide wrapper, CPU, Float64 |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | BatchSolve 0.1.5 (`ac41c095255d`), release tag clones, Julia 1.13.2 guide wrapper, CPU, Float64 |
+| Found | `gpt-6-astra` | xhigh | 2026-10-22 | BatchSolve 0.1.5 (`ac41c095255d`), release sources, Julia 1.13.2, CPU, Float64 |
+| Confirmed | `gpt-6-sol` | xhigh | 2026-10-22 | BatchSolve 0.1.5 (`ac41c095255d`), release sources, Julia 1.13.2, CPU, Float64 |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | BatchSolve 0.1.5 (`ac41c095255d`), release sources, Julia 1.13.2, CPU, Float64 |
 

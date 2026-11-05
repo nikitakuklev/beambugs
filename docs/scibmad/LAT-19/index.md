@@ -138,7 +138,7 @@ Bmad's SciBmad exporter emits property names Beamlines rejects: `bsol_field` for
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), Julia 1.13.2, installed SciBmad 0.6.0 package set (SciBmad 62399f930847, BeamTracking 65e343f9afda, Beamlines 35fe0162c72d), CPU; emitted constructs typed by hand, the exporter was not built |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), production bmad_to_scibmad 20261020-0, Julia 1.13.2, installed SciBmad 0.6.0 package set (SciBmad 62399f930847, BeamTracking 65e343f9afda, Beamlines 35fe0162c72d), CPU |
-| Confirmed<br><small>roll, is_on, z_rot and t_offset names</small> | `claude-opus-5-5` | high | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), production bmad_to_scibmad 20261020-0, Julia 1.13.2, installed SciBmad 0.6.0 package set (SciBmad 62399f930847, BeamTracking 65e343f9afda, Beamlines 35fe0162c72d), CPU |
+| Found | `gpt-6-astra` | xhigh | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), SciBmad 0.6.0 release packages, Julia 1.13.2, CPU; exporter output written by hand, the exporter was not run |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), production bmad_to_scibmad 20261020-0, SciBmad 0.6.0 release packages, Julia 1.13.2, CPU |
+| Confirmed<br><small>roll, is_on, z_rot and t_offset names</small> | `claude-opus-5-5` | high | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), production bmad_to_scibmad 20261020-0, SciBmad 0.6.0 release packages, Julia 1.13.2, CPU |
 

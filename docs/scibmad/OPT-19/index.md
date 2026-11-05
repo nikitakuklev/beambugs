@@ -72,7 +72,7 @@ In GTPSA, reading the coefficient of a monomial that the descriptor does not hol
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `claude-opus-5-5` | high | 2026-10-22 | GTPSA 1.5.6 (`a5790a7deaa6`), release tag clones, Julia 1.13.2 guide wrapper, CPU, Float64 |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | GTPSA 1.5.6 (`a5790a7deaa6`), release tag clones, Julia 1.13.2 guide wrapper, CPU, Float64 |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-30 | GTPSA 1.5.6 (`a5790a7deaa6`), pinned clones as installed (SciBmad 5f0fb83ac889, NonlinearNormalForm 7e4053985736, GTPSA a5790a7deaa6, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
+| Found | `claude-opus-5-5` | high | 2026-10-22 | GTPSA 1.5.6 (`a5790a7deaa6`), release sources, Julia 1.13.2, CPU, Float64 |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | GTPSA 1.5.6 (`a5790a7deaa6`), release sources, Julia 1.13.2, CPU, Float64 |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-30 | GTPSA 1.5.6 (`a5790a7deaa6`), source (SciBmad 5f0fb83ac889, NonlinearNormalForm 7e4053985736, GTPSA a5790a7deaa6, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
 

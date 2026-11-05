@@ -189,6 +189,6 @@ A magnetic strength can be set as a field (B) or normalized to rigidity (K), int
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-29 | Beamlines 0.11.0 (`35fe0162c72d`), pinned clones (SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d) as installed in the scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-29 | Beamlines 0.11.0 (`35fe0162c72d`), pinned clones (SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d) as installed in the scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
+| Found | `gpt-6-astra` | xhigh | 2026-10-29 | Beamlines 0.11.0 (`35fe0162c72d`), source (SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-29 | Beamlines 0.11.0 (`35fe0162c72d`), source (SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, serial |
 

@@ -141,6 +141,6 @@ GTPSA's allocating `inv`, and `inv!` into a zero destination, lose parameter-dep
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-28 | GTPSA 1.5.6 (`a5790a7deaa6`), pinned clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-28 | GTPSA 1.5.6 (`a5790a7deaa6`), pinned clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
+| Found | `gpt-6-astra` | xhigh | 2026-10-28 | GTPSA 1.5.6 (`a5790a7deaa6`), source, Julia 1.13.2, CPU, Float64, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-28 | GTPSA 1.5.6 (`a5790a7deaa6`), source, Julia 1.13.2, CPU, Float64, serial |
 

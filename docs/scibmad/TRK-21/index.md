@@ -264,6 +264,6 @@ Storing an explicit zero dipole strength in a bend with an enabled nonzero face 
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-29 | BeamTracking main (`d8e45fdc25db`), pinned clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-29 | BeamTracking main (`d8e45fdc25db`), pinned clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
+| Found | `gpt-6-astra` | xhigh | 2026-10-29 | BeamTracking main (`d8e45fdc25db`), source, Julia 1.13.2, CPU, Float64, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-29 | BeamTracking main (`d8e45fdc25db`), source, Julia 1.13.2, CPU, Float64, serial |
 

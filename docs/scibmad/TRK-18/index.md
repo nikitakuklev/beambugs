@@ -95,6 +95,6 @@ Differentiating tracking with respect to a tilt, skew strength or bend-face angl
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), release clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64 |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), release clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64 |
+| Found | `gpt-6-astra` | xhigh | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), release sources, Julia 1.13.2, CPU, Float64 |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), release sources, Julia 1.13.2, CPU, Float64 |
 

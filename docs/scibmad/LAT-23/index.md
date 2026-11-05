@@ -111,7 +111,7 @@ Arithmetic between a scalar and an array-backed `BatchParam` (addition, subtract
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `claude-opus-5-5` | xhigh | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), scibmad-fixes env-bt-head (registry BeamTracking 0.8.7, same tree as 65e343f9afda), Julia 1.13.2, CPU, serial |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), scibmad-fixes env-bt-head (registry BeamTracking 0.8.7, same tree as 65e343f9afda), Julia 1.13.2, CPU, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-30 | BeamTracking 0.8.7 (`d8e45fdc25db`), pinned clones as installed (SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
+| Found | `claude-opus-5-5` | xhigh | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), BeamTracking main, same tree as the 0.8.7 release, Julia 1.13.2, CPU, serial |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), BeamTracking main, same tree as the 0.8.7 release, Julia 1.13.2, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-30 | BeamTracking 0.8.7 (`d8e45fdc25db`), source (SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
 

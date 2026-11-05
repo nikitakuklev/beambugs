@@ -105,6 +105,6 @@ In uncoupled transverse optics, the scalar Montague chromatic functions `w`, W =
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-28 | SciBmad main (`5f0fb83ac889`), pinned clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-28 | SciBmad main (`5f0fb83ac889`), pinned clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
+| Found | `gpt-6-astra` | xhigh | 2026-10-28 | SciBmad main (`5f0fb83ac889`), source, Julia 1.13.2, CPU, Float64, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-28 | SciBmad main (`5f0fb83ac889`), source, Julia 1.13.2, CPU, Float64, serial |
 

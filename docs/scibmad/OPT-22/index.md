@@ -91,7 +91,7 @@ NonlinearNormalForm's `copy!` omits a `VectorField` destination's quaternion, it
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `claude-opus-5-5` | high | 2026-10-23 | NonlinearNormalForm 0.5.3 (`7e4053985736`), pinned source clones and main worktrees, Julia 1.13.2, CPU, Float64 |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-24 | NonlinearNormalForm 0.5.3 (`7e4053985736`), pinned source clones and main worktrees, Julia 1.13.2, CPU, Float64 |
-| Confirmed<br><small>copy and log; real!/imag! extension</small> | `gpt-6-astra` | xhigh | 2026-10-24 | NonlinearNormalForm 0.5.3 (`7e4053985736`), pinned source clones and main worktrees, Julia 1.13.2, CPU, Float64 |
+| Found | `claude-opus-5-5` | high | 2026-10-23 | NonlinearNormalForm 0.5.3 (`7e4053985736`), pinned and main-branch sources, Julia 1.13.2, CPU, Float64 |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-24 | NonlinearNormalForm 0.5.3 (`7e4053985736`), pinned and main-branch sources, Julia 1.13.2, CPU, Float64 |
+| Confirmed<br><small>copy and log; real!/imag! extension</small> | `gpt-6-astra` | xhigh | 2026-10-24 | NonlinearNormalForm 0.5.3 (`7e4053985736`), pinned and main-branch sources, Julia 1.13.2, CPU, Float64 |
 

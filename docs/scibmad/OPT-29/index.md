@@ -128,6 +128,6 @@ Differentiating with ForwardDiff with respect to a strength parameter of a four-
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-28 | BeamTracking main (`d8e45fdc25db`), pinned clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-28 | BeamTracking main (`d8e45fdc25db`), pinned clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
+| Found | `gpt-6-astra` | xhigh | 2026-10-28 | BeamTracking main (`d8e45fdc25db`), source, Julia 1.13.2, CPU, Float64, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-28 | BeamTracking main (`d8e45fdc25db`), source, Julia 1.13.2, CPU, Float64, serial |
 

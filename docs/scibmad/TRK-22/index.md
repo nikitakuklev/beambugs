@@ -132,6 +132,6 @@ The neutron and antineutron `g_spin` values are normalized to the nuclear magnet
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-29 | AtomicAndPhysicalConstants main (`4095d795a50a`), pinned clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-29 | AtomicAndPhysicalConstants main (`4095d795a50a`), pinned clones, scibmad-ref environment, Julia 1.13.2, CPU, Float64, serial |
+| Found | `gpt-6-astra` | xhigh | 2026-10-29 | AtomicAndPhysicalConstants main (`4095d795a50a`), source, Julia 1.13.2, CPU, Float64, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-29 | AtomicAndPhysicalConstants main (`4095d795a50a`), source, Julia 1.13.2, CPU, Float64, serial |
 

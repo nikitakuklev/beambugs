@@ -73,7 +73,7 @@ NonlinearNormalForm's spin normal form throws `InexactError: Float64(NaN + NaN*i
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-22 | NonlinearNormalForm 0.5.3 (`7e4053985736`), release tag clones, Julia 1.13.2 guide wrapper, CPU, Float64; SciBmad 0.6.0 (62399f930847) for the twiss path |
-| Confirmed | `gpt-6-sol` | xhigh | 2026-10-22 | NonlinearNormalForm 0.5.3 (`7e4053985736`), release tag clones, Julia 1.13.2 guide wrapper, CPU, Float64; SciBmad 0.6.0 (62399f930847) for the twiss path |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | NonlinearNormalForm 0.5.3 (`7e4053985736`), release tag clones, Julia 1.13.2 guide wrapper, CPU, Float64; SciBmad 0.6.0 (62399f930847) for the twiss path |
+| Found | `gpt-6-astra` | xhigh | 2026-10-22 | NonlinearNormalForm 0.5.3 (`7e4053985736`), release sources, Julia 1.13.2, CPU, Float64; SciBmad 0.6.0 (62399f930847) for the twiss path |
+| Confirmed | `gpt-6-sol` | xhigh | 2026-10-22 | NonlinearNormalForm 0.5.3 (`7e4053985736`), release sources, Julia 1.13.2, CPU, Float64; SciBmad 0.6.0 (62399f930847) for the twiss path |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | NonlinearNormalForm 0.5.3 (`7e4053985736`), release sources, Julia 1.13.2, CPU, Float64; SciBmad 0.6.0 (62399f930847) for the twiss path |
 

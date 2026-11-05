@@ -89,5 +89,5 @@ Bmad's SciBmad exporter copies an rfcavity's `phi0`, which Bmad gives in turns (
 |---|---|---|---|---|
 | Found | `gpt-6-astra` | xhigh | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), source reading and phase arithmetic; the exporter was not built or run |
 | Confirmed | `gpt-6-sol` | xhigh | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), source reading and phase arithmetic; the exporter was not built or run |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), production bmad_to_scibmad 20261020-0, Julia 1.13.2, installed SciBmad 0.6.0 package set (SciBmad 62399f930847, BeamTracking 65e343f9afda, Beamlines 35fe0162c72d), CPU |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), production bmad_to_scibmad 20261020-0, SciBmad 0.6.0 release packages, Julia 1.13.2, CPU |
 

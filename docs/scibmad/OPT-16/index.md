@@ -99,7 +99,7 @@ FundamentalFrequencies' `naff` (Numerical Analysis of Fundamental Frequencies) u
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-22 | FundamentalFrequencies 0.1.2 (`f208dc0724b6`), release tag clones, Julia 1.13.2 guide wrapper, CPU, Float64 |
-| Found | `gpt-6-sol` | xhigh | 2026-10-22 | FundamentalFrequencies 0.1.2 (`f208dc0724b6`), release tag clones, Julia 1.13.2 guide wrapper, CPU, Float64 |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | FundamentalFrequencies 0.1.2 (`f208dc0724b6`), release tag clones, Julia 1.13.2 guide wrapper, CPU, Float64 |
+| Found | `gpt-6-astra` | xhigh | 2026-10-22 | FundamentalFrequencies 0.1.2 (`f208dc0724b6`), release sources, Julia 1.13.2, CPU, Float64 |
+| Found | `gpt-6-sol` | xhigh | 2026-10-22 | FundamentalFrequencies 0.1.2 (`f208dc0724b6`), release sources, Julia 1.13.2, CPU, Float64 |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | FundamentalFrequencies 0.1.2 (`f208dc0724b6`), release sources, Julia 1.13.2, CPU, Float64 |
 

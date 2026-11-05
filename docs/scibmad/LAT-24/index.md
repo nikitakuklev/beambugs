@@ -69,6 +69,6 @@ Combining a ForwardDiff `Dual` or a GTPSA power-series scalar with a Float32 arr
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), scibmad-fixes env-bt-head (registry BeamTracking 0.8.7, same tree as 65e343f9afda) and the LAT-05 fix worktree, Julia 1.13.2, CPU |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), scibmad-fixes env-bt-head (registry BeamTracking 0.8.7, same tree as 65e343f9afda), Julia 1.13.2, CPU, serial |
+| Found | `gpt-6-astra` | xhigh | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), BeamTracking main, same tree as the 0.8.7 release, with the proposed fix for LAT-05 applied, Julia 1.13.2, CPU |
+| Confirmed | `claude-opus-5-5` | high | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), BeamTracking main, same tree as the 0.8.7 release, Julia 1.13.2, CPU, serial |
 
