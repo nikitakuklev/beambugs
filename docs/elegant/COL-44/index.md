@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [kick split, simple_rfca.c:525–532](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L525-L532)<br>[LSC call, simple_rfca.c:792–793](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L792-L793)<br>[impedance, lsc.c:625–628](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L625-L628)<br>[lsc.c:502](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L502)<br>[reference update, simple_rfca.c:1116–1117](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1116-L1117)<br>[simple_rfca.c:1207](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1207)<br>[1278](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1278)<br>[wake.c:318–319](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L318-L319)<br>[RFCW manual, rfcw.tex:14–19](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfcw.tex#L14-L19) |
 
-With LSC=1 and no longitudinal wake updating the reference between kicks, an accelerating RFCW evaluates its longitudinal space-charge impedance at the entrance momentum throughout the cavity; increasing N_KICKS does not update that momentum. For a 0.8 m cavity accelerating an electron bunch of 160 μm rms length and 240 μm transverse rms size from γ = 6 to 30, the +1σ energy kick is 3.590 times the local-momentum result. Splitting it into 480 one-kick RFCWs with CHANGE_P0=1 gives a result within 0.3468%. An enabled longitudinal wake with CHANGE_P0=1 also updates the reference between kicks, avoiding the frozen entrance momentum.
+An RFCW with LSC=1 computes every longitudinal space-charge kick with the beam momentum at the cavity entrance, whatever N_KICKS is, while the method the manual cites uses the local momentum. For an electron bunch of 160 μm rms length and 240 μm rms transverse size accelerated from γ = 6 to 30 in one 0.8 m cavity, the energy kick at +1σ is 3.590 times the correct value. At high energy the factor is somewhat below the element's energy ratio: 1.611 for a 15 μm modulation accelerated from 135 to 250 MeV kinetic energy. One-kick RFCWs with CHANGE_P0=1, or a longitudinal wake (even all zero) with CHANGE_P0=1, give the correct kick within 0.35%.
 
 Download these shared helpers into the same directory as the reproducer scripts:
 
@@ -29,13 +29,13 @@ Download these shared helpers into the same directory as the reproducer scripts:
     ```python
     """COL-44: An accelerating RFCW without a longitudinal wake evaluates its longitudinal space charge at the entrance momentum
 
-    With LSC=1 and no longitudinal wake updating the reference between kicks, an accelerating RFCW
-    evaluates its longitudinal space-charge impedance at the entrance momentum throughout the
-    cavity; increasing N_KICKS does not update that momentum. For a 0.8 m cavity accelerating an
-    electron bunch of 160 μm rms length and 240 μm transverse rms size from γ = 6 to 30, the +1σ
-    energy kick is 3.590 times the local-momentum result. Splitting it into 480 one-kick RFCWs with
-    CHANGE_P0=1 gives a result within 0.3468%. An enabled longitudinal wake with CHANGE_P0=1 also
-    updates the reference between kicks, avoiding the frozen entrance momentum.
+    An RFCW with LSC=1 computes every longitudinal space-charge kick with the beam momentum at the
+    cavity entrance, whatever N_KICKS is, while the method the manual cites uses the local momentum.
+    For an electron bunch of 160 μm rms length and 240 μm rms transverse size accelerated from γ = 6
+    to 30 in one 0.8 m cavity, the energy kick at +1σ is 3.590 times the correct value. At high
+    energy the factor is somewhat below the element's energy ratio: 1.611 for a 15 μm modulation
+    accelerated from 135 to 250 MeV kinetic energy. One-kick RFCWs with CHANGE_P0=1, or a
+    longitudinal wake (even all zero) with CHANGE_P0=1, give the correct kick within 0.35%.
 
     The script tracks 65536 electrons (Gaussian quantiles, sigma_ct = 160 um, rms sizes 240 um,
     1 fC) through a 0.8 m RFCW with FREQ=0 and PHASE=90, which accelerates every particle uniformly
