@@ -1,6 +1,6 @@
 """Shared setup for the broadband ZTRANSVERSE reproducers: decks, analytic impedance, Fourier oracle.
 
-The beam is twelve electrons (p = 50 m_e c, 2 nC) in two adjacent time bins of 50 ps, six particles
+The beam is twelve electron macroparticles (p = 50 m_e c, 2 nC) in two adjacent time bins of 50 ps, six particles
 each, so that the transverse source moment of each bin is six times its offset. `kicks` tracks it
 through a ZTRANSVERSE element, either the built-in broadband resonator or a table holding the
 documented impedance of the same resonator on the same frequency grid; `oracle` is the kick of the

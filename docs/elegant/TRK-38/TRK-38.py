@@ -1,11 +1,11 @@
 """TRK-38: CSBEND FSE_CORRECTION cancels a dipole-only strength error and a horizontal steering kick
 
-With FSE_CORRECTION=1 and edge model 2 or 4, CSBEND fits the strength correction that zeroes the
-exit slope with FSE_DIPOLE and XKICK still present, so the correction absorbs them. For a 0.75 m,
-0.09 rad bend, adding FSE_DIPOLE = 7×10⁻⁴ to the bend with its error-free correction held fixed
-gives exit slope x′ = −6.287×10⁻⁵, as the same error given as FSE does with refitting, but the
-refitted FSE_DIPOLE run gives |x′| < 10⁻¹⁵. XKICK = 8×10⁻⁵ should give x′ = 7.984×10⁻⁵ and also
-gives |x′| < 10⁻¹⁵. The vertical deflection of YKICK is kept.
+When a matrix calculation fits CSBEND's FSE_CORRECTION=1 or 2 for edge model 2 or 4, the
+calibration retains FSE_DIPOLE and XKICK and absorbs their horizontal exit-slope effects. For a
+0.75 m, 0.09 rad bend, adding FSE_DIPOLE = 7×10⁻⁴ to the bend with its error-free correction
+held fixed gives exit slope x′ = −6.287×10⁻⁵, as the same error given as FSE does with
+refitting, but the refitted FSE_DIPOLE run gives |x′| < 10⁻¹⁵. XKICK = 8×10⁻⁵ should give x′ =
+7.984×10⁻⁵ and also gives |x′| < 10⁻¹⁵. The vertical deflection of YKICK is kept.
 
 The script fits the correction once for the error-free bend (edge models 2 and 4, twiss_output
 before tracking) and reads the fitted FSE from the log. With refitting off and that FSE held fixed,

@@ -13,6 +13,7 @@ hide:
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`trackRfCavityWithWakes`, simple_rfca.c:745–768](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L745-L768)<br>[simple_rfca.c:804–807](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L804-L807)<br>[simple_rfca.c:1019–1024](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1019-L1024)<br>[1072–1076](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1072-L1076)<br>[`rf_cavity_matrix`, compute_matrices.c:2604–2610](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L2604-L2610)<br>[parameter table, track_data.c:608–609](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L608-L609)<br>[RFCA manual, rfca.tex](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfca.tex) |
 
 RFCA's END1_FOCUS and END2_FOCUS edge lenses, in tracking and in the transfer matrix, have inverse focal length γ′/(2γ), where γ′ is the energy gain per length in units of mc². Integrating the radial field −(r/2)∂E_z/∂z of a hard field edge over the transit time dz/(βc) gives γ′/(2β²γ) at the local β and γ, so both lenses are too weak by the factor β². For electrons entering a 0.7 m cavity that adds 12 MeV at 1.5 MeV kinetic energy, the entrance lens is 4.262 m⁻¹ instead of 4.556 m⁻¹, 6.457% weak; at 5 MeV it is 0.8598% weak and at 20 MeV 0.06207% weak.
@@ -110,7 +111,7 @@ RFCA's END1_FOCUS and END2_FOCUS edge lenses, in tracking and in the transfer ma
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -199,11 +200,14 @@ RFCA's END1_FOCUS and END2_FOCUS edge lenses, in tracking and in the transfer ma
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -222,7 +226,7 @@ RFCA's END1_FOCUS and END2_FOCUS edge lenses, in tracking and in the transfer ma
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

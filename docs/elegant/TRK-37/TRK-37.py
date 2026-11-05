@@ -1,11 +1,12 @@
 """TRK-37: CSBEND edge model 5 adds a constant path offset and drops the y² path term when K3 is small
 
-A CSBEND edge with model 5 and fringe integral |K₃/(1+δ)| < 10⁻⁵, where δ is the momentum deviation,
-evaluates its path-length formula with a misplaced parenthesis. Each such edge adds the constant
-−K₂/(2(1+δ)²) to every particle's path and drops the term −K₂y²/(2(1+δ)²), the K₃ → 0 limit of the
-exact formula used for larger K₃. A pure dipole's soft edge has K₃ = 0: for curvature 0.1 m⁻¹ and a
-2 cm fringe, K₂ = 10⁻⁴ and each edge shortens the path by 5.000×10⁻⁵ m, and K₂ = 0.006 gives
-3.000×10⁻³ m.
+A CSBEND edge using model 5 misplaces a parenthesis when |K₃/(1+δ)| < 10⁻⁵, where K₃ is a fringe
+integral and δ is the fractional momentum offset. Its K₂ fringe-integral contribution adds the
+constant −K₂/(2(1+δ)²) to the path instead of −K₂y²/(2(1+δ)²), where y is vertical position. The
+correct expression follows from the lens's momentum-dependent vertical kick and the continuous
+larger-K₃ formula. A pure-dipole tanh fringe with width parameter 2.000 cm and curvature 0.1000
+m⁻¹ has K₃ = 0 and K₂ = 1.000×10⁻⁴ m⁻¹, producing a false constant path offset of −50.00 μm per
+edge on momentum. All-zero fringe integrals produce no error.
 
 The script tracks electrons on axis and at y = ±1.5 mm through a CSBEND with edge model 5 on one
 edge, for both EDGE_ORDER settings, with the fringe integral K3 just below and just above the
@@ -72,9 +73,10 @@ for mode in modes():
         label = (
             f"{mode} {'entrance' if edge == 1 else 'exit'} EDGE_ORDER={order} K2={k2:g} K3={k3:g}"
         )
+        y2_label = "expected" if edge == 2 else "edge-only limit (not compared)"
         print(
             f"{label}: on-axis path - L observed={on_axis:.6g} expected=0;"
-            f" y2 term observed={y2:.6g} expected={expected_y2:.6g}"
+            f" y2 term observed={y2:.6g} {y2_label}={expected_y2:.6g}"
         )
         bad = abs(on_axis) > TOL or (edge == 2 and abs(y2 - expected_y2) > TOL)
         if k3 > 1e-5:

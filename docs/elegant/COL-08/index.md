@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [DC coefficient, ztransverse.c:498–499](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ztransverse.c#L498-L499)<br>[interior coefficients, ztransverse.c:500–508](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ztransverse.c#L500-L508)<br>[impedance manual, ztransverse.tex:3–18](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ztransverse.tex#L3-L18)<br>[spectrum product, ztransverse.c:291–301](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ztransverse.c#L291-L301)<br>[real FFT packing, fftpackC.c:133–156](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/fftpack/fftpackC.c#L133-L156)<br>[file DC convention, ztransverse.c:575–581](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ztransverse.c#L575-L581)<br>[manual note, ztransverse.tex:33–37](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ztransverse.tex#L33-L37) |
 
-Broadband ZTRANSVERSE sets its zero-frequency impedance to 2Rₛ/Q instead of the documented Rₛ/Q, where Rₛ is the shunt impedance and Q the resonator quality factor. This adds a constant transverse wake over the finite Fourier-transform window for beams with a net transverse offset. For 12 electrons at 50 mₑc, 2 nC total charge and 1 mm horizontal offset in adjacent 50 ps bins, with Rₛ = 1×10⁶ Ω/m, Q = 1, resonant frequency 1 GHz and 8192 bins, the leading group's kick is 6.960×10⁻⁶ rad instead of the independently summed 6.769×10⁻⁶ rad. The excess is 1.911×10⁻⁷ rad per particle and halves when the window doubles.
+Broadband ZTRANSVERSE sets its zero-frequency impedance to 2Rₛ/Q instead of the documented Rₛ/Q, where Rₛ is the shunt impedance and Q the resonator quality factor. This adds a constant transverse wake over the finite Fourier-transform window for beams with a net transverse offset. For 12 electron macroparticles at 50 mₑc representing 2 nC total charge and 1 mm horizontal offset in adjacent 50 ps bins, with Rₛ = 1×10⁶ Ω/m, Q = 1, resonant frequency 1 GHz and 8192 bins, the leading group's kick is 6.960×10⁻⁶ rad instead of the independently summed 6.769×10⁻⁶ rad. The excess is 1.911×10⁻⁷ rad per particle and halves when the window doubles.
 
 ??? example "Reproducer: COL-08.py"
 
@@ -24,7 +24,13 @@ Broadband ZTRANSVERSE sets its zero-frequency impedance to 2Rₛ/Q instead of th
     ```python
     """COL-08: Broadband ZTRANSVERSE doubles its DC impedance
 
-    Broadband ZTRANSVERSE sets its zero-frequency impedance to 2Rₛ/Q instead of the documented Rₛ/Q, where Rₛ is the shunt impedance and Q the resonator quality factor. This adds a constant transverse wake over the finite Fourier-transform window for beams with a net transverse offset. For 12 electrons at 50 mₑc, 2 nC total charge and 1 mm horizontal offset in adjacent 50 ps bins, with Rₛ = 1×10⁶ Ω/m, Q = 1, resonant frequency 1 GHz and 8192 bins, the leading group's kick is 6.960×10⁻⁶ rad instead of the independently summed 6.769×10⁻⁶ rad. The excess is 1.911×10⁻⁷ rad per particle and halves when the window doubles.
+    Broadband ZTRANSVERSE sets its zero-frequency impedance to 2Rₛ/Q instead of the documented Rₛ/Q,
+    where Rₛ is the shunt impedance and Q the resonator quality factor. This adds a constant
+    transverse wake over the finite Fourier-transform window for beams with a net transverse offset.
+    For 12 electron macroparticles at 50 mₑc representing 2 nC total charge and 1 mm horizontal
+    offset in adjacent 50 ps bins, with Rₛ = 1×10⁶ Ω/m, Q = 1, resonant frequency 1 GHz and 8192
+    bins, the leading group's kick is 6.960×10⁻⁶ rad instead of the independently summed 6.769×10⁻⁶
+    rad. The excess is 1.911×10⁻⁷ rad per particle and halves when the window doubles.
 
     The script tracks the beam through the broadband element and through a table of the same impedance on the same frequency grid, and compares both with the kick of the analytic impedance, summed as a Fourier series without an FFT. The table is the control: it agrees with the series to rounding, so the kick difference of the broadband element isolates its DC coefficient. Adjacent bins with equal offsets cancel the Nyquist source moment, leaving the DC term as the only difference. The excess is compared with the kick of an extra Rs/Q coefficient, for windows of 8192 and 16384 bins.
     """
@@ -73,7 +79,7 @@ Broadband ZTRANSVERSE sets its zero-frequency impedance to 2Rₛ/Q instead of th
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -162,11 +168,14 @@ Broadband ZTRANSVERSE sets its zero-frequency impedance to 2Rₛ/Q instead of th
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -185,7 +194,7 @@ Broadband ZTRANSVERSE sets its zero-frequency impedance to 2Rₛ/Q instead of th
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")
@@ -245,7 +254,7 @@ Broadband ZTRANSVERSE sets its zero-frequency impedance to 2Rₛ/Q instead of th
     ```python
     """Shared setup for the broadband ZTRANSVERSE reproducers: decks, analytic impedance, Fourier oracle.
 
-    The beam is twelve electrons (p = 50 m_e c, 2 nC) in two adjacent time bins of 50 ps, six particles
+    The beam is twelve electron macroparticles (p = 50 m_e c, 2 nC) in two adjacent time bins of 50 ps, six particles
     each, so that the transverse source moment of each bin is six times its offset. `kicks` tracks it
     through a ZTRANSVERSE element, either the built-in broadband resonator or a table holding the
     documented impedance of the same resonator on the same frequency grid; `oracle` is the kick of the

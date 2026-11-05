@@ -114,7 +114,7 @@
  {
   "code": "elegant",
   "id": "TRK-03",
-  "title": "KQUAD given by pole-tip field and bore tracks its fringes with zero strength until a matrix or Twiss request",
+  "title": "KQUAD fringes use the stored gradient instead of the effective body gradient",
   "area": "Tracking",
   "priority": "P2",
   "severity": "Wrong physics",
@@ -122,7 +122,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "KQUAD can be specified by pole-tip field B and bore radius BORE instead of normalized gradient K₁. With nonlinear fringes enabled and K₁ left at its default zero, the body uses the field-derived strength but both fringes use zero strength until a matrix or Twiss output request overwrites K₁. The same beam then leaves the same magnet differently depending on whether optics output was requested; after the request it matches the equivalent explicit K₁. For a 0.4 m magnet with K₁ = 5 m⁻² and electron momentum 2000 mₑc, exit slopes change by up to 1.749 µrad and positions by up to 95.29 nm.",
+  "summary": "When KQUAD is specified by pole-tip field B and bore radius BORE, or has fractional strength error FSE, its body resolves the effective gradient but both fringes use the stored K₁. With B/BORE and default K₁ = 0, a matrix or Twiss request changes tracking by populating that stored value; FSE is still omitted. For a 0.4 m magnet at electron momentum 2000 mₑc, the field-input error reaches 1.749 µrad, while K₁ = 5 m⁻² with FSE = 0.2 differs from the equivalent K₁ = 6 m⁻² magnet by 419.4 nrad. Equivalent-field and zero-field controls establish that both fringes must use the same effective gradient as the body.",
   "justification": null,
   "locations": [
    {
@@ -148,134 +148,6 @@
    {
     "label": "K1, BORE and B definitions, track_data.c:1253–1258",
     "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1253-L1258"
-   }
-  ],
-  "upstream": [],
-  "provenance": {
-   "found": [
-    {
-     "model": "gpt-6-astra",
-     "effort": "xhigh",
-     "date": "2026-10-15",
-     "code": {
-      "ref": "2026.4.0",
-      "commit": "d177ff5347c7",
-      "build": "source reading, not executed for this claim"
-     },
-     "scope": "fringes receive the stored K1, not the pole-tip conversion"
-    },
-    {
-     "model": "gpt-6-astra",
-     "effort": "xhigh",
-     "date": "2026-10-15",
-     "code": {
-      "ref": "2026.4.0",
-      "commit": "d177ff5347c7",
-      "build": "source with SDDS 3fa650ee9a1c, CPU, serial"
-     },
-     "scope": "a matrix request overwrites K1 and changes later fringe tracking"
-    }
-   ],
-   "confirmed": [
-    {
-     "model": "gpt-6-astra",
-     "effort": "xhigh",
-     "date": "2026-10-15",
-     "code": {
-      "ref": "2026.4.0",
-      "commit": "d177ff5347c7",
-      "build": "source with SDDS 3fa650ee9a1c, CPU, serial"
-     }
-    },
-    {
-     "model": "gpt-6.1-sol",
-     "effort": "xhigh",
-     "date": "2026-10-15",
-     "code": {
-      "ref": "2026.4.0",
-      "commit": "d177ff5347c7",
-      "build": "source with SDDS 3fa650ee9a1c, CPU, serial"
-     }
-    },
-    {
-     "model": "gpt-6-astra",
-     "effort": "high",
-     "date": "2026-10-25",
-     "code": {
-      "ref": "master",
-      "commit": "75a2e1a1a58b",
-      "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
-     }
-    },
-    {
-     "model": "gpt-6.1-sol",
-     "effort": "high",
-     "date": "2026-10-25",
-     "code": {
-      "ref": "master",
-      "commit": "75a2e1a1a58b",
-      "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
-     }
-    }
-   ],
-   "verified": {
-    "date": "2026-11-04",
-    "code": {
-     "ref": "master",
-     "commit": "0355dd6aca12",
-     "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
-    },
-    "result": "reproduced"
-   }
-  },
-  "last_reproduced": {
-   "date": "2026-11-04",
-   "code": {
-    "ref": "Elegant master",
-    "commit": "0355dd6aca12"
-   },
-   "head": true,
-   "head_not_reproduced": null
-  },
-  "models": [
-   "gpt-6-astra",
-   "gpt-6.1-sol"
-  ],
-  "reproducers": [
-   "TRK-03.py",
-   "_elegant.py"
-  ],
-  "requirements": [
-   "numpy",
-   "pysdds"
-  ],
-  "page": "elegant/TRK-03/"
- },
- {
-  "code": "elegant",
-  "id": "TRK-04",
-  "title": "KQUAD fringes ignore the fractional strength error FSE that scales the body",
-  "area": "Tracking",
-  "priority": "P2",
-  "severity": "Wrong physics",
-  "level": "Reproduced, independently rechecked",
-  "tags": [
-   "partly-source-only"
-  ],
-  "summary": "KQUAD scales its body's normalized gradient by 1 + FSE, where FSE is the fractional strength error, but both nonlinear fringe kicks keep the unscaled gradient K₁. A uniform field error leaves the fringe profile normalized to the central gradient unchanged, so K₁ = 5 m⁻² with FSE = 0.2 must track like K₁ = 6 m⁻² with FSE = 0, and FSE = −1 must be a plain drift. For a 0.4 m magnet and electron momentum 2000 mₑc, the exit slopes differ by up to 419.4 nrad, and at FSE = −1 the exit position is displaced by up to 54.35 nm.",
-  "justification": null,
-  "locations": [
-   {
-    "label": "body strength, multipole.c:791–795",
-    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L791-L795"
-   },
-   {
-    "label": "entrance fringe, multipole.c:1131–1132",
-    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1131-L1132"
-   },
-   {
-    "label": "exit fringe, multipole.c:1224–1225",
-    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1224-L1225"
    },
    {
     "label": "nonlinear fringe coefficient, fringe.c:110",
@@ -317,7 +189,30 @@
       "ref": "2026.4.0",
       "commit": "d177ff5347c7",
       "build": "source reading, not executed for this claim"
-     }
+     },
+     "scope": "fringes receive the stored K1, not the pole-tip conversion"
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-15",
+     "code": {
+      "ref": "2026.4.0",
+      "commit": "d177ff5347c7",
+      "build": "source with SDDS 3fa650ee9a1c, CPU, serial"
+     },
+     "scope": "a matrix request overwrites K1 and changes later fringe tracking"
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-15",
+     "code": {
+      "ref": "2026.4.0",
+      "commit": "d177ff5347c7",
+      "build": "source reading, not executed for this claim"
+     },
+     "scope": "fractional strength error in the fringe gradient"
     }
    ],
    "confirmed": [
@@ -329,7 +224,8 @@
       "ref": "2026.4.0",
       "commit": "d177ff5347c7",
       "build": "source with SDDS 3fa650ee9a1c, CPU, serial"
-     }
+     },
+     "scope": "pole-tip gradient and optics-request dependence"
     },
     {
      "model": "gpt-6.1-sol",
@@ -339,7 +235,8 @@
       "ref": "2026.4.0",
       "commit": "d177ff5347c7",
       "build": "source with SDDS 3fa650ee9a1c, CPU, serial"
-     }
+     },
+     "scope": "pole-tip gradient and optics-request dependence"
     },
     {
      "model": "gpt-6-astra",
@@ -349,7 +246,8 @@
       "ref": "master",
       "commit": "75a2e1a1a58b",
       "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
-     }
+     },
+     "scope": "pole-tip gradient and optics-request dependence"
     },
     {
      "model": "gpt-6.1-sol",
@@ -359,7 +257,52 @@
       "ref": "master",
       "commit": "75a2e1a1a58b",
       "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
-     }
+     },
+     "scope": "pole-tip gradient and optics-request dependence"
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-15",
+     "code": {
+      "ref": "2026.4.0",
+      "commit": "d177ff5347c7",
+      "build": "source with SDDS 3fa650ee9a1c, CPU, serial"
+     },
+     "scope": "fractional strength error in the fringe gradient"
+    },
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-15",
+     "code": {
+      "ref": "2026.4.0",
+      "commit": "d177ff5347c7",
+      "build": "source with SDDS 3fa650ee9a1c, CPU, serial"
+     },
+     "scope": "fractional strength error in the fringe gradient"
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "high",
+     "date": "2026-10-25",
+     "code": {
+      "ref": "master",
+      "commit": "75a2e1a1a58b",
+      "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
+     },
+     "scope": "fractional strength error in the fringe gradient"
+    },
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "high",
+     "date": "2026-10-25",
+     "code": {
+      "ref": "master",
+      "commit": "75a2e1a1a58b",
+      "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
+     },
+     "scope": "fractional strength error in the fringe gradient"
     }
    ],
    "verified": {
@@ -386,14 +329,15 @@
    "gpt-6.1-sol"
   ],
   "reproducers": [
-   "TRK-04.py",
+   "TRK-03.py",
+   "TRK-03-fse.py",
    "_elegant.py"
   ],
   "requirements": [
    "numpy",
    "pysdds"
   ],
-  "page": "elegant/TRK-04/"
+  "page": "elegant/TRK-03/"
  },
  {
   "code": "elegant",
@@ -2621,17 +2565,6 @@
    ],
    "confirmed": [
     {
-     "model": "gpt-6-astra",
-     "effort": "xhigh",
-     "date": "2026-11-03",
-     "code": {
-      "ref": "master",
-      "commit": "0355dd6aca12",
-      "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
-     },
-     "scope": "edge signs follow the body table's order labels"
-    },
-    {
      "model": "gpt-6.1-sol",
      "effort": "xhigh",
      "date": "2026-11-03",
@@ -3332,7 +3265,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes the radiating field after subtracting the horizontal kick and doubling the vertical one. For a 0.8 m magnet with zero main strength and a 1 mrad kick at 3.066 GeV, the classical radiation integral along the uniform steering field gives a fractional energy loss of 5.072×10⁻¹⁰ in either plane; HKICK gives zero and VKICK 2.029×10⁻⁹, four times too much. The moments_output quantum excitation of the KQUAD is zero for HKICK and eight times the Sands diffusion integral for VKICK. A KQUAD without steering radiates correctly.",
+  "summary": "A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes the radiating field after subtracting the horizontal kick and doubling the vertical one. For a 0.8 m magnet with zero main strength and a 1 mrad kick at 3.066 GeV, the classical radiation integral along the uniform steering field gives a fractional energy loss of 5.072×10⁻¹⁰ in either plane; HKICK gives zero and VKICK 2.029×10⁻⁹, four times too much. The moments_output quantum excitation of the KQUAD is zero for HKICK and eight times the Sands diffusion integral for VKICK. This steering-field error is absent when HKICK and VKICK are both zero.",
   "justification": null,
   "locations": [
    {
@@ -3758,7 +3691,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "A CSBEND edge with model 5 and fringe integral |K₃/(1+δ)| < 10⁻⁵, where δ is the momentum deviation, evaluates its path-length formula with a misplaced parenthesis. Each such edge adds the constant −K₂/(2(1+δ)²) to every particle's path and drops the term −K₂y²/(2(1+δ)²), the K₃ → 0 limit of the exact formula used for larger K₃. A pure dipole's soft edge has K₃ = 0: for curvature 0.1 m⁻¹ and a 2 cm fringe, K₂ = 10⁻⁴ and each edge shortens the path by 5.000×10⁻⁵ m, and K₂ = 0.006 gives 3.000×10⁻³ m.",
+  "summary": "A CSBEND edge using model 5 misplaces a parenthesis when |K₃/(1+δ)| < 10⁻⁵, where K₃ is a fringe integral and δ is the fractional momentum offset. Its K₂ fringe-integral contribution adds the constant −K₂/(2(1+δ)²) to the path instead of −K₂y²/(2(1+δ)²), where y is vertical position. The correct expression follows from the lens's momentum-dependent vertical kick and the continuous larger-K₃ formula. A pure-dipole tanh fringe with width parameter 2.000 cm and curvature 0.1000 m⁻¹ has K₃ = 0 and K₂ = 1.000×10⁻⁴ m⁻¹, producing a false constant path offset of −50.00 μm per edge on momentum. All-zero fringe integrals produce no error.",
   "justification": null,
   "locations": [
    {
@@ -3862,7 +3795,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "With FSE_CORRECTION=1 and edge model 2 or 4, CSBEND fits the strength correction that zeroes the exit slope with FSE_DIPOLE and XKICK still present, so the correction absorbs them. For a 0.75 m, 0.09 rad bend, adding FSE_DIPOLE = 7×10⁻⁴ to the bend with its error-free correction held fixed gives exit slope x′ = −6.287×10⁻⁵, as the same error given as FSE does with refitting, but the refitted FSE_DIPOLE run gives |x′| < 10⁻¹⁵. XKICK = 8×10⁻⁵ should give x′ = 7.984×10⁻⁵ and also gives |x′| < 10⁻¹⁵. The vertical deflection of YKICK is kept.",
+  "summary": "When a matrix calculation fits CSBEND's FSE_CORRECTION=1 or 2 for edge model 2 or 4, the calibration retains FSE_DIPOLE and XKICK and absorbs their horizontal exit-slope effects. For a 0.75 m, 0.09 rad bend, adding FSE_DIPOLE = 7×10⁻⁴ to the bend with its error-free correction held fixed gives exit slope x′ = −6.287×10⁻⁵, as the same error given as FSE does with refitting, but the refitted FSE_DIPOLE run gives |x′| < 10⁻¹⁵. XKICK = 8×10⁻⁵ should give x′ = 7.984×10⁻⁵ and also gives |x′| < 10⁻¹⁵. The vertical deflection of YKICK is kept.",
   "justification": null,
   "locations": [
    {
@@ -4161,7 +4094,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "With STANDING_WAVE=1, N_KICKS > 1 and automatic phasing, RFCA takes its phase reference at the first of the N integration kicks, so PHASE=90, which the manual names the crest, is not the crest. For a half-wavelength gap (0.3747 m at 400 MHz, VOLT = 0.8 MV) and 5.110 GeV electrons, a phase scan and the closed-form sum of the same kicks put the crest at PHASE = 90°/N, with gain 512.6 keV for N = 8. PHASE=90 instead gives VOLT/N: 100.0 keV for N = 8 and 12.50 keV for N = 64. One kick, the matrix method (N_KICKS = 0) and the travelling-wave model keep the crest at PHASE=90.",
+  "summary": "With STANDING_WAVE=1, BODY_FOCUS_MODEL=none, N_KICKS > 1 and automatic phasing, RFCA references the first integration kick, so the documented PHASE=90 setting misses the crest. For a half-wavelength gap (0.3747 m at 400 MHz, VOLT = 0.8000 MV) and 5.110 GeV electrons, the crest is approximately 90°/N, where N is N_KICKS, with gain 512.6 keV for N = 8. PHASE=90 instead gives approximately VOLT/N: 100.0 keV for N = 8 and 12.50 keV for N = 64. These formulas are exact in the speed-of-light limit. The one-kick, matrix and travelling-wave controls keep the crest at 90° to the tested ultrarelativistic tolerance.",
   "justification": null,
   "locations": [
    {
@@ -4253,7 +4186,9 @@
   "priority": "P2",
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
-  "tags": [],
+  "tags": [
+   "partly-source-only"
+  ],
   "summary": "RFCA's END1_FOCUS and END2_FOCUS edge lenses, in tracking and in the transfer matrix, have inverse focal length γ′/(2γ), where γ′ is the energy gain per length in units of mc². Integrating the radial field −(r/2)∂E_z/∂z of a hard field edge over the transit time dz/(βc) gives γ′/(2β²γ) at the local β and γ, so both lenses are too weak by the factor β². For electrons entering a 0.7 m cavity that adds 12 MeV at 1.5 MeV kinetic energy, the entrance lens is 4.262 m⁻¹ instead of 4.556 m⁻¹, 6.457% weak; at 5 MeV it is 0.8598% weak and at 20 MeV 0.06207% weak.",
   "justification": null,
   "locations": [
@@ -4355,7 +4290,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusing computes R12 for momentum growing linearly along the cavity, while its own transfer matrix takes a uniform gradient, under which energy grows linearly. Conserved transverse momentum then gives R12 = L p₀(arcosh γ₁ − arcosh γ₀)/(γ₁ − γ₀), with γ₀, γ₁ the entrance and exit Lorentz factors and p₀ the entrance βγ; 1024-kick tracking approaches it within 1.568×10⁻⁶. For electrons entering a 0.7 m cavity that adds 12 MeV at 1.5 MeV kinetic energy, tracking gives R12 = 0.2229 m instead of 0.2221 m, 0.3685% too large; the error is 0.03247% at 5 MeV and 7.003×10⁻⁶ at 20 MeV.",
+  "summary": "An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusing computes R12 for momentum growing linearly along the cavity, while its own transfer matrix takes a uniform gradient, under which energy grows linearly. Conserved transverse momentum then gives R12 = L p₀(arcosh γ₁ − arcosh γ₀)/(γ₁ − γ₀), with γ₀, γ₁ the entrance and exit Lorentz factors and p₀ the entrance βγ; 1024-kick tracking has a relative difference of 1.568×10⁻⁶. For electrons entering a 0.7 m cavity that adds 12 MeV at 1.5 MeV kinetic energy, tracking gives R12 = 0.2229 m instead of 0.2221 m, 0.3685% too large; the error is 0.03247% at 5 MeV and 7.003×10⁻⁶ at 20 MeV.",
   "justification": null,
   "locations": [
    {
@@ -4532,6 +4467,299 @@
  },
  {
   "code": "elegant",
+  "id": "TRK-45",
+  "title": "Element division repeats a one-sided RFCA end-focus lens at every piece",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Dividing an RFCA with divide_elements while only END1_FOCUS or only END2_FOCUS is enabled copies that end lens to every piece, adding a lens at each internal boundary inside the uniform accelerating field. A divided cavity must track like the undivided one with the same kicks, which focuses only at its physical end. For electrons entering a 0.7 m, 12 MV cavity at 20 MeV/c, split into four pieces with a static field, a particle entering at x = 1 mm parallel to the axis exits with entrance focusing at x = 0.4947 mm and slope x′ = −0.9116 mrad instead of 0.7651 mm and −0.2677 mrad. With exit focusing, x′ is 1.223 mrad instead of 0.2678 mrad. With both lenses or neither, the static-field result is unaffected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`copy_element`, mad_parse.c:567–568",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/mad_parse.c#L567-L568"
+   },
+   {
+    "label": "mad_parse.c:588–589",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/mad_parse.c#L588-L589"
+   },
+   {
+    "label": "mad_parse.c:594–597",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/mad_parse.c#L594-L597"
+   },
+   {
+    "label": "mad_parse.c:609–612",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/mad_parse.c#L609-L612"
+   },
+   {
+    "label": "`trackRfCavityWithWakes`, simple_rfca.c:746–750",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L746-L750"
+   },
+   {
+    "label": "simple_rfca.c:804–807",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L804-L807"
+   },
+   {
+    "label": "simple_rfca.c:1019–1024",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1019-L1024"
+   },
+   {
+    "label": "1072–1076",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1072-L1076"
+   },
+   {
+    "label": "compute_matrices.c:1905–1907",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L1905-L1907"
+   },
+   {
+    "label": "`rf_cavity_matrix`, compute_matrices.c:2604–2610",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L2604-L2610"
+   },
+   {
+    "label": "elegant.c:1106–1107",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L1106-L1107"
+   },
+   {
+    "label": "`divide_elements` manual, elegant.tex:3005–3030",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L3005-L3030"
+   },
+   {
+    "label": "parameter table, track_data.c:608–609",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L608-L609"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-04",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-45.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds"
+  ],
+  "page": "elegant/TRK-45/"
+ },
+ {
+  "code": "elegant",
+  "id": "TRK-46",
+  "title": "p_central_mev multiplies a custom species' reference momentum by its charge magnitude",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Selecting a custom species with charge magnitude Q in units of the elementary charge and setting run_setup.p_central_mev selects a reference momentum Q times the requested value. The conversion divides by rest energy per charge instead of the rest energy in MeV required by relativistic kinematics. A particle with approximately the helium nucleus mass and Q = 2 requested at 200.0 MeV/c is tracked at 400.0 MeV/c, crossing a 1.000 m drift in 31.26 ns instead of 62.26 ns. Supplying the equivalent dimensionless p_central, or using a singly charged species, gives the correct momentum and arrival time.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`main` (`run_setup`),\nelegant.c:1014–1019",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L1014-L1019"
+   },
+   {
+    "label": "`process_particle_command`,\nelegant.c:3292–3308",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3292-L3308"
+   },
+   {
+    "label": "`change_particle`,\nelegant.tex:1497–1517",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L1497-L1517"
+   },
+   {
+    "label": "`run_setup`,\nelegant.tex:7259–7262",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7259-L7262"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-04",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-46.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds"
+  ],
+  "page": "elegant/TRK-46/"
+ },
+ {
+  "code": "elegant",
+  "id": "TRK-47",
+  "title": "CSBEND Gaussian quantum diffusion scales as charge to the fourth power",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "For a multiply charged custom species, moments_output overestimates the CSBEND quantum variance σδ², where δ is relative momentum deviation, by Q², where Q is charge magnitude in units of the elementary charge. Its Gaussian diffusion coefficient gives variance proportional to Q⁴ instead of the Q² law obtained from the synchrotron photon spectrum. For a particle with approximately the lead nucleus mass, Q = 82 and momentum 573.8 TeV/c, a 14.30 m bend of radius 2804 m gives σδ² = 6.713×10⁻²³ instead of 9.984×10⁻²⁷, a factor 6724. Singly charged controls agree with the spectrum integral.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`track_through_csbend`,\ncsbend.c:1151–1166",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1151-L1166"
+   },
+   {
+    "label": "`process_particle_command`,\nelegant.c:3292–3308",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3292-L3308"
+   },
+   {
+    "label": "`integrate_csbend_ordn`,\ncsbend.c:1960–1966",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1960-L1966"
+   },
+   {
+    "label": "`determineRadiationMatrix`,\nanalyze.c:1773–1783",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L1773-L1783"
+   },
+   {
+    "label": "`change_particle`,\nelegant.tex:1497–1517",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L1497-L1517"
+   },
+   {
+    "label": "`CSBEND` parameter table,\ntrack_data.c:2008–2011",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2008-L2011"
+   },
+   {
+    "label": "CSBEND radiation description,\ncsbend.tex:107–113",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L107-L113"
+   },
+   {
+    "label": "`moments_output.radiation`,\nelegant.tex:5608–5612",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5608-L5612"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-04",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-47.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds"
+  ],
+  "page": "elegant/TRK-47/"
+ },
+ {
+  "code": "elegant",
   "id": "DOC-05",
   "title": "Automatic CSBEND field expansion order is n+2, not the n+3 the manual states",
   "area": "Tracking",
@@ -4551,6 +4779,10 @@
    {
     "label": "evaluator, csbend.c:127–170",
     "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L127-L170"
+   },
+   {
+    "label": "`Kn` to `b[n]`, csbend.c:1029–1048",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1029-L1048"
    },
    {
     "label": "coefficient setup, csbend.c:1198",
@@ -4880,18 +5112,22 @@
  {
   "code": "elegant",
   "id": "OPT-03",
-  "title": "CCBEND radiation totals omit repeated periods",
+  "title": "CCBEND and LGBEND radiation totals omit repeated periods",
   "area": "Optics",
   "priority": "P1",
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "With `twiss_output`, `radiation_integrals=1` and `n_periods` greater than 1, Elegant adds, for CCBEND (canonical combined-function bend) elements, the integrals I₁ to I₅ of one period to the totals without multiplying by `n_periods`, although the per-element contributions are multiplied. For a cell of two 1 m bends with curvature 0.1 m⁻¹ at 6000 mₑc, I₂ must be 0.02000 m⁻¹ for one period and 0.04000 m⁻¹ for two, but Elegant writes 0.02000 m⁻¹ for both. The energy loss per turn then stays at 24.88 keV instead of doubling to 49.77 keV, and the damping times double instead of staying unchanged. The same cell with SBEN bends is correct.",
+  "summary": "With `twiss_output`, `radiation_integrals=1` and `n_periods` greater than 1, Elegant adds, for CCBEND (canonical combined-function bend) and LGBEND (multi-segment straight-pole bend) elements, the integrals I₁ to I₅ of one period to the totals without multiplying by `n_periods`, although the per-element contributions are multiplied. For a cell of two 1 m bends with curvature 0.1 m⁻¹ at 6000 mₑc, I₂ must be 0.02000 m⁻¹ for one period and 0.04000 m⁻¹ for two, but Elegant writes 0.02000 m⁻¹ for both. The energy loss per turn then stays at 24.88 keV instead of doubling to 49.77 keV, and the damping times double instead of staying unchanged. The same cell with SBEN bends, or written out twice with one period, is correct.",
   "justification": null,
   "locations": [
    {
     "label": "`incrementRadIntegrals`, CCBEND branch, src/twiss.cc:3091–3102",
     "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3091-L3102"
+   },
+   {
+    "label": "`incrementRadIntegrals`, LGBEND branch, src/twiss.cc:3103–3124",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3103-L3124"
    },
    {
     "label": "the generic bend branch, src/twiss.cc:3331–3335",
@@ -4900,6 +5136,14 @@
    {
     "label": "the common per-element output, src/twiss.cc:3346–3351",
     "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3346-L3351"
+   },
+   {
+    "label": "`addLgbendRadiationIntegrals`, src/lgbend.c:814–912",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lgbend.c#L814-L912"
+   },
+   {
+    "label": "`completeRadiationIntegralComputation`, src/twiss.cc:3363–3369",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3363-L3369"
    },
    {
     "label": "`radiation_integrals` option, manual, doc/elegant.tex:8092–8095",
@@ -4918,6 +5162,17 @@
       "commit": "d177ff5347c7",
       "build": "source with SDDS 3fa650ee9a1c, CPU, serial"
      }
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-04",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
+     },
+     "scope": "LGBEND branch"
     }
    ],
    "confirmed": [
@@ -4960,6 +5215,17 @@
       "commit": "75a2e1a1a58b",
       "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
      }
+    },
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     },
+     "scope": "LGBEND branch"
     }
    ],
    "verified": {
@@ -5006,7 +5272,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "With moments_output matched=0, equilibrium=0, explicit Twiss, dispersion and longitudinal inputs produce a covariance matrix Σ for (x, x′, y, y′, s, δ) missing eight terms, where s is longitudinal position and δ is relative momentum offset. For independent betatron motion, dispersion η requires cross-plane covariances ηᵢηⱼΣ₆₆ and transverse–longitudinal covariances ηᵢΣ₆₅. For longitudinal emittance ε_z = 1 μm, β_z = 4 m, α_z = 0.2, η_x = 0.1 m and η_y = −0.03 m, Σ₁₃ must be −7.800×10⁻¹⁰ m² and Σ₁₅ −2.000×10⁻⁸ m², but both are zero. Propagated covariance matrices inherit the error. Nonzero momentum spread with dispersion in both planes, or dispersion with longitudinal position–momentum correlation, triggers the error.",
+  "summary": "With moments_output matched=0, equilibrium=0, explicit Twiss, dispersion and longitudinal inputs produce a covariance matrix Σ for (x, x′, y, y′, s, δ) missing eight terms, where s is longitudinal position and δ is relative momentum offset. For independent betatron motion, dispersion η requires cross-plane covariances ηᵢηⱼΣ₆₆ and transverse–longitudinal covariances ηᵢΣ₆₅. For longitudinal emittance ε_z = 1 μm, β_z = 4 m, α_z = 0.2, η_x = 0.1 m and η_y = −0.03 m, Σ₁₃ must be −7.800×10⁻¹⁰ m² and Σ₁₅ −2.000×10⁻⁸ m², but both are zero. Propagated covariance matrices inherit the error.",
   "justification": null,
   "locations": [
    {
@@ -6178,7 +6444,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Elegant's `twiss_output` radiation integrals for a CCBEND, whose pole faces are always rectangular, use only the body term of I4 and omit the two edge terms −h² tan(θ/2)(η₁ + η₂), where h is the curvature, θ the bend angle and η₁, η₂ the dispersion at the faces. With the default hard-edge fringe model, a 1.3 m CCBEND bending 0.12 rad and entered with η = 0.4 m and slope η′ = 0.03 gets I4 = 4.562×10⁻⁴ m⁻¹, while the equivalent rectangular CSBEND gets −1.331×10⁻⁵ m⁻¹. In a 73.60 m, 3 GeV ring of 32 one-meter CCBENDs, Elegant gives the horizontal damping partition as 0.8707 instead of 1.003 and the natural emittance as 441.7 nm instead of 383.2 nm, 15.26% high.",
+  "summary": "With the default hard-edge fringe model, Elegant's `twiss_output` omits the rectangular-face contributions to CCBEND radiation integral I₄. For a uniform, unyawed bend they are −h² tan(θ/2)(η₁ + η₂), where h is curvature, θ is bend angle and η₁, η₂ are face dispersions. A 1.3 m, 0.12 rad bend entered with η = 0.4 m and η′ = 0.03 gives 4.562×10⁻⁴ m⁻¹ instead of −1.331×10⁻⁵ m⁻¹. In a 73.60 m, 3 GeV ring, the horizontal damping partition is 0.8707 instead of 1.003 and the natural emittance is 441.7 nm instead of 383.2 nm, 15.26% high.",
   "justification": null,
   "locations": [
    {
@@ -6847,8 +7113,10 @@
   "priority": "P2",
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
-  "tags": [],
-  "summary": "Elegant's `moments_output` computes the mode emittances e1, e2 and e3 by normalizing the one-turn eigenvectors with the same symplectic sign for all three coordinate pairs, but its longitudinal pair (s, δ) needs the opposite sign, because the canonical coordinate conjugate to δ is −s. When dispersion at the RF cavity mixes transverse and longitudinal motion, e1 and e3 are wrong; the equilibrium covariance itself is correct. In a 2.4 GeV, 70 m ring of 20 FODO cells with radiating bends and a 1.5 MV cavity, the eigen-emittances of that covariance are e1 = 5.448 μm and e3 = 51.45 μm; Elegant reports 5.418 μm and 51.17 μm (−0.5564% and −0.5555%), and −0.7020% for e1 from another starting point.",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Elegant's `moments_output` normalizes its normal modes with the same symplectic sign for all coordinate pairs, although the canonical longitudinal pair is (−s, δ), where s is path length and δ is relative momentum deviation. With transverse–longitudinal mixing, this gives wrong mode emittances; without intrabeam scattering, the covariance still solves the exported linear equilibrium equation. In a 2.4 GeV, 70 m ring with a 1.5 MV cavity, the covariance's paraxial eigen-emittances are 5.448 and 51.45 μm, but Elegant reports 5.418 and 51.17 μm (−0.5564% and −0.5555%). Changing the ring's starting point gives a −0.7020% error in the first mode.",
   "justification": null,
   "locations": [
    {
@@ -6946,7 +7214,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Elegant's `closed_orbit` command documents that `start_from_centroid` (default 1) starts the search from the beam centroid and that `start_from_dp_centroid` uses the beam's momentum centroid, so that the closed orbit of an off-momentum beam can be computed; the code sets both flags to zero before testing them, so every closed orbit is computed on momentum. For a 2.4 GeV, 70 m ring of 20 FODO cells and a one-particle beam at x = 0.3 mm, x′ = 0.1 mrad and δ = 0.001, the closed orbit found by tracking at δ = 0.001 starts at x = 2.458 mm, x′ = 0.4474 mrad. With either flag set, Elegant returns δ = 0 and x = 2.799 nm, the on-momentum orbit.",
+  "summary": "With `closed_orbit` in its default `fixed_length=0` mode, `start_from_centroid` and `start_from_dp_centroid` are ignored, so an off-momentum beam gets the on-momentum orbit. The manual promises to use the beam's momentum centroid for either option; `start_from_centroid` also supplies the transverse starting point. For a 2.4 GeV, 70.00 m ring and beam momentum offset δ = 0.001, independent tracking gives x = 2.458 mm and x′ = 0.4474 mrad at the orbit start. Either option instead returns δ = 0 and x = 2.799 nm. Fixed-length modes can vary δ, although they also ignore these centroid flags.",
   "justification": null,
   "locations": [
    {
@@ -7473,6 +7741,379 @@
  },
  {
   "code": "elegant",
+  "id": "OPT-29",
+  "title": "Resonance driving terms ignore the roll of sextupoles, octupoles, KQUSE and bends",
+  "area": "Optics",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "With `compute_driving_terms`, `twiss_output` computes resonance driving terms and tune shifts with amplitude of SEXT, KSEXT, OCTU, KOCT, KQUSE, SBEN, CSBEND, CSRCSBEND and CCBEND ignoring their TILT. A roll θ scales normal sextupole and octupole fields by cos 3θ and cos 4θ and adds a skew gradient K1 sin 2θ; tracking confirms this. A sextupole of K2 = 13 m⁻³ rolled by π/3 keeps the driving term h30000 = 0.5572 + 0.1962i instead of reversing it, and an octupole of K3 = 640 m⁻⁴ rolled by π/4 keeps the detuning dνx/dJx = 66.35 m⁻¹ instead of −66.35 m⁻¹. A KQUSE of K1 = 0.08 m⁻² rolled by 3 mrad, like each bend, reports no linear coupling instead of |h10010| = 1.103×10⁻⁴.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "SEXT and KSEXT cases, src/twiss.cc:5229–5234",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5229-L5234"
+   },
+   {
+    "label": "KQUSE, SBEN, RBEN, CSBEND, CCBEND and CSRCSBEND cases, src/twiss.cc:5235–5255",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5235-L5255"
+   },
+   {
+    "label": "OCTU and KOCT cases, src/twiss.cc:5266–5271",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5266-L5271"
+   },
+   {
+    "label": "QUAD and KQUAD cases, src/twiss.cc:5256–5264",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5256-L5264"
+   },
+   {
+    "label": "linear coupling terms h10010 and h10100, src/twiss.cc:5311–5315",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5311-L5315"
+   },
+   {
+    "label": "first-order geometric sextupole terms, src/twiss.cc:5330–5343",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5330-L5343"
+   },
+   {
+    "label": "octupole tune shifts and driving terms, src/twiss.cc:5345–5363",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5345-L5363"
+   },
+   {
+    "label": "tilt of SEXT, KSEXT, KQUSE, bends, QUAD and KQUAD, src/twiss.cc:5014–5066",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5014-L5066"
+   },
+   {
+    "label": "applies cos(3 tilt) to the sextupole strength, src/twiss.cc:5076–5078",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5076-L5078"
+   },
+   {
+    "label": "`compute_driving_terms` sums the driving terms and tune shifts with amplitude over dipole, quadrupole, sextupole and octupole elements, with only the gradient and sextupole terms of dipoles, doc/elegant.tex:8176–8183",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8176-L8183"
+   },
+   {
+    "label": "rotation about the longitudinal axis of SEXT, src/track_data.c:481",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L481"
+   },
+   {
+    "label": "KQUSE, src/track_data.c:3416",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3416"
+   },
+   {
+    "label": "rotation about the incoming longitudinal axis, src/track_data.c:411",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L411"
+   },
+   {
+    "label": "potential with the factor (x + iy)ⁿ e^{−inΔφ}, doc/elegant.tex:10876–10886",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L10876-L10886"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-04",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     },
+     "scope": "KQUSE and bend roll"
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    },
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     },
+     "scope": "KQUSE and bend roll"
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-29.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds"
+  ],
+  "page": "elegant/OPT-29/"
+ },
+ {
+  "code": "elegant",
+  "id": "OPT-30",
+  "title": "slice_analysis with final_values_only=1 writes no data and leaves its optimization symbols at zero",
+  "area": "Optics",
+  "priority": "P2",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Elegant's `slice_analysis` with `final_values_only=1`, which the manual says computes the slice quantities only at the end of the beamline, never computes them in serial tracking: the run succeeds, but the output file holds no data page and the optimization symbols named after its columns stay at zero. For 128 particles with mean x = 2 mm and x′ = 0.4 mrad through drifts of 0.7 and 1.6 m, the drift map gives the final centroid Cx = 2.920 mm, which the default `final_values_only=0` writes and stores at the end of the line. With `final_values_only=1` the file has no rows, and the symbols Cx and particles read 0 instead of 2.920 mm and 128.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`do_tracking`, per-element slice-analysis call, do_tracking.c:2895–2911",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2895-L2911"
+   },
+   {
+    "label": "the end-of-beamline call after the element loop, do_tracking.c:3071–3090",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L3071-L3090"
+   },
+   {
+    "label": "the tracking context passed to elements, do_tracking.c:1194",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L1194"
+   },
+   {
+    "label": "`performSliceAnalysisOutput`, sliceAnalysis.c:394–484",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sliceAnalysis.c#L394-L484"
+   },
+   {
+    "label": "`setupSliceAnalysis`, sliceAnalysis.c:168–175",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sliceAnalysis.c#L168-L175"
+   },
+   {
+    "label": "`slice_analysis` places the final slice analysis at the end of the beamline in symbols for optimization equations, named as the output columns, elegant.tex:7566–7570",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7566-L7570"
+   },
+   {
+    "label": "with `final_values_only` nonzero the slice quantities are computed only at the end of the beamline, elegant.tex:7593–7594",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7593-L7594"
+   },
+   {
+    "label": "`slice_analysis not supported for parallel version`, elegant.c:2342–2345",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L2342-L2345"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-04",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-30.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds"
+  ],
+  "page": "elegant/OPT-30/"
+ },
+ {
+  "code": "elegant",
+  "id": "OPT-31",
+  "title": "Resonance driving terms omit fractional strength errors applied by tracking",
+  "area": "Optics",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "With `compute_driving_terms` enabled, `twiss_output` uses nominal multipole strengths even when tracking applies fractional strength errors. Equivalent applied fields must give identical driving terms, as independent linear-optics formulas and tracked trajectories establish. For a 0.1200 m sextupole of strength K₂ = 4.000 m⁻³ and fractional strength error 0.001000, the real part of the horizontal sextupole driving term h₂₁₀₀₀ is 0.6324 instead of 0.6330, an underestimate of 0.09990%; a strength error of 0.02000 gives a 1.961% underestimate in isolated sextupole and octupole coefficients. Tracking agrees exactly between the equivalent-field cases.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`computeDrivingTerms`, twiss.cc:5229–5270",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5229-L5270"
+   },
+   {
+    "label": "`quad_param`, track_data.c:376–376",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L376-L376"
+   },
+   {
+    "label": "`sext_param`, track_data.c:485–485",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L485-L485"
+   },
+   {
+    "label": "`octu_param`, track_data.c:499–499",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L499-L499"
+   },
+   {
+    "label": "`sbend_param`, track_data.c:420–422",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L420-L422"
+   },
+   {
+    "label": "`kquse_param`, track_data.c:3420–3421",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3420-L3421"
+   },
+   {
+    "label": "`multipole_tracking2`, multipole.c:791–795",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L791-L795"
+   },
+   {
+    "label": "`multipole_tracking2`, multipole.c:858–862",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L858-L862"
+   },
+   {
+    "label": "`multipole_tracking2`, multipole.c:930–934",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L930-L934"
+   },
+   {
+    "label": "`multipole_tracking2`, multipole.c:979–1005",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L979-L1005"
+   },
+   {
+    "label": "`compute_matrix`, compute_matrices.c:1482–1509",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L1482-L1509"
+   },
+   {
+    "label": "`track_through_csbend`, csbend.c:1077–1081",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1077-L1081"
+   },
+   {
+    "label": "`track_through_ccbend_impl`, ccbend.c:349–358",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L349-L358"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:2846–2853",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2846-L2853"
+   },
+   {
+    "label": "`computeDrivingTerms`, twiss.cc:5275–5287",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5275-L5287"
+   },
+   {
+    "label": "`computeDrivingTerms`, twiss.cc:5329–5355",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5329-L5355"
+   },
+   {
+    "label": "`computeDrivingTerms`, twiss.cc:5410–5425",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L5410-L5425"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-31.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds"
+  ],
+  "page": "elegant/OPT-31/"
+ },
+ {
+  "code": "elegant",
   "id": "DOC-01",
   "title": "Manual gives the third-order momentum compaction term as δ² instead of δ³",
   "area": "Optics",
@@ -7868,7 +8509,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length and optical weights from the kick of a round Gaussian beam. The branch is selected when the rms sizes σₓ and σᵧ satisfy |σₓ − σᵧ|/σₓ < 10⁻⁶; an unsliced Gaussian control with σᵧ/σₓ = 1.00001 agrees with an independent integrated-field calculation. In a symmetric ring with 1 nC of electrons at 10 mₑc and σₓ = σᵧ = 1 mm, the round kick is 4.000 times the correct value after a 0.25 m drift and 1.333 times it after a 0.75 m drift.",
+  "summary": "With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length and optical weights from the kick of a round Gaussian beam. The branch is selected when the rms sizes σₓ and σᵧ satisfy |σₓ − σᵧ|/σₓ < 10⁻⁶; an unsliced Gaussian control with σᵧ/σₓ = 1 + 10⁻⁵ agrees with an independent integrated-field calculation. In a symmetric ring with 1 nC of electrons at 10 mₑc and σₓ = σᵧ = 1 mm, the round kick is 4.000 times the correct value after a 0.25 m drift and 1.333 times it after a 0.75 m drift.",
   "justification": null,
   "locations": [
    {
@@ -8523,7 +9164,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Broadband ZTRANSVERSE sets its zero-frequency impedance to 2Rₛ/Q instead of the documented Rₛ/Q, where Rₛ is the shunt impedance and Q the resonator quality factor. This adds a constant transverse wake over the finite Fourier-transform window for beams with a net transverse offset. For 12 electrons at 50 mₑc, 2 nC total charge and 1 mm horizontal offset in adjacent 50 ps bins, with Rₛ = 1×10⁶ Ω/m, Q = 1, resonant frequency 1 GHz and 8192 bins, the leading group's kick is 6.960×10⁻⁶ rad instead of the independently summed 6.769×10⁻⁶ rad. The excess is 1.911×10⁻⁷ rad per particle and halves when the window doubles.",
+  "summary": "Broadband ZTRANSVERSE sets its zero-frequency impedance to 2Rₛ/Q instead of the documented Rₛ/Q, where Rₛ is the shunt impedance and Q the resonator quality factor. This adds a constant transverse wake over the finite Fourier-transform window for beams with a net transverse offset. For 12 electron macroparticles at 50 mₑc representing 2 nC total charge and 1 mm horizontal offset in adjacent 50 ps bins, with Rₛ = 1×10⁶ Ω/m, Q = 1, resonant frequency 1 GHz and 8192 bins, the leading group's kick is 6.960×10⁻⁶ rad instead of the independently summed 6.769×10⁻⁶ rad. The excess is 1.911×10⁻⁷ rad per particle and halves when the window doubles.",
   "justification": null,
   "locations": [
    {
@@ -10078,13 +10719,13 @@
  {
   "code": "elegant",
   "id": "COL-24",
-  "title": "Single-bunch TRWAKE fixed bins retain a zero time reference",
+  "title": "TRWAKE fixed bins use an absent or rank-local time origin",
   "area": "Collective effects",
   "priority": "P2",
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "With a fixed TRWAKE bin count (N_BINS > 0) and a single bunch, Elegant anchors the grid to time zero rather than the bunch and omits particles outside it as both wake sources and recipients. A stationary wake depends on arrival-time differences, and automatic-bin controls recover the full causal pair-sum kicks. For a 0.6000 nC electron bunch represented by 18 macroparticles spanning 52.00 ps, 96 bins of 2.000 ps give a trailing horizontal slope kick of 1.302×10⁻⁵ at zero shift but zero after +0.7000 ns or a 0.2100 m drift, with an unbinned-particle warning. A +80.00 ps shift leaves only 12 particles in the grid.",
+  "summary": "With a fixed TRWAKE bin count, a single bunch uses a grid centered on time zero, while multiple bunches under MPI use separate grids centered on each worker's local mean. Particles can fall outside the grid, or summed bins can represent different physical times; a stationary wake instead depends on particle time differences within each bunch. A 0.6000 nC bunch shifted by 0.7000 ns receives zero trailing horizontal kick instead of 1.302×10⁻⁵ rad. In a two-bunch MPI case with unequal worker means, a trailing kick is 60.00% too small. Causal pair sums and automatic-bin controls establish the expected kicks.",
   "justification": null,
   "locations": [
    {
@@ -10134,80 +10775,7 @@
    {
     "label": "N_BINS, track_data.c:2599",
     "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2599"
-   }
-  ],
-  "upstream": [],
-  "provenance": {
-   "found": [
-    {
-     "model": "gpt-6-astra",
-     "effort": "xhigh",
-     "date": "2026-10-29",
-     "code": {
-      "ref": "master",
-      "commit": "75a2e1a1a58b",
-      "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
-     }
-    }
-   ],
-   "confirmed": [
-    {
-     "model": "gpt-6.1-sol",
-     "effort": "xhigh",
-     "date": "2026-10-29",
-     "code": {
-      "ref": "master",
-      "commit": "75a2e1a1a58b",
-      "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
-     }
-    }
-   ],
-   "verified": {
-    "date": "2026-11-04",
-    "code": {
-     "ref": "master",
-     "commit": "0355dd6aca12",
-     "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
-    },
-    "result": "reproduced"
-   }
-  },
-  "last_reproduced": {
-   "date": "2026-11-04",
-   "code": {
-    "ref": "Elegant master",
-    "commit": "0355dd6aca12"
    },
-   "head": true,
-   "head_not_reproduced": null
-  },
-  "models": [
-   "gpt-6-astra",
-   "gpt-6.1-sol"
-  ],
-  "reproducers": [
-   "COL-24.py",
-   "_elegant.py",
-   "_trwake.py"
-  ],
-  "requirements": [
-   "numpy",
-   "pysdds"
-  ],
-  "page": "elegant/COL-24/"
- },
- {
-  "code": "elegant",
-  "id": "COL-25",
-  "title": "MPI TRWAKE adds fixed-bin histograms whose time origins differ between ranks",
-  "area": "Collective effects",
-  "priority": "P2",
-  "severity": "Wrong physics",
-  "level": "Reproduced, independently rechecked",
-  "tags": [],
-  "summary": "With multiple bunches and a fixed TRWAKE bin count (N_BINS > 0) under MPI (Pelegant), each tracking rank centers its histogram on its own bunch mean, so unequal rank means make summed bins represent different physical times. The correct kick is a causal sum within each bunch; serial tracking, MPI with equal rank means and automatic bins reproduce it. For two 80.00 pC bunches whose early and late halves occupy different ranks, the first particle of a late half receives no horizontal slope kick instead of 6.720×10⁻⁷, and the last particle's kick is 60.00% too small.",
-  "justification": null,
-  "locations": [
    {
     "label": "local bunch mean, trwake.c:102–109",
     "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L102-L109"
@@ -10257,6 +10825,17 @@
   "provenance": {
    "found": [
     {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "master",
+      "commit": "75a2e1a1a58b",
+      "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
+     },
+     "scope": "single-bunch zero time origin"
+    },
+    {
      "model": "gpt-6.1-sol",
      "effort": "xhigh",
      "date": "2026-10-29",
@@ -10264,10 +10843,22 @@
       "ref": "master",
       "commit": "75a2e1a1a58b",
       "build": "source reading, not executed for this claim"
-     }
+     },
+     "scope": "multiple-bunch rank-local time origins"
     }
    ],
    "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-10-29",
+     "code": {
+      "ref": "master",
+      "commit": "75a2e1a1a58b",
+      "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
+     },
+     "scope": "single-bunch zero time origin"
+    },
     {
      "model": "gpt-6-astra",
      "effort": "xhigh",
@@ -10276,7 +10867,8 @@
       "ref": "master",
       "commit": "0355dd6aca12",
       "build": "source with SDDS a3f730a14c49, CPU, serial control and 3-rank Pelegant"
-     }
+     },
+     "scope": "multiple-bunch rank-local time origins"
     }
    ],
    "verified": {
@@ -10284,7 +10876,7 @@
     "code": {
      "ref": "master",
      "commit": "0355dd6aca12",
-     "build": "source with SDDS a3f730a14c49, CPU, serial control and 3-rank Pelegant"
+     "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
     },
     "result": "reproduced"
    }
@@ -10303,14 +10895,16 @@
    "gpt-6.1-sol"
   ],
   "reproducers": [
-   "COL-25.py",
-   "_elegant.py"
+   "COL-24.py",
+   "COL-24-mpi.py",
+   "_elegant.py",
+   "_trwake.py"
   ],
   "requirements": [
    "numpy",
    "pysdds"
   ],
-  "page": "elegant/COL-25/"
+  "page": "elegant/COL-24/"
  },
  {
   "code": "elegant",
@@ -11142,7 +11736,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1), the trapezoid end correction halves the first sample behind each bin twice, giving it weight 3/4 instead of 1/2. Once the slippage length exceeds the bunch, the transient wake must equal the steady-state wake. For a 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the steady-state wake matches the analytic Gaussian wake within 0.1470% of its peak, while the transient wake differs from it by 1.243% of the peak, exactly the extra quarter sample, and from the analytic wake by 1.376%. The excess falls slowly with the bin count: 1.968% at 200 bins, 0.7894% at 800.",
+  "summary": "With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1), bins with at least two regular samples inside the slippage window receive an incorrect trapezoid endpoint correction: the first sample has weight 3/4 instead of 1/2. Once the slippage length exceeds the bunch, the transient wake must equal the steady-state wake. For a 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the steady-state wake matches the analytic Gaussian wake within 0.1470% of its peak, while the transient wake differs from it by 1.243% of the peak, exactly the extra quarter sample, and from the analytic wake by 1.376%. The excess falls slowly with the bin count: 1.968% at 200 bins, 0.7894% at 800.",
   "justification": null,
   "locations": [
    {
@@ -11612,7 +12206,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "With SPREAD=1 and WAVELENGTH_MODE=\"peak-to-peak\", CSRDRIFT's beam-spreading model takes its wavelength from two wake indices that are never set: the extremum search runs on the wake array before the bend hands it over and returns without writing them. For a 0.1 pC, 35 μm rms bunch after a 0.6 m, 0.3 rad bend, the radiation-only spread formula with the 0.1791 mm peak-to-peak wavelength gives an attenuation factor of 0.003415 for a 0.4 m drift, but the kick is applied unattenuated (factor 1), and Valgrind reports the use of uninitialized values in the drift. The default sigmaz mode agrees with the formula within 1.0×10⁻⁸ relative.",
+  "summary": "With SPREAD=1 and WAVELENGTH_MODE=\"peak-to-peak\", CSRDRIFT's beam-spreading model takes its wavelength from two wake indices that are never set: the extremum search runs on the wake array before the bend hands it over and returns without writing them. For a 0.1 pC, 35 μm rms bunch after a 0.6 m, 0.3 rad bend, the radiation-only spread formula with the 0.1791 mm peak-to-peak wavelength gives an attenuation factor of 0.003415 for a 0.4 m drift, but the kick is applied unattenuated (factor 1), and Valgrind reports the use of uninitialized values in the drift. The default sigmaz mode differs from the formula by about 1.020×10⁻⁸ relative.",
   "justification": null,
   "locations": [
    {
@@ -11732,13 +12326,13 @@
  {
   "code": "elegant",
   "id": "COL-39",
-  "title": "Stupakov-model CSRDRIFT omits the first integration interval behind each particle",
+  "title": "Stupakov-model CSRDRIFT trapezoid integration omits the first interval behind each particle",
   "area": "Collective effects",
   "priority": "P2",
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "CSRDRIFT with USE_STUPAKOV=1 integrates the Stupakov–Emma post-bend wake by the trapezoid rule starting one bin behind each particle and never adds the interval from zero to one bin, where the integrand is finite. For a 35 μm rms Gaussian bunch after a 0.6 m, 0.3 rad bend with 400 bins, adaptive integration of the same formula gives a wake that the code misses by up to 7.085% of its peak 1 mm behind the bend, 5.306% at 10 mm and 2.348% at 100 mm. Adding back only that first interval reduces these errors to 0.1425%, 0.09961% and 0.05389%.",
+  "summary": "CSRDRIFT with USE_STUPAKOV=1 and the upstream bend’s default TRAPAZOID_INTEGRATION=1 starts its trapezoid sum one bin behind each particle and omits the interval from zero to one bin. For a 35 μm rms Gaussian bunch after a 0.6 m, 0.3 rad bend with 400 bins, adaptive integration of the same formula gives a wake that the code misses by up to 7.085% of its peak 1 mm behind the bend, 5.306% at 10 mm and 2.348% at 100 mm. Restoring that interval reduces these errors to 0.1425%, 0.09961% and 0.05389%. The non-trapezoid path uses a right-endpoint sum instead.",
   "justification": null,
   "locations": [
    {
@@ -12144,8 +12738,10 @@
   "priority": "P2",
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
-  "tags": [],
-  "summary": "CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR wake as if each value sat at its bin's lower edge, although the histogram and the wake output place it at the bin center, so every particle receives the wake half a bin toward the bunch tail. For a 10 pC, 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the kicks deviate from the wake at the particles by up to 1.262% of its peak, and the mean energy loss is 0.5104% above the closed-form Gaussian value, whereas the wake sampled at the particles is within 0.03107%. The bias halves with each doubling of the bin count.",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR wake as if each value sat at its bin's lower edge, although the histogram and the wake output place it at the bin center, so every particle receives the wake half a bin toward the bunch tail. For a 10 pC, 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the kicks deviate from the wake at the particles by up to 1.262% of its peak, and the mean energy loss is 0.5104% above the closed-form Gaussian value, whereas the wake sampled at the particles is within 0.03107%. The half-bin displacement decreases in proportion to the bin width.",
   "justification": null,
   "locations": [
    {
@@ -12246,13 +12842,13 @@
  {
   "code": "elegant",
   "id": "COL-44",
-  "title": "An accelerating RFCW evaluates its longitudinal space charge at the entrance momentum throughout",
+  "title": "An accelerating RFCW without a longitudinal wake evaluates its longitudinal space charge at the entrance momentum",
   "area": "Collective effects",
   "priority": "P1",
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "An RFCW with LSC=1 computes every longitudinal space-charge kick with the reference momentum of the cavity entrance, because the reference is updated only at the exit (CHANGE_P0); more kicks (N_KICKS) do not change this. In an accelerating cavity the space charge is therefore that of the entrance energy throughout, where it is strongest. For a 0.8 m cavity accelerating an electron bunch of 160 μm rms length and 240 μm rms size from γ = 6 to 30, the energy kick at +1σ is 3.590 times the kick of the same impedance integrated with the local momentum, while the cavity split into 480 one-kick RFCWs with CHANGE_P0=1 is within 0.3468% of it.",
+  "summary": "With LSC=1 and no longitudinal wake updating the reference between kicks, an accelerating RFCW evaluates its longitudinal space-charge impedance at the entrance momentum throughout the cavity; increasing N_KICKS does not update that momentum. For a 0.8 m cavity accelerating an electron bunch of 160 μm rms length and 240 μm transverse rms size from γ = 6 to 30, the +1σ energy kick is 3.590 times the local-momentum result. Splitting it into 480 one-kick RFCWs with CHANGE_P0=1 gives a result within 0.3468%. An enabled longitudinal wake with CHANGE_P0=1 also updates the reference between kicks, avoiding the frozen entrance momentum.",
   "justification": null,
   "locations": [
    {
@@ -12487,7 +13083,7 @@
    "contract-unsettled",
    "partly-source-only"
   ],
-  "summary": "WAKE gives every particle the table's W(0) times all charge in its own time bin, its own included. When W(0) is the wake just behind a charge, W(0⁺), as in CORGPIPE's table, built from Bane's model, a charge should receive W(0⁺)/2 from itself and nothing from charge behind it (beam-loading theorem), so the mean loss is too large by W(0⁺)/2 times the average charge of a particle's bin. For a uniform 0.8 nC, 4 ps electron bunch in a 0.1 m CORGPIPE with the default time step, the mean loss is 4.288% above the exact particle sum; a quarter step leaves 1.058%. The manual does not say whether a table's W(0) is W(0⁺) or W(0⁺)/2; halving it removes the excess.",
+  "summary": "With default binning and gather settings, WAKE uses the full table value W(0) for charge in a particle’s own bin. If W(0) is the positive-delay limit W(0⁺), this adds an endpoint excess; the beam-loading value is W(0⁺)/2. CORGPIPE generates full-origin tables: for a uniform 0.8 nC, 4 ps bunch in a 0.1 m pipe, the mean loss exceeds the exact particle sum by 4.288% at the default step and 1.058% at a quarter step. Halving the origin leaves 0.02645% binning error in the default-step cosine control. WAKE’s manual leaves the origin convention unspecified; tables already containing W(0⁺)/2 avoid this endpoint excess.",
   "justification": null,
   "locations": [
    {
@@ -12583,6 +13179,609 @@
    "pysdds"
   ],
   "page": "elegant/COL-46/"
+ },
+ {
+  "code": "elegant",
+  "id": "COL-47",
+  "title": "LRWAKE keeps more turns of wake history than TURNS_TO_KEEP after an end bunch is lost",
+  "area": "Collective effects",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "When an end bunch of a multibunch beam is lost, LRWAKE keeps more turns of wake sources than TURNS_TO_KEEP requests. Its history holds TURNS_TO_KEEP times the initial bunch count but advances on each pass by only the surviving count, so stale turns are never dropped; the correct loss sums the sources of the requested turns, as tracking without a loss confirms. For two 1.000 nC bunches at 511.0 MeV/c in a constant 1.000×10¹² V/C longitudinal wake with TURNS_TO_KEEP = 2, the surviving bunch loses 3.000 keV per pass instead of 1.000 keV from the third pass on, whichever end bunch was lost. With TURNS_TO_KEEP = 1 it keeps losing 1.000 keV per pass instead of nothing.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "occupied range, lrwake.c:59–84",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L59-L84"
+   },
+   {
+    "label": "growth check, lrwake.c:90–103",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L90-L103"
+   },
+   {
+    "label": "caller, lrwake.c:292–300",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L292-L300"
+   },
+   {
+    "label": "early return, lrwake.c:532–533",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L532-L533"
+   },
+   {
+    "label": "capacity, lrwake.c:681–688",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L681-L688"
+   },
+   {
+    "label": "shift and append, lrwake.c:383–396",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L383-L396"
+   },
+   {
+    "label": "history sum, lrwake.c:418–424",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L418-L424"
+   },
+   {
+    "label": "lrwake.c:442–444",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L442-L444"
+   },
+   {
+    "label": "TURNS_TO_KEEP, track_data.c:2584",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2584"
+   },
+   {
+    "label": "history buffer, lrwake.tex:22–33",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/lrwake.tex#L22-L33"
+   },
+   {
+    "label": "bunch IDs, elegant.tex:498–503",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L498-L503"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-47.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds"
+  ],
+  "page": "elegant/COL-47/"
+ },
+ {
+  "code": "elegant",
+  "id": "COL-48",
+  "title": "CSRCSBEND and CSRDRIFT reverse self-CSR kicks for positrons",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "After `change_particle name=positron`, CSRCSBEND reverses the coherent synchrotron radiation kick, making a bunch gain energy where an identical electron bunch loses it. Reversing every source and witness charge must preserve the self-force because both the source field and the witness charge reverse. A 100.0 pC Gaussian bunch at 511.0 MeV/c with 35.00 μm rms length gains 104.7 keV per particle on average in a 0.6000 m, 0.3000 rad bend instead of losing 104.7 keV. Disabling coherent radiation restores identical electron and positron transport.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:2762–2764",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2762-L2764"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3132–3135",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3132-L3135"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3545–3551",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3545-L3551"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3467–3471",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3467-L3471"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3565–3568",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3565-L3568"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3613–3617",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3613-L3617"
+   },
+   {
+    "label": "`process_particle_command`, elegant.c:3264–3281",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3264-L3281"
+   },
+   {
+    "label": "`do_tracking`, do_tracking.c:894–897",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L894-L897"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:4007–4010",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4007-L4010"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3968–3969",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3968-L3969"
+   },
+   {
+    "label": "`track_through_driftCSR`, csbend.c:4530–4535",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4530-L4535"
+   },
+   {
+    "label": "`track_through_driftCSR_Stupakov`, csbend.c:5114–5118",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5114-L5118"
+   },
+   {
+    "label": "`track_through_driftCSR_Stupakov`, csbend.c:5152–5154",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5152-L5154"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-48.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds",
+   "scipy"
+  ],
+  "page": "elegant/COL-48/"
+ },
+ {
+  "code": "elegant",
+  "id": "COL-49",
+  "title": "LSC voltage generators omit the source-charge sign and reverse positron kicks",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "After `change_particle name=positron`, longitudinal space-charge kicks reverse in LSCDRIFT and in the space-charge contributions of RFCW and CSRDRIFT. Reversing all source and witness charges must preserve the self-force, but both voltage generators omit the source-charge sign required by the energy-update routine. For a 100.0 pC Gaussian bunch with normalized momentum βγ = 30.00, where β is speed divided by the speed of light and γ is the Lorentz factor, a 1.000 m effective LSCDRIFT kick gives a particle one rms bunch length behind the centre +2799 eV instead of −2799 eV. A zero-charge control gives no kick.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`track_through_lscdrift`, lsc.c:319–322",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L319-L322"
+   },
+   {
+    "label": "`addLSCKick`, lsc.c:616–619",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L616-L619"
+   },
+   {
+    "label": "`track_through_lscdrift`, lsc.c:361–365",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L361-L365"
+   },
+   {
+    "label": "`addLSCKick`, lsc.c:645–648",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L645-L648"
+   },
+   {
+    "label": "`applyLongitudinalWakeKicks`, wake.c:348–360",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L348-L360"
+   },
+   {
+    "label": "`process_particle_command`, elegant.c:3264–3281",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3264-L3281"
+   },
+   {
+    "label": "`do_tracking`, do_tracking.c:894–897",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L894-L897"
+   },
+   {
+    "label": "`track_through_wake`, wake.c:285–290",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L285-L290"
+   },
+   {
+    "label": "`trackRfCavityAddLSCKick`, simple_rfca.c:404–414",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L404-L414"
+   },
+   {
+    "label": "`track_through_driftCSR_Stupakov`, csbend.c:5211–5212",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5211-L5212"
+   },
+   {
+    "label": "`track_through_driftCSR_Stupakov`, csbend.c:5228–5229",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5228-L5229"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-49.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds",
+   "scipy"
+  ],
+  "page": "elegant/COL-49/"
+ },
+ {
+  "code": "elegant",
+  "id": "COL-50",
+  "title": "CSRCSBEND BIN_ONCE wake output corrupts retained histograms and accesses past their ends",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "With `BIN_ONCE=1` and a wake `OUTPUT_FILE`, CSRCSBEND leaves its retained histogram scaled after writing each page and attempts to restore elements one past both histogram arrays. Later output pages should retain the initial density and derivative, but for a 100.0 pC bunch represented by 4096 particles, the second page integrates to 7.319×10⁻⁴ pC and the fourth to 3.921×10⁻¹⁴ pC. The derivative grows by a factor of 5.321×10⁷ per additional page instead of remaining unchanged, and Valgrind confirms invalid reads and writes. The tested tracking kicks are unchanged by wake output.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3686–3695",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3686-L3695"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3712–3716",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3712-L3716"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:2973–2979",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2973-L2979"
+   },
+   {
+    "label": "`csrcsbend_param`, track_data.c:2058–2069",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2058-L2069"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3442–3449",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3442-L3449"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3613–3617",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3613-L3617"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-04",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     },
+     "scope": "source observation of the missing restoration loop; no execution for this claim"
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-50.py",
+   "_csr.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds",
+   "scipy"
+  ],
+  "page": "elegant/COL-50/"
+ },
+ {
+  "code": "elegant",
+  "id": "COL-51",
+  "title": "LRWAKE inherits the preceding bunch count across independent new lattices",
+  "area": "Collective effects",
+  "priority": "P4",
+  "severity": "Crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "When successive `run_setup` commands load distinct lattices and new LRWAKE elements in one process, LRWAKE rejects a bunch count larger than that of its immediately preceding invocation. Each new element should allocate history for its own beam, and an identical two-bunch setup succeeds in a fresh process. With six particles per bunch and an identically zero wake, a one-bunch then two-bunch sequence completes only one of two runs; a two-bunch, one-bunch, two-bunch sequence completes only two of three. Both failures print “Error: number of bunches has increased.”, while repeated equal-count runs complete.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`track_through_lrwake`, lrwake.c:236–242",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L236-L242"
+   },
+   {
+    "label": "`track_through_lrwake`, lrwake.c:291–293",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L291-L293"
+   },
+   {
+    "label": "`index_bunch_assignments`, lrwake.c:17–25",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L17-L25"
+   },
+   {
+    "label": "`index_bunch_assignments`, lrwake.c:90–103",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L90-L103"
+   },
+   {
+    "label": "`set_up_lrwake`, lrwake.c:532–535",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L532-L535"
+   },
+   {
+    "label": "`set_up_lrwake`, lrwake.c:681–688",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L681-L688"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-51.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds"
+  ],
+  "page": "elegant/COL-51/"
+ },
+ {
+  "code": "elegant",
+  "id": "COL-52",
+  "title": "CSRCSBEND BIN_ONCE wake output overwrites retained kick components",
+  "area": "Collective effects",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "With `IGF=0`, `BIN_ONCE=1` and repeated wake output, CSRCSBEND overwrites its retained kick-component arrays while preparing the first output page. Later `DeltaGammaT1` and `DeltaGammaT2` columns contain the preceding page's longitudinal positions and wake per metre, rather than components whose sum equals the reported change in Lorentz factor Δγ. For a 250.0 pC, 2.000 ps rms bunch in a 1.200 m steady-state bend, the peak component-sum residual is 0.007825 instead of zero, or 227.5% of peak |Δγ|; the transient case gives 219.0%. First-page, last-only and rebinning controls satisfy the sum identity, and changing the output schedule leaves the total wake and tracked coordinates unchanged.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`csrcsbend_param`, track_data.c:2060–2069",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2060-L2069"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:2973–2979",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2973-L2979"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3545–3551",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3545-L3551"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3697–3701",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3697-L3701"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3717–3725",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3717-L3725"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3442–3449",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3442-L3449"
+   },
+   {
+    "label": "`track_through_csbendCSR`, csbend.c:3613–3617",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3613-L3617"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
+     },
+     "scope": "serial T1/T2 buffer-reuse observation; MPI runs in this session concerned other entries"
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-52.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds",
+   "scipy"
+  ],
+  "page": "elegant/COL-52/"
  },
  {
   "code": "elegant",
@@ -13032,17 +14231,6 @@
     }
    ],
    "confirmed": [
-    {
-     "model": "gpt-6-astra",
-     "effort": "high",
-     "date": "2026-10-25",
-     "code": {
-      "ref": "master",
-      "commit": "75a2e1a1a58b",
-      "build": "source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant"
-     },
-     "scope": "zero local-rate columns"
-    },
     {
      "model": "gpt-6.1-sol",
      "effort": "high",
@@ -14305,7 +15493,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER forms the gas mass density as the ideal-gas atom density times A times the proton mass m_p, although A is in atomic mass units u. The radiation length must follow from the atom density alone, so ENERGY_DECAY and bremsstrahlung rates are larger by m_p/u = 1.007293, and the single-scattering and recoil rates, which divide by a rounded u, by 1.007316; with RHO given directly, these two carry only the rounding, 1.000023. For nitrogen at 100 Pa and 300 K over 10 m, the fractional energy loss is 2.978×10⁻⁵ instead of 2.956×10⁻⁵. Forced multiple scattering converts RHO to atoms with the same m_p, so its angles are 0.3626% too small; pressure input gives correct angles.",
+  "summary": "With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER computes gas density using the proton mass m_p instead of the atomic mass unit u. ENERGY_DECAY and bremsstrahlung rates are consequently 0.7293% too large, and single-scattering and recoil rates, which also use a rounded u, are 0.7316% too large; with RHO supplied directly, the latter rates are 0.002344% too large. For nitrogen at 100 Pa and 300 K over 10 m, the fractional energy loss is 2.978×10⁻⁵ instead of 2.956×10⁻⁵, as an independent ideal-gas atom-density calculation shows. Forced multiple scattering converts RHO to atom density with m_p, making its angles 0.3626% too small; pressure input gives correct angles.",
   "justification": null,
   "locations": [
    {
@@ -14515,7 +15703,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "ibsEmittance, run for equilibrium emittances at coupling ratio κ = εy/εx, never returns a horizontal emittance below ε₀/(1+κ), with ε₀ the uncoupled natural emittance. When the horizontal damping time τx exceeds the vertical τy (horizontal damping partition Jx < 1) and IBS is weak, the radiation–IBS balance the program solves has its root below that bound, at ε₀/(1+κτx/τy) without IBS; the program returns the bound and reports \"Emittance converged\". For a 3 GeV, 55.20 m ring with Jx = 0.8029 and κ = 0.1, the returned emittance is 2.232% above the root at 10⁻¹² nC and at 1 nC, and the balance misses zero by 2.232% of its excitation term. Rings with τx ≤ τy are not affected.",
+  "summary": "ibsEmittance, run for equilibrium emittances at coupling ratio κ = εy/εx, never returns a horizontal emittance below ε₀/(1+κ), with ε₀ the uncoupled natural emittance. When the horizontal damping time τx exceeds the vertical τy (horizontal damping partition Jx < 1) and IBS is weak, the radiation–IBS balance the program solves has its root below that bound, at ε₀/(1+κτx/τy) without IBS; the program returns the bound and reports \"Emittance converged\". For a 3 GeV, 288.0 m ring with Jx = 0.9634, κ = 0.1 and 1 nC, it returns 48.96 nm versus 48.79 nm, 0.3408% high; the transverse balance misses zero by 0.3408% of its excitation term. This lower-bound obstruction is absent for weak IBS when τx ≤ τy.",
   "justification": null,
   "locations": [
    {
@@ -15055,7 +16243,7 @@
    "contract-unsettled",
    "partly-source-only"
   ],
-  "summary": "touschek_scatter samples the incoming beam out to distribution_cutoff (3 by default) times the rms energy spread σδ and counts every outgoing particle beyond the momentum aperture δm, including particles that were already beyond it. When δm lies inside the sampled spread, nearly forward collisions of those particles, whose Møller cross section is limited only by the sampled angle range, dominate: the Monte Carlo rate SLocalRate grows with n_simulated instead of converging, and a few particles carry the loss weights. With δm = 0.5σδ, SLocalRate is 9.372×10¹², 2.687×10¹³ and 1.395×10¹⁴ s⁻¹ for 2×10⁴, 2×10⁵ and 2×10⁶ samples, against 1.030×10¹⁰ s⁻¹ from Piwinski's formula. With δm = 31.25σδ it is within 1.748% of Piwinski's rate.",
+  "summary": "touschek_scatter samples the incoming beam out to distribution_cutoff (3 by default) times the rms energy spread σδ and counts every outgoing particle beyond the momentum aperture δm, including particles that were already beyond it. When δm lies inside the sampled spread, nearly forward collisions of those particles, whose Møller cross section is limited only by the sampled angle range, dominate: the Monte Carlo rate SLocalRate grows with n_simulated instead of converging, and a few particles carry the loss weights. With δm = 0.5σδ, SLocalRate is 9.372×10¹², 2.687×10¹³ and 1.395×10¹⁴ s⁻¹ for 2×10⁴, 2×10⁵ and 2×10⁶ samples, against 1.030×10¹⁰ s⁻¹ from Piwinski's formula. With δm = 31.25σδ and 2×10⁶ samples, the rate is 1.748% below Piwinski's.",
   "justification": null,
   "locations": [
    {
@@ -15179,6 +16367,296 @@
    "scipy"
   ],
   "page": "elegant/SCT-22/"
+ },
+ {
+  "code": "elegant",
+  "id": "SCT-23",
+  "title": "moments_output IBS rotates the coupled diffusion tensor with transposed eigenvectors",
+  "area": "Scattering and pressure",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "With ibs_iterations, moments_output rotates each element's intrabeam-scattering (IBS) diffusion out of the principal axes of the beam-frame momentum covariance with the transposed eigenvector matrix, so a momentum ellipsoid tilted by φ gets diffusion tilted by −φ. A ROTATE pair around a drift changes no physics, and the Kubo–Oide diffusion turns with the beam, so the equilibrium must not change. In a 524.8 m ring at 1.5 GeV/c with 1 nC, wrapping every drift in ±45° ROTATE pairs changes the IBS mode emittance e₂ from 21.00 to 20.77 pm (−1.086%) and e₁ by +0.1601%. Without rotated frames this weakly coupled ring is off by under 10⁻⁵, and beams with a diagonal momentum covariance are unaffected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`diagonalization_matrix_3x3`, moments.c:1227–1335",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L1227-L1335"
+   },
+   {
+    "label": "moments.c:1536–1540",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L1536-L1540"
+   },
+   {
+    "label": "moments.c:1603–1607",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L1603-L1607"
+   },
+   {
+    "label": "moments.c:1612–1636",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L1612-L1636"
+   },
+   {
+    "label": "`accumulateRadiationMatrices`, compute_matrices.c:416–438",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L416-L438"
+   },
+   {
+    "label": "`ibs_iterations`, elegant.tex:5617–5624",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5617-L5624"
+   },
+   {
+    "label": "elegant.tex:5644–5648",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5644-L5648"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "SCT-23.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds"
+  ],
+  "page": "elegant/SCT-23/"
+ },
+ {
+  "code": "elegant",
+  "id": "SCT-24",
+  "title": "Pelegant's distributed IBSCATTER integration uses the wrong reference momenta in accelerating lines",
+  "area": "Scattering and pressure",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "When Pelegant tracks an accelerating line through IBSCATTER on more than three ranks with PARALLEL_INTEGRATION=1 (the default), each worker integrates the intrabeam-scattering (IBS) growth rates over its part of the line with that part's optics but the reference momenta of the line's first, equally long stretch, and scales the emittances measured at the element as if measured at that stretch's end. The correct rates integrate the whole line, as serial Elegant and PARALLEL_INTEGRATION=0 do; at constant energy all agree. For a 500 pC electron bunch accelerated from 61.32 to 85.32 MeV over 24.00 m, five ranks raise the rms momentum spread by the fraction 9.208×10⁻⁴ instead of 4.219×10⁻⁴, 2.183 times too much; the transverse increments are 2.462 and 2.384 times too large.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`init_IBS` samples, ibs_tracking.c:844–847",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L844-L847"
+   },
+   {
+    "label": "`track_IBS` distributed call, ibs_tracking.c:347–370",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L347-L370"
+   },
+   {
+    "label": "exit normalization, zibs.c:47–53",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/zibs.c#L47-L53"
+   },
+   {
+    "label": "per-sample energy, zibs.c:101–108",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/zibs.c#L101-L108"
+   },
+   {
+    "label": "`track_IBS` full-line call, ibs_tracking.c:386–392",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L386-L392"
+   },
+   {
+    "label": "ibs_tracking.c:465",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L465"
+   },
+   {
+    "label": "`inflateEmittanceZ`, ibs_tracking.c:733–740",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L733-L740"
+   },
+   {
+    "label": "IBSCATTER parameters, track_data.c:2522",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2522"
+   },
+   {
+    "label": "IBSCATTER element flags, track_data.c:4237",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L4237"
+   },
+   {
+    "label": "IBSCATTER, ibscatter.tex:6–10",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ibscatter.tex#L6-L10"
+   },
+   {
+    "label": "ibscatter.tex:17–20",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ibscatter.tex#L17-L20"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 5-rank Pelegant"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 3-, 5- and 7-rank Pelegant"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "SCT-24.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds"
+  ],
+  "page": "elegant/SCT-24/"
+ },
+ {
+  "code": "elegant",
+  "id": "SCT-25",
+  "title": "touschek_scatter converts normalized emittance with γ instead of βγ",
+  "area": "Scattering and pressure",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "When normalized transverse emittances are supplied to touschek_scatter at constant energy, their conversion uses the Lorentz factor γ instead of βγ, where β is speed divided by the speed of light. The inferred geometric emittances are therefore too small by a factor β, so equivalent input descriptions give different Piwinski rates. For a 1 pC electron bunch at momentum p = 3mc, where m is the electron mass and c is the speed of light, the rate is 6.561×10¹⁰ s⁻¹ instead of 6.295×10¹⁰ s⁻¹, a 4.223% excess. Independent integration validates the geometric-input rate. The emittance error falls below 0.1% for p > 22.34mc.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`TouschekEffect`, touschekScatter.c:97–102",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L97-L102"
+   },
+   {
+    "label": "`TouschekRate`, touschekScatter.c:203–225",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L203-L225"
+   },
+   {
+    "label": "`TouschekRate`, touschekScatter.c:238–242",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L238-L242"
+   },
+   {
+    "label": "`touschek_scatter`, elegant.tex:7763–7765",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7763-L7765"
+   },
+   {
+    "label": "`exact_normalized_emittance`, elegant.tex:4143–4145",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4143-L4145"
+   },
+   {
+    "label": "`touschek_scatter`, elegant.tex:7693–7697",
+    "url": "https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7693-L7697"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 5-rank Pelegant"
+     },
+     "scope": "C4, constant-energy Piwinski rates, serial only"
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "master",
+      "commit": "0355dd6aca12",
+      "build": "source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant"
+     },
+     "scope": "C4, constant-energy Piwinski rates, serial only"
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "Elegant master",
+    "commit": "0355dd6aca12"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "SCT-25.py",
+   "_elegant.py"
+  ],
+  "requirements": [
+   "numpy",
+   "pysdds",
+   "scipy"
+  ],
+  "page": "elegant/SCT-25/"
  },
  {
   "code": "elegant",

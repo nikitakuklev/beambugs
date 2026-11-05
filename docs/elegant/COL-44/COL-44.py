@@ -1,6 +1,12 @@
-"""COL-44: An accelerating RFCW evaluates its longitudinal space charge at the entrance momentum throughout
+"""COL-44: An accelerating RFCW without a longitudinal wake evaluates its longitudinal space charge at the entrance momentum
 
-An RFCW with LSC=1 computes every longitudinal space-charge kick with the reference momentum of the cavity entrance, because the reference is updated only at the exit (CHANGE_P0); more kicks (N_KICKS) do not change this. In an accelerating cavity the space charge is therefore that of the entrance energy throughout, where it is strongest. For a 0.8 m cavity accelerating an electron bunch of 160 μm rms length and 240 μm rms size from γ = 6 to 30, the energy kick at +1σ is 3.590 times the kick of the same impedance integrated with the local momentum, while the cavity split into 480 one-kick RFCWs with CHANGE_P0=1 is within 0.3468% of it.
+With LSC=1 and no longitudinal wake updating the reference between kicks, an accelerating RFCW
+evaluates its longitudinal space-charge impedance at the entrance momentum throughout the
+cavity; increasing N_KICKS does not update that momentum. For a 0.8 m cavity accelerating an
+electron bunch of 160 μm rms length and 240 μm transverse rms size from γ = 6 to 30, the +1σ
+energy kick is 3.590 times the local-momentum result. Splitting it into 480 one-kick RFCWs with
+CHANGE_P0=1 gives a result within 0.3468%. An enabled longitudinal wake with CHANGE_P0=1 also
+updates the reference between kicks, avoiding the frozen entrance momentum.
 
 The script tracks 65536 electrons (Gaussian quantiles, sigma_ct = 160 um, rms sizes 240 um,
 1 fC) through a 0.8 m RFCW with FREQ=0 and PHASE=90, which accelerates every particle uniformly

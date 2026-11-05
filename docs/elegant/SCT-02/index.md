@@ -234,7 +234,7 @@ A single-slice IBSCATTER in linac mode (SMOOTH=1, ISRING=0) writes incorrect rat
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -323,11 +323,14 @@ A single-slice IBSCATTER in linac mode (SMOOTH=1, ISRING=0) writes incorrect rat
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -346,7 +349,7 @@ A single-slice IBSCATTER in linac mode (SMOOTH=1, ISRING=0) writes incorrect rat
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")
@@ -405,6 +408,5 @@ A single-slice IBSCATTER in linac mode (SMOOTH=1, ISRING=0) writes incorrect rat
 |---|---|---|---|---|
 | Found (zero per-element rate columns) | `gpt-6-astra` | xhigh | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, 3-rank Pelegant |
 | Found (unset vertical growth-rate parameter) | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
-| Confirmed (zero local-rate columns) | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

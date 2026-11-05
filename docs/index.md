@@ -14,8 +14,8 @@ Where an entry has been reported upstream, its page links the issue or pull requ
 | Code | Entries |
 |---|---|
 | [ImpactX](impactx/index.md) | 50 |
-| [Xsuite](xsuite/index.md) | 63 |
-| [SciBmad](scibmad/index.md) | 95 |
-| [Elegant](elegant/index.md) | 145 |
+| [Xsuite](xsuite/index.md) | 66 |
+| [SciBmad](scibmad/index.md) | 96 |
+| [Elegant](elegant/index.md) | 158 |
 
 All entries as JSON: [defects.json](defects.json).

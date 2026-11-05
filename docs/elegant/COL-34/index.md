@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [first sample halved, csbend.c:3530–3531](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3530-L3531)<br>[end correction, csbend.c:3537–3538](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3537-L3538)<br>[steady-state branch, csbend.c:3513–3521](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3513-L3521)<br>[singular panel, transient, csbend.c:3535–3536](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3535-L3536)<br>[TRAPAZOID_INTEGRATION, track_data.c:2066](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2066)<br>[STEADY_STATE, track_data.c:2070](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2070)<br>[CSRCSBEND manual, csrcsbend.tex:1–4](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csrcsbend.tex#L1-L4) |
 
-With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1), the trapezoid end correction halves the first sample behind each bin twice, giving it weight 3/4 instead of 1/2. Once the slippage length exceeds the bunch, the transient wake must equal the steady-state wake. For a 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the steady-state wake matches the analytic Gaussian wake within 0.1470% of its peak, while the transient wake differs from it by 1.243% of the peak, exactly the extra quarter sample, and from the analytic wake by 1.376%. The excess falls slowly with the bin count: 1.968% at 200 bins, 0.7894% at 800.
+With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1), bins with at least two regular samples inside the slippage window receive an incorrect trapezoid endpoint correction: the first sample has weight 3/4 instead of 1/2. Once the slippage length exceeds the bunch, the transient wake must equal the steady-state wake. For a 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the steady-state wake matches the analytic Gaussian wake within 0.1470% of its peak, while the transient wake differs from it by 1.243% of the peak, exactly the extra quarter sample, and from the analytic wake by 1.376%. The excess falls slowly with the bin count: 1.968% at 200 bins, 0.7894% at 800.
 
 ??? example "Reproducer: COL-34.py"
 
@@ -24,13 +24,20 @@ With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1)
     ```python
     """COL-34: Transient CSRCSBEND trapezoid integration gives its first regular sample weight 3/4 instead of 1/2
 
-    With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1), the trapezoid end correction halves the first sample behind each bin twice, giving it weight 3/4 instead of 1/2. Once the slippage length exceeds the bunch, the transient wake must equal the steady-state wake. For a 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the steady-state wake matches the analytic Gaussian wake within 0.1470% of its peak, while the transient wake differs from it by 1.243% of the peak, exactly the extra quarter sample, and from the analytic wake by 1.376%. The excess falls slowly with the bin count: 1.968% at 200 bins, 0.7894% at 800.
+    With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1), bins with at
+    least two regular samples inside the slippage window receive an incorrect trapezoid endpoint
+    correction: the first sample has weight 3/4 instead of 1/2. Once the slippage length exceeds the
+    bunch, the transient wake must equal the steady-state wake. For a 35 μm rms Gaussian bunch in a
+    0.6 m, 0.3 rad bend with 400 bins, the steady-state wake matches the analytic Gaussian wake
+    within 0.1470% of its peak, while the transient wake differs from it by 1.243% of the peak,
+    exactly the extra quarter sample, and from the analytic wake by 1.376%. The excess falls slowly
+    with the bin count: 1.968% at 200 bins, 0.7894% at 800.
 
     The script tracks 240001 electrons (Gaussian quantiles, σ_ct = 35 μm, p = 4000 mₑc, 10⁻¹⁶ C so
     the beam does not change) through a one-slice 0.6 m, 0.3 rad CSRCSBEND with 200, 400 and 800
     bins, once with STEADY_STATE=0 (transient, the default) and once with STEADY_STATE=1, and reads
     both exported wakes. The slippage length 2.250 mm exceeds the binned bunch, so both must equal the
-    analytic steady-state Gaussian wake, which the steady-state control does within 0.15%. The
+    analytic steady-state Gaussian wake, which the steady-state control does within 0.23%. The
     script also rebuilds the transient-minus-steady difference from the exported density derivative
     as a quarter of the first regular trapezoid sample.
     """
@@ -50,7 +57,7 @@ With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1)
     # Steady-state CSR strength of the whole bend (see _csr.steady_state_wake): N electrons in a bend
     # of length L and radius rho.
     K = 2 * (CHARGE / E_CHARGE) * R_E * L / (3 * RHO**2) ** (1 / 3)
-    TOLERANCE = 0.003  # of the analytic peak; the steady-state control is within 0.0015
+    TOLERANCE = 0.003  # of the analytic peak; the steady-state control is within 0.0023
 
 
     def wake(bins: int, steady: int):
@@ -248,7 +255,7 @@ With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1)
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -337,11 +344,14 @@ With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1)
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -360,7 +370,7 @@ With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1)
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

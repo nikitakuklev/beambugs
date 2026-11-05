@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">contract-unsettled</span> <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [binTimeDistribution, wake.c:539–545](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L539-L545)<br>[convolution and kick, wake.c:273–290](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L273-L290)<br>[wake.c:514–529](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L514-L529)<br>[WAKE manual, wake.tex:1–12](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/wake.tex#L1-L12)<br>[CORGPIPE table, wake.c:678–686](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L678-L686)<br>[CORGPIPE manual, corgpipe.tex:1–5](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/corgpipe.tex#L1-L5)<br>[CORGPLATES table, wake.c:816–820](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L816-L820)<br>[cwake.c:399](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/cwake.c#L399) |
 
-WAKE gives every particle the table's W(0) times all charge in its own time bin, its own included. When W(0) is the wake just behind a charge, W(0⁺), as in CORGPIPE's table, built from Bane's model, a charge should receive W(0⁺)/2 from itself and nothing from charge behind it (beam-loading theorem), so the mean loss is too large by W(0⁺)/2 times the average charge of a particle's bin. For a uniform 0.8 nC, 4 ps electron bunch in a 0.1 m CORGPIPE with the default time step, the mean loss is 4.288% above the exact particle sum; a quarter step leaves 1.058%. The manual does not say whether a table's W(0) is W(0⁺) or W(0⁺)/2; halving it removes the excess.
+With default binning and gather settings, WAKE uses the full table value W(0) for charge in a particle’s own bin. If W(0) is the positive-delay limit W(0⁺), this adds an endpoint excess; the beam-loading value is W(0⁺)/2. CORGPIPE generates full-origin tables: for a uniform 0.8 nC, 4 ps bunch in a 0.1 m pipe, the mean loss exceeds the exact particle sum by 4.288% at the default step and 1.058% at a quarter step. Halving the origin leaves 0.02645% binning error in the default-step cosine control. WAKE’s manual leaves the origin convention unspecified; tables already containing W(0⁺)/2 avoid this endpoint excess.
 
 ??? example "Reproducer: COL-46.py"
 
@@ -25,13 +25,13 @@ WAKE gives every particle the table's W(0) times all charge in its own time bin,
     ```python
     """COL-46: WAKE gives each particle the full W(0) of its own bin, so full-origin wakes such as CORGPIPE's overstate the loss
 
-    WAKE gives every particle the table's W(0) times all charge in its own time bin, its own included.
-    When W(0) is the wake just behind a charge, W(0⁺), as in CORGPIPE's table, built from Bane's model,
-    a charge should receive W(0⁺)/2 from itself and nothing from charge behind it (beam-loading
-    theorem), so the mean loss is too large by W(0⁺)/2 times the average charge of a particle's bin. For
-    a uniform 0.8 nC, 4 ps electron bunch in a 0.1 m CORGPIPE with the default time step, the mean loss
-    is 4.288% above the exact particle sum; a quarter step leaves 1.058%. The manual does not say
-    whether a table's W(0) is W(0⁺) or W(0⁺)/2; halving it removes the excess.
+    With default binning and gather settings, WAKE uses the full table value W(0) for charge in a
+    particle’s own bin. If W(0) is the positive-delay limit W(0⁺), this adds an endpoint excess; the
+    beam-loading value is W(0⁺)/2. CORGPIPE generates full-origin tables: for a uniform 0.8 nC, 4 ps
+    bunch in a 0.1 m pipe, the mean loss exceeds the exact particle sum by 4.288% at the default
+    step and 1.058% at a quarter step. Halving the origin leaves 0.02645% binning error in the
+    default-step cosine control. WAKE’s manual leaves the origin convention unspecified; tables
+    already containing W(0⁺)/2 avoid this endpoint excess.
 
     The script tracks a uniform 0.8 nC electron bunch through a WAKE whose table is a constant
     3e13 V/C from t = 0, with the full value and with half of it at t = 0, and compares the mean loss
@@ -147,7 +147,7 @@ WAKE gives every particle the table's W(0) times all charge in its own time bin,
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -236,11 +236,14 @@ WAKE gives every particle the table's W(0) times all charge in its own time bin,
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -259,7 +262,7 @@ WAKE gives every particle the table's W(0) times all charge in its own time bin,
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

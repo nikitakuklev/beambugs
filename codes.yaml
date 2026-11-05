@@ -70,9 +70,17 @@ elegant:
     `RPN_DEFNS` to the `defns.rpn` file of SDDS; Elegant does not start without it. Download a
     reproducer with the `_*.py` helpers shown beside it and run `python <ID>.py`, which runs
     serial Elegant; `--mpi` adds a 3-rank Pelegant run (needs `mpirun`), and entries that occur
-    only under MPI always run Pelegant with a serial control. COL-29, COL-32, COL-34 to COL-46,
-    DOC-06, DOC-07, DOC-10, DOC-11, OPT-16 to OPT-27, SCT-01 and SCT-17 to SCT-22 run serial
-    Elegant only. COL-32, COL-38, COL-40, COL-41 and SCT-01 also need Valgrind, and SCT-17 runs
+    only under MPI (COL-02, COL-20, COL-26, IO-01, SCT-02, SCT-03, SCT-24) always run Pelegant with a
+    serial control. SCT-24 uses five ranks to exercise distributed IBSCATTER integration;
+    the other MPI reproducers use three. The extra `COL-24-mpi.py` also always runs Pelegant
+    with serial controls;
+    `COL-24.py` runs the single-bunch case in serial by default. `TRK-03-fse.py` adds the
+    fractional-strength and zero-field controls for TRK-03. COL-29, COL-32, COL-34 to COL-46,
+    COL-50 to COL-52, DOC-06, DOC-07, DOC-10, DOC-11, OPT-16 to OPT-31, SCT-01, SCT-17 to SCT-23,
+    SCT-25 and TRK-47 run serial Elegant only. COL-32, COL-38, COL-40, COL-41, COL-50 and SCT-01
+    also need Valgrind (COL-50 can use `VALGRIND_OPTS=--vgdb=no` without disabling Memcheck),
+    and SCT-17 runs
     the `ibsEmittance` program of the Elegant build. DOC-01, DOC-10 and DOC-11 need an Elegant
     source checkout named by `ELEGANT_SOURCE`, and IO-02 to IO-04 `gcc` with the SDDS libraries
-    of the build.
+    of the build. COL-51 accepts only the expected status-1 bunch-count abort; unrelated
+    failures raise, and its native run uses the shared 600 s timeout.

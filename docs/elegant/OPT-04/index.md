@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`setStartingMoments`, src/moments.c:681–703](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L681-L703)<br>[the `matched=0` branch of `moments_output`, src/moments.c:573–578](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L573-L578)<br>[`matched=0`: `emit`, `beta`, `alpha`, `eta`, `etap` specify the starting beam ellipses in all three planes, manual, doc/elegant.tex:5632–5633](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5632-L5633) |
 
-With moments_output matched=0, equilibrium=0, explicit Twiss, dispersion and longitudinal inputs produce a covariance matrix Σ for (x, x′, y, y′, s, δ) missing eight terms, where s is longitudinal position and δ is relative momentum offset. For independent betatron motion, dispersion η requires cross-plane covariances ηᵢηⱼΣ₆₆ and transverse–longitudinal covariances ηᵢΣ₆₅. For longitudinal emittance ε_z = 1 μm, β_z = 4 m, α_z = 0.2, η_x = 0.1 m and η_y = −0.03 m, Σ₁₃ must be −7.800×10⁻¹⁰ m² and Σ₁₅ −2.000×10⁻⁸ m², but both are zero. Propagated covariance matrices inherit the error. Nonzero momentum spread with dispersion in both planes, or dispersion with longitudinal position–momentum correlation, triggers the error.
+With moments_output matched=0, equilibrium=0, explicit Twiss, dispersion and longitudinal inputs produce a covariance matrix Σ for (x, x′, y, y′, s, δ) missing eight terms, where s is longitudinal position and δ is relative momentum offset. For independent betatron motion, dispersion η requires cross-plane covariances ηᵢηⱼΣ₆₆ and transverse–longitudinal covariances ηᵢΣ₆₅. For longitudinal emittance ε_z = 1 μm, β_z = 4 m, α_z = 0.2, η_x = 0.1 m and η_y = −0.03 m, Σ₁₃ must be −7.800×10⁻¹⁰ m² and Σ₁₅ −2.000×10⁻⁸ m², but both are zero. Propagated covariance matrices inherit the error.
 
 ??? example "Reproducer: OPT-04.py"
 
@@ -26,13 +26,12 @@ With moments_output matched=0, equilibrium=0, explicit Twiss, dispersion and lon
     """OPT-04: Initial moments omit shared-dispersion covariance terms
 
     With moments_output matched=0, equilibrium=0, explicit Twiss, dispersion and longitudinal inputs
-    produce a covariance matrix Σ for (x, x′, y, y′, s, δ) missing eight terms, where s is longitudinal
-    position and δ is relative momentum offset. For independent betatron motion, dispersion η requires
-    cross-plane covariances ηᵢηⱼΣ₆₆ and transverse–longitudinal covariances ηᵢΣ₆₅. For longitudinal
-    emittance ε_z = 1 μm, β_z = 4 m, α_z = 0.2, η_x = 0.1 m and η_y = −0.03 m, Σ₁₃ must be −7.800×10⁻¹⁰
-    m² and Σ₁₅ −2.000×10⁻⁸ m², but both are zero. Propagated covariance matrices inherit the error.
-    Nonzero momentum spread with dispersion in both planes, or dispersion with longitudinal
-    position–momentum correlation, triggers the error.
+    produce a covariance matrix Σ for (x, x′, y, y′, s, δ) missing eight terms, where s is
+    longitudinal position and δ is relative momentum offset. For independent betatron motion,
+    dispersion η requires cross-plane covariances ηᵢηⱼΣ₆₆ and transverse–longitudinal covariances
+    ηᵢΣ₆₅. For longitudinal emittance ε_z = 1 μm, β_z = 4 m, α_z = 0.2, η_x = 0.1 m and η_y = −0.03
+    m, Σ₁₃ must be −7.800×10⁻¹⁰ m² and Σ₁₅ −2.000×10⁻⁸ m², but both are zero. Propagated covariance
+    matrices inherit the error.
 
     The script starts a tilted quadrupole and a drift from those parameters in serial Elegant (and with
     `--mpi` in 3-rank Pelegant), and compares the written covariance matrix at the start and after each
@@ -173,7 +172,7 @@ With moments_output matched=0, equilibrium=0, explicit Twiss, dispersion and lon
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -262,11 +261,14 @@ With moments_output matched=0, equilibrium=0, explicit Twiss, dispersion and lon
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -285,7 +287,7 @@ With moments_output matched=0, equilibrium=0, explicit Twiss, dispersion and lon
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

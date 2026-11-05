@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [`trackRfCavityWithWakes`, simple_rfca.c:1047–1066](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1047-L1066)<br>[`rf_cavity_matrix`, compute_matrices.c:2552–2554](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L2552-L2554)<br>[simple_rfca.c:525–529](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L525-L529)<br>[parameter table, track_data.c:612](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L612)<br>[rfca.tex:5–6](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfca.tex#L5-L6) |
 
-An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusing computes R12 for momentum growing linearly along the cavity, while its own transfer matrix takes a uniform gradient, under which energy grows linearly. Conserved transverse momentum then gives R12 = L p₀(arcosh γ₁ − arcosh γ₀)/(γ₁ − γ₀), with γ₀, γ₁ the entrance and exit Lorentz factors and p₀ the entrance βγ; 1024-kick tracking approaches it within 1.568×10⁻⁶. For electrons entering a 0.7 m cavity that adds 12 MeV at 1.5 MeV kinetic energy, tracking gives R12 = 0.2229 m instead of 0.2221 m, 0.3685% too large; the error is 0.03247% at 5 MeV and 7.003×10⁻⁶ at 20 MeV.
+An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusing computes R12 for momentum growing linearly along the cavity, while its own transfer matrix takes a uniform gradient, under which energy grows linearly. Conserved transverse momentum then gives R12 = L p₀(arcosh γ₁ − arcosh γ₀)/(γ₁ − γ₀), with γ₀, γ₁ the entrance and exit Lorentz factors and p₀ the entrance βγ; 1024-kick tracking has a relative difference of 1.568×10⁻⁶. For electrons entering a 0.7 m cavity that adds 12 MeV at 1.5 MeV kinetic energy, tracking gives R12 = 0.2229 m instead of 0.2221 m, 0.3685% too large; the error is 0.03247% at 5 MeV and 7.003×10⁻⁶ at 20 MeV.
 
 ??? example "Reproducer: TRK-43.py"
 
@@ -24,13 +24,14 @@ An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusin
     ```python
     """TRK-43: Matrix-method RFCA tracking uses a different R12 from its own transfer matrix
 
-    An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusing computes R12 for
-    momentum growing linearly along the cavity, while its own transfer matrix takes a uniform gradient,
-    under which energy grows linearly. Conserved transverse momentum then gives R12 = L p₀(arcosh γ₁ −
-    arcosh γ₀)/(γ₁ − γ₀), with γ₀, γ₁ the entrance and exit Lorentz factors and p₀ the entrance βγ;
-    1024-kick tracking approaches it within 1.568×10⁻⁶. For electrons entering a 0.7 m cavity that adds
-    12 MeV at 1.5 MeV kinetic energy, tracking gives R12 = 0.2229 m instead of 0.2221 m, 0.3685% too
-    large; the error is 0.03247% at 5 MeV and 7.003×10⁻⁶ at 20 MeV.
+    An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusing computes R12
+    for momentum growing linearly along the cavity, while its own transfer matrix takes a uniform
+    gradient, under which energy grows linearly. Conserved transverse momentum then gives R12 = L
+    p₀(arcosh γ₁ − arcosh γ₀)/(γ₁ − γ₀), with γ₀, γ₁ the entrance and exit Lorentz factors and p₀
+    the entrance βγ; 1024-kick tracking has a relative difference of 1.568×10⁻⁶. For electrons
+    entering a 0.7 m cavity that adds 12 MeV at 1.5 MeV kinetic energy, tracking gives R12 = 0.2229
+    m instead of 0.2221 m, 0.3685% too large; the error is 0.03247% at 5 MeV and 7.003×10⁻⁶ at 20
+    MeV.
 
     The script sends electrons of 1.5, 5 and 20 MeV kinetic energy through a 0.7 m RFCA that adds 12 MeV
     in a static field (FREQ=0) without edge or body focusing, and measures R12 from slope pairs in
@@ -95,7 +96,7 @@ An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusin
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -184,11 +185,14 @@ An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusin
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -207,7 +211,7 @@ An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusin
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

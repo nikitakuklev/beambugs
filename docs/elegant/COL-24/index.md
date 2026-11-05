@@ -1,10 +1,10 @@
 ---
-title: "COL-24: Single-bunch TRWAKE fixed bins retain a zero time reference"
+title: "COL-24: TRWAKE fixed bins use an absent or rank-local time origin"
 hide:
   - toc
 ---
 
-# COL-24 — Single-bunch TRWAKE fixed bins retain a zero time reference
+# COL-24 — TRWAKE fixed bins use an absent or rank-local time origin
 
 | | |
 |---|---|
@@ -13,24 +13,24 @@ hide:
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
-| Source | [tmean to zero, trwake.c:40](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L40)<br>[lrwake.c:117–165](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L117-L165)<br>[single-bucket branch, trwake.c:80–85](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L80-L85)<br>[multiple-bucket branch, trwake.c:102–109](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L102-L109)<br>[fixed-bin branch, trwake.c:132–134](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L132-L134)<br>[Deposition, trwake.c:641–648](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L641-L648)<br>[gather, trwake.c:316](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L316)<br>[warning, trwake.c:164–168](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L164-L168)<br>[convolution, wake.c:514](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L514)<br>[wake time, trwake.tex:1–3](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/trwake.tex#L1-L3)<br>[recommends autoscaling, trwake.tex:26–28](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/trwake.tex#L26-L28)<br>[N_BINS, track_data.c:2599](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2599) |
+| Source | [tmean to zero, trwake.c:40](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L40)<br>[lrwake.c:117–165](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L117-L165)<br>[single-bucket branch, trwake.c:80–85](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L80-L85)<br>[multiple-bucket branch, trwake.c:102–109](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L102-L109)<br>[fixed-bin branch, trwake.c:132–134](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L132-L134)<br>[Deposition, trwake.c:641–648](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L641-L648)<br>[gather, trwake.c:316](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L316)<br>[warning, trwake.c:164–168](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L164-L168)<br>[convolution, wake.c:514](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L514)<br>[wake time, trwake.tex:1–3](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/trwake.tex#L1-L3)<br>[recommends autoscaling, trwake.tex:26–28](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/trwake.tex#L26-L28)<br>[N_BINS, track_data.c:2599](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2599)<br>[local bunch mean, trwake.c:102–109](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L102-L109)<br>[global extrema, trwake.c:118–121](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L118-L121)<br>[fixed-bin origin, trwake.c:132–134](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L132-L134)<br>[automatic bins, trwake.c:135–138](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L135-L138)<br>[histogram sum, trwake.c:206–213](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L206-L213)<br>[local bunch counts, lrwake.c:149–166](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L149-L166)<br>[wake definition, trwake.tex:1–28](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/trwake.tex#L1-L28)<br>[bunched mode, trwake.tex:59–62](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/trwake.tex#L59-L62)<br>[setup, trwake.c:380–381](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L380-L381)<br>[TRWAKE caller, do_tracking.c:2483–2486](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2483-L2486)<br>[CHARGE, do_tracking.c:1441–1457](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L1441-L1457) |
 
-With a fixed TRWAKE bin count (N_BINS > 0) and a single bunch, Elegant anchors the grid to time zero rather than the bunch and omits particles outside it as both wake sources and recipients. A stationary wake depends on arrival-time differences, and automatic-bin controls recover the full causal pair-sum kicks. For a 0.6000 nC electron bunch represented by 18 macroparticles spanning 52.00 ps, 96 bins of 2.000 ps give a trailing horizontal slope kick of 1.302×10⁻⁵ at zero shift but zero after +0.7000 ns or a 0.2100 m drift, with an unbinned-particle warning. A +80.00 ps shift leaves only 12 particles in the grid.
+With a fixed TRWAKE bin count, a single bunch uses a grid centered on time zero, while multiple bunches under MPI use separate grids centered on each worker's local mean. Particles can fall outside the grid, or summed bins can represent different physical times; a stationary wake instead depends on particle time differences within each bunch. A 0.6000 nC bunch shifted by 0.7000 ns receives zero trailing horizontal kick instead of 1.302×10⁻⁵ rad. In a two-bunch MPI case with unequal worker means, a trailing kick is 60.00% too small. Causal pair sums and automatic-bin controls establish the expected kicks.
 
 ??? example "Reproducer: COL-24.py"
 
     [Download COL-24.py](COL-24.py)
 
     ```python
-    """COL-24: Single-bunch TRWAKE fixed bins retain a zero time reference
+    """COL-24: TRWAKE fixed bins use an absent or rank-local time origin
 
-    With a fixed TRWAKE bin count (N_BINS > 0) and a single bunch, Elegant anchors the grid to time zero
-    rather than the bunch and omits particles outside it as both wake sources and recipients. A
-    stationary wake depends on arrival-time differences, and automatic-bin controls recover the full
-    causal pair-sum kicks. For a 0.6000 nC electron bunch represented by 18 macroparticles spanning
-    52.00 ps, 96 bins of 2.000 ps give a trailing horizontal slope kick of 1.302×10⁻⁵ at zero shift but
-    zero after +0.7000 ns or a 0.2100 m drift, with an unbinned-particle warning. A +80.00 ps shift
-    leaves only 12 particles in the grid.
+    With a fixed TRWAKE bin count, a single bunch uses a grid centered on time zero, while multiple
+    bunches under MPI use separate grids centered on each worker's local mean. Particles can fall
+    outside the grid, or summed bins can represent different physical times; a stationary wake
+    instead depends on particle time differences within each bunch. A 0.6000 nC bunch shifted by
+    0.7000 ns receives zero trailing horizontal kick instead of 1.302×10⁻⁵ rad. In a two-bunch MPI
+    case with unequal worker means, a trailing kick is 60.00% too small. Causal pair sums and
+    automatic-bin controls establish the expected kicks.
 
     The script tracks the same bunch through TRWAKE with a damped-sine wake after different arrival-time
     shifts and a drift, with 96 fixed bins, 1024 fixed bins and automatic bins, and with the bunch and
@@ -116,6 +116,161 @@ With a fixed TRWAKE bin count (N_BINS > 0) and a single bunch, Elegant anchors t
 
     ```
 
+??? example "Reproducer: COL-24-mpi.py"
+
+    [Download COL-24-mpi.py](COL-24-mpi.py)
+
+    ```python
+    """COL-24: MPI fixed-bin controls with unequal bunch means across workers
+
+    The script tracks two 24-particle bunches, 3 ns apart, through one dipole TRWAKE with a linear
+    causal wake and 64 fixed bins. Every particle has the same transverse offsets, so the correct kick
+    is a direct causal pair sum over the particles of the same bunch, written without any binning. In
+    one input row order both tracking ranks see the same time distribution; in the other, one rank holds
+    the early half and the other the late half of each bunch, so their mean times differ. A prediction
+    that replaces each time by its offset from its rank's mean explains the result; serial runs, equal
+    rank means and automatic bins are passing controls, while halving the bin width leaves the
+    erroneous result unchanged.
+    """
+
+    import sys
+
+    import numpy as np
+    from _elegant import modes, particles, run, verdict
+
+    REST_EV = 510999.06  # SDDS constants.h: electron rest energy, eV
+    P = 41.0  # electron momentum, units of m_e c
+    SLOPE = 4e25  # V/C/m per s; Wx(tau) = SLOPE tau for tau >= 0, Wy = 0.7 Wx, W(0) = 0
+    CHARGE = 80e-12  # C per bunch
+    X0, Y0 = 1.1e-3, -0.6e-3  # m, the same for every particle
+    # Offsets from the bunch center (ps), four particles at each; bunch centers 2 ns and 5 ns.
+    OFFSETS = np.repeat([-10, -6, -2, 2, 6, 10], 4) * 1e-12
+    N = len(OFFSETS)  # particles per bunch
+    CENTERS = (2e-9, 5e-9)
+    BINS = 64
+    RTOL, ATOL = 2e-12, 1e-19
+
+
+    def wake_table(spacing):
+        """ASCII SDDS table of Wx, Wy on 257 points of the given spacing."""
+        rows = "".join(
+            f"{tau!r} {SLOPE * tau!r} {0.7 * SLOPE * tau!r}\n"
+            for tau in (float(n) * spacing for n in range(257))
+        )
+        return (
+            "SDDS1\n"
+            "&column name=time, units=s, type=double &end\n"
+            "&column name=wx, units=V/C/m, type=double &end\n"
+            "&column name=wy, units=V/C/m, type=double &end\n"
+            "&data mode=ascii, no_row_counts=1 &end\n" + rows
+        )
+
+
+    def kicks(mode, layout, spacing, bins):
+        """Slope kicks (xp, yp) of the 2N particles, ordered by particle ID."""
+        t = np.concatenate([OFFSETS + c for c in CENTERS])
+        ids = np.arange(1, 2 * N + 1)
+        if layout == "skew":
+            # One rank gets the early half of each bunch, the other the late half.
+            order = np.r_[0:12, 24:36, 12:24, 36:48]
+        else:
+            # Both ranks get two of the four particles at each time of each bunch.
+            half = np.arange(N).reshape(6, 4)[:, :2].ravel()
+            other = np.arange(N).reshape(6, 4)[:, 2:].ravel()
+            order = np.r_[half, half + N, other, other + N]
+        beam = {
+            "x": np.full(2 * N, X0)[order],
+            "y": np.full(2 * N, Y0)[order],
+            "t": t[order],
+            "p": np.full(2 * N, P),
+            "particleID": ids[order],
+            "IDSlotsPerBunch": N,
+        }
+        lattice = (
+            f"Q: CHARGE,TOTAL={2 * CHARGE!r}\n"
+            'W: TRWAKE,INPUTFILE="wake.sdds",TCOLUMN="time",WXCOLUMN="wx",WYCOLUMN="wy",'
+            f"N_BINS={bins},BUNCHED_BEAM_MODE=1,SMOOTHING=0,INTERPOLATE=0,"
+            "X_DRIVE_EXPONENT=1,Y_DRIVE_EXPONENT=1,X_PROBE_EXPONENT=0,Y_PROBE_EXPONENT=0\n"
+            "BL: LINE=(Q,W)\n"
+        )
+        commands = (
+            "&global_settings echo_namelists=0 &end\n"
+            f"&run_setup lattice=lattice.lte,use_beamline=BL,p_central={P!r},output=out.sdds &end\n"
+            "&run_control n_steps=1,n_passes=1 &end\n"
+            "&sdds_beam input=beam.sdds,use_bunched_mode=1,track_pages_separately=0 &end\n"
+            "&track &end\n"
+        )
+        result = run(
+            {"lattice.lte": lattice, "run.ele": commands, "wake.sdds": wake_table(spacing)},
+            mode,
+            {"beam.sdds": beam},
+        )
+        out = particles(result["out.sdds"])
+        if not np.array_equal(out["particleID"], ids):
+            sys.exit(f"{mode}: particles lost")
+        # The wake changes only the slopes, which start at zero.
+        return np.column_stack([out["xp"], out["yp"]])
+
+
+    def pair_sum(times):
+        """Slope kicks (xp, yp) of one bunch from a direct causal pair sum over its particles.
+
+        Particle i receives dq'_i = (Q/N) sum_j q_j W_q(t_i - t_j)/(E0 p) for q = x, y, summed over the
+        particles j of the same bunch behind which it arrives (W(0) = 0), with Q/N the macroparticle
+        charge, q_j the source's offset and E0 the electron rest energy in eV. The times lie on the
+        wake table's grid, so no interpolation enters.
+        """
+        delay = np.maximum(times[:, None] - times[None, :], 0.0)
+        voltage = (CHARGE / N) * SLOPE * delay.sum(axis=1)  # V/m, times the source offset
+        return np.column_stack([X0 * voltage, 0.7 * Y0 * voltage]) / (REST_EV * P)
+
+
+    def fmt(values):
+        return "[" + ", ".join(f"{v:.16g}" for v in np.ravel(values) + 0.0) + "]"
+
+
+    def compare(label, observed, expected):
+        """Print the kicks of particles 13 (first of the late half) and 24 of the first bunch."""
+        for index in (12, 23):
+            print(
+                f"{label}, particle {index + 1}: "
+                f"observed={fmt(observed[index])} expected={fmt(expected[index])}"
+            )
+        return bool(np.allclose(observed, expected, rtol=RTOL, atol=ATOL))
+
+
+    defect = False
+    for mode in ("serial", *modes(mpi_only=True)):
+        for layout, spacing, bins in (
+            ("balanced", 2e-12, BINS),
+            ("skew", 2e-12, BINS),
+            ("skew", 1e-12, BINS),
+            ("skew", 2e-12, 0),
+        ):
+            expected = np.vstack([pair_sum(OFFSETS)] * 2)
+            auto = "automatic bins" if bins == 0 else f"{bins} bins of {spacing * 1e12:g} ps"
+            label = f"{mode} {layout} rows, {auto}"
+            observed = kicks(mode, layout, spacing, bins)
+            agrees = compare(label, observed, expected)
+            if not (mode == "mpi" and layout == "skew" and bins):
+                if not agrees:
+                    sys.exit(f"{label}: control disagrees with the pair sum; the comparison is invalid")
+                continue
+            # Cause: the early-half rank centers its grid 6 ps before the bunch center and the
+            # late-half rank 6 ps after it, so the summed histogram pairs times that differ by 12 ps.
+            # Each particle then behaves as if it arrived at its offset from its own rank's mean time.
+            shifted = OFFSETS - np.where(np.arange(N) < N // 2, -6e-12, 6e-12)
+            local = np.vstack([pair_sum(shifted)] * 2)
+            if not np.allclose(observed, local, rtol=RTOL, atol=ATOL) and not agrees:
+                sys.exit(f"{label}: kicks follow neither the pair sum nor the rank-local origins")
+            print(f"{label}, particle 13: rank-local-origin prediction={fmt(local[12])}")
+            print(f"{label}: particle 24 kick is {1 - observed[23, 0] / expected[23, 0]:.4%} too small")
+            defect |= not agrees
+    print(f"comparison: rtol={RTOL:g}, atol={ATOL:g}")
+    verdict(defect)
+
+    ```
+
 ??? example "Helper: _elegant.py"
 
     [Download _elegant.py](_elegant.py)
@@ -124,7 +279,7 @@ With a fixed TRWAKE bin count (N_BINS > 0) and a single bunch, Elegant anchors t
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -213,11 +368,14 @@ With a fixed TRWAKE bin count (N_BINS > 0) and a single bunch, Elegant anchors t
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -236,7 +394,7 @@ With a fixed TRWAKE bin count (N_BINS > 0) and a single bunch, Elegant anchors t
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")
@@ -451,6 +609,8 @@ With a fixed TRWAKE bin count (N_BINS > 0) and a single bunch, Elegant anchors t
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-29 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-29 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
+| Found (single-bunch zero time origin) | `gpt-6-astra` | xhigh | 2026-10-29 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
+| Found (multiple-bunch rank-local time origins) | `gpt-6.1-sol` | xhigh | 2026-10-29 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
+| Confirmed (single-bunch zero time origin) | `gpt-6.1-sol` | xhigh | 2026-10-29 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
+| Confirmed (multiple-bunch rank-local time origins) | `gpt-6-astra` | xhigh | 2026-11-03 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial control and 3-rank Pelegant |
 

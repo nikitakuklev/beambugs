@@ -1,12 +1,19 @@
 """COL-34: Transient CSRCSBEND trapezoid integration gives its first regular sample weight 3/4 instead of 1/2
 
-With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1), the trapezoid end correction halves the first sample behind each bin twice, giving it weight 3/4 instead of 1/2. Once the slippage length exceeds the bunch, the transient wake must equal the steady-state wake. For a 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the steady-state wake matches the analytic Gaussian wake within 0.1470% of its peak, while the transient wake differs from it by 1.243% of the peak, exactly the extra quarter sample, and from the analytic wake by 1.376%. The excess falls slowly with the bin count: 1.968% at 200 bins, 0.7894% at 800.
+With CSRCSBEND's default transient CSR (STEADY_STATE=0, TRAPAZOID_INTEGRATION=1), bins with at
+least two regular samples inside the slippage window receive an incorrect trapezoid endpoint
+correction: the first sample has weight 3/4 instead of 1/2. Once the slippage length exceeds the
+bunch, the transient wake must equal the steady-state wake. For a 35 μm rms Gaussian bunch in a
+0.6 m, 0.3 rad bend with 400 bins, the steady-state wake matches the analytic Gaussian wake
+within 0.1470% of its peak, while the transient wake differs from it by 1.243% of the peak,
+exactly the extra quarter sample, and from the analytic wake by 1.376%. The excess falls slowly
+with the bin count: 1.968% at 200 bins, 0.7894% at 800.
 
 The script tracks 240001 electrons (Gaussian quantiles, σ_ct = 35 μm, p = 4000 mₑc, 10⁻¹⁶ C so
 the beam does not change) through a one-slice 0.6 m, 0.3 rad CSRCSBEND with 200, 400 and 800
 bins, once with STEADY_STATE=0 (transient, the default) and once with STEADY_STATE=1, and reads
 both exported wakes. The slippage length 2.250 mm exceeds the binned bunch, so both must equal the
-analytic steady-state Gaussian wake, which the steady-state control does within 0.15%. The
+analytic steady-state Gaussian wake, which the steady-state control does within 0.23%. The
 script also rebuilds the transient-minus-steady difference from the exported density derivative
 as a quarter of the first regular trapezoid sample.
 """
@@ -26,7 +33,7 @@ BEAM = gaussian_beam(240001, SIGMA, P0)
 # Steady-state CSR strength of the whole bend (see _csr.steady_state_wake): N electrons in a bend
 # of length L and radius rho.
 K = 2 * (CHARGE / E_CHARGE) * R_E * L / (3 * RHO**2) ** (1 / 3)
-TOLERANCE = 0.003  # of the analytic peak; the steady-state control is within 0.0015
+TOLERANCE = 0.003  # of the analytic peak; the steady-state control is within 0.0023
 
 
 def wake(bins: int, steady: int):

@@ -1,12 +1,12 @@
 """OPT-24: closed_orbit ignores start_from_centroid and start_from_dp_centroid
 
-Elegant's `closed_orbit` command documents that `start_from_centroid` (default 1) starts the search
-from the beam centroid and that `start_from_dp_centroid` uses the beam's momentum centroid, so that
-the closed orbit of an off-momentum beam can be computed; the code sets both flags to zero before
-testing them, so every closed orbit is computed on momentum. For a 2.4 GeV, 70 m ring of 20 FODO
-cells and a one-particle beam at x = 0.3 mm, x′ = 0.1 mrad and δ = 0.001, the closed orbit found by
-tracking at δ = 0.001 starts at x = 2.458 mm, x′ = 0.4474 mrad. With either flag set, Elegant
-returns δ = 0 and x = 2.799 nm, the on-momentum orbit.
+With `closed_orbit` in its default `fixed_length=0` mode, `start_from_centroid` and
+`start_from_dp_centroid` are ignored, so an off-momentum beam gets the on-momentum orbit. The
+manual promises to use the beam's momentum centroid for either option; `start_from_centroid`
+also supplies the transverse starting point. For a 2.4 GeV, 70.00 m ring and beam momentum
+offset δ = 0.001, independent tracking gives x = 2.458 mm and x′ = 0.4474 mrad at the orbit
+start. Either option instead returns δ = 0 and x = 2.799 nm. Fixed-length modes can vary δ,
+although they also ignore these centroid flags.
 
 The script runs serial Elegant `closed_orbit` before tracking a one-particle beam with x = 0.3 mm,
 x′ = 0.1 mrad and δ = 0.001 through a 2.4 GeV, 70 m ring of 20 FODO cells with CSBENDs, with the

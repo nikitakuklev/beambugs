@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`integrate_kick_multipole_ordn`, multipole.c:1430–1444](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1430-L1444)<br>[multipole.h:186–209](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.h#L186-L209)<br>[multipole.c:1488–1510](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1488-L1510)<br>[manual, kquad.tex:64–67](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/kquad.tex#L64-L67)<br>[kquad.tex:119–123](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/kquad.tex#L119-L123)<br>[SYNCH_RAD, track_data.c:1171](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1171) |
 
-A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes the radiating field after subtracting the horizontal kick and doubling the vertical one. For a 0.8 m magnet with zero main strength and a 1 mrad kick at 3.066 GeV, the classical radiation integral along the uniform steering field gives a fractional energy loss of 5.072×10⁻¹⁰ in either plane; HKICK gives zero and VKICK 2.029×10⁻⁹, four times too much. The moments_output quantum excitation of the KQUAD is zero for HKICK and eight times the Sands diffusion integral for VKICK. A KQUAD without steering radiates correctly.
+A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes the radiating field after subtracting the horizontal kick and doubling the vertical one. For a 0.8 m magnet with zero main strength and a 1 mrad kick at 3.066 GeV, the classical radiation integral along the uniform steering field gives a fractional energy loss of 5.072×10⁻¹⁰ in either plane; HKICK gives zero and VKICK 2.029×10⁻⁹, four times too much. The moments_output quantum excitation of the KQUAD is zero for HKICK and eight times the Sands diffusion integral for VKICK. This steering-field error is absent when HKICK and VKICK are both zero.
 
 ??? example "Reproducer: TRK-33.py"
 
@@ -25,13 +25,13 @@ A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes th
     ```python
     """TRK-33: KQUAD and KSEXT steering kicks radiate nothing horizontally and four times too much vertically
 
-    A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes the radiating field
-    after subtracting the horizontal kick and doubling the vertical one. For a 0.8 m magnet with zero
-    main strength and a 1 mrad kick at 3.066 GeV, the classical radiation integral along the uniform
-    steering field gives a fractional energy loss of 5.072×10⁻¹⁰ in either plane; HKICK gives zero and
-    VKICK 2.029×10⁻⁹, four times too much. The moments_output quantum excitation of the KQUAD is zero
-    for HKICK and eight times the Sands diffusion integral for VKICK. A KQUAD without steering radiates
-    correctly.
+    A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes the radiating
+    field after subtracting the horizontal kick and doubling the vertical one. For a 0.8 m magnet
+    with zero main strength and a 1 mrad kick at 3.066 GeV, the classical radiation integral along
+    the uniform steering field gives a fractional energy loss of 5.072×10⁻¹⁰ in either plane; HKICK
+    gives zero and VKICK 2.029×10⁻⁹, four times too much. The moments_output quantum excitation of
+    the KQUAD is zero for HKICK and eight times the Sands diffusion integral for VKICK. This
+    steering-field error is absent when HKICK and VKICK are both zero.
 
     The script tracks an on-axis electron through a KQUAD and a KSEXT of zero main strength with
     SYNCH_RAD=1 and a horizontal (HKICK) or vertical (VKICK) steering kick, and compares the momentum
@@ -116,7 +116,7 @@ A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes th
 
 
     # A steering kick k over length L is a uniform field of curvature h = k/L in the Cartesian frame; on
-    # the unperturbed orbit the slope grows linearly to k, so the path is L*asin(k)/k. The classical loss
+    # the unperturbed orbit the normalized transverse momentum grows linearly to k, so the path is L*asin(k)/k. The classical loss
     # is (2/3) r_e gamma^3 h^2 * path, and the quantum diffusion of delta is
     # (55/(24 sqrt 3)) r_e lambda_c gamma^5 h^3 * path (Sands); gamma = P0 to 1.4e-8 here.
     path = LENGTH * np.arcsin(KICK) / KICK
@@ -177,7 +177,7 @@ A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes th
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -266,11 +266,14 @@ A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes th
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -289,7 +292,7 @@ A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes th
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

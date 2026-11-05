@@ -13,10 +13,11 @@ hide:
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [lower + ih, lower + (i + 1)h) and states that "the coordinate of the bin center is
 (iBin+0.5)*(*binSize) + *lower" ([binParticleCoordinate, csbend.c:4169–4170](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4169-L4170)<br>[second binning routine, csbend.c:4225–4226](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4225-L4226)<br>[bend output, csbend.c:3717–3721](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3717-L3721)<br>[Stupakov output, csbend.c:5328–5331](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5328-L5331)<br>[bend kick, csbend.c:3613–3617](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3613-L3617)<br>[drift kick, csbend.c:4530–4535](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4530-L4535)<br>[Stupakov kick, csbend.c:5149–5154](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5149-L5154)<br>[CSRCSBEND manual, csrcsbend.tex:6–18](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csrcsbend.tex#L6-L18) |
 
-CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR wake as if each value sat at its bin's lower edge, although the histogram and the wake output place it at the bin center, so every particle receives the wake half a bin toward the bunch tail. For a 10 pC, 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the kicks deviate from the wake at the particles by up to 1.262% of its peak, and the mean energy loss is 0.5104% above the closed-form Gaussian value, whereas the wake sampled at the particles is within 0.03107%. The bias halves with each doubling of the bin count.
+CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR wake as if each value sat at its bin's lower edge, although the histogram and the wake output place it at the bin center, so every particle receives the wake half a bin toward the bunch tail. For a 10 pC, 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the kicks deviate from the wake at the particles by up to 1.262% of its peak, and the mean energy loss is 0.5104% above the closed-form Gaussian value, whereas the wake sampled at the particles is within 0.03107%. The half-bin displacement decreases in proportion to the bin width.
 
 ??? example "Reproducer: COL-43.py"
 
@@ -25,7 +26,13 @@ CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR 
     ```python
     """COL-43: CSRCSBEND and CSRDRIFT apply the CSR wake half a bin toward the bunch tail
 
-    CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR wake as if each value sat at its bin's lower edge, although the histogram and the wake output place it at the bin center, so every particle receives the wake half a bin toward the bunch tail. For a 10 pC, 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the kicks deviate from the wake at the particles by up to 1.262% of its peak, and the mean energy loss is 0.5104% above the closed-form Gaussian value, whereas the wake sampled at the particles is within 0.03107%. The bias halves with each doubling of the bin count.
+    CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR wake as if each
+    value sat at its bin's lower edge, although the histogram and the wake output place it at the
+    bin center, so every particle receives the wake half a bin toward the bunch tail. For a 10 pC,
+    35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the kicks deviate from the wake
+    at the particles by up to 1.262% of its peak, and the mean energy loss is 0.5104% above the
+    closed-form Gaussian value, whereas the wake sampled at the particles is within 0.03107%. The
+    half-bin displacement decreases in proportion to the bin width.
 
     The script tracks 240001 electrons (Gaussian quantiles, σ_ct = 35 μm, p = 4000 mₑc, 10 pC)
     through a one-slice 0.6 m, 0.3 rad CSRCSBEND (STEADY_STATE=1) with 200, 400 and 800 bins and
@@ -286,7 +293,7 @@ CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR 
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -375,11 +382,14 @@ CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR 
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -398,7 +408,7 @@ CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR 
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

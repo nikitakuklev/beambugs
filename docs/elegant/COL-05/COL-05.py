@@ -24,7 +24,7 @@ LENGTH = 1.0  # m, drift with the SCMULT; its effective length of 1 m is what a 
 TIMES = circumference(LENGTH) / (BETA * C) * levels(8, uniform=True) / np.sqrt(12)
 RTOL = 1e-6  # the elliptical nonlinear field is accurate to 8e-8, see the Gaussian field entry
 
-defect = False
+defect_cases = []
 for mode in modes():
     for ratio in (1.0, 2.0):
         particles_in = beam(SIGMA, ratio * SIGMA, TIMES)
@@ -44,8 +44,8 @@ for mode in modes():
                 # The defect is the extra factor 1/sqrt(12): the kicks must match the expectation
                 # divided by sqrt(12) and differ from the expectation itself.
                 scaled = np.allclose(observed, expected / np.sqrt(12), rtol=RTOL, atol=1e-18)
-                defect |= bad and scaled
+                defect_cases.append(bad and scaled)
             elif bad:
                 sys.exit("The linear control disagrees with the physical kick.")
 print(f"comparison: rtol={RTOL:g}")
-verdict(defect)
+verdict(bool(defect_cases) and all(defect_cases))

@@ -1,6 +1,12 @@
 """COL-38: CSRDRIFT spread mode with WAVELENGTH_MODE="peak-to-peak" uses an uninitialized wavelength
 
-With SPREAD=1 and WAVELENGTH_MODE="peak-to-peak", CSRDRIFT's beam-spreading model takes its wavelength from two wake indices that are never set: the extremum search runs on the wake array before the bend hands it over and returns without writing them. For a 0.1 pC, 35 μm rms bunch after a 0.6 m, 0.3 rad bend, the radiation-only spread formula with the 0.1791 mm peak-to-peak wavelength gives an attenuation factor of 0.003415 for a 0.4 m drift, but the kick is applied unattenuated (factor 1), and Valgrind reports the use of uninitialized values in the drift. The default sigmaz mode agrees with the formula within 1.0×10⁻⁸ relative.
+With SPREAD=1 and WAVELENGTH_MODE="peak-to-peak", CSRDRIFT's beam-spreading model takes its
+wavelength from two wake indices that are never set: the extremum search runs on the wake array
+before the bend hands it over and returns without writing them. For a 0.1 pC, 35 μm rms bunch
+after a 0.6 m, 0.3 rad bend, the radiation-only spread formula with the 0.1791 mm peak-to-peak
+wavelength gives an attenuation factor of 0.003415 for a 0.4 m drift, but the kick is applied
+unattenuated (factor 1), and Valgrind reports the use of uninitialized values in the drift. The
+default sigmaz mode differs from the formula by about 1.020×10⁻⁸ relative.
 
 The script tracks 40001 electrons (Gaussian quantiles, σ_ct = 35 μm, p = 4000 mₑc, 0.1 pC, x
 spread over ±30 μm) through a one-slice 0.6 m, 0.3 rad CSRCSBEND (400 bins, STEADY_STATE=1) and a

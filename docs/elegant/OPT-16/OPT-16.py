@@ -1,12 +1,11 @@
 """OPT-16: CCBEND radiation integral I4 omits the rectangular-edge terms
 
-Elegant's `twiss_output` radiation integrals for a CCBEND, whose pole faces are always rectangular,
-use only the body term of I4 and omit the two edge terms −h² tan(θ/2)(η₁ + η₂), where h is the
-curvature, θ the bend angle and η₁, η₂ the dispersion at the faces. With the default hard-edge
-fringe model, a 1.3 m CCBEND bending 0.12 rad and entered with η = 0.4 m and slope η′ = 0.03 gets I4
-= 4.562×10⁻⁴ m⁻¹, while the equivalent rectangular CSBEND gets −1.331×10⁻⁵ m⁻¹. In a 73.60 m, 3 GeV
-ring of 32 one-meter CCBENDs, Elegant gives the horizontal damping partition as 0.8707 instead of
-1.003 and the natural emittance as 441.7 nm instead of 383.2 nm, 15.26% high.
+With the default hard-edge fringe model, Elegant's `twiss_output` omits the rectangular-face
+contributions to CCBEND radiation integral I₄. For a uniform, unyawed bend they are −h²
+tan(θ/2)(η₁ + η₂), where h is curvature, θ is bend angle and η₁, η₂ are face dispersions. A 1.3
+m, 0.12 rad bend entered with η = 0.4 m and η′ = 0.03 gives 4.562×10⁻⁴ m⁻¹ instead of
+−1.331×10⁻⁵ m⁻¹. In a 73.60 m, 3 GeV ring, the horizontal damping partition is 0.8707 instead of
+1.003 and the natural emittance is 441.7 nm instead of 383.2 nm, 15.26% high.
 
 The script runs serial Elegant `twiss_output` with radiation integrals on one constant-field
 CCBEND and on the equivalent rectangular CSBEND (edge angles of half the bend angle), whose I4 is
@@ -101,9 +100,10 @@ print(
 )
 mismatch = abs(par(cc, "I4") - par(cs, "I4"))
 print(f"single magnet I4 (1/m): observed={par(cc, 'I4'):.10g} expected={par(cs, 'I4'):.10g}")
-# The CCBEND body slice sum itself differs from the sector-body value by a discretization
-# residual (about 6e-4 of the body term here); the defect is a difference of the size of the
-# edge terms, three orders of magnitude larger.
+# The CCBEND body sum has a persistent chord-measure/frame bias, plus finite-slice
+# endpoint terms. Its uniform-field limit is the sector-body value times L/chord.
+# Here the body bias is about 6e-4 relative; adding the faces alone leaves about
+# 2.06% error in the small net I4. The missing-face contribution is much larger.
 defect |= mismatch > 0.5 * abs(edge)
 
 ring_cc = twiss(ccbend(L_RING, THETA_RING), "BL", "")

@@ -39,6 +39,8 @@ Some reproducers also need: cpymad, madng-tpsa, scipy.
 | [TRK-09](TRK-09/index.md) | Solenoid spin tracking uses the wrong kinetic momentum | Tracking | P2 | Wrong physics | 2026-10-30 (`ad5e808`; not on main) |  | [[gh:https://github.com/xsuite/xtrack/pull/923]] |
 | [TRK-15](TRK-15/index.md) | Zero horizontal focusing loses accelerated-path terms | Tracking | P2 | Wrong physics | 2026-10-29 (`f09e0fb`, main) |  |  |
 | [TRK-17](TRK-17/index.md) | Off-origin polygon apertures retain particles outside their boundary <span class="bb-tag">partly-source-only</span> | Tracking | P2 | Wrong physics | 2026-10-29 (`f09e0fb`, main) |  |  |
+| [TRK-18](TRK-18/index.md) | Radiation tracking omits the field wedges of angled dipole faces <span class="bb-tag">partly-source-only</span> | Tracking | P2 | Wrong physics | 2026-11-05 (`ad5e808`) |  |  |
+| [OPT-16](OPT-16/index.md) | Radiation integrals omit the dipole-face term of I₄ | Optics and matching | P2 | Wrong physics | 2026-11-05 (`ad5e808`) |  |  |
 | [COL-02](COL-02/index.md) | Displaced Gaussian space charge integrates the wrong longitudinal-kick ray | Collective effects | P2 | Wrong physics | 2026-10-26 (`223b4fa`, main) |  |  |
 | [COL-05](COL-05/index.md) | Strong-strong 2D beam-beam moments include lost particles | Collective effects | P2 | Wrong physics | 2026-10-26 (`223b4fa`, main) |  |  |
 | [COL-06](COL-06/index.md) | 2.5D FFT space charge: the longitudinal kick of a nonuniform bunch violates geometric similarity <span class="bb-tag">contract-unsettled</span> | Collective effects | P2 | Wrong physics | 2026-10-29 (`3f06c87`, main) |  |  |
@@ -60,6 +62,7 @@ Some reproducers also need: cpymad, madng-tpsa, scipy.
 | [TRK-13](TRK-13/index.md) | Exciter activates before its stated starting time | Tracking | P3 | Wrong physics | 2026-10-29 (`f09e0fb`, main) |  |  |
 | [TRK-14](TRK-14/index.md) | Elens residual kicks fail forward/backward tracking | Tracking | P3 | Wrong physics | 2026-10-29 (`f09e0fb`, main) |  |  |
 | [TRK-16](TRK-16/index.md) | Quantum photon rate omits reference charge squared | Tracking | P3 | Wrong physics | 2026-10-29 (`f09e0fb`, main) |  |  |
+| [OPT-17](OPT-17/index.md) | Radiation integrals omit sextupole feed-down from the orbit gradient | Optics and matching | P3 | Wrong physics | 2026-11-05 (`ad5e808`) |  |  |
 | [COL-01](COL-01/index.md) | q-Gaussian normalization overflows near the Gaussian limit | Collective effects | P3 | Wrong physics | 2026-10-26 (`223b4fa`, main) |  |  |
 | [COL-03](COL-03/index.md) | Particle-to-mesh deposition omits source charge ratios <span class="bb-tag">known-limitation</span> | Collective effects | P3 | Wrong physics | 2026-10-26 (`223b4fa`, main) |  |  |
 | [COL-11](COL-11/index.md) | Interpolated electron lens omits the transit-speed factor | Collective effects | P3 | Wrong physics | 2026-10-29 (`3f06c87`, main) |  |  |

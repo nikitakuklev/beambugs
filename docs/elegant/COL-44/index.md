@@ -1,10 +1,10 @@
 ---
-title: "COL-44: An accelerating RFCW evaluates its longitudinal space charge at the entrance momentum throughout"
+title: "COL-44: An accelerating RFCW without a longitudinal wake evaluates its longitudinal space charge at the entrance momentum"
 hide:
   - toc
 ---
 
-# COL-44 — An accelerating RFCW evaluates its longitudinal space charge at the entrance momentum throughout
+# COL-44 — An accelerating RFCW without a longitudinal wake evaluates its longitudinal space charge at the entrance momentum
 
 | | |
 |---|---|
@@ -15,16 +15,22 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [kick split, simple_rfca.c:525–532](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L525-L532)<br>[LSC call, simple_rfca.c:792–793](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L792-L793)<br>[impedance, lsc.c:625–628](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L625-L628)<br>[lsc.c:502](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L502)<br>[reference update, simple_rfca.c:1116–1117](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1116-L1117)<br>[simple_rfca.c:1207](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1207)<br>[1278](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1278)<br>[wake.c:318–319](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L318-L319)<br>[RFCW manual, rfcw.tex:14–19](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfcw.tex#L14-L19) |
 
-An RFCW with LSC=1 computes every longitudinal space-charge kick with the reference momentum of the cavity entrance, because the reference is updated only at the exit (CHANGE_P0); more kicks (N_KICKS) do not change this. In an accelerating cavity the space charge is therefore that of the entrance energy throughout, where it is strongest. For a 0.8 m cavity accelerating an electron bunch of 160 μm rms length and 240 μm rms size from γ = 6 to 30, the energy kick at +1σ is 3.590 times the kick of the same impedance integrated with the local momentum, while the cavity split into 480 one-kick RFCWs with CHANGE_P0=1 is within 0.3468% of it.
+With LSC=1 and no longitudinal wake updating the reference between kicks, an accelerating RFCW evaluates its longitudinal space-charge impedance at the entrance momentum throughout the cavity; increasing N_KICKS does not update that momentum. For a 0.8 m cavity accelerating an electron bunch of 160 μm rms length and 240 μm transverse rms size from γ = 6 to 30, the +1σ energy kick is 3.590 times the local-momentum result. Splitting it into 480 one-kick RFCWs with CHANGE_P0=1 gives a result within 0.3468%. An enabled longitudinal wake with CHANGE_P0=1 also updates the reference between kicks, avoiding the frozen entrance momentum.
 
 ??? example "Reproducer: COL-44.py"
 
     [Download COL-44.py](COL-44.py)
 
     ```python
-    """COL-44: An accelerating RFCW evaluates its longitudinal space charge at the entrance momentum throughout
+    """COL-44: An accelerating RFCW without a longitudinal wake evaluates its longitudinal space charge at the entrance momentum
 
-    An RFCW with LSC=1 computes every longitudinal space-charge kick with the reference momentum of the cavity entrance, because the reference is updated only at the exit (CHANGE_P0); more kicks (N_KICKS) do not change this. In an accelerating cavity the space charge is therefore that of the entrance energy throughout, where it is strongest. For a 0.8 m cavity accelerating an electron bunch of 160 μm rms length and 240 μm rms size from γ = 6 to 30, the energy kick at +1σ is 3.590 times the kick of the same impedance integrated with the local momentum, while the cavity split into 480 one-kick RFCWs with CHANGE_P0=1 is within 0.3468% of it.
+    With LSC=1 and no longitudinal wake updating the reference between kicks, an accelerating RFCW
+    evaluates its longitudinal space-charge impedance at the entrance momentum throughout the
+    cavity; increasing N_KICKS does not update that momentum. For a 0.8 m cavity accelerating an
+    electron bunch of 160 μm rms length and 240 μm transverse rms size from γ = 6 to 30, the +1σ
+    energy kick is 3.590 times the local-momentum result. Splitting it into 480 one-kick RFCWs with
+    CHANGE_P0=1 gives a result within 0.3468%. An enabled longitudinal wake with CHANGE_P0=1 also
+    updates the reference between kicks, avoiding the frozen entrance momentum.
 
     The script tracks 65536 electrons (Gaussian quantiles, sigma_ct = 160 um, rms sizes 240 um,
     1 fC) through a 0.8 m RFCW with FREQ=0 and PHASE=90, which accelerates every particle uniformly
@@ -132,7 +138,7 @@ An RFCW with LSC=1 computes every longitudinal space-charge kick with the refere
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -221,11 +227,14 @@ An RFCW with LSC=1 computes every longitudinal space-charge kick with the refere
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -244,7 +253,7 @@ An RFCW with LSC=1 computes every longitudinal space-charge kick with the refere
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

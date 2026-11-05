@@ -1,19 +1,21 @@
-"""OPT-03: CCBEND radiation totals omit repeated periods
+"""OPT-03: CCBEND and LGBEND radiation totals omit repeated periods
 
 With `twiss_output`, `radiation_integrals=1` and `n_periods` greater than 1, Elegant adds, for
-CCBEND (canonical combined-function bend) elements, the integrals I₁ to I₅ of one period to the
-totals without multiplying by `n_periods`, although the per-element contributions are multiplied.
-For a cell of two 1 m bends with curvature 0.1 m⁻¹ at 6000 mₑc, I₂ must be 0.02000 m⁻¹ for one
-period and 0.04000 m⁻¹ for two, but Elegant writes 0.02000 m⁻¹ for both. The energy loss per turn
-then stays at 24.88 keV instead of doubling to 49.77 keV, and the damping times double instead of
-staying unchanged. The same cell with SBEN bends is correct.
+CCBEND (canonical combined-function bend) and LGBEND (multi-segment straight-pole bend) elements,
+the integrals I₁ to I₅ of one period to the totals without multiplying by `n_periods`, although the
+per-element contributions are multiplied. For a cell of two 1 m bends with curvature 0.1 m⁻¹ at
+6000 mₑc, I₂ must be 0.02000 m⁻¹ for one period and 0.04000 m⁻¹ for two, but Elegant writes 0.02000
+m⁻¹ for both. The energy loss per turn then stays at 24.88 keV instead of doubling to 49.77 keV,
+and the damping times double instead of staying unchanged. The same cell with SBEN bends, or
+written out twice with one period, is correct.
 
 The script runs the same three-meter cell (two quadrupoles and two 1 m bends, 6000 mₑc) with
-`n_periods` = 1 and 2, in serial Elegant (and with `--mpi` in 3-rank Pelegant). For one period it
-checks I₂ = Σ L/ρ², the energy loss and the damping times against their closed-form definitions;
-for two periods the totals and the energy loss must double and the damping times be unchanged.
-The same cell with SBEN bends is the control, and the sum of the written per-element I₂
-contributions is printed.
+`n_periods` = 1 and 2, in serial Elegant (and with `--mpi` in 3-rank Pelegant), with the bends as
+CCBEND and as a two-segment uniform-field LGBEND whose configuration it writes inline. For one period
+it checks I₂ = Σ L/ρ², the energy loss and the damping times against their closed-form definitions;
+for two periods the totals and the energy loss must double and the damping times be unchanged. The
+same cell with SBEN bends, and each CCBEND and LGBEND cell written out twice with one period, are the
+controls; the sum of the written per-element I₂ contributions is printed.
 """
 
 import sys
@@ -31,18 +33,51 @@ RTOL = 1e-6  # Elegant's rounded constants and relativistic energy
 NAMES = ("I1", "I2", "I3", "I4", "I5", "U0", "taux", "tauy", "taudelta")
 
 
-def lattice(bend):
+def lgbend_configuration():
+    """LGBEND configuration of a uniform-field 1 m arc of 0.1 rad in two equal segments.
+
+    Built from circular geometry with zero gradients and no fringe terms: each segment spans half
+    the chord (longitudinal length) and half the angle; the reference enters at x = 0 with slope
+    angle/2 relative to the chord, reaches the sagitta rho (1 - cos(angle/2)) at the shared face,
+    which is perpendicular to the reference, and leaves at x = 0. The vertex is where the entry and
+    exit tangents meet. OPTIMIZE_FSE=0 keeps the segment strengths as given.
+    """
+    rho = BEND_L / BEND_ANGLE
+    chord = 2 * rho * np.sin(BEND_ANGLE / 2)
+    half = BEND_ANGLE / 2
+    first = {
+        "LONGIT_L": chord / 2, "ANGLE": half, "ENTRY_X": 0, "ENTRY_ANGLE": half,
+        "EXIT_X": rho * (1 - np.cos(half)), "EXIT_ANGLE": 0, "K1": 0, "K2": 0, "PREDRIFT": 0,
+        "ZEntry": 0, "XEntry": 0, "ZExit": chord, "XExit": 0, "ZVertex": chord / 2,
+        "XVertex": chord / 2 * np.tan(half),
+    }  # fmt: skip
+    second = {
+        "LONGIT_L": chord / 2, "ANGLE": half, "EXIT_X": 0, "EXIT_ANGLE": -half, "K1": 0, "K2": 0,
+        "POSTDRIFT": 0,
+    }  # fmt: skip
+    pages = "".join(
+        f"{len(page)}\n" + "".join(f"{k} {v:.17g}\n" for k, v in page.items())
+        for page in (first, second)
+    )
+    return (
+        "SDDS1\n&column name=ParameterName,type=string &end\n"
+        "&column name=ParameterValue,type=double &end\n&data mode=ascii &end\n" + pages
+    )
+
+
+def lattice(bend, copies):
     element = {
         "CCBEND": f"D: CCBEND,L={BEND_L!r},ANGLE={BEND_ANGLE!r},N_SLICES=16",
+        "LGBEND": 'D: LGBEND,CONFIGURATION="bend.sdds",N_SLICES=32,OPTIMIZE_FSE=0',
         "SBEN": f"D: SBEN,L={BEND_L!r},ANGLE={BEND_ANGLE!r}",
     }[bend]
     return (
         "QF: QUAD,L=0.5,K1=0.6,TILT=0\nQD: QUAD,L=0.5,K1=-0.54,TILT=0\n"
-        f"{element}\nBL: LINE=(QF,D,QD,D)\n"
+        f"{element}\nCELL: LINE=(QF,D,QD,D)\nBL: LINE=({copies}*CELL)\n"
     )
 
 
-def totals(mode, bend, periods):
+def totals(mode, bend, periods, copies=1):
     commands = (
         f"&run_setup lattice=lattice.lte, use_beamline=BL, p_central={P_CENTRAL!r}, "
         "default_order=2 &end\n"
@@ -51,9 +86,10 @@ def totals(mode, bend, periods):
         "&bunched_beam n_particles_per_bunch=12 &end\n"
         "&track &end\n"
     )
-    twiss = run({"lattice.lte": lattice(bend), "run.ele": commands}, mode, outputs=("twiss.sdds",))[
-        "twiss.sdds"
-    ]
+    files = {"lattice.lte": lattice(bend, copies), "run.ele": commands}
+    if bend == "LGBEND":
+        files["bend.sdds"] = lgbend_configuration()
+    twiss = run(files, mode, outputs=("twiss.sdds",))["twiss.sdds"]
     values = np.array([twiss[name][0] for name in NAMES])
     return values, np.sum(twiss[0, "dI2"])
 
@@ -87,7 +123,7 @@ def single_period_oracle(i4_over_i2):
 defect = False
 print(f"columns: {', '.join(NAMES)}; energies in MeV, times in s")
 for mode in modes():
-    for bend in ("SBEN", "CCBEND"):
+    for bend in ("SBEN", "CCBEND", "LGBEND"):
         one, sum_one = totals(mode, bend, 1)
         two, sum_two = totals(mode, bend, 2)
         i2, u0, taus = single_period_oracle(one[3] / one[1])
@@ -102,6 +138,12 @@ for mode in modes():
         # Two identical periods: every integral and U0 add, T0 doubles, so each damping time
         # 2 E T0/(J U0) is unchanged.
         expected = np.concatenate([2 * one[:6], one[6:]])
+        if bend != "SBEN":
+            # Control: the cell written out twice with n_periods = 1 must give the same totals, so
+            # the bend's own integrals add over repetition and only n_periods loses the factor.
+            explicit, _ = totals(mode, bend, 1, copies=2)
+            if compare(f"{mode} {bend} cell written twice, 1 period", explicit, expected):
+                sys.exit(f"The explicit two-cell {bend} line does not add: comparison not valid.")
         bad = compare(f"{mode} {bend} 2 periods", two, expected)
         print(
             f"{mode} {bend} sum of dI2 over elements: 1 period={sum_one:.10g} 2 periods={sum_two:.10g}"

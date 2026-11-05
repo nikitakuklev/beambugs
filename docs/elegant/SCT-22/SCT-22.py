@@ -1,13 +1,14 @@
 """SCT-22: touschek_scatter Monte Carlo rate does not converge when the momentum aperture lies inside the sampled energy spread
 
-touschek_scatter samples the incoming beam out to distribution_cutoff (3 by default) times the rms
-energy spread σδ and counts every outgoing particle beyond the momentum aperture δm, including
-particles that were already beyond it. When δm lies inside the sampled spread, nearly forward
-collisions of those particles, whose Møller cross section is limited only by the sampled angle
-range, dominate: the Monte Carlo rate SLocalRate grows with n_simulated instead of converging, and a
-few particles carry the loss weights. With δm = 0.5σδ, SLocalRate is 9.372×10¹², 2.687×10¹³ and
-1.395×10¹⁴ s⁻¹ for 2×10⁴, 2×10⁵ and 2×10⁶ samples, against 1.030×10¹⁰ s⁻¹ from Piwinski's formula.
-With δm = 31.25σδ it is within 1.748% of Piwinski's rate.
+touschek_scatter samples the incoming beam out to distribution_cutoff (3 by default) times the
+rms energy spread σδ and counts every outgoing particle beyond the momentum aperture δm,
+including particles that were already beyond it. When δm lies inside the sampled spread, nearly
+forward collisions of those particles, whose Møller cross section is limited only by the sampled
+angle range, dominate: the Monte Carlo rate SLocalRate grows with n_simulated instead of
+converging, and a few particles carry the loss weights. With δm = 0.5σδ, SLocalRate is
+9.372×10¹², 2.687×10¹³ and 1.395×10¹⁴ s⁻¹ for 2×10⁴, 2×10⁵ and 2×10⁶ samples, against 1.030×10¹⁰
+s⁻¹ from Piwinski's formula. With δm = 31.25σδ and 2×10⁶ samples, the rate is 1.748% below
+Piwinski's.
 
 The script runs touschek_scatter at 2 GeV/c with 0.5 nC on a ring made of a linear one-turn map (βx
 = 12 m, βy = 6 m, no dispersion) with 2×10⁴, 2×10⁵ and 2×10⁶ samples, for a momentum aperture of

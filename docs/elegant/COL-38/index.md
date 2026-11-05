@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [reset, csbend.c:4616–4619](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4616-L4619)<br>[declaration, csbend.c:3921](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3921)<br>[wavelength, csbend.c:3953–3955](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3953-L3955)<br>[hand-off, csbend.c:4007–4009](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4007-L4009)<br>[index_min_max, findMinMax.c:116–123](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/findMinMax.c#L116-L123)<br>[wavelength mode, csbend.c:4381–4383](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4381-L4383)<br>[radiation angle, csbend.c:4389–4392](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4389-L4392)<br>[radiation-only factor, csbend.c:4493–4495](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4493-L4495)<br>[WAVELENGTH_MODE, track_data.c:2700](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2700)<br>[CSRDRIFT manual, csrdrift.tex:62–65](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csrdrift.tex#L62-L65) |
 
-With SPREAD=1 and WAVELENGTH_MODE="peak-to-peak", CSRDRIFT's beam-spreading model takes its wavelength from two wake indices that are never set: the extremum search runs on the wake array before the bend hands it over and returns without writing them. For a 0.1 pC, 35 μm rms bunch after a 0.6 m, 0.3 rad bend, the radiation-only spread formula with the 0.1791 mm peak-to-peak wavelength gives an attenuation factor of 0.003415 for a 0.4 m drift, but the kick is applied unattenuated (factor 1), and Valgrind reports the use of uninitialized values in the drift. The default sigmaz mode agrees with the formula within 1.0×10⁻⁸ relative.
+With SPREAD=1 and WAVELENGTH_MODE="peak-to-peak", CSRDRIFT's beam-spreading model takes its wavelength from two wake indices that are never set: the extremum search runs on the wake array before the bend hands it over and returns without writing them. For a 0.1 pC, 35 μm rms bunch after a 0.6 m, 0.3 rad bend, the radiation-only spread formula with the 0.1791 mm peak-to-peak wavelength gives an attenuation factor of 0.003415 for a 0.4 m drift, but the kick is applied unattenuated (factor 1), and Valgrind reports the use of uninitialized values in the drift. The default sigmaz mode differs from the formula by about 1.020×10⁻⁸ relative.
 
 ??? example "Reproducer: COL-38.py"
 
@@ -24,7 +24,13 @@ With SPREAD=1 and WAVELENGTH_MODE="peak-to-peak", CSRDRIFT's beam-spreading mode
     ```python
     """COL-38: CSRDRIFT spread mode with WAVELENGTH_MODE="peak-to-peak" uses an uninitialized wavelength
 
-    With SPREAD=1 and WAVELENGTH_MODE="peak-to-peak", CSRDRIFT's beam-spreading model takes its wavelength from two wake indices that are never set: the extremum search runs on the wake array before the bend hands it over and returns without writing them. For a 0.1 pC, 35 μm rms bunch after a 0.6 m, 0.3 rad bend, the radiation-only spread formula with the 0.1791 mm peak-to-peak wavelength gives an attenuation factor of 0.003415 for a 0.4 m drift, but the kick is applied unattenuated (factor 1), and Valgrind reports the use of uninitialized values in the drift. The default sigmaz mode agrees with the formula within 1.0×10⁻⁸ relative.
+    With SPREAD=1 and WAVELENGTH_MODE="peak-to-peak", CSRDRIFT's beam-spreading model takes its
+    wavelength from two wake indices that are never set: the extremum search runs on the wake array
+    before the bend hands it over and returns without writing them. For a 0.1 pC, 35 μm rms bunch
+    after a 0.6 m, 0.3 rad bend, the radiation-only spread formula with the 0.1791 mm peak-to-peak
+    wavelength gives an attenuation factor of 0.003415 for a 0.4 m drift, but the kick is applied
+    unattenuated (factor 1), and Valgrind reports the use of uninitialized values in the drift. The
+    default sigmaz mode differs from the formula by about 1.020×10⁻⁸ relative.
 
     The script tracks 40001 electrons (Gaussian quantiles, σ_ct = 35 μm, p = 4000 mₑc, 0.1 pC, x
     spread over ±30 μm) through a one-slice 0.6 m, 0.3 rad CSRCSBEND (400 bins, STEADY_STATE=1) and a
@@ -280,7 +286,7 @@ With SPREAD=1 and WAVELENGTH_MODE="peak-to-peak", CSRDRIFT's beam-spreading mode
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -369,11 +375,14 @@ With SPREAD=1 and WAVELENGTH_MODE="peak-to-peak", CSRDRIFT's beam-spreading mode
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -392,7 +401,7 @@ With SPREAD=1 and WAVELENGTH_MODE="peak-to-peak", CSRDRIFT's beam-spreading mode
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

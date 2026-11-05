@@ -1,12 +1,12 @@
 """TRK-33: KQUAD and KSEXT steering kicks radiate nothing horizontally and four times too much vertically
 
-A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes the radiating field
-after subtracting the horizontal kick and doubling the vertical one. For a 0.8 m magnet with zero
-main strength and a 1 mrad kick at 3.066 GeV, the classical radiation integral along the uniform
-steering field gives a fractional energy loss of 5.072×10⁻¹⁰ in either plane; HKICK gives zero and
-VKICK 2.029×10⁻⁹, four times too much. The moments_output quantum excitation of the KQUAD is zero
-for HKICK and eight times the Sands diffusion integral for VKICK. A KQUAD without steering radiates
-correctly.
+A KQUAD or KSEXT with SYNCH_RAD=1 and a steering kick HKICK or VKICK computes the radiating
+field after subtracting the horizontal kick and doubling the vertical one. For a 0.8 m magnet
+with zero main strength and a 1 mrad kick at 3.066 GeV, the classical radiation integral along
+the uniform steering field gives a fractional energy loss of 5.072×10⁻¹⁰ in either plane; HKICK
+gives zero and VKICK 2.029×10⁻⁹, four times too much. The moments_output quantum excitation of
+the KQUAD is zero for HKICK and eight times the Sands diffusion integral for VKICK. This
+steering-field error is absent when HKICK and VKICK are both zero.
 
 The script tracks an on-axis electron through a KQUAD and a KSEXT of zero main strength with
 SYNCH_RAD=1 and a horizontal (HKICK) or vertical (VKICK) steering kick, and compares the momentum
@@ -91,7 +91,7 @@ def compare(label, observed, expected):
 
 
 # A steering kick k over length L is a uniform field of curvature h = k/L in the Cartesian frame; on
-# the unperturbed orbit the slope grows linearly to k, so the path is L*asin(k)/k. The classical loss
+# the unperturbed orbit the normalized transverse momentum grows linearly to k, so the path is L*asin(k)/k. The classical loss
 # is (2/3) r_e gamma^3 h^2 * path, and the quantum diffusion of delta is
 # (55/(24 sqrt 3)) r_e lambda_c gamma^5 h^3 * path (Sands); gamma = P0 to 1.4e-8 here.
 path = LENGTH * np.arcsin(KICK) / KICK

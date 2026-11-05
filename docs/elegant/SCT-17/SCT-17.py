@@ -1,19 +1,19 @@
 """SCT-17: ibsEmittance stops the equilibrium emittance at ε₀/(1+κ) when τx > τy and reports convergence
 
 ibsEmittance, run for equilibrium emittances at coupling ratio κ = εy/εx, never returns a
-horizontal emittance below ε₀/(1+κ), with ε₀ the uncoupled natural emittance. When the horizontal
-damping time τx exceeds the vertical τy (horizontal damping partition Jx < 1) and IBS is weak, the
-radiation–IBS balance the program solves has its root below that bound, at ε₀/(1+κτx/τy) without
-IBS; the program returns the bound and reports "Emittance converged". For a 3 GeV, 55.20 m ring
-with Jx = 0.8029 and κ = 0.1, the returned emittance is 2.232% above the root at 10⁻¹² nC and at
-1 nC, and the balance misses zero by 2.232% of its excitation term. Rings with τx ≤ τy are not
-affected.
+horizontal emittance below ε₀/(1+κ), with ε₀ the uncoupled natural emittance. When the
+horizontal damping time τx exceeds the vertical τy (horizontal damping partition Jx < 1) and IBS
+is weak, the radiation–IBS balance the program solves has its root below that bound, at
+ε₀/(1+κτx/τy) without IBS; the program returns the bound and reports "Emittance converged". For
+a 3 GeV, 288.0 m ring with Jx = 0.9634, κ = 0.1 and 1 nC, it returns 48.96 nm versus 48.79 nm,
+0.3408% high; the transverse balance misses zero by 0.3408% of its excitation term. This
+lower-bound obstruction is absent for weak IBS when τx ≤ τy.
 
-The script builds a 3 GeV ring of 12 FODO cells with sector bends, writes its Twiss and radiation
-integrals with elegant, and runs ibsEmittance for the equilibrium at κ = 0.1, at 10⁻¹² nC (no IBS)
+The script builds a 3 GeV periodic model of 12 FODO cells, with 55.2 m total length and sector
+bends totaling π, writes its Twiss and radiation integrals with elegant, and runs ibsEmittance for the equilibrium at κ = 0.1, at 10⁻¹² nC (no IBS)
 and at 1 nC. It compares the returned εx with the root of the program's own radiation balance,
 ε₀/(1+κτx/τy), and evaluates that balance, IBS terms included, at the returned emittances. The
-control is the same ring with a defocusing gradient in the bends, which makes τx < τy; there the
+control is the same model with a defocusing gradient in the bends, which makes τx < τy; there the
 program returns the root.
 """
 

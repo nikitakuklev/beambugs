@@ -1,12 +1,12 @@
-"""COL-24: Single-bunch TRWAKE fixed bins retain a zero time reference
+"""COL-24: TRWAKE fixed bins use an absent or rank-local time origin
 
-With a fixed TRWAKE bin count (N_BINS > 0) and a single bunch, Elegant anchors the grid to time zero
-rather than the bunch and omits particles outside it as both wake sources and recipients. A
-stationary wake depends on arrival-time differences, and automatic-bin controls recover the full
-causal pair-sum kicks. For a 0.6000 nC electron bunch represented by 18 macroparticles spanning
-52.00 ps, 96 bins of 2.000 ps give a trailing horizontal slope kick of 1.302×10⁻⁵ at zero shift but
-zero after +0.7000 ns or a 0.2100 m drift, with an unbinned-particle warning. A +80.00 ps shift
-leaves only 12 particles in the grid.
+With a fixed TRWAKE bin count, a single bunch uses a grid centered on time zero, while multiple
+bunches under MPI use separate grids centered on each worker's local mean. Particles can fall
+outside the grid, or summed bins can represent different physical times; a stationary wake
+instead depends on particle time differences within each bunch. A 0.6000 nC bunch shifted by
+0.7000 ns receives zero trailing horizontal kick instead of 1.302×10⁻⁵ rad. In a two-bunch MPI
+case with unequal worker means, a trailing kick is 60.00% too small. Causal pair sums and
+automatic-bin controls establish the expected kicks.
 
 The script tracks the same bunch through TRWAKE with a damped-sine wake after different arrival-time
 shifts and a drift, with 96 fixed bins, 1024 fixed bins and automatic bins, and with the bunch and

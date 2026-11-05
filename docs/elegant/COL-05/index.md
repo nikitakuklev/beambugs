@@ -48,7 +48,7 @@ With `insert_sceffects`, `nonlinear=1` and `uniform_distribution=1`, SCMULT's un
     TIMES = circumference(LENGTH) / (BETA * C) * levels(8, uniform=True) / np.sqrt(12)
     RTOL = 1e-6  # the elliptical nonlinear field is accurate to 8e-8, see the Gaussian field entry
 
-    defect = False
+    defect_cases = []
     for mode in modes():
         for ratio in (1.0, 2.0):
             particles_in = beam(SIGMA, ratio * SIGMA, TIMES)
@@ -68,11 +68,11 @@ With `insert_sceffects`, `nonlinear=1` and `uniform_distribution=1`, SCMULT's un
                     # The defect is the extra factor 1/sqrt(12): the kicks must match the expectation
                     # divided by sqrt(12) and differ from the expectation itself.
                     scaled = np.allclose(observed, expected / np.sqrt(12), rtol=RTOL, atol=1e-18)
-                    defect |= bad and scaled
+                    defect_cases.append(bad and scaled)
                 elif bad:
                     sys.exit("The linear control disagrees with the physical kick.")
     print(f"comparison: rtol={RTOL:g}")
-    verdict(defect)
+    verdict(bool(defect_cases) and all(defect_cases))
 
     ```
 
@@ -84,7 +84,7 @@ With `insert_sceffects`, `nonlinear=1` and `uniform_distribution=1`, SCMULT's un
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -173,11 +173,14 @@ With `insert_sceffects`, `nonlinear=1` and `uniform_distribution=1`, SCMULT's un
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -196,7 +199,7 @@ With `insert_sceffects`, `nonlinear=1` and `uniform_distribution=1`, SCMULT's un
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

@@ -31,9 +31,8 @@ TEMPLATES = ROOT / "tools" / "templates"
 
 PUBLISHED_LEVELS = {"Reproduced, independently rechecked", "Probe-pinned"}
 GITHUB_REF = re.compile(r"https://github\.com/([\w.-]+/[\w.-]+)/(issues|pull)/(\d+)")
-BLOB_LINK = re.compile(
-    r"\[([^\]]+)\]\((https://github\.com/[\w.-]+/[\w.-]+/blob/[^)\s]+)\)"
-)
+BLOB_URL = re.compile(r"https://github\.com/[\w.-]+/[\w.-]+/blob/[^)\s]+")
+BLOB_LINK = re.compile(rf"\[((?:`[^`]*`|[^\]`])+)\]\(({BLOB_URL.pattern})\)")
 ENTRY_HEADING = re.compile(r"^## ([A-Z]+-\d+) — (.+)$", re.MULTILINE)
 FIELD = re.compile(r"^\*\*([A-Z][^*\n]*?)\.\*\*[ \t]*", re.MULTILINE)
 YAML_BLOCK = re.compile(r"```yaml\n(.*?)\n```", re.DOTALL)
@@ -181,6 +180,15 @@ def parse_tags(entry_id: str, field: str | None) -> list[str]:
             f"{entry_id}: unknown tags {sorted(unknown)}; allowed {sorted(TAGS)}"
         )
     return tags
+
+
+def source_links(entry_id: str, field: str) -> list[dict]:
+    links = list(BLOB_LINK.finditer(field))
+    captured = {link.span(2) for link in links}
+    missing = [url.group() for url in BLOB_URL.finditer(field) if url.span() not in captured]
+    if missing:
+        raise LedgerError(f"{entry_id}: unparsed source permalinks: {missing}")
+    return [{"label": link.group(1), "url": link.group(2)} for link in links]
 
 
 def parse_provenance(entry_id: str, field: str | None) -> dict:
@@ -395,12 +403,9 @@ def parse_ledger(code: str, config: dict) -> list[Entry]:
                         provenance.get("upstream", []),
                     ),
                     tags=parse_tags(entry_id, fields.get("Tags")),
-                    locations=[
-                        {"label": label, "url": url}
-                        for label, url in BLOB_LINK.findall(
-                            fields.get("Repository and location", "")
-                        )
-                    ],
+                    locations=source_links(
+                        entry_id, fields.get("Repository and location", "")
+                    ),
                     repro=repro_files(ledger, entry_id),
                     brief=brief,
                 )

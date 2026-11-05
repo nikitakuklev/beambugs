@@ -66,6 +66,7 @@ thread (`JULIA_NUM_THREADS=1`).
 | [TRK-21](TRK-21/index.md) | Stored zero dipole strength corrupts coordinates at bend faces | Tracking | P3 | Wrong physics | 2026-10-29 (`0bf3585`, main) |  |  |
 | [COL-12](COL-12/index.md) | Sextupole spin fringes use twice the longitudinal field | Collective effects and spin | P3 | Wrong physics | 2026-10-29 (`0bf3585`, main) |  |  |
 | [COL-14](COL-14/index.md) | Sagan RF spin impulses omit the superimposed solenoid vector potential | Collective effects and spin | P3 | Wrong physics | 2026-10-29 (`0bf3585`, main) |  |  |
+| [COL-16](COL-16/index.md) | IBS momentum impulses omit the speed-dependent longitudinal conversion | Collective effects and spin | P3 | Wrong physics | 2026-11-05 (`d8e45fd`) |  |  |
 | [TRK-16](TRK-16/index.md) | `sincu`/`sinhcu` use the two-term series for arguments up to 0.004 in magnitude in Float64 | Tracking | P3 | Silent wrong result | 2026-10-31 (`0bf3585`, main) |  |  |
 | [OPT-08](OPT-08/index.md) | Row 2 of the first table column reuses row 1's cache | Optics and maps | P3 | Silent wrong result | 2026-10-31 (`ae9423d`, main) |  |  |
 | [OPT-22](OPT-22/index.md) | `copy!` into a `VectorField` drops the spin part, so `log` never corrects its spin generator | Optics and maps | P3 | Silent wrong result | 2026-10-31 (`7e40539`, main) |  |  |

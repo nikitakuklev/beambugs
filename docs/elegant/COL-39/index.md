@@ -1,10 +1,10 @@
 ---
-title: "COL-39: Stupakov-model CSRDRIFT omits the first integration interval behind each particle"
+title: "COL-39: Stupakov-model CSRDRIFT trapezoid integration omits the first interval behind each particle"
 hide:
   - toc
 ---
 
-# COL-39 — Stupakov-model CSRDRIFT omits the first integration interval behind each particle
+# COL-39 — Stupakov-model CSRDRIFT trapezoid integration omits the first interval behind each particle
 
 | | |
 |---|---|
@@ -15,16 +15,21 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [Stupakov sum, csbend.c:5088–5112](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5088-L5112)<br>[CSRDRIFT manual, csrdrift.tex:21–27](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csrdrift.tex#L21-L27) |
 
-CSRDRIFT with USE_STUPAKOV=1 integrates the Stupakov–Emma post-bend wake by the trapezoid rule starting one bin behind each particle and never adds the interval from zero to one bin, where the integrand is finite. For a 35 μm rms Gaussian bunch after a 0.6 m, 0.3 rad bend with 400 bins, adaptive integration of the same formula gives a wake that the code misses by up to 7.085% of its peak 1 mm behind the bend, 5.306% at 10 mm and 2.348% at 100 mm. Adding back only that first interval reduces these errors to 0.1425%, 0.09961% and 0.05389%.
+CSRDRIFT with USE_STUPAKOV=1 and the upstream bend’s default TRAPAZOID_INTEGRATION=1 starts its trapezoid sum one bin behind each particle and omits the interval from zero to one bin. For a 35 μm rms Gaussian bunch after a 0.6 m, 0.3 rad bend with 400 bins, adaptive integration of the same formula gives a wake that the code misses by up to 7.085% of its peak 1 mm behind the bend, 5.306% at 10 mm and 2.348% at 100 mm. Restoring that interval reduces these errors to 0.1425%, 0.09961% and 0.05389%. The non-trapezoid path uses a right-endpoint sum instead.
 
 ??? example "Reproducer: COL-39.py"
 
     [Download COL-39.py](COL-39.py)
 
     ```python
-    """COL-39: Stupakov-model CSRDRIFT omits the first integration interval behind each particle
+    """COL-39: Stupakov-model CSRDRIFT trapezoid integration omits the first interval behind each particle
 
-    CSRDRIFT with USE_STUPAKOV=1 integrates the Stupakov–Emma post-bend wake by the trapezoid rule starting one bin behind each particle and never adds the interval from zero to one bin, where the integrand is finite. For a 35 μm rms Gaussian bunch after a 0.6 m, 0.3 rad bend with 400 bins, adaptive integration of the same formula gives a wake that the code misses by up to 7.085% of its peak 1 mm behind the bend, 5.306% at 10 mm and 2.348% at 100 mm. Adding back only that first interval reduces these errors to 0.1425%, 0.09961% and 0.05389%.
+    CSRDRIFT with USE_STUPAKOV=1 and the upstream bend’s default TRAPAZOID_INTEGRATION=1 starts its
+    trapezoid sum one bin behind each particle and omits the interval from zero to one bin. For a 35
+    μm rms Gaussian bunch after a 0.6 m, 0.3 rad bend with 400 bins, adaptive integration of the
+    same formula gives a wake that the code misses by up to 7.085% of its peak 1 mm behind the bend,
+    5.306% at 10 mm and 2.348% at 100 mm. Restoring that interval reduces these errors to 0.1425%,
+    0.09961% and 0.05389%. The non-trapezoid path uses a right-endpoint sum instead.
 
     The script tracks 240001 electrons (Gaussian quantiles, σ_ct = 35 μm, p = 4000 mₑc, 10⁻¹⁶ C so
     the beam does not change) through a one-slice 0.6 m, 0.3 rad CSRCSBEND (400 bins,
@@ -300,7 +305,7 @@ CSRDRIFT with USE_STUPAKOV=1 integrates the Stupakov–Emma post-bend wake by th
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -389,11 +394,14 @@ CSRDRIFT with USE_STUPAKOV=1 integrates the Stupakov–Emma post-bend wake by th
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -412,7 +420,7 @@ CSRDRIFT with USE_STUPAKOV=1 integrates the Stupakov–Emma post-bend wake by th
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

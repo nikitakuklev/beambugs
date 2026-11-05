@@ -1,12 +1,13 @@
 """TRK-43: Matrix-method RFCA tracking uses a different R12 from its own transfer matrix
 
-An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusing computes R12 for
-momentum growing linearly along the cavity, while its own transfer matrix takes a uniform gradient,
-under which energy grows linearly. Conserved transverse momentum then gives R12 = L p₀(arcosh γ₁ −
-arcosh γ₀)/(γ₁ − γ₀), with γ₀, γ₁ the entrance and exit Lorentz factors and p₀ the entrance βγ;
-1024-kick tracking approaches it within 1.568×10⁻⁶. For electrons entering a 0.7 m cavity that adds
-12 MeV at 1.5 MeV kinetic energy, tracking gives R12 = 0.2229 m instead of 0.2221 m, 0.3685% too
-large; the error is 0.03247% at 5 MeV and 7.003×10⁻⁶ at 20 MeV.
+An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusing computes R12
+for momentum growing linearly along the cavity, while its own transfer matrix takes a uniform
+gradient, under which energy grows linearly. Conserved transverse momentum then gives R12 = L
+p₀(arcosh γ₁ − arcosh γ₀)/(γ₁ − γ₀), with γ₀, γ₁ the entrance and exit Lorentz factors and p₀
+the entrance βγ; 1024-kick tracking has a relative difference of 1.568×10⁻⁶. For electrons
+entering a 0.7 m cavity that adds 12 MeV at 1.5 MeV kinetic energy, tracking gives R12 = 0.2229
+m instead of 0.2221 m, 0.3685% too large; the error is 0.03247% at 5 MeV and 7.003×10⁻⁶ at 20
+MeV.
 
 The script sends electrons of 1.5, 5 and 20 MeV kinetic energy through a 0.7 m RFCA that adds 12 MeV
 in a static field (FREQ=0) without edge or body focusing, and measures R12 from slope pairs in

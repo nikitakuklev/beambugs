@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [`run_closed_orbit`, src/closed_orbit.c:302–313](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/closed_orbit.c#L302-L313)<br>[src/elegant.c:1355](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L1355)<br>[src/elegant.c:1506](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L1506)<br>[the namelist defaults, doc/elegant.tex:1728–1729](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L1728-L1729)<br>[`start_from_centroid` forces the computation to start from the beam centroids, `start_from_dp_centroid` uses the momentum centroid and can allow computing the closed orbit for an off-momentum beam, doc/elegant.tex:1754–1764](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L1754-L1764) |
 
-Elegant's `closed_orbit` command documents that `start_from_centroid` (default 1) starts the search from the beam centroid and that `start_from_dp_centroid` uses the beam's momentum centroid, so that the closed orbit of an off-momentum beam can be computed; the code sets both flags to zero before testing them, so every closed orbit is computed on momentum. For a 2.4 GeV, 70 m ring of 20 FODO cells and a one-particle beam at x = 0.3 mm, x′ = 0.1 mrad and δ = 0.001, the closed orbit found by tracking at δ = 0.001 starts at x = 2.458 mm, x′ = 0.4474 mrad. With either flag set, Elegant returns δ = 0 and x = 2.799 nm, the on-momentum orbit.
+With `closed_orbit` in its default `fixed_length=0` mode, `start_from_centroid` and `start_from_dp_centroid` are ignored, so an off-momentum beam gets the on-momentum orbit. The manual promises to use the beam's momentum centroid for either option; `start_from_centroid` also supplies the transverse starting point. For a 2.4 GeV, 70.00 m ring and beam momentum offset δ = 0.001, independent tracking gives x = 2.458 mm and x′ = 0.4474 mrad at the orbit start. Either option instead returns δ = 0 and x = 2.799 nm. Fixed-length modes can vary δ, although they also ignore these centroid flags.
 
 ??? example "Reproducer: OPT-24.py"
 
@@ -24,13 +24,13 @@ Elegant's `closed_orbit` command documents that `start_from_centroid` (default 1
     ```python
     """OPT-24: closed_orbit ignores start_from_centroid and start_from_dp_centroid
 
-    Elegant's `closed_orbit` command documents that `start_from_centroid` (default 1) starts the search
-    from the beam centroid and that `start_from_dp_centroid` uses the beam's momentum centroid, so that
-    the closed orbit of an off-momentum beam can be computed; the code sets both flags to zero before
-    testing them, so every closed orbit is computed on momentum. For a 2.4 GeV, 70 m ring of 20 FODO
-    cells and a one-particle beam at x = 0.3 mm, x′ = 0.1 mrad and δ = 0.001, the closed orbit found by
-    tracking at δ = 0.001 starts at x = 2.458 mm, x′ = 0.4474 mrad. With either flag set, Elegant
-    returns δ = 0 and x = 2.799 nm, the on-momentum orbit.
+    With `closed_orbit` in its default `fixed_length=0` mode, `start_from_centroid` and
+    `start_from_dp_centroid` are ignored, so an off-momentum beam gets the on-momentum orbit. The
+    manual promises to use the beam's momentum centroid for either option; `start_from_centroid`
+    also supplies the transverse starting point. For a 2.4 GeV, 70.00 m ring and beam momentum
+    offset δ = 0.001, independent tracking gives x = 2.458 mm and x′ = 0.4474 mrad at the orbit
+    start. Either option instead returns δ = 0 and x = 2.799 nm. Fixed-length modes can vary δ,
+    although they also ignore these centroid flags.
 
     The script runs serial Elegant `closed_orbit` before tracking a one-particle beam with x = 0.3 mm,
     x′ = 0.1 mrad and δ = 0.001 through a 2.4 GeV, 70 m ring of 20 FODO cells with CSBENDs, with the
@@ -151,7 +151,7 @@ Elegant's `closed_orbit` command documents that `start_from_centroid` (default 1
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -240,11 +240,14 @@ Elegant's `closed_orbit` command documents that `start_from_centroid` (default 1
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -263,7 +266,7 @@ Elegant's `closed_orbit` command documents that `start_from_centroid` (default 1
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

@@ -1375,6 +1375,128 @@
  },
  {
   "code": "xsuite",
+  "id": "TRK-18",
+  "title": "Radiation tracking omits the field wedges of angled dipole faces",
+  "area": "Tracking",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "With synchrotron radiation, tracking through a bend with angled hard-edge faces, including a rectangular `RBend`, radiates only in the curved body and omits the field wedge at each face, whose length varies with horizontal position x. In a rectangular magnet a displaced ray slides along parallel faces, so its energy loss U cannot depend on x; for a 1.5 m, π/32 rad bend at 3 GeV/c, U⁻¹dU/dx is 0.06550 m⁻¹ instead of zero, and quantum emission shifts likewise. In a 132 m, 3 GeV electron ring of rectangular bends with a 5 MV cavity, the tracked horizontal damping partition number is 0.7879 instead of 0.9906 from an independent radiation integration, and the equilibrium emittance is 25.63% too large. Perpendicular faces are unaffected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`WITH_RADIATION`, track_magnet.h:96–182",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet.h#L96-L182"
+   },
+   {
+    "label": "`magnet_radiation`, track_magnet_radiation.h:233–267",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_radiation.h#L233-L267"
+   },
+   {
+    "label": "entry",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet.h#L406-L449"
+   },
+   {
+    "label": "exit",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet.h#L561-L592"
+   },
+   {
+    "label": "`track_magnet_edge_particles`",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_edge.h#L79-L180"
+   },
+   {
+    "label": "`Wedge_single_particle`, track_wedge.h:13–58",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_wedge.h#L13-L58"
+   },
+   {
+    "label": "track_magnet.h:278–288",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet.h#L278-L288"
+   },
+   {
+    "label": "`Bend` entry slice, thin_slice_bend_entry.h:41–68",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/thin_slice_bend_entry.h#L41-L68"
+   },
+   {
+    "label": "`_add_radiation_analysis_to_twiss_result`, twiss_postprocess_and_complem_results.py:168–200",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_postprocess_and_complem_results.py#L168-L200"
+   },
+   {
+    "label": "`configure_radiation`, line.py:5019–5024",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/line.py#L5019-L5024"
+   },
+   {
+    "label": "bend edge parameters, _common.py:116–124",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/_common.py#L116-L124"
+   },
+   {
+    "label": "`RBend`, rbend.py:30–59",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/rbend.py#L30-L59"
+   },
+   {
+    "label": "physics guide, xtrack.tex:2682–2686",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L2682-L2686"
+   },
+   {
+    "label": "emitted power, xtrack.tex:5882–5885",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L5882-L5885"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed packages, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "xtrack 0.118.2",
+    "commit": "ad5e808cdc5b"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-18.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/TRK-18/"
+ },
+ {
+  "code": "xsuite",
   "id": "OPT-01",
   "title": "Native Taylor maps silently omit RFMultipole and CrabCavity kicks",
   "area": "Optics and matching",
@@ -2577,6 +2699,201 @@
    "numpy"
   ],
   "page": "xsuite/OPT-15/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-16",
+  "title": "Radiation integrals omit the dipole-face term of I₄",
+  "area": "Optics and matching",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "With `radiation_integrals=True`, Twiss computes the fourth radiation integral I₄ of a bend with angled hard-edge faces, including a rectangular `RBend`, from its body alone, omitting the face term −h²(D₁ tan e₁ + D₂ tan e₂); h is the curvature, D₁, D₂ the horizontal dispersion and e₁, e₂ the angles at the two faces. The exact path length ℓ between the inclined field boundaries of a ray with momentum offset δ gives I₄ = h² dℓ/dδ, which contains this term. In a 132 m electron ring of rectangular bends, I₄ is 0.1157 m⁻¹ instead of −8.403 × 10⁻⁴ m⁻¹, so the horizontal damping partition number is 0.8030 instead of 1.001 and the integral-based equilibrium emittance is 24.71% too large. Perpendicular faces are unaffected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`_compute_radiation_integrals`, radiation.py:399–401",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L399-L401"
+   },
+   {
+    "label": "radiation.py:415–417",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L415-L417"
+   },
+   {
+    "label": "lines 428–429",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L428-L429"
+   },
+   {
+    "label": "Lines 435–453",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L435-L453"
+   },
+   {
+    "label": "`twiss` docstring, twiss.py:186–187 and 363–380",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss.py#L363-L380"
+   },
+   {
+    "label": "physics guide, xtrack.tex:6100–6105",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L6100-L6105"
+   },
+   {
+    "label": "line 6167",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L6167"
+   },
+   {
+    "label": "`Magnet` edge parameters, magnet.py:110–126",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/magnet.py#L110-L126"
+   },
+   {
+    "label": "track_dipole_edge_linear.h:17–36",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_dipole_edge_linear.h#L17-L36"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "xtrack 0.118.2",
+    "commit": "ad5e808cdc5b"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-16.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "xsuite/OPT-16/"
+ },
+ {
+  "code": "xsuite",
+  "id": "OPT-17",
+  "title": "Radiation integrals omit sextupole feed-down from the orbit gradient",
+  "area": "Optics and matching",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "With `radiation_integrals=True`, a sextupole traversed away from its magnetic axis contributes zero to the fourth radiation integral I₄ because the calculation uses its nominal quadrupole coefficient instead of the field gradient at the orbit. The gradient must include k₂(x − a), where k₂ is the sextupole strength, x the horizontal orbit and a the magnetic-axis displacement. A 0.2000 m sextupole with k₂ = 100.0 m⁻³, a = 5.000 mm and entrance dispersion 0.2000 m returns zero instead of −5.042 × 10⁻⁵ m⁻¹, as independent orbit and dispersion integration establishes. In a separate 132.0 m periodic ring, the missing sextupole term makes the horizontal damping partition 0.005686% too large.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`_compute_radiation_integrals`, radiation.py:398–417",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L398-L417"
+   },
+   {
+    "label": "`_add_strengths_to_twiss_res`, strengths.py:31–37",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/strengths.py#L31-L37"
+   },
+   {
+    "label": "radiation.py:450–453",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L450-L453"
+   },
+   {
+    "label": "xtrack.tex:6100–6107",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L6100-L6107"
+   },
+   {
+    "label": "xtrack.tex:6259–6283",
+    "url": "https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L6259-L6283"
+   },
+   {
+    "label": "`Sextupole.k2`, sextupole.py:32–35",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/sextupole.py#L32-L35"
+   },
+   {
+    "label": "`shift_x`, _common.py:151–155",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/_common.py#L151-L155"
+   },
+   {
+    "label": "`Magnet`, magnet.py:37–42",
+    "url": "https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/magnet.py#L37-L42"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-05",
+     "code": {
+      "ref": "xtrack 0.118.2",
+      "commit": "ad5e808cdc5b",
+      "build": "installed wheels, prebuilt kernels (compilation forbidden), CPU, serial"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-05",
+   "code": {
+    "ref": "xtrack 0.118.2",
+    "commit": "ad5e808cdc5b"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-17.py",
+   "_prebuilt.py",
+   "_common.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "xsuite/OPT-17/"
  },
  {
   "code": "xsuite",

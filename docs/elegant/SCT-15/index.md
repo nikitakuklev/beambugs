@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [density, matter.c:89–92](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L89-L92)<br>[width, matter.c:141–144](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L141-L144)<br>[constants, matter.c:19–22](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L19-L22)<br>[radiationLength, matter.c:315–349](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L315-L349)<br>[rates, matter.c:121–128](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L121-L128)<br>[MATTER parameters, track_data.c:2145–2149](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2145-L2149)<br>[forced multiple scattering, matter.tex:49–67](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/matter.tex#L49-L67) |
 
-With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER forms the gas mass density as the ideal-gas atom density times A times the proton mass m_p, although A is in atomic mass units u. The radiation length must follow from the atom density alone, so ENERGY_DECAY and bremsstrahlung rates are larger by m_p/u = 1.007293, and the single-scattering and recoil rates, which divide by a rounded u, by 1.007316; with RHO given directly, these two carry only the rounding, 1.000023. For nitrogen at 100 Pa and 300 K over 10 m, the fractional energy loss is 2.978×10⁻⁵ instead of 2.956×10⁻⁵. Forced multiple scattering converts RHO to atoms with the same m_p, so its angles are 0.3626% too small; pressure input gives correct angles.
+With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER computes gas density using the proton mass m_p instead of the atomic mass unit u. ENERGY_DECAY and bremsstrahlung rates are consequently 0.7293% too large, and single-scattering and recoil rates, which also use a rounded u, are 0.7316% too large; with RHO supplied directly, the latter rates are 0.002344% too large. For nitrogen at 100 Pa and 300 K over 10 m, the fractional energy loss is 2.978×10⁻⁵ instead of 2.956×10⁻⁵, as an independent ideal-gas atom-density calculation shows. Forced multiple scattering converts RHO to atom density with m_p, making its angles 0.3626% too small; pressure input gives correct angles.
 
 ??? example "Reproducer: SCT-15.py"
 
@@ -25,14 +25,14 @@ With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER forms the gas mass density a
     ```python
     """SCT-15: MATTER converts between mass and atom density with the proton mass
 
-    With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER forms the gas mass density as the ideal-gas atom
-    density times A times the proton mass m_p, although A is in atomic mass units u. The radiation
-    length must follow from the atom density alone, so ENERGY_DECAY and bremsstrahlung rates are larger
-    by m_p/u = 1.007293, and the single-scattering and recoil rates, which divide by a rounded u, by
-    1.007316; with RHO given directly, these two carry only the rounding, 1.000023. For nitrogen at 100
-    Pa and 300 K over 10 m, the fractional energy loss is 2.978×10⁻⁵ instead of 2.956×10⁻⁵. Forced
-    multiple scattering converts RHO to atoms with the same m_p, so its angles are 0.3626% too small;
-    pressure input gives correct angles.
+    With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER computes gas density using the proton mass
+    m_p instead of the atomic mass unit u. ENERGY_DECAY and bremsstrahlung rates are consequently
+    0.7293% too large, and single-scattering and recoil rates, which also use a rounded u, are
+    0.7316% too large; with RHO supplied directly, the latter rates are 0.002344% too large. For
+    nitrogen at 100 Pa and 300 K over 10 m, the fractional energy loss is 2.978×10⁻⁵ instead of
+    2.956×10⁻⁵, as an independent ideal-gas atom-density calculation shows. Forced multiple
+    scattering converts RHO to atom density with m_p, making its angles 0.3626% too small; pressure
+    input gives correct angles.
 
     The script tracks 200 on-axis electrons at 1000 mₑc through 10 m of nitrogen with ENERGY_DECAY=1
     and FORCE_MCS=1, describing the same gas three ways with one seed: by PRESSURE, TEMPERATURE and
@@ -105,7 +105,7 @@ With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER forms the gas mass density a
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -194,11 +194,14 @@ With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER forms the gas mass density a
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -217,7 +220,7 @@ With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER forms the gas mass density a
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

@@ -1,13 +1,12 @@
 """OPT-04: Initial moments omit shared-dispersion covariance terms
 
 With moments_output matched=0, equilibrium=0, explicit Twiss, dispersion and longitudinal inputs
-produce a covariance matrix Σ for (x, x′, y, y′, s, δ) missing eight terms, where s is longitudinal
-position and δ is relative momentum offset. For independent betatron motion, dispersion η requires
-cross-plane covariances ηᵢηⱼΣ₆₆ and transverse–longitudinal covariances ηᵢΣ₆₅. For longitudinal
-emittance ε_z = 1 μm, β_z = 4 m, α_z = 0.2, η_x = 0.1 m and η_y = −0.03 m, Σ₁₃ must be −7.800×10⁻¹⁰
-m² and Σ₁₅ −2.000×10⁻⁸ m², but both are zero. Propagated covariance matrices inherit the error.
-Nonzero momentum spread with dispersion in both planes, or dispersion with longitudinal
-position–momentum correlation, triggers the error.
+produce a covariance matrix Σ for (x, x′, y, y′, s, δ) missing eight terms, where s is
+longitudinal position and δ is relative momentum offset. For independent betatron motion,
+dispersion η requires cross-plane covariances ηᵢηⱼΣ₆₆ and transverse–longitudinal covariances
+ηᵢΣ₆₅. For longitudinal emittance ε_z = 1 μm, β_z = 4 m, α_z = 0.2, η_x = 0.1 m and η_y = −0.03
+m, Σ₁₃ must be −7.800×10⁻¹⁰ m² and Σ₁₅ −2.000×10⁻⁸ m², but both are zero. Propagated covariance
+matrices inherit the error.
 
 The script starts a tilted quadrupole and a drift from those parameters in serial Elegant (and with
 `--mpi` in 3-rank Pelegant), and compares the written covariance matrix at the start and after each

@@ -1,11 +1,12 @@
 """TRK-41: Standing-wave RFCA kick tracking fiducializes at the first kick, so PHASE=90 is not the crest
 
-With STANDING_WAVE=1, N_KICKS > 1 and automatic phasing, RFCA takes its phase reference at the first
-of the N integration kicks, so PHASE=90, which the manual names the crest, is not the crest. For a
-half-wavelength gap (0.3747 m at 400 MHz, VOLT = 0.8 MV) and 5.110 GeV electrons, a phase scan and
-the closed-form sum of the same kicks put the crest at PHASE = 90°/N, with gain 512.6 keV for N = 8.
-PHASE=90 instead gives VOLT/N: 100.0 keV for N = 8 and 12.50 keV for N = 64. One kick, the matrix
-method (N_KICKS = 0) and the travelling-wave model keep the crest at PHASE=90.
+With STANDING_WAVE=1, BODY_FOCUS_MODEL=none, N_KICKS > 1 and automatic phasing, RFCA references
+the first integration kick, so the documented PHASE=90 setting misses the crest. For a
+half-wavelength gap (0.3747 m at 400 MHz, VOLT = 0.8000 MV) and 5.110 GeV electrons, the crest
+is approximately 90°/N, where N is N_KICKS, with gain 512.6 keV for N = 8. PHASE=90 instead
+gives approximately VOLT/N: 100.0 keV for N = 8 and 12.50 keV for N = 64. These formulas are
+exact in the speed-of-light limit. The one-kick, matrix and travelling-wave controls keep the
+crest at 90° to the tested ultrarelativistic tolerance.
 
 The script sends four identical 5.110 GeV electrons through a half-wavelength RFCA gap of 0.8 MV at
 400 MHz with STANDING_WAVE=1 and automatic phasing, for N_KICKS of 1, 2, 8 and 64, at PHASE = 90,
@@ -23,7 +24,7 @@ from _elegant import modes, particles, run, verdict
 C, ME_MEV = 299792458.0, 0.51099906
 FREQ, VOLT = 400e6, 800000.0  # Hz, V
 LENGTH = C / (2 * FREQ)  # half a wavelength: the gap is crossed in half an RF period at beta = 1
-P0 = 10000.0  # m_e c; beta = 1 - 5e-9 keeps the kick spacing at L/(N c) within 2e-9 relative
+P0 = 10000.0  # m_e c; beta = 1 - 5e-9 gives a relative fixed-speed flight-time correction of about 5e-9
 COUNT = 4  # identical particles; Pelegant needs at least as many particles as ranks
 # (label, STANDING_WAVE, N_KICKS); the last two are controls whose crest is PHASE=90
 CASES = [

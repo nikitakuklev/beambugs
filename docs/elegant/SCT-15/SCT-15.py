@@ -1,13 +1,13 @@
 """SCT-15: MATTER converts between mass and atom density with the proton mass
 
-With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER forms the gas mass density as the ideal-gas atom
-density times A times the proton mass m_p, although A is in atomic mass units u. The radiation
-length must follow from the atom density alone, so ENERGY_DECAY and bremsstrahlung rates are larger
-by m_p/u = 1.007293, and the single-scattering and recoil rates, which divide by a rounded u, by
-1.007316; with RHO given directly, these two carry only the rounding, 1.000023. For nitrogen at 100
-Pa and 300 K over 10 m, the fractional energy loss is 2.978×10⁻⁵ instead of 2.956×10⁻⁵. Forced
-multiple scattering converts RHO to atoms with the same m_p, so its angles are 0.3626% too small;
-pressure input gives correct angles.
+With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER computes gas density using the proton mass
+m_p instead of the atomic mass unit u. ENERGY_DECAY and bremsstrahlung rates are consequently
+0.7293% too large, and single-scattering and recoil rates, which also use a rounded u, are
+0.7316% too large; with RHO supplied directly, the latter rates are 0.002344% too large. For
+nitrogen at 100 Pa and 300 K over 10 m, the fractional energy loss is 2.978×10⁻⁵ instead of
+2.956×10⁻⁵, as an independent ideal-gas atom-density calculation shows. Forced multiple
+scattering converts RHO to atom density with m_p, making its angles 0.3626% too small; pressure
+input gives correct angles.
 
 The script tracks 200 on-axis electrons at 1000 mₑc through 10 m of nitrogen with ENERGY_DECAY=1
 and FORCE_MCS=1, describing the same gas three ways with one seed: by PRESSURE, TEMPERATURE and

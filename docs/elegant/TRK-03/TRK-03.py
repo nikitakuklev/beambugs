@@ -1,12 +1,12 @@
-"""TRK-03: KQUAD given by pole-tip field and bore tracks its fringes with zero strength until a matrix or Twiss request
+"""TRK-03: KQUAD fringes use the stored gradient instead of the effective body gradient
 
-KQUAD can be specified by pole-tip field B and bore radius BORE instead of normalized gradient K₁.
-With nonlinear fringes enabled and K₁ left at its default zero, the body uses the field-derived
-strength but both fringes use zero strength until a matrix or Twiss output request overwrites K₁.
-The same beam then leaves the same magnet differently depending on whether optics output was
-requested; after the request it matches the equivalent explicit K₁. For a 0.4 m magnet with K₁ = 5
-m⁻² and electron momentum 2000 mₑc, exit slopes change by up to 1.749 µrad and positions by up to
-95.29 nm.
+When KQUAD is specified by pole-tip field B and bore radius BORE, or has fractional strength
+error FSE, its body resolves the effective gradient but both fringes use the stored K₁. With
+B/BORE and default K₁ = 0, a matrix or Twiss request changes tracking by populating that stored
+value; FSE is still omitted. For a 0.4 m magnet at electron momentum 2000 mₑc, the field-input
+error reaches 1.749 µrad, while K₁ = 5 m⁻² with FSE = 0.2 differs from the equivalent K₁ = 6 m⁻²
+magnet by 419.4 nrad. Equivalent-field and zero-field controls establish that both fringes must
+use the same effective gradient as the body.
 
 The script tracks twelve particles through the magnet described by B and BORE, with and without a
 matrix or Twiss request, and compares each result with the same magnet described by the equivalent

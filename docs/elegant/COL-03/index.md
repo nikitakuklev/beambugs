@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [round-beam branch, insertSCeffects.cc:552–563](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L552-L563)<br>[elliptical weights, insertSCeffects.cc:592–599](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L592-L599)<br>[weight accumulation, insertSCeffects.cc:837–856](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L837-L856)<br>[prefactor, insertSCeffects.cc:736–737](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L736-L737)<br>[nonlinear force, scmult.tex:24–39](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/scmult.tex#L24-L39)<br>[round limit, scmult.tex:44–47](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/scmult.tex#L44-L47) |
 
-With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length and optical weights from the kick of a round Gaussian beam. The branch is selected when the rms sizes σₓ and σᵧ satisfy |σₓ − σᵧ|/σₓ < 10⁻⁶; an unsliced Gaussian control with σᵧ/σₓ = 1.00001 agrees with an independent integrated-field calculation. In a symmetric ring with 1 nC of electrons at 10 mₑc and σₓ = σᵧ = 1 mm, the round kick is 4.000 times the correct value after a 0.25 m drift and 1.333 times it after a 0.75 m drift.
+With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length and optical weights from the kick of a round Gaussian beam. The branch is selected when the rms sizes σₓ and σᵧ satisfy |σₓ − σᵧ|/σₓ < 10⁻⁶; an unsliced Gaussian control with σᵧ/σₓ = 1 + 10⁻⁵ agrees with an independent integrated-field calculation. In a symmetric ring with 1 nC of electrons at 10 mₑc and σₓ = σᵧ = 1 mm, the round kick is 4.000 times the correct value after a 0.25 m drift and 1.333 times it after a 0.75 m drift.
 
 ??? example "Reproducer: COL-03.py"
 
@@ -25,7 +25,12 @@ With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length a
     ```python
     """COL-03: Round nonlinear space charge omits the integrating length and optics weighting
 
-    With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length and optical weights from the kick of a round Gaussian beam. The branch is selected when the rms sizes σₓ and σᵧ satisfy |σₓ − σᵧ|/σₓ < 10⁻⁶; an unsliced Gaussian control with σᵧ/σₓ = 1.00001 agrees with an independent integrated-field calculation. In a symmetric ring with 1 nC of electrons at 10 mₑc and σₓ = σᵧ = 1 mm, the round kick is 4.000 times the correct value after a 0.25 m drift and 1.333 times it after a 0.75 m drift.
+    With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length and optical
+    weights from the kick of a round Gaussian beam. The branch is selected when the rms sizes σₓ and
+    σᵧ satisfy |σₓ − σᵧ|/σₓ < 10⁻⁶; an unsliced Gaussian control with σᵧ/σₓ = 1 + 10⁻⁵ agrees with
+    an independent integrated-field calculation. In a symmetric ring with 1 nC of electrons at 10
+    mₑc and σₓ = σᵧ = 1 mm, the round kick is 4.000 times the correct value after a 0.25 m drift and
+    1.333 times it after a 0.75 m drift.
 
     The script tracks 512 electrons through one drift of a closed four-bend ring, with an SCMULT after
     the drift, and reads each particle's slope kick. It compares the kicks with the Gaussian field
@@ -82,7 +87,7 @@ With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length a
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -171,11 +176,14 @@ With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length a
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -194,7 +202,7 @@ With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length a
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

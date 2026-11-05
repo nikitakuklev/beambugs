@@ -1,0 +1,186 @@
+"""OPT-31: Resonance driving terms omit fractional strength errors applied by tracking
+
+With `compute_driving_terms` enabled, `twiss_output` uses nominal multipole strengths even when tracking applies fractional strength errors. Equivalent applied fields must give identical driving terms, as independent linear-optics formulas and tracked trajectories establish. For a 0.1200 m sextupole of strength K₂ = 4.000 m⁻³ and fractional strength error 0.001000, the real part of the horizontal sextupole driving term h₂₁₀₀₀ is 0.6324 instead of 0.6330, an underestimate of 0.09990%; a strength error of 0.02000 gives a 1.961% underestimate in isolated sextupole and octupole coefficients. Tracking agrees exactly between the equivalent-field cases.
+
+The script runs serial Elegant on a matched periodic cell with one test magnet and three fixed particles, comparing fractional-error and explicitly scaled-strength decks. Exact drift/quadrupole matrices provide an independent sextupole and octupole oracle, including zero-error and zero-field controls. Bend pairs keep their dipole field and geometry fixed; CSRCSBEND is checked with its actual endpoint optics because it lacks separate dipole compensation.
+"""
+
+import numpy as np
+from _elegant import particles, run, verdict
+
+
+def case(magnet):
+    lattice = (
+        "QF: QUAD,L=0.2,K1=1.4\nQD: QUAD,L=0.2,K1=-1.4\n"
+        f"D: DRIF,L=0.37\nM: {magnet}\nE: DRIF,L=0.86\n"
+        "BL: LINE=(QF,D,M,D,QD,E)\n"
+    )
+    command = """&run_setup lattice="line.lte",use_beamline=BL,
+ p_central=1200,default_order=2,output="final.sdds" &end
+&run_control n_steps=1,n_passes=1 &end
+&twiss_output filename="twiss.sdds",matched=1,compute_driving_terms=1,
+ leading_order_driving_terms_only=1 &end
+&sdds_beam input="input.sdds" &end
+&track &end
+"""
+    beam = {
+        "x": [0.0011, -0.0008, 0],
+        "xp": [0.00013, -0.00011, 0],
+        "y": [-0.0006, 0.0009, 0],
+        "yp": [0.00021, -0.00017, 0],
+        "t": [0, 2e-12, -2e-12],
+        "p": [1200, 1200.12, 1200],
+        "particleID": np.arange(1, 4),
+    }
+    result = run(
+        {"line.lte": lattice, "run.ele": command},
+        beams={"input.sdds": beam},
+        outputs=("twiss.sdds", "final.sdds"),
+    )
+    twiss = result["twiss.sdds"]
+    columns = {c.name: np.asarray(c.data[0]) for c in twiss.columns}
+    parameters = {p.name: p.data[0] for p in twiss.parameters}
+    final = particles(result["final.sdds"])
+    assert len(final["p"]) == 3, "Unexpected particle loss"
+    return columns, parameters, final
+
+
+def h(parameters, term):
+    value = complex(parameters["Re" + term], parameters["Im" + term])
+    assert np.isfinite(value), "Nonfinite driving term"
+    return value
+
+
+def same_tracking(a, b):
+    # Particle IDs, rather than row order, identify trajectories.
+    gap = max(float(np.max(np.abs(a[k] - b[k]))) for k in ("x", "xp", "y", "yp", "t", "p"))
+    assert gap == 0, f"Equivalent-field tracking control failed: {gap}"
+    return gap
+
+
+def analytic_optics():
+    def matrix(length, k):
+        if k == 0:
+            return np.array([[1, length], [0, 1]])
+        r = np.sqrt(abs(k))
+        c = np.cos(r * length) if k > 0 else np.cosh(r * length)
+        s = np.sin(r * length) / r if k > 0 else np.sinh(r * length) / r
+        return np.array([[c, s], [-k * s, c]])
+
+    # The centered sextupole/octupole is a drift at linear order. The periodic
+    # covariance satisfies M Sigma M^T = Sigma; propagate it to both magnet ends.
+    matrices = [
+        matrix(l, k)
+        for l, k in [(0.2, 1.4), (0.37, 0), (0.12, 0), (0.37, 0), (0.2, -1.4), (0.86, 0)]
+    ]
+    turn = np.eye(2)
+    for m in matrices:
+        turn = m @ turn
+    mu = np.arccos(np.trace(turn) / 2)
+    beta0 = turn[0, 1] / np.sin(mu)
+    alpha0 = (turn[0, 0] - turn[1, 1]) / (2 * np.sin(mu))
+    sigma0 = np.array([[beta0, -alpha0], [-alpha0, (1 + alpha0**2) / beta0]])
+    cumulative = np.eye(2)
+    ends = []
+    for m in matrices[:3]:
+        cumulative = m @ cumulative
+        sigma = cumulative @ sigma0 @ cumulative.T
+        psi = np.arctan2(cumulative[0, 1], cumulative[0, 0] * beta0 - cumulative[0, 1] * alpha0)
+        ends.append((sigma[0, 0], psi))
+    return np.mean(ends[1:], axis=0)
+
+
+def main():
+    defects = []
+    for typ, order, strength, field, extra in [
+        ("QUAD", 1, 0.08, "FSE", ""),
+        ("KQUAD", 1, 0.08, "FSE", ",N_SLICES=12"),
+        ("SEXT", 2, 4.0, "FSE", ""),
+        ("KSEXT", 2, 4.0, "FSE", ",N_SLICES=12"),
+        ("OCTU", 3, 80.0, "FSE", ""),
+        ("KOCT", 3, 80.0, "FSE", ",N_SLICES=12"),
+        ("KQUSE", 1, 0.08, "FSE1", ",N_SLICES=12"),
+        ("KQUSE", 2, 4.0, "FSE2", ",N_SLICES=12"),
+        ("SBEN", 2, 4.0, "FSE", ",ANGLE=.006,FSE_DIPOLE=-0.02"),
+        ("CSBEND", 2, 4.0, "FSE", ",ANGLE=.006,FSE_DIPOLE=-0.02,N_SLICES=12"),
+        (
+            "CCBEND",
+            2,
+            4.0,
+            "FSE",
+            ",ANGLE=.006,FSE_DIPOLE=-0.02,N_SLICES=12,OPTIMIZE_FSE=0,OPTIMIZE_DX=0",
+        ),
+    ]:
+        frac = 0.02
+        ca, pa, fa = case(f"{typ},L=.12,K{order}={strength},{field}={frac}{extra}")
+        # FSE_DIPOLE=-FSE preserves the dipole field without changing ANGLE or
+        # survey geometry. Only the explicit-strength control removes compensation.
+        cb, pb, fb = case(
+            f"{typ},L=.12,K{order}={strength * (1 + frac):.17g}"
+            + extra.replace(",FSE_DIPOLE=-0.02", "")
+        )
+        gap = same_tracking(fa, fb)
+        for key in ("betax", "betay", "psix", "psiy"):
+            np.testing.assert_allclose(ca[key], cb[key], rtol=0, atol=1e-10)
+        term = {1: "h11001", 2: "h21000", 3: "h22000"}[order]
+        observed, expected = h(pa, term), h(pb, term)
+        defects.append(not np.isclose(observed, expected, rtol=1e-11, atol=1e-13))
+        missing_factor = (
+            "not isolated" if order == 1 else str(abs(observed / expected - 1 / (1 + frac)) < 1e-11)
+        )
+        print(
+            f"serial {typ} K{order} {field}=0.02: {term} observed={observed:.15g} "
+            f"expected={expected:.15g} (identical applied field); track_max={gap:g}; "
+            f"missing-factor signature={missing_factor}"
+        )
+
+    beta, psi = analytic_optics()
+    # Expanding K2(x^3-3xy^2)/6 and K3(x^4-6x^2y^2+y^4)/24 in the
+    # diagnostic's complex normalization gives h21000=K2 L beta^(3/2)e^(i psi)/16
+    # and h22000=K3 L beta^2/64. Use the same mean-endpoint convention as the sum.
+    base = 4 * 0.12 * beta**1.5 * np.exp(1j * psi) / 16
+    _, p, _ = case("KSEXT,L=.12,K2=4,N_SLICES=12")
+    np.testing.assert_allclose(h(p, "h21000"), base, rtol=2e-13, atol=0)
+    print(
+        f"serial analytic control: beta={beta:.15g} m phase={psi:.15g} rad; "
+        f"h21000 observed={h(p, 'h21000'):.15g} expected={base:.15g} (exact linear matrices)"
+    )
+    _, p, _ = case("KOCT,L=.12,K3=80,FSE=.02,N_SLICES=12")
+    expected_oct = 80 * 0.12 * 1.02 * beta**2 / 64
+    defects.append(not np.isclose(h(p, "h22000"), expected_oct, rtol=2e-13, atol=0))
+    print(
+        f"serial analytic octupole: h22000 observed={h(p, 'h22000'):.15g} "
+        f"expected={expected_oct:.15g} (effective K3 L beta^2/64)"
+    )
+    for frac in (0.001, -1.0):
+        _, p, final = case(f"KSEXT,L=.12,K2=4,FSE={frac},N_SLICES=12")
+        _, control, other = case(f"KSEXT,L=.12,K2={4 * (1 + frac):.17g},N_SLICES=12")
+        gap = same_tracking(final, other)
+        expected = (1 + frac) * base
+        np.testing.assert_allclose(h(control, "h21000"), expected, rtol=2e-13, atol=1e-14)
+        defects.append(not np.isclose(h(p, "h21000"), expected, rtol=2e-13, atol=1e-14))
+        print(
+            f"serial KSEXT FSE={frac}: h21000 observed={h(p, 'h21000'):.15g} "
+            f"expected={expected:.15g} (effective K2 analytic formula); track_max={gap:g}"
+        )
+    for frac in (0.0, 0.001, 0.02):
+        c, p, _ = case(
+            f"CSRCSBEND,L=.12,ANGLE=.006,K2=4,FSE={frac},N_SLICES=12,"
+            "BINS=32,CSR=0,ISR=0,SYNCH_RAD=0"
+        )
+        (i,) = np.flatnonzero(c["ElementName"] == "M")
+        b, phase = [(c[k][i - 1] + c[k][i]) / 2 for k in ("betax", "psix")]
+        expected = 4 * 0.12 * (1 + frac) * b**1.5 * np.exp(1j * phase) / 16
+        if frac == 0:
+            np.testing.assert_allclose(h(p, "h21000"), expected, rtol=2e-13, atol=0)
+        else:
+            defects.append(not np.isclose(h(p, "h21000"), expected, rtol=2e-13, atol=0))
+        print(
+            f"serial CSRCSBEND FSE={frac}: h21000 observed={h(p, 'h21000'):.15g} "
+            f"expected={expected:.15g} (effective K2 with native endpoint optics)"
+        )
+    verdict(all(defects))
+
+
+if __name__ == "__main__":
+    main()

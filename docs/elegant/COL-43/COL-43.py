@@ -1,6 +1,12 @@
 """COL-43: CSRCSBEND and CSRDRIFT apply the CSR wake half a bin toward the bunch tail
 
-CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR wake as if each value sat at its bin's lower edge, although the histogram and the wake output place it at the bin center, so every particle receives the wake half a bin toward the bunch tail. For a 10 pC, 35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the kicks deviate from the wake at the particles by up to 1.262% of its peak, and the mean energy loss is 0.5104% above the closed-form Gaussian value, whereas the wake sampled at the particles is within 0.03107%. The bias halves with each doubling of the bin count.
+CSRCSBEND, and CSRDRIFT in the default and Stupakov models, interpolate the CSR wake as if each
+value sat at its bin's lower edge, although the histogram and the wake output place it at the
+bin center, so every particle receives the wake half a bin toward the bunch tail. For a 10 pC,
+35 μm rms Gaussian bunch in a 0.6 m, 0.3 rad bend with 400 bins, the kicks deviate from the wake
+at the particles by up to 1.262% of its peak, and the mean energy loss is 0.5104% above the
+closed-form Gaussian value, whereas the wake sampled at the particles is within 0.03107%. The
+half-bin displacement decreases in proportion to the bin width.
 
 The script tracks 240001 electrons (Gaussian quantiles, σ_ct = 35 μm, p = 4000 mₑc, 10 pC)
 through a one-slice 0.6 m, 0.3 rad CSRCSBEND (STEADY_STATE=1) with 200, 400 and 800 bins and

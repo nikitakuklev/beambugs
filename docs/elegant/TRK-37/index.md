@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [`curvedDipoleFringe`, csbend.c:6830–6839](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6830-L6839)<br>[6833](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6833)<br>[6896](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6896)<br>[6967](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6967)<br>[7008](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L7008)<br>[csbend.c:7026](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L7026)<br>[manual, csbend.tex:96–101](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L96-L101)<br>[`curvedDipoleFringeCalc`, curvedDipoleFringeCalc.c:461–505](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/elegantTools/curvedDipoleFringeCalc.c#L461-L505) |
 
-A CSBEND edge with model 5 and fringe integral |K₃/(1+δ)| < 10⁻⁵, where δ is the momentum deviation, evaluates its path-length formula with a misplaced parenthesis. Each such edge adds the constant −K₂/(2(1+δ)²) to every particle's path and drops the term −K₂y²/(2(1+δ)²), the K₃ → 0 limit of the exact formula used for larger K₃. A pure dipole's soft edge has K₃ = 0: for curvature 0.1 m⁻¹ and a 2 cm fringe, K₂ = 10⁻⁴ and each edge shortens the path by 5.000×10⁻⁵ m, and K₂ = 0.006 gives 3.000×10⁻³ m.
+A CSBEND edge using model 5 misplaces a parenthesis when |K₃/(1+δ)| < 10⁻⁵, where K₃ is a fringe integral and δ is the fractional momentum offset. Its K₂ fringe-integral contribution adds the constant −K₂/(2(1+δ)²) to the path instead of −K₂y²/(2(1+δ)²), where y is vertical position. The correct expression follows from the lens's momentum-dependent vertical kick and the continuous larger-K₃ formula. A pure-dipole tanh fringe with width parameter 2.000 cm and curvature 0.1000 m⁻¹ has K₃ = 0 and K₂ = 1.000×10⁻⁴ m⁻¹, producing a false constant path offset of −50.00 μm per edge on momentum. All-zero fringe integrals produce no error.
 
 ??? example "Reproducer: TRK-37.py"
 
@@ -24,12 +24,13 @@ A CSBEND edge with model 5 and fringe integral |K₃/(1+δ)| < 10⁻⁵, where �
     ```python
     """TRK-37: CSBEND edge model 5 adds a constant path offset and drops the y² path term when K3 is small
 
-    A CSBEND edge with model 5 and fringe integral |K₃/(1+δ)| < 10⁻⁵, where δ is the momentum deviation,
-    evaluates its path-length formula with a misplaced parenthesis. Each such edge adds the constant
-    −K₂/(2(1+δ)²) to every particle's path and drops the term −K₂y²/(2(1+δ)²), the K₃ → 0 limit of the
-    exact formula used for larger K₃. A pure dipole's soft edge has K₃ = 0: for curvature 0.1 m⁻¹ and a
-    2 cm fringe, K₂ = 10⁻⁴ and each edge shortens the path by 5.000×10⁻⁵ m, and K₂ = 0.006 gives
-    3.000×10⁻³ m.
+    A CSBEND edge using model 5 misplaces a parenthesis when |K₃/(1+δ)| < 10⁻⁵, where K₃ is a fringe
+    integral and δ is the fractional momentum offset. Its K₂ fringe-integral contribution adds the
+    constant −K₂/(2(1+δ)²) to the path instead of −K₂y²/(2(1+δ)²), where y is vertical position. The
+    correct expression follows from the lens's momentum-dependent vertical kick and the continuous
+    larger-K₃ formula. A pure-dipole tanh fringe with width parameter 2.000 cm and curvature 0.1000
+    m⁻¹ has K₃ = 0 and K₂ = 1.000×10⁻⁴ m⁻¹, producing a false constant path offset of −50.00 μm per
+    edge on momentum. All-zero fringe integrals produce no error.
 
     The script tracks electrons on axis and at y = ±1.5 mm through a CSBEND with edge model 5 on one
     edge, for both EDGE_ORDER settings, with the fringe integral K3 just below and just above the
@@ -96,9 +97,10 @@ A CSBEND edge with model 5 and fringe integral |K₃/(1+δ)| < 10⁻⁵, where �
             label = (
                 f"{mode} {'entrance' if edge == 1 else 'exit'} EDGE_ORDER={order} K2={k2:g} K3={k3:g}"
             )
+            y2_label = "expected" if edge == 2 else "edge-only limit (not compared)"
             print(
                 f"{label}: on-axis path - L observed={on_axis:.6g} expected=0;"
-                f" y2 term observed={y2:.6g} expected={expected_y2:.6g}"
+                f" y2 term observed={y2:.6g} {y2_label}={expected_y2:.6g}"
             )
             bad = abs(on_axis) > TOL or (edge == 2 and abs(y2 - expected_y2) > TOL)
             if k3 > 1e-5:
@@ -121,7 +123,7 @@ A CSBEND edge with model 5 and fringe integral |K₃/(1+δ)| < 10⁻⁵, where �
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -210,11 +212,14 @@ A CSBEND edge with model 5 and fringe integral |K₃/(1+δ)| < 10⁻⁵, where �
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -233,7 +238,7 @@ A CSBEND edge with model 5 and fringe integral |K₃/(1+δ)| < 10⁻⁵, where �
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

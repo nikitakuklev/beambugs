@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">extreme-regime</span> <span class="bb-tag">contract-unsettled</span> <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [touschekScatter.c:1232–1238](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L1232-L1238)<br>[range, touschekScatter.c:1047–1049](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L1047-L1049)<br>[touschekScatter.nl:17](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.nl#L17)<br>[touschekScatter.c:541–560](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L541-L560)<br>[`moeller`, touschekScatter.c:1405–1415](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L1405-L1415)<br>[touschekScatter.c:519](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L519)<br>[touschekScatter.c:626–627](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L626-L627)<br>[touschekScatter.c:690–693](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L690-L693)<br>[sdds_support.c:2591](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sdds_support.c#L2591)<br>[touschekScatter.c:179–180](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L179-L180)<br>[touschekScatter.c:618–625](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L618-L625)<br>[touschek_scatter, elegant.tex:7693–7697](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7693-L7697)<br>[elegant.tex:7767](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7767)<br>[elegant.tex:7773–7777](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7773-L7777)<br>[elegant.tex:7798–7799](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7798-L7799) |
 
-touschek_scatter samples the incoming beam out to distribution_cutoff (3 by default) times the rms energy spread σδ and counts every outgoing particle beyond the momentum aperture δm, including particles that were already beyond it. When δm lies inside the sampled spread, nearly forward collisions of those particles, whose Møller cross section is limited only by the sampled angle range, dominate: the Monte Carlo rate SLocalRate grows with n_simulated instead of converging, and a few particles carry the loss weights. With δm = 0.5σδ, SLocalRate is 9.372×10¹², 2.687×10¹³ and 1.395×10¹⁴ s⁻¹ for 2×10⁴, 2×10⁵ and 2×10⁶ samples, against 1.030×10¹⁰ s⁻¹ from Piwinski's formula. With δm = 31.25σδ it is within 1.748% of Piwinski's rate.
+touschek_scatter samples the incoming beam out to distribution_cutoff (3 by default) times the rms energy spread σδ and counts every outgoing particle beyond the momentum aperture δm, including particles that were already beyond it. When δm lies inside the sampled spread, nearly forward collisions of those particles, whose Møller cross section is limited only by the sampled angle range, dominate: the Monte Carlo rate SLocalRate grows with n_simulated instead of converging, and a few particles carry the loss weights. With δm = 0.5σδ, SLocalRate is 9.372×10¹², 2.687×10¹³ and 1.395×10¹⁴ s⁻¹ for 2×10⁴, 2×10⁵ and 2×10⁶ samples, against 1.030×10¹⁰ s⁻¹ from Piwinski's formula. With δm = 31.25σδ and 2×10⁶ samples, the rate is 1.748% below Piwinski's.
 
 ??? example "Reproducer: SCT-22.py"
 
@@ -25,14 +25,15 @@ touschek_scatter samples the incoming beam out to distribution_cutoff (3 by defa
     ```python
     """SCT-22: touschek_scatter Monte Carlo rate does not converge when the momentum aperture lies inside the sampled energy spread
 
-    touschek_scatter samples the incoming beam out to distribution_cutoff (3 by default) times the rms
-    energy spread σδ and counts every outgoing particle beyond the momentum aperture δm, including
-    particles that were already beyond it. When δm lies inside the sampled spread, nearly forward
-    collisions of those particles, whose Møller cross section is limited only by the sampled angle
-    range, dominate: the Monte Carlo rate SLocalRate grows with n_simulated instead of converging, and a
-    few particles carry the loss weights. With δm = 0.5σδ, SLocalRate is 9.372×10¹², 2.687×10¹³ and
-    1.395×10¹⁴ s⁻¹ for 2×10⁴, 2×10⁵ and 2×10⁶ samples, against 1.030×10¹⁰ s⁻¹ from Piwinski's formula.
-    With δm = 31.25σδ it is within 1.748% of Piwinski's rate.
+    touschek_scatter samples the incoming beam out to distribution_cutoff (3 by default) times the
+    rms energy spread σδ and counts every outgoing particle beyond the momentum aperture δm,
+    including particles that were already beyond it. When δm lies inside the sampled spread, nearly
+    forward collisions of those particles, whose Møller cross section is limited only by the sampled
+    angle range, dominate: the Monte Carlo rate SLocalRate grows with n_simulated instead of
+    converging, and a few particles carry the loss weights. With δm = 0.5σδ, SLocalRate is
+    9.372×10¹², 2.687×10¹³ and 1.395×10¹⁴ s⁻¹ for 2×10⁴, 2×10⁵ and 2×10⁶ samples, against 1.030×10¹⁰
+    s⁻¹ from Piwinski's formula. With δm = 31.25σδ and 2×10⁶ samples, the rate is 1.748% below
+    Piwinski's.
 
     The script runs touschek_scatter at 2 GeV/c with 0.5 nC on a ring made of a linear one-turn map (βx
     = 12 m, βy = 6 m, no dispersion) with 2×10⁴, 2×10⁵ and 2×10⁶ samples, for a momentum aperture of
@@ -225,7 +226,7 @@ touschek_scatter samples the incoming beam out to distribution_cutoff (3 by defa
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -314,11 +315,14 @@ touschek_scatter samples the incoming beam out to distribution_cutoff (3 by defa
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -337,7 +341,7 @@ touschek_scatter samples the incoming beam out to distribution_cutoff (3 by defa
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

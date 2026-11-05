@@ -1,13 +1,12 @@
 """OPT-23: moments_output mode emittances normalize the (s, δ) pair with the transverse sign
 
-Elegant's `moments_output` computes the mode emittances e1, e2 and e3 by normalizing the one-turn
-eigenvectors with the same symplectic sign for all three coordinate pairs, but its longitudinal pair
-(s, δ) needs the opposite sign, because the canonical coordinate conjugate to δ is −s. When
-dispersion at the RF cavity mixes transverse and longitudinal motion, e1 and e3 are wrong; the
-equilibrium covariance itself is correct. In a 2.4 GeV, 70 m ring of 20 FODO cells with radiating
-bends and a 1.5 MV cavity, the eigen-emittances of that covariance are e1 = 5.448 μm and e3 = 51.45
-μm; Elegant reports 5.418 μm and 51.17 μm (−0.5564% and −0.5555%), and −0.7020% for e1 from another
-starting point.
+Elegant's `moments_output` normalizes its normal modes with the same symplectic sign for all
+coordinate pairs, although the canonical longitudinal pair is (−s, δ), where s is path length
+and δ is relative momentum deviation. With transverse–longitudinal mixing, this gives wrong mode
+emittances; without intrabeam scattering, the covariance still solves the exported linear
+equilibrium equation. In a 2.4 GeV, 70 m ring with a 1.5 MV cavity, the covariance's paraxial
+eigen-emittances are 5.448 and 51.45 μm, but Elegant reports 5.418 and 51.17 μm (−0.5564% and
+−0.5555%). Changing the ring's starting point gives a −0.7020% error in the first mode.
 
 The script runs serial Elegant `moments_output` (matched, equilibrium, radiation) on a 2.4 GeV,
 70 m ring of 20 FODO cells with radiating CSBENDs and a 1.5 MV RF cavity, from two starting points
@@ -110,5 +109,5 @@ for line in ("A", "Z"):
         f"start {line} eigenvector normalization with diag(J, J, J): e1, e3 = [{same_sign[1]:.10g},"
         f" {same_sign[2]:.10g}]; with diag(J, J, -J): [{flipped[1]:.10g}, {flipped[2]:.10g}]"
     )
-    defect |= not np.allclose(observed, expected, rtol=RTOL)
+    defect |= not np.allclose(observed, expected, rtol=RTOL, atol=0)
 verdict(defect)

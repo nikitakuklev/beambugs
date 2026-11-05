@@ -1,12 +1,12 @@
 """COL-46: WAKE gives each particle the full W(0) of its own bin, so full-origin wakes such as CORGPIPE's overstate the loss
 
-WAKE gives every particle the table's W(0) times all charge in its own time bin, its own included.
-When W(0) is the wake just behind a charge, W(0⁺), as in CORGPIPE's table, built from Bane's model,
-a charge should receive W(0⁺)/2 from itself and nothing from charge behind it (beam-loading
-theorem), so the mean loss is too large by W(0⁺)/2 times the average charge of a particle's bin. For
-a uniform 0.8 nC, 4 ps electron bunch in a 0.1 m CORGPIPE with the default time step, the mean loss
-is 4.288% above the exact particle sum; a quarter step leaves 1.058%. The manual does not say
-whether a table's W(0) is W(0⁺) or W(0⁺)/2; halving it removes the excess.
+With default binning and gather settings, WAKE uses the full table value W(0) for charge in a
+particle’s own bin. If W(0) is the positive-delay limit W(0⁺), this adds an endpoint excess; the
+beam-loading value is W(0⁺)/2. CORGPIPE generates full-origin tables: for a uniform 0.8 nC, 4 ps
+bunch in a 0.1 m pipe, the mean loss exceeds the exact particle sum by 4.288% at the default
+step and 1.058% at a quarter step. Halving the origin leaves 0.02645% binning error in the
+default-step cosine control. WAKE’s manual leaves the origin convention unspecified; tables
+already containing W(0⁺)/2 avoid this endpoint excess.
 
 The script tracks a uniform 0.8 nC electron bunch through a WAKE whose table is a constant
 3e13 V/C from t = 0, with the full value and with half of it at t = 0, and compares the mean loss

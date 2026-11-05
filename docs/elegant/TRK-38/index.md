@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [`csbend_update_fse_adjustment`, csbend.c:6678–6700](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6678-L6700)<br>[`csbend_fse_adjustment_penalty`, csbend.c:6661–6674](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6661-L6674)<br>[`track_through_csbend`, csbend.c:1111–1116](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1111-L1116)<br>[manual, csbend.tex:76–80](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L76-L80)<br>[parameter table, track_data.c:1961–1962](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1961-L1962)<br>[FSE_CORRECTION, track_data.c:2017](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2017) |
 
-With FSE_CORRECTION=1 and edge model 2 or 4, CSBEND fits the strength correction that zeroes the exit slope with FSE_DIPOLE and XKICK still present, so the correction absorbs them. For a 0.75 m, 0.09 rad bend, adding FSE_DIPOLE = 7×10⁻⁴ to the bend with its error-free correction held fixed gives exit slope x′ = −6.287×10⁻⁵, as the same error given as FSE does with refitting, but the refitted FSE_DIPOLE run gives |x′| < 10⁻¹⁵. XKICK = 8×10⁻⁵ should give x′ = 7.984×10⁻⁵ and also gives |x′| < 10⁻¹⁵. The vertical deflection of YKICK is kept.
+When a matrix calculation fits CSBEND's FSE_CORRECTION=1 or 2 for edge model 2 or 4, the calibration retains FSE_DIPOLE and XKICK and absorbs their horizontal exit-slope effects. For a 0.75 m, 0.09 rad bend, adding FSE_DIPOLE = 7×10⁻⁴ to the bend with its error-free correction held fixed gives exit slope x′ = −6.287×10⁻⁵, as the same error given as FSE does with refitting, but the refitted FSE_DIPOLE run gives |x′| < 10⁻¹⁵. XKICK = 8×10⁻⁵ should give x′ = 7.984×10⁻⁵ and also gives |x′| < 10⁻¹⁵. The vertical deflection of YKICK is kept.
 
 ??? example "Reproducer: TRK-38.py"
 
@@ -24,12 +24,12 @@ With FSE_CORRECTION=1 and edge model 2 or 4, CSBEND fits the strength correction
     ```python
     """TRK-38: CSBEND FSE_CORRECTION cancels a dipole-only strength error and a horizontal steering kick
 
-    With FSE_CORRECTION=1 and edge model 2 or 4, CSBEND fits the strength correction that zeroes the
-    exit slope with FSE_DIPOLE and XKICK still present, so the correction absorbs them. For a 0.75 m,
-    0.09 rad bend, adding FSE_DIPOLE = 7×10⁻⁴ to the bend with its error-free correction held fixed
-    gives exit slope x′ = −6.287×10⁻⁵, as the same error given as FSE does with refitting, but the
-    refitted FSE_DIPOLE run gives |x′| < 10⁻¹⁵. XKICK = 8×10⁻⁵ should give x′ = 7.984×10⁻⁵ and also
-    gives |x′| < 10⁻¹⁵. The vertical deflection of YKICK is kept.
+    When a matrix calculation fits CSBEND's FSE_CORRECTION=1 or 2 for edge model 2 or 4, the
+    calibration retains FSE_DIPOLE and XKICK and absorbs their horizontal exit-slope effects. For a
+    0.75 m, 0.09 rad bend, adding FSE_DIPOLE = 7×10⁻⁴ to the bend with its error-free correction
+    held fixed gives exit slope x′ = −6.287×10⁻⁵, as the same error given as FSE does with
+    refitting, but the refitted FSE_DIPOLE run gives |x′| < 10⁻¹⁵. XKICK = 8×10⁻⁵ should give x′ =
+    7.984×10⁻⁵ and also gives |x′| < 10⁻¹⁵. The vertical deflection of YKICK is kept.
 
     The script fits the correction once for the error-free bend (edge models 2 and 4, twiss_output
     before tracking) and reads the fitted FSE from the log. With refitting off and that FSE held fixed,
@@ -151,7 +151,7 @@ With FSE_CORRECTION=1 and edge model 2 or 4, CSBEND fits the strength correction
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -240,11 +240,14 @@ With FSE_CORRECTION=1 and edge model 2 or 4, CSBEND fits the strength correction
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -263,7 +266,7 @@ With FSE_CORRECTION=1 and edge model 2 or 4, CSBEND fits the strength correction
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [simplex limits, ibsEmittance.c:806–812](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibsEmittance.c#L806-L812)<br>[simplex call, ibsEmittance.c:871–873](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibsEmittance.c#L871-L873)<br>[balance, ibsEmittance.c:1085–1095](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibsEmittance.c#L1085-L1095)<br>[`emitxInput`, ibsEmittance.c:740–741](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibsEmittance.c#L740-L741)<br>[ibsEmittance.c:910–914](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibsEmittance.c#L910-L914)<br>[description, elegant.tex:9456–9458](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L9456-L9458)<br>[`-coupling`, elegant.tex:9493](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L9493)<br>[sddsbrightness `-coupling`, elegant.tex:9782–9783](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L9782-L9783) |
 
-ibsEmittance, run for equilibrium emittances at coupling ratio κ = εy/εx, never returns a horizontal emittance below ε₀/(1+κ), with ε₀ the uncoupled natural emittance. When the horizontal damping time τx exceeds the vertical τy (horizontal damping partition Jx < 1) and IBS is weak, the radiation–IBS balance the program solves has its root below that bound, at ε₀/(1+κτx/τy) without IBS; the program returns the bound and reports "Emittance converged". For a 3 GeV, 55.20 m ring with Jx = 0.8029 and κ = 0.1, the returned emittance is 2.232% above the root at 10⁻¹² nC and at 1 nC, and the balance misses zero by 2.232% of its excitation term. Rings with τx ≤ τy are not affected.
+ibsEmittance, run for equilibrium emittances at coupling ratio κ = εy/εx, never returns a horizontal emittance below ε₀/(1+κ), with ε₀ the uncoupled natural emittance. When the horizontal damping time τx exceeds the vertical τy (horizontal damping partition Jx < 1) and IBS is weak, the radiation–IBS balance the program solves has its root below that bound, at ε₀/(1+κτx/τy) without IBS; the program returns the bound and reports "Emittance converged". For a 3 GeV, 288.0 m ring with Jx = 0.9634, κ = 0.1 and 1 nC, it returns 48.96 nm versus 48.79 nm, 0.3408% high; the transverse balance misses zero by 0.3408% of its excitation term. This lower-bound obstruction is absent for weak IBS when τx ≤ τy.
 
 ??? example "Reproducer: SCT-17.py"
 
@@ -25,19 +25,19 @@ ibsEmittance, run for equilibrium emittances at coupling ratio κ = εy/εx, nev
     """SCT-17: ibsEmittance stops the equilibrium emittance at ε₀/(1+κ) when τx > τy and reports convergence
 
     ibsEmittance, run for equilibrium emittances at coupling ratio κ = εy/εx, never returns a
-    horizontal emittance below ε₀/(1+κ), with ε₀ the uncoupled natural emittance. When the horizontal
-    damping time τx exceeds the vertical τy (horizontal damping partition Jx < 1) and IBS is weak, the
-    radiation–IBS balance the program solves has its root below that bound, at ε₀/(1+κτx/τy) without
-    IBS; the program returns the bound and reports "Emittance converged". For a 3 GeV, 55.20 m ring
-    with Jx = 0.8029 and κ = 0.1, the returned emittance is 2.232% above the root at 10⁻¹² nC and at
-    1 nC, and the balance misses zero by 2.232% of its excitation term. Rings with τx ≤ τy are not
-    affected.
+    horizontal emittance below ε₀/(1+κ), with ε₀ the uncoupled natural emittance. When the
+    horizontal damping time τx exceeds the vertical τy (horizontal damping partition Jx < 1) and IBS
+    is weak, the radiation–IBS balance the program solves has its root below that bound, at
+    ε₀/(1+κτx/τy) without IBS; the program returns the bound and reports "Emittance converged". For
+    a 3 GeV, 288.0 m ring with Jx = 0.9634, κ = 0.1 and 1 nC, it returns 48.96 nm versus 48.79 nm,
+    0.3408% high; the transverse balance misses zero by 0.3408% of its excitation term. This
+    lower-bound obstruction is absent for weak IBS when τx ≤ τy.
 
-    The script builds a 3 GeV ring of 12 FODO cells with sector bends, writes its Twiss and radiation
-    integrals with elegant, and runs ibsEmittance for the equilibrium at κ = 0.1, at 10⁻¹² nC (no IBS)
+    The script builds a 3 GeV periodic model of 12 FODO cells, with 55.2 m total length and sector
+    bends totaling π, writes its Twiss and radiation integrals with elegant, and runs ibsEmittance for the equilibrium at κ = 0.1, at 10⁻¹² nC (no IBS)
     and at 1 nC. It compares the returned εx with the root of the program's own radiation balance,
     ε₀/(1+κτx/τy), and evaluates that balance, IBS terms included, at the returned emittances. The
-    control is the same ring with a defocusing gradient in the bends, which makes τx < τy; there the
+    control is the same model with a defocusing gradient in the bends, which makes τx < τy; there the
     program returns the root.
     """
 
@@ -167,7 +167,7 @@ ibsEmittance, run for equilibrium emittances at coupling ratio κ = εy/εx, nev
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -256,11 +256,14 @@ ibsEmittance, run for equilibrium emittances at coupling ratio κ = εy/εx, nev
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -279,7 +282,7 @@ ibsEmittance, run for equilibrium emittances at coupling ratio κ = εy/εx, nev
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

@@ -14,7 +14,7 @@ hide:
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
-| Source | [`computeCSBENDFieldCoefficients`, csbend.c:313–330](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L313-L330)<br>[evaluator, csbend.c:127–170](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L127-L170)<br>[coefficient setup, csbend.c:1198](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1198)<br>[CSRCSBEND setup, csbend.c:2889](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2889)<br>[manual, csbend.tex:42–51](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L42-L51) |
+| Source | [`computeCSBENDFieldCoefficients`, csbend.c:313–330](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L313-L330)<br>[evaluator, csbend.c:127–170](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L127-L170)<br>[`Kn` to `b[n]`, csbend.c:1029–1048](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1029-L1048)<br>[coefficient setup, csbend.c:1198](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1198)<br>[CSRCSBEND setup, csbend.c:2889](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2889)<br>[manual, csbend.tex:42–51](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L42-L51) |
 
 For a CSBEND with EXPANSION_ORDER=0, the manual promises field terms through total degree n+3 in transverse coordinates x and y, with a minimum degree of 4, where n is the highest nonzero multipole order. For normal sextupole (n = 2) and octupole (n = 3) components, tracking instead matches explicit order n+2. Independent vacuum-field integration validates the documented-order trajectories. In a 0.25 m bend of curvature 1 m⁻¹ with K₃ = 3000 m⁻⁴, particles starting at x = 15–30 mm and y = 20–40 mm with zero slopes acquire slope differences up to 2.823×10⁻⁷. The tested quadrupole-only and midplane controls are unaffected.
 
@@ -220,7 +220,7 @@ For a CSBEND with EXPANSION_ORDER=0, the manual promises field terms through tot
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -309,11 +309,14 @@ For a CSBEND with EXPANSION_ORDER=0, the manual promises field terms through tot
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -332,7 +335,7 @@ For a CSBEND with EXPANSION_ORDER=0, the manual promises field terms through tot
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

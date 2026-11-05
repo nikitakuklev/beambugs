@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [`trackRfCavityWithWakes`, simple_rfca.c:525–532](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L525-L532)<br>[simple_rfca.c:546–585](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L546-L585)<br>[simple_rfca.c:718–736](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L718-L736)<br>[RFCA manual, rfca.tex:1–3](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfca.tex#L1-L3)<br>[parameter table, track_data.c:610–612](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L610-L612) |
 
-With STANDING_WAVE=1, N_KICKS > 1 and automatic phasing, RFCA takes its phase reference at the first of the N integration kicks, so PHASE=90, which the manual names the crest, is not the crest. For a half-wavelength gap (0.3747 m at 400 MHz, VOLT = 0.8 MV) and 5.110 GeV electrons, a phase scan and the closed-form sum of the same kicks put the crest at PHASE = 90°/N, with gain 512.6 keV for N = 8. PHASE=90 instead gives VOLT/N: 100.0 keV for N = 8 and 12.50 keV for N = 64. One kick, the matrix method (N_KICKS = 0) and the travelling-wave model keep the crest at PHASE=90.
+With STANDING_WAVE=1, BODY_FOCUS_MODEL=none, N_KICKS > 1 and automatic phasing, RFCA references the first integration kick, so the documented PHASE=90 setting misses the crest. For a half-wavelength gap (0.3747 m at 400 MHz, VOLT = 0.8000 MV) and 5.110 GeV electrons, the crest is approximately 90°/N, where N is N_KICKS, with gain 512.6 keV for N = 8. PHASE=90 instead gives approximately VOLT/N: 100.0 keV for N = 8 and 12.50 keV for N = 64. These formulas are exact in the speed-of-light limit. The one-kick, matrix and travelling-wave controls keep the crest at 90° to the tested ultrarelativistic tolerance.
 
 ??? example "Reproducer: TRK-41.py"
 
@@ -24,12 +24,13 @@ With STANDING_WAVE=1, N_KICKS > 1 and automatic phasing, RFCA takes its phase re
     ```python
     """TRK-41: Standing-wave RFCA kick tracking fiducializes at the first kick, so PHASE=90 is not the crest
 
-    With STANDING_WAVE=1, N_KICKS > 1 and automatic phasing, RFCA takes its phase reference at the first
-    of the N integration kicks, so PHASE=90, which the manual names the crest, is not the crest. For a
-    half-wavelength gap (0.3747 m at 400 MHz, VOLT = 0.8 MV) and 5.110 GeV electrons, a phase scan and
-    the closed-form sum of the same kicks put the crest at PHASE = 90°/N, with gain 512.6 keV for N = 8.
-    PHASE=90 instead gives VOLT/N: 100.0 keV for N = 8 and 12.50 keV for N = 64. One kick, the matrix
-    method (N_KICKS = 0) and the travelling-wave model keep the crest at PHASE=90.
+    With STANDING_WAVE=1, BODY_FOCUS_MODEL=none, N_KICKS > 1 and automatic phasing, RFCA references
+    the first integration kick, so the documented PHASE=90 setting misses the crest. For a
+    half-wavelength gap (0.3747 m at 400 MHz, VOLT = 0.8000 MV) and 5.110 GeV electrons, the crest
+    is approximately 90°/N, where N is N_KICKS, with gain 512.6 keV for N = 8. PHASE=90 instead
+    gives approximately VOLT/N: 100.0 keV for N = 8 and 12.50 keV for N = 64. These formulas are
+    exact in the speed-of-light limit. The one-kick, matrix and travelling-wave controls keep the
+    crest at 90° to the tested ultrarelativistic tolerance.
 
     The script sends four identical 5.110 GeV electrons through a half-wavelength RFCA gap of 0.8 MV at
     400 MHz with STANDING_WAVE=1 and automatic phasing, for N_KICKS of 1, 2, 8 and 64, at PHASE = 90,
@@ -47,7 +48,7 @@ With STANDING_WAVE=1, N_KICKS > 1 and automatic phasing, RFCA takes its phase re
     C, ME_MEV = 299792458.0, 0.51099906
     FREQ, VOLT = 400e6, 800000.0  # Hz, V
     LENGTH = C / (2 * FREQ)  # half a wavelength: the gap is crossed in half an RF period at beta = 1
-    P0 = 10000.0  # m_e c; beta = 1 - 5e-9 keeps the kick spacing at L/(N c) within 2e-9 relative
+    P0 = 10000.0  # m_e c; beta = 1 - 5e-9 gives a relative fixed-speed flight-time correction of about 5e-9
     COUNT = 4  # identical particles; Pelegant needs at least as many particles as ranks
     # (label, STANDING_WAVE, N_KICKS); the last two are controls whose crest is PHASE=90
     CASES = [
@@ -146,7 +147,7 @@ With STANDING_WAVE=1, N_KICKS > 1 and automatic phasing, RFCA takes its phase re
     """Shared runner for the Elegant reproducers: write inputs, run elegant or Pelegant, read SDDS output.
 
     `elegant` must be on PATH, and `Pelegant` with `mpirun` for MPI runs. RPN_DEFNS must name the
-    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs use three ranks
+    `defns.rpn` file shipped with SDDS; elegant refuses to start without it. MPI runs default to three ranks
     (rank 0 coordinates, two workers track), oversubscribed so that they also run on fewer cores.
     Each run uses a fresh temporary directory and one numerical thread.
     """
@@ -235,11 +236,14 @@ With STANDING_WAVE=1, N_KICKS > 1 and automatic phasing, RFCA takes its phase re
         beams: dict[str, Any] | None = None,
         command: str = "run.ele",
         outputs: tuple[str, ...] = ("out.sdds",),
+        *,
+        ranks: int = MPI_RANKS,
     ) -> dict:
         """Run one case and return {output name: pysdds file} plus "log" (stdout and stderr).
 
         files: text inputs by name (lattice, command file, tables); beams: particle pages by file
-        name (see write_beam), written as binary SDDS. A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
+        name (see write_beam), written as binary SDDS. ranks: Pelegant rank count, including rank 0.
+        A nonzero exit status raises RunFailure; a timeout raises RuntimeError.
         """
         if "RPN_DEFNS" not in os.environ:
             sys.exit("Set RPN_DEFNS to the defns.rpn file of SDDS (see the elegant installation).")
@@ -258,7 +262,7 @@ With STANDING_WAVE=1, N_KICKS > 1 and automatic phasing, RFCA takes its phase re
                 "-x",
                 "OMP_NUM_THREADS",
                 "-n",
-                str(MPI_RANKS),
+                str(ranks),
                 *argv,
             ]
         env = dict(os.environ, OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1")

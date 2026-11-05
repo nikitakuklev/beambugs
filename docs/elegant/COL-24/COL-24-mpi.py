@@ -1,11 +1,4 @@
-"""COL-25: MPI TRWAKE adds fixed-bin histograms whose time origins differ between ranks
-
-With multiple bunches and a fixed TRWAKE bin count (N_BINS > 0) under MPI (Pelegant), each tracking
-rank centers its histogram on its own bunch mean, so unequal rank means make summed bins represent
-different physical times. The correct kick is a causal sum within each bunch; serial tracking, MPI
-with equal rank means and automatic bins reproduce it. For two 80.00 pC bunches whose early and late
-halves occupy different ranks, the first particle of a late half receives no horizontal slope kick
-instead of 6.720×10⁻⁷, and the last particle's kick is 60.00% too small.
+"""COL-24: MPI fixed-bin controls with unequal bunch means across workers
 
 The script tracks two 24-particle bunches, 3 ns apart, through one dipole TRWAKE with a linear
 causal wake and 64 fixed bins. Every particle has the same transverse offsets, so the correct kick
