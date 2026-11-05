@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [Gaussian branch update, do_tracking.c:6322](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L6322)<br>[helper update, ionEffects.cc:3617](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ionEffects.cc#L3617)<br>[coordinate definition, elegant.tex:372–379](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L372-L379) |
 
-A BEAMBEAM kick changes momentum but leaves the stored longitudinal coordinate s = βct unchanged, where t is arrival time, c is the speed of light and β is speed divided by c. The output time therefore changes by the ratio of incoming to outgoing speed, although the zero-length element must preserve time and rescale s. For an electron of momentum 1 mₑc at horizontal position x = 0.2300 mm, a 1.300 nC uniform opposing bunch of radius 1.300 mm changes an input time of 1 µs by −1.936×10⁻¹¹ s, a relative error of −1.936×10⁻⁵. Zero input time masks the error, and all three source distributions are affected.
+A BEAMBEAM kick changes momentum but leaves the stored longitudinal coordinate s = βct unchanged, where t is arrival time, c is the speed of light and β is speed divided by c. The output time therefore changes by the ratio of incoming to outgoing speed, although the zero-length element must preserve time and rescale s. For an electron of momentum 1 mₑc at horizontal position x = 0.2300 mm, a 1.300 nC uniform opposing bunch of radius 1.300 mm changes an input time of 1 µs by −1.936×10⁻¹¹ s, a relative error of −1.936×10⁻⁵. Zero input time masks the error.
 
 ??? example "Reproducer: COL-14.py"
 
@@ -28,9 +28,8 @@ A BEAMBEAM kick changes momentum but leaves the stored longitudinal coordinate s
     where t is arrival time, c is the speed of light and β is speed divided by c. The output time
     therefore changes by the ratio of incoming to outgoing speed, although the zero-length element must
     preserve time and rescale s. For an electron of momentum 1 mₑc at horizontal position x = 0.2300 mm,
-    a 1.300 nC uniform opposing bunch of radius 1.300 mm changes an input time of 1 µs by −1.936×10⁻¹¹ s,
-    a relative error of −1.936×10⁻⁵. Zero input time masks the error, and all three source
-    distributions are affected.
+    a 1.300 nC uniform opposing bunch of radius 1.300 mm changes an input time of 1 µs by −1.936×10⁻¹¹
+    s, a relative error of −1.936×10⁻⁵. Zero input time masks the error.
 
     The script sends electrons at x = 0.23 mm with six arrival times (zero, positive and negative,
     from 1 ns to 0.25 s) through one BEAMBEAM element of each distribution at p = 1, 100 and 1000 mₑc.

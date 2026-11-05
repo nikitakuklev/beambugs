@@ -6,7 +6,7 @@
 # satisfy (I − M) + M = I, and ordinary subtraction `one(M) - M` gives the analytic result. For the
 # shear M = (x, p − 2.5x + 0.75x²), the second component of `I - M` has x and x² coefficients −2.5
 # and 0.75 instead of 2.5 and −0.75. A spin coefficient q1[x] = 0.2 stays 0.2 instead of becoming
-# −0.2. `M - I` is correct, and no effect on optics outputs has been established.
+# −0.2. `M - I` is correct.
 #
 # The script builds the shear as a `DAMap` and as a `TPSAMap` on `Descriptor(2, 3)`, compares the x
 # and x² coefficients of the second component of `I - M` with those of `one(M) - M`, and prints the

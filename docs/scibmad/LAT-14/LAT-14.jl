@@ -4,8 +4,7 @@
 # value comes from Julia's `@elapsed`, which returns seconds, and the result's own display labels it
 # seconds. For 10⁵ particles tracked over 10 000 turns, `elapsed_time` is 0.9718 while a wall clock
 # around `track` reads 0.9767 s, a ratio of 0.9949, where a value in minutes would give 1/60 =
-# 0.01667. A user who trusts the docstring overstates run times by a factor of 60; tracking results
-# are unaffected.
+# 0.01667. Tracking results are unaffected.
 #
 # The script tracks 10⁵ electrons through a 1 m drift for 10 000 turns, times the `track` call with
 # a wall clock and divides `elapsed_time` by that time. The ratio is near 1 for seconds and 1/60 for

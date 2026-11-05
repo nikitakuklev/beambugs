@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
 | Source | [`src/twiss/twiss_operators.jl:920-977`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L920-L977)<br>[`:940`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L940)<br>[`:974`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L974)<br>[`map.jl:614`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L614)<br>[`ext/NonlinearNormalFormGTPSAExt.jl:29-38`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/ext/NonlinearNormalFormGTPSAExt.jl#L29-L38)<br>[`:1013`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L1013)<br>[`:1018`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L1018) |
 
-On rings where spin optics succeeds, requesting `h<ijkl>` columns (resonance driving terms) with `spin=true` ends the Julia process while `twiss` builds the Hamiltonian. The temporary linear map built there has a zero quaternion, and inverting it divides by zero in the native library, which bypasses Julia exception handling. For the 18 GeV electron quickstart FODO at order 2, the call prints `invalid domain div` and exits with status 1. Giving that map the identity quaternion lets the checked orbital coefficients agree with `spin=false` to 1.990e-14, as the decoupling of orbital and spin motion requires. Closed-lattice requests that reach this step are affected; open-lattice `h` is unimplemented, and spin normalization has separate failure conditions.
+On rings where spin optics succeeds, requesting `h<ijkl>` columns (resonance driving terms) with `spin=true` ends the Julia process while `twiss` builds the Hamiltonian. The temporary linear map built there has a zero quaternion, and inverting it divides by zero in the native library, which bypasses Julia exception handling. For the 18 GeV electron quickstart FODO at order 2, the call prints `invalid domain div` and exits with status 1. Giving that map the identity quaternion lets the checked orbital coefficients agree with `spin=false` to 1.990e-14, as the decoupling of orbital and spin motion requires. Open-lattice `h` is unimplemented, and spin normalization has separate failure conditions.
 
 ??? example "Reproducer: OPT-23.jl"
 
@@ -30,8 +30,8 @@ On rings where spin optics succeeds, requesting `h<ijkl>` columns (resonance dri
     # bypasses Julia exception handling. For the 18 GeV electron quickstart FODO at order 2, the call
     # prints `invalid domain div` and exits with status 1. Giving that map the identity quaternion lets
     # the checked orbital coefficients agree with `spin=false` to 1.990e-14, as the decoupling of
-    # orbital and spin motion requires. Closed-lattice requests that reach this step are affected;
-    # open-lattice `h` is unimplemented, and spin normalization has separate failure conditions.
+    # orbital and spin motion requires. Open-lattice `h` is unimplemented, and spin normalization has
+    # separate failure conditions.
     #
     # The script requests columns `h3000`, `h2100`, `h1020` and `h1002` with `spin=true` on the
     # quickstart FODO, with the quaternion inverse wrapped to raise a Julia error at |q|² = 0, so the

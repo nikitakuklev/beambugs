@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [record, wake.c:366–370](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L366-L370)<br>[cache lookup, wake.c:423–425](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L423-L425)<br>[cache reuse, wake.c:473–475](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L473-L475)<br>[column retrieval, wake.c:442–459](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L442-L459)<br>[parameter table, track_data.c:2530–2531](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2530-L2531)<br>[grid spacing, wake.c:487](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L487)<br>[wake manual, wake.tex:1–12](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/wake.tex#L1-L12) |
 
-When two WAKE elements in one Elegant run select different wake columns (WCOLUMN) or time columns (TCOLUMN) from the same table file, the second element silently reuses the first element's columns, because the table is cached by file name alone. For a table with kernels A and B = 3A, the earliest particles of a 12-electron, 2 nC bunch should lose the sum of both kernels, 8000 eV; the shared file gives 4000 eV (A applied twice) or 12000 eV (B applied twice), depending on element order, which is an error of -50% or +50%. A byte-identical copy of the table under another file name gives the correct result. Anyone who selects several kernels from one wake file is affected.
+When two WAKE elements in one Elegant run select different wake columns (WCOLUMN) or time columns (TCOLUMN) from the same table file, the second element silently reuses the first element's columns, because the table is cached by file name alone. For a table with kernels A and B = 3A, the earliest particles of a 12-electron, 2 nC bunch should lose the sum of both kernels, 8000 eV; the shared file gives 4000 eV (A applied twice) or 12000 eV (B applied twice), depending on element order, which is an error of −50% or +50%. A byte-identical copy of the table under another file name gives the correct result.
 
 ??? example "Reproducer: COL-07.py"
 
@@ -24,7 +24,7 @@ When two WAKE elements in one Elegant run select different wake columns (WCOLUMN
     ```python
     """COL-07: WAKE cache substitutes the first requested column pair
 
-    When two WAKE elements in one Elegant run select different wake columns (WCOLUMN) or time columns (TCOLUMN) from the same table file, the second element silently reuses the first element's columns, because the table is cached by file name alone. For a table with kernels A and B = 3A, the earliest particles of a 12-electron, 2 nC bunch should lose the sum of both kernels, 8000 eV; the shared file gives 4000 eV (A applied twice) or 12000 eV (B applied twice), depending on element order, which is an error of -50% or +50%. A byte-identical copy of the table under another file name gives the correct result. Anyone who selects several kernels from one wake file is affected.
+    When two WAKE elements in one Elegant run select different wake columns (WCOLUMN) or time columns (TCOLUMN) from the same table file, the second element silently reuses the first element's columns, because the table is cached by file name alone. For a table with kernels A and B = 3A, the earliest particles of a 12-electron, 2 nC bunch should lose the sum of both kernels, 8000 eV; the shared file gives 4000 eV (A applied twice) or 12000 eV (B applied twice), depending on element order, which is an error of −50% or +50%. A byte-identical copy of the table under another file name gives the correct result.
 
     The script tracks twelve electrons (four arrival times, three particles each) through two
     zero-length WAKE elements that read a table holding two wake columns, B = 3A, and two time
@@ -340,6 +340,9 @@ When two WAKE elements in one Elegant run select different wake columns (WCOLUMN
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source reading, not executed for this claim |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

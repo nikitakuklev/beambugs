@@ -4,8 +4,7 @@ With IONEFFECTS' default pressure averaging, a lattice interval lying entirely b
 gas-pressure samples triggers an error diagnostic that reads position index −1. Evaluating the
 message reads 8 bytes before the position array instead of safely reporting the coverage problem.
 With samples at 2 m and 3 m and an interval from 0 to 1 m, the run stops with a value that is not a
-sample position in the message, and a memory checker confirms an invalid read of size 8. Users whose
-pressure profiles miss an element's averaging interval are affected.
+sample position in the message, and a memory checker confirms an invalid read of size 8.
 
 The script writes a one-element IONEFFECTS lattice spanning 0 to 1 m and runs serial Elegant under
 Valgrind with four pressure profiles: two that reach the interval (samples at 0, 0.5 and 1 m, and

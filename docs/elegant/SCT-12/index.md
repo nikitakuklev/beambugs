@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [forced thin multiple scattering, matter.c:204–213](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L204-L213)<br>[coordinate update, matter.c:283](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L283)<br>[standard multiple scattering, matter.c:203](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L203)<br>[forced multiple scattering, matter.tex:40–46](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/matter.tex#L40-L46)<br>[coordinate definition, elegant.tex:373–376](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L373-L376)<br>[MATTER parameters, track_data.c:2137–2138](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2137-L2138) |
 
-With FORCE_MCS=1 in a MATTER element thinner than 0.001 radiation lengths and ENERGY_DECAY=0, Elegant advances the longitudinal coordinate by the axial length L alone. At speed βc, the flight time must be at least √(L² + Δx² + Δy²)/(βc), where Δx and Δy are transverse displacements between the endpoints. In dilute helium with L = 0.4 m, electrons at momentum 2.000 mₑc with slopes (0.001, 0.003) violate this bound by 7.459×10⁻¹⁵ s; at 2.400 mₑc with slopes (−0.02, 0.015), the deficit is 4.516×10⁻¹³ s. Arrival-time calculations through thin targets or residual gas with forced scattering are affected.
+With FORCE_MCS=1 in a MATTER element thinner than 0.001 radiation lengths and ENERGY_DECAY=0, Elegant advances the longitudinal coordinate by the axial length L alone. At speed βc, the flight time must be at least √(L² + Δx² + Δy²)/(βc), where Δx and Δy are transverse displacements between the endpoints. In dilute helium with L = 0.4 m, electrons at momentum 2.000 mₑc with slopes (0.001, 0.003) violate this bound by 7.459×10⁻¹⁵ s; at 2.400 mₑc with slopes (−0.02, 0.015), the deficit is 4.516×10⁻¹³ s.
 
 ??? example "Reproducer: SCT-12.py"
 
@@ -29,8 +29,7 @@ With FORCE_MCS=1 in a MATTER element thinner than 0.001 radiation lengths and EN
     be at least √(L² + Δx² + Δy²)/(βc), where Δx and Δy are transverse displacements between the
     endpoints. In dilute helium with L = 0.4 m, electrons at momentum 2.000 mₑc with slopes (0.001,
     0.003) violate this bound by 7.459×10⁻¹⁵ s; at 2.400 mₑc with slopes (−0.02, 0.015), the deficit is
-    4.516×10⁻¹³ s. Arrival-time calculations through thin targets or residual gas with forced scattering
-    are affected.
+    4.516×10⁻¹³ s.
 
     The script sends 24 electrons through helium of length 0.4 m, with slopes (0, 0), (0.001, 0.003) and
     (−0.02, 0.015) and momenta 0.8, 1.0 and 1.2 times 2, 20 or 300 mₑc, and compares each particle's
@@ -315,6 +314,7 @@ With FORCE_MCS=1 in a MATTER element thinner than 0.001 radiation lengths and EN
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-28 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial |
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-28 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial |
 | Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-28 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial |
 

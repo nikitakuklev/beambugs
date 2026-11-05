@@ -48,6 +48,16 @@ TAGS = {
     "known-limitation",
     "partly-source-only",
 }
+# Severity vocabulary of defect_hunting.md, most severe first; the code pages list
+# entries by priority (P0 first), then by this order.
+SEVERITIES = (
+    "Wrong physics",
+    "Silent wrong result",
+    "Crash or API hazard",
+    "Documentation or example mismatch",
+)
+# A priority cell starts with P0..P5; a qualifier may follow ("P3 (spin P4)").
+PRIORITY = re.compile(r"P([0-5])\b")
 
 
 class LedgerError(Exception):
@@ -352,6 +362,12 @@ def parse_ledger(code: str, config: dict) -> list[Entry]:
                     f"{path}: index row {entry_id} has {len(row)} cells after the ID, expected 5"
                 )
             priority, _finding, level, severity, on_development = row
+            if not PRIORITY.match(priority):
+                raise LedgerError(f"{entry_id}: priority {priority!r} does not start with P0..P5")
+            if severity not in SEVERITIES:
+                raise LedgerError(
+                    f"{entry_id}: severity {severity!r} is not one of {list(SEVERITIES)}"
+                )
             brief = None
             if fields.get("Brief public", "").lower().startswith("yes"):
                 brief_path = ledger / "drafts" / entry_id / "brief.md"
@@ -486,14 +502,20 @@ def export(code: str, config: dict, env: jinja2.Environment) -> list[dict]:
                 shutil.copy2(src, page / src.name)
         (page / "index.md").write_text(text)
         records.append(record)
+    # Default table order: priority (P0 first), then severity, then the ledger's
+    # area and entry order (records are already in that order; sorted() is stable).
+    by_impact = sorted(
+        records,
+        key=lambda r: (
+            int(PRIORITY.match(r["priority"]).group(1)),
+            SEVERITIES.index(r["severity"]),
+        ),
+    )
     (out / "index.md").write_text(
         env.get_template("code_index.md.j2").render(
             code=config,
             extras=sorted({r for rec in records for r in rec["requirements"]} - {"numpy"}),
-            areas={
-                a: [r for r in records if r["area"] == a]
-                for a in config["areas"].values()
-            },
+            rows=by_impact,
         )
     )
     (out / "defects.json").write_text(

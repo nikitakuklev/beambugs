@@ -5,7 +5,7 @@ but both nonlinear fringe kicks keep the unscaled gradient K₁. A uniform field
 fringe profile normalized to the central gradient unchanged, so K₁ = 5 m⁻² with FSE = 0.2 must track
 like K₁ = 6 m⁻² with FSE = 0, and FSE = −1 must be a plain drift. For a 0.4 m magnet and electron
 momentum 2000 mₑc, the exit slopes differ by up to 419.4 nrad, and at FSE = −1 the exit position is
-displaced by up to 54.35 nm. Field-error scans with fringes distort the fringe-to-body ratio.
+displaced by up to 54.35 nm.
 
 The script tracks twelve particles through a KQUAD with cubic fringes at both ends, specified by an
 explicit K1 so that the pole-tip conversion does not enter. It compares K1 = 5 with FSE = 0.2

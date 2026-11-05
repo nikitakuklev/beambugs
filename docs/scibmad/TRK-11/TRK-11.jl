@@ -7,8 +7,7 @@
 # focusing kick. For a proton with reference momentum p₀c = 2mc², twice its rest energy,
 # charge-weighted accelerating gradient qG = 1.000 MeV/m and horizontal offset 1.000 mm, the guide's
 # entrance kick in normalized horizontal momentum is −5.329 × 10⁻⁷ instead of −2.664 × 10⁻⁷, and its
-# edge Hamiltonian implies +5.329 × 10⁻⁷. Readers deriving models from the guide are affected; the
-# kernels agree with Bmad.
+# edge Hamiltonian implies +5.329 × 10⁻⁷. The kernels agree with Bmad.
 #
 # The script calls the `SaganCavity` edge and ponderomotive kernels directly for a proton with p₀c =
 # 2mc² at horizontal offset 1 mm, with qG = 1 MeV/m on crest, and evaluates both the guide's kick

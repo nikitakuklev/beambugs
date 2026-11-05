@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Source | [`ReducedBeamCharacteristics.cpp#L197-L203`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/ReducedBeamCharacteristics.cpp#L197-L203)<br>[`L335`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/ReducedBeamCharacteristics.cpp#L335) |
 
-`beam_moments()` can report zero beam size and emittance for a finite-emittance beam when a distant particle with zero or tiny weight, such as a tracer, is stored first. The moments are accumulated about the first stored particle, so with a distant origin the shifted second moment and squared mean nearly cancel and the core variance is lost. Weighted standard deviations and emittances must not depend on particle order or zero-weight particles; a two-pass weighted covariance gives the correct values. For a core with σx = 10⁻⁹ m and emittance εx = 10⁻¹² m and a tracer at x = 1 m stored first, with weight 0 or 10⁻²⁴, both are reported as 0; stored last, they are correct. The failure needs this large tracer-to-core scale separation.
+`beam_moments()` can report zero beam size and emittance for a finite-emittance beam when a distant particle with zero or tiny weight, such as a tracer, is stored first. The moments are accumulated about the first stored particle, so the shifted second moment and squared mean nearly cancel and the core variance is lost. Weighted standard deviations and emittances must not depend on particle order or zero-weight particles; a two-pass weighted covariance gives the correct values. For a core with σx = 10⁻⁹ m and emittance εx = 10⁻¹² m and a tracer at x = 1 m stored first, with weight 0 or 10⁻²⁴, both are reported as 0; stored last, they are correct.
 
 ??? example "Reproducer: IO-01.py"
 
@@ -26,12 +26,11 @@ hide:
 
     `beam_moments()` can report zero beam size and emittance for a finite-emittance beam when a distant
     particle with zero or tiny weight, such as a tracer, is stored first. The moments are accumulated
-    about the first stored particle, so with a distant origin the shifted second moment and squared mean
-    nearly cancel and the core variance is lost. Weighted standard deviations and emittances must not
-    depend on particle order or zero-weight particles; a two-pass weighted covariance gives the correct
-    values. For a core with σx = 10⁻⁹ m and emittance εx = 10⁻¹² m and a tracer at x = 1 m stored first,
-    with weight 0 or 10⁻²⁴, both are reported as 0; stored last, they are correct. The failure needs
-    this large tracer-to-core scale separation.
+    about the first stored particle, so the shifted second moment and squared mean nearly cancel and the
+    core variance is lost. Weighted standard deviations and emittances must not depend on particle order
+    or zero-weight particles; a two-pass weighted covariance gives the correct values. For a core with
+    σx = 10⁻⁹ m and emittance εx = 10⁻¹² m and a tracer at x = 1 m stored first, with weight 0 or 10⁻²⁴,
+    both are reported as 0; stored last, they are correct.
 
     The script builds a four-particle core at all sign combinations of x = ±σ and px = ±10⁻³ plus a
     tracer at x = 1 m, for σ = 10⁻⁵, 10⁻⁷ and 10⁻⁹ m and tracer weights 0 and 10⁻²⁴, and calls

@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-26 on xpart main (`2633e52`) |
 | Source | [`generate_longitudinal_coordinates`, generate_longitudinal.py:450–482](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L450-L482) |
 
-With `engine='single-rf-harmonic'`, `generate_longitudinal_coordinates` samples the energy coordinate p_τ (`ptau`) for the requested reference particle, but converts it to the relative momentum deviation δ (`delta`) through a temporary `Particles` built without the reference mass, so the default proton mass is used for every species. The relativistic relation δ = √(1 + p_τ² + 2p_τ/β₀) − 1, with the reference speed β₀ = v/c of the actual species, gives the correct value, and the proton case agrees with it. For a 5 MeV/c positron bunch matched to 1 kV RF at harmonic 1 in a 100 m line, one particle gets δ = 0.03520 instead of 1.919×10⁻⁴, another 0.1245 instead of 7.083×10⁻⁴. Positions `zeta` are correct; nonproton references are affected.
+With `engine='single-rf-harmonic'`, `generate_longitudinal_coordinates` samples the energy coordinate p_τ (`ptau`) for the requested reference particle, but converts it to the relative momentum deviation δ (`delta`) through a temporary `Particles` built without the reference mass, so the default proton mass is used for every species. The relativistic relation δ = √(1 + p_τ² + 2p_τ/β₀) − 1, with the reference speed β₀ = v/c of the actual species, gives the correct value, and the proton case agrees with it. For a 5 MeV/c positron bunch matched to 1 kV RF at harmonic 1 in a 100 m line, one particle gets δ = 0.03520 instead of 1.919×10⁻⁴, another 0.1245 instead of 7.083×10⁻⁴. Positions `zeta` are correct.
 
 ??? example "Reproducer: IO-01.py"
 
@@ -31,7 +31,7 @@ With `engine='single-rf-harmonic'`, `generate_longitudinal_coordinates` samples 
     2p_τ/β₀) − 1, with the reference speed β₀ = v/c of the actual species, gives the correct value, and
     the proton case agrees with it. For a 5 MeV/c positron bunch matched to 1 kV RF at harmonic 1 in a
     100 m line, one particle gets δ = 0.03520 instead of 1.919×10⁻⁴, another 0.1245 instead of
-    7.083×10⁻⁴. Positions `zeta` are correct; nonproton references are affected.
+    7.083×10⁻⁴. Positions `zeta` are correct.
 
     The script builds a 100 m `LineSegmentMap` with 1 kV RF at harmonic 1 and momentum compaction 0.1,
     and generates eight particles with a parabolic profile and RMS bunch length 0.5 m, once for a 5

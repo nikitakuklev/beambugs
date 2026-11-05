@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
 | Source | [`src/normal.jl:627-628`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L627-L628)<br>[`SciBmad.jl/src/twiss/twiss.jl:731-741`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L731-L741)<br>[`twiss.jl:368-451`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L368-L451)<br>[`twiss.jl:58`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L58)<br>[`twiss.jl:148`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L148) |
 
-`twiss` builds the summary tunes and the `phi` phase-advance columns by adding the principal phase angle, in (−½, ½] turn, of each interval between sampled rows, so an interval longer than half a turn aliases the integer part. For a ring of eight thin FODO cells, sampling only element 17 (`at=[17]`, after four cells) gives q₁ = −0.8515 instead of 1.149 and a phase of −0.4257 instead of 0.5743 turns at s = 8 m; thin-lens matrix products and sampling every cell establish the accumulated values. The documented summary-only `at=[]` call treats the ring as one interval and returns 0.1485. Fractional tunes stay correct; the accumulated phase advance is lost with sparse sampling, such as at interaction points, and wherever a single interval between sampled rows exceeds half a turn, however densely the rest is sampled.
+`twiss` builds the summary tunes and the `phi` phase-advance columns by adding the principal phase angle, in (−½, ½] turn, of each interval between sampled rows, so an interval longer than half a turn aliases the integer part. For a ring of eight thin FODO cells, sampling only element 17 (`at=[17]`, after four cells) gives q₁ = −0.8515 instead of 1.149 and a phase of −0.4257 instead of 0.5743 turns at s = 8 m; thin-lens matrix products and sampling every cell establish the accumulated values. The documented summary-only `at=[]` call treats the ring as one interval and returns 0.1485. Fractional tunes stay correct; the integer part is lost wherever an interval between sampled rows exceeds half a turn.
 
 ??? example "Reproducer: OPT-18.jl"
 
@@ -30,9 +30,8 @@ hide:
     # (`at=[17]`, after four cells) gives q₁ = −0.8515 instead of 1.149 and a phase of −0.4257 instead
     # of 0.5743 turns at s = 8 m; thin-lens matrix products and sampling every cell establish the
     # accumulated values. The documented summary-only `at=[]` call treats the ring as one interval and
-    # returns 0.1485. Fractional tunes stay correct; the accumulated phase advance is lost with sparse
-    # sampling, such as at interaction points, and wherever a single interval between sampled rows
-    # exceeds half a turn, however densely the rest is sampled.
+    # returns 0.1485. Fractional tunes stay correct; the integer part is lost wherever an interval
+    # between sampled rows exceeds half a turn.
     #
     # The script builds a ring of eight thin FODO cells (thin quadrupoles, 1 m drifts, 1 GeV/c
     # electrons, RF off) and computes the cell tune q_c from the thin-lens cell matrix; q_c is below ½,

@@ -5,8 +5,8 @@ forward-then-backward round trip doubles the residual momentum. The inverse of a
 kick has the opposite sign, and an explicit inverse element with both residual kicks negated
 restores the initial state exactly. For a 1.4 m, 3 A, 12 kV lens with radii 1 and 4 mm and residual
 normalized kicks (2.3, −4.1) × 10⁻⁷, a 1 GeV/c proton in the core returns with normalized transverse
-momenta (`px`, `py`) = (4.600, −8.200) × 10⁻⁷ instead of zero. Backtracking a lens with nonzero
-residual kicks is affected; the annular electron-lens force round-trips correctly.
+momenta (`px`, `py`) = (4.600, −8.200) × 10⁻⁷ instead of zero. The annular electron-lens force
+round-trips correctly.
 
 The script tracks two 1 GeV/c protons, one inside the core and one in the annulus, forward through
 the lens and back with `Line.track(backtrack=True)`, and expects their transverse momenta to return

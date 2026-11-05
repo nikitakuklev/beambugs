@@ -5,8 +5,7 @@ strength KNL = 0.6 m⁻¹, contains infinite cubic coefficients. Concatenation c
 coefficients with NaN, including R₂₁, which should be −0.6000 m⁻¹; finite second-order and
 short-length controls isolate the singular thin-lens construction. For a thin-lens FODO cell using
 cubic lens maps, horizontal tune νₓ has d²νₓ/dδ² and d³νₓ/dδ³ equal to NaN instead of 0.2030 and
-−0.06786, where δ is the relative momentum offset. Users requesting third-order optics for
-zero-length MULT quadrupoles are affected.
+−0.06786, where δ is the relative momentum offset.
 
 The script builds a thin-lens quadrupole `MULT,L=0,ORDER=1,KNL=0.6` in serial Elegant (and with
 `--mpi` in 3-rank Pelegant) with a third-order map, reads the element's raw matrix from the matrix

@@ -1,6 +1,12 @@
 """COL-09: Broadband ZTRANSVERSE uses the wrong Nyquist frequency and sign
 
-Broadband ZTRANSVERSE evaluates its highest resolved (Nyquist) impedance at the next frequency index and reverses the real part's sign. With 50 ps bins, a resonator of shunt impedance 1×10⁶ Ω/m, quality factor 1 and resonant frequency 1 GHz should have −9999 Ω/m at the 10 GHz endpoint; the element uses +9994 Ω/m. For a 2 nC electron beam at 50 mₑc, six particles at +1 mm horizontal offset and six at −1 mm in adjacent bins, the 8192-bin calculation adds errors of ±3.821×10⁻⁹ rad relative to an independent Fourier sum and impedance-table control. The error alternates between bins, shrinks with a longer window and affects beams with an alternating transverse source moment.
+Broadband ZTRANSVERSE evaluates its highest resolved (Nyquist) impedance at the next frequency index
+and reverses the real part's sign. With 50 ps bins, a resonator of shunt impedance 1×10⁶ Ω/m,
+quality factor 1 and resonant frequency 1 GHz should have −9999 Ω/m at the 10 GHz endpoint; the
+element uses +9994 Ω/m. For a 2 nC electron beam at 50 mₑc, six particles at +1 mm horizontal offset
+and six at −1 mm in adjacent bins, the 8192-bin calculation adds errors of ±3.821×10⁻⁹ rad relative
+to an independent Fourier sum and impedance-table control. The error alternates between bins and
+shrinks with a longer window.
 
 The script tracks the beam through the broadband element and through a table of the same impedance on the same frequency grid, and compares both with the kick of the analytic impedance, summed as a Fourier series without an FFT. The table is the control: it agrees with the series to rounding. Opposite offsets in adjacent bins cancel the DC source moment, leaving the endpoint as the only difference; evaluating the series with the element's endpoint value reproduces the broadband kick.
 """

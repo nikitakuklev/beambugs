@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`ExactCFbend.H#L379-L389`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactCFbend.H#L379-L389)<br>[manual](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L2073-L2099)<br>[`ExactCFbend.H#L506-L538`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/ExactCFbend.H#L506-L538)<br>[spin contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2792-L2800) |
 
-`ExactCFbend` applies the skew-decapole (`k_skew[4]`) horizontal kick with the wrong sign: it is the negative of the derivative of the documented vector potential (Zolkin 2017, Table XI), while the vertical kick is correct. The map is therefore not symplectic, and an independent integration of the curvilinear Hamiltonian reproduces ImpactX to 1.3e-14 only with this sign reversed. For a proton at γ = 3.25 in a 0.15 m bend with curvature 2 m⁻¹ and skew strength 160 m⁻⁵, a particle at x = 0.08 m, y = −0.05 m exits with `px` off by 1.321e-4, and the Jacobian M violates the symplectic condition MᵀJM = J by 6.795e-4. Spin tracking (experimental in ImpactX) uses the same wrong field, with spin-component errors up to 7.899e-4. The error grows with strength and amplitude.
+`ExactCFbend` applies the skew-decapole (`k_skew[4]`) horizontal kick with the wrong sign: it is the negative of the derivative of the documented vector potential (Zolkin 2017, Table XI), while the vertical kick is correct. The map is therefore not symplectic, and an independent integration of the curvilinear Hamiltonian reproduces ImpactX to 1.3e-14 only with the sign reversed. For a proton at γ = 3.25 in a 0.15 m bend with curvature 2 m⁻¹ and skew strength 160 m⁻⁵, a particle at x = 0.08 m, y = −0.05 m exits with `px` off by 1.321e-4, and the Jacobian M violates MᵀJM = J by 6.795e-4. Spin tracking (experimental) uses the same wrong field, with spin errors up to 7.899e-4.
 
 ??? example "Reproducer: TRK-19.py"
 
@@ -28,11 +28,10 @@ hide:
     `ExactCFbend` applies the skew-decapole (`k_skew[4]`) horizontal kick with the wrong sign: it is the
     negative of the derivative of the documented vector potential (Zolkin 2017, Table XI), while the
     vertical kick is correct. The map is therefore not symplectic, and an independent integration of the
-    curvilinear Hamiltonian reproduces ImpactX to 1.3e-14 only with this sign reversed. For a proton at
-    γ = 3.25 in a 0.15 m bend with curvature 2 m⁻¹ and skew strength 160 m⁻⁵, a particle at x = 0.08 m,
-    y = −0.05 m exits with `px` off by 1.321e-4, and the Jacobian M violates the symplectic condition
-    MᵀJM = J by 6.795e-4. Spin tracking (experimental in ImpactX) uses the same wrong field, with
-    spin-component errors up to 7.899e-4. The error grows with strength and amplitude.
+    curvilinear Hamiltonian reproduces ImpactX to 1.3e-14 only with the sign reversed. For a proton at γ
+    = 3.25 in a 0.15 m bend with curvature 2 m⁻¹ and skew strength 160 m⁻⁵, a particle at x = 0.08 m, y
+    = −0.05 m exits with `px` off by 1.321e-4, and the Jacobian M violates MᵀJM = J by 6.795e-4. Spin
+    tracking (experimental) uses the same wrong field, with spin errors up to 7.899e-4.
 
     The script tracks 25 protons, a centre point and a fourth-order finite-difference stencil around it,
     through the bend with integrator orders 2, 4 and 6, and measures the full-element Jacobian M. It

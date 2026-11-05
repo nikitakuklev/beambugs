@@ -4,9 +4,9 @@ The linear `CFbend` returns NaN coordinates when a focusing frequency is zero: g
 gives NaN `y` and `py`, and `k` = −1/`rc`² (bend radius `rc`), which cancels horizontal focusing,
 gives NaN `x`, `px` and `t`. The transfer functions have finite limits there, matched by `Sbend` at
 `k` = 0 and by a gradient raised by 1e-9 m⁻². When rounding leaves a residue of −1.4e-17 m⁻² in the
-horizontal focusing `k` + 1/`rc`², the result is finite but wrong: for `rc` = 1/0.3 m,
-`k` = −0.09 m⁻² and `ds` = 0.7 m, `x` is 0.02770 m instead of 0.03025 m and `t` is 0.01115 m instead
-of 0.01314 m. Zero-gradient bends and bends tuned to cancel horizontal focusing are affected.
+horizontal focusing `k` + 1/`rc`², the result is finite but wrong: for `rc` = 1/0.3 m, `k` = −0.09
+m⁻² and `ds` = 0.7 m, `x` is 0.02770 m instead of 0.03025 m and `t` is 0.01115 m instead of 0.01314
+m.
 
 The script tracks one proton (938.3 MeV kinetic energy) with all six coordinates nonzero through
 0.7 m `CFbend`s with `rc` = 3 m and `k` = 0, `rc` = 2 m and `k` = −0.25 m⁻², and `rc` = 1/0.3 m and

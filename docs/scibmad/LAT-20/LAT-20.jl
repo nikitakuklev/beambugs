@@ -5,8 +5,7 @@
 # method matching reverse(::LineElement)`. Beamlines defines no element-orientation support, and
 # BeamTracking's source explicitly marks reversed elements as future work; a runtime method check
 # independently confirms that `reverse(::LineElement)` does not exist. The exporter gives no
-# incomplete-translation warning for the reproduced lattice, so users discover the unsupported
-# translation only when loading the generated file.
+# incomplete-translation warning for the reproduced lattice.
 #
 # The script exports `lat: line = (--d)`, with `d` a 1 m drift, using Bmad's `bmad_to_scibmad`
 # program, reports whether the translator flagged an incomplete translation, and loads the emitted

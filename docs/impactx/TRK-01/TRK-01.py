@@ -5,8 +5,7 @@ dipole produces no vertical steering. In the element's curvilinear field model t
 Bₓ/(Bρ) = kₛ/(1 + hx), with Bρ the magnetic rigidity, h the curvature and kₛ = `k_skew[0]`, so an
 on-axis particle must leave a body of length L with `py` = kₛ·L. For an on-axis proton in
 `ExactCFbend(ds=0.7, k_normal=[0.3], k_skew=[0.02])`, `py` is 0 instead of 0.01400, with one and
-with four slices. Any skew dipole or vertical corrector modelled inside an `ExactCFbend` gives no
-vertical kick.
+with four slices.
 
 The script tracks one on-axis proton at 938.3 MeV kinetic energy (γ = 2) through
 `ExactCFbend(ds=0.7, k_normal=[0.3], k_skew=[0.02])` with a fourth-order integrator and 20 map

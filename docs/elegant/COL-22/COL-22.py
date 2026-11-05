@@ -6,8 +6,7 @@ with FREQ divided by a to preserve the resonant frequency, scales the stored bea
 direct-frequency setting, which agrees with an independent parallel-RLC circuit calculation. For
 quality factor Q = 11.00, shunt impedance RA = 200.0 kΩ, frequency 0.8300 GHz and a 0.3000 nC
 electron bunch represented by 18 macroparticles, the fifth-traversal tail energy loss is 9366 eV for
-a = 1.440 or 1.247×10⁴ eV for a = 0.2500, instead of 1.015×10⁴ eV. Multi-turn cavity simulations
-using this waveform option are affected.
+a = 1.440 or 1.247×10⁴ eV for a = 0.2500, instead of 1.015×10⁴ eV.
 
 The script tracks the bunch through RFMODE and a drift five times, exciting the cavity by rigid
 tracking until the last traversal, and compares the fifth traversal's energy losses with a lumped

@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [bunch loop, insertSCeffects.cc:316–323](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L316-L323)<br>[lastSigma, track.h:3458](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track.h#L3458)<br>[averaging_factor, elegant.tex:4492–4503](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4492-L4503) |
 
-Nonlinear SCMULT bunch-train tracking with size-averaging factor 0 < f < 1 uses one shared size history per element: after the first turn, each bunch filters against history last updated by another bunch instead of its own previous turn. In this independent-bunch model, changing another bunch must not change the kick; an isolated bunch checked against an independent Gaussian-field integral supplies the control. At momentum 17 mₑc, charge 0.2000 pC per bunch and f = 0.4000, making a second bunch 2.500 times wider changes the first bunch's second-turn horizontal slope kick on its first particle from 2.510×10⁻⁹ to 4.532×10⁻⁹; making it 2.500 times longer changes it to 2.733×10⁻⁹. Multi-bunch ring simulations using size averaging are affected.
+Nonlinear SCMULT bunch-train tracking with size-averaging factor 0 < f < 1 uses one shared size history per element: after the first turn, each bunch filters against history last updated by another bunch instead of its own previous turn. In this independent-bunch model, changing another bunch must not change the kick; an isolated bunch checked against an independent Gaussian-field integral supplies the control. At momentum 17 mₑc, charge 0.2000 pC per bunch and f = 0.4000, making a second bunch 2.500 times wider changes the first bunch's second-turn horizontal slope kick on its first particle from 2.510×10⁻⁹ to 4.532×10⁻⁹; making it 2.500 times longer changes it to 2.733×10⁻⁹.
 
 ??? example "Reproducer: COL-18.py"
 
@@ -31,7 +31,7 @@ Nonlinear SCMULT bunch-train tracking with size-averaging factor 0 < f < 1 uses 
     integral supplies the control. At momentum 17 mₑc, charge 0.2000 pC per bunch and f = 0.4000, making
     a second bunch 2.500 times wider changes the first bunch's second-turn horizontal slope kick on its
     first particle from 2.510×10⁻⁹ to 4.532×10⁻⁹; making it 2.500 times longer changes it to
-    2.733×10⁻⁹. Multi-bunch ring simulations using size averaging are affected.
+    2.733×10⁻⁹.
 
     The script tracks two turns of a four-sector ring with SCMULT, first one matched bunch alone and
     then the same bunch followed by a second bunch that is wider or longer, and reads the first bunch's

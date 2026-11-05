@@ -5,8 +5,8 @@
 # an independent Lorentz-force trajectory agrees with the unaligned map at the intended roll and
 # with the aligned map at twice that roll. For a 0.1900 m straight-reference bend with normalized
 # strength −0.1700 m⁻¹ and reference roll 0.01500 rad, the kick in normalized vertical momentum is
-# 9.689 × 10⁻⁴ instead of 4.845 × 10⁻⁴. `Exact`, `Symplectic` and the default method are affected,
-# and bends with finite curvature also change under zero alignment; omitting or ignoring the
+# 9.689 × 10⁻⁴ instead of 4.845 × 10⁻⁴. This occurs with `Exact`, `Symplectic` and the default
+# method, and bends with finite curvature also change under zero alignment; omitting or ignoring the
 # alignment group restores the unaligned map.
 #
 # The script tracks four protons with nonzero momenta through straight-reference bends with rolls

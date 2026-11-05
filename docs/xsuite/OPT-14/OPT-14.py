@@ -6,8 +6,7 @@ periodic boundary. At equilibrium, damped transport plus diffusion must reproduc
 covariance, whatever its absolute normalization. In a 144 m, 24-cell electron ring at 7 GeV/c with
 48 bends and a 50 MV cavity, the horizontal variance ends at 7.660 × 10⁻⁵ m² instead of its starting
 7.695 × 10⁻⁵ m², a 0.4538% deficit. The defect affects `eq_beam_covariance_matrix` from
-`radiation_method='full'`, also with lattice functions disabled; it establishes failed periodic
-closure, not the absolute accuracy of the starting covariance or scalar emittances.
+`radiation_method='full'`, also with lattice functions disabled.
 
 The script builds that ring of FODO cells (thick bends, thin quadrupoles, one harmonic-36 cavity,
 mean radiation with compensated energy loss) at 3, 5 and 7 GeV/c and compares the last row of the

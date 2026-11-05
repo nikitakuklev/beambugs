@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`track_through_csbend`, csbend.c:1496–1502](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1496-L1502)<br>[expanded integrator, csbend.c:2064–2255](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2064-L2255)<br>[spin update in the exact integrator, csbend.c:1930–1935](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1930-L1935)<br>[EXPAND_HAMILTONIAN, track_data.c:1977](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1977)<br>[spin_tracking, elegant.tex:7291–7292](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7291-L7292)<br>[CSBEND among spin-aware elements, elegant.tex:11191–11193](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L11191-L11193) |
 
-With spin tracking enabled, a CSBEND using EXPAND_HAMILTONIAN=1 omits spin transport through the magnet body, although the exact-Hamiltonian branch applies the Thomas–BMT equation. For a reference electron with initially longitudinal spin and momentum 450 mₑc through a 0.8 m bend with fringes disabled and angle θ = 0.18 rad, the correct spin rotation in the exit frame is −aγθ = −0.09393 rad, where a is the electron's anomalous magnetic moment and γ its Lorentz factor. The exact-Hamiltonian control agrees, while the expanded branch returns zero rotation without a warning. Users combining spin tracking with the leading-order Hamiltonian option are affected; fringe rotations are separate.
+With spin tracking enabled, a CSBEND using EXPAND_HAMILTONIAN=1 omits spin transport through the magnet body, although the exact-Hamiltonian branch applies the Thomas–BMT equation. For a reference electron with initially longitudinal spin and momentum 450 mₑc through a 0.8 m bend with fringes disabled and angle θ = 0.18 rad, the correct spin rotation in the exit frame is −aγθ = −0.09393 rad, where a is the electron's anomalous magnetic moment and γ its Lorentz factor. The exact-Hamiltonian control agrees, while the expanded branch returns zero rotation without a warning. Fringe rotations are separate.
 
 ??? example "Reproducer: TRK-27.py"
 
@@ -30,8 +30,7 @@ With spin tracking enabled, a CSBEND using EXPAND_HAMILTONIAN=1 omits spin trans
     electron with initially longitudinal spin and momentum 450 mₑc through a 0.8 m bend with fringes
     disabled and angle θ = 0.18 rad, the correct spin rotation in the exit frame is −aγθ = −0.09393 rad,
     where a is the electron's anomalous magnetic moment and γ its Lorentz factor. The exact-Hamiltonian
-    control agrees, while the expanded branch returns zero rotation without a warning. Users combining
-    spin tracking with the leading-order Hamiltonian option are affected; fringe rotations are separate.
+    control agrees, while the expanded branch returns zero rotation without a warning. Fringe rotations are separate.
 
     The script tracks 12 identical on-reference electrons with spin (0, 0, 1) through a pure CSBEND with
     edge effects off, for the exact and the expanded Hamiltonian, at two momenta and two bend angles of

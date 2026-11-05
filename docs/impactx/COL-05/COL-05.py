@@ -6,8 +6,7 @@ ImpactX's own coordinate transforms keep the original γ. Lorentz similarity req
 kick scaled by (βγ)² to stay unchanged for a fixed rest-frame source and mesh. At γ = 6.000×10⁷
 (30.66 TeV electrons) the solver uses γ = 4.745×10⁷, and for a uniform sphere on a 64³ mesh the
 rescaled transverse kick is 9.642% low, on a normalized kick of only 1.735×10⁻²⁰. The error shrinks
-at lower energy, to 2.716×10⁻⁹ at γ = 10⁴; no consequential error at ordinary energies is
-established.
+at lower energy, to 2.716×10⁻⁹ at γ = 10⁴.
 
 The script gives a cold uniform electron sphere (radius 1.3 mm, 0.7 pC) one 19 mm 3D FFT
 space-charge kick at γ = 7 and at high γ, with identical rest-frame sources and meshes, and compares

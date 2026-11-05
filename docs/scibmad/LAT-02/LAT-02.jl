@@ -6,8 +6,8 @@
 # each returns whichever reference is stored; a later Beamline that sets no reference repeats the
 # upstream increment instead of 0. For a proton segment storing `E_ref` = 2.000 GeV, `dpc_ref` is
 # 2.000×10⁹ instead of 1.766 GeV/c and `dp_over_q_ref` is 2.000×10⁹ instead of 5.892 T·m. Segments
-# that keep `pc_ref` at 1.200 GeV/c report `dpc_ref` = 0.2000 GeV/c instead of 0. Code that reads
-# energy changes from these getters gets them wrong without warning.
+# that keep `pc_ref` at 1.200 GeV/c report `dpc_ref` = 0.2000 GeV/c instead of 0. The getters return
+# these wrong values without warning.
 #
 # The script builds a `Branch` whose only Beamline is a proton segment storing `E_ref` = 2 GeV and
 # compares its relative getters with its absolute `pc_ref` and `p_over_q_ref`, which the

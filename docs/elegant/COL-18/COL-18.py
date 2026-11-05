@@ -7,7 +7,7 @@ bunch must not change the kick; an isolated bunch checked against an independent
 integral supplies the control. At momentum 17 mₑc, charge 0.2000 pC per bunch and f = 0.4000, making
 a second bunch 2.500 times wider changes the first bunch's second-turn horizontal slope kick on its
 first particle from 2.510×10⁻⁹ to 4.532×10⁻⁹; making it 2.500 times longer changes it to
-2.733×10⁻⁹. Multi-bunch ring simulations using size averaging are affected.
+2.733×10⁻⁹.
 
 The script tracks two turns of a four-sector ring with SCMULT, first one matched bunch alone and
 then the same bunch followed by a second bunch that is wider or longer, and reads the first bunch's

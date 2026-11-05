@@ -17,7 +17,7 @@ hide:
 | Discussed in | [[gh:https://github.com/BLAST-WarpX/warpx/pull/7178]]<br>[[gh:https://github.com/BLAST-ImpactX/impactx/pull/1621]] |
 | Source | [`PoissonSolve.cpp#L52-L61`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/PoissonSolve.cpp#L52-L61)<br>[`PoissonSolver.H#L270-L284`](https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/PoissonSolver.H#L270-L284)<br>[integrated Green function](https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/IntegratedGreenFunctionSolver.H#L83-L96)<br>[kick normalization](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/GatherAndPush.cpp#L98-L119)<br>[3D model contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2456-L2460)<br>[equation](https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/PoissonSolver.H#L157-L172) |
 
-For 3D FFT particle-in-cell space charge, ImpactX passes only the rounded velocity β = √(1 − 1/γ²) to the WarpX/ABLASTR Poisson solver, which reconstructs the Lorentz factor γ from it, while ImpactX's own coordinate transforms keep the original γ. Lorentz similarity requires the transverse kick scaled by (βγ)² to stay unchanged for a fixed rest-frame source and mesh. At γ = 6.000×10⁷ (30.66 TeV electrons) the solver uses γ = 4.745×10⁷, and for a uniform sphere on a 64³ mesh the rescaled transverse kick is 9.642% low, on a normalized kick of only 1.735×10⁻²⁰. The error shrinks at lower energy, to 2.716×10⁻⁹ at γ = 10⁴; no consequential error at ordinary energies is established.
+For 3D FFT particle-in-cell space charge, ImpactX passes only the rounded velocity β = √(1 − 1/γ²) to the WarpX/ABLASTR Poisson solver, which reconstructs the Lorentz factor γ from it, while ImpactX's own coordinate transforms keep the original γ. Lorentz similarity requires the transverse kick scaled by (βγ)² to stay unchanged for a fixed rest-frame source and mesh. At γ = 6.000×10⁷ (30.66 TeV electrons) the solver uses γ = 4.745×10⁷, and for a uniform sphere on a 64³ mesh the rescaled transverse kick is 9.642% low, on a normalized kick of only 1.735×10⁻²⁰. The error shrinks at lower energy, to 2.716×10⁻⁹ at γ = 10⁴.
 
 ??? example "Reproducer: COL-05.py"
 
@@ -32,8 +32,7 @@ For 3D FFT particle-in-cell space charge, ImpactX passes only the rounded veloci
     kick scaled by (βγ)² to stay unchanged for a fixed rest-frame source and mesh. At γ = 6.000×10⁷
     (30.66 TeV electrons) the solver uses γ = 4.745×10⁷, and for a uniform sphere on a 64³ mesh the
     rescaled transverse kick is 9.642% low, on a normalized kick of only 1.735×10⁻²⁰. The error shrinks
-    at lower energy, to 2.716×10⁻⁹ at γ = 10⁴; no consequential error at ordinary energies is
-    established.
+    at lower energy, to 2.716×10⁻⁹ at γ = 10⁴.
 
     The script gives a cold uniform electron sphere (radius 1.3 mm, 0.7 pC) one 19 mm 3D FFT
     space-charge kick at γ = 7 and at high γ, with identical rest-frame sources and meshes, and compares

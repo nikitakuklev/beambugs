@@ -16,7 +16,7 @@ hide:
 | Pull request | [[gh:https://github.com/bmad-sim/BeamTracking.jl/pull/370]], fix |
 | Source | [`BeamTracking.jl/src/types.jl:80-86`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L80-L86)<br>[`BeamTracking.jl/src/callbacks.jl:61`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/callbacks.jl#L61)<br>[`SciBmad.jl/docs/src/track.md:155-177`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/track.md#L155-L177) |
 
-The `Bunch` docstring tells users to write a tracking callback as `callback(coords, ds_step, g)`, but tracking calls each callback with nine arguments, `(i, coords, cur_s, cur_t_ref, cur_beta_gamma_ref, last_ds_step, last_g, transforms_out!, transforms_in!)`. The call site and the narrative tracking documentation agree on the nine-argument form. A callback written to the docstring raises a `MethodError` at its first call, while a nine-argument callback runs. Users who follow the docstring rather than the tracking documentation are affected; the failure is loud.
+The `Bunch` docstring tells users to write a tracking callback as `callback(coords, ds_step, g)`, but tracking calls each callback with nine arguments, `(i, coords, cur_s, cur_t_ref, cur_beta_gamma_ref, last_ds_step, last_g, transforms_out!, transforms_in!)`. The call site and the narrative tracking documentation agree on the nine-argument form. A callback written to the docstring raises a `MethodError` at its first call, while a nine-argument callback runs. The failure is loud.
 
 ??? example "Reproducer: LAT-13.jl"
 
@@ -29,8 +29,8 @@ The `Bunch` docstring tells users to write a tracking callback as `callback(coor
     # but tracking calls each callback with nine arguments, `(i, coords, cur_s, cur_t_ref,
     # cur_beta_gamma_ref, last_ds_step, last_g, transforms_out!, transforms_in!)`. The call site and the
     # narrative tracking documentation agree on the nine-argument form. A callback written to the
-    # docstring raises a `MethodError` at its first call, while a nine-argument callback runs. Users who
-    # follow the docstring rather than the tracking documentation are affected; the failure is loud.
+    # docstring raises a `MethodError` at its first call, while a nine-argument callback runs. The
+    # failure is loud.
     #
     # The script reads the `Bunch` docstring of the loaded package and tracks an electron through a 1 m
     # drift once with a callback of the three-argument form and once with a nine-argument callback. It

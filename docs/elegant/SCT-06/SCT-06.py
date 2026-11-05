@@ -6,8 +6,7 @@ binding energies and small compared with incident kinetic energy. The event rate
 sampled transfers are subtracted directly from the Lorentz factor γ. For 20000 electrons at P = 1000
 crossing 0.01 m of dilute helium, the free-electron Møller integral predicts 42.22 electrons losing
 at least 1.022 keV; serial and three-rank parallel runs give none despite active recoil sampling.
-The Poisson probability of zero such transfers under that reference is 4.408×10⁻¹⁹. Users modelling
-collisional energy-loss tails are affected.
+The Poisson probability of zero such transfers under that reference is 4.408×10⁻¹⁹.
 
 The script tracks 20000 electrons through the helium target with recoil and bremsstrahlung enabled
 and counts those that lose at least 1.022 keV, comparing the count with the Møller-scattering

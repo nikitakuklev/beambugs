@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [event probability, matter.c:127–128](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L127-L128)<br>[matter.c:187](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L187)<br>[matter.c:246–251](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L246-L251)<br>[matter.c:258–283](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L258-L283)<br>[`ELECTRON_RECOIL`, track_data.c:2143](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2143)<br>[matter.c:84–85](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L84-L85) |
 
-In MATTER, enabling ELECTRON_RECOIL while ENERGY_DECAY and NUCLEAR_BREMSSTRAHLUNG are disabled omits the documented recoil energy loss. The energy-processing gates ignore standalone recoil, although collisions with target electrons must transfer positive energy. For 20000 electrons of momentum 1000 mₑc crossing 0.01 m of dilute helium, a Poisson approximation to the option's event rate predicts 6894 ± 67.21 electrons losing energy, but recoil-only output is bit-identical to all-off output. Enabling bremsstrahlung activates thousands of recoil losses, isolating the activation failure. Users enabling recoil alone are affected.
+In MATTER, enabling ELECTRON_RECOIL while ENERGY_DECAY and NUCLEAR_BREMSSTRAHLUNG are disabled omits the documented recoil energy loss. The energy-processing gates ignore standalone recoil, although collisions with target electrons must transfer positive energy. For 20000 electrons of momentum 1000 mₑc crossing 0.01 m of dilute helium, a Poisson approximation to the option's event rate predicts 6894 ± 67.21 electrons losing energy, but recoil-only output is bit-identical to all-off output. Enabling bremsstrahlung activates thousands of recoil losses, isolating the activation failure.
 
 ??? example "Reproducer: SCT-05.py"
 
@@ -30,7 +30,6 @@ In MATTER, enabling ELECTRON_RECOIL while ENERGY_DECAY and NUCLEAR_BREMSSTRAHLUN
     mₑc crossing 0.01 m of dilute helium, a Poisson approximation to the option's event rate predicts
     6894 ± 67.21 electrons losing energy, but recoil-only output is bit-identical to all-off output.
     Enabling bremsstrahlung activates thousands of recoil losses, isolating the activation failure.
-    Users enabling recoil alone are affected.
 
     The script tracks 20000 electrons through the target with every combination of ELECTRON_RECOIL and
     NUCLEAR_BREMSSTRAHLUNG and counts the electrons whose momentum drops. It compares each count with
@@ -357,6 +356,10 @@ In MATTER, enabling ELECTRON_RECOIL while ENERGY_DECAY and NUCLEAR_BREMSSTRAHLUN
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source reading, not executed for this claim |
+| Found | `gpt-6-astra` | xhigh | 2026-11-04 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

@@ -2,12 +2,10 @@
 
 The manual recommends CSBEND edge model 3 for applications requiring symplecticity, without
 restricting the claim to transverse motion at fixed energy. With a finite pole gap, its
-momentum-dependent vertical kick omits the time shift needed for a six-dimensional canonical map. In
-the tested 0.9 m, 0.23 rad bend, a particle with relative momentum offset δ = 0.15 and vertical
+momentum-dependent vertical kick omits the time shift needed for a six-dimensional canonical map. In a 0.9 m, 0.23 rad bend, a particle with relative momentum offset δ = 0.15 and vertical
 offset y = 20 mm receives no exit-edge path shift, while canonical completion requires
 Δs = −2.222×10⁻⁷ m. The measured six-dimensional symplecticity residual is 2.224×10⁻⁵, despite a
-transverse residual below 3.5×10⁻¹³. Users relying on the six-dimensional guarantee are affected;
-the completion is not a measured physical fringe delay.
+transverse residual below 3.5×10⁻¹³. The completion is not a measured physical fringe delay.
 
 The script tracks 13 electrons, a central particle and a finite-difference star around it in the
 canonical coordinates (x, p_x/p0, y, p_y/p0, ct, -E/(p0 c)), through a CSBEND with the exit edge

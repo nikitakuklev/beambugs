@@ -6,8 +6,8 @@ coordinates. Relativistic kinematics and the expanded-drift map require those fi
 together, as direct indexed assignment does. Setting a 1 GeV/c proton to δ = 0.3 through a view,
 then tracking 1.7 m with normalized horizontal momentum `px` = 0.0008, gives x = 1.360 mm instead of
 1.046 mm. Strided views, the output of NumPy universal functions (`out=`) and aliased in-place
-writes also bypass updates, and slices of read-only arrays accept prohibited writes. NumPy-backed
-CPU arrays are affected; direct indexed assignment preserves the required consistency.
+writes also bypass updates, and slices of read-only arrays accept prohibited writes. Direct indexed
+assignment preserves the required consistency.
 
 The script sets δ = 0.3 on the second of four 1 GeV/c protons with `px` = 0.0008 through five paths
 (direct indexed assignment, a slice view, a strided view, a universal function with `out=`, and an

@@ -7,7 +7,7 @@ Bane's form rises linearly in s at short range; the implemented one starts as �
 resembling the Next Linear Collider design (iris radius 4.92 mm, gap 6.89 mm, period 8.75 mm) the
 wake is 19.34 times too large at s/s₀ = 0.01 and 1.392 times at s/s₀ = 1. Its documentation also
 calls it a resistive-wall wake and states units of V/m/pC/mm although it returns SI. Built-in
-tracking does not call it; only direct callers are affected.
+tracking does not call it.
 
 The script evaluates `w_t_rf` for that cell at s/s₀ = 0.01 and 1, with s₀ from the same fit the code
 uses. It compares the result with Bane's formula evaluated with the free-space impedance Z₀ = 377 Ω

@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-26 on xfields main (`223b4fa`) |
 | Source | [`BeamBeamBiGaussian2D.compute_spacial_moments`, beambeam2d.py:272–283](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/beambeam2d.py#L272-L283)<br>[collective pipeline](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/beambeam2d.py#L238-L266) |
 
-In 2D strong-strong beam-beam, `BeamBeamBiGaussian2D.compute_spacial_moments` sums every stored particle row without checking `particles.state`, so lost particles enter the population, centroid and size passed to the opposing beam. Removing a lost particle cannot change the collision, and with lost rows excluded the kicks agree with the analytic round-Gaussian field and the manual's beam-beam Lorentz factor. For four live 1 GeV/c protons at x, y = ±1 mm (weight 10¹⁰ each) plus one lost particle at x = 20 mm, the exchanged population is 5 × 10¹⁰ instead of 4 × 10¹⁰, the horizontal variance 6.480 × 10⁻⁵ m² instead of 1.000 × 10⁻⁶ m², and one opposing particle's horizontal kick +6.845 × 10⁻⁶ instead of −1.994 × 10⁻⁵. Strong-strong 2D simulations with particle losses are affected.
+In 2D strong-strong beam-beam, `BeamBeamBiGaussian2D.compute_spacial_moments` sums every stored particle row without checking `particles.state`, so lost particles enter the population, centroid and size passed to the opposing beam. Removing a lost particle cannot change the collision, and with lost rows excluded the kicks agree with the analytic round-Gaussian field and the manual's beam-beam Lorentz factor. For four live 1 GeV/c protons at x, y = ±1 mm (weight 10¹⁰ each) plus one lost particle at x = 20 mm, the exchanged population is 5 × 10¹⁰ instead of 4 × 10¹⁰, the horizontal variance 6.480 × 10⁻⁵ m² instead of 1.000 × 10⁻⁶ m², and one opposing particle's horizontal kick +6.845 × 10⁻⁶ instead of −1.994 × 10⁻⁵.
 
 ??? example "Reproducer: COL-05.py"
 
@@ -31,8 +31,7 @@ In 2D strong-strong beam-beam, `BeamBeamBiGaussian2D.compute_spacial_moments` su
     Lorentz factor. For four live 1 GeV/c protons at x, y = ±1 mm (weight 10¹⁰ each) plus one lost
     particle at x = 20 mm, the exchanged population is 5 × 10¹⁰ instead of 4 × 10¹⁰, the horizontal
     variance 6.480 × 10⁻⁵ m² instead of 1.000 × 10⁻⁶ m², and one opposing particle's horizontal kick
-    +6.845 × 10⁻⁶ instead of −1.994 × 10⁻⁵. Strong-strong 2D simulations with particle losses are
-    affected.
+    +6.845 × 10⁻⁶ instead of −1.994 × 10⁻⁵.
 
     The script collides two bunches for one turn through a two-branch pipeline. The source bunch holds
     the four live corner particles; one run adds the lost particle (state 0) and the control omits it,

@@ -1,6 +1,6 @@
 """COL-03: Round nonlinear space charge omits the integrating length and optics weighting
 
-With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length and optical weights from the kick of a round Gaussian beam. The branch is selected when the rms sizes σₓ and σᵧ satisfy |σₓ − σᵧ|/σₓ < 10⁻⁶; an unsliced Gaussian control with σᵧ/σₓ = 1.00001 agrees with an independent integrated-field calculation. In a symmetric ring with 1 nC of electrons at 10 mₑc and σₓ = σᵧ = 1 mm, the round kick is 4.000 times the correct value after a 0.25 m drift and 1.333 times it after a 0.75 m drift. Round-beam nonlinear space-charge studies in rings are affected.
+With `insert_sceffects` and `nonlinear=1`, SCMULT omits the integrating length and optical weights from the kick of a round Gaussian beam. The branch is selected when the rms sizes σₓ and σᵧ satisfy |σₓ − σᵧ|/σₓ < 10⁻⁶; an unsliced Gaussian control with σᵧ/σₓ = 1.00001 agrees with an independent integrated-field calculation. In a symmetric ring with 1 nC of electrons at 10 mₑc and σₓ = σᵧ = 1 mm, the round kick is 4.000 times the correct value after a 0.25 m drift and 1.333 times it after a 0.75 m drift.
 
 The script tracks 512 electrons through one drift of a closed four-bend ring, with an SCMULT after
 the drift, and reads each particle's slope kick. It compares the kicks with the Gaussian field

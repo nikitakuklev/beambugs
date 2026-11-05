@@ -2,13 +2,12 @@
 
 `insert_element_every_ds()`, which places a thin element such as a `Marker` at regular spacing,
 splits the thick elements it falls in by copying them with a shorter `ds`, so each piece of a split
-`RFCavity`, `SoftQuadrupole` or `SoftSolenoid` holds a compressed copy of the whole field profile
-instead of its own section. A midpoint marker in a 1 m cavity with profile ½(1 − cos 2πs/L) cuts a
-10 GeV electron's energy gain by 20.00%, to 0.1735 MeV instead of 0.2169 MeV; the unsplit cavity and
-ImpactX's own `nslice=2` subdivision match the analytic gain integral. Constant profiles are
-unaffected. The helper also splits `LinearMap` and `SpinMap`, documented as unsliceable, without an
-error, and each piece applies the whole map: a 60° `SpinMap` rotation becomes 120°, and a
-`Programmable` drift that captures its original element doubles its advance.
+`RFCavity`, `SoftQuadrupole` or `SoftSolenoid` holds a compressed copy of the whole field profile. A
+midpoint marker in a 1 m cavity with profile ½(1 − cos 2πs/L) cuts a 10 GeV electron's energy gain
+by 20.00%, to 0.1735 MeV instead of 0.2169 MeV; the unsplit cavity and ImpactX's own `nslice=2`
+subdivision match the analytic gain integral. Constant profiles are unaffected. It also splits
+`LinearMap` and `SpinMap`, documented as unsliceable, without an error, and each piece applies the
+whole map: a 60° `SpinMap` rotation becomes 120°.
 
 The script splits each 1 m element at 0.5 m with a `Marker` and tracks a 10 GeV electron at x = 1
 mm, pₓ = 0.1 mrad through the unsplit element, `nslice=2` (profile elements) and the split copy,

@@ -8,7 +8,7 @@ reduces to a drift of length −`ds`. Pushing the reversed element directly, whi
 element's profile origin, closes the round trip to 2.1e-16. With a constant profile
 (`cos_coefficients=[2]`, `ds` = 0.7 m), the largest coordinate error after the pair, in metres or
 normalized momentum, is 0.01080 for `SoftQuadrupole`, 0.004498 for `SoftSolenoid` and 0.002723 for
-`RFCavity`. Any lattice containing a reversed soft-edge element is affected.
+`RFCavity`.
 
 For each of the three classes, the script tracks one proton (938.3 MeV kinetic energy) with all six
 coordinates nonzero through a two-element lattice, the element and its `reverse()` copy, with a

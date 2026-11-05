@@ -6,8 +6,7 @@ field gradient by the whole bunch's rms widths. The manual instead treats each s
 for transverse rms widths σₓ and σᵧ, its horizontal gradient is proportional to 1/[σₓ(σₓ + σᵧ)], as
 equal-width and isolated-slice controls confirm. For two equal-charge slices whose widths differ by a
 factor of 2, the narrow slice's gradient is 9.742×10⁻⁷ m⁻¹ instead of 2.436×10⁻⁶ m⁻¹, 2.500 times
-too weak, while the wide slice's is 1.600 times too strong. Ring simulations with unequal slice sizes
-are affected.
+too weak, while the wide slice's is 1.600 times too strong.
 
 The script tracks one turn around a ring of sixteen identical sector bends, with constant matched
 beta functions, and a single SCMULT at its end; the beam is two clouds of 128 matched particles,

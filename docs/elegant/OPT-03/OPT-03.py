@@ -6,8 +6,7 @@ totals without multiplying by `n_periods`, although the per-element contribution
 For a cell of two 1 m bends with curvature 0.1 m⁻¹ at 6000 mₑc, I₂ must be 0.02000 m⁻¹ for one
 period and 0.04000 m⁻¹ for two, but Elegant writes 0.02000 m⁻¹ for both. The energy loss per turn
 then stays at 24.88 keV instead of doubling to 49.77 keV, and the damping times double instead of
-staying unchanged. The same cell with SBEN bends is correct. Users of repeated CCBEND cells are
-affected.
+staying unchanged. The same cell with SBEN bends is correct.
 
 The script runs the same three-meter cell (two quadrupoles and two 1 m bends, 6000 mₑc) with
 `n_periods` = 1 and 2, in serial Elegant (and with `--mpi` in 3-rank Pelegant). For one period it

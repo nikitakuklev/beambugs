@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [`track_through_ccbend_impl`, ccbend.c:450–470](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L450-L470)<br>[entrance, ccbend.c:1017–1025](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L1017-L1025)<br>[exit, ccbend.c:1313–1322](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L1313-L1322)<br>[`computeTotalErrorMultipoleFields`, multipole.c:1684–1745](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1684-L1745)<br>[CCBEND multipole errors, ccbend.tex:65–70](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ccbend.tex#L65-L70)<br>[KQUAD multipole files, kquad.tex:11–35](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/kquad.tex#L11-L35)<br>[CCBEND multipole parameters, track_data.c:3832–3835](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3832-L3835)<br>[CCBEND dispatch, do_tracking.c:2145–2153](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2145-L2153) |
 
-Negative-angle CCBEND magnets with independent entrance or exit multipole-error files choose edge sign changes from the body table's order labels. Relabelling zero-amplitude body rows therefore changes physical edge kicks; shorter body tables can also corrupt kicks, and runs without body tables terminate in the tested cases. With zero body-error amplitudes, the reference is a positive bend rotated by π with each order-n edge fraction multiplied by (−1)ⁿ. For a 0.4 m, −0.12 rad bend with edge orders 1 and 2 and zero body rows labelled 2 and 3, the vertical-slope error in y′ reaches 2.153×10⁻³. Users combining negative bends with independent edge-error files are affected.
+Negative-angle CCBEND magnets with independent entrance or exit multipole-error files choose edge sign changes from the body table's order labels. Relabelling zero-amplitude body rows therefore changes physical edge kicks; shorter body tables can also corrupt kicks, and runs without body tables terminate. With zero body-error amplitudes, the reference is a positive bend rotated by π with each order-n edge fraction multiplied by (−1)ⁿ. For a 0.4 m, −0.12 rad bend with edge orders 1 and 2 and zero body rows labelled 2 and 3, the vertical-slope error in y′ reaches 2.153×10⁻³.
 
 ??? example "Reproducer: TRK-26.py"
 
@@ -27,10 +27,9 @@ Negative-angle CCBEND magnets with independent entrance or exit multipole-error 
     Negative-angle CCBEND magnets with independent entrance or exit multipole-error files choose edge
     sign changes from the body table's order labels. Relabelling zero-amplitude body rows therefore
     changes physical edge kicks; shorter body tables can also corrupt kicks, and runs without body
-    tables terminate in the tested cases. With zero body-error amplitudes, the reference is a positive
-    bend rotated by π with each order-n edge fraction multiplied by (−1)ⁿ. For a 0.4 m, −0.12 rad bend
-    with edge orders 1 and 2 and zero body rows labelled 2 and 3, the vertical-slope error in y′ reaches
-    2.153×10⁻³. Users combining negative bends with independent edge-error files are affected.
+    tables terminate. With zero body-error amplitudes, the reference is a positive bend rotated by π
+    with each order-n edge fraction multiplied by (−1)ⁿ. For a 0.4 m, −0.12 rad bend with edge orders 1
+    and 2 and zero body rows labelled 2 and 3, the vertical-slope error in y′ reaches 2.153×10⁻³.
 
     The script tracks a negative-angle CCBEND with an entrance or exit edge multipole table whose body
     table has all-zero rows labelled to match the edge orders or not, and compares the exit coordinates
@@ -425,8 +424,8 @@ Negative-angle CCBEND magnets with independent entrance or exit multipole-error 
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found (edge signs follow the body table's order labels) | `gpt-6.1-sol` | xhigh | 2026-10-29 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
-| Found (empty or shorter body table, source-only incidental observation) | `gpt-6-astra` | xhigh | 2026-11-03 | master (`0355dd6aca12`), source reading, not executed for this claim |
+| Found (edge parity read from the body order array; an edge-only table terminates the run) | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Found (shorter body table, source-only incidental observation) | `gpt-6-astra` | xhigh | 2026-11-03 | master (`0355dd6aca12`), source reading, not executed for this claim |
 | Confirmed (edge signs follow the body table's order labels) | `gpt-6-astra` | xhigh | 2026-11-03 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant |
 | Confirmed (empty or shorter body table, run stops or edge kicks wrong) | `gpt-6.1-sol` | xhigh | 2026-11-03 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant |
 

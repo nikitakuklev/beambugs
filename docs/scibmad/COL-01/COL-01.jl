@@ -6,8 +6,7 @@
 # giving it zero weight, gives the same live-only result. For 200 live protons at 1.000 GeV, each
 # representing 1.000 × 10⁴ particles, one lost particle 20 standard deviations out changes the
 # largest deterministic kick through a 1.000 m drift by 66.02% of its live-only value instead of
-# zero. Any bunch with lost particles is affected, and a lost row holding NaN or Inf can make
-# tracking throw `SingularException`.
+# zero. A lost row holding NaN or Inf can make tracking throw `SingularException`.
 #
 # The script tracks 200 Gaussian-distributed live protons, each representing 10⁴ particles, plus one
 # outlier at 20 standard deviations through a 1 m drift with deterministic IBS damping only, three

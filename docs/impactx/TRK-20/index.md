@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`CFbend.H#L171-L184`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/CFbend.H#L171-L184)<br>[spin push](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/CFbend.H#L327-L345)<br>[manual](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2792-L2800) |
 
-With spin tracking enabled (experimental in ImpactX), `CFbend` divides its spin coupling by k + (Gγh)², for gradient k, magnetic anomaly G and curvature h = 1/`rc`, which vanishes when the vertical focusing frequency √(−k) equals |Gγh|. The Thomas–BMT solution stays finite there; on the design orbit it is a rotation by GγhL about the vertical axis over length L. For built-in electrons at γ = 0.5/G = 431.2 in a `CFbend` with `rc` = 1 m, `k` = −0.25 m⁻² and L = 0.31 m, every spin component becomes NaN, also on axis, while the orbit is correct. Near the coincidence the spins are finite but wrong: at γ = 2 with G = 0.25 and the gradient detuned by a relative 1e-15, the spin error is 7.450e-5.
+With spin tracking (experimental), `CFbend` divides its spin coupling by k + (Gγh)², for gradient k, magnetic anomaly G and curvature h = 1/`rc`, which vanishes when the vertical focusing frequency √(−k) equals |Gγh|. The Thomas–BMT solution stays finite there; on the design orbit it is a rotation by GγhL about the vertical axis over length L. For electrons at γ = 0.5/G = 431.2 in a `CFbend` with `rc` = 1 m, `k` = −0.25 m⁻² and L = 0.31 m, all spin components are NaN while the orbit is correct. Nearby the spins are finite but wrong: at γ = 2 with G = 0.25 and the gradient detuned by a relative 1e-15, the error is 7.450e-5.
 
 ??? example "Reproducer: TRK-20.py"
 
@@ -25,14 +25,13 @@ With spin tracking enabled (experimental in ImpactX), `CFbend` divides its spin 
     ```python
     """TRK-20: `CFbend` spin coupling is singular at coincident frequencies
 
-    With spin tracking enabled (experimental in ImpactX), `CFbend` divides its spin coupling by k +
-    (Gγh)², for gradient k, magnetic anomaly G and curvature h = 1/`rc`, which vanishes when the
-    vertical focusing frequency √(−k) equals |Gγh|. The Thomas–BMT solution stays finite there; on the
-    design orbit it is a rotation by GγhL about the vertical axis over length L. For built-in electrons
-    at γ = 0.5/G = 431.2 in a `CFbend` with `rc` = 1 m, `k` = −0.25 m⁻² and L = 0.31 m, every spin
-    component becomes NaN, also on axis, while the orbit is correct. Near the coincidence the spins are
-    finite but wrong: at γ = 2 with G = 0.25 and the gradient detuned by a relative 1e-15, the spin
-    error is 7.450e-5.
+    With spin tracking (experimental), `CFbend` divides its spin coupling by k + (Gγh)², for gradient
+    k, magnetic anomaly G and curvature h = 1/`rc`, which vanishes when the vertical focusing frequency
+    √(−k) equals |Gγh|. The Thomas–BMT solution stays finite there; on the design orbit it is a
+    rotation by GγhL about the vertical axis over length L. For electrons at γ = 0.5/G = 431.2 in a
+    `CFbend` with `rc` = 1 m, `k` = −0.25 m⁻² and L = 0.31 m, all spin components are NaN while the
+    orbit is correct. Nearby the spins are finite but wrong: at γ = 2 with G = 0.25 and the gradient
+    detuned by a relative 1e-15, the error is 7.450e-5.
 
     The script tracks 12 on-axis electrons carrying the three Cartesian unit spins through `CFbend` at
     the exact coincidence (one and nine slices, reversed curvature, spin tracking off), at nominal

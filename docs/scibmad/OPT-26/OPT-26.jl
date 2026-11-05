@@ -7,7 +7,7 @@
 # 9)×10⁻¹² and then applying the shear (x, p) → (x, p + x²) returns diag(4, 9)×10⁻¹² instead of [4
 # 6; 6 18]×10⁻¹². Re-expanding the identical shear about the incoming orbit restores the expected
 # covariance, and an exact finite-distribution calculation agrees with it to 3.029×10⁻²⁷. Matched
-# expansion points pass; effects on SciBmad optics were not measured.
+# expansion points pass.
 #
 # The script translates x by b = 0.75 with output noise S₁ on `Descriptor(2, 3)`, applies the exact
 # canonical shear, and compares the composed covariance with J₂S₁J₂ᵀ for J₂ = [1 0; 2b 1]. The same

@@ -6,8 +6,7 @@
 # A, rotations Rᵢ and amplitude factors ρᵢ, the matched beta functions must be periodic. With β =
 # (2, 3, 4) m and ρ = (0.93, 0.87, 0.81), automatic selection instead changes β₁ from 2.000 to 1.730
 # m and β₂ from 3.000 to 2.271 m and omits damping summaries. Explicit `damping=true` restores
-# periodicity and the analytic decrements −log ρᵢ. The undamped control passes; realistic
-# radiation-lattice impact was not measured.
+# periodicity and the analytic decrements −log ρᵢ. The undamped control passes.
 #
 # The script wraps a six-dimensional linear map with β = (2, 3, 4) m, α = (0.2, −0.1, 0.3), ρ =
 # (0.93, 0.87, 0.81) and rotation angles (0.37, 0.59, 0.23) in a user transport element, runs

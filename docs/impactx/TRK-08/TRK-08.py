@@ -4,8 +4,7 @@ A `Sol` with zero strength, `ks=0`, as when a solenoid is switched off in a scan
 NaN `x` and `y`, because the map divides by α = `ks`/2. The zero-field limit is a drift, since
 sin(αL)/α → L for length L, and both `Sol(ks=1e-9)` and `Drift` give it. A proton entering a 0.7 m
 `Sol(ks=0)` at `x` = 13 mm, `px` = 0.021, `y` = −17 mm and `py` = 0.008 exits with NaN `x` and `y`
-instead of 27.70 mm and −11.40 mm; the momenta and longitudinal coordinates are correct. Any lattice
-that contains a switched-off `Sol` is affected.
+instead of 27.70 mm and −11.40 mm; the momenta and longitudinal coordinates are correct.
 
 The script tracks one proton (938.3 MeV kinetic energy) with all six coordinates nonzero through
 `Sol(ds=0.7, ks=0)` and through `Drift(ds=0.7)`, and compares the two exit vectors.

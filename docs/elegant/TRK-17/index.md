@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [`trackKickMap`, kickmap.c:76–77](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/kickmap.c#L76-L77)<br>[`trackUndulatorKickMap`, ukickmap.c:155–156](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ukickmap.c#L155-L156)<br>[GKICKMAP yaw, gkickmap.tex:25–32](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/gkickmap.tex#L25-L32)<br>[UKICKMAP yaw, ukickmap.tex:50–57](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ukickmap.tex#L50-L57)<br>[YAW, track_data.c:3466](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3466) |
 
-In GKICKMAP and UKICKMAP, yaw alignment evaluates the map-axis displacement at the slice entrance after the particle has drifted to the slice midpoint. The resulting horizontal sampling error is h tan ψ/2, where h is the slice length and ψ the yaw angle, so a particle following the map's zero-force axis receives a false kick. For a 0.7 m device with ψ = 0.013 rad and slope kick Δx′ = −(0.08 m⁻¹)x at local horizontal offset x, three slices give slope error −1.203×10⁻⁴ instead of zero; 12 slices give −3.005×10⁻⁵. Both map types, all three tested pivots and both yaw signs are affected; zero yaw passes.
+In GKICKMAP and UKICKMAP, yaw alignment evaluates the map-axis displacement at the slice entrance after the particle has drifted to the slice midpoint. The resulting horizontal sampling error is h tan ψ/2, where h is the slice length and ψ the yaw angle, so a particle following the map's zero-force axis receives a false kick. For a 0.7 m device with ψ = 0.013 rad and slope kick Δx′ = −(0.08 m⁻¹)x at local horizontal offset x, three slices give slope error −1.203×10⁻⁴ instead of zero; 12 slices give −3.005×10⁻⁵.
 
 ??? example "Reproducer: TRK-17.py"
 
@@ -25,12 +25,11 @@ In GKICKMAP and UKICKMAP, yaw alignment evaluates the map-axis displacement at t
     """TRK-17: Yawed kick maps sample half a slice behind the particle
 
     In GKICKMAP and UKICKMAP, yaw alignment evaluates the map-axis displacement at the slice entrance
-    after the particle has drifted to the slice midpoint. The resulting horizontal sampling error is
-    h tan ψ/2, where h is the slice length and ψ the yaw angle, so a particle following the map's
-    zero-force axis receives a false kick. For a 0.7 m device with ψ = 0.013 rad and slope kick
-    Δx′ = −(0.08 m⁻¹)x at local horizontal offset x, three slices give slope error −1.203×10⁻⁴ instead
-    of zero; 12 slices give −3.005×10⁻⁵. Both map types, all three tested pivots and both yaw signs are
-    affected; zero yaw passes.
+    after the particle has drifted to the slice midpoint. The resulting horizontal sampling error is h
+    tan ψ/2, where h is the slice length and ψ the yaw angle, so a particle following the map's
+    zero-force axis receives a false kick. For a 0.7 m device with ψ = 0.013 rad and slope kick Δx′ =
+    −(0.08 m⁻¹)x at local horizontal offset x, three slices give slope error −1.203×10⁻⁴ instead of
+    zero; 12 slices give −3.005×10⁻⁵.
 
     The script launches electrons exactly along the axis of a yawed GKICKMAP or UKICKMAP whose map is a
     linear kick, which is zero on that axis, so the exit slope must equal the entrance slope. It runs

@@ -6,8 +6,7 @@
 # particle to keep the gain at zero relative momentum offset δ, and ordinary RF tracking with the
 # same reference-energy change does so. A proton with reference momentum p₀c = 2mc², twice its rest
 # energy, crossing a zero-length 1.000 MV cavity and then a 1.000 m drift gains 0 instead of 1.000
-# MeV, and its δ becomes −5.954 × 10⁻⁴ instead of 0. Accelerating Sagan tracking with a constant
-# reference is affected.
+# MeV, and its δ becomes −5.954 × 10⁻⁴ instead of 0.
 #
 # The script builds the documented `Branch` partition: a proton at p₀c = 2mc², then a zero-length 1
 # MV `SaganCavity` and a 1 m drift with reference energy gain `dE_ref` = 1 MeV. It tracks the

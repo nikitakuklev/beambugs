@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`polarizeBeam`, generate_bunch.c:1367–1508](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/generate_bunch.c#L1367-L1508)<br>[axis normalization and two-state routing, generate_bunch.c:1381–1391](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/generate_bunch.c#L1381-L1391)<br>[narrow-cone rotation, generate_bunch.c:1451–1453](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/generate_bunch.c#L1451-L1453)<br>[wide-cone rotation, generate_bunch.c:1472–1474](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/generate_bunch.c#L1472-L1474)<br>[von Mises–Fisher rotation, generate_bunch.c:1491–1493](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/generate_bunch.c#L1491-L1493)<br>[`performQuaternionRotation`, spinUpdate.c:127–163](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/spinUpdate.c#L127-L163)<br>[POLAR manual, polar.tex:1–19](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/polar.tex#L1-L19)<br>[POLAR dispatch, do_tracking.c:2001–2004](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2001-L2004) |
 
-With spin tracking enabled, POLAR's narrow-cone, wide-cone and von Mises–Fisher modes return NaN (not-a-number) spin components for every tested particle when the polarization axis is (0, 0, ±1). At requested polarizations P = 0.25 and 0.8, all 12 spins become nonfinite without warning; the tilted axis (0.6, 0, 0.8) gives 12 finite unit spins. Rotations should preserve unit spin length, and a narrow cone should satisfy S·v = P, where S is the spin and v the unit axis. The shared singular rotation establishes the extension to all 0 < P < 1 by source inspection, affecting preparation of longitudinally polarized beams.
+With spin tracking enabled, POLAR's narrow-cone, wide-cone and von Mises–Fisher modes return NaN (not-a-number) spin components for every tested particle when the polarization axis is (0, 0, ±1). At requested polarizations P = 0.25 and 0.8, all 12 spins become nonfinite without warning; the tilted axis (0.6, 0, 0.8) gives 12 finite unit spins. Rotations should preserve unit spin length, and a narrow cone should satisfy S·v = P, where S is the spin and v the unit axis. The rotation these modes share is singular on that axis, so by source inspection the failure extends to every 0 < P < 1.
 
 ??? example "Reproducer: TRK-14.py"
 
@@ -29,9 +29,9 @@ With spin tracking enabled, POLAR's narrow-cone, wide-cone and von Mises–Fishe
     (not-a-number) spin components for every tested particle when the polarization axis is (0, 0, ±1).
     At requested polarizations P = 0.25 and 0.8, all 12 spins become nonfinite without warning; the
     tilted axis (0.6, 0, 0.8) gives 12 finite unit spins. Rotations should preserve unit spin length,
-    and a narrow cone should satisfy S·v = P, where S is the spin and v the unit axis. The shared
-    singular rotation establishes the extension to all 0 < P < 1 by source inspection, affecting
-    preparation of longitudinally polarized beams.
+    and a narrow cone should satisfy S·v = P, where S is the spin and v the unit axis. The rotation
+    these modes share is singular on that axis, so by source inspection the failure extends to every
+    0 < P < 1.
 
     The script tracks 12 identical electrons with spin tracking enabled through a POLAR element for each
     mode, P of 0.25 and 0.8, and the axes (0, 0, 1) and (0, 0, -1), and counts the particles whose three

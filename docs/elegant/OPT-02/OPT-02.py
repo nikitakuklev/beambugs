@@ -5,8 +5,7 @@ leaves out the path-length terms in which the momentum offset δ multiplies a tr
 that is itself driven by δ². Take a 10 m cell with betatron tunes 0.17 and 0.23, a second-order term
 T166 = 0.2 m (horizontal shift ∝ δ²) and a path term T561 = 0.3 (path length ∝ xδ). The closed orbit
 is x = 0.1 m δ², so the path length is 10 m + 0.03 m δ³ and αc3 = 0.003. Elegant writes the correct
-second-order dispersion 0.1 m but αc3 = 0. This is shown for a prescribed matrix; physical rings
-were not assessed.
+second-order dispersion 0.1 m but αc3 = 0.
 
 The script writes a 10 m periodic EMATRIX cell with stable horizontal and vertical rotations
 (tunes 0.17 and 0.23), `T166 = 0.2` and `T561 = 0.3`, and runs `twiss_output` at third order in

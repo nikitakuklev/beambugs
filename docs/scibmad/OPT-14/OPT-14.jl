@@ -7,7 +7,7 @@
 # of 0.2500 and 3.000; the non-batched solver returns the latter values. The accepted iterate is
 # unchanged by this diagnostic defect, and residual-test exits are unaffected. By source inspection,
 # batched closed-orbit finding uses this path and experimental aperture code reads the Jacobian as I
-# − M, with M the one-turn matrix; aperture effects were not measured.
+# − M, with M the one-turn matrix.
 #
 # The script solves f(x) = x² − 2 from x = 1 with `reltol = 0.4`, once with the batched solver (two
 # lanes) and once with the non-batched solver as the control. One step gives x = 1.5, and |Δx| = 0.5

@@ -6,7 +6,7 @@ strength but both fringes use zero strength until a matrix or Twiss output reque
 The same beam then leaves the same magnet differently depending on whether optics output was
 requested; after the request it matches the equivalent explicit K₁. For a 0.4 m magnet with K₁ = 5
 m⁻² and electron momentum 2000 mₑc, exit slopes change by up to 1.749 µrad and positions by up to
-95.29 nm. Pole-tip quadrupoles with enabled fringes are affected.
+95.29 nm.
 
 The script tracks twelve particles through the magnet described by B and BORE, with and without a
 matrix or Twiss request, and compares each result with the same magnet described by the equivalent

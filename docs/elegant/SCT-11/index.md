@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [approximate recoil, CBScat.c:313–326](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/CBScat.c#L313-L326)<br>[update of delta, CBScat.c:331–337](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/CBScat.c#L331-L337)<br>[exact recoil, CBScat.c:421](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/CBScat.c#L421)<br>[forced exact recoil, CBScat.c:104–110](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/CBScat.c#L104-L110)<br>[recoil equations, cbscat.tex:14–25](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/cbscat.tex#L14-L25) |
 
-With the approximate recoil of Elegant's CBSCAT element (CROSS_SECTION="thomson", EXACT_RECOIL=0), the momentum an electron loses in a laser Compton scatter depends on the reference momentum P₀ the user chose, although the physics does not. The code computes the fractional change ΔP/P of the electron's momentum P and adds it to δ = P/P₀ − 1, which requires ΔP/P₀. For 12 mₑc electrons and a 30 µm laser, the same 454 scattered electrons lose a mean 2.303×10⁻⁵ mₑc at P₀ = 12 mₑc, 1.152×10⁻⁵ mₑc at P₀ = 6 mₑc and 4.607×10⁻⁵ mₑc at P₀ = 24 mₑc. Users whose reference momentum differs from their electrons' momentum are affected.
+With the approximate recoil of Elegant's CBSCAT element (CROSS_SECTION="thomson", EXACT_RECOIL=0), the momentum an electron loses in a laser Compton scatter depends on the reference momentum P₀ the user chose, although the physics does not. The code computes the fractional change ΔP/P of the electron's momentum P and adds it to δ = P/P₀ − 1, which requires ΔP/P₀. For 12 mₑc electrons and a 30 µm laser, the same 454 scattered electrons lose a mean 2.303×10⁻⁵ mₑc at P₀ = 12 mₑc, 1.152×10⁻⁵ mₑc at P₀ = 6 mₑc and 4.607×10⁻⁵ mₑc at P₀ = 24 mₑc.
 
 ??? example "Reproducer: SCT-11.py"
 
@@ -29,8 +29,7 @@ With the approximate recoil of Elegant's CBSCAT element (CROSS_SECTION="thomson"
     user chose, although the physics does not. The code computes the fractional change ΔP/P of the
     electron's momentum P and adds it to δ = P/P₀ − 1, which requires ΔP/P₀. For 12 mₑc electrons and a
     30 µm laser, the same 454 scattered electrons lose a mean 2.303×10⁻⁵ mₑc at P₀ = 12 mₑc, 1.152×10⁻⁵
-    mₑc at P₀ = 6 mₑc and 4.607×10⁻⁵ mₑc at P₀ = 24 mₑc. Users whose reference momentum differs from
-    their electrons' momentum are affected.
+    mₑc at P₀ = 6 mₑc and 4.607×10⁻⁵ mₑc at P₀ = 24 mₑc.
 
     The script scatters 16000 electrons of momentum 12 mₑc off a head-on laser with the Thomson cross
     section, with the same random seed so that the same 454 electrons scatter, changing only the

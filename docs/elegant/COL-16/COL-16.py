@@ -6,8 +6,7 @@ momentum p∥ before recovering incoming transverse momenta from slopes. For a h
 voltage is independent of vertical position, so vertical momentum pᵧ must be conserved. For 16
 electrons with momentum 750 mₑc, horizontal and vertical slopes (0.01200, 0.02400), horizontal
 offset 8.000 mm and charge 0.7000 nC, the last particle's vertical momentum instead changes by
-Δpᵧ = −7.165×10⁻⁴ mₑc, matching vertical slope times Δp∥ within 10⁻¹⁴ mₑc. Resonator simulations
-with nonzero slopes in the disabled plane are affected.
+Δpᵧ = −7.165×10⁻⁴ mₑc, matching vertical slope times Δp∥ within 10⁻¹⁴ mₑc.
 
 The script tracks 16 electrons, one per time bin, through each of the three resonator paths with
 only the horizontal or only the vertical mode enabled and with both signs of the incoming slopes.

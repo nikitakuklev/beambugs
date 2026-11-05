@@ -7,8 +7,7 @@ gives the correct result, and independently composed drift and kick matrices rep
 outcomes. For a 10 MeV, 0.1 A proton envelope with 1 mm rms sizes and 2D space charge, retuning a
 drift from 0.1 to 0.2 m halves the kick: the normalized-momentum variance ⟨pₓ²⟩ ends at 1.270×10⁻⁸
 instead of 2.058×10⁻⁸ with Strang splitting. Retuning from 0.4 m doubles the kick and from zero
-length omits it, in first-order and Strang splitting; particle tracking shares this code but was not
-run.
+length omits it, in first-order and Strang splitting; particle tracking shares this code.
 
 The script tracks a 10 MeV, 0.1 A proton envelope (rms sizes 1 mm, normalized-momentum rms widths
 10⁻⁴) with 2D space charge through one single-slice drift whose `before_slice` hook sets `ds` = 0.2

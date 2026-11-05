@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [body strength, multipole.c:791–795](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L791-L795)<br>[entrance fringe, multipole.c:1131–1132](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1131-L1132)<br>[exit fringe, multipole.c:1224–1225](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1224-L1225)<br>[nonlinear fringe coefficient, fringe.c:110](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/fringe.c#L110)<br>[linear fringe matrices, fringe.c:53–54](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/fringe.c#L53-L54)<br>[K1 scaling, quad_matrix.c:40](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L40)<br>[entrance, quad_matrix.c:364](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L364)<br>[exit, quad_matrix.c:374](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L374)<br>[FSE definition, track_data.c:1262](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1262)<br>[fringe definition, kquad.tex:84–95](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/kquad.tex#L84-L95) |
 
-KQUAD scales its body's normalized gradient by 1 + FSE, where FSE is the fractional strength error, but both nonlinear fringe kicks keep the unscaled gradient K₁. A uniform field error leaves the fringe profile normalized to the central gradient unchanged, so K₁ = 5 m⁻² with FSE = 0.2 must track like K₁ = 6 m⁻² with FSE = 0, and FSE = −1 must be a plain drift. For a 0.4 m magnet and electron momentum 2000 mₑc, the exit slopes differ by up to 419.4 nrad, and at FSE = −1 the exit position is displaced by up to 54.35 nm. Field-error scans with fringes distort the fringe-to-body ratio.
+KQUAD scales its body's normalized gradient by 1 + FSE, where FSE is the fractional strength error, but both nonlinear fringe kicks keep the unscaled gradient K₁. A uniform field error leaves the fringe profile normalized to the central gradient unchanged, so K₁ = 5 m⁻² with FSE = 0.2 must track like K₁ = 6 m⁻² with FSE = 0, and FSE = −1 must be a plain drift. For a 0.4 m magnet and electron momentum 2000 mₑc, the exit slopes differ by up to 419.4 nrad, and at FSE = −1 the exit position is displaced by up to 54.35 nm.
 
 ??? example "Reproducer: TRK-04.py"
 
@@ -30,7 +30,7 @@ KQUAD scales its body's normalized gradient by 1 + FSE, where FSE is the fractio
     fringe profile normalized to the central gradient unchanged, so K₁ = 5 m⁻² with FSE = 0.2 must track
     like K₁ = 6 m⁻² with FSE = 0, and FSE = −1 must be a plain drift. For a 0.4 m magnet and electron
     momentum 2000 mₑc, the exit slopes differ by up to 419.4 nrad, and at FSE = −1 the exit position is
-    displaced by up to 54.35 nm. Field-error scans with fringes distort the fringe-to-body ratio.
+    displaced by up to 54.35 nm.
 
     The script tracks twelve particles through a KQUAD with cubic fringes at both ends, specified by an
     explicit K1 so that the pole-tip conversion does not enter. It compares K1 = 5 with FSE = 0.2
@@ -299,6 +299,9 @@ KQUAD scales its body's normalized gradient by 1 + FSE, where FSE is the fractio
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source reading, not executed for this claim |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [zero-voltage branch, mod_rfca.c:102–111](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/mod_rfca.c#L102-L111)<br>[zero-voltage branch, ramped_rfca.c:67–77](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ramped_rfca.c#L67-L77)<br>[MODRF half drifts, mod_rfca.c:246–262](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/mod_rfca.c#L246-L262)<br>[RAMPRF half drifts, ramped_rfca.c:170–186](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ramped_rfca.c#L170-L186) |
 
-With VOLT = 0, MODRF and RAMPRF move particles along straight lines but advance the longitudinal coordinate by cavity length L, omitting the extra path L(√(1 + x′² + y′²) − 1) for transverse slopes x′ and y′. A nonzero nominal voltage with exactly zero effective field gives the full slanted-path time, as an exact-drift control confirms. For L = 1.7 m and electron momentum 2 mₑc with x′ = 0.03 and y′ = −0.02, arrival is at 6.340 ns instead of 6.344 ns, 4.120 ps early. Switching these cavities off changes arrival times and downstream RF phases for particles with nonzero transverse slopes.
+With VOLT = 0, MODRF and RAMPRF move particles along straight lines but advance the longitudinal coordinate by cavity length L, omitting the extra path L(√(1 + x′² + y′²) − 1) for transverse slopes x′ and y′. A nonzero nominal voltage with exactly zero effective field gives the full slanted-path time, as an exact-drift control confirms. For L = 1.7 m and electron momentum 2 mₑc with x′ = 0.03 and y′ = −0.02, arrival is at 6.340 ns instead of 6.344 ns, 4.120 ps early.
 
 ??? example "Reproducer: TRK-05.py"
 
@@ -28,8 +28,7 @@ With VOLT = 0, MODRF and RAMPRF move particles along straight lines but advance 
     coordinate by cavity length L, omitting the extra path L(√(1 + x′² + y′²) − 1) for transverse slopes
     x′ and y′. A nonzero nominal voltage with exactly zero effective field gives the full slanted-path
     time, as an exact-drift control confirms. For L = 1.7 m and electron momentum 2 mₑc with x′ = 0.03
-    and y′ = −0.02, arrival is at 6.340 ns instead of 6.344 ns, 4.120 ps early. Switching these cavities
-    off changes arrival times and downstream RF phases for particles with nonzero transverse slopes.
+    and y′ = −0.02, arrival is at 6.340 ns instead of 6.344 ns, 4.120 ps early.
 
     The script tracks particles with three slope pairs through a 1.7 m MODRF and a 1.7 m RAMPRF with
     VOLT = 0, and compares their arrival times with the time of flight over the slanted path at constant
@@ -298,6 +297,9 @@ With VOLT = 0, MODRF and RAMPRF move particles along straight lines but advance 
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source reading, not executed for this claim |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

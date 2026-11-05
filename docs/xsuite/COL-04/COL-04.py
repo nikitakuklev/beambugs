@@ -6,7 +6,7 @@ determinant, which an area-preserving shear leaves unchanged, and the slicer's o
 covariance give that value directly. For four 1 GeV/c protons with x = ±1 mm, `px` = ±2 × 10⁻⁴ and a
 shear `px` → `px` + a·x, the normalized emittance is 2.132 × 10⁻⁷ m for every a, but the monitor
 reports 4.766 × 10⁻⁴ m, about 2236 times too large, at a = −0.2 and NaN with a warning at a = +0.2.
-Correlated slices are affected in x, y and ζ; uncorrelated slices and the slice moments are correct.
+The error appears in x, y and ζ; uncorrelated slices and the slice moments are correct.
 
 The script tracks four particles per bunch, x = 10⁻³·(−1, −1, 1, 1) and `px` = 2 × 10⁻⁴·(−1, 1, −1,
 1) + a·x for a = 0, 0.2 and −0.2, through a one-slice monitor with one and with two bunches. It

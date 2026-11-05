@@ -16,7 +16,7 @@ hide:
 | Pull request | [[gh:https://github.com/bmad-sim/BeamTracking.jl/pull/370]], fix |
 | Source | [src/types.jl:80–86](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L80-L86)<br>[src/element.jl:250–256](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/element.jl#L250-L256)<br>[src/callbacks.jl:4](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/callbacks.jl#L4)<br>[src/callbacks.jl:59–61](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/callbacks.jl#L59-L61)<br>[ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl:1–32](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl#L1-L32) |
 
-Two docstrings describe interfaces that do not exist: the `Bunch` docstring prescribes a three-argument callback that tracking cannot call, and the `SciBmadStandard` docstring names a nonexistent `Yoshida` integrator. The callback call site passes nine arguments, so a callback written as documented, `callback(coords, ds_step, g)`, raises `MethodError`. The default method actually uses `Symplectic` with keyword `n_steps`, at order 2 for exact bodies and order 4 otherwise, not `Yoshida(order=4, num_steps=1)`. Users who write callbacks or configure the documented default integrator explicitly meet these mismatches.
+Two docstrings describe interfaces that do not exist: the `Bunch` docstring prescribes a three-argument callback that tracking cannot call, and the `SciBmadStandard` docstring names a nonexistent `Yoshida` integrator. The callback call site passes nine arguments, so a callback written as documented, `callback(coords, ds_step, g)`, raises `MethodError`. The default method actually uses `Symplectic` with keyword `n_steps`, at order 2 for exact bodies and order 4 otherwise, not `Yoshida(order=4, num_steps=1)`.
 
 ??? example "Reproducer: TRK-15.jl"
 
@@ -30,8 +30,7 @@ Two docstrings describe interfaces that do not exist: the `Bunch` docstring pres
     # nonexistent `Yoshida` integrator. The callback call site passes nine arguments, so a callback
     # written as documented, `callback(coords, ds_step, g)`, raises `MethodError`. The default method
     # actually uses `Symplectic` with keyword `n_steps`, at order 2 for exact bodies and order 4
-    # otherwise, not `Yoshida(order=4, num_steps=1)`. Users who write callbacks or configure the
-    # documented default integrator explicitly meet these mismatches.
+    # otherwise, not `Yoshida(order=4, num_steps=1)`.
     #
     # The script checks whether the loaded `Bunch` docstring prescribes the three-argument callback,
     # then tracks a drift with a callback of that form and reports the error; separately it checks

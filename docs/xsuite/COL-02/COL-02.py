@@ -6,8 +6,8 @@ mirror point. For a beam displaced from the axis (`mean_x` or `mean_y` nonzero),
 ray, an analytic exponential-integral potential and adaptive quadrature give different kicks on the
 two sides. For a 1 GeV/c proton beam (population 10¹⁰, `sigma_z` = 0.1 m, transverse RMS 1 mm)
 displaced by 2 mm, particles at x = ±1 mm in a 1 m lens get identical kicks in the relative momentum
-deviation δ: the difference is 0 instead of 2.668 × 10⁻⁷. Frozen off-centre beams with longitudinal
-kicks are affected; transverse kicks and centred beams are correct.
+deviation δ: the difference is 0 instead of 2.668 × 10⁻⁷. Transverse kicks and centred beams are
+correct.
 
 The script tracks particles at x = ±1 mm, y = 0, ζ = 0.05 m through a frozen round Gaussian
 displaced by `mean_x` = 2 mm and compares the difference of their δ kicks with A·λ′(ζ)·[Φ(+x) −

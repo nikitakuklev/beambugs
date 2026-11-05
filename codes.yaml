@@ -53,7 +53,7 @@ scibmad:
     thread (`JULIA_NUM_THREADS=1`).
 elegant:
   name: Elegant
-  homepage: https://github.com/rtsoliday/elegant
+  homepage: https://ops.aps.anl.gov/elegant.html
   repository: rtsoliday/elegant
   ledger: /mnt/apollo/ref_docs/elegant/upstream_defects
   areas:
@@ -70,6 +70,9 @@ elegant:
     `RPN_DEFNS` to the `defns.rpn` file of SDDS; Elegant does not start without it. Download a
     reproducer with the `_*.py` helpers shown beside it and run `python <ID>.py`, which runs
     serial Elegant; `--mpi` adds a 3-rank Pelegant run (needs `mpirun`), and entries that occur
-    only under MPI always run Pelegant with a serial control. SCT-01 also needs Valgrind,
-    DOC-01 an Elegant source checkout named by `ELEGANT_SOURCE`, and IO-02 to IO-04 `gcc`
-    with the SDDS libraries of the build.
+    only under MPI always run Pelegant with a serial control. COL-29, COL-32, COL-34 to COL-46,
+    DOC-06, DOC-07, DOC-10, DOC-11, OPT-16 to OPT-27, SCT-01 and SCT-17 to SCT-22 run serial
+    Elegant only. COL-32, COL-38, COL-40, COL-41 and SCT-01 also need Valgrind, and SCT-17 runs
+    the `ibsEmittance` program of the Elegant build. DOC-01, DOC-10 and DOC-11 need an Elegant
+    source checkout named by `ELEGANT_SOURCE`, and IO-02 to IO-04 `gcc` with the SDDS libraries
+    of the build.

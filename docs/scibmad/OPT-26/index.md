@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on NonlinearNormalForm main (`7e40539`) |
 | Source | [`src/map.jl:464-468`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L464-L468)<br>[`src/map.jl:525-530`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L525-L530)<br>[`map.jl:15-19`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L15-L19)<br>[`:93-104`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L93-L104) |
 
-When NonlinearNormalForm composes stochastic `TPSAMap`s, which carry a noise covariance S, it transports the incoming covariance with the second map's Jacobian at that map's own expansion point instead of at the incoming orbit. First-order transport requires S₂₁ = J₂S₁J₂ᵀ + S₂, with the Jacobian J₂ evaluated at the first map's output. Translating x by 0.75 with S₁ = diag(4, 9)×10⁻¹² and then applying the shear (x, p) → (x, p + x²) returns diag(4, 9)×10⁻¹² instead of [4 6; 6 18]×10⁻¹². Re-expanding the identical shear about the incoming orbit restores the expected covariance, and an exact finite-distribution calculation agrees with it to 3.029×10⁻²⁷. Matched expansion points pass; effects on SciBmad optics were not measured.
+When NonlinearNormalForm composes stochastic `TPSAMap`s, which carry a noise covariance S, it transports the incoming covariance with the second map's Jacobian at that map's own expansion point instead of at the incoming orbit. First-order transport requires S₂₁ = J₂S₁J₂ᵀ + S₂, with the Jacobian J₂ evaluated at the first map's output. Translating x by 0.75 with S₁ = diag(4, 9)×10⁻¹² and then applying the shear (x, p) → (x, p + x²) returns diag(4, 9)×10⁻¹² instead of [4 6; 6 18]×10⁻¹². Re-expanding the identical shear about the incoming orbit restores the expected covariance, and an exact finite-distribution calculation agrees with it to 3.029×10⁻²⁷. Matched expansion points pass.
 
 ??? example "Reproducer: OPT-26.jl"
 
@@ -31,7 +31,7 @@ When NonlinearNormalForm composes stochastic `TPSAMap`s, which carry a noise cov
     # 9)×10⁻¹² and then applying the shear (x, p) → (x, p + x²) returns diag(4, 9)×10⁻¹² instead of [4
     # 6; 6 18]×10⁻¹². Re-expanding the identical shear about the incoming orbit restores the expected
     # covariance, and an exact finite-distribution calculation agrees with it to 3.029×10⁻²⁷. Matched
-    # expansion points pass; effects on SciBmad optics were not measured.
+    # expansion points pass.
     #
     # The script translates x by b = 0.75 with output noise S₁ on `Descriptor(2, 3)`, applies the exact
     # canonical shear, and compares the composed covariance with J₂S₁J₂ᵀ for J₂ = [1 0; 2b 1]. The same

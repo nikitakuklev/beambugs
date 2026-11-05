@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`common.H#L187-L231`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/tracking/common.H#L187-L231) |
 
-If a `before_slice` hook changes the length `ds` of the upcoming element, ImpactX transports the element over the new length but applies its space-charge kick for the length cached before the hook. The hook contract allows modifying the upcoming element, the same change made in `before_element` gives the correct result, and independently composed drift and kick matrices reproduce both outcomes. For a 10 MeV, 0.1 A proton envelope with 1 mm rms sizes and 2D space charge, retuning a drift from 0.1 to 0.2 m halves the kick: the normalized-momentum variance ⟨pₓ²⟩ ends at 1.270×10⁻⁸ instead of 2.058×10⁻⁸ with Strang splitting. Retuning from 0.4 m doubles the kick and from zero length omits it, in first-order and Strang splitting; particle tracking shares this code but was not run.
+If a `before_slice` hook changes the length `ds` of the upcoming element, ImpactX transports the element over the new length but applies its space-charge kick for the length cached before the hook. The hook contract allows modifying the upcoming element, the same change made in `before_element` gives the correct result, and independently composed drift and kick matrices reproduce both outcomes. For a 10 MeV, 0.1 A proton envelope with 1 mm rms sizes and 2D space charge, retuning a drift from 0.1 to 0.2 m halves the kick: the normalized-momentum variance ⟨pₓ²⟩ ends at 1.270×10⁻⁸ instead of 2.058×10⁻⁸ with Strang splitting. Retuning from 0.4 m doubles the kick and from zero length omits it, in first-order and Strang splitting; particle tracking shares this code.
 
 ??? example "Reproducer: API-04.py"
 
@@ -32,8 +32,7 @@ If a `before_slice` hook changes the length `ds` of the upcoming element, Impact
     outcomes. For a 10 MeV, 0.1 A proton envelope with 1 mm rms sizes and 2D space charge, retuning a
     drift from 0.1 to 0.2 m halves the kick: the normalized-momentum variance ⟨pₓ²⟩ ends at 1.270×10⁻⁸
     instead of 2.058×10⁻⁸ with Strang splitting. Retuning from 0.4 m doubles the kick and from zero
-    length omits it, in first-order and Strang splitting; particle tracking shares this code but was not
-    run.
+    length omits it, in first-order and Strang splitting; particle tracking shares this code.
 
     The script tracks a 10 MeV, 0.1 A proton envelope (rms sizes 1 mm, normalized-momentum rms widths
     10⁻⁴) with 2D space charge through one single-slice drift whose `before_slice` hook sets `ds` = 0.2

@@ -7,8 +7,7 @@ momentum variance required by a nonzero periodic longitudinal alpha. An independ
 establishes the stationary ellipse. For 3 GeV/c protons on segments with (`bets`, `qs`) = (7 m,
 0.045) and (21 m, 0.08), and σ_z = 3×10⁻⁴ m, the sampled bunch-length variance after one turn is
 0.8108 of its initial value instead of 1. The matched-Gaussian-bunch wrapper reproduces the
-mismatch; the multibunch wrapper shares the sampler by source reading. Strong focusing magnifies the
-effect, while a weak synchrotron tune of 1.429×10⁻³ still gives a relative variance change of
+mismatch. A weak synchrotron tune of 1.429×10⁻³ still gives a relative variance change of
 3.790×10⁻⁵.
 
 The script builds two linear segments with (`bets`, `qs`) = (7 m, 0.045) and (21 m, 0.08) and

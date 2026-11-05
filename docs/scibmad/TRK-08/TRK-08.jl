@@ -5,9 +5,8 @@
 # at the current position s, which at fixed reference energy grows with the reference flight time
 # s/(β₀c), where β₀c is the reference speed. For a proton with reference momentum p₀c = 2mc², twice
 # its rest energy, in a 2.000 m element tracked in four second-order symplectic steps, the callback
-# at s = 1.500 m sees a time increment of 0 instead of 5.594 ns. Callbacks and time-dependent
-# transforms that use this argument are affected; drifts report the correct times, and the
-# element-exit callback is correct.
+# at s = 1.500 m sees a time increment of 0 instead of 5.594 ns. Drifts report the correct times,
+# and the element-exit callback is correct.
 #
 # The script tracks a proton with p₀c = 2mc² through 2 m elements with `Symplectic(order=2,
 # n_steps=4)` and a callback that records the reference time it receives: a drift as the control, an

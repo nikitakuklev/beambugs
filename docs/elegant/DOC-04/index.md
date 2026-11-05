@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [averaging_factor, elegant.tex:4492–4503](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4492-L4503)<br>[setup, insertSCeffects.cc:136–139](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L136-L139)<br>[filter, insertSCeffects.cc:316–323](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L316-L323)<br>[SCMULT storage, track.h:3454–3459](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track.h#L3454-L3459) |
 
-The manual's nonlinear SCMULT averaging equation uses σ̂ᵢ = fσᵢ + (1−f)σ̂ᵢ, where f is `averaging_factor` and σᵢ and σ̂ᵢ are the actual and filtered rms beam sizes on turn i. For every allowed f > 0 this reduces to σ̂ᵢ = σᵢ, while the surrounding text and measured kicks support the preceding-turn recurrence σ̂ᵢ = fσᵢ + (1−f)σ̂ᵢ₋₁. For a 5.000 pC bunch with f = 0.2000, the first particle's second-turn horizontal slope-kick magnitude is 3.972×10⁻⁸ instead of the printed equation's 4.098×10⁻⁸, 3.085% smaller. Users interpreting averaged kicks from the printed equation are affected.
+The manual's nonlinear SCMULT averaging equation reads σ̂ᵢ = fσᵢ + (1−f)σ̂ᵢ, with f = `averaging_factor`, σᵢ the actual and σ̂ᵢ the filtered rms beam size on turn i. For every allowed f > 0 this reduces to σ̂ᵢ = σᵢ, no filtering, whereas the text and the sizes shaping Elegant's field follow the preceding-turn recurrence σ̂ᵢ = fσᵢ + (1−f)σ̂ᵢ₋₁. For a 5.000 pC bunch with kick-point horizontal rms size 0.9000 mm on turn 1 and 0.9375 mm on turn 2, f = 0.2000 gives σ̂ = 0.9075 mm, 3.201% below the printed equation. With σ̂ in field shape and kick strength, the first particle's second-turn slope kicks differ from the printed equation's by −0.1450% horizontally, +0.4543% vertically.
 
 ??? example "Reproducer: DOC-04.py"
 
@@ -24,20 +24,23 @@ The manual's nonlinear SCMULT averaging equation uses σ̂ᵢ = fσᵢ + (1−f)
     ```python
     """DOC-04: SCMULT manual prints the averaging filter with the current turn in its history term
 
-    The manual's nonlinear SCMULT averaging equation uses σ̂ᵢ = fσᵢ + (1−f)σ̂ᵢ, where f is
-    `averaging_factor` and σᵢ and σ̂ᵢ are the actual and filtered rms beam sizes on turn i. For every
-    allowed f > 0 this reduces to σ̂ᵢ = σᵢ, while the surrounding text and measured kicks support the
-    preceding-turn recurrence σ̂ᵢ = fσᵢ + (1−f)σ̂ᵢ₋₁. For a 5.000 pC bunch with f = 0.2000, the first
-    particle's second-turn horizontal slope-kick magnitude is 3.972×10⁻⁸ instead of the printed
-    equation's 4.098×10⁻⁸, 3.085% smaller. Users interpreting averaged kicks from the printed equation
-    are affected.
+    The manual's nonlinear SCMULT averaging equation reads σ̂ᵢ = fσᵢ + (1−f)σ̂ᵢ, with f =
+    `averaging_factor`, σᵢ the actual and σ̂ᵢ the filtered rms beam size on turn i. For every allowed f
+    > 0 this reduces to σ̂ᵢ = σᵢ, no filtering, whereas the text and the sizes shaping Elegant's field
+    follow the preceding-turn recurrence σ̂ᵢ = fσᵢ + (1−f)σ̂ᵢ₋₁. For a 5.000 pC bunch with kick-point
+    horizontal rms size 0.9000 mm on turn 1 and 0.9375 mm on turn 2, f = 0.2000 gives σ̂ = 0.9075 mm,
+    3.201% below the printed equation. With σ̂ in field shape and kick strength, the first particle's
+    second-turn slope kicks differ from the printed equation's by −0.1450% horizontally, +0.4543%
+    vertically.
 
     The script tracks a 48-particle bunch for two turns around a closed four-sector ring with a
-    nonlinear SCMULT, for averaging factors f = 1, 0.6 and 0.2. The first turn is never filtered, so
-    the second-turn incoming particles are identical for every f, and the f = 1 kick is exactly what
-    the printed equation predicts for every f. A second prediction filters the sizes with the
-    preceding turn's size and evaluates the elliptical Gaussian field by a real Poisson integral,
-    without Elegant's complex error function. The comparison with f = 1 isolates the filter.
+    nonlinear SCMULT, for averaging factors f = 1, 0.6 and 0.2; the first turn is never filtered, so the
+    f = 1 kick is exactly what the printed equation predicts for every f. Elegant's kicks must match a
+    second prediction that filters the sizes with the preceding turn's size, keeps Elegant's strength
+    from the unfiltered sizes and evaluates the elliptical Gaussian field by a real Poisson integral,
+    without Elegant's complex error function. The script reports the filtered against the printed sizes,
+    and the kick with the filtered sizes also in the strength (Elegant's kick times the ratio of the two
+    accumulated strengths) against the printed equation's kick.
     """
 
     import itertools
@@ -64,7 +67,8 @@ The manual's nonlinear SCMULT averaging equation uses σ̂ᵢ = fσᵢ + (1−f)
     def turns(mode, factor, charge):
         """Coordinates (x, xp, y, yp, t, p) before and after SCMULT on each of two turns.
 
-        Returns two arrays of shape (2, N, 6), ordered by particle ID.
+        Returns two arrays of shape (2, N, 6), ordered by particle ID, and the beta functions (x, y)
+        at the start of the ring and at the exit of the drift DS that precedes the SCMULT.
         """
         lattice = (
             f"Q: CHARGE,TOTAL={charge!r}\n"
@@ -84,7 +88,7 @@ The manual's nonlinear SCMULT averaging equation uses σ̂ᵢ = fσᵢ + (1−f)
             f"&run_setup lattice=lattice.lte,use_beamline=BL,p_central={P!r},default_order=1,"
             "output=out.sdds &end\n"
             "&run_control n_steps=1,n_passes=2 &end\n"
-            "&twiss_output matched=1 &end\n"
+            '&twiss_output matched=1,filename="twiss.sdds" &end\n'
             "&sdds_beam input=beam.sdds &end\n"
             "&track &end\n"
         )
@@ -93,7 +97,7 @@ The manual's nonlinear SCMULT averaging equation uses σ̂ᵢ = fσᵢ + (1−f)
             {"lattice.lte": lattice, "run.ele": commands},
             mode,
             {"beam.sdds": beam},
-            outputs=("before.sdds", "after.sdds"),
+            outputs=("before.sdds", "after.sdds", "twiss.sdds"),
         )
         names = ("x", "xp", "y", "yp", "t", "p")
         stacks = []
@@ -104,13 +108,35 @@ The manual's nonlinear SCMULT averaging equation uses σ̂ᵢ = fσᵢ + (1−f)
             if any(not np.array_equal(p["particleID"], np.arange(1, N + 1)) for p in pages):
                 sys.exit(f"{mode}: particles lost")
             stacks.append(np.stack([np.column_stack([p[n] for n in names]) for p in pages]))
-        return stacks[0], stacks[1]
+        twiss = result["twiss.sdds"]
+        elements = [str(n) for n in twiss[0, "ElementName"]]
+        beta = np.column_stack([np.asarray(twiss[0, "betax"]), np.asarray(twiss[0, "betay"])])
+        return stacks[0], stacks[1], (beta[elements.index("Q")], beta[elements.index("DS")])
 
 
     def sizes(rows):
         """Rms sizes (x, y, s) of a bunch, with s = beta c t the longitudinal coordinate."""
         s = C * rows[:, 4] * rows[:, 5] / np.hypot(1, rows[:, 5])
         return np.array([rows[:, 0].std(), rows[:, 2].std(), s.std()])
+
+
+    def strength(betas, entrance, exit_sizes):
+        """SCMULT's accumulated strength over the drift DS, the only element with length before it.
+
+        accumulateSCMULT (insertSCeffects.cc:837-856) adds L/2 [beta_a/(a_i (a_x + a_y)) +
+        beta_b/(b_i (b_x + b_y))] per plane i, with a the sizes at the start of the pass and b those at
+        the exit of DS, where the SCMULT sits.
+        """
+        beta_a, beta_b = betas
+        a, b = entrance[:2], exit_sizes[:2]
+        return 0.5 * STRAIGHT * (beta_a / (a * a.sum()) + beta_b / (b * b.sum()))
+
+
+    def entrance_sizes(rows):
+        """Rms sizes (x, y) at the start of the pass, from the coordinates after the drift DS."""
+        return np.array(
+            [(rows[:, 0] - STRAIGHT * rows[:, 1]).std(), (rows[:, 2] - STRAIGHT * rows[:, 3]).std()]
+        )
 
 
     def field_shape(rows, sigma):
@@ -121,8 +147,8 @@ The manual's nonlinear SCMULT averaging equation uses σ̂ᵢ = fσᵢ + (1−f)
         and Gy likewise, whose central gradient is 1/[sx (sx + sy)]. Multiplying by sx (sx + sy) gives
         the correction to the accumulated linear optical strength, and the Gaussian longitudinal
         density exp(-s^2/(2 ss^2))/ss completes the shape. Rescaling u by max(sigma)^2 keeps the
-        quadrature well conditioned. The strength SCMULT accumulates from the same incoming particles
-        cancels in the ratio of two shapes, so only the sizes enter.
+        quadrature well conditioned. SCMULT accumulates the strength from the unfiltered sizes, which
+        are the same for every f here, so it cancels in the ratio of two shapes and only the sizes enter.
         """
         s = C * rows[:, 4] * rows[:, 5] / np.hypot(1, rows[:, 5])
         coordinates = np.column_stack([rows[:, 0], rows[:, 2], s])
@@ -153,14 +179,14 @@ The manual's nonlinear SCMULT averaging equation uses σ̂ᵢ = fσᵢ + (1−f)
     defect = False
     for mode in modes():
         for charge in CHARGES:
-            before1, after1 = turns(mode, 1.0, charge)
+            before1, after1, betas = turns(mode, 1.0, charge)
             # With f = 1 the effective size is the present size: the printed equation's prediction
             # for every f, since the incoming particles of the second turn do not depend on f.
             printed = after1[1, :, [1, 3]].T - before1[1, :, [1, 3]].T
             size0, size1 = sizes(before1[0]), sizes(before1[1])
             raw_shape = field_shape(before1[1], size1)
             for factor in FACTORS:
-                before, after = turns(mode, factor, charge)
+                before, after, _ = turns(mode, factor, charge)
                 label = f"{mode} {charge * 1e12:g} pC f={factor}"
                 # The first turn is not filtered, so the first turn and the incoming second-turn
                 # particles do not depend on f.
@@ -171,8 +197,10 @@ The manual's nonlinear SCMULT averaging equation uses σ̂ᵢ = fσᵢ + (1−f)
                     sys.exit(f"{label}: f changes the first turn; the f = 1 kick is not the control")
                 observed = after[1, :, [1, 3]].T - before[1, :, [1, 3]].T
                 # Filter of the manual's text: sigma_hat_1 = f sigma_1 + (1 - f) sigma_hat_0, with
-                # sigma_hat_0 = sigma_0 the first traversal's size. The accumulated optical strength
-                # is the same as for f = 1, so the kick scales with the ratio of the field shapes.
+                # sigma_hat_0 = sigma_0 the first traversal's size. Elegant accumulates the optical
+                # strength from the unfiltered sizes, the same as for f = 1, so the kick scales with
+                # the ratio of the field shapes; this tests the filter's history term only, not which
+                # sizes the strength should use.
                 history = factor * size1 + (1 - factor) * size0
                 preceding = printed * field_shape(before[1], history) / raw_shape
                 print(
@@ -187,10 +215,27 @@ The manual's nonlinear SCMULT averaging equation uses σ̂ᵢ = fσᵢ + (1−f)
                 matches_printed = bool(np.allclose(observed, printed, rtol=1e-12, atol=ATOL))
                 if not matches_history:
                     sys.exit(f"{label}: the kicks follow neither the printed equation nor the filter")
+                # The documentation error itself: the printed equation gives sigma_hat = sigma_1, the
+                # preceding-turn recurrence f sigma_1 + (1 - f) sigma_0.
                 print(
-                    f"{label}: first-particle kick differs from the printed equation by "
-                    f"{1 - observed[0, 0] / printed[0, 0]:.4%}; maximum over particles "
-                    f"{np.max(np.abs(observed - printed)):.6g} rad"
+                    f"{label}: sizes (x, y) at SCMULT, mm: printed equation={fmt(size1[:2] * 1e3)} "
+                    f"preceding-turn={fmt(history[:2] * 1e3)} difference={fmt(history[:2] / size1[:2] - 1)}"
+                )
+                # The kick with the preceding-turn sizes in the strength as well as in the field shape,
+                # the manual's kick with sigma_hat throughout: Elegant's kick rescaled by the ratio of
+                # the strengths accumulated with the filtered and the measured sizes at the SCMULT.
+                entrance = entrance_sizes(before[1])
+                filtered = (
+                    observed * strength(betas, entrance, history) / strength(betas, entrance, size1)
+                )
+                print(
+                    f"{label}, second turn, particle 1: preceding-turn sizes throughout={fmt(filtered[0])} "
+                    f"printed-equation={fmt(printed[0])} difference={fmt(filtered[0] / printed[0] - 1)}"
+                )
+                print(
+                    f"{label}: Elegant's first-particle kick, whose strength keeps the measured sizes, "
+                    f"differs from the printed equation by {fmt(observed[0] / printed[0] - 1)}; "
+                    f"maximum over particles {np.max(np.abs(observed - printed)):.6g} rad"
                 )
                 defect |= not matches_printed
     print(f"comparison: rtol={RTOL:g}, atol={ATOL:g} against the preceding-turn filter")

@@ -12,10 +12,10 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
 | Source | [warning, fast_orbit_feedback.c:1716–1719](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/fast_orbit_feedback.c#L1716-L1719)<br>[monitor hook, do_tracking.c:1349–1362](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L1349-L1362)<br>[storeBPMReading, do_tracking.c:4386–4469](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L4386-L4469)<br>[distributed sums, compute_centroids.c:805–837](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_centroids.c#L805-L837)<br>[FAST_ORBIT_FEEDBACK, elegant.c:1858–1891](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L1858-L1891)<br>[fast_orbit_feedback manual, elegant.tex:3323–3324](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L3323-L3324) |
 
-When a user runs the fast orbit feedback command under MPI (Pelegant), Elegant warns that beam-position-monitor (BPM) readings are not reduced across ranks, which would leave each rank's monitor reading only its own particles. With 24 particles split between two tracking ranks whose local means differ, the monitor instead reads the whole beam's mean, as products of lens and drift matrices predict, for one and three turns per readout and feedback gain 0 or 0.2500: 3.474×10⁻⁴ m horizontally and 3.150×10⁻³ m vertically after one turn. The warning is therefore false for these readings and can lead users to discard valid parallel runs, although the manual says Pelegant results are identical to serial for a deterministic beam.
+When a user runs the fast orbit feedback command under MPI (Pelegant), Elegant warns that beam-position-monitor (BPM) readings are not reduced across ranks, which would leave each rank's monitor reading only its own particles. With 24 particles split between two tracking ranks whose local means differ, the monitor instead reads the whole beam's mean, as products of lens and drift matrices predict, for one and three turns per readout and feedback gain 0 or 0.2500: 3.474×10⁻⁴ m horizontally and 3.150×10⁻³ m vertically after one turn. The warning is therefore false for these readings, although the manual says Pelegant results are identical to serial for a deterministic beam.
 
 ??? example "Reproducer: COL-02.py"
 
@@ -30,7 +30,7 @@ When a user runs the fast orbit feedback command under MPI (Pelegant), Elegant w
     local means differ, the monitor instead reads the whole beam's mean, as products of lens and drift
     matrices predict, for one and three turns per readout and feedback gain 0 or 0.2500: 3.474×10⁻⁴ m
     horizontally and 3.150×10⁻³ m vertically after one turn. The warning is therefore false for these
-    readings and can lead users to discard valid parallel runs, although the manual says Pelegant
+    readings, although the manual says Pelegant
     results are identical to serial for a deterministic beam.
 
     The script tracks 24 particles through a stable alternating-gradient cell with two correctors and

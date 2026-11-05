@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`DipEdge.H#L433-L467`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/DipEdge.H#L433-L467)<br>[`DipEdge.H#L210-L287`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/DipEdge.H#L210-L287) |
 
-For a `DipEdge` with the nonlinear fringe model, the linear transfer matrix that ImpactX reports omits the vertical focusing from the fringe-field integral `K5`, which the particle map includes. The reported matrix must equal the particle map's small-amplitude derivative, whose vertical focusing changes in proportion to g·`K5`·sin ψ/cos³ψ (ψ the pole-face angle, g the gap). For a proton of 1000 MeV kinetic energy with ψ = 0.2 rad, `rc` = 1 m, g = 0.1 m and `K1` = 0, raising `K5` from 0 to 0.1 changes the particle map's R₄₃ = ∂py/∂y by 0.002110 m⁻¹, matching an independent derivation from its generating function, while the reported matrix is unchanged. From the source, envelope tracking uses this same matrix; the particle map itself is not shown to be wrong.
+For a `DipEdge` with the nonlinear fringe model, the linear transfer matrix that ImpactX reports, which envelope tracking uses, omits the vertical focusing from the fringe-field integral `K5`, which the particle map includes. The reported matrix must equal the particle map's small-amplitude derivative, whose vertical focusing changes in proportion to g·`K5`·sin ψ/cos³ψ (ψ the pole-face angle, g the gap). For a proton of 1000 MeV kinetic energy with ψ = 0.2 rad, `rc` = 1 m, g = 0.1 m and `K1` = 0, raising `K5` from 0 to 0.1 changes the particle map's R₄₃ = ∂py/∂y by 0.002110 m⁻¹, matching an independent derivation from its generating function, while the reported matrix is unchanged.
 
 ??? example "Reproducer: ENV-02.py"
 
@@ -25,14 +25,14 @@ For a `DipEdge` with the nonlinear fringe model, the linear transfer matrix that
     ```python
     """ENV-02: Nonlinear `DipEdge` optics omit `K5` fringe focusing
 
-    For a `DipEdge` with the nonlinear fringe model, the linear transfer matrix that ImpactX reports
-    omits the vertical focusing from the fringe-field integral `K5`, which the particle map includes.
-    The reported matrix must equal the particle map's small-amplitude derivative, whose vertical
-    focusing changes in proportion to g·`K5`·sin ψ/cos³ψ (ψ the pole-face angle, g the gap). For a
-    proton of 1000 MeV kinetic energy with ψ = 0.2 rad, `rc` = 1 m, g = 0.1 m and `K1` = 0, raising `K5`
-    from 0 to 0.1 changes the particle map's R₄₃ = ∂py/∂y by 0.002110 m⁻¹, matching an independent
-    derivation from its generating function, while the reported matrix is unchanged. From the source,
-    envelope tracking uses this same matrix; the particle map itself is not shown to be wrong.
+    For a `DipEdge` with the nonlinear fringe model, the linear transfer matrix that ImpactX reports,
+    which envelope tracking uses, omits the vertical focusing from the fringe-field integral `K5`, which
+    the particle map includes. The reported matrix must equal the particle map's small-amplitude
+    derivative, whose vertical focusing changes in proportion to g·`K5`·sin ψ/cos³ψ (ψ the pole-face
+    angle, g the gap). For a proton of 1000 MeV kinetic energy with ψ = 0.2 rad, `rc` = 1 m, g = 0.1 m
+    and `K1` = 0, raising `K5` from 0 to 0.1 changes the particle map's R₄₃ = ∂py/∂y by 0.002110 m⁻¹,
+    matching an independent derivation from its generating function, while the reported matrix is
+    unchanged.
 
     The script first checks zero-angle controls (`K1` = `K5` = 0), where the reported R₄₃ equals the
     particle map's derivative for both the linear and the nonlinear model. It then builds a realizable

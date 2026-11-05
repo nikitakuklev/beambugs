@@ -7,7 +7,7 @@ rad leaves the diagnostic `total_mc_rate` at 7464 s⁻¹, whereas the manual's u
 estimator, which includes the sampled volume, gives 0.002266 and 0.0001416 s⁻¹, a 16-fold reduction.
 Returned particle weights are normalized to the Piwinski rate, so the factor cancels there; by
 source reading, `ignored_rate` inherits the diagnostic error. For the default interval the excess is
-0.01000% by algebra, not separately executed.
+0.01000% by algebra.
 
 The script runs a `TouschekMarker` twice (2000 selected scattering events, Xtrack random generator
 seed 9823, integrated Piwinski rate 3.25 s⁻¹) with θ intervals of width 2⁻²⁰ and 2⁻²⁴ centred at

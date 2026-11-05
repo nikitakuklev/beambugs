@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`track_rf_kick_single_particle`, track_rf.h:68–169](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_rf.h#L68-L169)<br>[`TPSA_SUPPORTED_ELEMENTS`](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/prebuilt_kernel_definitions/element_types.py#L127-L148)<br>[public API](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/apireference.rst#L1090-L1126) |
 
-Tracking an `RFMultipole` or `CrabCavity` with the experimental `ParticlesTpsa` API, which propagates native truncated-power-series (Taylor) maps, silently drops the element's transverse kick and the energy change that goes with it. The RF potential predicts both kicks, and ordinary particle tracking reproduces them. For a 1 GeV/c proton at x = 3 mm crossing a 1 MV, 100 MHz crab cavity at phase π/4 rad, the map gives zero normalized horizontal momentum pₓ and relative momentum change δ instead of 7.071 × 10⁻⁴ and −6.097 × 10⁻⁶; an RF dipole with `knl[0]` = 0.001 likewise loses its opposite kick. Users of native Taylor maps are affected; ordinary finite-difference `Line.twiss()` is not shown to fail.
+Tracking an `RFMultipole` or `CrabCavity` with the experimental `ParticlesTpsa` API, which propagates native truncated-power-series (Taylor) maps, silently drops the element's transverse kick and the energy change that goes with it. The RF potential predicts both kicks, and ordinary particle tracking reproduces them. For a 1 GeV/c proton at x = 3 mm crossing a 1 MV, 100 MHz crab cavity at phase π/4 rad, the map gives zero normalized horizontal momentum pₓ and relative momentum change δ instead of 7.071 × 10⁻⁴ and −6.097 × 10⁻⁶; an RF dipole with `knl[0]` = 0.001 likewise loses its opposite kick. Ordinary finite-difference `Line.twiss()` is not shown to fail.
 
 ??? example "Reproducer: OPT-01.py"
 
@@ -31,8 +31,7 @@ Tracking an `RFMultipole` or `CrabCavity` with the experimental `ParticlesTpsa` 
     tracking reproduces them. For a 1 GeV/c proton at x = 3 mm crossing a 1 MV, 100 MHz crab cavity at
     phase π/4 rad, the map gives zero normalized horizontal momentum pₓ and relative momentum change δ
     instead of 7.071 × 10⁻⁴ and −6.097 × 10⁻⁶; an RF dipole with `knl[0]` = 0.001 likewise loses its
-    opposite kick. Users of native Taylor maps are affected; ordinary finite-difference `Line.twiss()`
-    is not shown to fail.
+    opposite kick. Ordinary finite-difference `Line.twiss()` is not shown to fail.
 
     The script tracks a 1 GeV/c proton at x = 3 mm through an `RFMultipole` (`knl[0]` = 0.001) and a 1
     MV `CrabCavity`, both at 100 MHz and phase π/4, once as an ordinary particle and once as a

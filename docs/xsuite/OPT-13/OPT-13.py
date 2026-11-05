@@ -6,8 +6,8 @@ thin-lens matrices, transformed into the documented reverse frame, agree with na
 and require a reversed drift to keep a positive length. For a 1.7 GeV/c proton line containing
 0.7600 m of drift, with initial horizontal beta function 0.7 m and alpha −0.8, the reconstructed
 response of position to normalized momentum, R₁₂, is −0.7600 m instead of +0.7600 m, and the
-response of momentum to position, R₂₁, is 2.035 m⁻¹ instead of zero. Both reconstruction APIs and
-marker subintervals are affected in the tested uncoupled channels; forward reconstruction passes.
+response of momentum to position, R₂₁, is 2.035 m⁻¹ instead of zero. It also appears over marker
+subintervals, in the uncoupled channels; forward reconstruction passes.
 
 The script builds four open 1.7 GeV/c proton lines with drifts L, 0.7L and 0.2L, thin lenses of
 strength k and −0.4k (k = 0, +0.27 and −0.19 m⁻¹) and three markers. In the reverse frame, with F =

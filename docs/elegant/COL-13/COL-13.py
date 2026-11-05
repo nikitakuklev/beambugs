@@ -6,8 +6,7 @@ charge. The immediate output retains the invalid particles without reporting los
 exits successfully. Symmetry and the continuous radial-force limit require zero kick at the center.
 For σₓ = σᵧ = 1.300 mm, off-axis particles at horizontal position x = 0.1σₓ have finite kicks
 agreeing with the analytic force, while a centered particle with σᵧ/σₓ = 1.02 retains zero slopes
-and momentum 1300 mₑc. Simulations placing particles exactly at the opposing bunch's transverse
-center are affected.
+and momentum 1300 mₑc.
 
 The script tracks 12 particles at x = y = 0 through one Gaussian BEAMBEAM element for opposing
 charges 0 and ±0.9 nC, once with a round bunch and once with σᵧ/σₓ = 1.02, and compares the

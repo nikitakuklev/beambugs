@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`SciBmad.jl/src/track.jl:322-350`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L322-L350)<br>[`track.jl:305-307`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L305-L307)<br>[`track.jl:327-328`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L327-L328)<br>[`track.jl:340-350`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L340-L350) |
 
-The postprocessing helper `track_spin`, which applies tracked spin quaternions to initial spins, accepts an initial-spin matrix of the wrong shape and silently returns wrong spins that are not unit vectors. Its documented input is one three-component row per particle, and identity quaternions must return those spins unchanged; column-major indexing of the misshaped matrix predicts exactly the wrong result. For four particles, a transposed 3×4 matrix is accepted and turns the fourth spin from the intended (0.6000, 0.8000, 0) into (0, 0, 0.6000), shortening it from length 1.000 to 0.6000 instead of rejecting the shape. Correctly shaped input works; source inspection also finds unchecked out-of-bounds reads for undersized matrices, which were not executed.
+The postprocessing helper `track_spin`, which applies tracked spin quaternions to initial spins, accepts an initial-spin matrix of the wrong shape and silently returns wrong spins that are not unit vectors. Its documented input is one three-component row per particle, and identity quaternions must return those spins unchanged; column-major indexing of the misshaped matrix predicts exactly the wrong result. For four particles, a transposed 3×4 matrix is accepted and turns the fourth spin from the intended (0.6000, 0.8000, 0) into (0, 0, 0.6000), shortening it from length 1.000 to 0.6000 instead of rejecting the shape. Correctly shaped input works; source inspection also finds unchecked out-of-bounds reads for undersized matrices.
 
 ??? example "Reproducer: COL-06.jl"
 
@@ -32,8 +32,7 @@ The postprocessing helper `track_spin`, which applies tracked spin quaternions t
     # predicts exactly the wrong result. For four particles, a transposed 3×4 matrix is accepted and
     # turns the fourth spin from the intended (0.6000, 0.8000, 0) into (0, 0, 0.6000), shortening it
     # from length 1.000 to 0.6000 instead of rejecting the shape. Correctly shaped input works; source
-    # inspection also finds unchecked out-of-bounds reads for undersized matrices, which were not
-    # executed.
+    # inspection also finds unchecked out-of-bounds reads for undersized matrices.
     #
     # The script passes four initial spins with identity quaternions to `track_spin`, once correctly
     # shaped (4×3, one row per particle) and once transposed (3×4), and prints both results and the

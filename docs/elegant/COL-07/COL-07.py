@@ -1,6 +1,6 @@
 """COL-07: WAKE cache substitutes the first requested column pair
 
-When two WAKE elements in one Elegant run select different wake columns (WCOLUMN) or time columns (TCOLUMN) from the same table file, the second element silently reuses the first element's columns, because the table is cached by file name alone. For a table with kernels A and B = 3A, the earliest particles of a 12-electron, 2 nC bunch should lose the sum of both kernels, 8000 eV; the shared file gives 4000 eV (A applied twice) or 12000 eV (B applied twice), depending on element order, which is an error of -50% or +50%. A byte-identical copy of the table under another file name gives the correct result. Anyone who selects several kernels from one wake file is affected.
+When two WAKE elements in one Elegant run select different wake columns (WCOLUMN) or time columns (TCOLUMN) from the same table file, the second element silently reuses the first element's columns, because the table is cached by file name alone. For a table with kernels A and B = 3A, the earliest particles of a 12-electron, 2 nC bunch should lose the sum of both kernels, 8000 eV; the shared file gives 4000 eV (A applied twice) or 12000 eV (B applied twice), depending on element order, which is an error of −50% or +50%. A byte-identical copy of the table under another file name gives the correct result.
 
 The script tracks twelve electrons (four arrival times, three particles each) through two
 zero-length WAKE elements that read a table holding two wake columns, B = 3A, and two time

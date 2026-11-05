@@ -7,7 +7,7 @@ focusing and central differences that keep the full particle state confirm. For 
 a 1 MV, 100 MHz cavity with a compensated clock phase of π/3 rad, the longitudinal focusing term,
 the change of momentum coordinate `pzeta` per longitudinal offset `zeta`, is −1.970 × 10⁻³ m⁻¹
 instead of −3.941 × 10⁻³ m⁻¹, and open Twiss generates `pzeta` = −1.188 × 10⁻³ instead of zero.
-Supplied nonzero clocks are affected; zero-clock controls pass.
+Zero-clock controls pass.
 
 The script builds a ring of one absolute-time `Cavity` (1 MV, 100 MHz, phase equal to minus the
 clock phase) and a drift of one RF wavelength, and checks that a 1 GeV/c proton orbit with clock

@@ -6,7 +6,7 @@
 # and a source search finds no GPU-array conversion in Beamlines or BeamTracking. Run on the CPU
 # with an ordinary array in place of the `CuArray`, the page's FODO cell fails with `MethodError: no
 # method matching ^(::Vector{Float64}, ::Int64)`, while the same strengths wrapped in `BatchParam`
-# track. Users who copy the GPU example get an error; GPU execution itself was not tested.
+# track.
 #
 # The script builds the page's FODO cell, with quadrupole strengths `Kn1` = ±K1 and ten values of K1
 # from 0.1 to 0.55, and tracks it once with `BatchParam(K)` and once with the plain array K, a CPU

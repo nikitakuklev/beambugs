@@ -6,8 +6,7 @@ and the energy change that goes with it. The RF potential predicts both kicks, a
 tracking reproduces them. For a 1 GeV/c proton at x = 3 mm crossing a 1 MV, 100 MHz crab cavity at
 phase π/4 rad, the map gives zero normalized horizontal momentum pₓ and relative momentum change δ
 instead of 7.071 × 10⁻⁴ and −6.097 × 10⁻⁶; an RF dipole with `knl[0]` = 0.001 likewise loses its
-opposite kick. Users of native Taylor maps are affected; ordinary finite-difference `Line.twiss()`
-is not shown to fail.
+opposite kick. Ordinary finite-difference `Line.twiss()` is not shown to fail.
 
 The script tracks a 1 GeV/c proton at x = 3 mm through an `RFMultipole` (`knl[0]` = 0.001) and a 1
 MV `CrabCavity`, both at 100 MHz and phase π/4, once as an ordinary particle and once as a

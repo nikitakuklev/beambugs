@@ -4,8 +4,7 @@
 # `TypeError` before tracking begins, because the keyword is declared
 # `Union{AbstractMatrix,Nothing}`. `track(...; weight=[0.25, 0.75])` therefore fails on documented
 # input. The same vector passed through an explicit `Bunch` is kept as [0.25, 0.75] in a zero-turn
-# control, confirming that the underlying bunch API accepts it. Users supplying vector weights
-# through the high-level keyword are affected.
+# control, confirming that the underlying bunch API accepts it.
 #
 # The script tracks two electrons through a 1 m drift for zero turns, passing `weight=[0.25, 0.75]`
 # to `track`, and as a control passes the same weights inside an explicit `Bunch`. The resulting

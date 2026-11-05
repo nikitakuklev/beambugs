@@ -5,8 +5,7 @@ advances the longitudinal coordinate by the axial length L alone. At speed βc, 
 be at least √(L² + Δx² + Δy²)/(βc), where Δx and Δy are transverse displacements between the
 endpoints. In dilute helium with L = 0.4 m, electrons at momentum 2.000 mₑc with slopes (0.001,
 0.003) violate this bound by 7.459×10⁻¹⁵ s; at 2.400 mₑc with slopes (−0.02, 0.015), the deficit is
-4.516×10⁻¹³ s. Arrival-time calculations through thin targets or residual gas with forced scattering
-are affected.
+4.516×10⁻¹³ s.
 
 The script sends 24 electrons through helium of length 0.4 m, with slopes (0, 0), (0.001, 0.003) and
 (−0.02, 0.015) and momenta 0.8, 1.0 and 1.2 times 2, 20 or 300 mₑc, and compares each particle's

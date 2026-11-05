@@ -6,7 +6,7 @@
 # `zero_phase` belongs to the cavity element's `RFParams`. The guide's two-cell call with active
 # length 1.600 m raises `MethodError`, while `SaganCavity(n_cells=2, L_active=1.6)` succeeds;
 # passing `zero_phase` to that constructor also raises `MethodError`. The physics guide repeats the
-# wrong cell-count keyword, so users following either guide are affected.
+# wrong cell-count keyword.
 #
 # The script calls the guide's `SaganCavity(num_cells=2, L_active=1.6)` and
 # `SaganCavity(zero_phase=PhaseRef.BelowTransition)` and checks whether `PhaseReference` is defined

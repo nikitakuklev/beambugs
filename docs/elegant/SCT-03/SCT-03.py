@@ -6,8 +6,7 @@ fault after generating the particles at the first TSCATTER element. Serial Elega
 same input. The cleanup frees the array of lost particles on the master rank, but that array exists
 only when tracking is enabled, and the freeing routine dereferences it. For three TSCATTER elements
 and 40 generated particles per element, serial Elegant writes three pages of 40 particles, and
-Pelegant with do_track = 1 does too, but Pelegant with do_track = 0 aborts. Users generating
-Touschek-scattered particles in parallel are affected.
+Pelegant with do_track = 1 does too, but Pelegant with do_track = 0 aborts.
 
 The script runs touschek_scatter on a three-element TSCATTER lattice with 40 generated particles per
 element, once in serial Elegant and twice in 3-rank Pelegant, with tracking disabled and enabled. It

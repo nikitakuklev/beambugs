@@ -9,13 +9,13 @@ hide:
 | | |
 |---|---|
 | Code | [Elegant](../index.md) · Optics |
-| Priority | P3 |
+| Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [`compute_twiss_parameters`, `alpha3` accumulation, twiss.cc:2400–2404](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2400-L2404)<br>[`x = x(0) + η δ + η2 δ² + η3 δ³`, twiss.cc:253–259](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L253-L259)<br>[`alphac3` is the third-order momentum compaction, doc/elegant.tex:8254–8255](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8254-L8255)<br>[`alphac3` as an optimization symbol, doc/elegant.tex:6184–6185](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L6184-L6185) |
 
-Elegant's `twiss_output` reports the third-order momentum compaction `alphac3`, the δ³ coefficient of the relative path length with δ the relative momentum offset, but adds a product of two second-order dispersions that belongs to δ⁴. For a prescribed stable 10 m cell with second-order term T166 = 0.2 m (closed orbit x = 0.1 m·δ²) and path term T511 = 0.3 m⁻¹ (path length ∝ x²), the path is 10 m + 0.003 m·δ⁴, so `alphac3` must be 0, but Elegant writes 3.000×10⁻⁴. Tracking 12 particles on the closed orbit reproduces the quartic path, and removing either term gives zero. Users optimizing or matching `alphac3` are affected; physical rings were not assessed.
+Elegant's `twiss_output` reports the third-order momentum compaction `alphac3`, the δ³ coefficient of the relative path length with δ the relative momentum offset, but adds a product of two second-order dispersions that belongs to δ⁴. For a prescribed stable 10 m cell with second-order term T166 = 0.2 m (closed orbit x = 0.1 m·δ²) and path term T511 = 0.3 m⁻¹ (path length ∝ x²), the path is 10 m + 0.003 m·δ⁴, so `alphac3` must be 0, but Elegant writes 3.000×10⁻⁴. Tracking 12 particles on the closed orbit reproduces the quartic path, and removing either term gives zero.
 
 ??? example "Reproducer: OPT-09.py"
 
@@ -30,7 +30,6 @@ Elegant's `twiss_output` reports the third-order momentum compaction `alphac3`, 
     term T166 = 0.2 m (closed orbit x = 0.1 m·δ²) and path term T511 = 0.3 m⁻¹ (path length ∝ x²), the
     path is 10 m + 0.003 m·δ⁴, so `alphac3` must be 0, but Elegant writes 3.000×10⁻⁴. Tracking 12
     particles on the closed orbit reproduces the quartic path, and removing either term gives zero.
-    Users optimizing or matching `alphac3` are affected; physical rings were not assessed.
 
     The script prescribes a stable 10 m cell as an explicit matrix with second-order dispersion and a
     quadratic path term, in serial Elegant (and with `--mpi` in 3-rank Pelegant). It compares the
@@ -368,8 +367,9 @@ Elegant's `twiss_output` reports the third-order momentum compaction `alphac3`, 
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
-| Found | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
+| Found | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source reading, not executed for this claim |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

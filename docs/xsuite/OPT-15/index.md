@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`) |
 | Source | [`_add_periodic_solution_data_to_twiss_result`, twiss_postprocess_and_complem_results.py:99–148](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_postprocess_and_complem_results.py#L99-L148)<br>[closest tune approach coefficient](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss.py#L333-L337)<br>[coupling manual](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/linear_coupling.tex#L139-L174) |
 
-Twiss inflates `c_minus`, the closest-tune-approach coefficient, when two nearby eigentunes straddle an integer. An analytic coupled-oscillator calculation and an independent eigenfrequency scan show that shifting both tunes together must preserve their minimum separation. For eigentunes 0.9920 and 1.006, mixing angle 0.07 rad and modal beta function 2.7 m, `c_minus` is 0.1376 instead of 0.001954, too large by a factor 70.43; shifting both tunes by ±0.09 restores the correct value. The tested 4D and 6D periodic calculations with positive line length and pure difference coupling are affected, including the complex coupling magnitudes; tracking maps, eigentunes and projected beta functions remain correct.
+Twiss inflates `c_minus`, the closest-tune-approach coefficient, when two nearby eigentunes straddle an integer. An analytic coupled-oscillator calculation and an independent eigenfrequency scan show that shifting both tunes together must preserve their minimum separation. For eigentunes 0.9920 and 1.006, mixing angle 0.07 rad and modal beta function 2.7 m, `c_minus` is 0.1376 instead of 0.001954, too large by a factor 70.43; shifting both tunes by ±0.09 restores the correct value. The error appears in the 4D and 6D periodic calculations with positive line length and pure difference coupling, including the complex coupling magnitudes; tracking maps, eigentunes and projected beta functions remain correct.
 
 ??? example "Reproducer: OPT-15.py"
 
@@ -28,10 +28,10 @@ Twiss inflates `c_minus`, the closest-tune-approach coefficient, when two nearby
     an integer. An analytic coupled-oscillator calculation and an independent eigenfrequency scan show
     that shifting both tunes together must preserve their minimum separation. For eigentunes 0.9920 and
     1.006, mixing angle 0.07 rad and modal beta function 2.7 m, `c_minus` is 0.1376 instead of 0.001954,
-    too large by a factor 70.43; shifting both tunes by ±0.09 restores the correct value. The tested 4D
-    and 6D periodic calculations with positive line length and pure difference coupling are affected,
-    including the complex coupling magnitudes; tracking maps, eigentunes and projected beta functions
-    remain correct.
+    too large by a factor 70.43; shifting both tunes by ±0.09 restores the correct value. The error
+    appears in the 4D and 6D periodic calculations with positive line length and pure difference
+    coupling, including the complex coupling magnitudes; tracking maps, eigentunes and projected beta
+    functions remain correct.
 
     The script builds rings of 24 or 48 rotated `LineSegmentMap` elements (modal beta 2.7 m, 0.8 GeV/c
     protons) with pure difference coupling at mixing angles θ = 0.07, 0.31 and 0.53 rad, shifts both

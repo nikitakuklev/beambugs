@@ -5,8 +5,8 @@ parent line, corrupting the reported slip factor η and momentum compaction. Bot
 the length of the selected periodic map, and the computed transfer matrix agrees with that local
 map. For a 2 m `LineSegmentMap` with momentum compaction 0.02, zero RF voltage and a 1 GeV/c proton
 reference, adding an untracked 10 m prefix changes η from −0.4482 to −0.07470 and the momentum
-compaction from 0.02000 to 0.3935, although these dimensionless quantities should not change.
-Constant-energy 4D periodic subranges with unused prefixes or suffixes are affected; the selected
+compaction from 0.02000 to 0.3935, although these dimensionless quantities should not change. This
+occurs for constant-energy 4D periodic subranges with unused prefixes or suffixes; the selected
 matrix itself stays correct.
 
 The script places that `LineSegmentMap` after a drift of length 0 or 10 m, ending at a marker, and

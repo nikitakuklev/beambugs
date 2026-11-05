@@ -5,8 +5,7 @@ as electrons from a fixed opposing bunch, deflecting them in the wrong direction
 tracked charge at fixed mass and source must reverse the kick; an independent enclosed-charge
 calculation verifies the electron control and predicts the opposite positron kick. For a positive
 0.7000 nC uniform opposing bunch of radius 1.700 mm, a positron with momentum 1700 mₑc at horizontal
-position x = 0.2300 mm receives a horizontal slope change Δx′ = −1.153×10⁻⁶ instead of
-+1.153×10⁻⁶. Uniform, parabolic and Gaussian source distributions are affected.
+position x = 0.2300 mm receives a horizontal slope change Δx′ = −1.153×10⁻⁶ instead of +1.153×10⁻⁶.
 
 The script tracks 12 particles at x = ±0.23 mm through one BEAMBEAM element, as electrons and as
 positrons, for each distribution and for opposing charges of both signs. Expected kicks come from

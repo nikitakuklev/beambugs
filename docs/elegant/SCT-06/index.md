@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [event probability, matter.c:127–128](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L127-L128)<br>[transfer sampling, matter.c:249–250](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L249-L250)<br>[`ELECTRON_RECOIL`, track_data.c:2143](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2143) |
 
-For relativistic electrons in MATTER with ELECTRON_RECOIL and NUCLEAR_BREMSSTRAHLUNG enabled, recoil-transfer rates are suppressed by about the momentum P, measured in mₑc, at transfers above binding energies and small compared with incident kinetic energy. The event rate contains 1/P, but sampled transfers are subtracted directly from the Lorentz factor γ. For 20000 electrons at P = 1000 crossing 0.01 m of dilute helium, the free-electron Møller integral predicts 42.22 electrons losing at least 1.022 keV; serial and three-rank parallel runs give none despite active recoil sampling. The Poisson probability of zero such transfers under that reference is 4.408×10⁻¹⁹. Users modelling collisional energy-loss tails are affected.
+For relativistic electrons in MATTER with ELECTRON_RECOIL and NUCLEAR_BREMSSTRAHLUNG enabled, recoil-transfer rates are suppressed by about the momentum P, measured in mₑc, at transfers above binding energies and small compared with incident kinetic energy. The event rate contains 1/P, but sampled transfers are subtracted directly from the Lorentz factor γ. For 20000 electrons at P = 1000 crossing 0.01 m of dilute helium, the free-electron Møller integral predicts 42.22 electrons losing at least 1.022 keV; serial and three-rank parallel runs give none despite active recoil sampling. The Poisson probability of zero such transfers under that reference is 4.408×10⁻¹⁹.
 
 ??? example "Reproducer: SCT-06.py"
 
@@ -30,8 +30,7 @@ For relativistic electrons in MATTER with ELECTRON_RECOIL and NUCLEAR_BREMSSTRAH
     sampled transfers are subtracted directly from the Lorentz factor γ. For 20000 electrons at P = 1000
     crossing 0.01 m of dilute helium, the free-electron Møller integral predicts 42.22 electrons losing
     at least 1.022 keV; serial and three-rank parallel runs give none despite active recoil sampling.
-    The Poisson probability of zero such transfers under that reference is 4.408×10⁻¹⁹. Users modelling
-    collisional energy-loss tails are affected.
+    The Poisson probability of zero such transfers under that reference is 4.408×10⁻¹⁹.
 
     The script tracks 20000 electrons through the helium target with recoil and bremsstrahlung enabled
     and counts those that lose at least 1.022 keV, comparing the count with the Møller-scattering
@@ -384,6 +383,7 @@ For relativistic electrons in MATTER with ELECTRON_RECOIL and NUCLEAR_BREMSSTRAH
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-11-04 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

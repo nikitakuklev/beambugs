@@ -6,8 +6,7 @@
 # moment, and converting by the neutron-to-proton mass ratio restores agreement. With CODATA 2022
 # active, neutron `g_spin` with `signed=true` is −3.826 instead of the own-mass value −3.831,
 # implying a gyromagnetic ratio of −1.830 × 10⁸ instead of −1.832 × 10⁸ s⁻¹ T⁻¹, a 0.1377% magnitude
-# error. Antineutron signs reverse with the same fractional error; charged species agree, and
-# consequences for neutral-particle tracking are unestablished.
+# error. Antineutron signs reverse with the same fractional error; charged species agree.
 #
 # With CODATA 2022 active, the script compares, for the neutron, the antineutron and twelve charged
 # controls, the gyromagnetic ratio g·e/(2m) from `g_spin` and the particle's own mass m with μ/(Sℏ)

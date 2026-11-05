@@ -7,7 +7,7 @@ the default proton mass is used for every species. The relativistic relation δ 
 2p_τ/β₀) − 1, with the reference speed β₀ = v/c of the actual species, gives the correct value, and
 the proton case agrees with it. For a 5 MeV/c positron bunch matched to 1 kV RF at harmonic 1 in a
 100 m line, one particle gets δ = 0.03520 instead of 1.919×10⁻⁴, another 0.1245 instead of
-7.083×10⁻⁴. Positions `zeta` are correct; nonproton references are affected.
+7.083×10⁻⁴. Positions `zeta` are correct.
 
 The script builds a 100 m `LineSegmentMap` with 1 kV RF at harmonic 1 and momentum compaction 0.1,
 and generates eight particles with a parabolic profile and RMS bunch length 0.5 m, once for a 5

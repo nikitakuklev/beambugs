@@ -7,7 +7,7 @@
 # analytic normalizer independently establish the expected result. For damping factor 0.87 in each
 # mode, angles (0.61, 0.61, 1.13) rad and Q = 2×10⁻⁸·I, the covariance has 22.56% relative error,
 # its fixed-point residual is 0.8035‖Q‖, and the eigenvector residual is 0.3538. Separating the
-# repeated angles by 10⁻⁵ rad restores accuracy; realistic-ring prevalence was not established.
+# repeated angles by 10⁻⁵ rad restores accuracy.
 #
 # The script builds M = T·diag(0.87 R(θᵢ))·T⁻¹ with T the identity except T₁₃ = 0.375 and T₄₂ =
 # 0.125, a stable diagonalizable map. It checks `mat_eigen` against M·V = V·Λ and compares

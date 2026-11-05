@@ -7,7 +7,7 @@ the longitudinal field divided by the rigidity Bρ; an independent Thomas–BMT 
 fields disagrees with ImpactX while the orbits agree, and at vanishing magnetic anomaly ImpactX's
 spin does not follow the velocity, as it must. For a proton at γ = 3.3 offset by 20 μm in an
 asymmetric 0.7 m field profile, the transverse spin error at the exit is 1.548e-4. On-axis
-precession is correct; off-axis particles are affected.
+precession is correct.
 
 The script tracks 16 particles with horizontal or vertical offsets, zero transverse momentum and
 spin (0, 0, 1) through `SoftSolenoid` profiles whose field and slope vanish at both ends, b = 2

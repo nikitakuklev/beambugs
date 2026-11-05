@@ -6,8 +6,7 @@
 # removes the required margin. For input horizontal positions 0 and 1.000 m on a 65×9×9 mesh,
 # deposition addresses nodes 65 and 66 although only 65 exist, raising `BoundsError` instead of
 # depositing the total 2.000 pC; a 17-node grid also fails even though its upper bound exceeds 1 m.
-# Automatic Float64 bounds and sufficiently padded manual Float32 bounds deposit successfully; GPU
-# behavior is untested.
+# Automatic Float64 bounds and sufficiently padded manual Float32 bounds deposit successfully.
 #
 # The script builds automatic Float32 meshes of 9, 17, 33, 65 and 129 × 9 × 9 nodes around two
 # particles at x = 0 and 1 m, deposits their charges, and checks each outcome against the cell index

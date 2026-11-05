@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [`computeAverageGasPressures` coverage check, pressureData.c:207–218](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/physics/pressureData.c#L207-L218)<br>[interval limits, ionEffects.cc:593–616](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ionEffects.cc#L593-L616)<br>[averaging call, ionEffects.cc:633–634](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ionEffects.cc#L633-L634)<br>[default, ionEffects.nl:53](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ionEffects.nl#L53)<br>[call at the start of tracking, elegant.c:1300–1301](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L1300-L1301)<br>[spacing checks, pressureData.c:179–191](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/physics/pressureData.c#L179-L191) |
 
-With IONEFFECTS' default pressure averaging, a lattice interval lying entirely before or after the gas-pressure samples triggers an error diagnostic that reads position index −1. Evaluating the message reads 8 bytes before the position array instead of safely reporting the coverage problem. With samples at 2 m and 3 m and an interval from 0 to 1 m, the run stops with a value that is not a sample position in the message, and a memory checker confirms an invalid read of size 8. Users whose pressure profiles miss an element's averaging interval are affected.
+With IONEFFECTS' default pressure averaging, a lattice interval lying entirely before or after the gas-pressure samples triggers an error diagnostic that reads position index −1. Evaluating the message reads 8 bytes before the position array instead of safely reporting the coverage problem. With samples at 2 m and 3 m and an interval from 0 to 1 m, the run stops with a value that is not a sample position in the message, and a memory checker confirms an invalid read of size 8.
 
 ??? example "Reproducer: SCT-01.py"
 
@@ -28,8 +28,7 @@ With IONEFFECTS' default pressure averaging, a lattice interval lying entirely b
     gas-pressure samples triggers an error diagnostic that reads position index −1. Evaluating the
     message reads 8 bytes before the position array instead of safely reporting the coverage problem.
     With samples at 2 m and 3 m and an interval from 0 to 1 m, the run stops with a value that is not a
-    sample position in the message, and a memory checker confirms an invalid read of size 8. Users whose
-    pressure profiles miss an element's averaging interval are affected.
+    sample position in the message, and a memory checker confirms an invalid read of size 8.
 
     The script writes a one-element IONEFFECTS lattice spanning 0 to 1 m and runs serial Elegant under
     Valgrind with four pressure profiles: two that reach the interval (samples at 0, 0.5 and 1 m, and
@@ -333,6 +332,7 @@ With IONEFFECTS' default pressure averaging, a lattice interval lying entirely b
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
 | Confirmed (source reading) | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
 | Confirmed (source reading) | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
 

@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
 | Source | [`ThinSliceCrabCavity.get_equivalent_element`, slice_elements_thin.py:162–173](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_thin.py#L162-L173)<br>[`ThinSliceCavity` converter](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_thin.py#L139-L149) |
 
-`Line.optimize_for_tracking()` drops the roll of sliced `CrabCavity` elements and the `phase_taper` of sliced `Cavity` elements. Rotating the transverse kick by the roll angle and applying the RF sine law to the tapered phase give the correct kicks, and the unoptimized slices reproduce them. A 1 GeV/c proton through a 1 m, 1 MV crab cavity at zero frequency, phase π/2 and roll π/2 exits displaced 0.5000 mm horizontally instead of vertically. Through a 1 MV accelerating cavity at zero frequency with phase 0.2 rad and taper 0.3 rad, it gains 198.7 keV instead of 479.4 keV. Rolled crab cavities are affected, and so are phase-tapered cavities when the mean-radiation configuration enables the taper.
+`Line.optimize_for_tracking()` drops the roll of sliced `CrabCavity` elements and the `phase_taper` of sliced `Cavity` elements. Rotating the transverse kick by the roll angle and applying the RF sine law to the tapered phase give the correct kicks, and the unoptimized slices reproduce them. A 1 GeV/c proton through a 1 m, 1 MV crab cavity at zero frequency, phase π/2 and roll π/2 exits displaced 0.5000 mm horizontally instead of vertically. Through a 1 MV accelerating cavity at zero frequency with phase 0.2 rad and taper 0.3 rad, it gains 198.7 keV instead of 479.4 keV. The taper matters when the mean-radiation configuration enables it.
 
 ??? example "Reproducer: TRK-04.py"
 
@@ -29,9 +29,8 @@ hide:
     law to the tapered phase give the correct kicks, and the unoptimized slices reproduce them. A 1
     GeV/c proton through a 1 m, 1 MV crab cavity at zero frequency, phase π/2 and roll π/2 exits
     displaced 0.5000 mm horizontally instead of vertically. Through a 1 MV accelerating cavity at zero
-    frequency with phase 0.2 rad and taper 0.3 rad, it gains 198.7 keV instead of 479.4 keV. Rolled crab
-    cavities are affected, and so are phase-tapered cavities when the mean-radiation configuration
-    enables the taper.
+    frequency with phase 0.2 rad and taper 0.3 rad, it gains 198.7 keV instead of 479.4 keV. The taper
+    matters when the mean-radiation configuration enables it.
 
     The script slices each cavity with `Teapot(1)` and tracks a proton through it before and after
     optimization. For the crab cavity it expects the kick V/p0c·(cos roll, sin roll) at mid-element

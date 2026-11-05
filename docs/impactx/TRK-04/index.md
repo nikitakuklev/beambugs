@@ -17,7 +17,7 @@ hide:
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1732]], filed from this evidence |
 | Source | [`SoftQuad.H#L548-L555`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftQuad.H#L548-L555)<br>[`SoftSol.H#L648-L655`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L648-L655)<br>[`RFCavity.H#L604-L611`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/RFCavity.H#L604-L611)<br>[`tracking/common.H#L168-L170`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/tracking/common.H#L168-L170) |
 
-A `SoftQuadrupole`, `SoftSolenoid` or `RFCavity` followed by its `reverse()` copy in a lattice does not return particles to their initial coordinates, although the manual documents `reverse()` as undoing the original element. Lattice tracking resets the field-profile origin at each element, so the reversed element (negative `ds`) integrates outside its field profile; with a flat profile it reduces to a drift of length −`ds`. Pushing the reversed element directly, which keeps the forward element's profile origin, closes the round trip to 2.1e-16. With a constant profile (`cos_coefficients=[2]`, `ds` = 0.7 m), the largest coordinate error after the pair, in metres or normalized momentum, is 0.01080 for `SoftQuadrupole`, 0.004498 for `SoftSolenoid` and 0.002723 for `RFCavity`. Any lattice containing a reversed soft-edge element is affected.
+A `SoftQuadrupole`, `SoftSolenoid` or `RFCavity` followed by its `reverse()` copy in a lattice does not return particles to their initial coordinates, although the manual documents `reverse()` as undoing the original element. Lattice tracking resets the field-profile origin at each element, so the reversed element (negative `ds`) integrates outside its field profile; with a flat profile it reduces to a drift of length −`ds`. Pushing the reversed element directly, which keeps the forward element's profile origin, closes the round trip to 2.1e-16. With a constant profile (`cos_coefficients=[2]`, `ds` = 0.7 m), the largest coordinate error after the pair, in metres or normalized momentum, is 0.01080 for `SoftQuadrupole`, 0.004498 for `SoftSolenoid` and 0.002723 for `RFCavity`.
 
 ??? example "Reproducer: TRK-04.py"
 
@@ -34,7 +34,7 @@ A `SoftQuadrupole`, `SoftSolenoid` or `RFCavity` followed by its `reverse()` cop
     element's profile origin, closes the round trip to 2.1e-16. With a constant profile
     (`cos_coefficients=[2]`, `ds` = 0.7 m), the largest coordinate error after the pair, in metres or
     normalized momentum, is 0.01080 for `SoftQuadrupole`, 0.004498 for `SoftSolenoid` and 0.002723 for
-    `RFCavity`. Any lattice containing a reversed soft-edge element is affected.
+    `RFCavity`.
 
     For each of the three classes, the script tracks one proton (938.3 MeV kinetic energy) with all six
     coordinates nonzero through a two-element lattice, the element and its `reverse()` copy, with a

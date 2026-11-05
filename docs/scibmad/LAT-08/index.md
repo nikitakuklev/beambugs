@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
 | Source | [`SciBmad.jl/src/track.jl:182`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L182)<br>[`SciBmad.jl/src/track.jl:130-131`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L130-L131)<br>[`BeamTracking.jl/src/types.jl:78-79`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L78-L79)<br>[`BeamTracking.jl/src/types.jl:103-115`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L103-L115) |
 
-Passing per-particle weights to `track` as the documented vector of length `n_particles` raises a `TypeError` before tracking begins, because the keyword is declared `Union{AbstractMatrix,Nothing}`. `track(...; weight=[0.25, 0.75])` therefore fails on documented input. The same vector passed through an explicit `Bunch` is kept as [0.25, 0.75] in a zero-turn control, confirming that the underlying bunch API accepts it. Users supplying vector weights through the high-level keyword are affected.
+Passing per-particle weights to `track` as the documented vector of length `n_particles` raises a `TypeError` before tracking begins, because the keyword is declared `Union{AbstractMatrix,Nothing}`. `track(...; weight=[0.25, 0.75])` therefore fails on documented input. The same vector passed through an explicit `Bunch` is kept as [0.25, 0.75] in a zero-turn control, confirming that the underlying bunch API accepts it.
 
 ??? example "Reproducer: LAT-08.jl"
 
@@ -28,8 +28,7 @@ Passing per-particle weights to `track` as the documented vector of length `n_pa
     # `TypeError` before tracking begins, because the keyword is declared
     # `Union{AbstractMatrix,Nothing}`. `track(...; weight=[0.25, 0.75])` therefore fails on documented
     # input. The same vector passed through an explicit `Bunch` is kept as [0.25, 0.75] in a zero-turn
-    # control, confirming that the underlying bunch API accepts it. Users supplying vector weights
-    # through the high-level keyword are affected.
+    # control, confirming that the underlying bunch API accepts it.
     #
     # The script tracks two electrons through a 1 m drift for zero turns, passing `weight=[0.25, 0.75]`
     # to `track`, and as a control passes the same weights inside an explicit `Bunch`. The resulting

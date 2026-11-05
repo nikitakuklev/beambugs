@@ -5,9 +5,9 @@ clipping a later variable rescales the already clipped step vector and enlarges 
 factor must satisfy every bound at once and not depend on variable order. For dimensionless
 variables a and b starting at 0, with targets 6 and 12 and maximum steps 0.2 and 0.8, the accepted
 changes are 0.4000 and 0.8000 instead of the correctly scaled 0.2000 and 0.4000: a moves twice its
-allowed amount, while reversing the variable order gives the correct result. Several simultaneously
-limited variables are affected even with unit weights, and the violation occurs in an accepted
-iteration, not only in a trial evaluation.
+allowed amount, while reversing the variable order gives the correct result. It occurs when several
+variables are limited at once, even with unit weights, and in an accepted iteration, not only in a
+trial evaluation.
 
 The script sets up `Line.match()` on an empty line with two unit-weight variables that a
 tracking-free action reads back as targets. It compares the internal clipping of the requested step

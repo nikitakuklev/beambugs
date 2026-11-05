@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [`accumulateSCMULT` entrance optics, insertSCeffects.cc:762](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L762)<br>[entrance weights, insertSCeffects.cc:837–839](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L837-L839)<br>[exit-optics assignment, insertSCeffects.cc:849](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L849)<br>[bunch-mode section, elegant.tex:484](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L484)<br>[SCMULT's model, scmult.tex:10–24](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/scmult.tex#L10-L24) |
 
-When Elegant tracks a bunch train with SCMULT space-charge kicks (`insert_sceffects` in bunch mode), every bunch after the first integrates the space-charge strength over each element with the element's exit beta function β in place of its entrance value, so identical bunches receive different kicks. A bunch's kick depends only on its own charge distribution and the optics; the manual's linear force integrated with independently computed matched optics reproduces the first bunch's kick. Where β falls from 0.9141 m to 0.8018 m along a 0.3 m drift, the second and third of three identical bunches receive 6.542% less kick than the first, with linear and nonlinear forces alike. Multi-bunch simulations are affected wherever β varies along an element.
+When Elegant tracks a bunch train with SCMULT space-charge kicks (`insert_sceffects` in bunch mode), every bunch after the first integrates the space-charge strength over each element with the element's exit beta function β in place of its entrance value, so identical bunches receive different kicks. A bunch's kick depends only on its own charge distribution and the optics; the manual's linear force integrated with independently computed matched optics reproduces the first bunch's kick. Where β falls from 0.9141 m to 0.8018 m along a 0.3 m drift, the second and third of three identical bunches receive 6.542% less kick than the first, with linear and nonlinear forces alike.
 
 ??? example "Reproducer: COL-17.py"
 
@@ -31,7 +31,7 @@ When Elegant tracks a bunch train with SCMULT space-charge kicks (`insert_sceffe
     manual's linear force integrated with independently computed matched optics reproduces the first
     bunch's kick. Where β falls from 0.9141 m to 0.8018 m along a 0.3 m drift, the second and third of
     three identical bunches receive 6.542% less kick than the first, with linear and nonlinear forces
-    alike. Multi-bunch simulations are affected wherever β varies along an element.
+    alike.
 
     The script tracks one bunch, then three identical bunches, through a straight of a stable
     four-sector ring where `insert_sceffects` places an SCMULT after a drift of length L, and reads

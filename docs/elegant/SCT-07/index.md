@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [random-method plane gates, ibs_tracking.c:479–489](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L479-L489)<br>[smooth update, ibs_tracking.c:513–516](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L513-L516)<br>[IBSCATTER parameters, track_data.c:2512–2515](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2512-L2515) |
 
-With the smooth method (SMOOTH=1), an IBSCATTER element applies the intrabeam-scattering growth to all three planes whatever the plane switches DO_X, DO_Y and DO_Z say. With all three switches at 0 the beam should leave the element unchanged, as it does for FACTOR=0, and with one switch at 1 only that plane should change. In a closed ring of 16 identical bends and 256 particles, every switch setting gives the same output as the fully enabled element: the horizontal variance grows by 1.707% and the rms momentum deviation by 2.000%, where the all-off case should show 0%. Users who disable one plane of smooth IBS, or all of it, are affected.
+With the smooth method (SMOOTH=1), an IBSCATTER element applies the intrabeam-scattering growth to all three planes whatever the plane switches DO_X, DO_Y and DO_Z say. With all three switches at 0 the beam should leave the element unchanged, as it does for FACTOR=0, and with one switch at 1 only that plane should change. In a closed ring of 16 identical bends and 256 particles, every switch setting gives the same output as the fully enabled element: the horizontal variance grows by 1.707% and the rms momentum deviation by 2.000%, where the all-off case should show 0%.
 
 ??? example "Reproducer: SCT-07.py"
 
@@ -29,8 +29,7 @@ With the smooth method (SMOOTH=1), an IBSCATTER element applies the intrabeam-sc
     the beam should leave the element unchanged, as it does for FACTOR=0, and with one switch at 1 only
     that plane should change. In a closed ring of 16 identical bends and 256 particles, every switch
     setting gives the same output as the fully enabled element: the horizontal variance grows by 1.707%
-    and the rms momentum deviation by 2.000%, where the all-off case should show 0%. Users who disable
-    one plane of smooth IBS, or all of it, are affected.
+    and the rms momentum deviation by 2.000%, where the all-off case should show 0%.
 
     The script tracks a 256-particle beam once around a ring of sixteen identical sector bends, with
     constant matched beta functions, ending in an IBSCATTER with the smooth method and a growth-rate
@@ -355,6 +354,9 @@ With the smooth method (SMOOTH=1), an IBSCATTER element applies the intrabeam-sc
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source reading, not executed for this claim |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
 | Source | [`_get_chromatic_functions`, chromatic_functions.py:110–134](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/chromatic_functions.py#L110-L134) |
 
-A periodic Twiss over a named subrange of a line reports a second-order chromaticity that depends on the range's absolute longitudinal position s. Differentiating the prescribed tune polynomial twice gives the correct value, and moving an otherwise unchanged range along s cannot change it. For a 2 m `LineSegmentMap` with horizontal tune Qₓ(δ) = 0.2 + 1.2δ + 1.2δ², δ being the relative momentum deviation, a 10 m drift placed before it, outside the selected range and not tracked, changes the reported `ddqx` (d²Qₓ/dδ²) from 2.400 to 86.40, a factor of 36.00 for both finite-difference steps tried. Constant-energy periodic ranges that start after s = 0 are affected; the tune, the first-order chromaticity and the drift-free control are correct.
+A periodic Twiss over a named subrange of a line reports a second-order chromaticity that depends on the range's absolute longitudinal position s. Differentiating the prescribed tune polynomial twice gives the correct value, and moving an otherwise unchanged range along s cannot change it. For a 2 m `LineSegmentMap` with horizontal tune Qₓ(δ) = 0.2 + 1.2δ + 1.2δ², δ being the relative momentum deviation, a 10 m drift placed before it, outside the selected range and not tracked, changes the reported `ddqx` (d²Qₓ/dδ²) from 2.400 to 86.40, a factor of 36.00 for both finite-difference steps tried. The error arises for constant-energy periodic ranges that start after s = 0; the tune, the first-order chromaticity and the drift-free control are correct.
 
 ??? example "Reproducer: OPT-06.py"
 
@@ -30,7 +30,7 @@ A periodic Twiss over a named subrange of a line reports a second-order chromati
     `LineSegmentMap` with horizontal tune Qₓ(δ) = 0.2 + 1.2δ + 1.2δ², δ being the relative momentum
     deviation, a 10 m drift placed before it, outside the selected range and not tracked, changes the
     reported `ddqx` (d²Qₓ/dδ²) from 2.400 to 86.40, a factor of 36.00 for both finite-difference steps
-    tried. Constant-energy periodic ranges that start after s = 0 are affected; the tune, the
+    tried. The error arises for constant-energy periodic ranges that start after s = 0; the tune, the
     first-order chromaticity and the drift-free control are correct.
 
     The script places that `LineSegmentMap` after a drift of length 0 or 10 m, ending at a marker, and

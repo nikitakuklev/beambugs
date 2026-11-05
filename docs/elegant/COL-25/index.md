@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [local bunch mean, trwake.c:102–109](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L102-L109)<br>[global extrema, trwake.c:118–121](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L118-L121)<br>[fixed-bin origin, trwake.c:132–134](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L132-L134)<br>[automatic bins, trwake.c:135–138](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L135-L138)<br>[histogram sum, trwake.c:206–213](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L206-L213)<br>[local bunch counts, lrwake.c:149–166](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L149-L166)<br>[wake definition, trwake.tex:1–28](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/trwake.tex#L1-L28)<br>[bunched mode, trwake.tex:59–62](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/trwake.tex#L59-L62)<br>[setup, trwake.c:380–381](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L380-L381)<br>[TRWAKE caller, do_tracking.c:2483–2486](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2483-L2486)<br>[CHARGE, do_tracking.c:1441–1457](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L1441-L1457) |
 
-With multiple bunches and a fixed TRWAKE bin count (N_BINS > 0) under MPI (Pelegant), each tracking rank centers its histogram on its own bunch mean, so unequal rank means make summed bins represent different physical times. The correct kick is a causal sum within each bunch; serial tracking, MPI with equal rank means and automatic bins reproduce it. For two 80.00 pC bunches whose early and late halves occupy different ranks, the first particle of a late half receives no horizontal slope kick instead of 6.720×10⁻⁷, and the last particle's kick is 60.00% too small. Multibunch MPI users selecting fixed bins are affected.
+With multiple bunches and a fixed TRWAKE bin count (N_BINS > 0) under MPI (Pelegant), each tracking rank centers its histogram on its own bunch mean, so unequal rank means make summed bins represent different physical times. The correct kick is a causal sum within each bunch; serial tracking, MPI with equal rank means and automatic bins reproduce it. For two 80.00 pC bunches whose early and late halves occupy different ranks, the first particle of a late half receives no horizontal slope kick instead of 6.720×10⁻⁷, and the last particle's kick is 60.00% too small.
 
 ??? example "Reproducer: COL-25.py"
 
@@ -29,8 +29,7 @@ With multiple bunches and a fixed TRWAKE bin count (N_BINS > 0) under MPI (Peleg
     different physical times. The correct kick is a causal sum within each bunch; serial tracking, MPI
     with equal rank means and automatic bins reproduce it. For two 80.00 pC bunches whose early and late
     halves occupy different ranks, the first particle of a late half receives no horizontal slope kick
-    instead of 6.720×10⁻⁷, and the last particle's kick is 60.00% too small. Multibunch MPI users
-    selecting fixed bins are affected.
+    instead of 6.720×10⁻⁷, and the last particle's kick is 60.00% too small.
 
     The script tracks two 24-particle bunches, 3 ns apart, through one dipole TRWAKE with a linear
     causal wake and 64 fixed bins. Every particle has the same transverse offsets, so the correct kick

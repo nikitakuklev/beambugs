@@ -6,8 +6,7 @@ integrated pole-tip field 2.000×10⁻⁵ T·m and dimensionless momentum p/(mc)
 horizontal slope response R₂₁ is −0.05844 m⁻¹ for electrons, +0.05890 m⁻¹ for positrons and
 +3.195×10⁻⁵ m⁻¹ for protons; the analytic matrix gives −0.05844 m⁻¹ for all three. The positron and
 proton focusing signs are reversed, and the proton |R₂₁| is 1829 times too large. Direct tracking and
-explicit integrated strengths agree with the physical quadrupole matrix. Users computing these
-non-electron optics from pole-tip fields are affected.
+explicit integrated strengths agree with the physical quadrupole matrix.
 
 The script builds a 0.4 m `MULT` quadrupole specified by its pole-tip field for an electron, a
 positron and a proton beam in serial Elegant (and with `--mpi` in 3-rank Pelegant). It compares the

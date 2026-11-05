@@ -7,7 +7,7 @@ normalization, so exact momentum identities and drift transport require the rest
 uninterrupted trajectories to agree. Starting at 1 GeV/c with x = 3 mm and normalized horizontal
 momentum pₓ = 0.001, rebasing to 2 GeV/c and restarting before a 1 m exact drift gives a final x of
 6.069 mm instead of 4.000 mm; the extracted reference momentum is 1.000 GeV/c instead of 2.000
-GeV/c. Restarts after reference changes are affected; without a change the restart is correct.
+GeV/c. Without a reference change the restart is correct.
 
 The script tracks that proton through a `ReferenceEnergyChange`, a marker and an exact 1 m
 `DriftExact`, and compares a full open Twiss with one restarted from `get_twiss_init` at the marker.

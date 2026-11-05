@@ -6,8 +6,9 @@ MAD-X defines `BV=-1` as reversing the magnetic force, native MAD-X applies it, 
 own documentation specifies the reversal; analytic maps and an independent integration of the
 equations of motion give the reversed result. For a 1.4 GeV (total energy) proton in a 0.23 m
 quadrupole with `k1` = 1.7 m⁻² and tilt 0.21 rad, a test particle exits with normalized momentum pₓ
-= −7.699×10⁻⁵ instead of +2.189×10⁻⁵. Body quadrupoles, sextupoles and octupoles and thin quadrupole
-through dodecapole terms are affected; forward beams and kickers import correctly.
+= −7.699×10⁻⁵ instead of +2.189×10⁻⁵. The reversed polarity applies to body quadrupoles, sextupoles
+and octupoles and to thin quadrupole through dodecapole terms; forward beams and kickers import
+correctly.
 
 The script writes its own MAD-X decks and imports them with `lattice.load_file()` for both `BV`
 signs: tilted normal quadrupoles at 1.4 and 4.7 GeV with `k1` = ±1.7 m⁻² in the linear, paraxial and

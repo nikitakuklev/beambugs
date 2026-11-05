@@ -1,6 +1,6 @@
 """COL-04: Nonlinear space charge ignores the horizontal and vertical plane switches
 
-With `insert_sceffects` set to `nonlinear=1`, SCMULT ignores the `horizontal` and `vertical` switches that enable space charge in each plane. For unsliced Gaussian bunches, successful nonlinear evaluations give the same kicks with either or both planes disabled; linear controls obey the switches. In the round-beam reproduction with 1 nC of electrons at 10 mₑc and 1 mm rms transverse sizes, a sampled particle receives −3.309×10⁻⁵ rad in each plane after a 0.5 m drift even with both switches off, instead of zero. Nonlinear studies that disable a plane are affected.
+With `insert_sceffects` set to `nonlinear=1`, SCMULT ignores the `horizontal` and `vertical` switches that enable space charge in each plane. For unsliced Gaussian bunches, successful nonlinear evaluations give the same kicks with either or both planes disabled; linear controls obey the switches. In the round-beam reproduction with 1 nC of electrons at 10 mₑc and 1 mm rms transverse sizes, a sampled particle receives −3.309×10⁻⁵ rad in each plane after a 0.5 m drift even with both switches off, instead of zero.
 
 The script tracks 512 electrons through one drift of a closed four-bend ring with an SCMULT after
 it, with round and 2:1 elliptical beams and each plane selection, and reads each particle's slope

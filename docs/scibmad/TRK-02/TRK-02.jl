@@ -6,8 +6,8 @@
 # above transition it must lose energy, as the phase-stability condition and independent tracking in
 # a drift-only ring establish. In a 1.000 kV, 100.0 MHz cavity, a proton or electron at 0.8944 times
 # light speed arriving late, at longitudinal offset z = −0.02000 m, loses 46.85 eV below transition
-# instead of gaining 46.85 eV. Both transition references are affected; the `Accelerating` crest and
-# ordinary RF transition phases are correct.
+# instead of gaining 46.85 eV. The `Accelerating` crest and ordinary RF transition phases are
+# correct.
 #
 # The script tracks a proton and an electron with p₀c = 2mc², late by z = −0.02 m, through a 1 kV,
 # 100 MHz cavity at `phi0 = 0` under both transition references, with `SaganCavity` and with

@@ -5,8 +5,7 @@ has already been expanded about that orbit, corrupting the second chromaticity d
 tune and δ is relative momentum offset. For a prescribed cubic map with a closed orbit 10 mm off axis
 and a momentum-independent Jacobian there, the exact horizontal derivative is 0; quick mode gives
 −0.08750 and full mode −3.198×10⁻¹⁰. In this map, halving the displacement reduces the error
-fourfold, while an on-axis orbit or removal of the cubic term leaves only fitting noise. Users of
-quick chromatic optics with off-axis closed orbits and cubic nonlinearity are affected.
+fourfold, while an on-axis orbit or removal of the cubic term leaves only fitting noise.
 
 The script prescribes a stable cubic one-turn map with a fixed point at x = b for every δ and a
 Jacobian there that is the same rotation for every δ, so the tunes do not depend on δ. It runs

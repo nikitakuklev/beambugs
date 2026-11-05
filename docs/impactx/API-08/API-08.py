@@ -5,9 +5,7 @@ mass and charge defaults, so the bundled `cyclotron/run_cyclotron.py` example, w
 reference, imports as an electron. Importing a script must preserve the species it defines;
 replacing `set_species("proton")` with explicit mass and charge setters does preserve it. At the
 example's 4 keV kinetic energy K the imported magnetic rigidity is −2.137×10⁻⁴ T·m instead of
-+9.139×10⁻³ T·m, the proton value of Bρ = √(K(K + 2mc²))/(qc). According to the parser source, every
-imported script that sets a non-electron species with `set_species()` is affected; explicit mass and
-charge setters import correctly.
++9.139×10⁻³ T·m, the proton value of Bρ = √(K(K + 2mc²))/(qc).
 
 Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
 parser modules from that clone behind package shells, replacing only the reactive state object so

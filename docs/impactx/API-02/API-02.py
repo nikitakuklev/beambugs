@@ -5,8 +5,8 @@ in favor of a fixed default ion mass and charge, so the reference mass, charge, 
 rigidity are wrong before tracking starts. MAD-X documents independent mass and charge overrides for
 ions, and native MAD-X keeps them for this input. For an alpha particle, `BEAM, PARTICLE=ION,
 MASS=3.7273794, CHARGE=2, ENERGY=10` (GeV), ImpactX uses a mass of 939.6 MeV and charge 1, giving
-9060 MeV kinetic energy instead of 6273 MeV. Ion beams that set their own mass and charge are
-affected, and the importer prints that it ignores them; an unrecognized particle name keeps them.
+9060 MeV kinetic energy instead of 6273 MeV. The importer prints that it ignores `MASS` and
+`CHARGE`; an unrecognized particle name keeps them.
 
 The script loads `BEAM, PARTICLE=ION, MASS=3.7273794, CHARGE=2` with `ENERGY` = 10 and 12.5 GeV
 through `RefPart.load_file()` and compares the reference mass, charge and kinetic energy with the

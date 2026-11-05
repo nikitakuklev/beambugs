@@ -2,14 +2,12 @@
 exposes
 
 With `2p5D` particle-in-cell space charge, the longitudinal kick multiplies the absolute 2D
-potential, whose logarithmic kernel implicitly fixes a reference length r₀ = 1 m; `Gauss2p5D`
-exposes this length as `gauss_long_scale` (default 1.103·γ·σz, σz the rms bunch length), but `2p5D`
-has no such parameter and does not document it. Scaling all lengths by one factor at fixed charge
-and energy must leave the length-scaled kick unchanged; for a 1 pC electron bunch at γ = 10 the
-transverse kick obeys this, while the longitudinal kick changes by 7.879% when lengths double.
-Against the exact 3D field of a long round Gaussian bunch with γσz/σ⊥ = 50 (σ⊥ the rms width), the
-on-axis longitudinal field has L2 errors of 73.62% (σ⊥ = 1 mm) and 131.1% (σ⊥ = 0.1 mm), and 149.9%
-in a round pipe of radius 25 mm.
+potential, whose logarithmic kernel implicitly fixes a reference length r₀ = 1 m that `2p5D` cannot
+change. Scaling all lengths at fixed charge and energy must leave the length-scaled kick unchanged;
+for a 1 pC electron bunch at γ = 10 the transverse kick obeys this, while the longitudinal kick
+changes by 7.879% when lengths double. Against the exact 3D field of a long round Gaussian bunch
+with γσz/σ⊥ = 50 (σz, σ⊥ the rms length and width), the on-axis longitudinal field has L2 errors of
+73.62% (σ⊥ = 1 mm), 131.1% (σ⊥ = 0.1 mm) and 149.9% in a round pipe of radius 25 mm.
 
 The script gives 16384 Gaussian-distributed electrons (σx = σy = 0.1 mm, σt = 1 mm, 1 pC) at
 γ = 10 one `2p5D` space-charge kick over 1 mm with no transport, then repeats with every length

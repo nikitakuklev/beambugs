@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
 | Source | [`SciBmad.jl/examples/python/nonlinear-twiss.ipynb:333`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/python/nonlinear-twiss.ipynb#L333) |
 
-The Python example notebook `nonlinear-twiss.ipynb` contains `nparray(tw2.dbeta1 / tw2.beta1` without a closing parenthesis, in notebook cell 15 counting all cells from zero (code cell 8 counting only code cells). Parsing the notebook's code cells reports `SyntaxError: '(' was never closed`, and an independent count finds one opening and no closing parenthesis on the offending line. It is the only syntax error found by that parser check. Users following the example cannot execute this cell.
+The Python example notebook `nonlinear-twiss.ipynb` contains `nparray(tw2.dbeta1 / tw2.beta1` without a closing parenthesis, in notebook cell 15 counting all cells from zero (code cell 8 counting only code cells). Parsing the notebook's code cells reports `SyntaxError: '(' was never closed`, and an independent count finds one opening and no closing parenthesis on the offending line. It is the only syntax error found by that parser check.
 
 ??? example "Reproducer: LAT-16.jl"
 
@@ -28,8 +28,7 @@ The Python example notebook `nonlinear-twiss.ipynb` contains `nparray(tw2.dbeta1
     # without a closing parenthesis, in notebook cell 15 counting all cells from zero (code cell 8
     # counting only code cells). Parsing the notebook's code cells reports `SyntaxError: '(' was never
     # closed`, and an independent count finds one opening and no closing parenthesis on the offending
-    # line. It is the only syntax error found by that parser check. Users following the example cannot
-    # execute this cell.
+    # line. It is the only syntax error found by that parser check.
     #
     # The script parses every code cell of the notebook with CPython's `ast` module, after dropping
     # IPython magic and shell lines, and counts the parentheses on the offending raw notebook line;

@@ -4,9 +4,9 @@ A single-slice IBSCATTER in linac mode (SMOOTH=1, ISRING=0) writes incorrect rat
 three-rank Pelegant. The local columns dIBSRatex, dIBSRatey and dIBSRatez are all zero, and the
 vertical growth-rate parameter yGrowthRate is uninitialized. Serial diagnostics agree with
 independent Bjorken–Mtingwa integration, and amplified-update controls give matching serial and
-parallel particles in this configuration. For a 1 nC electron bunch at momentum 800 mₑc, the correct
+parallel particles. For a 1 nC electron bunch at momentum 800 mₑc, the correct
 first-site local rates are −0.9384, −0.8231 and 568.0 s⁻¹, and the vertical growth rate is −0.8024
-s⁻¹. Users reading IBS rates from these smooth parallel runs are affected.
+s⁻¹.
 
 The script tracks a 1024-particle, 1 nC beam at p = 800 m_e c through two 0.2 m drifts and a
 linac-mode IBSCATTER that writes its rates to a file, once with serial elegant and once with

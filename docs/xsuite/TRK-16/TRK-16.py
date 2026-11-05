@@ -7,8 +7,7 @@ scale with charge squared at fixed curvature. For a reference particle of charge
 charges), rest energy 11.18 GeV and momentum 250 TeV/c over 600 m at curvature 2 × 10⁻⁵ m⁻¹, a
 `Multipole` emits on average 2.822 photons per particle instead of 101.8. An unsliced `Bend` with
 the same parameters loses 57.02 eV on average in `quantum` mode instead of 2075 eV, which
-mean-radiation tracking gives. Unit-charge references are correct; all tested particles had the
-reference species.
+mean-radiation tracking gives. Unit-charge references are correct.
 
 The script tracks 24,576 seeded particles through 600 m for reference charges 1, 2 and 6, records
 every photon emitted in a `Multipole` at fixed curvature and at a fixed 0.75 T field, and compares

@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-31 on SpaceCharge main (`ae30463`) |
 | Source | [`SpaceCharge.jl/src/mesh.jl:142-173`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/mesh.jl#L142-L173)<br>[`SpaceCharge.jl/src/solvers/free_space.jl:25-31`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/solvers/free_space.jl#L25-L31)<br>[`SpaceCharge.jl/src/fft/transforms.jl:26,38`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/fft/transforms.jl#L26-L38)<br>[`free_space.jl:12`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/solvers/free_space.jl#L12)<br>[`mesh.jl:233-244`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/mesh.jl#L233-L244)<br>[`mesh.jl:168-173`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/mesh.jl#L168-L173)<br>[`SpaceCharge.jl/examples/cathode_solver_example.jl:8-21`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/examples/cathode_solver_example.jl#L8-L21) |
 
-When every particle has the same longitudinal position z, the automatic `Mesh3D` bounds misplace the mirror image that `solve!(at_cathode=true)` uses to model a conducting cathode plane. Electrostatics puts an equal and opposite image charge at the mirror point across the cathode plane, and a mesh with consistent manual bounds reproduces that analytic field. For 1.000 nC at 100.0 µm from the cathode on a 32³ mesh, the computed axial field is 1.401 times the correct value, matching an image 31.00 µm closer than it should be. Single-particle and zero-longitudinal-spread inputs are affected, including the shipped cathode example, whose field is 0.3106% high; inputs with distinct z values and consistent manual bounds avoid this displacement.
+When every particle has the same longitudinal position z, the automatic `Mesh3D` bounds misplace the mirror image that `solve!(at_cathode=true)` uses to model a conducting cathode plane. Electrostatics puts an equal and opposite image charge at the mirror point across the cathode plane, and a mesh with consistent manual bounds reproduces that analytic field. For 1.000 nC at 100.0 µm from the cathode on a 32³ mesh, the computed axial field is 1.401 times the correct value, matching an image 31.00 µm closer than it should be. The shipped cathode example falls in this case, with a field 0.3106% high; inputs with distinct z values and consistent manual bounds avoid this displacement.
 
 ??? example "Reproducer: COL-07.jl"
 
@@ -29,10 +29,9 @@ When every particle has the same longitudinal position z, the automatic `Mesh3D`
     # Electrostatics puts an equal and opposite image charge at the mirror point across the cathode
     # plane, and a mesh with consistent manual bounds reproduces that analytic field. For 1.000 nC at
     # 100.0 µm from the cathode on a 32³ mesh, the computed axial field is 1.401 times the correct
-    # value, matching an image 31.00 µm closer than it should be. Single-particle and
-    # zero-longitudinal-spread inputs are affected, including the shipped cathode example, whose field
-    # is 0.3106% high; inputs with distinct z values and consistent manual bounds avoid this
-    # displacement.
+    # value, matching an image 31.00 µm closer than it should be. The shipped cathode example falls in
+    # this case, with a field 0.3106% high; inputs with distinct z values and consistent manual bounds
+    # avoid this displacement.
     #
     # The script deposits 1 nC on the axis at z₀ = 100 µm and at 1 cm on a 32³ mesh with automatic
     # bounds from that single particle, solves with `at_cathode=true`, and compares the axial field with

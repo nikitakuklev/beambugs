@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`src/operators.jl:87`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/operators.jl#L87)<br>[`:126`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/operators.jl#L126)<br>[`:95`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/operators.jl#L95)<br>[`:134`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/operators.jl#L134)<br>[`docs/src/index.md:21`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/docs/src/index.md#L21) |
 
-For a NonlinearNormalForm `DAMap` M and a scaled identity λI, `M + λI`, `λI + M` and `M - λI` ignore λ and change each orbital diagonal coefficient by +1 or −1. Coefficient arithmetic requires M + 0I = M and a diagonal change of λ, which explicitly constructed scaled-identity maps confirm. For a map with diagonal (2, 3), `M + 0I` returns (3, 4), while `M - 3I` returns (1, 2) instead of (−1, 0). Unit-scale addition and right subtraction avoid this scale error. Source inspection establishes the analogous `TPSAMap`, `VectorField` and quaternion-scalar paths; downstream optics effects were not measured.
+For a NonlinearNormalForm `DAMap` M and a scaled identity λI, `M + λI`, `λI + M` and `M - λI` ignore λ and change each orbital diagonal coefficient by +1 or −1. Coefficient arithmetic requires M + 0I = M and a diagonal change of λ, which explicitly constructed scaled-identity maps confirm. For a map with diagonal (2, 3), `M + 0I` returns (3, 4), while `M - 3I` returns (1, 2) instead of (−1, 0). Unit-scale addition and right subtraction avoid this scale error. Source inspection establishes the analogous `TPSAMap`, `VectorField` and quaternion-scalar paths.
 
 ??? example "Reproducer: OPT-33.jl"
 
@@ -30,8 +30,7 @@ For a NonlinearNormalForm `DAMap` M and a scaled identity λI, `M + λI`, `λI +
     # M + 0I = M and a diagonal change of λ, which explicitly constructed scaled-identity maps confirm.
     # For a map with diagonal (2, 3), `M + 0I` returns (3, 4), while `M - 3I` returns (1, 2) instead of
     # (−1, 0). Unit-scale addition and right subtraction avoid this scale error. Source inspection
-    # establishes the analogous `TPSAMap`, `VectorField` and quaternion-scalar paths; downstream optics
-    # effects were not measured.
+    # establishes the analogous `TPSAMap`, `VectorField` and quaternion-scalar paths.
     #
     # The script builds the two-component `DAMap` (2x + 0.125p + 0.75x², −0.2x + 3p − 0.3x²) on
     # `Descriptor(2, 3)` and, for λ = 0, 2, 3 and −3, compares `M + λI`, `λI + M` and `M - λI`

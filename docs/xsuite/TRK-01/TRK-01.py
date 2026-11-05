@@ -5,8 +5,8 @@ reference-species trajectory, ignoring its charge-to-mass ratio relative to the 
 χ. Because the solenoid strength `ks` is normalized to the reference rigidity, a particle with ratio
 χ must see χ·`ks`; the exact solenoid map and an independent integration of the Lorentz force both
 require this. A 1 GeV/c particle with twice the reference charge and the same mass (χ = 2) entering
-a 0.7 m solenoid with `ks` = 0.8 m⁻¹ at x = 3 mm exits at y = −0.7968 mm instead of −1.350 mm. Beams
-that mix species or charge states are affected; reference-species particles are tracked correctly.
+a 0.7 m solenoid with `ks` = 0.8 m⁻¹ at x = 3 mm exits at y = −0.7968 mm instead of −1.350 mm.
+Reference-species particles are tracked correctly.
 
 The script tracks three particles of equal mass with χ = 0.5, 1 and 2 from x = 3 mm through a 0.7 m
 `UniformSolenoid` and a constant-profile `VariableSolenoid` (`ks` = 0.8 m⁻¹, p0c = 1 GeV) and

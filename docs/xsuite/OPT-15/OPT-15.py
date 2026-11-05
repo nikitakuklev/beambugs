@@ -4,10 +4,10 @@ Twiss inflates `c_minus`, the closest-tune-approach coefficient, when two nearby
 an integer. An analytic coupled-oscillator calculation and an independent eigenfrequency scan show
 that shifting both tunes together must preserve their minimum separation. For eigentunes 0.9920 and
 1.006, mixing angle 0.07 rad and modal beta function 2.7 m, `c_minus` is 0.1376 instead of 0.001954,
-too large by a factor 70.43; shifting both tunes by ±0.09 restores the correct value. The tested 4D
-and 6D periodic calculations with positive line length and pure difference coupling are affected,
-including the complex coupling magnitudes; tracking maps, eigentunes and projected beta functions
-remain correct.
+too large by a factor 70.43; shifting both tunes by ±0.09 restores the correct value. The error
+appears in the 4D and 6D periodic calculations with positive line length and pure difference
+coupling, including the complex coupling magnitudes; tracking maps, eigentunes and projected beta
+functions remain correct.
 
 The script builds rings of 24 or 48 rotated `LineSegmentMap` elements (modal beta 2.7 m, 0.8 GeV/c
 protons) with pure difference coupling at mixing angles θ = 0.07, 0.31 and 0.53 rad, shifts both

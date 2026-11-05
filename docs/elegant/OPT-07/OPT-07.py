@@ -6,7 +6,7 @@ chromaticities. On a continuous phase branch, a stable cell's tune ν and every 
 must scale with the period count. For 0.5 m `KQUAD`s with K1 = 0.6 and −0.54 m⁻² and 1 m drifts, one
 period gives d²νₓ/dδ² = 0.1268 and d³νₓ/dδ³ = −0.08637, where δ is the relative momentum offset.
 Two periods require 0.2537 and −0.1727, but the output gives 0.1865 and −0.3286; the tune and first
-chromaticity scale correctly. Users computing higher chromaticities of repeated cells are affected.
+chromaticity scale correctly.
 
 The script computes the tune and its first three momentum derivatives of a FODO cell of
 tracking-derived `KQUAD` quadrupoles with `n_periods` 1 and 2 in serial Elegant (and with `--mpi` in

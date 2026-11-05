@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`quadrupole_matrix`, focusing-branch δ² coefficients of both transverse blocks, quad_matrix.c:162–199](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L162-L199)<br>[the corresponding coefficients, quad_matrix.c:259–296](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L259-L296) |
 
-Elegant's aligned, hard-edge QUAD writes incorrect third-order matrix coefficients for transverse transport proportional to δ², where δ is the relative momentum offset. For length L = 0.5 m and strength K₁ = 0.6 m⁻², exact transport has R₁₁(δ) = cos(u/√(1+δ)), with u = √(K₁) L, giving U₁₆₆₁ = −0.07222; Elegant writes −0.07245, with relative errors across both planes of 0.1853% to 0.6598%. In a one-period FODO cell using cubic lens maps, d²νₓ/dδ² and d³νₓ/dδ³ are 0.1300 and −0.07925 instead of 0.1268 and −0.08637, where νₓ is the horizontal tune. Users of third-order quadrupole optics and higher-order chromaticities are affected.
+Elegant's aligned, hard-edge QUAD writes incorrect third-order matrix coefficients for transverse transport proportional to δ², where δ is the relative momentum offset. For length L = 0.5 m and strength K₁ = 0.6 m⁻², exact transport has R₁₁(δ) = cos(u/√(1+δ)), with u = √(K₁) L, giving U₁₆₆₁ = −0.07222; Elegant writes −0.07245, with relative errors across both planes of 0.1853% to 0.6598%. In a one-period FODO cell using cubic lens maps, d²νₓ/dδ² and d³νₓ/dδ³ are 0.1300 and −0.07925 instead of 0.1268 and −0.08637, where νₓ is the horizontal tune.
 
 ??? example "Reproducer: OPT-06.py"
 
@@ -30,8 +30,7 @@ Elegant's aligned, hard-edge QUAD writes incorrect third-order matrix coefficien
     strength K₁ = 0.6 m⁻², exact transport has R₁₁(δ) = cos(u/√(1+δ)), with u = √(K₁) L, giving U₁₆₆₁ =
     −0.07222; Elegant writes −0.07245, with relative errors across both planes of 0.1853% to 0.6598%. In
     a one-period FODO cell using cubic lens maps, d²νₓ/dδ² and d³νₓ/dδ³ are 0.1300 and −0.07925 instead
-    of 0.1268 and −0.08637, where νₓ is the horizontal tune. Users of third-order quadrupole optics and
-    higher-order chromaticities are affected.
+    of 0.1268 and −0.08637, where νₓ is the horizontal tune.
 
     The script builds `QUAD,L=0.5,K1=0.6` with a third-order map in serial Elegant (and with `--mpi` in
     3-rank Pelegant) and compares the transverse 2x2 blocks of the written map, as Taylor series in δ,
@@ -416,6 +415,9 @@ Elegant's aligned, hard-edge QUAD writes incorrect third-order matrix coefficien
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

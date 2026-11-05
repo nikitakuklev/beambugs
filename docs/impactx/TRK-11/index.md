@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Source | [`Multipole.H#L54-L60`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/Multipole.H#L54-L60)<br>[`ExactMultipole.H#L307-L322`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactMultipole.H#L307-L322)<br>[multipole contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1162-L1170) |
 
-`Multipole` and `ExactMultipole` compute their factorial normalization in 32-bit integers, which overflow from 13! = 6227020800 on: thin `multipole=14` and above, and thick coefficients at index 13 and above. At y = 0 a normal multipole of integrated strength K and power n (n = `multipole` − 1 when thin) must change `px` by −K·xⁿ/n! with the exact factorial; one drift–kick–drift step of the thick element has the same exact expectation. On the tested CPU build, order-14 normal and skew kicks are 3.223 times too large (−0.003223 instead of −0.001 at x = 0.25 m), and order-18 kicks have the wrong sign and are 1.233e6 times too large. Orders up to 13 are correct; signed overflow makes higher-order values compiler-dependent.
+`Multipole` and `ExactMultipole` compute their factorial normalization in 32-bit integers, which overflow from 13! = 6227020800 on: thin `multipole=14` and above, and thick coefficients at index 13 and above. At y = 0 a normal multipole of integrated strength K and power n (n = `multipole` − 1 when thin) must change `px` by −K·xⁿ/n! with the exact factorial; one drift–kick–drift step of the thick element has the same exact expectation. On the CPU build, order-14 normal and skew kicks are 3.223 times too large (−0.003223 instead of −0.001 at x = 0.25 m), and order-18 kicks have the wrong sign and are 1.233e6 times too large. Orders up to 13 are correct; signed overflow makes higher-order values compiler-dependent.
 
 ??? example "Reproducer: TRK-11.py"
 
@@ -28,9 +28,9 @@ hide:
     overflow from 13! = 6227020800 on: thin `multipole=14` and above, and thick coefficients at index 13
     and above. At y = 0 a normal multipole of integrated strength K and power n (n = `multipole` − 1
     when thin) must change `px` by −K·xⁿ/n! with the exact factorial; one drift–kick–drift step of the
-    thick element has the same exact expectation. On the tested CPU build, order-14 normal and skew
-    kicks are 3.223 times too large (−0.003223 instead of −0.001 at x = 0.25 m), and order-18 kicks have
-    the wrong sign and are 1.233e6 times too large. Orders up to 13 are correct; signed overflow makes
+    thick element has the same exact expectation. On the CPU build, order-14 normal and skew kicks are
+    3.223 times too large (−0.003223 instead of −0.001 at x = 0.25 m), and order-18 kicks have the wrong
+    sign and are 1.233e6 times too large. Orders up to 13 are correct; signed overflow makes
     higher-order values compiler-dependent.
 
     The script uses a reference particle with 1000 MeV rest energy and 1000 MeV kinetic energy, and

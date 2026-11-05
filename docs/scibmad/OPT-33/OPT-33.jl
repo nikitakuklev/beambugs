@@ -5,8 +5,7 @@
 # M + 0I = M and a diagonal change of λ, which explicitly constructed scaled-identity maps confirm.
 # For a map with diagonal (2, 3), `M + 0I` returns (3, 4), while `M - 3I` returns (1, 2) instead of
 # (−1, 0). Unit-scale addition and right subtraction avoid this scale error. Source inspection
-# establishes the analogous `TPSAMap`, `VectorField` and quaternion-scalar paths; downstream optics
-# effects were not measured.
+# establishes the analogous `TPSAMap`, `VectorField` and quaternion-scalar paths.
 #
 # The script builds the two-component `DAMap` (2x + 0.125p + 0.75x², −0.2x + 3p − 0.3x²) on
 # `Descriptor(2, 3)` and, for λ = 0, 2, 3 and −3, compares `M + λI`, `λI + M` and `M - λI`

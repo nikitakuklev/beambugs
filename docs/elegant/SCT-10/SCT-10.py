@@ -6,7 +6,7 @@ the laser photon energy in the electron rest frame divided by mₑc². Cancellat
 destroys the result, and then no electron scatters. For 25 mₑc electrons, a head-on laser and a
 Thomson probability of 0.025, the code's total is −28.95 times the Thomson value at ε = 1.200×10⁻⁶
 instead of 1.000, and none of 24000 electrons scatters instead of about 600; at ε = 5.000×10⁻⁶ the
-ratio is 0.6069 and 345 scatter. Users with ε of a few 10⁻⁶ are affected.
+ratio is 0.6069 and 345 scatter.
 
 The script tracks 24000 electrons of momentum 25 mₑc through a CBSCAT element with a head-on laser
 whose wavelength sets ε to 1.2×10⁻⁶, 5×10⁻⁶ or 1×10⁻⁴, with the number of laser photons chosen so

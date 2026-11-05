@@ -1,13 +1,12 @@
 """TRK-14: Weak nonzero `ChrAcc` acceleration corrupts transport and reference time
 
-`ChrAcc` with a very small nonzero acceleration `ez` = qE/(mc²) (E the longitudinal electric field)
+`ChrAcc` with a tiny nonzero acceleration `ez` = qE/(mc²) (E the longitudinal electric field)
 divides a logarithm of a near-unity ratio and differences of nearly equal momenta by `ez`, so
 rounding corrupts the transverse map, the arrival time `t` and the reference time. A 65-digit
-quadrature of the documented Hamiltonian, regular at zero acceleration and matching ImpactX at
-`ez` = 0, gives the correct values. For a proton at γ = 2 entering a 0.4 m element with
-`ez` = 1e-14 m⁻¹ at x = 0.01 m, `px` = 0.02, `x` exits at 0.01846 m instead of 0.01782 m, `t` is off
-by 0.002584 m and the reference `ct` is 0.4663 m instead of 0.4619 m. At `ez` = 1e-16 m⁻¹ the
-particle is not moved and the reference `ct` stays 0. Both acceleration signs fail.
+quadrature of the documented Hamiltonian gives the correct values. For a proton at γ = 2 entering a
+0.4 m element with `ez` = 1e-14 m⁻¹ at x = 0.01 m, `px` = 0.02, `x` exits at 0.01846 m instead of
+0.01782 m, `t` is off by 0.002584 m and the reference `ct` is 0.4663 m instead of 0.4619 m. At `ez`
+= 1e-16 m⁻¹ the particle is not moved. Both signs fail.
 
 The script tracks a proton at γ = 2 with all six coordinates nonzero through `ChrAcc(ds=0.4, bz=0)`
 for `ez` = 0, 1e-6, ±1e-10, ±1e-14 and 1e-16 m⁻¹, and compares the exit coordinates and the

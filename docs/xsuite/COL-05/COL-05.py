@@ -7,8 +7,7 @@ lost rows excluded the kicks agree with the analytic round-Gaussian field and th
 Lorentz factor. For four live 1 GeV/c protons at x, y = ±1 mm (weight 10¹⁰ each) plus one lost
 particle at x = 20 mm, the exchanged population is 5 × 10¹⁰ instead of 4 × 10¹⁰, the horizontal
 variance 6.480 × 10⁻⁵ m² instead of 1.000 × 10⁻⁶ m², and one opposing particle's horizontal kick
-+6.845 × 10⁻⁶ instead of −1.994 × 10⁻⁵. Strong-strong 2D simulations with particle losses are
-affected.
++6.845 × 10⁻⁶ instead of −1.994 × 10⁻⁵.
 
 The script collides two bunches for one turn through a two-branch pipeline. The source bunch holds
 the four live corner particles; one run adds the lost particle (state 0) and the control omits it,

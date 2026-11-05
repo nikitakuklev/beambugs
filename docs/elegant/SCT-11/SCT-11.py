@@ -5,8 +5,7 @@ the momentum an electron loses in a laser Compton scatter depends on the referen
 user chose, although the physics does not. The code computes the fractional change ΔP/P of the
 electron's momentum P and adds it to δ = P/P₀ − 1, which requires ΔP/P₀. For 12 mₑc electrons and a
 30 µm laser, the same 454 scattered electrons lose a mean 2.303×10⁻⁵ mₑc at P₀ = 12 mₑc, 1.152×10⁻⁵
-mₑc at P₀ = 6 mₑc and 4.607×10⁻⁵ mₑc at P₀ = 24 mₑc. Users whose reference momentum differs from
-their electrons' momentum are affected.
+mₑc at P₀ = 6 mₑc and 4.607×10⁻⁵ mₑc at P₀ = 24 mₑc.
 
 The script scatters 16000 electrons of momentum 12 mₑc off a head-on laser with the Thomson cross
 section, with the same random seed so that the same 454 electrons scatter, changing only the

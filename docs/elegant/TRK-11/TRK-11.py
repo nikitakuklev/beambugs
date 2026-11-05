@@ -4,9 +4,7 @@ With spin tracking enabled, a SOLE solenoid specified by magnetic field B rotate
 spin of on-axis positrons and protons in the opposite sense to the Thomas–BMT prediction. For a
 positron with normalized momentum βγ = 100 in a 0.5000 m solenoid at B = 0.1000 T, initial spin
 (1, 0, 0) gives vertical spin component sᵧ = +0.2895 instead of −0.2895. Giving the same field as
-solenoid strength KS agrees with the analytic result, as does the electron control. The error
-affects polarization transport through field-specified solenoids for the tested positive-charge
-species.
+solenoid strength KS agrees with the analytic result, as does the electron control.
 
 The script sends on-axis particles with spin (1, 0, 0) through a 0.5 m SOLE with B = ±0.1 T, with
 spin tracking on, and compares the final spin with the exact precession angle in a uniform

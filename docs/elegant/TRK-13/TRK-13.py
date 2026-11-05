@@ -6,7 +6,7 @@ a spin routine that expects slopes, giving incorrect electron spin precession. F
 offset δ = 0.4 and entrance slope x′ = 0.16, exact circular motion and Thomas–BMT predict an exit
 spin angle of −0.1552 rad relative to the exit reference axis. Tracking converges to −0.1605 rad,
 an error of 5.297 mrad that slice refinement cannot remove. The on-axis, on-momentum control
-agrees; sloped and off-momentum polarized electrons in this bend are affected.
+agrees.
 
 The script tracks 12 electrons with spin (0, 0, 1) through a pure CSBEND at several slice counts and
 compares each final spin angle with the exact uniform-field result: the Thomas–BMT precession along

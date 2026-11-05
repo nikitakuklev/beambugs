@@ -6,8 +6,7 @@ the normalized kick must scale with the particle's charge-to-mass ratio relative
 species, χ. For a 7 A wire of physical length 0.7 m and interaction length 1.1 m at (x, y) = (−1,
 0.2) mm, a 1 GeV/c particle at (2, 0.5) mm with twice the reference charge and the same mass gets
 normalized horizontal momentum −9.696 × 10⁻⁵ instead of −1.939 × 10⁻⁴. Reference-species and
-off-momentum particles are tracked correctly; any species set through `charge_ratio` or `mass_ratio`
-is affected.
+off-momentum particles are tracked correctly.
 
 The script tracks particles with χ = 1, 2, −1 and 0.5 past the wire and compares their horizontal
 kicks with the Biot–Savart result scaled by χ. Three controls must agree: the reference particle in

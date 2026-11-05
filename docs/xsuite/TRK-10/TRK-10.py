@@ -7,7 +7,7 @@ between scaling the charge and scaling the field, require the leading zero-face-
 with charge squared at fixed mass and momentum. With dipole strength `k` = 0.1 m⁻¹, half-gap `hgap`
 = 0.02 m, fringe integral `fint` = 0.5, zero face angle and y = 10 µm, a 1 GeV/c particle with twice
 the reference charge gets normalized vertical momentum 4.000 × 10⁻⁹ instead of 8.000 × 10⁻⁹.
-Reference-species and zero-gap edges are correct, and the tested `full` edge model scales correctly.
+Reference-species and zero-gap edges are correct, and the `full` edge model scales correctly.
 
 The script tracks particles of equal mass and momentum with χ = 0.5, 1 and 2 from y = 10 µm through
 the linear edge and compares their vertical momenta with the model's own formula evaluated with the

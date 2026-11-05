@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
 | Source | [`_get_eneloss_and_damping_rates`, radiation.py:21–32](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L21-L32)<br>[`radiation_analysis=True` output](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss.py#L354-L362) |
 
-With `radiation_analysis=True`, Twiss counts the kicks of decelerating `ThinSliceCavity` elements as synchrotron-radiation energy loss, although it excludes the equivalent unsliced `Cavity`. Monitoring the energy change element by element isolates the bend's radiation and shows that slicing leaves it unchanged. In a 3 GeV/c electron ring with a 1 m, 0.01 rad bend and a 10 kV decelerating cavity, slicing each cavity into one Teapot slice changes the reported loss from 114.0 eV to 10.11 keV instead of keeping 114.0 eV; the excess is the full 10.00 keV RF deceleration. Radiation diagnostics with thin decelerating cavity slices are affected; accelerating kicks and zero-deceleration controls show no such excess.
+With `radiation_analysis=True`, Twiss counts the kicks of decelerating `ThinSliceCavity` elements as synchrotron-radiation energy loss, although it excludes the equivalent unsliced `Cavity`. Monitoring the energy change element by element isolates the bend's radiation and shows that slicing leaves it unchanged. In a 3 GeV/c electron ring with a 1 m, 0.01 rad bend and a 10 kV decelerating cavity, slicing each cavity into one Teapot slice changes the reported loss from 114.0 eV to 10.11 keV instead of keeping 114.0 eV; the excess is the full 10.00 keV RF deceleration. Accelerating kicks and zero-deceleration controls show no such excess.
 
 ??? example "Reproducer: OPT-09.py"
 
@@ -29,9 +29,8 @@ With `radiation_analysis=True`, Twiss counts the kicks of decelerating `ThinSlic
     the energy change element by element isolates the bend's radiation and shows that slicing leaves it
     unchanged. In a 3 GeV/c electron ring with a 1 m, 0.01 rad bend and a 10 kV decelerating cavity,
     slicing each cavity into one Teapot slice changes the reported loss from 114.0 eV to 10.11 keV
-    instead of keeping 114.0 eV; the excess is the full 10.00 keV RF deceleration. Radiation diagnostics
-    with thin decelerating cavity slices are affected; accelerating kicks and zero-deceleration controls
-    show no such excess.
+    instead of keeping 114.0 eV; the excess is the full 10.00 keV RF deceleration. Accelerating kicks
+    and zero-deceleration controls show no such excess.
 
     The script builds that ring from a `LineSegmentMap` for focusing and damping, the bend, the
     decelerating cavity and an accelerating cavity that compensates the losses (both cavities 0.4 m

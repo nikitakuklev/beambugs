@@ -5,9 +5,7 @@ reference momentum instead of the slice's mean momentum, while the whole-beam no
 the mean momentum offset. For three monoenergetic slices at 900 mₑc with geometric emittance
 2.400×10⁻⁷ m, the physical normalized emittance is 2.160×10⁻⁴ m in both planes. Reference momenta of
 450 and 1350 mₑc produce 1.080×10⁻⁴ and 3.240×10⁻⁴ m; even references 1% below or above the slice
-momentum give −1% or +1% errors, and the dispersion-corrected values behave identically. Users
-reading normalized slice emittances when a slice's mean momentum differs from the reference are
-affected.
+momentum give −1% or +1% errors, and the dispersion-corrected values behave identically.
 
 The script tracks 24 particles through a zero-length drift in serial Elegant and runs
 `slice_analysis` with three slices, for reference momenta of 450, 891, 900, 909 and 1350 mₑc. The

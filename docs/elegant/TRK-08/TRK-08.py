@@ -5,7 +5,7 @@ the entrance speed despite modeling acceleration in its transverse response. Wit
 focusing, that response bounds the transit time for monotonic acceleration; kick tracking satisfies
 its corresponding bounds. For a 0.75 m, 160 kV cavity at crest and electron momentum p = 2.3 mₑc,
 the 2.728 ns transit exceeds the allowed upper limit by 27.45 ps. The minimum timing errors fall to
-0.3778 ps at 10 mₑc and 0.3902 fs at 100 mₑc, so the main impact is on low-energy beams.
+0.3778 ps at 10 mₑc and 0.3902 fs at 100 mₑc.
 
 The script sends electrons of 2.3, 10 and 100 mₑc, on axis and with slopes of plus and minus 10⁻⁷,
 through a 0.75 m RFCA of 160 kV (zero frequency or 1 MHz, crest phase, no end or body focusing,

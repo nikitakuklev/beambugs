@@ -7,8 +7,7 @@
 # predicts exactly the wrong result. For four particles, a transposed 3×4 matrix is accepted and
 # turns the fourth spin from the intended (0.6000, 0.8000, 0) into (0, 0, 0.6000), shortening it
 # from length 1.000 to 0.6000 instead of rejecting the shape. Correctly shaped input works; source
-# inspection also finds unchecked out-of-bounds reads for undersized matrices, which were not
-# executed.
+# inspection also finds unchecked out-of-bounds reads for undersized matrices.
 #
 # The script passes four initial spins with identity quaternions to `track_spin`, once correctly
 # shaped (4×3, one row per particle) and once transposed (3×4), and prints both results and the

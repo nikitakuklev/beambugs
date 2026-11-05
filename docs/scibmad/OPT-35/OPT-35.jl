@@ -7,7 +7,7 @@
 # inverse's p coefficient of Xab is 0 instead of −1.400; the parameterized shear (x, p + κx²)
 # likewise loses its inverse x²κ coefficient −1. Algebraic reversal, identity-seeded destinations
 # and NonlinearNormalForm's independent inverse agree. Parameter-free and parameter-only linear
-# controls pass; the impact on standard SciBmad optics was not established.
+# controls pass.
 #
 # The script inverts the canonical map X = 2x + 0.3p, P = −0.7x + 0.395p + h(X, a, b), with identity
 # parameter rows, for h = cXa, cX²a, cXab, ca², ca and cX², coefficients c = 0.7, −1.3 and 0.4 +

@@ -5,8 +5,7 @@ centroids at zero instead of using the whole-bunch centroids specified by the ma
 values with occupied slices breaks translation symmetry: a common transverse displacement changes
 the self-kicks, whose mean must remain zero for the symmetric test bunch. For 20 electrons carrying
 0.2000 nC in 100.0 ps slices with one empty neighbor, a displacement of (1.700, −2.200) mm produces a
-mean horizontal slope of 5.597×10⁻⁶ instead of zero. Sliced ring simulations that interpolate with
-an empty neighbor are affected; extrapolation can also reverse the erroneous mean.
+mean horizontal slope of 5.597×10⁻⁶ instead of zero. Extrapolation can also reverse the erroneous mean.
 
 The script tracks one turn of a four-sector ring with SCMULT and a cold, transversely symmetric
 bunch, centered and shifted, and compares the shifted kicks and their mean with the centered ones,

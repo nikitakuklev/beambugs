@@ -6,8 +6,7 @@ parent's storage. At fixed geometry the kick must scale linearly with population
 constructed control confirms. For a 0.7 m element with longitudinal RMS size 0.13 m and transverse
 RMS size 1.2 mm, increasing the population from 7.000×10⁹ to 1.750×10¹⁰ leaves a 1.3 GeV/c proton at
 the bunch center and x = 0.7 mm with normalized horizontal momentum `px` = 3.145×10⁻⁶ instead of
-7.862×10⁻⁶. Both default-buffer and same-buffer copies fail. The tested scope is embedded fields
-copied by `HybridClass.copy()` on serial CPU; the original object remains unchanged.
+7.862×10⁻⁶. Both default-buffer and same-buffer copies fail. The original object remains unchanged.
 
 The script first shows on a minimal nested struct that setting a copied child field (gain 11) leaves
 the copy's raw storage at the old value (3). It then copies a frozen round `SpaceChargeBiGaussian`

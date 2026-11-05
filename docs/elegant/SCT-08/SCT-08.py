@@ -5,8 +5,7 @@ coordinates about c + ημ, where η is the dispersion and μ the beam's mean fr
 δ. The centroid already contains the dispersive displacement ημ, so the origin is displaced twice
 and the centroid moves by (1−a)ημ, where a is the amplitude growth factor, instead of staying fixed.
 In a closed ring with η = 14.29 m and μ = 1×10⁻⁴, an amplitude growth of 0.8501% moves the mean
-horizontal position by −12.14 µm instead of 0; with μ = 0 it stays put. Users of smooth IBS with
-dispersion and an off-momentum beam are affected.
+horizontal position by −12.14 µm instead of 0; with μ = 0 it stays put.
 
 The script tracks a 256-particle beam once around a ring of sixteen identical sector bends, with
 horizontal dispersion η = 14.29 m, ending in an IBSCATTER with the smooth method. It compares the

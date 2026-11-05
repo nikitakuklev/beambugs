@@ -6,8 +6,8 @@
 # bypasses Julia exception handling. For the 18 GeV electron quickstart FODO at order 2, the call
 # prints `invalid domain div` and exits with status 1. Giving that map the identity quaternion lets
 # the checked orbital coefficients agree with `spin=false` to 1.990e-14, as the decoupling of
-# orbital and spin motion requires. Closed-lattice requests that reach this step are affected;
-# open-lattice `h` is unimplemented, and spin normalization has separate failure conditions.
+# orbital and spin motion requires. Open-lattice `h` is unimplemented, and spin normalization has
+# separate failure conditions.
 #
 # The script requests columns `h3000`, `h2100`, `h1020` and `h1002` with `spin=true` on the
 # quickstart FODO, with the quaternion inverse wrapped to raise a Julia error at |q|² = 0, so the

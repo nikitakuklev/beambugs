@@ -4,8 +4,7 @@
 # without a closing parenthesis, in notebook cell 15 counting all cells from zero (code cell 8
 # counting only code cells). Parsing the notebook's code cells reports `SyntaxError: '(' was never
 # closed`, and an independent count finds one opening and no closing parenthesis on the offending
-# line. It is the only syntax error found by that parser check. Users following the example cannot
-# execute this cell.
+# line. It is the only syntax error found by that parser check.
 #
 # The script parses every code cell of the notebook with CPython's `ast` module, after dropping
 # IPython magic and shell lines, and counts the parentheses on the offending raw notebook line;

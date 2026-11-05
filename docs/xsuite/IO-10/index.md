@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`generate_longitudinal_coordinates`, generate_longitudinal.py:371–390](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L371-L390)<br>[line characterization](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L23-L140)<br>[public contract](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L175-L195)<br>[matched-bunch wrapper](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/matched_gaussian.py#L171-L215) |
 
-The linear engine of `generate_longitudinal_coordinates` samples independent Gaussian `zeta` and `delta` with RMS momentum spread σ_δ = σ_z/|β_z|, where σ_z is the RMS bunch length and β_z (`bets0`) the periodic longitudinal beta function, discarding the position-momentum correlation and momentum variance required by a nonzero periodic longitudinal alpha. An independent covariance solve establishes the stationary ellipse. For 3 GeV/c protons on segments with (`bets`, `qs`) = (7 m, 0.045) and (21 m, 0.08), and σ_z = 3×10⁻⁴ m, the sampled bunch-length variance after one turn is 0.8108 of its initial value instead of 1. The matched-Gaussian-bunch wrapper reproduces the mismatch; the multibunch wrapper shares the sampler by source reading. Strong focusing magnifies the effect, while a weak synchrotron tune of 1.429×10⁻³ still gives a relative variance change of 3.790×10⁻⁵.
+The linear engine of `generate_longitudinal_coordinates` samples independent Gaussian `zeta` and `delta` with RMS momentum spread σ_δ = σ_z/|β_z|, where σ_z is the RMS bunch length and β_z (`bets0`) the periodic longitudinal beta function, discarding the position-momentum correlation and momentum variance required by a nonzero periodic longitudinal alpha. An independent covariance solve establishes the stationary ellipse. For 3 GeV/c protons on segments with (`bets`, `qs`) = (7 m, 0.045) and (21 m, 0.08), and σ_z = 3×10⁻⁴ m, the sampled bunch-length variance after one turn is 0.8108 of its initial value instead of 1. The matched-Gaussian-bunch wrapper reproduces the mismatch. A weak synchrotron tune of 1.429×10⁻³ still gives a relative variance change of 3.790×10⁻⁵.
 
 ??? example "Reproducer: IO-10.py"
 
@@ -32,8 +32,7 @@ The linear engine of `generate_longitudinal_coordinates` samples independent Gau
     establishes the stationary ellipse. For 3 GeV/c protons on segments with (`bets`, `qs`) = (7 m,
     0.045) and (21 m, 0.08), and σ_z = 3×10⁻⁴ m, the sampled bunch-length variance after one turn is
     0.8108 of its initial value instead of 1. The matched-Gaussian-bunch wrapper reproduces the
-    mismatch; the multibunch wrapper shares the sampler by source reading. Strong focusing magnifies the
-    effect, while a weak synchrotron tune of 1.429×10⁻³ still gives a relative variance change of
+    mismatch. A weak synchrotron tune of 1.429×10⁻³ still gives a relative variance change of
     3.790×10⁻⁵.
 
     The script builds two linear segments with (`bets`, `qs`) = (7 m, 0.045) and (21 m, 0.08) and

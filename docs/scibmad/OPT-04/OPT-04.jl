@@ -7,7 +7,7 @@
 # thin-quadrupole cell with β = 3.441 m and α = −1.376, the returned E₁[1,2] and E₁[2,1] are 0 and
 # 1.776 instead of 1.376, and E₁[2,2] is 0.2906 m⁻¹ instead of 0.8412 m⁻¹. The horizontal beam-size
 # term used by `dynamic_aperture` stays correct in uncoupled lattices; by source algebra, its
-# vertical mode-1 term and coupled lattices are affected (not measured).
+# vertical mode-1 term and coupled lattices are wrong.
 #
 # The script runs order-1 `twiss` on a periodic cell of thin quadrupoles and 1 m drifts (1 GeV/c
 # electrons, RF off) and compares the returned B₁ and E₁ with A J₁ A⁻¹ and A P₁ Aᵀ built from the

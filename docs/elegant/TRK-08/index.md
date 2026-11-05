@@ -9,14 +9,14 @@ hide:
 | | |
 |---|---|
 | Code | [Elegant](../index.md) · Tracking |
-| Priority | P3 |
+| Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`trackRfCavityWithWakes` matrix branch, simple_rfca.c:994–1078](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L994-L1078)<br>[matrix-method selection, simple_rfca.c:525–530](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L525-L530)<br>[parameter table, track_data.c:597–617](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L597-L617)<br>[element description, track_data.c:233](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L233)<br>[RFCA manual, rfca.tex](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfca.tex)<br>[longitudinal coordinate, elegant.tex:364–382](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L364-L382) |
 
-An RFCA of nonzero length using the default matrix method (N_KICKS = 0) times the entire cavity at the entrance speed despite modeling acceleration in its transverse response. Without transverse focusing, that response bounds the transit time for monotonic acceleration; kick tracking satisfies its corresponding bounds. For a 0.75 m, 160 kV cavity at crest and electron momentum p = 2.3 mₑc, the 2.728 ns transit exceeds the allowed upper limit by 27.45 ps. The minimum timing errors fall to 0.3778 ps at 10 mₑc and 0.3902 fs at 100 mₑc, so the main impact is on low-energy beams.
+An RFCA of nonzero length using the default matrix method (N_KICKS = 0) times the entire cavity at the entrance speed despite modeling acceleration in its transverse response. Without transverse focusing, that response bounds the transit time for monotonic acceleration; kick tracking satisfies its corresponding bounds. For a 0.75 m, 160 kV cavity at crest and electron momentum p = 2.3 mₑc, the 2.728 ns transit exceeds the allowed upper limit by 27.45 ps. The minimum timing errors fall to 0.3778 ps at 10 mₑc and 0.3902 fs at 100 mₑc.
 
 ??? example "Reproducer: TRK-08.py"
 
@@ -30,7 +30,7 @@ An RFCA of nonzero length using the default matrix method (N_KICKS = 0) times th
     focusing, that response bounds the transit time for monotonic acceleration; kick tracking satisfies
     its corresponding bounds. For a 0.75 m, 160 kV cavity at crest and electron momentum p = 2.3 mₑc,
     the 2.728 ns transit exceeds the allowed upper limit by 27.45 ps. The minimum timing errors fall to
-    0.3778 ps at 10 mₑc and 0.3902 fs at 100 mₑc, so the main impact is on low-energy beams.
+    0.3778 ps at 10 mₑc and 0.3902 fs at 100 mₑc.
 
     The script sends electrons of 2.3, 10 and 100 mₑc, on axis and with slopes of plus and minus 10⁻⁷,
     through a 0.75 m RFCA of 160 kV (zero frequency or 1 MHz, crest phase, no end or body focusing,
@@ -327,6 +327,8 @@ An RFCA of nonzero length using the default matrix method (N_KICKS = 0) times th
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found (source observation of the entrance-speed timing) | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-03 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant |
 

@@ -5,9 +5,8 @@ synchrotron-radiation energy loss, although it excludes the equivalent unsliced 
 the energy change element by element isolates the bend's radiation and shows that slicing leaves it
 unchanged. In a 3 GeV/c electron ring with a 1 m, 0.01 rad bend and a 10 kV decelerating cavity,
 slicing each cavity into one Teapot slice changes the reported loss from 114.0 eV to 10.11 keV
-instead of keeping 114.0 eV; the excess is the full 10.00 keV RF deceleration. Radiation diagnostics
-with thin decelerating cavity slices are affected; accelerating kicks and zero-deceleration controls
-show no such excess.
+instead of keeping 114.0 eV; the excess is the full 10.00 keV RF deceleration. Accelerating kicks
+and zero-deceleration controls show no such excess.
 
 The script builds that ring from a `LineSegmentMap` for focusing and damping, the bend, the
 decelerating cavity and an accelerating cavity that compensates the losses (both cavities 0.4 m

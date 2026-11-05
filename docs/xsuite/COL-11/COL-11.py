@@ -6,7 +6,7 @@ already at zero relative momentum deviation δ. Integrating the Lorentz force of
 counter-propagating electrons over the transit time L/(βc), with the same stored field derivative,
 gives the correct impulse. For a 0.6 A, 15 kV, 0.8 m lens and a 600 MeV/c proton (β₀ = 0.5387), `px`
 is −3.870 × 10⁻⁵ instead of −7.184 × 10⁻⁵, and at δ = 0.25 the kick stays unchanged instead of
-becoming 0.8784 times the reference kick. Lower-speed beams and off-momentum particles are affected.
+becoming 0.8784 times the reference kick.
 
 The script builds a lens from a normalized Gaussian density on a 49 × 49 grid and tracks positive
 unit-charge particles with electron and proton masses at 0.6 and 1.7 GeV/c from a grid vertex, where

@@ -16,7 +16,7 @@ hide:
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1050]] |
 | Source | [`ExactCFbend.H#L375-L389`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactCFbend.H#L375-L389) |
 
-`ExactCFbend` evaluates its octupole and decapole kicks as differences of order-one terms in 1 + x/`rc` and then multiplies them by powers of the bend radius `rc`, so rounding dominates at small curvature: the error scales as ε·`rc`³·k₃ for the octupole and ε·`rc`⁴·k₄ for the decapole, with k₃ and k₄ their coefficients and ε the double-precision machine epsilon. In the straight limit at y = 0 the decapole kick rate is −k₄x⁴/24, which a 60-digit evaluation of the code's own expression reproduces. For `rc` = 1000 m, `ds` = 1e-4 m, k₄ = 1e4 m⁻⁵ and a particle at x = 1 mm, the decapole changes `px` by −6.889e-6 instead of −4.167e-14. Weakly curved combined-function magnets with these terms are affected.
+`ExactCFbend` evaluates its octupole and decapole kicks as differences of order-one terms in 1 + x/`rc` and then multiplies them by powers of the bend radius `rc`, so rounding dominates at small curvature: the error scales as ε·`rc`³·k₃ for the octupole and ε·`rc`⁴·k₄ for the decapole, with k₃ and k₄ their coefficients and ε the double-precision machine epsilon. In the straight limit at y = 0 the decapole kick rate is −k₄x⁴/24, which a 60-digit evaluation of the code's own expression reproduces. For `rc` = 1000 m, `ds` = 1e-4 m, k₄ = 1e4 m⁻⁵ and a particle at x = 1 mm, the decapole changes `px` by −6.889e-6 instead of −4.167e-14.
 
 ??? example "Reproducer: TRK-09.py"
 
@@ -31,8 +31,7 @@ hide:
     and k₄ their coefficients and ε the double-precision machine epsilon. In the straight limit at y = 0
     the decapole kick rate is −k₄x⁴/24, which a 60-digit evaluation of the code's own expression
     reproduces. For `rc` = 1000 m, `ds` = 1e-4 m, k₄ = 1e4 m⁻⁵ and a particle at x = 1 mm, the decapole
-    changes `px` by −6.889e-6 instead of −4.167e-14. Weakly curved combined-function magnets with these
-    terms are affected.
+    changes `px` by −6.889e-6 instead of −4.167e-14.
 
     The script pushes a proton (938.3 MeV kinetic energy) at x = 1 mm with zero momenta through a 0.1 mm
     `ExactCFbend` with `k_normal[0]` = 1e-3 m⁻¹ (`rc` = 1000 m), once with k₄ = 1e4 m⁻⁵ and once

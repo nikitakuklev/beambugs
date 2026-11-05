@@ -7,7 +7,7 @@ different kicks. A bunch's kick depends only on its own charge distribution and 
 manual's linear force integrated with independently computed matched optics reproduces the first
 bunch's kick. Where β falls from 0.9141 m to 0.8018 m along a 0.3 m drift, the second and third of
 three identical bunches receive 6.542% less kick than the first, with linear and nonlinear forces
-alike. Multi-bunch simulations are affected wherever β varies along an element.
+alike.
 
 The script tracks one bunch, then three identical bunches, through a straight of a stable
 four-sector ring where `insert_sceffects` places an SCMULT after a drift of length L, and reads

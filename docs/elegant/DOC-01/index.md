@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [manual text for `alphac`, `alphac2` and `alphac3`, doc/elegant.tex:8254–8257](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8254-L8257)<br>[orbit series definition, twiss.cc:253–260](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L253-L260)<br>[`alpha3` accumulation, twiss.cc:2398–2409](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2398-L2409) |
 
-The Elegant manual gives the path length as s = s₀ + αc L δ + αc2 L δ² + αc3 L δ², with δ the relative momentum offset, for the Twiss outputs `alphac`, `alphac2` and `alphac3`. The last power should be 3: `alphac3` is the coefficient of δ³. For a prescribed one-turn map of length 10 m with path 10 m + 2 m·δ² + 7 m·δ³, Elegant writes αc = 0, αc2 = 0.2000 and αc3 = 0.7000, and tracking gives 10.01 m at δ = -0.1 and 10.03 m at δ = +0.1; the printed equation predicts 10.09 m at both. Users who rebuild the path length from the printed equation are affected.
+The Elegant manual gives the path length as s = s₀ + αc L δ + αc2 L δ² + αc3 L δ², with δ the relative momentum offset, for the Twiss outputs `alphac`, `alphac2` and `alphac3`. The last power should be 3: `alphac3` is the coefficient of δ³. For a prescribed one-turn map of length 10 m with path 10 m + 2 m·δ² + 7 m·δ³, Elegant writes αc = 0, αc2 = 0.2000 and αc3 = 0.7000, and tracking gives 10.01 m at δ = −0.1 and 10.03 m at δ = +0.1; the printed equation predicts 10.09 m at both.
 
 ??? example "Reproducer: DOC-01.py"
 
@@ -28,8 +28,7 @@ The Elegant manual gives the path length as s = s₀ + αc L δ + αc2 L δ² + 
     relative momentum offset, for the Twiss outputs `alphac`, `alphac2` and `alphac3`. The last power
     should be 3: `alphac3` is the coefficient of δ³. For a prescribed one-turn map of length 10 m with
     path 10 m + 2 m·δ² + 7 m·δ³, Elegant writes αc = 0, αc2 = 0.2000 and αc3 = 0.7000, and tracking
-    gives 10.01 m at δ = -0.1 and 10.03 m at δ = +0.1; the printed equation predicts 10.09 m at both.
-    Users who rebuild the path length from the printed equation are affected.
+    gives 10.01 m at δ = −0.1 and 10.03 m at δ = +0.1; the printed equation predicts 10.09 m at both.
 
     The script reads the compaction equation from `doc/elegant.tex` of the Elegant source checkout named
     by `ELEGANT_SOURCE` and exits if it is missing or unrecognized. It prescribes the one-turn map with
@@ -392,7 +391,7 @@ The Elegant manual gives the path length as s = s₀ + αc L δ + αc2 L δ² + 
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
-| Found | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source reading, not executed for this claim |
+| Found | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source reading, not executed for this claim |
 | Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-03 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant |
 

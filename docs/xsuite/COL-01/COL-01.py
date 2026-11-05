@@ -2,12 +2,12 @@
 
 `LongitudinalProfileQGaussian` normalizes the q-Gaussian line density with gamma functions whose
 numerator and denominator overflow separately, so for an index `q` near, but not equal to, 1 the
-density and the space-charge kicks it drives are NaN. The normalization itself is finite, as a
+density and the space-charge kicks it drives are NaN. The normalization is finite, as a
 log-beta-function evaluation and adaptive quadrature confirm. For a unit-population, unit-RMS
 profile at `q` = 0.999 and 1.001, the centre density is NaN instead of 0.3988 and 0.3991 m⁻¹, and a
 1 GeV/c proton at x = 1 mm in a Gaussian space-charge lens gets `px` NaN instead of 2.561 × 10⁻⁵ and
-2.562 × 10⁻⁵. NumPy warns, but tracking completes. Tested values from 0.995 to 1.005 fail except
-within 10⁻⁶ of 1, where an intentional Gaussian approximation applies; 0.99 and 1.01 are correct.
+2.562 × 10⁻⁵. Values from 0.995 to 1.005 fail except within 10⁻⁶ of 1, where an intentional Gaussian
+approximation applies; 0.99 and 1.01 are correct.
 
 The script builds unit-population, unit-RMS profiles for `q` = 0.9, 0.999, 1, 1.001 and 1.1 and
 compares the line density and its derivative at z = 0 and ±0.5 with a log-beta normalization that

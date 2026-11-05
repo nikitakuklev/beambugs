@@ -6,7 +6,7 @@
 # entry 2 of elements is a Context{Any}”, while the same lattice with element name `c2` loads. A
 # Branch named `c1` instead overwrites the Context and also prevents loading; renaming only the
 # generated Context binding and its final reference makes the tested collisions load. The exporter
-# gives no incomplete-translation warning, so affected Bmad users discover the problem at load.
+# gives no incomplete-translation warning.
 #
 # The script exports a one-quadrupole lattice with the quadrupole named `c1`, `C1` and `c2` in turn
 # using Bmad's `bmad_to_scibmad` program and loads each file; every name should load, and `c2` is

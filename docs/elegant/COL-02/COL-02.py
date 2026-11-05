@@ -6,7 +6,7 @@ monitor reading only its own particles. With 24 particles split between two trac
 local means differ, the monitor instead reads the whole beam's mean, as products of lens and drift
 matrices predict, for one and three turns per readout and feedback gain 0 or 0.2500: 3.474×10⁻⁴ m
 horizontally and 3.150×10⁻³ m vertically after one turn. The warning is therefore false for these
-readings and can lead users to discard valid parallel runs, although the manual says Pelegant
+readings, although the manual says Pelegant
 results are identical to serial for a deterministic beam.
 
 The script tracks 24 particles through a stable alternating-gradient cell with two correctors and

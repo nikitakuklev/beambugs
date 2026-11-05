@@ -3,10 +3,9 @@
 Negative-angle CCBEND magnets with independent entrance or exit multipole-error files choose edge
 sign changes from the body table's order labels. Relabelling zero-amplitude body rows therefore
 changes physical edge kicks; shorter body tables can also corrupt kicks, and runs without body
-tables terminate in the tested cases. With zero body-error amplitudes, the reference is a positive
-bend rotated by π with each order-n edge fraction multiplied by (−1)ⁿ. For a 0.4 m, −0.12 rad bend
-with edge orders 1 and 2 and zero body rows labelled 2 and 3, the vertical-slope error in y′ reaches
-2.153×10⁻³. Users combining negative bends with independent edge-error files are affected.
+tables terminate. With zero body-error amplitudes, the reference is a positive bend rotated by π
+with each order-n edge fraction multiplied by (−1)ⁿ. For a 0.4 m, −0.12 rad bend with edge orders 1
+and 2 and zero body rows labelled 2 and 3, the vertical-slope error in y′ reaches 2.153×10⁻³.
 
 The script tracks a negative-angle CCBEND with an entrance or exit edge multipole table whose body
 table has all-zero rows labelled to match the edge orders or not, and compares the exit coordinates

@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on xcoll main (`64e13f5`) |
 | Source | [`LossMap._create_aperture_pos_dict`, lossmap.py:881–885](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L881-L885) |
 
-For a reversed line (`line_is_reversed=True`), a non-interpolated loss map computes the reflected aperture position L − s, with L the circumference, and then overwrites it with the unreflected expression, so the flag has no effect on aperture positions. The intended reflection is explicit in the code. An interior aperture at 4 m, with neighbour midpoints at 2.5 and 6.5 m, has centre 4.5 m, which must become 7.5 m in a reversed 12 m ring; the reversed map reports 4.5 m. Users who build non-interpolated loss maps for reversed lines get every aperture loss at an unreflected position.
+For a reversed line (`line_is_reversed=True`), a non-interpolated loss map computes the reflected aperture position L − s, with L the circumference, and then overwrites it with the unreflected expression, so the flag has no effect on aperture positions. The intended reflection is explicit in the code. An interior aperture at 4 m, with neighbour midpoints at 2.5 and 6.5 m, has centre 4.5 m, which must become 7.5 m in a reversed 12 m ring; the reversed map reports 4.5 m.
 
 ??? example "Reproducer: COL-10.py"
 
@@ -28,8 +28,7 @@ For a reversed line (`line_is_reversed=True`), a non-interpolated loss map compu
     aperture position L − s, with L the circumference, and then overwrites it with the unreflected
     expression, so the flag has no effect on aperture positions. The intended reflection is explicit in
     the code. An interior aperture at 4 m, with neighbour midpoints at 2.5 and 6.5 m, has centre 4.5 m,
-    which must become 7.5 m in a reversed 12 m ring; the reversed map reports 4.5 m. Users who build
-    non-interpolated loss maps for reversed lines get every aperture loss at an unreflected position.
+    which must become 7.5 m in a reversed 12 m ring; the reversed map reports 4.5 m.
 
     The script tracks three protons into apertures at 1, 4 and 9 m and builds forward and reversed loss
     maps from these losses. It checks the forward centre of the interior aperture `ap1`, whose cell does

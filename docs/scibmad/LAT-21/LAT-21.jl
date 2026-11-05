@@ -5,8 +5,8 @@
 # m, with t = e/10 truncated toward zero; only magnitudes in [1, 10) m keep their exponent.
 # Half-apertures of 0.01 m, 0.3 m and 15 m load as 1 m, 3 m and 1.5 m, and a particle at x = 0.02 m
 # passes a collimator whose intended half-aperture is 0.01 m. An independent model of the format
-# reproduces the loaded values, and tracking confirms the missed loss. Users importing apertures for
-# loss or collimation studies get wrong results without a warning.
+# reproduces the loaded values, and tracking confirms the missed loss. The wrong limits load without
+# a warning.
 #
 # The script exports three collimators with half-apertures (x, y) = (0.01, 0.3), (2, 15) and
 # (0.00025, 120) m using Bmad's `bmad_to_scibmad` program, loads the file and compares each limit

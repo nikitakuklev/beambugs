@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">contract-unsettled</span> [?](../../methodology.md#tags) |
 | Source | [`primitive_func_2p5d`, fftsolvers.py:321–327](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/solvers/fftsolvers.py#L321-L327)<br>[:173](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/solvers/fftsolvers.py#L173)<br>[:230](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/solvers/fftsolvers.py#L230)<br>[`SpaceCharge3D_track_local_particle`, spacecharge3d.h:55–60](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/spacecharge_src/spacecharge3d.h#L55-L60)<br>[manual's modulated-2D kick](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L302-L310)<br>[xfields.tex:3907–3936](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L3907-L3936) |
 
-With either 2.5D FFT solver and `apply_z_kick=True`, `SpaceCharge3D` differentiates slice potentials whose transverse reference length is fixed at 1 m. The manual explicitly chooses this reference, but changing it adds a longitudinal force wherever the line density varies. Doubling every length of an electron bunch with Lorentz factor γ = 10 should leave the scaled longitudinal kick unchanged by free-space Coulomb similarity, but changes it by 7.868%. For a γ = 7 electron bunch with transverse RMS size 0.4 mm and longitudinal RMS 20 mm, the on-axis kick in the relative momentum deviation δ at 0.75 longitudinal RMS is 9.177 × 10⁻¹⁰, versus 6.680 × 10⁻¹⁰ from the exact 3D field, a 37.38% discrepancy. Transverse kicks are unaffected; constant line density or `apply_z_kick=False` removes the effect.
+With either 2.5D FFT solver and `apply_z_kick=True`, `SpaceCharge3D` differentiates slice potentials whose transverse reference length is fixed at 1 m. Changing this reference adds a longitudinal force wherever the line density varies. Doubling every length of an electron bunch with Lorentz factor γ = 10 should leave the scaled longitudinal kick unchanged by free-space Coulomb similarity, but changes it by 7.868%. For a γ = 7 electron bunch with transverse RMS size 0.4 mm and longitudinal RMS 20 mm, the on-axis kick in the relative momentum deviation δ at 0.75 longitudinal RMS is 9.177 × 10⁻¹⁰, versus 6.680 × 10⁻¹⁰ from the exact 3D field, a 37.38% discrepancy. Transverse kicks are unaffected; constant line density or `apply_z_kick=False` removes it.
 
 ??? example "Reproducer: COL-06.py"
 
@@ -27,14 +27,13 @@ With either 2.5D FFT solver and `apply_z_kick=True`, `SpaceCharge3D` differentia
     similarity
 
     With either 2.5D FFT solver and `apply_z_kick=True`, `SpaceCharge3D` differentiates slice potentials
-    whose transverse reference length is fixed at 1 m. The manual explicitly chooses this reference, but
-    changing it adds a longitudinal force wherever the line density varies. Doubling every length of an
-    electron bunch with Lorentz factor γ = 10 should leave the scaled longitudinal kick unchanged by
-    free-space Coulomb similarity, but changes it by 7.868%. For a γ = 7 electron bunch with transverse
-    RMS size 0.4 mm and longitudinal RMS 20 mm, the on-axis kick in the relative momentum deviation δ at
-    0.75 longitudinal RMS is 9.177 × 10⁻¹⁰, versus 6.680 × 10⁻¹⁰ from the exact 3D field, a 37.38%
-    discrepancy. Transverse kicks are unaffected; constant line density or `apply_z_kick=False` removes
-    the effect.
+    whose transverse reference length is fixed at 1 m. Changing this reference adds a longitudinal force
+    wherever the line density varies. Doubling every length of an electron bunch with Lorentz factor γ =
+    10 should leave the scaled longitudinal kick unchanged by free-space Coulomb similarity, but changes
+    it by 7.868%. For a γ = 7 electron bunch with transverse RMS size 0.4 mm and longitudinal RMS 20 mm,
+    the on-axis kick in the relative momentum deviation δ at 0.75 longitudinal RMS is 9.177 × 10⁻¹⁰,
+    versus 6.680 × 10⁻¹⁰ from the exact 3D field, a 37.38% discrepancy. Transverse kicks are unaffected;
+    constant line density or `apply_z_kick=False` removes it.
 
     The script applies one `SpaceCharge3D` kick (`FFTSolver2p5D`, 64³ mesh, kick length 1 mm) to a
     20,000-macroparticle, 1 pC electron bunch at γ = 10 with transverse RMS sizes 0.1 mm and

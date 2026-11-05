@@ -5,8 +5,8 @@
 # limits accuracy for weak elements. High-precision references and the omitted x⁴/120 term establish
 # the error: at x = 0.003900 each helper is low by 1.928 × 10⁻¹², and the derivative of `sincu` has
 # relative error 1.521 × 10⁻⁶. In a 0.7300 m `Exact()` bend of angle 0.002920 rad, the longitudinal
-# coordinate differs from an independent high-precision circular trajectory by 4.221 × 10⁻¹³ m. Both
-# signs of x are affected; the errors limit tight convergence comparisons and are negligible for
+# coordinate differs from an independent high-precision circular trajectory by 4.221 × 10⁻¹³ m. The
+# error occurs for both signs of x; it limits tight convergence comparisons and is negligible for
 # ordinary tracking.
 #
 # The script compares `sincu`, `sinhcu` and `one_cos_norm` with 256-bit `BigFloat` values at

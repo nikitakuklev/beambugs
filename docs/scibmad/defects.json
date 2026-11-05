@@ -8,7 +8,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "Tracking an ordinary `RFCavity` with `SciBmadStandard`, `Symplectic` or `DriftKick` at `phi0 = 0` and the default `zero_phase = PhaseRef.Accelerating` decelerates particles instead of accelerating them. That phase reference is documented as the maximum-accelerating phase, and `SaganCavity` tracking gives the required energy gain. A proton or electron with reference momentum p₀c = 2mc², twice its rest energy, crossing a 1.000 µm, 1.000 kV cavity loses 1.000 keV instead of gaining 1.000 keV. Every linac or energy-gain setup that uses ordinary RF with the default phase reference is affected; `BelowTransition` and `AboveTransition` have the correct phase on this path.",
+  "summary": "Tracking an ordinary `RFCavity` with `SciBmadStandard`, `Symplectic` or `DriftKick` at `phi0 = 0` and the default `zero_phase = PhaseRef.Accelerating` decelerates particles instead of accelerating them. That phase reference is documented as the maximum-accelerating phase, and `SaganCavity` tracking gives the required energy gain. A proton or electron with reference momentum p₀c = 2mc², twice its rest energy, crossing a 1.000 µm, 1.000 kV cavity loses 1.000 keV instead of gaining 1.000 keV. `BelowTransition` and `AboveTransition` have the correct phase on this path.",
   "justification": null,
   "locations": [
    {
@@ -119,7 +119,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "With `SaganCavity` tracking, the `BelowTransition` and `AboveTransition` zero-phase references select each other's stable zero crossing, so the longitudinal restoring kick has the wrong sign and the cavity runs on the unstable slope. Below transition a late particle must gain energy and above transition it must lose energy, as the phase-stability condition and independent tracking in a drift-only ring establish. In a 1.000 kV, 100.0 MHz cavity, a proton or electron at 0.8944 times light speed arriving late, at longitudinal offset z = −0.02000 m, loses 46.85 eV below transition instead of gaining 46.85 eV. Both transition references are affected; the `Accelerating` crest and ordinary RF transition phases are correct.",
+  "summary": "With `SaganCavity` tracking, the `BelowTransition` and `AboveTransition` zero-phase references select each other's stable zero crossing, so the longitudinal restoring kick has the wrong sign and the cavity runs on the unstable slope. Below transition a late particle must gain energy and above transition it must lose energy, as the phase-stability condition and independent tracking in a drift-only ring establish. In a 1.000 kV, 100.0 MHz cavity, a proton or electron at 0.8944 times light speed arriving late, at longitudinal offset z = −0.02000 m, loses 46.85 eV below transition instead of gaining 46.85 eV. The `Accelerating` crest and ordinary RF transition phases are correct.",
   "justification": null,
   "locations": [
    {
@@ -217,7 +217,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "Tracking an `SBend` with `Exact()` ignores the entrance and exit face angles `e1` and `e2` and the fringe selector `fringe_at`, so the bend has no edge focusing. The linear map must include a hard-edge kick at each enabled face, as the analytic edge matrices and `Symplectic(order=2)` tracking confirm. For a 0.7300 m bend with curvature 0.2000 m⁻¹ and face angles 0.1100 and 0.1300 rad, the exit normalized horizontal momentum pₓ changes with entrance position x at −0.02910 m⁻¹ instead of +0.01905 m⁻¹. Users who select the nondefault `Exact()` method for bends with active faces are affected.",
+  "summary": "Tracking an `SBend` with `Exact()` ignores the entrance and exit face angles `e1` and `e2` and the fringe selector `fringe_at`, so the bend has no edge focusing. The linear map must include a hard-edge kick at each enabled face, as the analytic edge matrices and `Symplectic(order=2)` tracking confirm. For a 0.7300 m bend with curvature 0.2000 m⁻¹ and face angles 0.1100 and 0.1300 rad, the exit normalized horizontal momentum pₓ changes with entrance position x at −0.02910 m⁻¹ instead of +0.01905 m⁻¹.",
   "justification": null,
   "locations": [
    {
@@ -447,7 +447,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "An accelerating `SaganCavity` renormalizes particle coordinates to the exit reference momentum but leaves the bunch's `p_over_q_ref` at its entrance value, so the next element repeats the reference shift and erases the energy gain. The bunch normalization contract requires the synchronous particle to keep the gain at zero relative momentum offset δ, and ordinary RF tracking with the same reference-energy change does so. A proton with reference momentum p₀c = 2mc², twice its rest energy, crossing a zero-length 1.000 MV cavity and then a 1.000 m drift gains 0 instead of 1.000 MeV, and its δ becomes −5.954 × 10⁻⁴ instead of 0. Accelerating Sagan tracking with a constant reference is affected.",
+  "summary": "An accelerating `SaganCavity` renormalizes particle coordinates to the exit reference momentum but leaves the bunch's `p_over_q_ref` at its entrance value, so the next element repeats the reference shift and erases the energy gain. The bunch normalization contract requires the synchronous particle to keep the gain at zero relative momentum offset δ, and ordinary RF tracking with the same reference-energy change does so. A proton with reference momentum p₀c = 2mc², twice its rest energy, crossing a zero-length 1.000 MV cavity and then a 1.000 m drift gains 0 instead of 1.000 MeV, and its δ becomes −5.954 × 10⁻⁴ instead of 0.",
   "justification": null,
   "locations": [
    {
@@ -725,7 +725,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "A user callback inside an ordinary RF cavity or an electrostatic separator receives the element's entrance reference time at every interior step. The callback contract requires the reference time at the current position s, which at fixed reference energy grows with the reference flight time s/(β₀c), where β₀c is the reference speed. For a proton with reference momentum p₀c = 2mc², twice its rest energy, in a 2.000 m element tracked in four second-order symplectic steps, the callback at s = 1.500 m sees a time increment of 0 instead of 5.594 ns. Callbacks and time-dependent transforms that use this argument are affected; drifts report the correct times, and the element-exit callback is correct.",
+  "summary": "A user callback inside an ordinary RF cavity or an electrostatic separator receives the element's entrance reference time at every interior step. The callback contract requires the reference time at the current position s, which at fixed reference energy grows with the reference flight time s/(β₀c), where β₀c is the reference speed. For a proton with reference momentum p₀c = 2mc², twice its rest energy, in a 2.000 m element tracked in four second-order symplectic steps, the callback at s = 1.500 m sees a time increment of 0 instead of 5.594 ns. Drifts report the correct times, and the element-exit callback is correct.",
   "justification": null,
   "locations": [
    {
@@ -1027,7 +1027,7 @@
   "severity": "Documentation or example mismatch",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The `SaganCavity` physics guide doubles the edge kicks, gives Hamiltonians whose signs contradict its own listed kicks, and calls the entrance of an accelerating cavity defocusing. Hamilton's equations, the implemented kernels and Bmad's edge model instead give half the guide's edge kick, a focusing entrance and a positive ponderomotive Hamiltonian, which generates the kernel's focusing kick. For a proton with reference momentum p₀c = 2mc², twice its rest energy, charge-weighted accelerating gradient qG = 1.000 MeV/m and horizontal offset 1.000 mm, the guide's entrance kick in normalized horizontal momentum is −5.329 × 10⁻⁷ instead of −2.664 × 10⁻⁷, and its edge Hamiltonian implies +5.329 × 10⁻⁷. Readers deriving models from the guide are affected; the kernels agree with Bmad.",
+  "summary": "The `SaganCavity` physics guide doubles the edge kicks, gives Hamiltonians whose signs contradict its own listed kicks, and calls the entrance of an accelerating cavity defocusing. Hamilton's equations, the implemented kernels and Bmad's edge model instead give half the guide's edge kick, a focusing entrance and a positive ponderomotive Hamiltonian, which generates the kernel's focusing kick. For a proton with reference momentum p₀c = 2mc², twice its rest energy, charge-weighted accelerating gradient qG = 1.000 MeV/m and horizontal offset 1.000 mm, the guide's entrance kick in normalized horizontal momentum is −5.329 × 10⁻⁷ instead of −2.664 × 10⁻⁷, and its edge Hamiltonian implies +5.329 × 10⁻⁷. The kernels agree with Bmad.",
   "justification": null,
   "locations": [
    {
@@ -1158,7 +1158,7 @@
   "severity": "Crash or API hazard",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The `SaganCavity` tracking guide's examples fail when copied, because they use the keyword `num_cells`, the nonexistent enum name `PhaseReference`, and `zero_phase` as a `SaganCavity` keyword. The constructor and export list instead provide `n_cells` and `PhaseRef`, and `zero_phase` belongs to the cavity element's `RFParams`. The guide's two-cell call with active length 1.600 m raises `MethodError`, while `SaganCavity(n_cells=2, L_active=1.6)` succeeds; passing `zero_phase` to that constructor also raises `MethodError`. The physics guide repeats the wrong cell-count keyword, so users following either guide are affected.",
+  "summary": "The `SaganCavity` tracking guide's examples fail when copied, because they use the keyword `num_cells`, the nonexistent enum name `PhaseReference`, and `zero_phase` as a `SaganCavity` keyword. The constructor and export list instead provide `n_cells` and `PhaseRef`, and `zero_phase` belongs to the cavity element's `RFParams`. The guide's two-cell call with active length 1.600 m raises `MethodError`, while `SaganCavity(n_cells=2, L_active=1.6)` succeeds; passing `zero_phase` to that constructor also raises `MethodError`. The physics guide repeats the wrong cell-count keyword.",
   "justification": null,
   "locations": [
    {
@@ -1301,7 +1301,7 @@
   "severity": "Documentation or example mismatch",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Two docstrings describe interfaces that do not exist: the `Bunch` docstring prescribes a three-argument callback that tracking cannot call, and the `SciBmadStandard` docstring names a nonexistent `Yoshida` integrator. The callback call site passes nine arguments, so a callback written as documented, `callback(coords, ds_step, g)`, raises `MethodError`. The default method actually uses `Symplectic` with keyword `n_steps`, at order 2 for exact bodies and order 4 otherwise, not `Yoshida(order=4, num_steps=1)`. Users who write callbacks or configure the documented default integrator explicitly meet these mismatches.",
+  "summary": "Two docstrings describe interfaces that do not exist: the `Bunch` docstring prescribes a three-argument callback that tracking cannot call, and the `SciBmadStandard` docstring names a nonexistent `Yoshida` integrator. The callback call site passes nine arguments, so a callback written as documented, `callback(coords, ds_step, g)`, raises `MethodError`. The default method actually uses `Symplectic` with keyword `n_steps`, at order 2 for exact bodies and order 4 otherwise, not `Yoshida(order=4, num_steps=1)`.",
   "justification": null,
   "locations": [
    {
@@ -1432,7 +1432,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "In Float64 the helpers `sincu` (sin x / x) and `sinhcu` (sinh x / x) use the two-term series 1 ∓ x²/6 for |x| up to 0.004000, although their docstrings promise accuracy near the origin, which limits accuracy for weak elements. High-precision references and the omitted x⁴/120 term establish the error: at x = 0.003900 each helper is low by 1.928 × 10⁻¹², and the derivative of `sincu` has relative error 1.521 × 10⁻⁶. In a 0.7300 m `Exact()` bend of angle 0.002920 rad, the longitudinal coordinate differs from an independent high-precision circular trajectory by 4.221 × 10⁻¹³ m. Both signs of x are affected; the errors limit tight convergence comparisons and are negligible for ordinary tracking.",
+  "summary": "In Float64 the helpers `sincu` (sin x / x) and `sinhcu` (sinh x / x) use the two-term series 1 ∓ x²/6 for |x| up to 0.004000, although their docstrings promise accuracy near the origin, which limits accuracy for weak elements. High-precision references and the omitted x⁴/120 term establish the error: at x = 0.003900 each helper is low by 1.928 × 10⁻¹², and the derivative of `sincu` has relative error 1.521 × 10⁻⁶. In a 0.7300 m `Exact()` bend of angle 0.002920 rad, the longitudinal coordinate differs from an independent high-precision circular trajectory by 4.221 × 10⁻¹³ m. The error occurs for both signs of x; it limits tight convergence comparisons and is negligible for ordinary tracking.",
   "justification": null,
   "locations": [
    {
@@ -1949,7 +1949,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Adding an explicit zero `AlignmentParams` group to a bend with a reference roll changes its orbit; at zero reference curvature the roll is applied twice. Zero alignment must preserve transport, and an independent Lorentz-force trajectory agrees with the unaligned map at the intended roll and with the aligned map at twice that roll. For a 0.1900 m straight-reference bend with normalized strength −0.1700 m⁻¹ and reference roll 0.01500 rad, the kick in normalized vertical momentum is 9.689 × 10⁻⁴ instead of 4.845 × 10⁻⁴. `Exact`, `Symplectic` and the default method are affected, and bends with finite curvature also change under zero alignment; omitting or ignoring the alignment group restores the unaligned map.",
+  "summary": "Adding an explicit zero `AlignmentParams` group to a bend with a reference roll changes its orbit; at zero reference curvature the roll is applied twice. Zero alignment must preserve transport, and an independent Lorentz-force trajectory agrees with the unaligned map at the intended roll and with the aligned map at twice that roll. For a 0.1900 m straight-reference bend with normalized strength −0.1700 m⁻¹ and reference roll 0.01500 rad, the kick in normalized vertical momentum is 9.689 × 10⁻⁴ instead of 4.845 × 10⁻⁴. This occurs with `Exact`, `Symplectic` and the default method, and bends with finite curvature also change under zero alignment; omitting or ignoring the alignment group restores the unaligned map.",
   "justification": null,
   "locations": [
    {
@@ -2193,7 +2193,7 @@
   "severity": "Documentation or example mismatch",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The neutron and antineutron `g_spin` values are normalized to the nuclear magneton, which uses the proton mass, although the accessor promises normalization to each particle's own mass. Combining the returned value with the documented formula therefore disagrees with the tabulated magnetic moment, and converting by the neutron-to-proton mass ratio restores agreement. With CODATA 2022 active, neutron `g_spin` with `signed=true` is −3.826 instead of the own-mass value −3.831, implying a gyromagnetic ratio of −1.830 × 10⁸ instead of −1.832 × 10⁸ s⁻¹ T⁻¹, a 0.1377% magnitude error. Antineutron signs reverse with the same fractional error; charged species agree, and consequences for neutral-particle tracking are unestablished.",
+  "summary": "The neutron and antineutron `g_spin` values are normalized to the nuclear magneton, which uses the proton mass, although the accessor promises normalization to each particle's own mass. Combining the returned value with the documented formula therefore disagrees with the tabulated magnetic moment, and converting by the neutron-to-proton mass ratio restores agreement. With CODATA 2022 active, neutron `g_spin` with `signed=true` is −3.826 instead of the own-mass value −3.831, implying a gyromagnetic ratio of −1.830 × 10⁸ instead of −1.832 × 10⁸ s⁻¹ T⁻¹, a 0.1377% magnitude error. Antineutron signs reverse with the same fractional error; charged species agree.",
   "justification": null,
   "locations": [
    {
@@ -2682,7 +2682,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "In its linear branch (expansion order 1), `twiss` builds the De Moivre matrices `B` and `E`, which split the one-turn matrix and the beam moments by mode, from columns of A⁻¹, the inverse normalizing matrix, instead of its rows. In an uncoupled plane the documented definition gives E₁ = [β −α; −α γ], and the corresponding B₁ matches a tracked one-turn Jacobian to 1.8e-15. For a thin-quadrupole cell with β = 3.441 m and α = −1.376, the returned E₁[1,2] and E₁[2,1] are 0 and 1.776 instead of 1.376, and E₁[2,2] is 0.2906 m⁻¹ instead of 0.8412 m⁻¹. The horizontal beam-size term used by `dynamic_aperture` stays correct in uncoupled lattices; by source algebra, its vertical mode-1 term and coupled lattices are affected (not measured).",
+  "summary": "In its linear branch (expansion order 1), `twiss` builds the De Moivre matrices `B` and `E`, which split the one-turn matrix and the beam moments by mode, from columns of A⁻¹, the inverse normalizing matrix, instead of its rows. In an uncoupled plane the documented definition gives E₁ = [β −α; −α γ], and the corresponding B₁ matches a tracked one-turn Jacobian to 1.8e-15. For a thin-quadrupole cell with β = 3.441 m and α = −1.376, the returned E₁[1,2] and E₁[2,1] are 0 and 1.776 instead of 1.376, and E₁[2,2] is 0.2906 m⁻¹ instead of 0.8412 m⁻¹. The horizontal beam-size term used by `dynamic_aperture` stays correct in uncoupled lattices; by source algebra, its vertical mode-1 term and coupled lattices are wrong.",
   "justification": null,
   "locations": [
    {
@@ -3088,7 +3088,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "When the first column of a `twiss` table reads the per-row optics cache, for example with `base_cols=[]` or a custom `base_cols` list that starts with an optics column, row 2 of that column repeats row 1. Each row must describe its own sample, and drift transport of the start values, β(s) = β₀ − 2α₀s + γ₀s², gives the expected value. In a lattice of thin quadrupoles and 1 m drifts, `beta1` at s = 1 m reads 1.529 m, the value at s = 0, instead of 3.441 m, while the `alpha1` column of the same call is correct. Only row 2 of the first column is wrong. The default `base_cols` start with `\"index\"`, which does not use the cache, so default tables are unaffected.",
+  "summary": "When the first column of a `twiss` table reads the per-row optics cache, for example with `base_cols=[]` or a custom `base_cols` starting with an optics column, row 2 of that column repeats row 1. Each row must describe its own sample, and drift transport of the start values, β(s) = β₀ − 2α₀s + γ₀s², gives the expected value. In a lattice of thin quadrupoles and 1 m drifts, `beta1` at s = 1 m reads 1.529 m, the value at s = 0, instead of 3.441 m, while the `alpha1` column of the same call is correct. The default `base_cols` start with `\"index\"`, which does not use the cache, so default tables are unaffected.",
   "justification": null,
   "locations": [
    {
@@ -3708,7 +3708,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "BatchSolve's batched `newton` returns stale `f` and `jac` for lanes (problems in the batch) that the relative-step test accepts in the final iteration: it updates the iterate, then exits before recomputing the promised final residual and Jacobian. For x² − 2 from x = 1 with `reltol = 0.4`, the accepted iterate is 1.5, but the returned residual and Jacobian are −1.000 and 2.000 instead of 0.2500 and 3.000; the non-batched solver returns the latter values. The accepted iterate is unchanged by this diagnostic defect, and residual-test exits are unaffected. By source inspection, batched closed-orbit finding uses this path and experimental aperture code reads the Jacobian as I − M, with M the one-turn matrix; aperture effects were not measured.",
+  "summary": "BatchSolve's batched `newton` returns stale `f` and `jac` for lanes (problems in the batch) that the relative-step test accepts in the final iteration: it updates the iterate, then exits before recomputing the promised final residual and Jacobian. For x² − 2 from x = 1 with `reltol = 0.4`, the accepted iterate is 1.5, but the returned residual and Jacobian are −1.000 and 2.000 instead of 0.2500 and 3.000; the non-batched solver returns the latter values. The accepted iterate is unchanged by this diagnostic defect, and residual-test exits are unaffected. By source inspection, batched closed-orbit finding uses this path and experimental aperture code reads the Jacobian as I − M, with M the one-turn matrix.",
   "justification": null,
   "locations": [
    {
@@ -4009,7 +4009,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "With `twiss(chrom=2)`, the default GTPSA descriptor caps each phase-space coordinate at degree 1 and so drops the squares x² and pₓ² that carry the dispersion feed-down, silently corrupting chromatic optics. Chromaticity is dQ/dδ of the one-turn map linearized on the momentum-dependent closed orbit; tracking and `twiss(order=2, chrom=2)` agree on it. In the documentation's 18 GeV/c electron FODO with sextupoles, started where the dispersion is 0.5317 m, ξₓ is +0.1220 instead of −0.06914 and `dbeta1` is −39.28 m instead of −30.65 m, and the documented matching recipe reaches a tracked ξₓ of 0.5128 instead of 1. Dispersive starts with feed-down from bends or multipoles are affected, as are the documented low-cap knob descriptors for orbit-moving knobs without dispersion; on-momentum linear optics stay correct.",
+  "summary": "With `twiss(chrom=2)`, the default GTPSA descriptor caps each phase-space coordinate at degree 1 and so drops the squares x² and pₓ² that carry the dispersion feed-down, silently corrupting chromatic optics. Chromaticity is dQ/dδ of the one-turn map linearized on the momentum-dependent closed orbit; tracking and `twiss(order=2, chrom=2)` agree on it. In the documentation's 18 GeV/c electron FODO with sextupoles, started where the dispersion is 0.5317 m, ξₓ is +0.1220 instead of −0.06914 and `dbeta1` is −39.28 m instead of −30.65 m, and the documented matching recipe reaches a tracked ξₓ of 0.5128 instead of 1. Dispersive starts with feed-down from bends or multipoles, and the documented low-cap knob descriptors for orbit-moving knobs without dispersion, show the error; on-momentum linear optics stay correct.",
   "justification": null,
   "locations": [
    {
@@ -4149,7 +4149,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "`twiss` builds the summary tunes and the `phi` phase-advance columns by adding the principal phase angle, in (−½, ½] turn, of each interval between sampled rows, so an interval longer than half a turn aliases the integer part. For a ring of eight thin FODO cells, sampling only element 17 (`at=[17]`, after four cells) gives q₁ = −0.8515 instead of 1.149 and a phase of −0.4257 instead of 0.5743 turns at s = 8 m; thin-lens matrix products and sampling every cell establish the accumulated values. The documented summary-only `at=[]` call treats the ring as one interval and returns 0.1485. Fractional tunes stay correct; the accumulated phase advance is lost with sparse sampling, such as at interaction points, and wherever a single interval between sampled rows exceeds half a turn, however densely the rest is sampled.",
+  "summary": "`twiss` builds the summary tunes and the `phi` phase-advance columns by adding the principal phase angle, in (−½, ½] turn, of each interval between sampled rows, so an interval longer than half a turn aliases the integer part. For a ring of eight thin FODO cells, sampling only element 17 (`at=[17]`, after four cells) gives q₁ = −0.8515 instead of 1.149 and a phase of −0.4257 instead of 0.5743 turns at s = 8 m; thin-lens matrix products and sampling every cell establish the accumulated values. The documented summary-only `at=[]` call treats the ring as one interval and returns 0.1485. Fractional tunes stay correct; the integer part is lost wherever an interval between sampled rows exceeds half a turn.",
   "justification": null,
   "locations": [
    {
@@ -4648,7 +4648,7 @@
   "severity": "Crash or API hazard",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "On rings where spin optics succeeds, requesting `h<ijkl>` columns (resonance driving terms) with `spin=true` ends the Julia process while `twiss` builds the Hamiltonian. The temporary linear map built there has a zero quaternion, and inverting it divides by zero in the native library, which bypasses Julia exception handling. For the 18 GeV electron quickstart FODO at order 2, the call prints `invalid domain div` and exits with status 1. Giving that map the identity quaternion lets the checked orbital coefficients agree with `spin=false` to 1.990e-14, as the decoupling of orbital and spin motion requires. Closed-lattice requests that reach this step are affected; open-lattice `h` is unimplemented, and spin normalization has separate failure conditions.",
+  "summary": "On rings where spin optics succeeds, requesting `h<ijkl>` columns (resonance driving terms) with `spin=true` ends the Julia process while `twiss` builds the Hamiltonian. The temporary linear map built there has a zero quaternion, and inverting it divides by zero in the native library, which bypasses Julia exception handling. For the 18 GeV electron quickstart FODO at order 2, the call prints `invalid domain div` and exits with status 1. Giving that map the identity quaternion lets the checked orbital coefficients agree with `spin=false` to 1.990e-14, as the decoupling of orbital and spin motion requires. Open-lattice `h` is unimplemented, and spin normalization has separate failure conditions.",
   "justification": null,
   "locations": [
    {
@@ -4940,7 +4940,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "When NonlinearNormalForm composes stochastic `TPSAMap`s, which carry a noise covariance S, it transports the incoming covariance with the second map's Jacobian at that map's own expansion point instead of at the incoming orbit. First-order transport requires S₂₁ = J₂S₁J₂ᵀ + S₂, with the Jacobian J₂ evaluated at the first map's output. Translating x by 0.75 with S₁ = diag(4, 9)×10⁻¹² and then applying the shear (x, p) → (x, p + x²) returns diag(4, 9)×10⁻¹² instead of [4 6; 6 18]×10⁻¹². Re-expanding the identical shear about the incoming orbit restores the expected covariance, and an exact finite-distribution calculation agrees with it to 3.029×10⁻²⁷. Matched expansion points pass; effects on SciBmad optics were not measured.",
+  "summary": "When NonlinearNormalForm composes stochastic `TPSAMap`s, which carry a noise covariance S, it transports the incoming covariance with the second map's Jacobian at that map's own expansion point instead of at the incoming orbit. First-order transport requires S₂₁ = J₂S₁J₂ᵀ + S₂, with the Jacobian J₂ evaluated at the first map's output. Translating x by 0.75 with S₁ = diag(4, 9)×10⁻¹² and then applying the shear (x, p) → (x, p + x²) returns diag(4, 9)×10⁻¹² instead of [4 6; 6 18]×10⁻¹². Re-expanding the identical shear about the incoming orbit restores the expected covariance, and an exact finite-distribution calculation agrees with it to 3.029×10⁻²⁷. Matched expansion points pass.",
   "justification": null,
   "locations": [
    {
@@ -5108,7 +5108,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "For a NonlinearNormalForm `DAMap`, `TPSAMap` or `VectorField`, `I - M`, with `I` the identity, replaces only the diagonal linear coefficients and the scalar quaternion coefficient by one minus their values, and every other coefficient keeps its original sign. Coefficient subtraction must satisfy (I − M) + M = I, and ordinary subtraction `one(M) - M` gives the analytic result. For the shear M = (x, p − 2.5x + 0.75x²), the second component of `I - M` has x and x² coefficients −2.5 and 0.75 instead of 2.5 and −0.75. A spin coefficient q1[x] = 0.2 stays 0.2 instead of becoming −0.2. `M - I` is correct, and no effect on optics outputs has been established.",
+  "summary": "For a NonlinearNormalForm `DAMap`, `TPSAMap` or `VectorField`, `I - M`, with `I` the identity, replaces only the diagonal linear coefficients and the scalar quaternion coefficient by one minus their values, and every other coefficient keeps its original sign. Coefficient subtraction must satisfy (I − M) + M = I, and ordinary subtraction `one(M) - M` gives the analytic result. For the shear M = (x, p − 2.5x + 0.75x²), the second component of `I - M` has x and x² coefficients −2.5 and 0.75 instead of 2.5 and −0.75. A spin coefficient q1[x] = 0.2 stays 0.2 instead of becoming −0.2. `M - I` is correct.",
   "justification": null,
   "locations": [
    {
@@ -5272,7 +5272,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "With `damping` and the initial normalizer `a_initial` omitted, `twiss` decides whether the optics are damped by checking the normalizer's symplecticity instead of the transport map's, and misses damping in a supported user transport map. For M = A·diag(ρᵢRᵢ)·A⁻¹ with symplectic Courant–Snyder A, rotations Rᵢ and amplitude factors ρᵢ, the matched beta functions must be periodic. With β = (2, 3, 4) m and ρ = (0.93, 0.87, 0.81), automatic selection instead changes β₁ from 2.000 to 1.730 m and β₂ from 3.000 to 2.271 m and omits damping summaries. Explicit `damping=true` restores periodicity and the analytic decrements −log ρᵢ. The undamped control passes; realistic radiation-lattice impact was not measured.",
+  "summary": "With `damping` and the initial normalizer `a_initial` omitted, `twiss` decides whether the optics are damped by checking the normalizer's symplecticity instead of the transport map's, and misses damping in a supported user transport map. For M = A·diag(ρᵢRᵢ)·A⁻¹ with symplectic Courant–Snyder A, rotations Rᵢ and amplitude factors ρᵢ, the matched beta functions must be periodic. With β = (2, 3, 4) m and ρ = (0.93, 0.87, 0.81), automatic selection instead changes β₁ from 2.000 to 1.730 m and β₂ from 3.000 to 2.271 m and omits damping summaries. Explicit `damping=true` restores periodicity and the analytic decrements −log ρᵢ. The undamped control passes.",
   "justification": null,
   "locations": [
    {
@@ -5352,7 +5352,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "For damped maps with nonsymplectic coupling and repeated eigenvalues, NonlinearNormalForm mixes a conjugate eigenvector into the degenerate eigenspace. `mat_eigen` then returns vectors that fail the eigenvector equation, and `equilibrium_moments` violates Σ = MΣMᵀ + Q, with Σ the equilibrium covariance and Q the noise. A direct Kronecker solve, a convergent covariance sum and a supplied analytic normalizer independently establish the expected result. For damping factor 0.87 in each mode, angles (0.61, 0.61, 1.13) rad and Q = 2×10⁻⁸·I, the covariance has 22.56% relative error, its fixed-point residual is 0.8035‖Q‖, and the eigenvector residual is 0.3538. Separating the repeated angles by 10⁻⁵ rad restores accuracy; realistic-ring prevalence was not established.",
+  "summary": "For damped maps with nonsymplectic coupling and repeated eigenvalues, NonlinearNormalForm mixes a conjugate eigenvector into the degenerate eigenspace. `mat_eigen` then returns vectors that fail the eigenvector equation, and `equilibrium_moments` violates Σ = MΣMᵀ + Q, with Σ the equilibrium covariance and Q the noise. A direct Kronecker solve, a convergent covariance sum and a supplied analytic normalizer independently establish the expected result. For damping factor 0.87 in each mode, angles (0.61, 0.61, 1.13) rad and Q = 2×10⁻⁸·I, the covariance has 22.56% relative error, its fixed-point residual is 0.8035‖Q‖, and the eigenvector residual is 0.3538. Separating the repeated angles by 10⁻⁵ rad restores accuracy.",
   "justification": null,
   "locations": [
    {
@@ -5530,7 +5530,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "For a NonlinearNormalForm `DAMap` M and a scaled identity λI, `M + λI`, `λI + M` and `M - λI` ignore λ and change each orbital diagonal coefficient by +1 or −1. Coefficient arithmetic requires M + 0I = M and a diagonal change of λ, which explicitly constructed scaled-identity maps confirm. For a map with diagonal (2, 3), `M + 0I` returns (3, 4), while `M - 3I` returns (1, 2) instead of (−1, 0). Unit-scale addition and right subtraction avoid this scale error. Source inspection establishes the analogous `TPSAMap`, `VectorField` and quaternion-scalar paths; downstream optics effects were not measured.",
+  "summary": "For a NonlinearNormalForm `DAMap` M and a scaled identity λI, `M + λI`, `λI + M` and `M - λI` ignore λ and change each orbital diagonal coefficient by +1 or −1. Coefficient arithmetic requires M + 0I = M and a diagonal change of λ, which explicitly constructed scaled-identity maps confirm. For a map with diagonal (2, 3), `M + 0I` returns (3, 4), while `M - 3I` returns (1, 2) instead of (−1, 0). Unit-scale addition and right subtraction avoid this scale error. Source inspection establishes the analogous `TPSAMap`, `VectorField` and quaternion-scalar paths.",
   "justification": null,
   "locations": [
    {
@@ -5698,7 +5698,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "GTPSA's allocating `inv`, and `inv!` into a zero destination, lose parameter-dependent orbital terms of nonlinear total degree, because the destination's parameter rows are not initialized to identity substitutions. The failure includes transfer maps linear in phase space and linear in a parameter. For X = 2x + 0.3p and P = −0.7x + 0.395p + 0.7Xab, with parameters a and b, the inverse's p coefficient of Xab is 0 instead of −1.400; the parameterized shear (x, p + κx²) likewise loses its inverse x²κ coefficient −1. Algebraic reversal, identity-seeded destinations and NonlinearNormalForm's independent inverse agree. Parameter-free and parameter-only linear controls pass; the impact on standard SciBmad optics was not established.",
+  "summary": "GTPSA's allocating `inv`, and `inv!` into a zero destination, lose parameter-dependent orbital terms of nonlinear total degree, because the destination's parameter rows are not initialized to identity substitutions. The failure includes transfer maps linear in phase space and linear in a parameter. For X = 2x + 0.3p and P = −0.7x + 0.395p + 0.7Xab, with parameters a and b, the inverse's p coefficient of Xab is 0 instead of −1.400; the parameterized shear (x, p + κx²) likewise loses its inverse x²κ coefficient −1. Algebraic reversal, identity-seeded destinations and NonlinearNormalForm's independent inverse agree. Parameter-free and parameter-only linear controls pass.",
   "justification": null,
   "locations": [
    {
@@ -5786,7 +5786,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Copying into a destination with a different descriptor through GTPSA's `setTPS!(…; change=true)`, `copy_tps!` or orbital map `copy!` keeps old destination coefficients that are absent from the source. Whole-series replacement must instead equal the source projected onto the destination's admitted monomials, as independent coefficient enumeration and fresh-storage controls establish. Copying from total/parameter orders (6, 2) to (3, 1) leaves a stale constant 5.000 and a coefficient 1-norm error of 33.00. Copying a rotation over storage that held a sextupole shear gives a local Jacobian determinant of 0.6500 at x = 0.125 instead of 1, violating symplecticity. Explicit clearing, fresh destinations and same-descriptor copies pass; corruption of measured lattice optics remains unestablished.",
+  "summary": "Copying into a destination with a different descriptor through GTPSA's `setTPS!(…; change=true)`, `copy_tps!` or orbital map `copy!` keeps old destination coefficients that are absent from the source. Whole-series replacement must instead equal the source projected onto the destination's admitted monomials, as independent coefficient enumeration and fresh-storage controls establish. Copying from total/parameter orders (6, 2) to (3, 1) leaves a stale constant 5.000 and a coefficient 1-norm error of 33.00. Copying a rotation over storage that held a sextupole shear gives a local Jacobian determinant of 0.6500 at x = 0.125 instead of 1, violating symplecticity. Explicit clearing, fresh destinations and same-descriptor copies pass.",
   "justification": null,
   "locations": [
    {
@@ -5890,7 +5890,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "The intrabeam scattering (IBS) kick computes the particle count, centroid and covariance that set live-particle kicks over the whole bunch, including particles marked lost. The kernel kicks only live particles, so these statistics must describe the live sample; removing the lost row, or giving it zero weight, gives the same live-only result. For 200 live protons at 1.000 GeV, each representing 1.000 × 10⁴ particles, one lost particle 20 standard deviations out changes the largest deterministic kick through a 1.000 m drift by 66.02% of its live-only value instead of zero. Any bunch with lost particles is affected, and a lost row holding NaN or Inf can make tracking throw `SingularException`.",
+  "summary": "The intrabeam scattering (IBS) kick computes the particle count, centroid and covariance that set live-particle kicks over the whole bunch, including particles marked lost. The kernel kicks only live particles, so these statistics must describe the live sample; removing the lost row, or giving it zero weight, gives the same live-only result. For 200 live protons at 1.000 GeV, each representing 1.000 × 10⁴ particles, one lost particle 20 standard deviations out changes the largest deterministic kick through a 1.000 m drift by 66.02% of its live-only value instead of zero. A lost row holding NaN or Inf can make tracking throw `SingularException`.",
   "justification": null,
   "locations": [
    {
@@ -6004,7 +6004,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "With `radiation_fluctuations_on`, the random radiation kick in a tilted bend or a skew electrostatic separator is computed in a different rotated frame from the element's deterministic transport, distorting the energy kick and recoil direction. A tilted element must match the untilted one with coordinates rotated in and out under the same random seed; a direct kick calculation confirms the required frame. For a 3.000 GeV electron at x = 3.000 cm, y = 2.000 cm in a 0.5000 m bend of curvature 0.1000 m⁻¹ tilted by 0.4000 rad, the stochastic relative-momentum kick is −3.298 × 10⁻⁶ instead of −3.300 × 10⁻⁶. Tilted magnetic and four-potential bends and skew separators are affected; on-axis energy kicks remain correct, but recoil directions can still be wrong.",
+  "summary": "With `radiation_fluctuations_on`, the random radiation kick in a tilted bend or a skew electrostatic separator is computed in a different rotated frame from the element's deterministic transport, distorting the energy kick and recoil direction. A tilted element must match the untilted one with coordinates rotated in and out under the same random seed; a direct kick calculation confirms the required frame. For a 3.000 GeV electron at x = 3.000 cm, y = 2.000 cm in a 0.5000 m bend of curvature 0.1000 m⁻¹ tilted by 0.4000 rad, the stochastic relative-momentum kick is −3.298 × 10⁻⁶ instead of −3.300 × 10⁻⁶. Tilted magnetic and four-potential bends and skew separators show it; on-axis energy kicks remain correct, but recoil directions can still be wrong.",
   "justification": null,
   "locations": [
    {
@@ -6470,7 +6470,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "The postprocessing helper `track_spin`, which applies tracked spin quaternions to initial spins, accepts an initial-spin matrix of the wrong shape and silently returns wrong spins that are not unit vectors. Its documented input is one three-component row per particle, and identity quaternions must return those spins unchanged; column-major indexing of the misshaped matrix predicts exactly the wrong result. For four particles, a transposed 3×4 matrix is accepted and turns the fourth spin from the intended (0.6000, 0.8000, 0) into (0, 0, 0.6000), shortening it from length 1.000 to 0.6000 instead of rejecting the shape. Correctly shaped input works; source inspection also finds unchecked out-of-bounds reads for undersized matrices, which were not executed.",
+  "summary": "The postprocessing helper `track_spin`, which applies tracked spin quaternions to initial spins, accepts an initial-spin matrix of the wrong shape and silently returns wrong spins that are not unit vectors. Its documented input is one three-component row per particle, and identity quaternions must return those spins unchanged; column-major indexing of the misshaped matrix predicts exactly the wrong result. For four particles, a transposed 3×4 matrix is accepted and turns the fourth spin from the intended (0.6000, 0.8000, 0) into (0, 0, 0.6000), shortening it from length 1.000 to 0.6000 instead of rejecting the shape. Correctly shaped input works; source inspection also finds unchecked out-of-bounds reads for undersized matrices.",
   "justification": null,
   "locations": [
    {
@@ -6565,7 +6565,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "When every particle has the same longitudinal position z, the automatic `Mesh3D` bounds misplace the mirror image that `solve!(at_cathode=true)` uses to model a conducting cathode plane. Electrostatics puts an equal and opposite image charge at the mirror point across the cathode plane, and a mesh with consistent manual bounds reproduces that analytic field. For 1.000 nC at 100.0 µm from the cathode on a 32³ mesh, the computed axial field is 1.401 times the correct value, matching an image 31.00 µm closer than it should be. Single-particle and zero-longitudinal-spread inputs are affected, including the shipped cathode example, whose field is 0.3106% high; inputs with distinct z values and consistent manual bounds avoid this displacement.",
+  "summary": "When every particle has the same longitudinal position z, the automatic `Mesh3D` bounds misplace the mirror image that `solve!(at_cathode=true)` uses to model a conducting cathode plane. Electrostatics puts an equal and opposite image charge at the mirror point across the cathode plane, and a mesh with consistent manual bounds reproduces that analytic field. For 1.000 nC at 100.0 µm from the cathode on a 32³ mesh, the computed axial field is 1.401 times the correct value, matching an image 31.00 µm closer than it should be. The shipped cathode example falls in this case, with a field 0.3106% high; inputs with distinct z values and consistent manual bounds avoid this displacement.",
   "justification": null,
   "locations": [
    {
@@ -7075,7 +7075,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Normal and skew sextupole fringes apply twice the leading longitudinal-field spin rotation at both the entrance and the exit. Maxwell's equations fix the integrated longitudinal fringe field from the body field with its factorial normalization, and the gradient of an independently constructed scalar potential matches that body field. For a proton at x = 80.00 mm, y = 130.0 mm with zero transverse momentum, the derivative of the entrance spin angle with respect to the normalized normal-sextupole strength is −2.784 × 10⁻⁴ rad·m³ instead of −1.392 × 10⁻⁴ rad·m³. All four normal/skew and entrance/exit derivative checks give a factor 2.000; spin effects of finite strengths in full lattices are unmeasured.",
+  "summary": "Normal and skew sextupole fringes apply twice the leading longitudinal-field spin rotation at both the entrance and the exit. Maxwell's equations fix the integrated longitudinal fringe field from the body field with its factorial normalization, and the gradient of an independently constructed scalar potential matches that body field. For a proton at x = 80.00 mm, y = 130.0 mm with zero transverse momentum, the derivative of the entrance spin angle with respect to the normalized normal-sextupole strength is −2.784 × 10⁻⁴ rad·m³ instead of −1.392 × 10⁻⁴ rad·m³. All four normal/skew and entrance/exit derivative checks give a factor 2.000.",
   "justification": null,
   "locations": [
    {
@@ -7155,7 +7155,7 @@
   "severity": "Crash or API hazard",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The automatic `Mesh3D` constructor with Float32 precision can create bounds that leave its own input particles outside valid cloud-in-cell (CIC) deposition cells. The constructor promises padded bounds suitable for deposition, but exact rational arithmetic shows that Float32 rounding removes the required margin. For input horizontal positions 0 and 1.000 m on a 65×9×9 mesh, deposition addresses nodes 65 and 66 although only 65 exist, raising `BoundsError` instead of depositing the total 2.000 pC; a 17-node grid also fails even though its upper bound exceeds 1 m. Automatic Float64 bounds and sufficiently padded manual Float32 bounds deposit successfully; GPU behavior is untested.",
+  "summary": "The automatic `Mesh3D` constructor with Float32 precision can create bounds that leave its own input particles outside valid cloud-in-cell (CIC) deposition cells. The constructor promises padded bounds suitable for deposition, but exact rational arithmetic shows that Float32 rounding removes the required margin. For input horizontal positions 0 and 1.000 m on a 65×9×9 mesh, deposition addresses nodes 65 and 66 although only 65 exist, raising `BoundsError` instead of depositing the total 2.000 pC; a 17-node grid also fails even though its upper bound exceeds 1 m. Automatic Float64 bounds and sufficiently padded manual Float32 bounds deposit successfully.",
   "justification": null,
   "locations": [
    {
@@ -7239,7 +7239,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "A `SaganCavity` with a superimposed solenoid field and zero active RF length (`L_active=0`) uses canonical transverse momenta directly in its RF spin kick instead of first subtracting the solenoid vector potential. By the Thomas–BMT equation, a longitudinal electric field gives no spin rotation for longitudinal mechanical motion, and independent high-precision solenoid transport preserves an initially longitudinal spin. For off-axis protons initially moving and polarized longitudinally, with P₀c (reference momentum times light speed) twice the rest energy, a 0.4300 m element of normalized solenoid strength 1.400 m⁻¹ and RF energy gain 1.877 keV produces a maximum transverse spin of 2.727 × 10⁻⁷ instead of zero. Zero-solenoid and pure-solenoid controls pass; effects at finite active length remain unmeasured.",
+  "summary": "A `SaganCavity` with a superimposed solenoid field and zero active RF length (`L_active=0`) uses canonical transverse momenta directly in its RF spin kick instead of first subtracting the solenoid vector potential. By the Thomas–BMT equation, a longitudinal electric field gives no spin rotation for longitudinal mechanical motion, and independent high-precision solenoid transport preserves an initially longitudinal spin. For off-axis protons initially moving and polarized longitudinally, with P₀c (reference momentum times light speed) twice the rest energy, a 0.4300 m element of normalized solenoid strength 1.400 m⁻¹ and RF energy gain 1.877 keV produces a maximum transverse spin of 2.727 × 10⁻⁷ instead of zero. Zero-solenoid and pure-solenoid controls pass.",
   "justification": null,
   "locations": [
    {
@@ -7572,7 +7572,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "The relative reference getters `dE_ref`, `dpc_ref` and `dp_over_q_ref` should each give the change from the upstream Beamline in its own unit, but fail in two cases. In the first Beamline of a `Branch`, where the code takes the upstream reference as zero so that relative equals absolute, each returns whichever reference is stored; a later Beamline that sets no reference repeats the upstream increment instead of 0. For a proton segment storing `E_ref` = 2.000 GeV, `dpc_ref` is 2.000×10⁹ instead of 1.766 GeV/c and `dp_over_q_ref` is 2.000×10⁹ instead of 5.892 T·m. Segments that keep `pc_ref` at 1.200 GeV/c report `dpc_ref` = 0.2000 GeV/c instead of 0. Code that reads energy changes from these getters gets them wrong without warning.",
+  "summary": "The relative reference getters `dE_ref`, `dpc_ref` and `dp_over_q_ref` should each give the change from the upstream Beamline in its own unit, but fail in two cases. In the first Beamline of a `Branch`, where the code takes the upstream reference as zero so that relative equals absolute, each returns whichever reference is stored; a later Beamline that sets no reference repeats the upstream increment instead of 0. For a proton segment storing `E_ref` = 2.000 GeV, `dpc_ref` is 2.000×10⁹ instead of 1.766 GeV/c and `dp_over_q_ref` is 2.000×10⁹ instead of 5.892 T·m. Segments that keep `pc_ref` at 1.200 GeV/c report `dpc_ref` = 0.2000 GeV/c instead of 0. The getters return these wrong values without warning.",
   "justification": null,
   "locations": [
    {
@@ -7938,7 +7938,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "Subtracting an array-backed `BatchParam` from scalar zero, as in `0 - c.K1`, returns the batch unnegated: `0 - BatchParam([1, -2])` gives [1, −2] instead of [−1, 2], while unary minus and lane-wise subtraction give the correct signs. For a 1 GeV electron starting at x = 1 mm with other coordinates zero, a 0.5 m quadrupole using `Kn1 = 0 - K1` with K1 = [0.3, 0.6] m⁻² focuses horizontally instead of defocusing. After a 1 m drift, x is [0.8146, 0.6334] mm instead of [1.190, 1.383] mm. Batch scans using this subtraction are affected; `-c.K1` works.",
+  "summary": "Subtracting an array-backed `BatchParam` from scalar zero, as in `0 - c.K1`, returns the batch unnegated: `0 - BatchParam([1, -2])` gives [1, −2] instead of [−1, 2], while unary minus and lane-wise subtraction give the correct signs. For a 1 GeV electron starting at x = 1 mm with other coordinates zero, a 0.5 m quadrupole using `Kn1 = 0 - K1` with K1 = [0.3, 0.6] m⁻² focuses horizontally instead of defocusing. After a 1 m drift, x is [0.8146, 0.6334] mm instead of [1.190, 1.383] mm. The negation `-c.K1` works.",
   "justification": null,
   "locations": [
    {
@@ -8254,7 +8254,7 @@
   "severity": "Crash or API hazard",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "Passing per-particle weights to `track` as the documented vector of length `n_particles` raises a `TypeError` before tracking begins, because the keyword is declared `Union{AbstractMatrix,Nothing}`. `track(...; weight=[0.25, 0.75])` therefore fails on documented input. The same vector passed through an explicit `Bunch` is kept as [0.25, 0.75] in a zero-turn control, confirming that the underlying bunch API accepts it. Users supplying vector weights through the high-level keyword are affected.",
+  "summary": "Passing per-particle weights to `track` as the documented vector of length `n_particles` raises a `TypeError` before tracking begins, because the keyword is declared `Union{AbstractMatrix,Nothing}`. `track(...; weight=[0.25, 0.75])` therefore fails on documented input. The same vector passed through an explicit `Bunch` is kept as [0.25, 0.75] in a zero-turn control, confirming that the underlying bunch API accepts it.",
   "justification": null,
   "locations": [
    {
@@ -8349,7 +8349,7 @@
   "severity": "Crash or API hazard",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "On the CPU, `track(bl; v0, use_KA=true)`, which selects KernelAbstractions (KA) kernels, raises “Cannot use both KernelAbstractions (KA) and explicit SIMD”, because `use_explicit_SIMD` keeps its CPU default `true` instead of following `use_KA`. The `track` docstring gives the default of `use_explicit_SIMD` as `!use_KA`, and both `TrackingConfig(use_KA=true)` and the lower-level `launch!` apply that rule. The single-keyword call fails, while adding `use_explicit_SIMD=false` or passing `config=TrackingConfig(use_KA=true)` returns identical coordinates. Only the keyword path of `track` is affected, and the failure is loud.",
+  "summary": "On the CPU, `track(bl; v0, use_KA=true)`, which selects KernelAbstractions (KA) kernels, raises “Cannot use both KernelAbstractions (KA) and explicit SIMD”, because `use_explicit_SIMD` keeps its CPU default `true` instead of following `use_KA`. The `track` docstring gives the default of `use_explicit_SIMD` as `!use_KA`, and both `TrackingConfig(use_KA=true)` and the lower-level `launch!` apply that rule. The single-keyword call fails, while adding `use_explicit_SIMD=false` or passing `config=TrackingConfig(use_KA=true)` returns identical coordinates. The failure is loud.",
   "justification": null,
   "locations": [
    {
@@ -8651,7 +8651,7 @@
   "severity": "Crash or API hazard",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "`writebl`, the Beamlines function that writes a lattice as Julia code and is documented as internal and under development, raises a `FieldError` for any element with an electric multipole, because it reads a field `tilt` where the electric multipole field is named `etilt`. The electric multipole's own `show` uses `etilt`, and the magnetic branch, which reads its own `tilt` field, writes `Kn1=0.2,tilt1=0.1` for a control element. An element with `En0 = 1` fails instead of producing text containing `En0=1.0`. Only lattices with electric multipoles are affected, and the failure is loud.",
+  "summary": "`writebl`, the Beamlines function that writes a lattice as Julia code and is documented as internal and under development, raises a `FieldError` for any element with an electric multipole, because it reads a field `tilt` where the electric multipole field is named `etilt`. The electric multipole's own `show` uses `etilt`, and the magnetic branch, which reads its own `tilt` field, writes `Kn1=0.2,tilt1=0.1` for a control element. An element with `En0 = 1` fails instead of producing text containing `En0=1.0`. The failure is loud.",
   "justification": null,
   "locations": [
    {
@@ -8750,7 +8750,7 @@
   "severity": "Documentation or example mismatch",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The `Bunch` docstring tells users to write a tracking callback as `callback(coords, ds_step, g)`, but tracking calls each callback with nine arguments, `(i, coords, cur_s, cur_t_ref, cur_beta_gamma_ref, last_ds_step, last_g, transforms_out!, transforms_in!)`. The call site and the narrative tracking documentation agree on the nine-argument form. A callback written to the docstring raises a `MethodError` at its first call, while a nine-argument callback runs. Users who follow the docstring rather than the tracking documentation are affected; the failure is loud.",
+  "summary": "The `Bunch` docstring tells users to write a tracking callback as `callback(coords, ds_step, g)`, but tracking calls each callback with nine arguments, `(i, coords, cur_s, cur_t_ref, cur_beta_gamma_ref, last_ds_step, last_g, transforms_out!, transforms_in!)`. The call site and the narrative tracking documentation agree on the nine-argument form. A callback written to the docstring raises a `MethodError` at its first call, while a nine-argument callback runs. The failure is loud.",
   "justification": null,
   "locations": [
    {
@@ -8855,7 +8855,7 @@
   "severity": "Documentation or example mismatch",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The `TrackingResult` docstring and field comment state that `elapsed_time` is in minutes, but the value comes from Julia's `@elapsed`, which returns seconds, and the result's own display labels it seconds. For 10⁵ particles tracked over 10 000 turns, `elapsed_time` is 0.9718 while a wall clock around `track` reads 0.9767 s, a ratio of 0.9949, where a value in minutes would give 1/60 = 0.01667. A user who trusts the docstring overstates run times by a factor of 60; tracking results are unaffected.",
+  "summary": "The `TrackingResult` docstring and field comment state that `elapsed_time` is in minutes, but the value comes from Julia's `@elapsed`, which returns seconds, and the result's own display labels it seconds. For 10⁵ particles tracked over 10 000 turns, `elapsed_time` is 0.9718 while a wall clock around `track` reads 0.9767 s, a ratio of 0.9949, where a value in minutes would give 1/60 = 0.01667. Tracking results are unaffected.",
   "justification": null,
   "locations": [
    {
@@ -8972,7 +8972,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "The GPU example of the batch documentation assigns a raw `CuArray` of quadrupole strengths to `fodo.context.K1`, but only a `BatchParam` is expanded into per-particle values, and any other value passes through unchanged. The CPU examples on the same page wrap the array in `BatchParam`, and a source search finds no GPU-array conversion in Beamlines or BeamTracking. Run on the CPU with an ordinary array in place of the `CuArray`, the page's FODO cell fails with `MethodError: no method matching ^(::Vector{Float64}, ::Int64)`, while the same strengths wrapped in `BatchParam` track. Users who copy the GPU example get an error; GPU execution itself was not tested.",
+  "summary": "The GPU example of the batch documentation assigns a raw `CuArray` of quadrupole strengths to `fodo.context.K1`, but only a `BatchParam` is expanded into per-particle values, and any other value passes through unchanged. The CPU examples on the same page wrap the array in `BatchParam`, and a source search finds no GPU-array conversion in Beamlines or BeamTracking. Run on the CPU with an ordinary array in place of the `CuArray`, the page's FODO cell fails with `MethodError: no method matching ^(::Vector{Float64}, ::Int64)`, while the same strengths wrapped in `BatchParam` track.",
   "justification": null,
   "locations": [
    {
@@ -9056,7 +9056,7 @@
   "severity": "Documentation or example mismatch",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The Python example notebook `nonlinear-twiss.ipynb` contains `nparray(tw2.dbeta1 / tw2.beta1` without a closing parenthesis, in notebook cell 15 counting all cells from zero (code cell 8 counting only code cells). Parsing the notebook's code cells reports `SyntaxError: '(' was never closed`, and an independent count finds one opening and no closing parenthesis on the offending line. It is the only syntax error found by that parser check. Users following the example cannot execute this cell.",
+  "summary": "The Python example notebook `nonlinear-twiss.ipynb` contains `nparray(tw2.dbeta1 / tw2.beta1` without a closing parenthesis, in notebook cell 15 counting all cells from zero (code cell 8 counting only code cells). Parsing the notebook's code cells reports `SyntaxError: '(' was never closed`, and an independent count finds one opening and no closing parenthesis on the offending line. It is the only syntax error found by that parser check.",
   "justification": null,
   "locations": [
    {
@@ -9139,7 +9139,7 @@
   "severity": "Documentation or example mismatch",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The Python example notebook `ags-spin-ramp.ipynb` rotates spins with `jl.rotate_spins(b0.coords.q, s_initial)`, and its text also names `rotate_spins`, but SciBmad defines neither `rotate_spins` nor `rotate_spins!`. The spin-rotation function is `track_spin(q, s0)`, which takes the N×4×n_saved quaternion array of a `TrackingResult`; the repository history shows `rotate_spins` deleted and the Julia version of the same notebook moved to `track_spin`. The Python example therefore fails at its first spin step. Users of the Python spin-ramp example are affected; the failure is loud.",
+  "summary": "The Python example notebook `ags-spin-ramp.ipynb` rotates spins with `jl.rotate_spins(b0.coords.q, s_initial)`, and its text also names `rotate_spins`, but SciBmad defines neither `rotate_spins` nor `rotate_spins!`. The spin-rotation function is `track_spin(q, s0)`, which takes the N×4×n_saved quaternion array of a `TrackingResult`; the repository history shows `rotate_spins` deleted and the Julia version of the same notebook moved to `track_spin`. The Python example therefore fails at its first spin step. The failure is loud.",
   "justification": null,
   "locations": [
    {
@@ -9466,7 +9466,7 @@
   "tags": [
    "known-limitation"
   ],
-  "summary": "For a Bmad line containing reversed elements, such as `line = (--d)`, the exporter `bmad_to_scibmad` writes `reverse(ele)` calls, and loading the file fails with `MethodError: no method matching reverse(::LineElement)`. Beamlines defines no element-orientation support, and BeamTracking's source explicitly marks reversed elements as future work; a runtime method check independently confirms that `reverse(::LineElement)` does not exist. The exporter gives no incomplete-translation warning for the reproduced lattice, so users discover the unsupported translation only when loading the generated file.",
+  "summary": "For a Bmad line containing reversed elements, such as `line = (--d)`, the exporter `bmad_to_scibmad` writes `reverse(ele)` calls, and loading the file fails with `MethodError: no method matching reverse(::LineElement)`. Beamlines defines no element-orientation support, and BeamTracking's source explicitly marks reversed elements as future work; a runtime method check independently confirms that `reverse(::LineElement)` does not exist. The exporter gives no incomplete-translation warning for the reproduced lattice.",
   "justification": null,
   "locations": [
    {
@@ -9537,7 +9537,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "Bmad's SciBmad exporter writes aperture limits through a 24-character string, dropping the final exponent digit of the 25-character number format. A nonzero limit a·10ᵉ m therefore loads as a·10ᵗ m, with t = e/10 truncated toward zero; only magnitudes in [1, 10) m keep their exponent. Half-apertures of 0.01 m, 0.3 m and 15 m load as 1 m, 3 m and 1.5 m, and a particle at x = 0.02 m passes a collimator whose intended half-aperture is 0.01 m. An independent model of the format reproduces the loaded values, and tracking confirms the missed loss. Users importing apertures for loss or collimation studies get wrong results without a warning.",
+  "summary": "Bmad's SciBmad exporter writes aperture limits through a 24-character string, dropping the final exponent digit of the 25-character number format. A nonzero limit a·10ᵉ m therefore loads as a·10ᵗ m, with t = e/10 truncated toward zero; only magnitudes in [1, 10) m keep their exponent. Half-apertures of 0.01 m, 0.3 m and 15 m load as 1 m, 3 m and 1.5 m, and a particle at x = 0.02 m passes a collimator whose intended half-aperture is 0.01 m. An independent model of the format reproduces the loaded values, and tracking confirms the missed loss. The wrong limits load without a warning.",
   "justification": null,
   "locations": [
    {
@@ -9632,7 +9632,7 @@
   "severity": "Crash or API hazard",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "Bmad's SciBmad exporter binds the lattice's variable Context to the name `c1` after defining elements, overwriting any element whose name becomes `c1`. Bmad names are case-insensitive, so both `c1` and `C1` trigger the collision. Loading then fails with “Unable to construct Branch: entry 2 of elements is a Context{Any}”, while the same lattice with element name `c2` loads. A Branch named `c1` instead overwrites the Context and also prevents loading; renaming only the generated Context binding and its final reference makes the tested collisions load. The exporter gives no incomplete-translation warning, so affected Bmad users discover the problem at load.",
+  "summary": "Bmad's SciBmad exporter binds the lattice's variable Context to the name `c1` after defining elements, overwriting any element whose name becomes `c1`. Bmad names are case-insensitive, so both `c1` and `C1` trigger the collision. Loading then fails with “Unable to construct Branch: entry 2 of elements is a Context{Any}”, while the same lattice with element name `c2` loads. A Branch named `c1` instead overwrites the Context and also prevents loading; renaming only the generated Context binding and its final reference makes the tested collisions load. The exporter gives no incomplete-translation warning.",
   "justification": null,
   "locations": [
    {

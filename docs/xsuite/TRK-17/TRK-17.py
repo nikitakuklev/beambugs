@@ -5,9 +5,8 @@ from that origin, so particles outside the aperture survive. Independent convex 
 give the correct acceptance, and writing the same geometry as centered vertices plus an element
 translation restores it. For a rectangle spanning 4–8 mm horizontally and ±1.5 mm vertically before
 rotation, 358 of 2114 sampled particles survive instead of 56, and all 302 false survivors lie in
-the spurious 4 mm-radius disk. Both vertex orderings and line tracking are affected. Source
-inspection also finds that on GPU a particle exactly at the local origin bypasses the test; GPU
-execution is untested.
+the spurious 4 mm-radius disk. The error occurs for both vertex orderings and in line tracking.
+Source inspection also finds that on GPU a particle exactly at the local origin bypasses the test.
 
 The script tracks 2114 deterministic positions per shape through off-origin convex rectangle,
 triangle and pentagon apertures with rotated vertices, in 36 configurations covering both vertex

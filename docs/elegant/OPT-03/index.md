@@ -9,13 +9,13 @@ hide:
 | | |
 |---|---|
 | Code | [Elegant](../index.md) · Optics |
-| Priority | P2 |
+| Priority | P1 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [`incrementRadIntegrals`, CCBEND branch, src/twiss.cc:3091–3102](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3091-L3102)<br>[the generic bend branch, src/twiss.cc:3331–3335](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3331-L3335)<br>[the common per-element output, src/twiss.cc:3346–3351](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3346-L3351)<br>[`radiation_integrals` option, manual, doc/elegant.tex:8092–8095](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8092-L8095) |
 
-With `twiss_output`, `radiation_integrals=1` and `n_periods` greater than 1, Elegant adds, for CCBEND (canonical combined-function bend) elements, the integrals I₁ to I₅ of one period to the totals without multiplying by `n_periods`, although the per-element contributions are multiplied. For a cell of two 1 m bends with curvature 0.1 m⁻¹ at 6000 mₑc, I₂ must be 0.02000 m⁻¹ for one period and 0.04000 m⁻¹ for two, but Elegant writes 0.02000 m⁻¹ for both. The energy loss per turn then stays at 24.88 keV instead of doubling to 49.77 keV, and the damping times double instead of staying unchanged. The same cell with SBEN bends is correct. Users of repeated CCBEND cells are affected.
+With `twiss_output`, `radiation_integrals=1` and `n_periods` greater than 1, Elegant adds, for CCBEND (canonical combined-function bend) elements, the integrals I₁ to I₅ of one period to the totals without multiplying by `n_periods`, although the per-element contributions are multiplied. For a cell of two 1 m bends with curvature 0.1 m⁻¹ at 6000 mₑc, I₂ must be 0.02000 m⁻¹ for one period and 0.04000 m⁻¹ for two, but Elegant writes 0.02000 m⁻¹ for both. The energy loss per turn then stays at 24.88 keV instead of doubling to 49.77 keV, and the damping times double instead of staying unchanged. The same cell with SBEN bends is correct.
 
 ??? example "Reproducer: OPT-03.py"
 
@@ -30,8 +30,7 @@ With `twiss_output`, `radiation_integrals=1` and `n_periods` greater than 1, Ele
     For a cell of two 1 m bends with curvature 0.1 m⁻¹ at 6000 mₑc, I₂ must be 0.02000 m⁻¹ for one
     period and 0.04000 m⁻¹ for two, but Elegant writes 0.02000 m⁻¹ for both. The energy loss per turn
     then stays at 24.88 keV instead of doubling to 49.77 keV, and the damping times double instead of
-    staying unchanged. The same cell with SBEN bends is correct. Users of repeated CCBEND cells are
-    affected.
+    staying unchanged. The same cell with SBEN bends is correct.
 
     The script runs the same three-meter cell (two quadrupoles and two 1 m bends, 6000 mₑc) with
     `n_periods` = 1 and 2, in serial Elegant (and with `--mpi` in 3-rank Pelegant). For one period it
@@ -316,6 +315,9 @@ With `twiss_output`, `radiation_integrals=1` and `n_periods` greater than 1, Ele
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

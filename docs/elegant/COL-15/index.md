@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [RIGID_UNTIL_PASS definition, track_data.c:2278](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2278)<br>[kick application, ftrfmode.c:536–564](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ftrfmode.c#L536-L564)<br>[FTRFMODE dispatch, do_tracking.c:2418](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2418)<br>[binned gate, trfmode.c:512](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trfmode.c#L512)<br>[binless gate, trfmode.c:898](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trfmode.c#L898) |
 
-FTRFMODE, a dipole resonator with modes read from a file, ignores RIGID_UNTIL_PASS, which should prevent beam kicks until the specified pass. On the first pass, settings 1 and 9 produce full kicks identical to setting 0, while an equivalent single-mode TRFMODE leaves the beam unchanged. For a 16-electron bunch with momentum 750 mₑc, charge 0.7000 nC and horizontal offset 8.000 mm, an 800.0 MHz mode with quality factor Q = 12 and shunt impedance Rₛ = 6×10⁷ Ω/m produces momentum changes up to 0.02984 mₑc and horizontal slope changes up to 1.557×10⁻⁴ where none are allowed. Users delaying beam perturbations during field buildup are affected.
+FTRFMODE, a dipole resonator with modes read from a file, ignores RIGID_UNTIL_PASS, which should prevent beam kicks until the specified pass. On the first pass, settings 1 and 9 produce full kicks identical to setting 0, while an equivalent single-mode TRFMODE leaves the beam unchanged. For a 16-electron bunch with momentum 750 mₑc, charge 0.7000 nC and horizontal offset 8.000 mm, an 800.0 MHz mode with quality factor Q = 12 and shunt impedance Rₛ = 6×10⁷ Ω/m produces momentum changes up to 0.02984 mₑc and horizontal slope changes up to 1.557×10⁻⁴ where none are allowed.
 
 ??? example "Reproducer: COL-15.py"
 
@@ -30,7 +30,6 @@ FTRFMODE, a dipole resonator with modes read from a file, ignores RIGID_UNTIL_PA
     16-electron bunch with momentum 750 mₑc, charge 0.7000 nC and horizontal offset 8.000 mm, an
     800.0 MHz mode with quality factor Q = 12 and shunt impedance Rₛ = 6×10⁷ Ω/m produces momentum
     changes up to 0.02984 mₑc and horizontal slope changes up to 1.557×10⁻⁴ where none are allowed.
-    Users delaying beam perturbations during field buildup are affected.
 
     The script tracks the same bunch through one FTRFMODE and through the equivalent single-mode TRFMODE
     for one pass with RIGID_UNTIL_PASS = 0, 1 and 9, and records the largest momentum and slope

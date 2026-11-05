@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [initial beta, track_rf.c:166](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_rf.c#L166)<br>[drift timing, track_rf.c:173–189](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_rf.c#L173-L189)<br>[kick and momentum update, track_rf.c:198–215](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_rf.c#L198-L215)<br>[final beta, track_rf.c:217–222](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_rf.c#L217-L222)<br>[RFDF kick model, rfdf.tex:15–33](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfdf.tex#L15-L33)<br>[CUDA RFDF kernel, gpu_cuda_runtime.cu:3639–3684](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/gpu/gpu_cuda_runtime.cu#L3639-L3684) |
 
-RFDF computes particle speed at entrance and reuses it for drift timing after kicks change the momentum. For one midpoint kick, vacuum kinematics require the final half drift to use the outgoing speed, as a phase-matched drift–thin-deflector–drift control confirms. In the tested magnetic-deflection mode, a 0.2 m, 300 kV, 100 MHz element with an electron entering at x = 0.04 m and momentum p = 2 mₑc gives 747.7 ps instead of 746.0 ps, 1.671 ps late. At p = 100 mₑc the error is 15.42 as. Low-energy beams receiving a longitudinal kick are most affected.
+RFDF computes particle speed at entrance and reuses it for drift timing after kicks change the momentum. For one midpoint kick, vacuum kinematics require the final half drift to use the outgoing speed, as a phase-matched drift–thin-deflector–drift control confirms. In magnetic-deflection mode, a 0.2 m, 300 kV, 100 MHz element with an electron entering at x = 0.04 m and momentum p = 2 mₑc gives 747.7 ps instead of 746.0 ps, 1.671 ps late. At p = 100 mₑc the error is 15.42 as.
 
 ??? example "Reproducer: TRK-06.py"
 
@@ -27,9 +27,9 @@ RFDF computes particle speed at entrance and reuses it for drift timing after ki
 
     RFDF computes particle speed at entrance and reuses it for drift timing after kicks change the
     momentum. For one midpoint kick, vacuum kinematics require the final half drift to use the outgoing
-    speed, as a phase-matched drift–thin-deflector–drift control confirms. In the tested magnetic-deflection mode, a 0.2 m, 300 kV, 100 MHz element with an electron entering at x = 0.04 m and
+    speed, as a phase-matched drift–thin-deflector–drift control confirms. In magnetic-deflection mode, a 0.2 m, 300 kV, 100 MHz element with an electron entering at x = 0.04 m and
     momentum p = 2 mₑc gives 747.7 ps instead of 746.0 ps, 1.671 ps late. At p = 100 mₑc the error is
-    15.42 as. Low-energy beams receiving a longitudinal kick are most affected.
+    15.42 as.
 
     The script tracks identical particles through a one-kick RFDF and compares the exit time with
     the exact time of flight over the two half drifts, built from the entrance speed and the exit speed
@@ -312,6 +312,9 @@ RFDF computes particle speed at entrance and reuses it for drift timing after ki
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source reading, not executed for this claim |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

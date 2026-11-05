@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`linearSCKick`, insertSCeffects.cc:510–529](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L510-L529)<br>[`accumulateSCMULT`, insertSCeffects.cc:837–856](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L837-L856)<br>[slice branch of `trackThroughSCMULT`, insertSCeffects.cc:377–472](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L377-L472)<br>[slicing options, elegant.tex:4504–4511](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4504-L4511)<br>[linear field, scmult.tex:10–24](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/scmult.tex#L10-L24) |
 
-With constant matched optics, linear SCMULT space-charge forces, slicing on (`slice_duration` > 0), interpolation off and slice populations meeting `slice_threshold`, Elegant normalizes each slice's field gradient by the whole bunch's rms widths. The manual instead treats each slice independently; for transverse rms widths σₓ and σᵧ, its horizontal gradient is proportional to 1/[σₓ(σₓ + σᵧ)], as equal-width and isolated-slice controls confirm. For two equal-charge slices whose widths differ by a factor of 2, the narrow slice's gradient is 9.742×10⁻⁷ m⁻¹ instead of 2.436×10⁻⁶ m⁻¹, 2.500 times too weak, while the wide slice's is 1.600 times too strong. Ring simulations with unequal slice sizes are affected.
+With constant matched optics, linear SCMULT space-charge forces, slicing on (`slice_duration` > 0), interpolation off and slice populations meeting `slice_threshold`, Elegant normalizes each slice's field gradient by the whole bunch's rms widths. The manual instead treats each slice independently; for transverse rms widths σₓ and σᵧ, its horizontal gradient is proportional to 1/[σₓ(σₓ + σᵧ)], as equal-width and isolated-slice controls confirm. For two equal-charge slices whose widths differ by a factor of 2, the narrow slice's gradient is 9.742×10⁻⁷ m⁻¹ instead of 2.436×10⁻⁶ m⁻¹, 2.500 times too weak, while the wide slice's is 1.600 times too strong.
 
 ??? example "Reproducer: COL-21.py"
 
@@ -31,8 +31,7 @@ With constant matched optics, linear SCMULT space-charge forces, slicing on (`sl
     for transverse rms widths σₓ and σᵧ, its horizontal gradient is proportional to 1/[σₓ(σₓ + σᵧ)], as
     equal-width and isolated-slice controls confirm. For two equal-charge slices whose widths differ by a
     factor of 2, the narrow slice's gradient is 9.742×10⁻⁷ m⁻¹ instead of 2.436×10⁻⁶ m⁻¹, 2.500 times
-    too weak, while the wide slice's is 1.600 times too strong. Ring simulations with unequal slice sizes
-    are affected.
+    too weak, while the wide slice's is 1.600 times too strong.
 
     The script tracks one turn around a ring of sixteen identical sector bends, with constant matched
     beta functions, and a single SCMULT at its end; the beam is two clouds of 128 matched particles,

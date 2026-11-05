@@ -17,7 +17,7 @@ hide:
 | Pull request | [[gh:https://github.com/bmad-sim/BeamTracking.jl/pull/369]], fix |
 | Source | [src/kernels/sagan_cavity.jl:19–22](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L19-L22)<br>[src/kernels/sagan_cavity.jl:85–88](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L85-L88)<br>[src/kernels/sagan_cavity.jl:101–105](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L101-L105)<br>[ext/BeamTrackingBeamlinesExt/unpack_bl.jl:357–467](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L357-L467)<br>[ext/BeamTrackingBeamlinesExt/unpack_bl.jl:421](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L421)<br>[ext/BeamTrackingBeamlinesExt/unpack_bl.jl:465](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L465)<br>[ext/BeamTrackingBeamlinesExt/unpack_bl.jl:133–136](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L133-L136)<br>[src/types.jl:41](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L41) |
 
-An accelerating `SaganCavity` renormalizes particle coordinates to the exit reference momentum but leaves the bunch's `p_over_q_ref` at its entrance value, so the next element repeats the reference shift and erases the energy gain. The bunch normalization contract requires the synchronous particle to keep the gain at zero relative momentum offset δ, and ordinary RF tracking with the same reference-energy change does so. A proton with reference momentum p₀c = 2mc², twice its rest energy, crossing a zero-length 1.000 MV cavity and then a 1.000 m drift gains 0 instead of 1.000 MeV, and its δ becomes −5.954 × 10⁻⁴ instead of 0. Accelerating Sagan tracking with a constant reference is affected.
+An accelerating `SaganCavity` renormalizes particle coordinates to the exit reference momentum but leaves the bunch's `p_over_q_ref` at its entrance value, so the next element repeats the reference shift and erases the energy gain. The bunch normalization contract requires the synchronous particle to keep the gain at zero relative momentum offset δ, and ordinary RF tracking with the same reference-energy change does so. A proton with reference momentum p₀c = 2mc², twice its rest energy, crossing a zero-length 1.000 MV cavity and then a 1.000 m drift gains 0 instead of 1.000 MeV, and its δ becomes −5.954 × 10⁻⁴ instead of 0.
 
 ??? example "Reproducer: TRK-06.jl"
 
@@ -32,8 +32,7 @@ An accelerating `SaganCavity` renormalizes particle coordinates to the exit refe
     # particle to keep the gain at zero relative momentum offset δ, and ordinary RF tracking with the
     # same reference-energy change does so. A proton with reference momentum p₀c = 2mc², twice its rest
     # energy, crossing a zero-length 1.000 MV cavity and then a 1.000 m drift gains 0 instead of 1.000
-    # MeV, and its δ becomes −5.954 × 10⁻⁴ instead of 0. Accelerating Sagan tracking with a constant
-    # reference is affected.
+    # MeV, and its δ becomes −5.954 × 10⁻⁴ instead of 0.
     #
     # The script builds the documented `Branch` partition: a proton at p₀c = 2mc², then a zero-length 1
     # MV `SaganCavity` and a 1 m drift with reference energy gain `dE_ref` = 1 MeV. It tracks the

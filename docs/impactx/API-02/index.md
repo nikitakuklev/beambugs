@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Source | [`madx_to_impactx.py#L1681-L1697`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1681-L1697) |
 
-Importing a MAD-X `BEAM, PARTICLE=ION` with explicit `MASS` and `CHARGE` into ImpactX discards both in favor of a fixed default ion mass and charge, so the reference mass, charge, kinetic energy and rigidity are wrong before tracking starts. MAD-X documents independent mass and charge overrides for ions, and native MAD-X keeps them for this input. For an alpha particle, `BEAM, PARTICLE=ION, MASS=3.7273794, CHARGE=2, ENERGY=10` (GeV), ImpactX uses a mass of 939.6 MeV and charge 1, giving 9060 MeV kinetic energy instead of 6273 MeV. Ion beams that set their own mass and charge are affected, and the importer prints that it ignores them; an unrecognized particle name keeps them.
+Importing a MAD-X `BEAM, PARTICLE=ION` with explicit `MASS` and `CHARGE` into ImpactX discards both in favor of a fixed default ion mass and charge, so the reference mass, charge, kinetic energy and rigidity are wrong before tracking starts. MAD-X documents independent mass and charge overrides for ions, and native MAD-X keeps them for this input. For an alpha particle, `BEAM, PARTICLE=ION, MASS=3.7273794, CHARGE=2, ENERGY=10` (GeV), ImpactX uses a mass of 939.6 MeV and charge 1, giving 9060 MeV kinetic energy instead of 6273 MeV. The importer prints that it ignores `MASS` and `CHARGE`; an unrecognized particle name keeps them.
 
 ??? example "Reproducer: API-02.py"
 
@@ -29,8 +29,8 @@ Importing a MAD-X `BEAM, PARTICLE=ION` with explicit `MASS` and `CHARGE` into Im
     rigidity are wrong before tracking starts. MAD-X documents independent mass and charge overrides for
     ions, and native MAD-X keeps them for this input. For an alpha particle, `BEAM, PARTICLE=ION,
     MASS=3.7273794, CHARGE=2, ENERGY=10` (GeV), ImpactX uses a mass of 939.6 MeV and charge 1, giving
-    9060 MeV kinetic energy instead of 6273 MeV. Ion beams that set their own mass and charge are
-    affected, and the importer prints that it ignores them; an unrecognized particle name keeps them.
+    9060 MeV kinetic energy instead of 6273 MeV. The importer prints that it ignores `MASS` and
+    `CHARGE`; an unrecognized particle name keeps them.
 
     The script loads `BEAM, PARTICLE=ION, MASS=3.7273794, CHARGE=2` with `ENERGY` = 10 and 12.5 GeV
     through `RefPart.load_file()` and compares the reference mass, charge and kinetic energy with the

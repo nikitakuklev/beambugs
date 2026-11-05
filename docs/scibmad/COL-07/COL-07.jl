@@ -5,10 +5,9 @@
 # Electrostatics puts an equal and opposite image charge at the mirror point across the cathode
 # plane, and a mesh with consistent manual bounds reproduces that analytic field. For 1.000 nC at
 # 100.0 µm from the cathode on a 32³ mesh, the computed axial field is 1.401 times the correct
-# value, matching an image 31.00 µm closer than it should be. Single-particle and
-# zero-longitudinal-spread inputs are affected, including the shipped cathode example, whose field
-# is 0.3106% high; inputs with distinct z values and consistent manual bounds avoid this
-# displacement.
+# value, matching an image 31.00 µm closer than it should be. The shipped cathode example falls in
+# this case, with a field 0.3106% high; inputs with distinct z values and consistent manual bounds
+# avoid this displacement.
 #
 # The script deposits 1 nC on the axis at z₀ = 100 µm and at 1 cm on a 32³ mesh with automatic
 # bounds from that single particle, solves with `at_cathode=true`, and compares the axial field with

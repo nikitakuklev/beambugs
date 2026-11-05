@@ -6,7 +6,6 @@ second-order dispersions that belongs to δ⁴. For a prescribed stable 10 m cel
 term T166 = 0.2 m (closed orbit x = 0.1 m·δ²) and path term T511 = 0.3 m⁻¹ (path length ∝ x²), the
 path is 10 m + 0.003 m·δ⁴, so `alphac3` must be 0, but Elegant writes 3.000×10⁻⁴. Tracking 12
 particles on the closed orbit reproduces the quartic path, and removing either term gives zero.
-Users optimizing or matching `alphac3` are affected; physical rings were not assessed.
 
 The script prescribes a stable 10 m cell as an explicit matrix with second-order dispersion and a
 quadratic path term, in serial Elegant (and with `--mpi` in 3-rank Pelegant). It compares the

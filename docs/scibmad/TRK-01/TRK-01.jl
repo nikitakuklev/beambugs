@@ -5,8 +5,7 @@
 # them. That phase reference is documented as the maximum-accelerating phase, and `SaganCavity`
 # tracking gives the required energy gain. A proton or electron with reference momentum p₀c = 2mc²,
 # twice its rest energy, crossing a 1.000 µm, 1.000 kV cavity loses 1.000 keV instead of gaining
-# 1.000 keV. Every linac or energy-gain setup that uses ordinary RF with the default phase reference
-# is affected; `BelowTransition` and `AboveTransition` have the correct phase on this path.
+# 1.000 keV. `BelowTransition` and `AboveTransition` have the correct phase on this path.
 #
 # The script tracks a proton and an electron with p₀c = 2mc², starting on the reference orbit,
 # through a 1000 V, 1 MHz cavity at `phi0 = 0` with `zero_phase = PhaseRef.Accelerating`: 1 µm long

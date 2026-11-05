@@ -6,8 +6,7 @@ momentum p₀ = 4200 mₑc, with entrance slope x′ = 0.004 and horizontal slop
 unwanted relative-momentum loss is 1.450×10⁻⁷. A separate small-angle radiation calculation agrees
 with the classical-only control within 10⁻¹⁶, while the radiation-free control preserves momentum.
 With paired random seeds, the ISR-only and both-enabled runs give identical particle momenta
-instead of differing by that loss, affecting simulations requesting excitation without mean energy
-loss.
+instead of differing by that loss.
 
 The script tracks 24 identical electrons (p0 = 4200 mₑc, entrance slope 0.004) through one slice of
 a 0.6 m GKICKMAP whose map is a constant kick of 0.025, for the four combinations of the

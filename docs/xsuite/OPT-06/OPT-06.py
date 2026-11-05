@@ -6,7 +6,7 @@ gives the correct value, and moving an otherwise unchanged range along s cannot 
 `LineSegmentMap` with horizontal tune Qₓ(δ) = 0.2 + 1.2δ + 1.2δ², δ being the relative momentum
 deviation, a 10 m drift placed before it, outside the selected range and not tracked, changes the
 reported `ddqx` (d²Qₓ/dδ²) from 2.400 to 86.40, a factor of 36.00 for both finite-difference steps
-tried. Constant-energy periodic ranges that start after s = 0 are affected; the tune, the
+tried. The error arises for constant-energy periodic ranges that start after s = 0; the tune, the
 first-order chromaticity and the drift-free control are correct.
 
 The script places that `LineSegmentMap` after a drift of length 0 or 10 m, ending at a marker, and

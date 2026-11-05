@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on xdeps main (`6484795`) |
 | Source | [Manager.copy, tasks.py:518–527](https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/tasks.py#L518-L527)<br>[Manager.set_value](https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/tasks.py#L239-L253) |
 
-In Xdeps, the dependency-graph library behind Xtrack's deferred expressions, `Manager.copy` deep-copies the containers, the tasks (expressions computing dependent values) and the dependency maps separately, so the returned containers and tasks refer to different copies and references into the copy stay bound to a hidden manager. `Manager.set_value` promises to update the target and run its dependent tasks, and `copy.deepcopy` of the whole manager keeps the copied graph connected. With `a.output = a.input * b.gain`, `a.input` = 4 and `b.gain` = 2.5, setting the copied gain to 7 leaves the copied output at 10 instead of 28; redefining it as `9 * a.input` and setting the input to 6 then gives 42 instead of 54. Users who copy a dependency manager directly are affected; no Xtrack element, matching or tracking path was tested.
+In Xdeps, the dependency-graph library behind Xtrack's deferred expressions, `Manager.copy` deep-copies the containers, the tasks (expressions computing dependent values) and the dependency maps separately, so the returned containers and tasks refer to different copies and references into the copy stay bound to a hidden manager. `Manager.set_value` promises to update the target and run its dependent tasks, and `copy.deepcopy` of the whole manager keeps the copied graph connected. With `a.output = a.input * b.gain`, `a.input` = 4 and `b.gain` = 2.5, setting the copied gain to 7 leaves the copied output at 10 instead of 28; redefining it as `9 * a.input` and setting the input to 6 then gives 42 instead of 54.
 
 ??? example "Reproducer: IO-07.py"
 
@@ -31,8 +31,7 @@ In Xdeps, the dependency-graph library behind Xtrack's deferred expressions, `Ma
     its dependent tasks, and `copy.deepcopy` of the whole manager keeps the copied graph connected. With
     `a.output = a.input * b.gain`, `a.input` = 4 and `b.gain` = 2.5, setting the copied gain to 7 leaves
     the copied output at 10 instead of 28; redefining it as `9 * a.input` and setting the input to 6
-    then gives 42 instead of 54. Users who copy a dependency manager directly are affected; no Xtrack
-    element, matching or tracking path was tested.
+    then gives 42 instead of 54.
 
     The script builds a manager with containers `a = {input: 4}` and `b = {gain: 2.5}` linked by
     `a.output = a.input * b.gain` and copies it with `Manager.copy`. In the copy it sets the gain to 7

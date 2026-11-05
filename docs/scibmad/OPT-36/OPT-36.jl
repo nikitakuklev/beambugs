@@ -7,8 +7,7 @@
 # Copying from total/parameter orders (6, 2) to (3, 1) leaves a stale constant 5.000 and a
 # coefficient 1-norm error of 33.00. Copying a rotation over storage that held a sextupole shear
 # gives a local Jacobian determinant of 0.6500 at x = 0.125 instead of 1, violating symplecticity.
-# Explicit clearing, fresh destinations and same-descriptor copies pass; corruption of measured
-# lattice optics remains unestablished.
+# Explicit clearing, fresh destinations and same-descriptor copies pass.
 #
 # The script copies the admitted part of 2x − 3pa + 0.25x²p − 4a² + 6x⁴, with parameter a, into a
 # destination holding 5 + 11p + 13a² + 17x³ + 19x²p + 23x⁵, in both cap directions, for real and

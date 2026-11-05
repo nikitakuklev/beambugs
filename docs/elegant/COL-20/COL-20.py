@@ -5,8 +5,7 @@ tracking under MPI (Pelegant) merges their statistics. Reordering the same input
 kicks; serial tracking and MPI with both bunches on both ranks agree with the manual's
 separate-bunch force. For two 30.00 pC bunches 0.4000 ns apart, the first particle's outward
 horizontal slope-kick magnitude is 2.130×10⁻⁷ rather than 4.630×10⁻⁷, 53.99% too small; at
-0.8000 ns it is 73.49% too small. Multibunch space-charge ring simulations with such row
-distributions are affected.
+0.8000 ns it is 73.49% too small.
 
 The script tracks two identical 24-particle bunches through one SCMULT of a closed four-sector ring,
 once with the input rows interleaved, so that every tracking rank holds half of each bunch, and once

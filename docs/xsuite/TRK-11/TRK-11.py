@@ -5,9 +5,8 @@ the relative momentum deviation δ. Gauss's law and the magnetic force of the co
 electron beam require the normalized kick to scale with the particle's charge-to-mass ratio relative
 to the reference species, χ, and the physical velocity factor. For a 3.7 A, 1.3 m, 10 kV lens with
 radii 1 and 4 mm, a 1 GeV/c particle at (x, y) = (2, 0.4) mm with twice the reference charge and the
-same mass gets normalized horizontal momentum −1.173 × 10⁻⁴ instead of −4.693 × 10⁻⁴. Non-reference
-species and off-momentum reference particles are affected; at δ = +20% the reference-species kick is
-1.200 times too large.
+same mass gets normalized horizontal momentum −1.173 × 10⁻⁴ instead of −4.693 × 10⁻⁴. At δ = +20%
+the reference-species kick is 1.200 times too large.
 
 The script tracks particles with several charge and mass ratios, one of them at δ = 0.2, through the
 lens and compares both transverse kicks with the Lorentz force of the enclosed electron current

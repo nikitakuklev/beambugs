@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [applySCKick, insertSCeffects.cc:53–67](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L53-L67)<br>[unconditional kicks, insertSCeffects.cc:64–65](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L64-L65)<br>[nonlinearSCKick, insertSCeffects.cc:531–605](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L531-L605)<br>[switch storage, insertSCeffects.cc:124–125](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L124-L125)<br>[linear gating, insertSCeffects.cc:521–527](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L521-L527)<br>[switch description, elegant.tex:4485–4488](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4485-L4488)<br>[namelist defaults, insertSCeffects.nl:16–19](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.nl#L16-L19) |
 
-With `insert_sceffects` set to `nonlinear=1`, SCMULT ignores the `horizontal` and `vertical` switches that enable space charge in each plane. For unsliced Gaussian bunches, successful nonlinear evaluations give the same kicks with either or both planes disabled; linear controls obey the switches. In the round-beam reproduction with 1 nC of electrons at 10 mₑc and 1 mm rms transverse sizes, a sampled particle receives −3.309×10⁻⁵ rad in each plane after a 0.5 m drift even with both switches off, instead of zero. Nonlinear studies that disable a plane are affected.
+With `insert_sceffects` set to `nonlinear=1`, SCMULT ignores the `horizontal` and `vertical` switches that enable space charge in each plane. For unsliced Gaussian bunches, successful nonlinear evaluations give the same kicks with either or both planes disabled; linear controls obey the switches. In the round-beam reproduction with 1 nC of electrons at 10 mₑc and 1 mm rms transverse sizes, a sampled particle receives −3.309×10⁻⁵ rad in each plane after a 0.5 m drift even with both switches off, instead of zero.
 
 ??? example "Reproducer: COL-04.py"
 
@@ -24,7 +24,7 @@ With `insert_sceffects` set to `nonlinear=1`, SCMULT ignores the `horizontal` an
     ```python
     """COL-04: Nonlinear space charge ignores the horizontal and vertical plane switches
 
-    With `insert_sceffects` set to `nonlinear=1`, SCMULT ignores the `horizontal` and `vertical` switches that enable space charge in each plane. For unsliced Gaussian bunches, successful nonlinear evaluations give the same kicks with either or both planes disabled; linear controls obey the switches. In the round-beam reproduction with 1 nC of electrons at 10 mₑc and 1 mm rms transverse sizes, a sampled particle receives −3.309×10⁻⁵ rad in each plane after a 0.5 m drift even with both switches off, instead of zero. Nonlinear studies that disable a plane are affected.
+    With `insert_sceffects` set to `nonlinear=1`, SCMULT ignores the `horizontal` and `vertical` switches that enable space charge in each plane. For unsliced Gaussian bunches, successful nonlinear evaluations give the same kicks with either or both planes disabled; linear controls obey the switches. In the round-beam reproduction with 1 nC of electrons at 10 mₑc and 1 mm rms transverse sizes, a sampled particle receives −3.309×10⁻⁵ rad in each plane after a 0.5 m drift even with both switches off, instead of zero.
 
     The script tracks 512 electrons through one drift of a closed four-bend ring with an SCMULT after
     it, with round and 2:1 elliptical beams and each plane selection, and reads each particle's slope
@@ -478,6 +478,10 @@ With `insert_sceffects` set to `nonlinear=1`, SCMULT ignores the `horizontal` an
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Found | `gpt-6-astra` | xhigh | 2026-11-04 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

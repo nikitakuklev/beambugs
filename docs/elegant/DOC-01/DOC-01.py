@@ -4,8 +4,7 @@ The Elegant manual gives the path length as s = s₀ + αc L δ + αc2 L δ² + 
 relative momentum offset, for the Twiss outputs `alphac`, `alphac2` and `alphac3`. The last power
 should be 3: `alphac3` is the coefficient of δ³. For a prescribed one-turn map of length 10 m with
 path 10 m + 2 m·δ² + 7 m·δ³, Elegant writes αc = 0, αc2 = 0.2000 and αc3 = 0.7000, and tracking
-gives 10.01 m at δ = -0.1 and 10.03 m at δ = +0.1; the printed equation predicts 10.09 m at both.
-Users who rebuild the path length from the printed equation are affected.
+gives 10.01 m at δ = −0.1 and 10.03 m at δ = +0.1; the printed equation predicts 10.09 m at both.
 
 The script reads the compaction equation from `doc/elegant.tex` of the Elegant source checkout named
 by `ELEGANT_SOURCE` and exits if it is missing or unrecognized. It prescribes the one-turn map with

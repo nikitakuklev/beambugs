@@ -6,7 +6,7 @@ every slice, so each extra slice adds spurious bending. At the reference momentu
 reference orbit must stay there for any number of slices. For a 1 m element with `knl[0]` = `hxl` =
 0.01 rad and a 1 GeV/c proton, four slices give x = 15.00 mm and normalized horizontal momentum `px`
 = 0.03000 instead of zero for both. The unsliced element and a single slice keep the particle on
-axis; thick multipoles with a nonzero reference angle sliced into several pieces are affected.
+axis.
 
 The script tracks the reference proton from the origin through the element unsliced and with
 `Teapot(1)`, `Teapot(2)` and `Teapot(4)` slicing, and expects x = `px` = 0 each time to an absolute

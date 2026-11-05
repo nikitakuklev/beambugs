@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [`updateSpinForSolenoid`, spinUpdate.c:192–206](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/spinUpdate.c#L192-L206)<br>[charge argument, spinUpdate.c:204](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/spinUpdate.c#L204)<br>[kernel contract, spinUpdate.c:4–19](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/spinUpdate.c#L4-L19)<br>[angular velocity, spinUpdate.c:98–112](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/spinUpdate.c#L98-L112)<br>[`process_particle_command`, elegant.c:3252–3308](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3252-L3308)<br>[SOLE B passed unchanged, spinUpdate.c:194–195](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/spinUpdate.c#L194-L195)<br>[parameter B, track_data.c:556](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L556)<br>[KS branch, spinUpdate.c:197](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/spinUpdate.c#L197)<br>[B to KS for tracking, do_tracking.c:2358–2382](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2358-L2382)<br>[B to KS for the matrix, compute_matrices.c:1552–1557](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L1552-L1557)<br>[spin_tracking, elegant.tex:7291–7292](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7291-L7292)<br>[spin-aware elements, elegant.tex:11191–11192](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L11191-L11192) |
 
-With spin tracking enabled, a SOLE solenoid specified by magnetic field B rotates the transverse spin of on-axis positrons and protons in the opposite sense to the Thomas–BMT prediction. For a positron with normalized momentum βγ = 100 in a 0.5000 m solenoid at B = 0.1000 T, initial spin (1, 0, 0) gives vertical spin component sᵧ = +0.2895 instead of −0.2895. Giving the same field as solenoid strength KS agrees with the analytic result, as does the electron control. The error affects polarization transport through field-specified solenoids for the tested positive-charge species.
+With spin tracking enabled, a SOLE solenoid specified by magnetic field B rotates the transverse spin of on-axis positrons and protons in the opposite sense to the Thomas–BMT prediction. For a positron with normalized momentum βγ = 100 in a 0.5000 m solenoid at B = 0.1000 T, initial spin (1, 0, 0) gives vertical spin component sᵧ = +0.2895 instead of −0.2895. Giving the same field as solenoid strength KS agrees with the analytic result, as does the electron control.
 
 ??? example "Reproducer: TRK-11.py"
 
@@ -28,9 +28,7 @@ With spin tracking enabled, a SOLE solenoid specified by magnetic field B rotate
     spin of on-axis positrons and protons in the opposite sense to the Thomas–BMT prediction. For a
     positron with normalized momentum βγ = 100 in a 0.5000 m solenoid at B = 0.1000 T, initial spin
     (1, 0, 0) gives vertical spin component sᵧ = +0.2895 instead of −0.2895. Giving the same field as
-    solenoid strength KS agrees with the analytic result, as does the electron control. The error
-    affects polarization transport through field-specified solenoids for the tested positive-charge
-    species.
+    solenoid strength KS agrees with the analytic result, as does the electron control.
 
     The script sends on-axis particles with spin (1, 0, 0) through a 0.5 m SOLE with B = ±0.1 T, with
     spin tracking on, and compares the final spin with the exact precession angle in a uniform
@@ -332,6 +330,7 @@ With spin tracking enabled, a SOLE solenoid specified by magnetic field B rotate
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-11-04 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

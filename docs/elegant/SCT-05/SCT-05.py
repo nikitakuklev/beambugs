@@ -6,7 +6,6 @@ collisions with target electrons must transfer positive energy. For 20000 electr
 mₑc crossing 0.01 m of dilute helium, a Poisson approximation to the option's event rate predicts
 6894 ± 67.21 electrons losing energy, but recoil-only output is bit-identical to all-off output.
 Enabling bremsstrahlung activates thousands of recoil losses, isolating the activation failure.
-Users enabling recoil alone are affected.
 
 The script tracks 20000 electrons through the target with every combination of ELECTRON_RECOIL and
 NUCLEAR_BREMSSTRAHLUNG and counts the electrons whose momentum drops. It compares each count with

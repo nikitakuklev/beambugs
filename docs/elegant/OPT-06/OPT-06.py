@@ -5,8 +5,7 @@ transport proportional to δ², where δ is the relative momentum offset. For le
 strength K₁ = 0.6 m⁻², exact transport has R₁₁(δ) = cos(u/√(1+δ)), with u = √(K₁) L, giving U₁₆₆₁ =
 −0.07222; Elegant writes −0.07245, with relative errors across both planes of 0.1853% to 0.6598%. In
 a one-period FODO cell using cubic lens maps, d²νₓ/dδ² and d³νₓ/dδ³ are 0.1300 and −0.07925 instead
-of 0.1268 and −0.08637, where νₓ is the horizontal tune. Users of third-order quadrupole optics and
-higher-order chromaticities are affected.
+of 0.1268 and −0.08637, where νₓ is the horizontal tune.
 
 The script builds `QUAD,L=0.5,K1=0.6` with a third-order map in serial Elegant (and with `--mpi` in
 3-rank Pelegant) and compares the transverse 2x2 blocks of the written map, as Taylor series in δ,

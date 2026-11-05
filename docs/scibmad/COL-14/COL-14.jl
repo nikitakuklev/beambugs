@@ -7,8 +7,7 @@
 # preserves an initially longitudinal spin. For off-axis protons initially moving and polarized
 # longitudinally, with P₀c (reference momentum times light speed) twice the rest energy, a 0.4300 m
 # element of normalized solenoid strength 1.400 m⁻¹ and RF energy gain 1.877 keV produces a maximum
-# transverse spin of 2.727 × 10⁻⁷ instead of zero. Zero-solenoid and pure-solenoid controls pass;
-# effects at finite active length remain unmeasured.
+# transverse spin of 2.727 × 10⁻⁷ instead of zero. Zero-solenoid and pure-solenoid controls pass.
 #
 # The script tracks 16 off-axis particles whose canonical momenta equal the vector potential, so
 # that they move longitudinally, through Sagan RF cavities with a superimposed solenoid, sweeping

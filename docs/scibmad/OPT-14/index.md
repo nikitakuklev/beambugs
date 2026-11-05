@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`src/rootfinders/newton.jl:254-278`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L254-L278)<br>[`:266`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L266)<br>[`:274`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L274)<br>[`:276`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L276)<br>[`newton.jl:172-179`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L172-L179)<br>[`SciBmad.jl/src/closed_orbit.jl:135`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/closed_orbit.jl#L135)<br>[`one-torus.jl:64-69`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/experimental/one-torus.jl#L64-L69) |
 
-BatchSolve's batched `newton` returns stale `f` and `jac` for lanes (problems in the batch) that the relative-step test accepts in the final iteration: it updates the iterate, then exits before recomputing the promised final residual and Jacobian. For x² − 2 from x = 1 with `reltol = 0.4`, the accepted iterate is 1.5, but the returned residual and Jacobian are −1.000 and 2.000 instead of 0.2500 and 3.000; the non-batched solver returns the latter values. The accepted iterate is unchanged by this diagnostic defect, and residual-test exits are unaffected. By source inspection, batched closed-orbit finding uses this path and experimental aperture code reads the Jacobian as I − M, with M the one-turn matrix; aperture effects were not measured.
+BatchSolve's batched `newton` returns stale `f` and `jac` for lanes (problems in the batch) that the relative-step test accepts in the final iteration: it updates the iterate, then exits before recomputing the promised final residual and Jacobian. For x² − 2 from x = 1 with `reltol = 0.4`, the accepted iterate is 1.5, but the returned residual and Jacobian are −1.000 and 2.000 instead of 0.2500 and 3.000; the non-batched solver returns the latter values. The accepted iterate is unchanged by this diagnostic defect, and residual-test exits are unaffected. By source inspection, batched closed-orbit finding uses this path and experimental aperture code reads the Jacobian as I − M, with M the one-turn matrix.
 
 ??? example "Reproducer: OPT-14.jl"
 
@@ -32,7 +32,7 @@ BatchSolve's batched `newton` returns stale `f` and `jac` for lanes (problems in
     # of 0.2500 and 3.000; the non-batched solver returns the latter values. The accepted iterate is
     # unchanged by this diagnostic defect, and residual-test exits are unaffected. By source inspection,
     # batched closed-orbit finding uses this path and experimental aperture code reads the Jacobian as I
-    # − M, with M the one-turn matrix; aperture effects were not measured.
+    # − M, with M the one-turn matrix.
     #
     # The script solves f(x) = x² − 2 from x = 1 with `reltol = 0.4`, once with the batched solver (two
     # lanes) and once with the non-batched solver as the control. One step gives x = 1.5, and |Δx| = 0.5

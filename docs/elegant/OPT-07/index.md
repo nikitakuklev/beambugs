@@ -9,14 +9,14 @@ hide:
 | | |
 |---|---|
 | Code | [Elegant](../index.md) · Optics |
-| Priority | P2 |
+| Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`computeHigherOrderChromaticities`, one-cell map construction and trace, chrom.c:928–942](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/chrom.c#L928-L942)<br>[trace fit and chromaticity formulas, chrom.c:949–956](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/chrom.c#L949-L956)<br>[`propagate_twiss_parameters` has already multiplied by `n_periods`, twiss.cc:806–807](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L806-L807)<br>[multiplies the resulting `chrom2` and `chrom3` by `n_periods` again, twiss.cc:2296–2299](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2296-L2299)<br>[the same scaling, twiss.cc:2344–2347](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2344-L2347)<br>[`dnux/dp2` and `dnux/dp3` as d²ν/dδ² and d³ν/dδ³, doc/elegant.tex:8228–8231](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8228-L8231)<br>[`n_periods` field, src/twiss.nl:77](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.nl#L77) |
 
-With `higher_order_chromaticity=1` and `n_periods=2`, Elegant's `twiss_output` converts single-cell trace derivatives using the repeated lattice's phase, producing wrong second and third chromaticities. On a continuous phase branch, a stable cell's tune ν and every momentum derivative must scale with the period count. For 0.5 m `KQUAD`s with K1 = 0.6 and −0.54 m⁻² and 1 m drifts, one period gives d²νₓ/dδ² = 0.1268 and d³νₓ/dδ³ = −0.08637, where δ is the relative momentum offset. Two periods require 0.2537 and −0.1727, but the output gives 0.1865 and −0.3286; the tune and first chromaticity scale correctly. Users computing higher chromaticities of repeated cells are affected.
+With `higher_order_chromaticity=1` and `n_periods=2`, Elegant's `twiss_output` converts single-cell trace derivatives using the repeated lattice's phase, producing wrong second and third chromaticities. On a continuous phase branch, a stable cell's tune ν and every momentum derivative must scale with the period count. For 0.5 m `KQUAD`s with K1 = 0.6 and −0.54 m⁻² and 1 m drifts, one period gives d²νₓ/dδ² = 0.1268 and d³νₓ/dδ³ = −0.08637, where δ is the relative momentum offset. Two periods require 0.2537 and −0.1727, but the output gives 0.1865 and −0.3286; the tune and first chromaticity scale correctly.
 
 ??? example "Reproducer: OPT-07.py"
 
@@ -31,7 +31,7 @@ With `higher_order_chromaticity=1` and `n_periods=2`, Elegant's `twiss_output` c
     must scale with the period count. For 0.5 m `KQUAD`s with K1 = 0.6 and −0.54 m⁻² and 1 m drifts, one
     period gives d²νₓ/dδ² = 0.1268 and d³νₓ/dδ³ = −0.08637, where δ is the relative momentum offset.
     Two periods require 0.2537 and −0.1727, but the output gives 0.1865 and −0.3286; the tune and first
-    chromaticity scale correctly. Users computing higher chromaticities of repeated cells are affected.
+    chromaticity scale correctly.
 
     The script computes the tune and its first three momentum derivatives of a FODO cell of
     tracking-derived `KQUAD` quadrupoles with `n_periods` 1 and 2 in serial Elegant (and with `--mpi` in
@@ -374,6 +374,9 @@ With `higher_order_chromaticity=1` and `n_periods=2`, Elegant's `twiss_output` c
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

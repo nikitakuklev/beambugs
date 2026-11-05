@@ -5,8 +5,8 @@
 # CPU default `true` instead of following `use_KA`. The `track` docstring gives the default of
 # `use_explicit_SIMD` as `!use_KA`, and both `TrackingConfig(use_KA=true)` and the lower-level
 # `launch!` apply that rule. The single-keyword call fails, while adding `use_explicit_SIMD=false`
-# or passing `config=TrackingConfig(use_KA=true)` returns identical coordinates. Only the keyword
-# path of `track` is affected, and the failure is loud.
+# or passing `config=TrackingConfig(use_KA=true)` returns identical coordinates. The failure is
+# loud.
 #
 # The script tracks one electron through a 1.5 m drift with `use_KA=true` alone, with `use_KA=true`
 # and `use_explicit_SIMD=false`, with `config=TrackingConfig(use_KA=true)` and with the defaults.

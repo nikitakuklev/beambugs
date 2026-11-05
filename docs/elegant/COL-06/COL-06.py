@@ -1,6 +1,6 @@
 """COL-06: Single-precision reciprocals in the complex error function reduce the Gaussian force accuracy
 
-Nonlinear SCMULT kicks for elliptical Gaussian beams lose accuracy when the SDDS complex error function evaluates its power-series reciprocals in single precision despite a 14-digit accuracy contract. For 1 nC of electrons at 10 mₑc with rms sizes 2 mm horizontally and 1 mm vertically, a sampled particle's horizontal kick is −3.149×10⁻⁵ rad, differing from the independent Poisson-integral value by −7.904×10⁻¹³ rad (2.510×10⁻⁸ relative). A scalar model reproduces the native kicks with single-precision reciprocals and agrees with the integral to about 10⁻¹⁵ relative with double-precision reciprocals. Accumulated effects over many turns have not been measured.
+Nonlinear SCMULT kicks for elliptical Gaussian beams lose accuracy when the SDDS complex error function evaluates its power-series reciprocals in single precision despite a 14-digit accuracy contract. For 1 nC of electrons at 10 mₑc with rms sizes 2 mm horizontally and 1 mm vertically, a sampled particle's horizontal kick is −3.149×10⁻⁵ rad, differing from the independent Poisson-integral value by −7.904×10⁻¹³ rad (2.510×10⁻⁸ relative). A scalar model reproduces the native kicks with single-precision reciprocals and agrees with the integral to about 10⁻¹⁵ relative with double-precision reciprocals.
 
 The script tracks 16 electrons through one drift of a closed four-bend ring, with an SCMULT after
 the drift, and compares each slope kick with the Gaussian field from the Poisson integral. The

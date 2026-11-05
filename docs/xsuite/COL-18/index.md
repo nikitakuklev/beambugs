@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`compute_Gx_Gy`, compute_gx_gy.h:25–35](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/fieldmaps/bigaussian_src/compute_gx_gy.h#L25-L35)<br>[synchro-beam energy kick](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/beambeam_src/beambeam3d.h#L263-L281)<br>[Gaussian potential derivatives and round expressions](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L938-L994)<br>[longitudinal map](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L1005-L1038) |
 
-For round beam slices whose width changes along the collision, `compute_Gx_Gy` uses on-axis variance derivatives inside a fixed radius of 100 nm, corrupting the width contribution of 3D beam-beam to `pzeta`. Gauss's law and the Gaussian heat equation require the radial dependence exp(−r²/(2σ²)), with σ the RMS beam size; integrating the longitudinal derivative of the executed transverse kick along the radius confirms it. For 9 GeV/c positrons and an expanding 35 nm slice, the width kick at r = 2σ is 7.840 × 10⁻¹¹ instead of 1.061 × 10⁻¹¹, a factor e² too large; at σ = 35 µm and r = 99.9 nm the relative error is 4.073 × 10⁻⁶. Transverse kicks are correct; by source reading, coupled beams and crossing angles share the cutoff.
+For round beam slices whose width changes along the collision, `compute_Gx_Gy` uses on-axis variance derivatives inside a fixed radius of 100 nm, corrupting the width contribution of 3D beam-beam to `pzeta`. Gauss's law and the Gaussian heat equation require the radial dependence exp(−r²/(2σ²)), with σ the RMS beam size; integrating the longitudinal derivative of the executed transverse kick along the radius confirms it. For 9 GeV/c positrons and an expanding 35 nm slice, the width kick at r = 2σ is 7.840 × 10⁻¹¹ instead of 1.061 × 10⁻¹¹, a factor e² too large; at σ = 35 µm and r = 99.9 nm the relative error is 4.073 × 10⁻⁶. Transverse kicks are correct.
 
 ??? example "Reproducer: COL-18.py"
 
@@ -31,8 +31,7 @@ For round beam slices whose width changes along the collision, `compute_Gx_Gy` u
     with σ the RMS beam size; integrating the longitudinal derivative of the executed transverse kick
     along the radius confirms it. For 9 GeV/c positrons and an expanding 35 nm slice, the width kick at
     r = 2σ is 7.840 × 10⁻¹¹ instead of 1.061 × 10⁻¹¹, a factor e² too large; at σ = 35 µm and r = 99.9
-    nm the relative error is 4.073 × 10⁻⁶. Transverse kicks are correct; by source reading, coupled
-    beams and crossing angles share the cutoff.
+    nm the relative error is 4.073 × 10⁻⁶. Transverse kicks are correct.
 
     The script tracks positrons through a weak-strong `BeamBeamBiGaussian3D` slice with covariance
     blocks v·[[1, a], [a, a² + 40000]], v = σ², a = 700 m⁻¹, at radii including zero, 2σ and both sides

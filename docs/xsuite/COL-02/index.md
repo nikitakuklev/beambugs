@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-26 on xfields main (`223b4fa`) |
 | Source | [`SpaceChargeBiGaussian_track_local_particle`, spacechargebigaussian.h:53–93](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/spacecharge_src/spacechargebigaussian.h#L53-L93)<br>[manual prescribes the signed ray](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L302-L323) |
 
-`SpaceChargeBiGaussian` computes the longitudinal kick by integrating the transverse field along a ray from the origin to (|x|, |y|), so a particle at a negative coordinate receives the kick of its mirror point. For a beam displaced from the axis (`mean_x` or `mean_y` nonzero), the manual's signed ray, an analytic exponential-integral potential and adaptive quadrature give different kicks on the two sides. For a 1 GeV/c proton beam (population 10¹⁰, `sigma_z` = 0.1 m, transverse RMS 1 mm) displaced by 2 mm, particles at x = ±1 mm in a 1 m lens get identical kicks in the relative momentum deviation δ: the difference is 0 instead of 2.668 × 10⁻⁷. Frozen off-centre beams with longitudinal kicks are affected; transverse kicks and centred beams are correct.
+`SpaceChargeBiGaussian` computes the longitudinal kick by integrating the transverse field along a ray from the origin to (|x|, |y|), so a particle at a negative coordinate receives the kick of its mirror point. For a beam displaced from the axis (`mean_x` or `mean_y` nonzero), the manual's signed ray, an analytic exponential-integral potential and adaptive quadrature give different kicks on the two sides. For a 1 GeV/c proton beam (population 10¹⁰, `sigma_z` = 0.1 m, transverse RMS 1 mm) displaced by 2 mm, particles at x = ±1 mm in a 1 m lens get identical kicks in the relative momentum deviation δ: the difference is 0 instead of 2.668 × 10⁻⁷. Transverse kicks and centred beams are correct.
 
 ??? example "Reproducer: COL-02.py"
 
@@ -30,8 +30,8 @@ hide:
     ray, an analytic exponential-integral potential and adaptive quadrature give different kicks on the
     two sides. For a 1 GeV/c proton beam (population 10¹⁰, `sigma_z` = 0.1 m, transverse RMS 1 mm)
     displaced by 2 mm, particles at x = ±1 mm in a 1 m lens get identical kicks in the relative momentum
-    deviation δ: the difference is 0 instead of 2.668 × 10⁻⁷. Frozen off-centre beams with longitudinal
-    kicks are affected; transverse kicks and centred beams are correct.
+    deviation δ: the difference is 0 instead of 2.668 × 10⁻⁷. Transverse kicks and centred beams are
+    correct.
 
     The script tracks particles at x = ±1 mm, y = 0, ζ = 0.05 m through a frozen round Gaussian
     displaced by `mean_x` = 2 mm and compares the difference of their δ kicks with A·λ′(ζ)·[Φ(+x) −

@@ -17,7 +17,7 @@ hide:
 | Pull request | [[gh:https://github.com/bmad-sim/BeamTracking.jl/pull/375]], filed from this evidence |
 | Source | [`BeamTracking.jl/src/batch.jl:102-103`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L102-L103)<br>[`BeamTracking.jl/src/batch.jl:131`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L131) |
 
-Subtracting an array-backed `BatchParam` from scalar zero, as in `0 - c.K1`, returns the batch unnegated: `0 - BatchParam([1, -2])` gives [1, −2] instead of [−1, 2], while unary minus and lane-wise subtraction give the correct signs. For a 1 GeV electron starting at x = 1 mm with other coordinates zero, a 0.5 m quadrupole using `Kn1 = 0 - K1` with K1 = [0.3, 0.6] m⁻² focuses horizontally instead of defocusing. After a 1 m drift, x is [0.8146, 0.6334] mm instead of [1.190, 1.383] mm. Batch scans using this subtraction are affected; `-c.K1` works.
+Subtracting an array-backed `BatchParam` from scalar zero, as in `0 - c.K1`, returns the batch unnegated: `0 - BatchParam([1, -2])` gives [1, −2] instead of [−1, 2], while unary minus and lane-wise subtraction give the correct signs. For a 1 GeV electron starting at x = 1 mm with other coordinates zero, a 0.5 m quadrupole using `Kn1 = 0 - K1` with K1 = [0.3, 0.6] m⁻² focuses horizontally instead of defocusing. After a 1 m drift, x is [0.8146, 0.6334] mm instead of [1.190, 1.383] mm. The negation `-c.K1` works.
 
 ??? example "Reproducer: LAT-05.jl"
 
@@ -31,7 +31,7 @@ Subtracting an array-backed `BatchParam` from scalar zero, as in `0 - c.K1`, ret
     # lane-wise subtraction give the correct signs. For a 1 GeV electron starting at x = 1 mm with other
     # coordinates zero, a 0.5 m quadrupole using `Kn1 = 0 - K1` with K1 = [0.3, 0.6] m⁻² focuses
     # horizontally instead of defocusing. After a 1 m drift, x is [0.8146, 0.6334] mm instead of [1.190,
-    # 1.383] mm. Batch scans using this subtraction are affected; `-c.K1` works.
+    # 1.383] mm. The negation `-c.K1` works.
     #
     # The script compares `0 - BatchParam([1.0, -2.0])` with the lane-wise result and prints three
     # controls that negate correctly: a tiny nonzero scalar minus the batch, unary minus and a zero

@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`SciBmad.jl/docs/src/batch.md:105`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/batch.md#L105)<br>[`BeamTracking.jl/src/batch.jl:303-312`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L303-L312)<br>[`SciBmad.jl/docs/src/batch.md:48`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/batch.md#L48)<br>[`:74`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/batch.md#L74) |
 
-The GPU example of the batch documentation assigns a raw `CuArray` of quadrupole strengths to `fodo.context.K1`, but only a `BatchParam` is expanded into per-particle values, and any other value passes through unchanged. The CPU examples on the same page wrap the array in `BatchParam`, and a source search finds no GPU-array conversion in Beamlines or BeamTracking. Run on the CPU with an ordinary array in place of the `CuArray`, the page's FODO cell fails with `MethodError: no method matching ^(::Vector{Float64}, ::Int64)`, while the same strengths wrapped in `BatchParam` track. Users who copy the GPU example get an error; GPU execution itself was not tested.
+The GPU example of the batch documentation assigns a raw `CuArray` of quadrupole strengths to `fodo.context.K1`, but only a `BatchParam` is expanded into per-particle values, and any other value passes through unchanged. The CPU examples on the same page wrap the array in `BatchParam`, and a source search finds no GPU-array conversion in Beamlines or BeamTracking. Run on the CPU with an ordinary array in place of the `CuArray`, the page's FODO cell fails with `MethodError: no method matching ^(::Vector{Float64}, ::Int64)`, while the same strengths wrapped in `BatchParam` track.
 
 ??? example "Reproducer: LAT-15.jl"
 
@@ -31,7 +31,7 @@ The GPU example of the batch documentation assigns a raw `CuArray` of quadrupole
     # and a source search finds no GPU-array conversion in Beamlines or BeamTracking. Run on the CPU
     # with an ordinary array in place of the `CuArray`, the page's FODO cell fails with `MethodError: no
     # method matching ^(::Vector{Float64}, ::Int64)`, while the same strengths wrapped in `BatchParam`
-    # track. Users who copy the GPU example get an error; GPU execution itself was not tested.
+    # track.
     #
     # The script builds the page's FODO cell, with quadrupole strengths `Kn1` = ±K1 and ten values of K1
     # from 0.1 to 0.55, and tracks it once with `BatchParam(K)` and once with the plain array K, a CPU

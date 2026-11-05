@@ -4,10 +4,9 @@ Elegant's `twiss_output` with `matched=0` propagates user-given entrance optics 
 non-periodic beamline and writes the momentum derivatives of the Twiss alpha functions, `dalphax/dp`
 and `dalphay/dp`. These columns instead hold the derivatives of the betatron phase, 2π times the
 chromaticities. For a 0.5 m quadrupole with K1 = 0.6 m⁻² followed by a 1 m drift, entering with βx =
-3 m, αx = 0.4, βy = 2 m and αy = -0.3, the exact hard-edge map gives dαx/dδ = 0.004523 and dαy/dδ =
-1.549, where δ is the relative momentum offset; Elegant writes -0.3591 and 0.07649. The tune and
-beta derivatives are correct. Users reading the alpha derivatives of a non-periodic calculation are
-affected.
+3 m, αx = 0.4, βy = 2 m and αy = −0.3, the exact hard-edge map gives dαx/dδ = 0.004523 and dαy/dδ =
+1.549, where δ is the relative momentum offset; Elegant writes −0.3591 and 0.07649. The tune and
+beta derivatives are correct.
 
 The script transports fixed entrance optics through the quadrupole and drift in serial Elegant (and
 with `--mpi` in 3-rank Pelegant), and compares the written alpha derivatives with a complex-step

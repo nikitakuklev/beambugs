@@ -5,8 +5,7 @@ magnet body, although the exact-Hamiltonian branch applies the Thomas–BMT equa
 electron with initially longitudinal spin and momentum 450 mₑc through a 0.8 m bend with fringes
 disabled and angle θ = 0.18 rad, the correct spin rotation in the exit frame is −aγθ = −0.09393 rad,
 where a is the electron's anomalous magnetic moment and γ its Lorentz factor. The exact-Hamiltonian
-control agrees, while the expanded branch returns zero rotation without a warning. Users combining
-spin tracking with the leading-order Hamiltonian option are affected; fringe rotations are separate.
+control agrees, while the expanded branch returns zero rotation without a warning. Fringe rotations are separate.
 
 The script tracks 12 identical on-reference electrons with spin (0, 0, 1) through a pure CSBEND with
 edge effects off, for the exact and the expanded Hamiltonian, at two momenta and two bend angles of

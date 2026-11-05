@@ -7,8 +7,7 @@
 # calculation confirms the required frame. For a 3.000 GeV electron at x = 3.000 cm, y = 2.000 cm in
 # a 0.5000 m bend of curvature 0.1000 m⁻¹ tilted by 0.4000 rad, the stochastic relative-momentum
 # kick is −3.298 × 10⁻⁶ instead of −3.300 × 10⁻⁶. Tilted magnetic and four-potential bends and skew
-# separators are affected; on-axis energy kicks remain correct, but recoil directions can still be
-# wrong.
+# separators show it; on-axis energy kicks remain correct, but recoil directions can still be wrong.
 #
 # The script tracks one electron through the tilted `SBend` and through the untilted bend with its
 # coordinates rotated in and out by BeamTracking's own frame rotation, under the same random seed,

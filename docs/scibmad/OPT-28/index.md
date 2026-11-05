@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on NonlinearNormalForm main (`7e40539`) |
 | Source | [`src/operators.jl:80-95`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/operators.jl#L80-L95) |
 
-For a NonlinearNormalForm `DAMap`, `TPSAMap` or `VectorField`, `I - M`, with `I` the identity, replaces only the diagonal linear coefficients and the scalar quaternion coefficient by one minus their values, and every other coefficient keeps its original sign. Coefficient subtraction must satisfy (I − M) + M = I, and ordinary subtraction `one(M) - M` gives the analytic result. For the shear M = (x, p − 2.5x + 0.75x²), the second component of `I - M` has x and x² coefficients −2.5 and 0.75 instead of 2.5 and −0.75. A spin coefficient q1[x] = 0.2 stays 0.2 instead of becoming −0.2. `M - I` is correct, and no effect on optics outputs has been established.
+For a NonlinearNormalForm `DAMap`, `TPSAMap` or `VectorField`, `I - M`, with `I` the identity, replaces only the diagonal linear coefficients and the scalar quaternion coefficient by one minus their values, and every other coefficient keeps its original sign. Coefficient subtraction must satisfy (I − M) + M = I, and ordinary subtraction `one(M) - M` gives the analytic result. For the shear M = (x, p − 2.5x + 0.75x²), the second component of `I - M` has x and x² coefficients −2.5 and 0.75 instead of 2.5 and −0.75. A spin coefficient q1[x] = 0.2 stays 0.2 instead of becoming −0.2. `M - I` is correct.
 
 ??? example "Reproducer: OPT-28.jl"
 
@@ -30,7 +30,7 @@ For a NonlinearNormalForm `DAMap`, `TPSAMap` or `VectorField`, `I - M`, with `I`
     # satisfy (I − M) + M = I, and ordinary subtraction `one(M) - M` gives the analytic result. For the
     # shear M = (x, p − 2.5x + 0.75x²), the second component of `I - M` has x and x² coefficients −2.5
     # and 0.75 instead of 2.5 and −0.75. A spin coefficient q1[x] = 0.2 stays 0.2 instead of becoming
-    # −0.2. `M - I` is correct, and no effect on optics outputs has been established.
+    # −0.2. `M - I` is correct.
     #
     # The script builds the shear as a `DAMap` and as a `TPSAMap` on `Descriptor(2, 3)`, compares the x
     # and x² coefficients of the second component of `I - M` with those of `one(M) - M`, and prints the

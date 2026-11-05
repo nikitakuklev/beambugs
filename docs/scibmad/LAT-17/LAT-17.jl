@@ -5,8 +5,7 @@
 # nor `rotate_spins!`. The spin-rotation function is `track_spin(q, s0)`, which takes the
 # N×4×n_saved quaternion array of a `TrackingResult`; the repository history shows `rotate_spins`
 # deleted and the Julia version of the same notebook moved to `track_spin`. The Python example
-# therefore fails at its first spin step. Users of the Python spin-ramp example are affected; the
-# failure is loud.
+# therefore fails at its first spin step. The failure is loud.
 #
 # The script prints the notebook lines that call `jl.rotate_spins` and checks whether SciBmad
 # defines `rotate_spins`, `rotate_spins!`, `track_spin` and `track_spin!`; the example's call target

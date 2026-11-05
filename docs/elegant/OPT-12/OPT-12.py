@@ -6,8 +6,7 @@ integrated strength 1 m⁻² followed by a 1 m drift, take entrance beta functio
 βᵧ = 2 m, alpha αₓ = 0.4, horizontal dispersion ηₓ = 0 and slope ηₓ′ = 0.2. The analytic drift
 Jacobian and tracking give zero derivatives with respect to relative momentum offset δ, but the
 output gives dβₓ/dδ = −1.040 m, dβᵧ/dδ = 0.8000 m, dνₓ/dδ = 0.01231 and dνᵧ/dδ = −0.01273, where ν
-is phase advance in cycles. Users matching chromatic functions in dispersive transport lines are
-affected.
+is phase advance in cycles.
 
 The script transports the entrance optics through the sextupole and drift in serial Elegant (and
 with `--mpi` in 3-rank Pelegant), and compares the four written derivatives with those of the beta

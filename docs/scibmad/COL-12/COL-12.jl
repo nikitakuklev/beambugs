@@ -6,8 +6,7 @@
 # scalar potential matches that body field. For a proton at x = 80.00 mm, y = 130.0 mm with zero
 # transverse momentum, the derivative of the entrance spin angle with respect to the normalized
 # normal-sextupole strength is −2.784 × 10⁻⁴ rad·m³ instead of −1.392 × 10⁻⁴ rad·m³. All four
-# normal/skew and entrance/exit derivative checks give a factor 2.000; spin effects of finite
-# strengths in full lattices are unmeasured.
+# normal/skew and entrance/exit derivative checks give a factor 2.000.
 #
 # The script calls the straight-magnet `fringe!` kernel for a proton at x = 0.08 m, y = 0.13 m with
 # zero transverse momentum, for normal and skew sextupole strengths at the entrance and the exit,

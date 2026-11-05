@@ -6,8 +6,8 @@ while the momenta are finite and the call returns normally. In the source, the r
 raises a self-field coefficient formed with the signed species charge to the power 2/3. Reversing
 the charge sign leaves the repulsive self-force unchanged, so the distribution must equal that of
 the opposite charge; an independent integration of Gauss's law with a Boltzmann density gives that
-finite solution. In the tested electron and H⁻ cases all 2049 positions are NaN, while positive
-species give finite positions and, at zero bunch charge, both signs give identical results.
+finite solution. In the electron and H⁻ cases all 2049 positions are NaN, while positive species
+give finite positions and, at zero bunch charge, both signs give identical results.
 
 The script initializes `Thermal` distributions of 2049 particles for protons, H⁻, positrons and
 electrons at equal γ and intensity, for fixed-mass charges Z = ±1 and ±2, at zero and 10⁻²⁰ C bunch

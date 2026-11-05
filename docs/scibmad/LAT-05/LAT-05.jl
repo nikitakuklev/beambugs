@@ -5,7 +5,7 @@
 # lane-wise subtraction give the correct signs. For a 1 GeV electron starting at x = 1 mm with other
 # coordinates zero, a 0.5 m quadrupole using `Kn1 = 0 - K1` with K1 = [0.3, 0.6] m⁻² focuses
 # horizontally instead of defocusing. After a 1 m drift, x is [0.8146, 0.6334] mm instead of [1.190,
-# 1.383] mm. Batch scans using this subtraction are affected; `-c.K1` works.
+# 1.383] mm. The negation `-c.K1` works.
 #
 # The script compares `0 - BatchParam([1.0, -2.0])` with the lane-wise result and prints three
 # controls that negate correctly: a tiny nonzero scalar minus the batch, unary minus and a zero

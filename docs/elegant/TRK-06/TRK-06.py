@@ -2,9 +2,9 @@
 
 RFDF computes particle speed at entrance and reuses it for drift timing after kicks change the
 momentum. For one midpoint kick, vacuum kinematics require the final half drift to use the outgoing
-speed, as a phase-matched drift–thin-deflector–drift control confirms. In the tested magnetic-deflection mode, a 0.2 m, 300 kV, 100 MHz element with an electron entering at x = 0.04 m and
+speed, as a phase-matched drift–thin-deflector–drift control confirms. In magnetic-deflection mode, a 0.2 m, 300 kV, 100 MHz element with an electron entering at x = 0.04 m and
 momentum p = 2 mₑc gives 747.7 ps instead of 746.0 ps, 1.671 ps late. At p = 100 mₑc the error is
-15.42 as. Low-energy beams receiving a longitudinal kick are most affected.
+15.42 as.
 
 The script tracks identical particles through a one-kick RFDF and compares the exit time with
 the exact time of flight over the two half drifts, built from the entrance speed and the exit speed

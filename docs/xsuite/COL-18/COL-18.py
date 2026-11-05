@@ -6,8 +6,7 @@ derivatives inside a fixed radius of 100 nm, corrupting the width contribution o
 with σ the RMS beam size; integrating the longitudinal derivative of the executed transverse kick
 along the radius confirms it. For 9 GeV/c positrons and an expanding 35 nm slice, the width kick at
 r = 2σ is 7.840 × 10⁻¹¹ instead of 1.061 × 10⁻¹¹, a factor e² too large; at σ = 35 µm and r = 99.9
-nm the relative error is 4.073 × 10⁻⁶. Transverse kicks are correct; by source reading, coupled
-beams and crossing angles share the cutoff.
+nm the relative error is 4.073 × 10⁻⁶. Transverse kicks are correct.
 
 The script tracks positrons through a weak-strong `BeamBeamBiGaussian3D` slice with covariance
 blocks v·[[1, a], [a, a² + 40000]], v = σ², a = 700 m⁻¹, at radii including zero, 2σ and both sides

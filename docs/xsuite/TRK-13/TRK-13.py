@@ -4,10 +4,9 @@
 `start_turn`. The documented start time, and an independent calculation of which sample covers each
 arrival time, require no excitation before then. With `start_turn` = 5, revolution frequency 1 MHz,
 sampling frequency 0.25 MHz, `knl=[2.5e-6]` and first sample 0.75, the reference particle receives
-normalized horizontal momentum −1.875 × 10⁻⁶ at turn 4 instead of zero. Early arrivals are affected,
-and when sampling is slower than revolution the kick can start a whole turn early; samples within
-the waveform, arrivals more than one sample period early and times after the waveform ends are
-handled correctly.
+normalized horizontal momentum −1.875 × 10⁻⁶ at turn 4 instead of zero. When sampling is slower than
+revolution, the kick can start a whole turn early; samples within the waveform, arrivals more than
+one sample period early and times after the waveform ends are handled correctly.
 
 The script scans arrival times from 1.25 sample periods before the start to 3.25 after it, through
 an exciter with three single-precision samples at 400 MHz, and compares each horizontal kick with

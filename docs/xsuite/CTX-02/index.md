@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on xobjects main (`dfe34ae`) |
 | Source | [HybridClass.copy, hybrid_class.py:344–360](https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/xobjects/hybrid_class.py#L344-L360)<br>[nested-object tests](https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/tests/test_hybrid_class.py#L95-L138) |
 
-Copying a `SpaceChargeBiGaussian` and changing its public longitudinal-profile population leaves the tracking kernel using the old intensity, because the copied child fields are disconnected from the parent's storage. At fixed geometry the kick must scale linearly with population, as a freshly constructed control confirms. For a 0.7 m element with longitudinal RMS size 0.13 m and transverse RMS size 1.2 mm, increasing the population from 7.000×10⁹ to 1.750×10¹⁰ leaves a 1.3 GeV/c proton at the bunch center and x = 0.7 mm with normalized horizontal momentum `px` = 3.145×10⁻⁶ instead of 7.862×10⁻⁶. Both default-buffer and same-buffer copies fail. The tested scope is embedded fields copied by `HybridClass.copy()` on serial CPU; the original object remains unchanged.
+Copying a `SpaceChargeBiGaussian` and changing its public longitudinal-profile population leaves the tracking kernel using the old intensity, because the copied child fields are disconnected from the parent's storage. At fixed geometry the kick must scale linearly with population, as a freshly constructed control confirms. For a 0.7 m element with longitudinal RMS size 0.13 m and transverse RMS size 1.2 mm, increasing the population from 7.000×10⁹ to 1.750×10¹⁰ leaves a 1.3 GeV/c proton at the bunch center and x = 0.7 mm with normalized horizontal momentum `px` = 3.145×10⁻⁶ instead of 7.862×10⁻⁶. Both default-buffer and same-buffer copies fail. The original object remains unchanged.
 
 ??? example "Reproducer: CTX-02.py"
 
@@ -30,8 +30,7 @@ Copying a `SpaceChargeBiGaussian` and changing its public longitudinal-profile p
     constructed control confirms. For a 0.7 m element with longitudinal RMS size 0.13 m and transverse
     RMS size 1.2 mm, increasing the population from 7.000×10⁹ to 1.750×10¹⁰ leaves a 1.3 GeV/c proton at
     the bunch center and x = 0.7 mm with normalized horizontal momentum `px` = 3.145×10⁻⁶ instead of
-    7.862×10⁻⁶. Both default-buffer and same-buffer copies fail. The tested scope is embedded fields
-    copied by `HybridClass.copy()` on serial CPU; the original object remains unchanged.
+    7.862×10⁻⁶. Both default-buffer and same-buffer copies fail. The original object remains unchanged.
 
     The script first shows on a minimal nested struct that setting a copied child field (gain 11) leaves
     the copy's raw storage at the old value (3). It then copies a frozen round `SpaceChargeBiGaussian`

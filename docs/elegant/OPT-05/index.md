@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
 | Source | [`mult_matrix`, zero-length substitution, compute_matrices.c:3249–3250](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L3249-L3250)<br>[calls `quadrupole_matrix(KnL / length, length, …)`, compute_matrices.c:3262–3263](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L3262-L3263)<br>[`quadrupole_matrix`, horizontal-plane terms divided by `cos(2kl) - 1`, quad_matrix.c:160 and 172](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L160-L172)<br>[vertical-plane terms divided by `1 - cosh(2kl)`, quad_matrix.c:178 and 190](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L178-L190)<br>[MULT parameters (`L` defaults to 0, `KNL` is the integrated strength, `MATRIX_ORDER`), track_data.c:505–517](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L505-L517)<br>[the strength definition K_nL, doc/mult.tex:5–15](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/mult.tex#L5-L15) |
 
-The third-order transfer map of a zero-length quadrupole, MULT with L=0, ORDER=1 and integrated strength KNL = 0.6 m⁻¹, contains infinite cubic coefficients. Concatenation contaminates 336 map coefficients with NaN, including R₂₁, which should be −0.6000 m⁻¹; finite second-order and short-length controls isolate the singular thin-lens construction. For a thin-lens FODO cell using cubic lens maps, horizontal tune νₓ has d²νₓ/dδ² and d³νₓ/dδ³ equal to NaN instead of 0.2030 and −0.06786, where δ is the relative momentum offset. Users requesting third-order optics for zero-length MULT quadrupoles are affected.
+The third-order transfer map of a zero-length quadrupole, MULT with L=0, ORDER=1 and integrated strength KNL = 0.6 m⁻¹, contains infinite cubic coefficients. Concatenation contaminates 336 map coefficients with NaN, including R₂₁, which should be −0.6000 m⁻¹; finite second-order and short-length controls isolate the singular thin-lens construction. For a thin-lens FODO cell using cubic lens maps, horizontal tune νₓ has d²νₓ/dδ² and d³νₓ/dδ³ equal to NaN instead of 0.2030 and −0.06786, where δ is the relative momentum offset.
 
 ??? example "Reproducer: OPT-05.py"
 
@@ -29,8 +29,7 @@ The third-order transfer map of a zero-length quadrupole, MULT with L=0, ORDER=1
     coefficients with NaN, including R₂₁, which should be −0.6000 m⁻¹; finite second-order and
     short-length controls isolate the singular thin-lens construction. For a thin-lens FODO cell using
     cubic lens maps, horizontal tune νₓ has d²νₓ/dδ² and d³νₓ/dδ³ equal to NaN instead of 0.2030 and
-    −0.06786, where δ is the relative momentum offset. Users requesting third-order optics for
-    zero-length MULT quadrupoles are affected.
+    −0.06786, where δ is the relative momentum offset.
 
     The script builds a thin-lens quadrupole `MULT,L=0,ORDER=1,KNL=0.6` in serial Elegant (and with
     `--mpi` in 3-rank Pelegant) with a third-order map, reads the element's raw matrix from the matrix
@@ -446,6 +445,9 @@ The third-order transfer map of a zero-length quadrupole, MULT with L=0, ORDER=1
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

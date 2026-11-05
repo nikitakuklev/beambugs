@@ -4,9 +4,8 @@ With classical radiation enabled in the LSRMDLTR laser modulator, an electron's 
 loss changes when only the reference momentum changes. For particle momentum p and reference
 momentum p₀ in units of mₑc, the implemented local loss rate is (p₀/γ)³ times the classical rate,
 where γ = √(1 + p²) is the Lorentz factor. At p = 1200 in a 0.8 m, eight-period, 0.8 T undulator,
-classical loss on the same integration grid is 2.383×10⁻⁴ mₑc; tracking gives 2.979×10⁻⁵ at
-p₀ = 600, 2.312×10⁻⁴ at 1188 and 1.906×10⁻³ at 2400. Off-reference radiation calculations are
-biased, including about 3% for a 1% reference change.
+classical loss on the same integration grid is 2.383×10⁻⁴ mₑc; tracking gives 2.979×10⁻⁵ at p₀ =
+600, 2.312×10⁻⁴ at 1188 and 1.906×10⁻³ at 2400.
 
 The script tracks twelve identical electrons of momentum 1200 mₑc through an 8-period, 0.8 m
 LSRMDLTR with radiation on and off, changing only the run's reference momentum (600, 1188, 1200,

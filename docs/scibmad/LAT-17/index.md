@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
 | Source | [`SciBmad.jl/examples/python/ags-spin-ramp.ipynb:272`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/python/ags-spin-ramp.ipynb#L272)<br>[`:400`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/python/ags-spin-ramp.ipynb#L400)<br>[`:234`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/python/ags-spin-ramp.ipynb#L234)<br>[`SciBmad.jl/src/track.jl:311`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L311) |
 
-The Python example notebook `ags-spin-ramp.ipynb` rotates spins with `jl.rotate_spins(b0.coords.q, s_initial)`, and its text also names `rotate_spins`, but SciBmad defines neither `rotate_spins` nor `rotate_spins!`. The spin-rotation function is `track_spin(q, s0)`, which takes the N×4×n_saved quaternion array of a `TrackingResult`; the repository history shows `rotate_spins` deleted and the Julia version of the same notebook moved to `track_spin`. The Python example therefore fails at its first spin step. Users of the Python spin-ramp example are affected; the failure is loud.
+The Python example notebook `ags-spin-ramp.ipynb` rotates spins with `jl.rotate_spins(b0.coords.q, s_initial)`, and its text also names `rotate_spins`, but SciBmad defines neither `rotate_spins` nor `rotate_spins!`. The spin-rotation function is `track_spin(q, s0)`, which takes the N×4×n_saved quaternion array of a `TrackingResult`; the repository history shows `rotate_spins` deleted and the Julia version of the same notebook moved to `track_spin`. The Python example therefore fails at its first spin step. The failure is loud.
 
 ??? example "Reproducer: LAT-17.jl"
 
@@ -29,8 +29,7 @@ The Python example notebook `ags-spin-ramp.ipynb` rotates spins with `jl.rotate_
     # nor `rotate_spins!`. The spin-rotation function is `track_spin(q, s0)`, which takes the
     # N×4×n_saved quaternion array of a `TrackingResult`; the repository history shows `rotate_spins`
     # deleted and the Julia version of the same notebook moved to `track_spin`. The Python example
-    # therefore fails at its first spin step. Users of the Python spin-ramp example are affected; the
-    # failure is loud.
+    # therefore fails at its first spin step. The failure is loud.
     #
     # The script prints the notebook lines that call `jl.rotate_spins` and checks whether SciBmad
     # defines `rotate_spins`, `rotate_spins!`, `track_spin` and `track_spin!`; the example's call target

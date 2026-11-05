@@ -1,12 +1,12 @@
 """TRK-22: Downstream RFCA omits the accumulated clock phase for non-harmonic frequencies
 
-In Elegant, an RFCA with CHANGE_T = 1 removes whole periods of its own RF, a time T, from every
-particle's arrival time and banks it in a clock; the manual promises that cavities at non-harmonic
-frequencies f receive a compensating phase 2πfT. A downstream RFCA does not, so its energy kick is
-evaluated at the reduced time, and no warning is printed. With a 0.7 GHz cavity removing T = 15.71
-ns and a 0.77 GHz, 180 kV cavity after it, an electron of p = 3.5 mₑc leaves with 3.605 mₑc instead
-of 3.382, a 36.00° phase error; harmonic frequencies are correct. With automatic fiducials a later
-pass is also wrong (15.63 mₑc instead of 15.00 on pass 3).
+An RFCA with CHANGE_T = 1 removes whole periods of its own RF, a time T, from every particle's
+arrival time and banks it in a clock; the manual promises that cavities at non-harmonic frequencies
+f receive a compensating phase 2πfT. A downstream RFCA does not, so its energy kick is evaluated at
+the reduced time, and no warning is printed. With a 0.7 GHz cavity removing T = 15.71 ns and a 0.77
+GHz, 180 kV cavity after it, an electron of p = 3.5 mₑc leaves with 3.605 mₑc instead of 3.382, a
+36.00° phase error; harmonic frequencies are correct. With automatic fiducials a later pass is also
+wrong (15.63 mₑc instead of 15.00 on pass 3).
 
 The script sends 24 electrons or positrons through a zero-length RFCA with and without CHANGE_T and
 then through a second RFCA at 1 to 2.7 times its frequency, and compares the exit momentum with the

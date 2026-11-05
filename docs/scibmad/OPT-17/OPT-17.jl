@@ -7,9 +7,9 @@
 # closed orbit; tracking and `twiss(order=2, chrom=2)` agree on it. In the documentation's 18 GeV/c
 # electron FODO with sextupoles, started where the dispersion is 0.5317 m, ξₓ is +0.1220 instead of
 # −0.06914 and `dbeta1` is −39.28 m instead of −30.65 m, and the documented matching recipe reaches
-# a tracked ξₓ of 0.5128 instead of 1. Dispersive starts with feed-down from bends or multipoles are
-# affected, as are the documented low-cap knob descriptors for orbit-moving knobs without
-# dispersion; on-momentum linear optics stay correct.
+# a tracked ξₓ of 0.5128 instead of 1. Dispersive starts with feed-down from bends or multipoles,
+# and the documented low-cap knob descriptors for orbit-moving knobs without dispersion, show the
+# error; on-momentum linear optics stay correct.
 #
 # The script builds the documentation's FODO cell with sextupoles and bends (18 GeV/c electrons, RF
 # off), started at the focusing quadrupole, and takes the expected ξ, `dbeta1` and `dx_2` from

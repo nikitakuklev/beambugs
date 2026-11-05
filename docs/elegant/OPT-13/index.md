@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`compute_periodic_twiss`, twiss.cc:173–190](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L173-L190)<br>[`compute_twiss_parameters`, twiss.cc:2289–2293](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2289-L2293)<br>[`computeHigherOrderChromaticities`, chrom.c:928–947](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/chrom.c#L928-L947)<br>[`accumulate_matrices`, compute_matrices.c:214–294](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L214-L294)<br>[`concat_matrices`, concat_mat.c:31–132](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/concat_mat.c#L31-L132)<br>[Twiss parameters on a closed orbit, elegant.tex:8084–8085](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8084-L8085)<br>[quick mode as a quicker way to the second-order chromaticity, elegant.tex:8147–8148](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8147-L8148)<br>[`MATR` map file format, matr.tex:1–20](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/matr.tex#L1-L20)<br>[the `T_MATR` case, compute_matrices.c:1576–1601](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L1576-L1601) |
 
-With `quick_higher_order_chromaticity=1`, Elegant shifts a one-turn map by the closed orbit after it has already been expanded about that orbit, corrupting the second chromaticity d²ν/dδ², where ν is tune and δ is relative momentum offset. For a prescribed cubic map with a closed orbit 10 mm off axis and a momentum-independent Jacobian there, the exact horizontal derivative is 0; quick mode gives −0.08750 and full mode −3.198×10⁻¹⁰. In this map, halving the displacement reduces the error fourfold, while an on-axis orbit or removal of the cubic term leaves only fitting noise. Users of quick chromatic optics with off-axis closed orbits and cubic nonlinearity are affected.
+With `quick_higher_order_chromaticity=1`, Elegant shifts a one-turn map by the closed orbit after it has already been expanded about that orbit, corrupting the second chromaticity d²ν/dδ², where ν is tune and δ is relative momentum offset. For a prescribed cubic map with a closed orbit 10 mm off axis and a momentum-independent Jacobian there, the exact horizontal derivative is 0; quick mode gives −0.08750 and full mode −3.198×10⁻¹⁰. In this map, halving the displacement reduces the error fourfold, while an on-axis orbit or removal of the cubic term leaves only fitting noise.
 
 ??? example "Reproducer: OPT-13.py"
 
@@ -30,8 +30,7 @@ With `quick_higher_order_chromaticity=1`, Elegant shifts a one-turn map by the c
     tune and δ is relative momentum offset. For a prescribed cubic map with a closed orbit 10 mm off axis
     and a momentum-independent Jacobian there, the exact horizontal derivative is 0; quick mode gives
     −0.08750 and full mode −3.198×10⁻¹⁰. In this map, halving the displacement reduces the error
-    fourfold, while an on-axis orbit or removal of the cubic term leaves only fitting noise. Users of
-    quick chromatic optics with off-axis closed orbits and cubic nonlinearity are affected.
+    fourfold, while an on-axis orbit or removal of the cubic term leaves only fitting noise.
 
     The script prescribes a stable cubic one-turn map with a fixed point at x = b for every δ and a
     Jacobian there that is the same rotation for every δ, so the tunes do not depend on δ. It runs
@@ -415,7 +414,8 @@ With `quick_higher_order_chromaticity=1`, Elegant shifts a one-turn map by the c
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
-| Found | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
+| Found | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source reading, not executed for this claim |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-03 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial and 3-rank Pelegant |
 

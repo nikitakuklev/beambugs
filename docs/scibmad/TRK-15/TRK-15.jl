@@ -5,8 +5,7 @@
 # nonexistent `Yoshida` integrator. The callback call site passes nine arguments, so a callback
 # written as documented, `callback(coords, ds_step, g)`, raises `MethodError`. The default method
 # actually uses `Symplectic` with keyword `n_steps`, at order 2 for exact bodies and order 4
-# otherwise, not `Yoshida(order=4, num_steps=1)`. Users who write callbacks or configure the
-# documented default integrator explicitly meet these mismatches.
+# otherwise, not `Yoshida(order=4, num_steps=1)`.
 #
 # The script checks whether the loaded `Bunch` docstring prescribes the three-argument callback,
 # then tracks a drift with a callback of that form and reports the error; separately it checks

@@ -6,8 +6,7 @@ returns zero and `tot_energy` omits all aperture losses. With no collimator loss
 equal the sum of the per-aperture energies that `aperture_losses` reports, which match the
 mass-shell energy 3·√((p₀c)² + m²), with p₀ the momentum and m the proton rest energy. For three 2
 GeV/c protons lost at the apertures of a 12 m ring, the per-aperture energies sum to 6.627 × 10⁹ eV,
-while `tot_energy_aperture` and `tot_energy` are both 0. Non-interpolated loss maps with aperture
-losses are affected.
+while `tot_energy_aperture` and `tot_energy` are both 0.
 
 The script tracks three 2 GeV/c protons into apertures at 1, 4 and 9 m and builds the loss map with
 `correct_aperture_absorption=False`. It checks the per-aperture energies against the mass-shell sum

@@ -5,9 +5,8 @@ of sliced `Cavity` elements. Rotating the transverse kick by the roll angle and 
 law to the tapered phase give the correct kicks, and the unoptimized slices reproduce them. A 1
 GeV/c proton through a 1 m, 1 MV crab cavity at zero frequency, phase π/2 and roll π/2 exits
 displaced 0.5000 mm horizontally instead of vertically. Through a 1 MV accelerating cavity at zero
-frequency with phase 0.2 rad and taper 0.3 rad, it gains 198.7 keV instead of 479.4 keV. Rolled crab
-cavities are affected, and so are phase-tapered cavities when the mean-radiation configuration
-enables the taper.
+frequency with phase 0.2 rad and taper 0.3 rad, it gains 198.7 keV instead of 479.4 keV. The taper
+matters when the mean-radiation configuration enables it.
 
 The script slices each cavity with `Teapot(1)` and tracks a proton through it before and after
 optimization. For the crab cavity it expects the kick V/p0c·(cos roll, sin roll) at mid-element

@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`) |
 | Source | [`_get_equilibrium_emittance_full`, radiation.py:244–357](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L244-L357)<br>[public analysis caller](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_postprocess_and_complem_results.py#L168-L231)<br>[equilibrium balance](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L6064-L6094)<br>[FCC-ee local beam-size comparison](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/examples/fcc_ee/001_match_emittance.py#L83-L110) |
 
-Full radiation analysis transports the reported equilibrium beam covariance with damping alone, omitting the accumulated photon diffusion, so beam variances differ at the two ends of the same periodic boundary. At equilibrium, damped transport plus diffusion must reproduce the starting covariance, whatever its absolute normalization. In a 144 m, 24-cell electron ring at 7 GeV/c with 48 bends and a 50 MV cavity, the horizontal variance ends at 7.660 × 10⁻⁵ m² instead of its starting 7.695 × 10⁻⁵ m², a 0.4538% deficit. The defect affects `eq_beam_covariance_matrix` from `radiation_method='full'`, also with lattice functions disabled; it establishes failed periodic closure, not the absolute accuracy of the starting covariance or scalar emittances.
+Full radiation analysis transports the reported equilibrium beam covariance with damping alone, omitting the accumulated photon diffusion, so beam variances differ at the two ends of the same periodic boundary. At equilibrium, damped transport plus diffusion must reproduce the starting covariance, whatever its absolute normalization. In a 144 m, 24-cell electron ring at 7 GeV/c with 48 bends and a 50 MV cavity, the horizontal variance ends at 7.660 × 10⁻⁵ m² instead of its starting 7.695 × 10⁻⁵ m², a 0.4538% deficit. The defect affects `eq_beam_covariance_matrix` from `radiation_method='full'`, also with lattice functions disabled.
 
 ??? example "Reproducer: OPT-14.py"
 
@@ -30,8 +30,7 @@ Full radiation analysis transports the reported equilibrium beam covariance with
     covariance, whatever its absolute normalization. In a 144 m, 24-cell electron ring at 7 GeV/c with
     48 bends and a 50 MV cavity, the horizontal variance ends at 7.660 × 10⁻⁵ m² instead of its starting
     7.695 × 10⁻⁵ m², a 0.4538% deficit. The defect affects `eq_beam_covariance_matrix` from
-    `radiation_method='full'`, also with lattice functions disabled; it establishes failed periodic
-    closure, not the absolute accuracy of the starting covariance or scalar emittances.
+    `radiation_method='full'`, also with lattice functions disabled.
 
     The script builds that ring of FODO cells (thick bends, thin quadrupoles, one harmonic-36 cavity,
     mean radiation with compensated energy loss) at 3, 5 and 7 GeV/c and compares the last row of the

@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Source | [`madx_to_impactx.py#L766-L798`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L766-L798)<br>[sextupole/octupole branches](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1327-L1370)<br>[thin-multipole branch](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1375-L1435)<br>[`read_lattice()`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1604-L1632)<br>[`bv` contract](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L80-L83) |
 
-When ImpactX imports a MAD-X lattice for a reversed beam (`BV=-1`), straight normal and skew multipole strengths keep their forward-beam polarity, because the importer omits the `bv` factor. MAD-X defines `BV=-1` as reversing the magnetic force, native MAD-X applies it, and the importer's own documentation specifies the reversal; analytic maps and an independent integration of the equations of motion give the reversed result. For a 1.4 GeV (total energy) proton in a 0.23 m quadrupole with `k1` = 1.7 m⁻² and tilt 0.21 rad, a test particle exits with normalized momentum pₓ = −7.699×10⁻⁵ instead of +2.189×10⁻⁵. Body quadrupoles, sextupoles and octupoles and thin quadrupole through dodecapole terms are affected; forward beams and kickers import correctly.
+When ImpactX imports a MAD-X lattice for a reversed beam (`BV=-1`), straight normal and skew multipole strengths keep their forward-beam polarity, because the importer omits the `bv` factor. MAD-X defines `BV=-1` as reversing the magnetic force, native MAD-X applies it, and the importer's own documentation specifies the reversal; analytic maps and an independent integration of the equations of motion give the reversed result. For a 1.4 GeV (total energy) proton in a 0.23 m quadrupole with `k1` = 1.7 m⁻² and tilt 0.21 rad, a test particle exits with normalized momentum pₓ = −7.699×10⁻⁵ instead of +2.189×10⁻⁵. The reversed polarity applies to body quadrupoles, sextupoles and octupoles and to thin quadrupole through dodecapole terms; forward beams and kickers import correctly.
 
 ??? example "Reproducer: API-13.py"
 
@@ -30,8 +30,9 @@ When ImpactX imports a MAD-X lattice for a reversed beam (`BV=-1`), straight nor
     own documentation specifies the reversal; analytic maps and an independent integration of the
     equations of motion give the reversed result. For a 1.4 GeV (total energy) proton in a 0.23 m
     quadrupole with `k1` = 1.7 m⁻² and tilt 0.21 rad, a test particle exits with normalized momentum pₓ
-    = −7.699×10⁻⁵ instead of +2.189×10⁻⁵. Body quadrupoles, sextupoles and octupoles and thin quadrupole
-    through dodecapole terms are affected; forward beams and kickers import correctly.
+    = −7.699×10⁻⁵ instead of +2.189×10⁻⁵. The reversed polarity applies to body quadrupoles, sextupoles
+    and octupoles and to thin quadrupole through dodecapole terms; forward beams and kickers import
+    correctly.
 
     The script writes its own MAD-X decks and imports them with `lattice.load_file()` for both `BV`
     signs: tilted normal quadrupoles at 1.4 and 4.7 GeV with `k1` = ±1.7 m⁻² in the linear, paraxial and

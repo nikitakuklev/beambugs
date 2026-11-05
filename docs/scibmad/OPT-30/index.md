@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on SciBmad main (`ae9423d`) |
 | Source | [`src/twiss/twiss.jl:330`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L330)<br>[`twiss.jl:103-107`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L103-L107)<br>[`Beamlines.jl/src/misc.jl:18-52`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/misc.jl#L18-L52) |
 
-With `damping` and the initial normalizer `a_initial` omitted, `twiss` decides whether the optics are damped by checking the normalizer's symplecticity instead of the transport map's, and misses damping in a supported user transport map. For M = A·diag(ρᵢRᵢ)·A⁻¹ with symplectic Courant–Snyder A, rotations Rᵢ and amplitude factors ρᵢ, the matched beta functions must be periodic. With β = (2, 3, 4) m and ρ = (0.93, 0.87, 0.81), automatic selection instead changes β₁ from 2.000 to 1.730 m and β₂ from 3.000 to 2.271 m and omits damping summaries. Explicit `damping=true` restores periodicity and the analytic decrements −log ρᵢ. The undamped control passes; realistic radiation-lattice impact was not measured.
+With `damping` and the initial normalizer `a_initial` omitted, `twiss` decides whether the optics are damped by checking the normalizer's symplecticity instead of the transport map's, and misses damping in a supported user transport map. For M = A·diag(ρᵢRᵢ)·A⁻¹ with symplectic Courant–Snyder A, rotations Rᵢ and amplitude factors ρᵢ, the matched beta functions must be periodic. With β = (2, 3, 4) m and ρ = (0.93, 0.87, 0.81), automatic selection instead changes β₁ from 2.000 to 1.730 m and β₂ from 3.000 to 2.271 m and omits damping summaries. Explicit `damping=true` restores periodicity and the analytic decrements −log ρᵢ. The undamped control passes.
 
 ??? example "Reproducer: OPT-30.jl"
 
@@ -30,8 +30,7 @@ With `damping` and the initial normalizer `a_initial` omitted, `twiss` decides w
     # A, rotations Rᵢ and amplitude factors ρᵢ, the matched beta functions must be periodic. With β =
     # (2, 3, 4) m and ρ = (0.93, 0.87, 0.81), automatic selection instead changes β₁ from 2.000 to 1.730
     # m and β₂ from 3.000 to 2.271 m and omits damping summaries. Explicit `damping=true` restores
-    # periodicity and the analytic decrements −log ρᵢ. The undamped control passes; realistic
-    # radiation-lattice impact was not measured.
+    # periodicity and the analytic decrements −log ρᵢ. The undamped control passes.
     #
     # The script wraps a six-dimensional linear map with β = (2, 3, 4) m, α = (0.2, −0.1, 0.3), ρ =
     # (0.93, 0.87, 0.81) and rotation angles (0.37, 0.59, 0.23) in a user transport element, runs

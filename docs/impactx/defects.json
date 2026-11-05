@@ -8,7 +8,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`ExactCFbend` leaves the skew-dipole coefficient `k_skew[0]` out of its orbital kick, so a skew dipole produces no vertical steering. In the element's curvilinear field model the skew dipole gives Bₓ/(Bρ) = kₛ/(1 + hx), with Bρ the magnetic rigidity, h the curvature and kₛ = `k_skew[0]`, so an on-axis particle must leave a body of length L with `py` = kₛ·L. For an on-axis proton in `ExactCFbend(ds=0.7, k_normal=[0.3], k_skew=[0.02])`, `py` is 0 instead of 0.01400, with one and with four slices. Any skew dipole or vertical corrector modelled inside an `ExactCFbend` gives no vertical kick.",
+  "summary": "`ExactCFbend` leaves the skew-dipole coefficient `k_skew[0]` out of its orbital kick, so a skew dipole produces no vertical steering. In the element's curvilinear field model the skew dipole gives Bₓ/(Bρ) = kₛ/(1 + hx), with Bρ the magnetic rigidity, h the curvature and kₛ = `k_skew[0]`, so an on-axis particle must leave a body of length L with `py` = kₛ·L. For an on-axis proton in `ExactCFbend(ds=0.7, k_normal=[0.3], k_skew=[0.02])`, `py` is 0 instead of 0.01400, with one and with four slices.",
   "justification": null,
   "locations": [
    {
@@ -262,7 +262,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "A `SoftQuadrupole`, `SoftSolenoid` or `RFCavity` followed by its `reverse()` copy in a lattice does not return particles to their initial coordinates, although the manual documents `reverse()` as undoing the original element. Lattice tracking resets the field-profile origin at each element, so the reversed element (negative `ds`) integrates outside its field profile; with a flat profile it reduces to a drift of length −`ds`. Pushing the reversed element directly, which keeps the forward element's profile origin, closes the round trip to 2.1e-16. With a constant profile (`cos_coefficients=[2]`, `ds` = 0.7 m), the largest coordinate error after the pair, in metres or normalized momentum, is 0.01080 for `SoftQuadrupole`, 0.004498 for `SoftSolenoid` and 0.002723 for `RFCavity`. Any lattice containing a reversed soft-edge element is affected.",
+  "summary": "A `SoftQuadrupole`, `SoftSolenoid` or `RFCavity` followed by its `reverse()` copy in a lattice does not return particles to their initial coordinates, although the manual documents `reverse()` as undoing the original element. Lattice tracking resets the field-profile origin at each element, so the reversed element (negative `ds`) integrates outside its field profile; with a flat profile it reduces to a drift of length −`ds`. Pushing the reversed element directly, which keeps the forward element's profile origin, closes the round trip to 2.1e-16. With a constant profile (`cos_coefficients=[2]`, `ds` = 0.7 m), the largest coordinate error after the pair, in metres or normalized momentum, is 0.01080 for `SoftQuadrupole`, 0.004498 for `SoftSolenoid` and 0.002723 for `RFCavity`.",
   "justification": null,
   "locations": [
    {
@@ -452,7 +452,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The linear `CFbend` returns NaN coordinates when a focusing frequency is zero: gradient `k` = 0 gives NaN `y` and `py`, and `k` = −1/`rc`² (bend radius `rc`), which cancels horizontal focusing, gives NaN `x`, `px` and `t`. The transfer functions have finite limits there, matched by `Sbend` at `k` = 0 and by a gradient raised by 1e-9 m⁻². When rounding leaves a residue of −1.4e-17 m⁻² in the horizontal focusing `k` + 1/`rc`², the result is finite but wrong: for `rc` = 1/0.3 m, `k` = −0.09 m⁻² and `ds` = 0.7 m, `x` is 0.02770 m instead of 0.03025 m and `t` is 0.01115 m instead of 0.01314 m. Zero-gradient bends and bends tuned to cancel horizontal focusing are affected.",
+  "summary": "The linear `CFbend` returns NaN coordinates when a focusing frequency is zero: gradient `k` = 0 gives NaN `y` and `py`, and `k` = −1/`rc`² (bend radius `rc`), which cancels horizontal focusing, gives NaN `x`, `px` and `t`. The transfer functions have finite limits there, matched by `Sbend` at `k` = 0 and by a gradient raised by 1e-9 m⁻². When rounding leaves a residue of −1.4e-17 m⁻² in the horizontal focusing `k` + 1/`rc`², the result is finite but wrong: for `rc` = 1/0.3 m, `k` = −0.09 m⁻² and `ds` = 0.7 m, `x` is 0.02770 m instead of 0.03025 m and `t` is 0.01115 m instead of 0.01314 m.",
   "justification": null,
   "locations": [
    {
@@ -619,7 +619,7 @@
   "severity": "Crash or API hazard",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "A `Sol` with zero strength, `ks=0`, as when a solenoid is switched off in a scan or knob, returns NaN `x` and `y`, because the map divides by α = `ks`/2. The zero-field limit is a drift, since sin(αL)/α → L for length L, and both `Sol(ks=1e-9)` and `Drift` give it. A proton entering a 0.7 m `Sol(ks=0)` at `x` = 13 mm, `px` = 0.021, `y` = −17 mm and `py` = 0.008 exits with NaN `x` and `y` instead of 27.70 mm and −11.40 mm; the momenta and longitudinal coordinates are correct. Any lattice that contains a switched-off `Sol` is affected.",
+  "summary": "A `Sol` with zero strength, `ks=0`, as when a solenoid is switched off in a scan or knob, returns NaN `x` and `y`, because the map divides by α = `ks`/2. The zero-field limit is a drift, since sin(αL)/α → L for length L, and both `Sol(ks=1e-9)` and `Drift` give it. A proton entering a 0.7 m `Sol(ks=0)` at `x` = 13 mm, `px` = 0.021, `y` = −17 mm and `py` = 0.008 exits with NaN `x` and `y` instead of 27.70 mm and −11.40 mm; the momenta and longitudinal coordinates are correct.",
   "justification": null,
   "locations": [
    {
@@ -703,7 +703,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`ExactCFbend` evaluates its octupole and decapole kicks as differences of order-one terms in 1 + x/`rc` and then multiplies them by powers of the bend radius `rc`, so rounding dominates at small curvature: the error scales as ε·`rc`³·k₃ for the octupole and ε·`rc`⁴·k₄ for the decapole, with k₃ and k₄ their coefficients and ε the double-precision machine epsilon. In the straight limit at y = 0 the decapole kick rate is −k₄x⁴/24, which a 60-digit evaluation of the code's own expression reproduces. For `rc` = 1000 m, `ds` = 1e-4 m, k₄ = 1e4 m⁻⁵ and a particle at x = 1 mm, the decapole changes `px` by −6.889e-6 instead of −4.167e-14. Weakly curved combined-function magnets with these terms are affected.",
+  "summary": "`ExactCFbend` evaluates its octupole and decapole kicks as differences of order-one terms in 1 + x/`rc` and then multiplies them by powers of the bend radius `rc`, so rounding dominates at small curvature: the error scales as ε·`rc`³·k₃ for the octupole and ε·`rc`⁴·k₄ for the decapole, with k₃ and k₄ their coefficients and ε the double-precision machine epsilon. In the straight limit at y = 0 the decapole kick rate is −k₄x⁴/24, which a 60-digit evaluation of the code's own expression reproduces. For `rc` = 1000 m, `ds` = 1e-4 m, k₄ = 1e4 m⁻⁵ and a particle at x = 1 mm, the decapole changes `px` by −6.889e-6 instead of −4.167e-14.",
   "justification": null,
   "locations": [
    {
@@ -875,7 +875,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`Multipole` and `ExactMultipole` compute their factorial normalization in 32-bit integers, which overflow from 13! = 6227020800 on: thin `multipole=14` and above, and thick coefficients at index 13 and above. At y = 0 a normal multipole of integrated strength K and power n (n = `multipole` − 1 when thin) must change `px` by −K·xⁿ/n! with the exact factorial; one drift–kick–drift step of the thick element has the same exact expectation. On the tested CPU build, order-14 normal and skew kicks are 3.223 times too large (−0.003223 instead of −0.001 at x = 0.25 m), and order-18 kicks have the wrong sign and are 1.233e6 times too large. Orders up to 13 are correct; signed overflow makes higher-order values compiler-dependent.",
+  "summary": "`Multipole` and `ExactMultipole` compute their factorial normalization in 32-bit integers, which overflow from 13! = 6227020800 on: thin `multipole=14` and above, and thick coefficients at index 13 and above. At y = 0 a normal multipole of integrated strength K and power n (n = `multipole` − 1 when thin) must change `px` by −K·xⁿ/n! with the exact factorial; one drift–kick–drift step of the thick element has the same exact expectation. On the CPU build, order-14 normal and skew kicks are 3.223 times too large (−0.003223 instead of −0.001 at x = 0.25 m), and order-18 kicks have the wrong sign and are 1.233e6 times too large. Orders up to 13 are correct; signed overflow makes higher-order values compiler-dependent.",
   "justification": null,
   "locations": [
    {
@@ -1112,7 +1112,7 @@
   "tags": [
    "extreme-regime"
   ],
-  "summary": "`ChrAcc` with a very small nonzero acceleration `ez` = qE/(mc²) (E the longitudinal electric field) divides a logarithm of a near-unity ratio and differences of nearly equal momenta by `ez`, so rounding corrupts the transverse map, the arrival time `t` and the reference time. A 65-digit quadrature of the documented Hamiltonian, regular at zero acceleration and matching ImpactX at `ez` = 0, gives the correct values. For a proton at γ = 2 entering a 0.4 m element with `ez` = 1e-14 m⁻¹ at x = 0.01 m, `px` = 0.02, `x` exits at 0.01846 m instead of 0.01782 m, `t` is off by 0.002584 m and the reference `ct` is 0.4663 m instead of 0.4619 m. At `ez` = 1e-16 m⁻¹ the particle is not moved and the reference `ct` stays 0. Both acceleration signs fail.",
+  "summary": "`ChrAcc` with a tiny nonzero acceleration `ez` = qE/(mc²) (E the longitudinal electric field) divides a logarithm of a near-unity ratio and differences of nearly equal momenta by `ez`, so rounding corrupts the transverse map, the arrival time `t` and the reference time. A 65-digit quadrature of the documented Hamiltonian gives the correct values. For a proton at γ = 2 entering a 0.4 m element with `ez` = 1e-14 m⁻¹ at x = 0.01 m, `px` = 0.02, `x` exits at 0.01846 m instead of 0.01782 m, `t` is off by 0.002584 m and the reference `ct` is 0.4663 m instead of 0.4619 m. At `ez` = 1e-16 m⁻¹ the particle is not moved. Both signs fail.",
   "justification": null,
   "locations": [
    {
@@ -1395,7 +1395,7 @@
   "tags": [
    "experimental"
   ],
-  "summary": "With spin tracking enabled (experimental in ImpactX), `SoftSolenoid` omits the spin precession caused by the radial fringe field of a varying longitudinal field, because its spin map discards the field derivative. Maxwell's equations give the off-axis transverse fields −x·b′/2 and −y·b′/2 for b the longitudinal field divided by the rigidity Bρ; an independent Thomas–BMT integration with these fields disagrees with ImpactX while the orbits agree, and at vanishing magnetic anomaly ImpactX's spin does not follow the velocity, as it must. For a proton at γ = 3.3 offset by 20 μm in an asymmetric 0.7 m field profile, the transverse spin error at the exit is 1.548e-4. On-axis precession is correct; off-axis particles are affected.",
+  "summary": "With spin tracking enabled (experimental in ImpactX), `SoftSolenoid` omits the spin precession caused by the radial fringe field of a varying longitudinal field, because its spin map discards the field derivative. Maxwell's equations give the off-axis transverse fields −x·b′/2 and −y·b′/2 for b the longitudinal field divided by the rigidity Bρ; an independent Thomas–BMT integration with these fields disagrees with ImpactX while the orbits agree, and at vanishing magnetic anomaly ImpactX's spin does not follow the velocity, as it must. For a proton at γ = 3.3 offset by 20 μm in an asymmetric 0.7 m field profile, the transverse spin error at the exit is 1.548e-4. On-axis precession is correct.",
   "justification": null,
   "locations": [
    {
@@ -1585,7 +1585,7 @@
   "tags": [
    "experimental"
   ],
-  "summary": "`ExactCFbend` applies the skew-decapole (`k_skew[4]`) horizontal kick with the wrong sign: it is the negative of the derivative of the documented vector potential (Zolkin 2017, Table XI), while the vertical kick is correct. The map is therefore not symplectic, and an independent integration of the curvilinear Hamiltonian reproduces ImpactX to 1.3e-14 only with this sign reversed. For a proton at γ = 3.25 in a 0.15 m bend with curvature 2 m⁻¹ and skew strength 160 m⁻⁵, a particle at x = 0.08 m, y = −0.05 m exits with `px` off by 1.321e-4, and the Jacobian M violates the symplectic condition MᵀJM = J by 6.795e-4. Spin tracking (experimental in ImpactX) uses the same wrong field, with spin-component errors up to 7.899e-4. The error grows with strength and amplitude.",
+  "summary": "`ExactCFbend` applies the skew-decapole (`k_skew[4]`) horizontal kick with the wrong sign: it is the negative of the derivative of the documented vector potential (Zolkin 2017, Table XI), while the vertical kick is correct. The map is therefore not symplectic, and an independent integration of the curvilinear Hamiltonian reproduces ImpactX to 1.3e-14 only with the sign reversed. For a proton at γ = 3.25 in a 0.15 m bend with curvature 2 m⁻¹ and skew strength 160 m⁻⁵, a particle at x = 0.08 m, y = −0.05 m exits with `px` off by 1.321e-4, and the Jacobian M violates MᵀJM = J by 6.795e-4. Spin tracking (experimental) uses the same wrong field, with spin errors up to 7.899e-4.",
   "justification": null,
   "locations": [
    {
@@ -1709,7 +1709,7 @@
   "tags": [
    "experimental"
   ],
-  "summary": "With spin tracking enabled (experimental in ImpactX), `CFbend` divides its spin coupling by k + (Gγh)², for gradient k, magnetic anomaly G and curvature h = 1/`rc`, which vanishes when the vertical focusing frequency √(−k) equals |Gγh|. The Thomas–BMT solution stays finite there; on the design orbit it is a rotation by GγhL about the vertical axis over length L. For built-in electrons at γ = 0.5/G = 431.2 in a `CFbend` with `rc` = 1 m, `k` = −0.25 m⁻² and L = 0.31 m, every spin component becomes NaN, also on axis, while the orbit is correct. Near the coincidence the spins are finite but wrong: at γ = 2 with G = 0.25 and the gradient detuned by a relative 1e-15, the spin error is 7.450e-5.",
+  "summary": "With spin tracking (experimental), `CFbend` divides its spin coupling by k + (Gγh)², for gradient k, magnetic anomaly G and curvature h = 1/`rc`, which vanishes when the vertical focusing frequency √(−k) equals |Gγh|. The Thomas–BMT solution stays finite there; on the design orbit it is a rotation by GγhL about the vertical axis over length L. For electrons at γ = 0.5/G = 431.2 in a `CFbend` with `rc` = 1 m, `k` = −0.25 m⁻² and L = 0.31 m, all spin components are NaN while the orbit is correct. Nearby the spins are finite but wrong: at γ = 2 with G = 0.25 and the gradient detuned by a relative 1e-15, the error is 7.450e-5.",
   "justification": null,
   "locations": [
    {
@@ -1880,7 +1880,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "For a `DipEdge` with the nonlinear fringe model, the linear transfer matrix that ImpactX reports omits the vertical focusing from the fringe-field integral `K5`, which the particle map includes. The reported matrix must equal the particle map's small-amplitude derivative, whose vertical focusing changes in proportion to g·`K5`·sin ψ/cos³ψ (ψ the pole-face angle, g the gap). For a proton of 1000 MeV kinetic energy with ψ = 0.2 rad, `rc` = 1 m, g = 0.1 m and `K1` = 0, raising `K5` from 0 to 0.1 changes the particle map's R₄₃ = ∂py/∂y by 0.002110 m⁻¹, matching an independent derivation from its generating function, while the reported matrix is unchanged. From the source, envelope tracking uses this same matrix; the particle map itself is not shown to be wrong.",
+  "summary": "For a `DipEdge` with the nonlinear fringe model, the linear transfer matrix that ImpactX reports, which envelope tracking uses, omits the vertical focusing from the fringe-field integral `K5`, which the particle map includes. The reported matrix must equal the particle map's small-amplitude derivative, whose vertical focusing changes in proportion to g·`K5`·sin ψ/cos³ψ (ψ the pole-face angle, g the gap). For a proton of 1000 MeV kinetic energy with ψ = 0.2 rad, `rc` = 1 m, g = 0.1 m and `K1` = 0, raising `K5` from 0 to 0.1 changes the particle map's R₄₃ = ∂py/∂y by 0.002110 m⁻¹, matching an independent derivation from its generating function, while the reported matrix is unchanged.",
   "justification": null,
   "locations": [
    {
@@ -2034,7 +2034,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "With `2p5D` particle-in-cell space charge, the longitudinal kick multiplies the absolute 2D potential, whose logarithmic kernel implicitly fixes a reference length r₀ = 1 m; `Gauss2p5D` exposes this length as `gauss_long_scale` (default 1.103·γ·σz, σz the rms bunch length), but `2p5D` has no such parameter and does not document it. Scaling all lengths by one factor at fixed charge and energy must leave the length-scaled kick unchanged; for a 1 pC electron bunch at γ = 10 the transverse kick obeys this, while the longitudinal kick changes by 7.879% when lengths double. Against the exact 3D field of a long round Gaussian bunch with γσz/σ⊥ = 50 (σ⊥ the rms width), the on-axis longitudinal field has L2 errors of 73.62% (σ⊥ = 1 mm) and 131.1% (σ⊥ = 0.1 mm), and 149.9% in a round pipe of radius 25 mm.",
+  "summary": "With `2p5D` particle-in-cell space charge, the longitudinal kick multiplies the absolute 2D potential, whose logarithmic kernel implicitly fixes a reference length r₀ = 1 m that `2p5D` cannot change. Scaling all lengths at fixed charge and energy must leave the length-scaled kick unchanged; for a 1 pC electron bunch at γ = 10 the transverse kick obeys this, while the longitudinal kick changes by 7.879% when lengths double. Against the exact 3D field of a long round Gaussian bunch with γσz/σ⊥ = 50 (σz, σ⊥ the rms length and width), the on-axis longitudinal field has L2 errors of 73.62% (σ⊥ = 1 mm), 131.1% (σ⊥ = 0.1 mm) and 149.9% in a round pipe of radius 25 mm.",
   "justification": null,
   "locations": [
    {
@@ -2244,7 +2244,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The Python helper `impactx.wakeconvolution.w_t_rf`, the short-range dipole wake W⊥(s) of a periodic accelerating structure at distance s behind the source, uses the bracket u·e⁻ᵘ with u = √(s/s₀) (s₀ a fitted length), where the cited Bane model (SLAC-PUB-9663, 2003, Eqs. 15–16) has 1 − (1 + u)·e⁻ᵘ. Bane's form rises linearly in s at short range; the implemented one starts as √s. For a cell resembling the Next Linear Collider design (iris radius 4.92 mm, gap 6.89 mm, period 8.75 mm) the wake is 19.34 times too large at s/s₀ = 0.01 and 1.392 times at s/s₀ = 1. Its documentation also calls it a resistive-wall wake and states units of V/m/pC/mm although it returns SI. Built-in tracking does not call it; only direct callers are affected.",
+  "summary": "The Python helper `impactx.wakeconvolution.w_t_rf`, the short-range dipole wake W⊥(s) of a periodic accelerating structure at distance s behind the source, uses the bracket u·e⁻ᵘ with u = √(s/s₀) (s₀ a fitted length), where the cited Bane model (SLAC-PUB-9663, 2003, Eqs. 15–16) has 1 − (1 + u)·e⁻ᵘ. Bane's form rises linearly in s at short range; the implemented one starts as √s. For a cell resembling the Next Linear Collider design (iris radius 4.92 mm, gap 6.89 mm, period 8.75 mm) the wake is 19.34 times too large at s/s₀ = 0.01 and 1.392 times at s/s₀ = 1. Its documentation also calls it a resistive-wall wake and states units of V/m/pC/mm although it returns SI. Built-in tracking does not call it.",
   "justification": null,
   "locations": [
    {
@@ -2407,7 +2407,7 @@
   "tags": [
    "extreme-regime"
   ],
-  "summary": "For 3D FFT particle-in-cell space charge, ImpactX passes only the rounded velocity β = √(1 − 1/γ²) to the WarpX/ABLASTR Poisson solver, which reconstructs the Lorentz factor γ from it, while ImpactX's own coordinate transforms keep the original γ. Lorentz similarity requires the transverse kick scaled by (βγ)² to stay unchanged for a fixed rest-frame source and mesh. At γ = 6.000×10⁷ (30.66 TeV electrons) the solver uses γ = 4.745×10⁷, and for a uniform sphere on a 64³ mesh the rescaled transverse kick is 9.642% low, on a normalized kick of only 1.735×10⁻²⁰. The error shrinks at lower energy, to 2.716×10⁻⁹ at γ = 10⁴; no consequential error at ordinary energies is established.",
+  "summary": "For 3D FFT particle-in-cell space charge, ImpactX passes only the rounded velocity β = √(1 − 1/γ²) to the WarpX/ABLASTR Poisson solver, which reconstructs the Lorentz factor γ from it, while ImpactX's own coordinate transforms keep the original γ. Lorentz similarity requires the transverse kick scaled by (βγ)² to stay unchanged for a fixed rest-frame source and mesh. At γ = 6.000×10⁷ (30.66 TeV electrons) the solver uses γ = 4.745×10⁷, and for a uniform sphere on a 64³ mesh the rescaled transverse kick is 9.642% low, on a normalized kick of only 1.735×10⁻²⁰. The error shrinks at lower energy, to 2.716×10⁻⁹ at γ = 10⁴.",
   "justification": null,
   "locations": [
    {
@@ -2517,7 +2517,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`beam_moments()` can report zero beam size and emittance for a finite-emittance beam when a distant particle with zero or tiny weight, such as a tracer, is stored first. The moments are accumulated about the first stored particle, so with a distant origin the shifted second moment and squared mean nearly cancel and the core variance is lost. Weighted standard deviations and emittances must not depend on particle order or zero-weight particles; a two-pass weighted covariance gives the correct values. For a core with σx = 10⁻⁹ m and emittance εx = 10⁻¹² m and a tracer at x = 1 m stored first, with weight 0 or 10⁻²⁴, both are reported as 0; stored last, they are correct. The failure needs this large tracer-to-core scale separation.",
+  "summary": "`beam_moments()` can report zero beam size and emittance for a finite-emittance beam when a distant particle with zero or tiny weight, such as a tracer, is stored first. The moments are accumulated about the first stored particle, so the shifted second moment and squared mean nearly cancel and the core variance is lost. Weighted standard deviations and emittances must not depend on particle order or zero-weight particles; a two-pass weighted covariance gives the correct values. For a core with σx = 10⁻⁹ m and emittance εx = 10⁻¹² m and a tracer at x = 1 m stored first, with weight 0 or 10⁻²⁴, both are reported as 0; stored last, they are correct.",
   "justification": null,
   "locations": [
    {
@@ -2757,7 +2757,7 @@
   "severity": "Crash or API hazard",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Initializing a `Thermal` distribution for a negatively charged species, such as electrons or H⁻, with positive focusing strength k and nonzero bunch charge returns NaN for every particle position, while the momenta are finite and the call returns normally. In the source, the radius calculation raises a self-field coefficient formed with the signed species charge to the power 2/3. Reversing the charge sign leaves the repulsive self-force unchanged, so the distribution must equal that of the opposite charge; an independent integration of Gauss's law with a Boltzmann density gives that finite solution. In the tested electron and H⁻ cases all 2049 positions are NaN, while positive species give finite positions and, at zero bunch charge, both signs give identical results.",
+  "summary": "Initializing a `Thermal` distribution for a negatively charged species, such as electrons or H⁻, with positive focusing strength k and nonzero bunch charge returns NaN for every particle position, while the momenta are finite and the call returns normally. In the source, the radius calculation raises a self-field coefficient formed with the signed species charge to the power 2/3. Reversing the charge sign leaves the repulsive self-force unchanged, so the distribution must equal that of the opposite charge; an independent integration of Gauss's law with a Boltzmann density gives that finite solution. In the electron and H⁻ cases all 2049 positions are NaN, while positive species give finite positions and, at zero bunch charge, both signs give identical results.",
   "justification": null,
   "locations": [
    {
@@ -2939,7 +2939,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Importing a MAD-X `BEAM, PARTICLE=ION` with explicit `MASS` and `CHARGE` into ImpactX discards both in favor of a fixed default ion mass and charge, so the reference mass, charge, kinetic energy and rigidity are wrong before tracking starts. MAD-X documents independent mass and charge overrides for ions, and native MAD-X keeps them for this input. For an alpha particle, `BEAM, PARTICLE=ION, MASS=3.7273794, CHARGE=2, ENERGY=10` (GeV), ImpactX uses a mass of 939.6 MeV and charge 1, giving 9060 MeV kinetic energy instead of 6273 MeV. Ion beams that set their own mass and charge are affected, and the importer prints that it ignores them; an unrecognized particle name keeps them.",
+  "summary": "Importing a MAD-X `BEAM, PARTICLE=ION` with explicit `MASS` and `CHARGE` into ImpactX discards both in favor of a fixed default ion mass and charge, so the reference mass, charge, kinetic energy and rigidity are wrong before tracking starts. MAD-X documents independent mass and charge overrides for ions, and native MAD-X keeps them for this input. For an alpha particle, `BEAM, PARTICLE=ION, MASS=3.7273794, CHARGE=2, ENERGY=10` (GeV), ImpactX uses a mass of 939.6 MeV and charge 1, giving 9060 MeV kinetic energy instead of 6273 MeV. The importer prints that it ignores `MASS` and `CHARGE`; an unrecognized particle name keeps them.",
   "justification": null,
   "locations": [
    {
@@ -3011,7 +3011,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`insert_element_every_ds()`, which places a thin element such as a `Marker` at regular spacing by splitting the thick elements it falls in, gives each piece of a split `ExactSbend` the full original angle `phi`. A uniform sector bend of length L and angle θ must keep its total deflection and its arc of radius L/θ when split, so a piece of length Lᵢ needs the angle θ·Lᵢ/L; the analytic exit coordinates of that arc fix the correct result. A marker at the midpoint of a 1 m, 20° `ExactSbend` makes it bend by 40° in total, and markers every 0.3 m make 80°, while the path length stays 1 m. Exact bends given by angle alone (`B=0`) or with an explicit field are affected; `Sbend`, `CFbend`, `Quad` and `ChrAcc` split exactly.",
+  "summary": "`insert_element_every_ds()`, which places a thin element such as a `Marker` at regular spacing by splitting the thick elements it falls in, gives each piece of a split `ExactSbend` the full original angle `phi`. A uniform sector bend of length L and angle θ must keep its total deflection when split, so a piece of length Lᵢ needs the angle θ·Lᵢ/L; the analytic exit coordinates of that arc fix the correct result. A marker at the midpoint of a 1 m, 20° `ExactSbend` makes it bend by 40° in total, and markers every 0.3 m make 80°, while the path length stays 1 m. This holds with `B=0` or an explicit field; `Sbend`, `CFbend`, `Quad` and `ChrAcc` split exactly.",
   "justification": null,
   "locations": [
    {
@@ -3102,7 +3102,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "If a `before_slice` hook changes the length `ds` of the upcoming element, ImpactX transports the element over the new length but applies its space-charge kick for the length cached before the hook. The hook contract allows modifying the upcoming element, the same change made in `before_element` gives the correct result, and independently composed drift and kick matrices reproduce both outcomes. For a 10 MeV, 0.1 A proton envelope with 1 mm rms sizes and 2D space charge, retuning a drift from 0.1 to 0.2 m halves the kick: the normalized-momentum variance ⟨pₓ²⟩ ends at 1.270×10⁻⁸ instead of 2.058×10⁻⁸ with Strang splitting. Retuning from 0.4 m doubles the kick and from zero length omits it, in first-order and Strang splitting; particle tracking shares this code but was not run.",
+  "summary": "If a `before_slice` hook changes the length `ds` of the upcoming element, ImpactX transports the element over the new length but applies its space-charge kick for the length cached before the hook. The hook contract allows modifying the upcoming element, the same change made in `before_element` gives the correct result, and independently composed drift and kick matrices reproduce both outcomes. For a 10 MeV, 0.1 A proton envelope with 1 mm rms sizes and 2D space charge, retuning a drift from 0.1 to 0.2 m halves the kick: the normalized-momentum variance ⟨pₓ²⟩ ends at 1.270×10⁻⁸ instead of 2.058×10⁻⁸ with Strang splitting. Retuning from 0.4 m doubles the kick and from zero length omits it, in first-order and Strang splitting; particle tracking shares this code.",
   "justification": null,
   "locations": [
    {
@@ -3329,7 +3329,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "Importing a PALS (Particle Accelerator Lattice Standard) lattice into ImpactX ignores body offsets (`BodyShiftP`) and apertures (`ApertureP`) on drifts and quadrupoles, without a warning. A body shift d displaces the element and its field, so a particle u is transported as M·(u − d) + d for element map M, and an active aperture removes particles outside its limits; native `ChrQuad(dx=d)` and a `Drift` followed by an `Aperture` give these results. For a γ = 5 proton, a 0.2 m quadrupole with `Kn1` = 2 m⁻² offset by 1 mm leaves an on-axis particle at normalized momentum pₓ = 0 instead of 3.947×10⁻⁴, and a 0.2 m drift with an active ±1 mm rectangular exit aperture passes all four test particles where two should be lost. The converter source ignores both property groups for every drift and quadrupole; an inactive aperture correctly has no effect.",
+  "summary": "Importing a PALS (Particle Accelerator Lattice Standard) lattice into ImpactX silently ignores body offsets (`BodyShiftP`) and apertures (`ApertureP`) on drifts and quadrupoles. A body shift d displaces the element and its field, so a particle u is transported as M·(u − d) + d for element map M; native `ChrQuad(dx=d)` and `Drift` plus `Aperture` give them. For a γ = 5 proton, a 0.2 m quadrupole with `Kn1` = 2 m⁻² offset by 1 mm leaves an on-axis particle at normalized momentum pₓ = 0 instead of 3.947×10⁻⁴, and a 0.2 m drift with an active ±1 mm rectangular exit aperture passes all four particles where two should be lost. An inactive aperture correctly has no effect.",
   "justification": null,
   "locations": [
    {
@@ -3407,7 +3407,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "The ImpactX dashboard's import of Python input files ignores `set_species()` and keeps its electron mass and charge defaults, so the bundled `cyclotron/run_cyclotron.py` example, which sets a proton reference, imports as an electron. Importing a script must preserve the species it defines; replacing `set_species(\"proton\")` with explicit mass and charge setters does preserve it. At the example's 4 keV kinetic energy K the imported magnetic rigidity is −2.137×10⁻⁴ T·m instead of +9.139×10⁻³ T·m, the proton value of Bρ = √(K(K + 2mc²))/(qc). According to the parser source, every imported script that sets a non-electron species with `set_species()` is affected; explicit mass and charge setters import correctly.",
+  "summary": "The ImpactX dashboard's import of Python input files ignores `set_species()` and keeps its electron mass and charge defaults, so the bundled `cyclotron/run_cyclotron.py` example, which sets a proton reference, imports as an electron. Importing a script must preserve the species it defines; replacing `set_species(\"proton\")` with explicit mass and charge setters does preserve it. At the example's 4 keV kinetic energy K the imported magnetic rigidity is −2.137×10⁻⁴ T·m instead of +9.139×10⁻³ T·m, the proton value of Bρ = √(K(K + 2mc²))/(qc).",
   "justification": null,
   "locations": [
    {
@@ -3805,7 +3805,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "When ImpactX imports a MAD-X lattice for a reversed beam (`BV=-1`), straight normal and skew multipole strengths keep their forward-beam polarity, because the importer omits the `bv` factor. MAD-X defines `BV=-1` as reversing the magnetic force, native MAD-X applies it, and the importer's own documentation specifies the reversal; analytic maps and an independent integration of the equations of motion give the reversed result. For a 1.4 GeV (total energy) proton in a 0.23 m quadrupole with `k1` = 1.7 m⁻² and tilt 0.21 rad, a test particle exits with normalized momentum pₓ = −7.699×10⁻⁵ instead of +2.189×10⁻⁵. Body quadrupoles, sextupoles and octupoles and thin quadrupole through dodecapole terms are affected; forward beams and kickers import correctly.",
+  "summary": "When ImpactX imports a MAD-X lattice for a reversed beam (`BV=-1`), straight normal and skew multipole strengths keep their forward-beam polarity, because the importer omits the `bv` factor. MAD-X defines `BV=-1` as reversing the magnetic force, native MAD-X applies it, and the importer's own documentation specifies the reversal; analytic maps and an independent integration of the equations of motion give the reversed result. For a 1.4 GeV (total energy) proton in a 0.23 m quadrupole with `k1` = 1.7 m⁻² and tilt 0.21 rad, a test particle exits with normalized momentum pₓ = −7.699×10⁻⁵ instead of +2.189×10⁻⁵. The reversed polarity applies to body quadrupoles, sextupoles and octupoles and to thin quadrupole through dodecapole terms; forward beams and kickers import correctly.",
   "justification": null,
   "locations": [
    {
@@ -4078,7 +4078,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "In the ImpactX dashboard, when several equal elements, such as identical drifts, have their lengths bound to one lattice variable, changing the variable can leave some of them at the old length, because the update finds elements by value equality instead of identity. Every bound parameter must take the variable's current value, so N drifts bound to a length L total N·L. For eight equal drifts bound in reverse order and changed from 0.125 m to 0.375 m, the exported lattice is 2.5 m long instead of 3 m, and a test particle at γ = 3.5 exits at x = −1.600 mm instead of −1.700 mm, with no error shown. Binding in index order or giving the drifts distinct names avoids it, and two further explicit refreshes restore the lengths.",
+  "summary": "In the ImpactX dashboard, when several equal elements, such as identical drifts, have their lengths bound to one lattice variable, changing the variable can leave some at the old length, because the update finds elements by value equality instead of identity. N drifts bound to a length L must total N·L. For eight equal drifts bound in reverse order and changed from 0.125 m to 0.375 m, the exported lattice is 2.5 m long instead of 3 m, and a test particle at γ = 3.5 exits at x = −1.600 mm instead of −1.700 mm, with no error shown. Binding in index order or giving the drifts distinct names avoids it.",
   "justification": null,
   "locations": [
    {
@@ -4244,7 +4244,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`insert_element_every_ds()`, which places a thin element such as a `Marker` at regular spacing, splits the thick elements it falls in by copying them with a shorter `ds`, so each piece of a split `RFCavity`, `SoftQuadrupole` or `SoftSolenoid` holds a compressed copy of the whole field profile instead of its own section. A midpoint marker in a 1 m cavity with profile ½(1 − cos 2πs/L) cuts a 10 GeV electron's energy gain by 20.00%, to 0.1735 MeV instead of 0.2169 MeV; the unsplit cavity and ImpactX's own `nslice=2` subdivision match the analytic gain integral. Constant profiles are unaffected. The helper also splits `LinearMap` and `SpinMap`, documented as unsliceable, without an error, and each piece applies the whole map: a 60° `SpinMap` rotation becomes 120°, and a `Programmable` drift that captures its original element doubles its advance.",
+  "summary": "`insert_element_every_ds()`, which places a thin element such as a `Marker` at regular spacing, splits the thick elements it falls in by copying them with a shorter `ds`, so each piece of a split `RFCavity`, `SoftQuadrupole` or `SoftSolenoid` holds a compressed copy of the whole field profile. A midpoint marker in a 1 m cavity with profile ½(1 − cos 2πs/L) cuts a 10 GeV electron's energy gain by 20.00%, to 0.1735 MeV instead of 0.2169 MeV; the unsplit cavity and ImpactX's own `nslice=2` subdivision match the analytic gain integral. Constant profiles are unaffected. It also splits `LinearMap` and `SpinMap`, documented as unsliceable, without an error, and each piece applies the whole map: a 60° `SpinMap` rotation becomes 120°.",
   "justification": null,
   "locations": [
    {

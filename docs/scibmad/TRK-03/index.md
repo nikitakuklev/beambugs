@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`) |
 | Source | [ext/BeamTrackingBeamlinesExt/exact_bl.jl:12–31](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/exact_bl.jl#L12-L31)<br>[src/kernels/bend_kick.jl:187–195](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/bend_kick.jl#L187-L195)<br>[ext/BeamTrackingBeamlinesExt/exact_bl.jl:34–42](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/exact_bl.jl#L34-L42)<br>[src/bend.jl:7–9](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/bend.jl#L7-L9)<br>[src/bend.jl:23–24](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/bend.jl#L23-L24)<br>[src/tracking_methods.jl:69–74](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/tracking_methods.jl#L69-L74)<br>[bmad/modules/fringe_mod.f90:183–207](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/modules/fringe_mod.f90#L183-L207) |
 
-Tracking an `SBend` with `Exact()` ignores the entrance and exit face angles `e1` and `e2` and the fringe selector `fringe_at`, so the bend has no edge focusing. The linear map must include a hard-edge kick at each enabled face, as the analytic edge matrices and `Symplectic(order=2)` tracking confirm. For a 0.7300 m bend with curvature 0.2000 m⁻¹ and face angles 0.1100 and 0.1300 rad, the exit normalized horizontal momentum pₓ changes with entrance position x at −0.02910 m⁻¹ instead of +0.01905 m⁻¹. Users who select the nondefault `Exact()` method for bends with active faces are affected.
+Tracking an `SBend` with `Exact()` ignores the entrance and exit face angles `e1` and `e2` and the fringe selector `fringe_at`, so the bend has no edge focusing. The linear map must include a hard-edge kick at each enabled face, as the analytic edge matrices and `Symplectic(order=2)` tracking confirm. For a 0.7300 m bend with curvature 0.2000 m⁻¹ and face angles 0.1100 and 0.1300 rad, the exit normalized horizontal momentum pₓ changes with entrance position x at −0.02910 m⁻¹ instead of +0.01905 m⁻¹.
 
 ??? example "Reproducer: TRK-03.jl"
 
@@ -29,8 +29,7 @@ Tracking an `SBend` with `Exact()` ignores the entrance and exit face angles `e1
     # hard-edge kick at each enabled face, as the analytic edge matrices and `Symplectic(order=2)`
     # tracking confirm. For a 0.7300 m bend with curvature 0.2000 m⁻¹ and face angles 0.1100 and 0.1300
     # rad, the exit normalized horizontal momentum pₓ changes with entrance position x at −0.02910 m⁻¹
-    # instead of +0.01905 m⁻¹. Users who select the nondefault `Exact()` method for bends with active
-    # faces are affected.
+    # instead of +0.01905 m⁻¹.
     #
     # The script computes 6×6 transfer matrices with ForwardDiff for a proton with p₀c = 2mc² through
     # `SBend(L=0.73, g=0.2, e1=0.11, e2=0.13)` and compares their horizontal and vertical blocks with

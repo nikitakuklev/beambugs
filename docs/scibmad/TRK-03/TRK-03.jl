@@ -5,8 +5,7 @@
 # hard-edge kick at each enabled face, as the analytic edge matrices and `Symplectic(order=2)`
 # tracking confirm. For a 0.7300 m bend with curvature 0.2000 m⁻¹ and face angles 0.1100 and 0.1300
 # rad, the exit normalized horizontal momentum pₓ changes with entrance position x at −0.02910 m⁻¹
-# instead of +0.01905 m⁻¹. Users who select the nondefault `Exact()` method for bends with active
-# faces are affected.
+# instead of +0.01905 m⁻¹.
 #
 # The script computes 6×6 transfer matrices with ForwardDiff for a proton with p₀c = 2mc² through
 # `SBend(L=0.73, g=0.2, e1=0.11, e2=0.13)` and compares their horizontal and vertical blocks with

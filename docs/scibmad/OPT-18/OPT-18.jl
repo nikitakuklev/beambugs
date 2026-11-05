@@ -6,9 +6,8 @@
 # (`at=[17]`, after four cells) gives q₁ = −0.8515 instead of 1.149 and a phase of −0.4257 instead
 # of 0.5743 turns at s = 8 m; thin-lens matrix products and sampling every cell establish the
 # accumulated values. The documented summary-only `at=[]` call treats the ring as one interval and
-# returns 0.1485. Fractional tunes stay correct; the accumulated phase advance is lost with sparse
-# sampling, such as at interaction points, and wherever a single interval between sampled rows
-# exceeds half a turn, however densely the rest is sampled.
+# returns 0.1485. Fractional tunes stay correct; the integer part is lost wherever an interval
+# between sampled rows exceeds half a turn.
 #
 # The script builds a ring of eight thin FODO cells (thin quadrupoles, 1 m drifts, 1 GeV/c
 # electrons, RF off) and computes the cell tune q_c from the thin-lens cell matrix; q_c is below ½,

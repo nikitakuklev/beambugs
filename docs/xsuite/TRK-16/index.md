@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`) |
 | Source | [`synrad_average_number_of_photons`, synrad_spectrum.h:209–219](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/headers/synrad_spectrum.h#L209-L219)<br>[total-energy sampler](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/headers/synrad_spectrum.h#L409-L433)<br>[individual-photon sampler](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/headers/synrad_spectrum.h#L463-L499)<br>[radiation laws](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L5872-L5917) |
 
-The `quantum` and `quantum-kick` synchrotron-radiation modes omit the square of the reference charge from the photon emission rate, underestimating emission for multiply charged reference particles. The Liénard radiated power and an independent integration of the photon spectrum require the rate to scale with charge squared at fixed curvature. For a reference particle of charge 6e (six elementary charges), rest energy 11.18 GeV and momentum 250 TeV/c over 600 m at curvature 2 × 10⁻⁵ m⁻¹, a `Multipole` emits on average 2.822 photons per particle instead of 101.8. An unsliced `Bend` with the same parameters loses 57.02 eV on average in `quantum` mode instead of 2075 eV, which mean-radiation tracking gives. Unit-charge references are correct; all tested particles had the reference species.
+The `quantum` and `quantum-kick` synchrotron-radiation modes omit the square of the reference charge from the photon emission rate, underestimating emission for multiply charged reference particles. The Liénard radiated power and an independent integration of the photon spectrum require the rate to scale with charge squared at fixed curvature. For a reference particle of charge 6e (six elementary charges), rest energy 11.18 GeV and momentum 250 TeV/c over 600 m at curvature 2 × 10⁻⁵ m⁻¹, a `Multipole` emits on average 2.822 photons per particle instead of 101.8. An unsliced `Bend` with the same parameters loses 57.02 eV on average in `quantum` mode instead of 2075 eV, which mean-radiation tracking gives. Unit-charge references are correct.
 
 ??? example "Reproducer: TRK-16.py"
 
@@ -31,8 +31,7 @@ The `quantum` and `quantum-kick` synchrotron-radiation modes omit the square of 
     charges), rest energy 11.18 GeV and momentum 250 TeV/c over 600 m at curvature 2 × 10⁻⁵ m⁻¹, a
     `Multipole` emits on average 2.822 photons per particle instead of 101.8. An unsliced `Bend` with
     the same parameters loses 57.02 eV on average in `quantum` mode instead of 2075 eV, which
-    mean-radiation tracking gives. Unit-charge references are correct; all tested particles had the
-    reference species.
+    mean-radiation tracking gives. Unit-charge references are correct.
 
     The script tracks 24,576 seeded particles through 600 m for reference charges 1, 2 and 6, records
     every photon emitted in a `Multipole` at fixed curvature and at a fixed 0.75 T field, and compares

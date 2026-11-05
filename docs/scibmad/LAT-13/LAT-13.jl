@@ -4,8 +4,8 @@
 # but tracking calls each callback with nine arguments, `(i, coords, cur_s, cur_t_ref,
 # cur_beta_gamma_ref, last_ds_step, last_g, transforms_out!, transforms_in!)`. The call site and the
 # narrative tracking documentation agree on the nine-argument form. A callback written to the
-# docstring raises a `MethodError` at its first call, while a nine-argument callback runs. Users who
-# follow the docstring rather than the tracking documentation are affected; the failure is loud.
+# docstring raises a `MethodError` at its first call, while a nine-argument callback runs. The
+# failure is loud.
 #
 # The script reads the `Bunch` docstring of the loaded package and tracks an electron through a 1 m
 # drift once with a callback of the three-argument form and once with a nine-argument callback. It

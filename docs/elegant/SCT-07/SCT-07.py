@@ -5,8 +5,7 @@ all three planes whatever the plane switches DO_X, DO_Y and DO_Z say. With all t
 the beam should leave the element unchanged, as it does for FACTOR=0, and with one switch at 1 only
 that plane should change. In a closed ring of 16 identical bends and 256 particles, every switch
 setting gives the same output as the fully enabled element: the horizontal variance grows by 1.707%
-and the rms momentum deviation by 2.000%, where the all-off case should show 0%. Users who disable
-one plane of smooth IBS, or all of it, are affected.
+and the rms momentum deviation by 2.000%, where the all-off case should show 0%.
 
 The script tracks a 256-particle beam once around a ring of sixteen identical sector bends, with
 constant matched beta functions, ending in an IBSCATTER with the smooth method and a growth-rate

@@ -5,8 +5,7 @@ omits the transverse drift from the slope entering that slice. Correct transport
 slope times the slice length, in addition to the displacement from the scattering kick. In a
 one-slice, 0.01 m helium target, shifting the incoming horizontal and vertical slopes by 0.002 and
 −0.003 leaves all scattered electrons' exit positions unchanged, instead of shifting them by 20.00
-µm and −30.00 µm; unscattered electrons drift correctly. Users tracking sloped beams through
-finite-length material are affected, and earlier kicks can also expose the error in later slices.
+µm and −30.00 µm; unscattered electrons drift correctly. Earlier kicks can also expose the error in later slices.
 
 The script tracks 2400 electrons through the target twice with the same random seed, once on axis
 and once with the incoming slopes shifted, so that both runs draw identical collisions and kicks. It

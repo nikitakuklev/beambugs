@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-24 on BeamTracking main (`d8e45fd`) |
 | Source | [ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:482](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L482)<br>[ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:497](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L497)<br>[src/kernels/rfcavity_kick.jl:106–114](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/rfcavity_kick.jl#L106-L114)<br>[ext/BeamTrackingBeamlinesExt/utils_bl.jl:214–226](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L214-L226)<br>[src/rf.jl:4–5](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/rf.jl#L4-L5)<br>[src/rf.jl:66](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/rf.jl#L66)<br>[ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:484](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L484)<br>[ext/BeamTrackingBeamlinesExt/utils_bl.jl:217–222](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L217-L222) |
 
-Tracking an ordinary `RFCavity` with `SciBmadStandard`, `Symplectic` or `DriftKick` at `phi0 = 0` and the default `zero_phase = PhaseRef.Accelerating` decelerates particles instead of accelerating them. That phase reference is documented as the maximum-accelerating phase, and `SaganCavity` tracking gives the required energy gain. A proton or electron with reference momentum p₀c = 2mc², twice its rest energy, crossing a 1.000 µm, 1.000 kV cavity loses 1.000 keV instead of gaining 1.000 keV. Every linac or energy-gain setup that uses ordinary RF with the default phase reference is affected; `BelowTransition` and `AboveTransition` have the correct phase on this path.
+Tracking an ordinary `RFCavity` with `SciBmadStandard`, `Symplectic` or `DriftKick` at `phi0 = 0` and the default `zero_phase = PhaseRef.Accelerating` decelerates particles instead of accelerating them. That phase reference is documented as the maximum-accelerating phase, and `SaganCavity` tracking gives the required energy gain. A proton or electron with reference momentum p₀c = 2mc², twice its rest energy, crossing a 1.000 µm, 1.000 kV cavity loses 1.000 keV instead of gaining 1.000 keV. `BelowTransition` and `AboveTransition` have the correct phase on this path.
 
 ??? example "Reproducer: TRK-01.jl"
 
@@ -29,8 +29,7 @@ Tracking an ordinary `RFCavity` with `SciBmadStandard`, `Symplectic` or `DriftKi
     # them. That phase reference is documented as the maximum-accelerating phase, and `SaganCavity`
     # tracking gives the required energy gain. A proton or electron with reference momentum p₀c = 2mc²,
     # twice its rest energy, crossing a 1.000 µm, 1.000 kV cavity loses 1.000 keV instead of gaining
-    # 1.000 keV. Every linac or energy-gain setup that uses ordinary RF with the default phase reference
-    # is affected; `BelowTransition` and `AboveTransition` have the correct phase on this path.
+    # 1.000 keV. `BelowTransition` and `AboveTransition` have the correct phase on this path.
     #
     # The script tracks a proton and an electron with p₀c = 2mc², starting on the reference orbit,
     # through a 1000 V, 1 MHz cavity at `phi0 = 0` with `zero_phase = PhaseRef.Accelerating`: 1 µm long

@@ -5,8 +5,7 @@ rank centers its histogram on its own bunch mean, so unequal rank means make sum
 different physical times. The correct kick is a causal sum within each bunch; serial tracking, MPI
 with equal rank means and automatic bins reproduce it. For two 80.00 pC bunches whose early and late
 halves occupy different ranks, the first particle of a late half receives no horizontal slope kick
-instead of 6.720×10⁻⁷, and the last particle's kick is 60.00% too small. Multibunch MPI users
-selecting fixed bins are affected.
+instead of 6.720×10⁻⁷, and the last particle's kick is 60.00% too small.
 
 The script tracks two 24-particle bunches, 3 ns apart, through one dipole TRWAKE with a linear
 causal wake and 64 fixed bins. Every particle has the same transverse offsets, so the correct kick

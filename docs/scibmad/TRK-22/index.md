@@ -16,7 +16,7 @@ hide:
 | Discussed in | [[gh:https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/pull/306]] |
 | Source | [src/constants.jl:177](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/constants.jl#L177)<br>[src/species_data.jl:26](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/species_data.jl#L26)<br>[src/species_data.jl:42](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/species_data.jl#L42)<br>[src/constructors.jl:11–43](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/constructors.jl#L11-L43)<br>[src/functions.jl:164–167](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/functions.jl#L164-L167)<br>[test/values_test.jl:34](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/test/values_test.jl#L34)<br>[src/functions.jl:142–150](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/functions.jl#L142-L150)<br>[docs/src/constants.md:83–113](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/docs/src/constants.md#L83-L113) |
 
-The neutron and antineutron `g_spin` values are normalized to the nuclear magneton, which uses the proton mass, although the accessor promises normalization to each particle's own mass. Combining the returned value with the documented formula therefore disagrees with the tabulated magnetic moment, and converting by the neutron-to-proton mass ratio restores agreement. With CODATA 2022 active, neutron `g_spin` with `signed=true` is −3.826 instead of the own-mass value −3.831, implying a gyromagnetic ratio of −1.830 × 10⁸ instead of −1.832 × 10⁸ s⁻¹ T⁻¹, a 0.1377% magnitude error. Antineutron signs reverse with the same fractional error; charged species agree, and consequences for neutral-particle tracking are unestablished.
+The neutron and antineutron `g_spin` values are normalized to the nuclear magneton, which uses the proton mass, although the accessor promises normalization to each particle's own mass. Combining the returned value with the documented formula therefore disagrees with the tabulated magnetic moment, and converting by the neutron-to-proton mass ratio restores agreement. With CODATA 2022 active, neutron `g_spin` with `signed=true` is −3.826 instead of the own-mass value −3.831, implying a gyromagnetic ratio of −1.830 × 10⁸ instead of −1.832 × 10⁸ s⁻¹ T⁻¹, a 0.1377% magnitude error. Antineutron signs reverse with the same fractional error; charged species agree.
 
 ??? example "Reproducer: TRK-22.jl"
 
@@ -31,8 +31,7 @@ The neutron and antineutron `g_spin` values are normalized to the nuclear magnet
     # moment, and converting by the neutron-to-proton mass ratio restores agreement. With CODATA 2022
     # active, neutron `g_spin` with `signed=true` is −3.826 instead of the own-mass value −3.831,
     # implying a gyromagnetic ratio of −1.830 × 10⁸ instead of −1.832 × 10⁸ s⁻¹ T⁻¹, a 0.1377% magnitude
-    # error. Antineutron signs reverse with the same fractional error; charged species agree, and
-    # consequences for neutral-particle tracking are unestablished.
+    # error. Antineutron signs reverse with the same fractional error; charged species agree.
     #
     # With CODATA 2022 active, the script compares, for the neutron, the antineutron and twelve charged
     # controls, the gyromagnetic ratio g·e/(2m) from `g_spin` and the particle's own mass m with μ/(Sℏ)

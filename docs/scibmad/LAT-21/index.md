@@ -15,7 +15,7 @@ hide:
 | Last reproduced | 2026-10-30 on bmad-ecosystem 20261020-0 (`19b8afb`) |
 | Source | [`bmad/bmad/output/write_lattice_scibmad_format.f90:685-688`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L685-L688)<br>[`:845-858`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L845-L858)<br>[`bmad/bmad/output/write_lattice_file_mod.f90:184-199`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_file_mod.f90#L184-L199)<br>[`Beamlines.jl/src/aperture.jl:17-20`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/aperture.jl#L17-L20) |
 
-Bmad's SciBmad exporter writes aperture limits through a 24-character string, dropping the final exponent digit of the 25-character number format. A nonzero limit a·10ᵉ m therefore loads as a·10ᵗ m, with t = e/10 truncated toward zero; only magnitudes in [1, 10) m keep their exponent. Half-apertures of 0.01 m, 0.3 m and 15 m load as 1 m, 3 m and 1.5 m, and a particle at x = 0.02 m passes a collimator whose intended half-aperture is 0.01 m. An independent model of the format reproduces the loaded values, and tracking confirms the missed loss. Users importing apertures for loss or collimation studies get wrong results without a warning.
+Bmad's SciBmad exporter writes aperture limits through a 24-character string, dropping the final exponent digit of the 25-character number format. A nonzero limit a·10ᵉ m therefore loads as a·10ᵗ m, with t = e/10 truncated toward zero; only magnitudes in [1, 10) m keep their exponent. Half-apertures of 0.01 m, 0.3 m and 15 m load as 1 m, 3 m and 1.5 m, and a particle at x = 0.02 m passes a collimator whose intended half-aperture is 0.01 m. An independent model of the format reproduces the loaded values, and tracking confirms the missed loss. The wrong limits load without a warning.
 
 ??? example "Reproducer: LAT-21.jl"
 
@@ -29,8 +29,8 @@ Bmad's SciBmad exporter writes aperture limits through a 24-character string, dr
     # m, with t = e/10 truncated toward zero; only magnitudes in [1, 10) m keep their exponent.
     # Half-apertures of 0.01 m, 0.3 m and 15 m load as 1 m, 3 m and 1.5 m, and a particle at x = 0.02 m
     # passes a collimator whose intended half-aperture is 0.01 m. An independent model of the format
-    # reproduces the loaded values, and tracking confirms the missed loss. Users importing apertures for
-    # loss or collimation studies get wrong results without a warning.
+    # reproduces the loaded values, and tracking confirms the missed loss. The wrong limits load without
+    # a warning.
     #
     # The script exports three collimators with half-apertures (x, y) = (0.01, 0.3), (2, 15) and
     # (0.00025, 120) m using Bmad's `bmad_to_scibmad` program, loads the file and compares each limit

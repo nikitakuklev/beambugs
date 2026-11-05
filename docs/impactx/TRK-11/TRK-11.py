@@ -4,9 +4,9 @@
 overflow from 13! = 6227020800 on: thin `multipole=14` and above, and thick coefficients at index 13
 and above. At y = 0 a normal multipole of integrated strength K and power n (n = `multipole` − 1
 when thin) must change `px` by −K·xⁿ/n! with the exact factorial; one drift–kick–drift step of the
-thick element has the same exact expectation. On the tested CPU build, order-14 normal and skew
-kicks are 3.223 times too large (−0.003223 instead of −0.001 at x = 0.25 m), and order-18 kicks have
-the wrong sign and are 1.233e6 times too large. Orders up to 13 are correct; signed overflow makes
+thick element has the same exact expectation. On the CPU build, order-14 normal and skew kicks are
+3.223 times too large (−0.003223 instead of −0.001 at x = 0.25 m), and order-18 kicks have the wrong
+sign and are 1.233e6 times too large. Orders up to 13 are correct; signed overflow makes
 higher-order values compiler-dependent.
 
 The script uses a reference particle with 1000 MeV rest energy and 1000 MeV kinetic energy, and

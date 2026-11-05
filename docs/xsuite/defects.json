@@ -8,7 +8,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "Xtrack's `UniformSolenoid` and a constant-profile `VariableSolenoid` move every particle along the reference-species trajectory, ignoring its charge-to-mass ratio relative to the reference species, χ. Because the solenoid strength `ks` is normalized to the reference rigidity, a particle with ratio χ must see χ·`ks`; the exact solenoid map and an independent integration of the Lorentz force both require this. A 1 GeV/c particle with twice the reference charge and the same mass (χ = 2) entering a 0.7 m solenoid with `ks` = 0.8 m⁻¹ at x = 3 mm exits at y = −0.7968 mm instead of −1.350 mm. Beams that mix species or charge states are affected; reference-species particles are tracked correctly.",
+  "summary": "Xtrack's `UniformSolenoid` and a constant-profile `VariableSolenoid` move every particle along the reference-species trajectory, ignoring its charge-to-mass ratio relative to the reference species, χ. Because the solenoid strength `ks` is normalized to the reference rigidity, a particle with ratio χ must see χ·`ks`; the exact solenoid map and an independent integration of the Lorentz force both require this. A 1 GeV/c particle with twice the reference charge and the same mass (χ = 2) entering a 0.7 m solenoid with `ks` = 0.8 m⁻¹ at x = 3 mm exits at y = −0.7968 mm instead of −1.350 mm. Reference-species particles are tracked correctly.",
   "justification": null,
   "locations": [
    {
@@ -246,7 +246,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "`Line.optimize_for_tracking()` drops the roll of sliced `CrabCavity` elements and the `phase_taper` of sliced `Cavity` elements. Rotating the transverse kick by the roll angle and applying the RF sine law to the tapered phase give the correct kicks, and the unoptimized slices reproduce them. A 1 GeV/c proton through a 1 m, 1 MV crab cavity at zero frequency, phase π/2 and roll π/2 exits displaced 0.5000 mm horizontally instead of vertically. Through a 1 MV accelerating cavity at zero frequency with phase 0.2 rad and taper 0.3 rad, it gains 198.7 keV instead of 479.4 keV. Rolled crab cavities are affected, and so are phase-tapered cavities when the mean-radiation configuration enables the taper.",
+  "summary": "`Line.optimize_for_tracking()` drops the roll of sliced `CrabCavity` elements and the `phase_taper` of sliced `Cavity` elements. Rotating the transverse kick by the roll angle and applying the RF sine law to the tapered phase give the correct kicks, and the unoptimized slices reproduce them. A 1 GeV/c proton through a 1 m, 1 MV crab cavity at zero frequency, phase π/2 and roll π/2 exits displaced 0.5000 mm horizontally instead of vertically. Through a 1 MV accelerating cavity at zero frequency with phase 0.2 rad and taper 0.3 rad, it gains 198.7 keV instead of 479.4 keV. The taper matters when the mean-radiation configuration enables it.",
   "justification": null,
   "locations": [
    {
@@ -325,7 +325,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "Thin slicing of a `Multipole(isthick=True)` applies the element's full reference bend angle `hxl` in every slice, so each extra slice adds spurious bending. At the reference momentum, a dipole kick `knl[0]` equal to `hxl` cancels the reference-frame kick exactly, so a particle starting on the reference orbit must stay there for any number of slices. For a 1 m element with `knl[0]` = `hxl` = 0.01 rad and a 1 GeV/c proton, four slices give x = 15.00 mm and normalized horizontal momentum `px` = 0.03000 instead of zero for both. The unsliced element and a single slice keep the particle on axis; thick multipoles with a nonzero reference angle sliced into several pieces are affected.",
+  "summary": "Thin slicing of a `Multipole(isthick=True)` applies the element's full reference bend angle `hxl` in every slice, so each extra slice adds spurious bending. At the reference momentum, a dipole kick `knl[0]` equal to `hxl` cancels the reference-frame kick exactly, so a particle starting on the reference orbit must stay there for any number of slices. For a 1 m element with `knl[0]` = `hxl` = 0.01 rad and a 1 GeV/c proton, four slices give x = 15.00 mm and normalized horizontal momentum `px` = 0.03000 instead of zero for both. The unsliced element and a single slice keep the particle on axis.",
   "justification": null,
   "locations": [
    {
@@ -483,7 +483,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "`Line.optimize_for_tracking()` silently turns off the configured mean synchrotron radiation in thin slices of a curved-body `RBend`. The classical radiated power predicts a finite energy loss, the unoptimized slices reproduce it, and an equivalent sector `Bend` keeps it after optimization. For a 3 GeV/c electron in a rectangular bend with 1 m arc length, bend angle 0.01 rad and `Teapot(1)` slicing, optimization changes the energy loss from 114.0 eV to zero. Optimized curved-body rectangular bends with mean radiation are affected; the `straight-body` model bypasses this conversion.",
+  "summary": "`Line.optimize_for_tracking()` silently turns off the configured mean synchrotron radiation in thin slices of a curved-body `RBend`. The classical radiated power predicts a finite energy loss, the unoptimized slices reproduce it, and an equivalent sector `Bend` keeps it after optimization. For a 3 GeV/c electron in a rectangular bend with 1 m arc length, bend angle 0.01 rad and `Teapot(1)` slicing, optimization changes the energy loss from 114.0 eV to zero. The `straight-body` model bypasses this conversion.",
   "justification": null,
   "locations": [
    {
@@ -723,7 +723,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "`DipoleEdge(model='linear')` applies the particle's charge-to-mass ratio relative to the reference species, χ, to its vertical edge kick but not inside the finite-gap angle correction, so non-reference species get wrong vertical focusing. The analytic fringe formula, and the equivalence between scaling the charge and scaling the field, require the leading zero-face-angle kick to scale with charge squared at fixed mass and momentum. With dipole strength `k` = 0.1 m⁻¹, half-gap `hgap` = 0.02 m, fringe integral `fint` = 0.5, zero face angle and y = 10 µm, a 1 GeV/c particle with twice the reference charge gets normalized vertical momentum 4.000 × 10⁻⁹ instead of 8.000 × 10⁻⁹. Reference-species and zero-gap edges are correct, and the tested `full` edge model scales correctly.",
+  "summary": "`DipoleEdge(model='linear')` applies the particle's charge-to-mass ratio relative to the reference species, χ, to its vertical edge kick but not inside the finite-gap angle correction, so non-reference species get wrong vertical focusing. The analytic fringe formula, and the equivalence between scaling the charge and scaling the field, require the leading zero-face-angle kick to scale with charge squared at fixed mass and momentum. With dipole strength `k` = 0.1 m⁻¹, half-gap `hgap` = 0.02 m, fringe integral `fint` = 0.5, zero face angle and y = 10 µm, a 1 GeV/c particle with twice the reference charge gets normalized vertical momentum 4.000 × 10⁻⁹ instead of 8.000 × 10⁻⁹. Reference-species and zero-gap edges are correct, and the `full` edge model scales correctly.",
   "justification": null,
   "locations": [
    {
@@ -802,7 +802,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The annular `Elens` kick shrinks when the particle charge grows and carries an extra dependence on the relative momentum deviation δ. Gauss's law and the magnetic force of the counter-propagating electron beam require the normalized kick to scale with the particle's charge-to-mass ratio relative to the reference species, χ, and the physical velocity factor. For a 3.7 A, 1.3 m, 10 kV lens with radii 1 and 4 mm, a 1 GeV/c particle at (x, y) = (2, 0.4) mm with twice the reference charge and the same mass gets normalized horizontal momentum −1.173 × 10⁻⁴ instead of −4.693 × 10⁻⁴. Non-reference species and off-momentum reference particles are affected; at δ = +20% the reference-species kick is 1.200 times too large.",
+  "summary": "The annular `Elens` kick shrinks when the particle charge grows and carries an extra dependence on the relative momentum deviation δ. Gauss's law and the magnetic force of the counter-propagating electron beam require the normalized kick to scale with the particle's charge-to-mass ratio relative to the reference species, χ, and the physical velocity factor. For a 3.7 A, 1.3 m, 10 kV lens with radii 1 and 4 mm, a 1 GeV/c particle at (x, y) = (2, 0.4) mm with twice the reference charge and the same mass gets normalized horizontal momentum −1.173 × 10⁻⁴ instead of −4.693 × 10⁻⁴. At δ = +20% the reference-species kick is 1.200 times too large.",
   "justification": null,
   "locations": [
    {
@@ -882,7 +882,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`Wire` gives every particle the reference-species kick regardless of its charge or mass, so even opposite charges bend the same way. Integrating the Biot–Savart field of the finite wire shows that the normalized kick must scale with the particle's charge-to-mass ratio relative to the reference species, χ. For a 7 A wire of physical length 0.7 m and interaction length 1.1 m at (x, y) = (−1, 0.2) mm, a 1 GeV/c particle at (2, 0.5) mm with twice the reference charge and the same mass gets normalized horizontal momentum −9.696 × 10⁻⁵ instead of −1.939 × 10⁻⁴. Reference-species and off-momentum particles are tracked correctly; any species set through `charge_ratio` or `mass_ratio` is affected.",
+  "summary": "`Wire` gives every particle the reference-species kick regardless of its charge or mass, so even opposite charges bend the same way. Integrating the Biot–Savart field of the finite wire shows that the normalized kick must scale with the particle's charge-to-mass ratio relative to the reference species, χ. For a 7 A wire of physical length 0.7 m and interaction length 1.1 m at (x, y) = (−1, 0.2) mm, a 1 GeV/c particle at (2, 0.5) mm with twice the reference charge and the same mass gets normalized horizontal momentum −9.696 × 10⁻⁵ instead of −1.939 × 10⁻⁴. Reference-species and off-momentum particles are tracked correctly.",
   "justification": null,
   "locations": [
    {
@@ -962,7 +962,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`Exciter` applies its first waveform sample to particles arriving less than one sample period before `start_turn`. The documented start time, and an independent calculation of which sample covers each arrival time, require no excitation before then. With `start_turn` = 5, revolution frequency 1 MHz, sampling frequency 0.25 MHz, `knl=[2.5e-6]` and first sample 0.75, the reference particle receives normalized horizontal momentum −1.875 × 10⁻⁶ at turn 4 instead of zero. Early arrivals are affected, and when sampling is slower than revolution the kick can start a whole turn early; samples within the waveform, arrivals more than one sample period early and times after the waveform ends are handled correctly.",
+  "summary": "`Exciter` applies its first waveform sample to particles arriving less than one sample period before `start_turn`. The documented start time, and an independent calculation of which sample covers each arrival time, require no excitation before then. With `start_turn` = 5, revolution frequency 1 MHz, sampling frequency 0.25 MHz, `knl=[2.5e-6]` and first sample 0.75, the reference particle receives normalized horizontal momentum −1.875 × 10⁻⁶ at turn 4 instead of zero. When sampling is slower than revolution, the kick can start a whole turn early; samples within the waveform, arrivals more than one sample period early and times after the waveform ends are handled correctly.",
   "justification": null,
   "locations": [
    {
@@ -1042,7 +1042,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Backtracking through an `Elens` repeats its hollow-core residual kicks instead of undoing them, so a forward-then-backward round trip doubles the residual momentum. The inverse of a constant momentum kick has the opposite sign, and an explicit inverse element with both residual kicks negated restores the initial state exactly. For a 1.4 m, 3 A, 12 kV lens with radii 1 and 4 mm and residual normalized kicks (2.3, −4.1) × 10⁻⁷, a 1 GeV/c proton in the core returns with normalized transverse momenta (`px`, `py`) = (4.600, −8.200) × 10⁻⁷ instead of zero. Backtracking a lens with nonzero residual kicks is affected; the annular electron-lens force round-trips correctly.",
+  "summary": "Backtracking through an `Elens` repeats its hollow-core residual kicks instead of undoing them, so a forward-then-backward round trip doubles the residual momentum. The inverse of a constant momentum kick has the opposite sign, and an explicit inverse element with both residual kicks negated restores the initial state exactly. For a 1.4 m, 3 A, 12 kV lens with radii 1 and 4 mm and residual normalized kicks (2.3, −4.1) × 10⁻⁷, a 1 GeV/c proton in the core returns with normalized transverse momenta (`px`, `py`) = (4.600, −8.200) × 10⁻⁷ instead of zero. The annular electron-lens force round-trips correctly.",
   "justification": null,
   "locations": [
    {
@@ -1207,7 +1207,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "The `quantum` and `quantum-kick` synchrotron-radiation modes omit the square of the reference charge from the photon emission rate, underestimating emission for multiply charged reference particles. The Liénard radiated power and an independent integration of the photon spectrum require the rate to scale with charge squared at fixed curvature. For a reference particle of charge 6e (six elementary charges), rest energy 11.18 GeV and momentum 250 TeV/c over 600 m at curvature 2 × 10⁻⁵ m⁻¹, a `Multipole` emits on average 2.822 photons per particle instead of 101.8. An unsliced `Bend` with the same parameters loses 57.02 eV on average in `quantum` mode instead of 2075 eV, which mean-radiation tracking gives. Unit-charge references are correct; all tested particles had the reference species.",
+  "summary": "The `quantum` and `quantum-kick` synchrotron-radiation modes omit the square of the reference charge from the photon emission rate, underestimating emission for multiply charged reference particles. The Liénard radiated power and an independent integration of the photon spectrum require the rate to scale with charge squared at fixed curvature. For a reference particle of charge 6e (six elementary charges), rest energy 11.18 GeV and momentum 250 TeV/c over 600 m at curvature 2 × 10⁻⁵ m⁻¹, a `Multipole` emits on average 2.822 photons per particle instead of 101.8. An unsliced `Bend` with the same parameters loses 57.02 eV on average in `quantum` mode instead of 2075 eV, which mean-radiation tracking gives. Unit-charge references are correct.",
   "justification": null,
   "locations": [
    {
@@ -1298,7 +1298,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "On serial CPU, `LimitPolygon` also accepts a disk around its local origin when the polygon lies away from that origin, so particles outside the aperture survive. Independent convex half-plane tests give the correct acceptance, and writing the same geometry as centered vertices plus an element translation restores it. For a rectangle spanning 4–8 mm horizontally and ±1.5 mm vertically before rotation, 358 of 2114 sampled particles survive instead of 56, and all 302 false survivors lie in the spurious 4 mm-radius disk. Both vertex orderings and line tracking are affected. Source inspection also finds that on GPU a particle exactly at the local origin bypasses the test; GPU execution is untested.",
+  "summary": "On serial CPU, `LimitPolygon` also accepts a disk around its local origin when the polygon lies away from that origin, so particles outside the aperture survive. Independent convex half-plane tests give the correct acceptance, and writing the same geometry as centered vertices plus an element translation restores it. For a rectangle spanning 4–8 mm horizontally and ±1.5 mm vertically before rotation, 358 of 2114 sampled particles survive instead of 56, and all 302 false survivors lie in the spurious 4 mm-radius disk. The error occurs for both vertex orderings and in line tracking. Source inspection also finds that on GPU a particle exactly at the local origin bypasses the test.",
   "justification": null,
   "locations": [
    {
@@ -1384,7 +1384,7 @@
   "tags": [
    "experimental"
   ],
-  "summary": "Tracking an `RFMultipole` or `CrabCavity` with the experimental `ParticlesTpsa` API, which propagates native truncated-power-series (Taylor) maps, silently drops the element's transverse kick and the energy change that goes with it. The RF potential predicts both kicks, and ordinary particle tracking reproduces them. For a 1 GeV/c proton at x = 3 mm crossing a 1 MV, 100 MHz crab cavity at phase π/4 rad, the map gives zero normalized horizontal momentum pₓ and relative momentum change δ instead of 7.071 × 10⁻⁴ and −6.097 × 10⁻⁶; an RF dipole with `knl[0]` = 0.001 likewise loses its opposite kick. Users of native Taylor maps are affected; ordinary finite-difference `Line.twiss()` is not shown to fail.",
+  "summary": "Tracking an `RFMultipole` or `CrabCavity` with the experimental `ParticlesTpsa` API, which propagates native truncated-power-series (Taylor) maps, silently drops the element's transverse kick and the energy change that goes with it. The RF potential predicts both kicks, and ordinary particle tracking reproduces them. For a 1 GeV/c proton at x = 3 mm crossing a 1 MV, 100 MHz crab cavity at phase π/4 rad, the map gives zero normalized horizontal momentum pₓ and relative momentum change δ instead of 7.071 × 10⁻⁴ and −6.097 × 10⁻⁶; an RF dipole with `knl[0]` = 0.001 likewise loses its opposite kick. Ordinary finite-difference `Line.twiss()` is not shown to fail.",
   "justification": null,
   "locations": [
    {
@@ -1624,7 +1624,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "The finite-difference transfer matrix (`get_R_matrix`) and open Twiss propagation drop the supplied orbit's clock `time_s`, resetting the RF clock of an absolute-time cavity. Shifting the clock while compensating with the cavity phase leaves tracking and its derivatives unchanged, as the analytic RF focusing and central differences that keep the full particle state confirm. For a 1 GeV/c proton and a 1 MV, 100 MHz cavity with a compensated clock phase of π/3 rad, the longitudinal focusing term, the change of momentum coordinate `pzeta` per longitudinal offset `zeta`, is −1.970 × 10⁻³ m⁻¹ instead of −3.941 × 10⁻³ m⁻¹, and open Twiss generates `pzeta` = −1.188 × 10⁻³ instead of zero. Supplied nonzero clocks are affected; zero-clock controls pass.",
+  "summary": "The finite-difference transfer matrix (`get_R_matrix`) and open Twiss propagation drop the supplied orbit's clock `time_s`, resetting the RF clock of an absolute-time cavity. Shifting the clock while compensating with the cavity phase leaves tracking and its derivatives unchanged, as the analytic RF focusing and central differences that keep the full particle state confirm. For a 1 GeV/c proton and a 1 MV, 100 MHz cavity with a compensated clock phase of π/3 rad, the longitudinal focusing term, the change of momentum coordinate `pzeta` per longitudinal offset `zeta`, is −1.970 × 10⁻³ m⁻¹ instead of −3.941 × 10⁻³ m⁻¹, and open Twiss generates `pzeta` = −1.188 × 10⁻³ instead of zero. Zero-clock controls pass.",
   "justification": null,
   "locations": [
    {
@@ -1783,7 +1783,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "A periodic Twiss over a named subrange of a line reports a second-order chromaticity that depends on the range's absolute longitudinal position s. Differentiating the prescribed tune polynomial twice gives the correct value, and moving an otherwise unchanged range along s cannot change it. For a 2 m `LineSegmentMap` with horizontal tune Qₓ(δ) = 0.2 + 1.2δ + 1.2δ², δ being the relative momentum deviation, a 10 m drift placed before it, outside the selected range and not tracked, changes the reported `ddqx` (d²Qₓ/dδ²) from 2.400 to 86.40, a factor of 36.00 for both finite-difference steps tried. Constant-energy periodic ranges that start after s = 0 are affected; the tune, the first-order chromaticity and the drift-free control are correct.",
+  "summary": "A periodic Twiss over a named subrange of a line reports a second-order chromaticity that depends on the range's absolute longitudinal position s. Differentiating the prescribed tune polynomial twice gives the correct value, and moving an otherwise unchanged range along s cannot change it. For a 2 m `LineSegmentMap` with horizontal tune Qₓ(δ) = 0.2 + 1.2δ + 1.2δ², δ being the relative momentum deviation, a 10 m drift placed before it, outside the selected range and not tracked, changes the reported `ddqx` (d²Qₓ/dδ²) from 2.400 to 86.40, a factor of 36.00 for both finite-difference steps tried. The error arises for constant-energy periodic ranges that start after s = 0; the tune, the first-order chromaticity and the drift-free control are correct.",
   "justification": null,
   "locations": [
    {
@@ -1858,7 +1858,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "Periodic Twiss on a subrange of a line divides the longitudinal response by the length of the whole parent line, corrupting the reported slip factor η and momentum compaction. Both are defined with the length of the selected periodic map, and the computed transfer matrix agrees with that local map. For a 2 m `LineSegmentMap` with momentum compaction 0.02, zero RF voltage and a 1 GeV/c proton reference, adding an untracked 10 m prefix changes η from −0.4482 to −0.07470 and the momentum compaction from 0.02000 to 0.3935, although these dimensionless quantities should not change. Constant-energy 4D periodic subranges with unused prefixes or suffixes are affected; the selected matrix itself stays correct.",
+  "summary": "Periodic Twiss on a subrange of a line divides the longitudinal response by the length of the whole parent line, corrupting the reported slip factor η and momentum compaction. Both are defined with the length of the selected periodic map, and the computed transfer matrix agrees with that local map. For a 2 m `LineSegmentMap` with momentum compaction 0.02, zero RF voltage and a 1 GeV/c proton reference, adding an untracked 10 m prefix changes η from −0.4482 to −0.07470 and the momentum compaction from 0.02000 to 0.3935, although these dimensionless quantities should not change. This occurs for constant-energy 4D periodic subranges with unused prefixes or suffixes; the selected matrix itself stays correct.",
   "justification": null,
   "locations": [
    {
@@ -1933,7 +1933,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "`TwissTable.get_twiss_init()` loses a reference-momentum change that lies between the table start and the selected row, so an open Twiss restarted from the extracted initial conditions follows a particle with a different physical momentum and orbit. `ReferenceEnergyChange` only changes the normalization, so exact momentum identities and drift transport require the restarted and uninterrupted trajectories to agree. Starting at 1 GeV/c with x = 3 mm and normalized horizontal momentum pₓ = 0.001, rebasing to 2 GeV/c and restarting before a 1 m exact drift gives a final x of 6.069 mm instead of 4.000 mm; the extracted reference momentum is 1.000 GeV/c instead of 2.000 GeV/c. Restarts after reference changes are affected; without a change the restart is correct.",
+  "summary": "`TwissTable.get_twiss_init()` loses a reference-momentum change that lies between the table start and the selected row, so an open Twiss restarted from the extracted initial conditions follows a particle with a different physical momentum and orbit. `ReferenceEnergyChange` only changes the normalization, so exact momentum identities and drift transport require the restarted and uninterrupted trajectories to agree. Starting at 1 GeV/c with x = 3 mm and normalized horizontal momentum pₓ = 0.001, rebasing to 2 GeV/c and restarting before a 1 m exact drift gives a final x of 6.069 mm instead of 4.000 mm; the extracted reference momentum is 1.000 GeV/c instead of 2.000 GeV/c. Without a reference change the restart is correct.",
   "justification": null,
   "locations": [
    {
@@ -2008,7 +2008,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "With `radiation_analysis=True`, Twiss counts the kicks of decelerating `ThinSliceCavity` elements as synchrotron-radiation energy loss, although it excludes the equivalent unsliced `Cavity`. Monitoring the energy change element by element isolates the bend's radiation and shows that slicing leaves it unchanged. In a 3 GeV/c electron ring with a 1 m, 0.01 rad bend and a 10 kV decelerating cavity, slicing each cavity into one Teapot slice changes the reported loss from 114.0 eV to 10.11 keV instead of keeping 114.0 eV; the excess is the full 10.00 keV RF deceleration. Radiation diagnostics with thin decelerating cavity slices are affected; accelerating kicks and zero-deceleration controls show no such excess.",
+  "summary": "With `radiation_analysis=True`, Twiss counts the kicks of decelerating `ThinSliceCavity` elements as synchrotron-radiation energy loss, although it excludes the equivalent unsliced `Cavity`. Monitoring the energy change element by element isolates the bend's radiation and shows that slicing leaves it unchanged. In a 3 GeV/c electron ring with a 1 m, 0.01 rad bend and a 10 kV decelerating cavity, slicing each cavity into one Teapot slice changes the reported loss from 114.0 eV to 10.11 keV instead of keeping 114.0 eV; the excess is the full 10.00 keV RF deceleration. Accelerating kicks and zero-deceleration controls show no such excess.",
   "justification": null,
   "locations": [
    {
@@ -2087,7 +2087,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`Line.match()` can accept an iteration that exceeds an earlier variable's `Vary.max_step`, because clipping a later variable rescales the already clipped step vector and enlarges it. A common scale factor must satisfy every bound at once and not depend on variable order. For dimensionless variables a and b starting at 0, with targets 6 and 12 and maximum steps 0.2 and 0.8, the accepted changes are 0.4000 and 0.8000 instead of the correctly scaled 0.2000 and 0.4000: a moves twice its allowed amount, while reversing the variable order gives the correct result. Several simultaneously limited variables are affected even with unit weights, and the violation occurs in an accepted iteration, not only in a trial evaluation.",
+  "summary": "`Line.match()` can accept an iteration that exceeds an earlier variable's `Vary.max_step`, because clipping a later variable rescales the already clipped step vector and enlarges it. A common scale factor must satisfy every bound at once and not depend on variable order. For dimensionless variables a and b starting at 0, with targets 6 and 12 and maximum steps 0.2 and 0.8, the accepted changes are 0.4000 and 0.8000 instead of the correctly scaled 0.2000 and 0.4000: a moves twice its allowed amount, while reversing the variable order gives the correct result. It occurs when several variables are limited at once, even with unit weights, and in an accepted iteration, not only in a trial evaluation.",
   "justification": null,
   "locations": [
    {
@@ -2253,7 +2253,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`match_knob()` applies a variable's absolute `Vary.limits` to the additive correction it solves for, without subtracting the variable's starting value. The correction's allowed interval must be the limits shifted by that starting value, and ordinary matching respects the absolute bounds. For a dimensionless variable starting at 8 with limits [−10, 10] and target 12, the generated knob reaches 12.00 instead of stopping at the allowed maximum 10.00. Conversely, starting at 8 with valid limits [7, 10] and target 9 fails during knob setup. Knob construction from a nonzero starting value is affected at the matched endpoint itself, without extrapolation or later combination of knobs.",
+  "summary": "`match_knob()` applies a variable's absolute `Vary.limits` to the additive correction it solves for, without subtracting the variable's starting value. The correction's allowed interval must be the limits shifted by that starting value, and ordinary matching respects the absolute bounds. For a dimensionless variable starting at 8 with limits [−10, 10] and target 12, the generated knob reaches 12.00 instead of stopping at the allowed maximum 10.00. Conversely, starting at 8 with valid limits [7, 10] and target 9 fails during knob setup. The error appears at the matched endpoint itself, without extrapolation or later combination of knobs.",
   "justification": null,
   "locations": [
    {
@@ -2334,7 +2334,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Transverse transfer matrices reconstructed from `TwissTable.reverse()` or `Line.twiss(reverse=True)` give the wrong reversed transport, including spurious focusing in a drift. Analytic drift and thin-lens matrices, transformed into the documented reverse frame, agree with native backtracking and require a reversed drift to keep a positive length. For a 1.7 GeV/c proton line containing 0.7600 m of drift, with initial horizontal beta function 0.7 m and alpha −0.8, the reconstructed response of position to normalized momentum, R₁₂, is −0.7600 m instead of +0.7600 m, and the response of momentum to position, R₂₁, is 2.035 m⁻¹ instead of zero. Both reconstruction APIs and marker subintervals are affected in the tested uncoupled channels; forward reconstruction passes.",
+  "summary": "Transverse transfer matrices reconstructed from `TwissTable.reverse()` or `Line.twiss(reverse=True)` give the wrong reversed transport, including spurious focusing in a drift. Analytic drift and thin-lens matrices, transformed into the documented reverse frame, agree with native backtracking and require a reversed drift to keep a positive length. For a 1.7 GeV/c proton line containing 0.7600 m of drift, with initial horizontal beta function 0.7 m and alpha −0.8, the reconstructed response of position to normalized momentum, R₁₂, is −0.7600 m instead of +0.7600 m, and the response of momentum to position, R₂₁, is 2.035 m⁻¹ instead of zero. It also appears over marker subintervals, in the uncoupled channels; forward reconstruction passes.",
   "justification": null,
   "locations": [
    {
@@ -2414,7 +2414,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Full radiation analysis transports the reported equilibrium beam covariance with damping alone, omitting the accumulated photon diffusion, so beam variances differ at the two ends of the same periodic boundary. At equilibrium, damped transport plus diffusion must reproduce the starting covariance, whatever its absolute normalization. In a 144 m, 24-cell electron ring at 7 GeV/c with 48 bends and a 50 MV cavity, the horizontal variance ends at 7.660 × 10⁻⁵ m² instead of its starting 7.695 × 10⁻⁵ m², a 0.4538% deficit. The defect affects `eq_beam_covariance_matrix` from `radiation_method='full'`, also with lattice functions disabled; it establishes failed periodic closure, not the absolute accuracy of the starting covariance or scalar emittances.",
+  "summary": "Full radiation analysis transports the reported equilibrium beam covariance with damping alone, omitting the accumulated photon diffusion, so beam variances differ at the two ends of the same periodic boundary. At equilibrium, damped transport plus diffusion must reproduce the starting covariance, whatever its absolute normalization. In a 144 m, 24-cell electron ring at 7 GeV/c with 48 bends and a 50 MV cavity, the horizontal variance ends at 7.660 × 10⁻⁵ m² instead of its starting 7.695 × 10⁻⁵ m², a 0.4538% deficit. The defect affects `eq_beam_covariance_matrix` from `radiation_method='full'`, also with lattice functions disabled.",
   "justification": null,
   "locations": [
    {
@@ -2503,7 +2503,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Twiss inflates `c_minus`, the closest-tune-approach coefficient, when two nearby eigentunes straddle an integer. An analytic coupled-oscillator calculation and an independent eigenfrequency scan show that shifting both tunes together must preserve their minimum separation. For eigentunes 0.9920 and 1.006, mixing angle 0.07 rad and modal beta function 2.7 m, `c_minus` is 0.1376 instead of 0.001954, too large by a factor 70.43; shifting both tunes by ±0.09 restores the correct value. The tested 4D and 6D periodic calculations with positive line length and pure difference coupling are affected, including the complex coupling magnitudes; tracking maps, eigentunes and projected beta functions remain correct.",
+  "summary": "Twiss inflates `c_minus`, the closest-tune-approach coefficient, when two nearby eigentunes straddle an integer. An analytic coupled-oscillator calculation and an independent eigenfrequency scan show that shifting both tunes together must preserve their minimum separation. For eigentunes 0.9920 and 1.006, mixing angle 0.07 rad and modal beta function 2.7 m, `c_minus` is 0.1376 instead of 0.001954, too large by a factor 70.43; shifting both tunes by ±0.09 restores the correct value. The error appears in the 4D and 6D periodic calculations with positive line length and pure difference coupling, including the complex coupling magnitudes; tracking maps, eigentunes and projected beta functions remain correct.",
   "justification": null,
   "locations": [
    {
@@ -2587,7 +2587,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "`LongitudinalProfileQGaussian` normalizes the q-Gaussian line density with gamma functions whose numerator and denominator overflow separately, so for an index `q` near, but not equal to, 1 the density and the space-charge kicks it drives are NaN. The normalization itself is finite, as a log-beta-function evaluation and adaptive quadrature confirm. For a unit-population, unit-RMS profile at `q` = 0.999 and 1.001, the centre density is NaN instead of 0.3988 and 0.3991 m⁻¹, and a 1 GeV/c proton at x = 1 mm in a Gaussian space-charge lens gets `px` NaN instead of 2.561 × 10⁻⁵ and 2.562 × 10⁻⁵. NumPy warns, but tracking completes. Tested values from 0.995 to 1.005 fail except within 10⁻⁶ of 1, where an intentional Gaussian approximation applies; 0.99 and 1.01 are correct.",
+  "summary": "`LongitudinalProfileQGaussian` normalizes the q-Gaussian line density with gamma functions whose numerator and denominator overflow separately, so for an index `q` near, but not equal to, 1 the density and the space-charge kicks it drives are NaN. The normalization is finite, as a log-beta-function evaluation and adaptive quadrature confirm. For a unit-population, unit-RMS profile at `q` = 0.999 and 1.001, the centre density is NaN instead of 0.3988 and 0.3991 m⁻¹, and a 1 GeV/c proton at x = 1 mm in a Gaussian space-charge lens gets `px` NaN instead of 2.561 × 10⁻⁵ and 2.562 × 10⁻⁵. Values from 0.995 to 1.005 fail except within 10⁻⁶ of 1, where an intentional Gaussian approximation applies; 0.99 and 1.01 are correct.",
   "justification": null,
   "locations": [
    {
@@ -2667,7 +2667,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "`SpaceChargeBiGaussian` computes the longitudinal kick by integrating the transverse field along a ray from the origin to (|x|, |y|), so a particle at a negative coordinate receives the kick of its mirror point. For a beam displaced from the axis (`mean_x` or `mean_y` nonzero), the manual's signed ray, an analytic exponential-integral potential and adaptive quadrature give different kicks on the two sides. For a 1 GeV/c proton beam (population 10¹⁰, `sigma_z` = 0.1 m, transverse RMS 1 mm) displaced by 2 mm, particles at x = ±1 mm in a 1 m lens get identical kicks in the relative momentum deviation δ: the difference is 0 instead of 2.668 × 10⁻⁷. Frozen off-centre beams with longitudinal kicks are affected; transverse kicks and centred beams are correct.",
+  "summary": "`SpaceChargeBiGaussian` computes the longitudinal kick by integrating the transverse field along a ray from the origin to (|x|, |y|), so a particle at a negative coordinate receives the kick of its mirror point. For a beam displaced from the axis (`mean_x` or `mean_y` nonzero), the manual's signed ray, an analytic exponential-integral potential and adaptive quadrature give different kicks on the two sides. For a 1 GeV/c proton beam (population 10¹⁰, `sigma_z` = 0.1 m, transverse RMS 1 mm) displaced by 2 mm, particles at x = ±1 mm in a 1 m lens get identical kicks in the relative momentum deviation δ: the difference is 0 instead of 2.668 × 10⁻⁷. Transverse kicks and centred beams are correct.",
   "justification": null,
   "locations": [
    {
@@ -2832,7 +2832,7 @@
   "severity": "Silent wrong result",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "`CollectiveMonitor` computes each slice's emittance as √(var(x)·var(px) − cov(x, px)), subtracting the covariance instead of its square. The RMS emittance is the square root of the covariance-matrix determinant, which an area-preserving shear leaves unchanged, and the slicer's own variances and covariance give that value directly. For four 1 GeV/c protons with x = ±1 mm, `px` = ±2 × 10⁻⁴ and a shear `px` → `px` + a·x, the normalized emittance is 2.132 × 10⁻⁷ m for every a, but the monitor reports 4.766 × 10⁻⁴ m, about 2236 times too large, at a = −0.2 and NaN with a warning at a = +0.2. Correlated slices are affected in x, y and ζ; uncorrelated slices and the slice moments are correct.",
+  "summary": "`CollectiveMonitor` computes each slice's emittance as √(var(x)·var(px) − cov(x, px)), subtracting the covariance instead of its square. The RMS emittance is the square root of the covariance-matrix determinant, which an area-preserving shear leaves unchanged, and the slicer's own variances and covariance give that value directly. For four 1 GeV/c protons with x = ±1 mm, `px` = ±2 × 10⁻⁴ and a shear `px` → `px` + a·x, the normalized emittance is 2.132 × 10⁻⁷ m for every a, but the monitor reports 4.766 × 10⁻⁴ m, about 2236 times too large, at a = −0.2 and NaN with a warning at a = +0.2. The error appears in x, y and ζ; uncorrelated slices and the slice moments are correct.",
   "justification": null,
   "locations": [
    {
@@ -2911,7 +2911,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "In 2D strong-strong beam-beam, `BeamBeamBiGaussian2D.compute_spacial_moments` sums every stored particle row without checking `particles.state`, so lost particles enter the population, centroid and size passed to the opposing beam. Removing a lost particle cannot change the collision, and with lost rows excluded the kicks agree with the analytic round-Gaussian field and the manual's beam-beam Lorentz factor. For four live 1 GeV/c protons at x, y = ±1 mm (weight 10¹⁰ each) plus one lost particle at x = 20 mm, the exchanged population is 5 × 10¹⁰ instead of 4 × 10¹⁰, the horizontal variance 6.480 × 10⁻⁵ m² instead of 1.000 × 10⁻⁶ m², and one opposing particle's horizontal kick +6.845 × 10⁻⁶ instead of −1.994 × 10⁻⁵. Strong-strong 2D simulations with particle losses are affected.",
+  "summary": "In 2D strong-strong beam-beam, `BeamBeamBiGaussian2D.compute_spacial_moments` sums every stored particle row without checking `particles.state`, so lost particles enter the population, centroid and size passed to the opposing beam. Removing a lost particle cannot change the collision, and with lost rows excluded the kicks agree with the analytic round-Gaussian field and the manual's beam-beam Lorentz factor. For four live 1 GeV/c protons at x, y = ±1 mm (weight 10¹⁰ each) plus one lost particle at x = 20 mm, the exchanged population is 5 × 10¹⁰ instead of 4 × 10¹⁰, the horizontal variance 6.480 × 10⁻⁵ m² instead of 1.000 × 10⁻⁶ m², and one opposing particle's horizontal kick +6.845 × 10⁻⁶ instead of −1.994 × 10⁻⁵.",
   "justification": null,
   "locations": [
    {
@@ -2992,7 +2992,7 @@
   "tags": [
    "contract-unsettled"
   ],
-  "summary": "With either 2.5D FFT solver and `apply_z_kick=True`, `SpaceCharge3D` differentiates slice potentials whose transverse reference length is fixed at 1 m. The manual explicitly chooses this reference, but changing it adds a longitudinal force wherever the line density varies. Doubling every length of an electron bunch with Lorentz factor γ = 10 should leave the scaled longitudinal kick unchanged by free-space Coulomb similarity, but changes it by 7.868%. For a γ = 7 electron bunch with transverse RMS size 0.4 mm and longitudinal RMS 20 mm, the on-axis kick in the relative momentum deviation δ at 0.75 longitudinal RMS is 9.177 × 10⁻¹⁰, versus 6.680 × 10⁻¹⁰ from the exact 3D field, a 37.38% discrepancy. Transverse kicks are unaffected; constant line density or `apply_z_kick=False` removes the effect.",
+  "summary": "With either 2.5D FFT solver and `apply_z_kick=True`, `SpaceCharge3D` differentiates slice potentials whose transverse reference length is fixed at 1 m. Changing this reference adds a longitudinal force wherever the line density varies. Doubling every length of an electron bunch with Lorentz factor γ = 10 should leave the scaled longitudinal kick unchanged by free-space Coulomb similarity, but changes it by 7.868%. For a γ = 7 electron bunch with transverse RMS size 0.4 mm and longitudinal RMS 20 mm, the on-axis kick in the relative momentum deviation δ at 0.75 longitudinal RMS is 9.177 × 10⁻¹⁰, versus 6.680 × 10⁻¹⁰ from the exact 3D field, a 37.38% discrepancy. Transverse kicks are unaffected; constant line density or `apply_z_kick=False` removes it.",
   "justification": null,
   "locations": [
    {
@@ -3255,7 +3255,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "In a non-interpolated loss map (`interpolation=False`), `LossMap.tot_energy_aperture` sums the binned aperture store, although this mode records aperture energies in unbinned storage, so it returns zero and `tot_energy` omits all aperture losses. With no collimator losses both totals must equal the sum of the per-aperture energies that `aperture_losses` reports, which match the mass-shell energy 3·√((p₀c)² + m²), with p₀ the momentum and m the proton rest energy. For three 2 GeV/c protons lost at the apertures of a 12 m ring, the per-aperture energies sum to 6.627 × 10⁹ eV, while `tot_energy_aperture` and `tot_energy` are both 0. Non-interpolated loss maps with aperture losses are affected.",
+  "summary": "In a non-interpolated loss map (`interpolation=False`), `LossMap.tot_energy_aperture` sums the binned aperture store, although this mode records aperture energies in unbinned storage, so it returns zero and `tot_energy` omits all aperture losses. With no collimator losses both totals must equal the sum of the per-aperture energies that `aperture_losses` reports, which match the mass-shell energy 3·√((p₀c)² + m²), with p₀ the momentum and m the proton rest energy. For three 2 GeV/c protons lost at the apertures of a 12 m ring, the per-aperture energies sum to 6.627 × 10⁹ eV, while `tot_energy_aperture` and `tot_energy` are both 0.",
   "justification": null,
   "locations": [
    {
@@ -3331,7 +3331,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "For a reversed line (`line_is_reversed=True`), a non-interpolated loss map computes the reflected aperture position L − s, with L the circumference, and then overwrites it with the unreflected expression, so the flag has no effect on aperture positions. The intended reflection is explicit in the code. An interior aperture at 4 m, with neighbour midpoints at 2.5 and 6.5 m, has centre 4.5 m, which must become 7.5 m in a reversed 12 m ring; the reversed map reports 4.5 m. Users who build non-interpolated loss maps for reversed lines get every aperture loss at an unreflected position.",
+  "summary": "For a reversed line (`line_is_reversed=True`), a non-interpolated loss map computes the reflected aperture position L − s, with L the circumference, and then overwrites it with the unreflected expression, so the flag has no effect on aperture positions. The intended reflection is explicit in the code. An interior aperture at 4 m, with neighbour midpoints at 2.5 and 6.5 m, has centre 4.5 m, which must become 7.5 m in a reversed 12 m ring; the reversed map reports 4.5 m.",
   "justification": null,
   "locations": [
    {
@@ -3407,7 +3407,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`ElectronLensInterpolated` omits the inverse particle-speed factor from the transit time and uses the reference speed throughout, so kicks are too small by the factor β₀, the reference speed over c, already at zero relative momentum deviation δ. Integrating the Lorentz force of the counter-propagating electrons over the transit time L/(βc), with the same stored field derivative, gives the correct impulse. For a 0.6 A, 15 kV, 0.8 m lens and a 600 MeV/c proton (β₀ = 0.5387), `px` is −3.870 × 10⁻⁵ instead of −7.184 × 10⁻⁵, and at δ = 0.25 the kick stays unchanged instead of becoming 0.8784 times the reference kick. Lower-speed beams and off-momentum particles are affected.",
+  "summary": "`ElectronLensInterpolated` omits the inverse particle-speed factor from the transit time and uses the reference speed throughout, so kicks are too small by the factor β₀, the reference speed over c, already at zero relative momentum deviation δ. Integrating the Lorentz force of the counter-propagating electrons over the transit time L/(βc), with the same stored field derivative, gives the correct impulse. For a 0.6 A, 15 kV, 0.8 m lens and a 600 MeV/c proton (β₀ = 0.5387), `px` is −3.870 × 10⁻⁵ instead of −7.184 × 10⁻⁵, and at δ = 0.25 the kick stays unchanged instead of becoming 0.8784 times the reference kick.",
   "justification": null,
   "locations": [
    {
@@ -3562,7 +3562,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "`EverestCollimator` adds each particle's energy loss to its deposited-energy counters without the macroparticle `weight`, the number of physical particles a macroparticle represents. The deposited energy is the sum of `weight` times energy loss, the weighting Xcoll's Geant4 interface applies to the same counters. For 20 protons at 400 GeV/c through 0.6 mm of carbon-fibre composite with fixed random seeds, weights 1 to 5 give a primary deposit of 2.865 × 10⁶ eV, the same as unit weights, instead of 8.653 × 10⁶ eV. Simulations with non-unit macroparticle weights are affected; by source reading, the secondary-particle counter, `EverestBlock` and `EverestCrystal` contain the same expression.",
+  "summary": "`EverestCollimator` adds each particle's energy loss to its deposited-energy counters without the macroparticle `weight`, the number of physical particles a macroparticle represents. The deposited energy is the sum of `weight` times energy loss, the weighting Xcoll's Geant4 interface applies to the same counters. For 20 protons at 400 GeV/c through 0.6 mm of carbon-fibre composite with fixed random seeds, weights 1 to 5 give a primary deposit of 2.865 × 10⁶ eV, the same as unit weights, instead of 8.653 × 10⁶ eV. By source reading, the secondary-particle counter, `EverestBlock` and `EverestCrystal` contain the same expression.",
   "justification": null,
   "locations": [
    {
@@ -3796,7 +3796,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "`TouschekScatter` samples the polar scattering angle θ uniformly between `theta_min` and `theta_max` and the azimuth over π, but always uses the Monte Carlo volume π² instead of π·(θₘₐₓ − θₘᵢₙ). With matched random samples for 1.4 GeV/c electrons, narrowing the interval around π/2 from 2⁻²⁰ to 2⁻²⁴ rad leaves the diagnostic `total_mc_rate` at 7464 s⁻¹, whereas the manual's uniform Monte Carlo estimator, which includes the sampled volume, gives 0.002266 and 0.0001416 s⁻¹, a 16-fold reduction. Returned particle weights are normalized to the Piwinski rate, so the factor cancels there; by source reading, `ignored_rate` inherits the diagnostic error. For the default interval the excess is 0.01000% by algebra, not separately executed.",
+  "summary": "`TouschekScatter` samples the polar scattering angle θ uniformly between `theta_min` and `theta_max` and the azimuth over π, but always uses the Monte Carlo volume π² instead of π·(θₘₐₓ − θₘᵢₙ). With matched random samples for 1.4 GeV/c electrons, narrowing the interval around π/2 from 2⁻²⁰ to 2⁻²⁴ rad leaves the diagnostic `total_mc_rate` at 7464 s⁻¹, whereas the manual's uniform Monte Carlo estimator, which includes the sampled volume, gives 0.002266 and 0.0001416 s⁻¹, a 16-fold reduction. Returned particle weights are normalized to the Piwinski rate, so the factor cancels there; by source reading, `ignored_rate` inherits the diagnostic error. For the default interval the excess is 0.01000% by algebra.",
   "justification": null,
   "locations": [
    {
@@ -3876,7 +3876,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`WakeTracker.track` returns early when no particle is alive, before advancing the stored wake-source history, so a turn in which the whole bunch is lost does not age the history. A turn without sources must still age it, as calls with live particles outside the slicing window or with zero weight do, and direct convolution gives the expected delays and expiry. With a three-turn history in a 20 m ring and a 1.4 GeV/c proton source of weight 5, a witness one empty turn later receives `px` = 4.024 × 10⁻⁹ instead of 2.441 × 10⁻⁹, and two empty turns later 4.024 × 10⁻⁹ instead of 0, after the source should have expired. Users who keep calling a wake tracker on fully lost bunches are affected.",
+  "summary": "`WakeTracker.track` returns early when no particle is alive, before advancing the stored wake-source history, so a turn in which the whole bunch is lost does not age the history. A turn without sources must still age it, as calls with live particles outside the slicing window or with zero weight do, and direct convolution gives the expected delays and expiry. With a three-turn history in a 20 m ring and a 1.4 GeV/c proton source of weight 5, a witness one empty turn later receives `px` = 4.024 × 10⁻⁹ instead of 2.441 × 10⁻⁹, and two empty turns later 4.024 × 10⁻⁹ instead of 0, after the source should have expired.",
   "justification": null,
   "locations": [
    {
@@ -3959,7 +3959,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "For round beam slices whose width changes along the collision, `compute_Gx_Gy` uses on-axis variance derivatives inside a fixed radius of 100 nm, corrupting the width contribution of 3D beam-beam to `pzeta`. Gauss's law and the Gaussian heat equation require the radial dependence exp(−r²/(2σ²)), with σ the RMS beam size; integrating the longitudinal derivative of the executed transverse kick along the radius confirms it. For 9 GeV/c positrons and an expanding 35 nm slice, the width kick at r = 2σ is 7.840 × 10⁻¹¹ instead of 1.061 × 10⁻¹¹, a factor e² too large; at σ = 35 µm and r = 99.9 nm the relative error is 4.073 × 10⁻⁶. Transverse kicks are correct; by source reading, coupled beams and crossing angles share the cutoff.",
+  "summary": "For round beam slices whose width changes along the collision, `compute_Gx_Gy` uses on-axis variance derivatives inside a fixed radius of 100 nm, corrupting the width contribution of 3D beam-beam to `pzeta`. Gauss's law and the Gaussian heat equation require the radial dependence exp(−r²/(2σ²)), with σ the RMS beam size; integrating the longitudinal derivative of the executed transverse kick along the radius confirms it. For 9 GeV/c positrons and an expanding 35 nm slice, the width kick at r = 2σ is 7.840 × 10⁻¹¹ instead of 1.061 × 10⁻¹¹, a factor e² too large; at σ = 35 µm and r = 99.9 nm the relative error is 4.073 × 10⁻⁶. Transverse kicks are correct.",
   "justification": null,
   "locations": [
    {
@@ -4047,7 +4047,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "`BjorkenMtingwaIBS`, the Bjorken–Mtingwa (B&M) model of intrabeam-scattering growth rates, multiplies the dispersions and their slopes in both planes by the relativistic reference speed β₀. Xtrack supplies them as derivatives with respect to the relative momentum deviation δ, which the manual's collision matrices use unscaled; integrating the collision matrix with Carlson elliptic integrals gives the correct rates and agrees with Xfields' Nagaitsev model at zero vertical dispersion. For protons at β₀ = 0.45 with beta function βₓ = 8 m, dispersion Dₓ = 1.7 m and slope Dₓ′ = 0.11, the longitudinal cooling rate is −2.890 × 10⁻³ s⁻¹ instead of −2.596 × 10⁻³ s⁻¹, 11.36% too large in magnitude; at β₀ = 0.75 the error is 22.43%. Non-ultrarelativistic beams with dispersion are affected; depending on the case, a rate's magnitude rises or falls.",
+  "summary": "`BjorkenMtingwaIBS`, the Bjorken–Mtingwa model of intrabeam-scattering growth rates, multiplies the dispersions and their slopes in both planes by the relativistic reference speed β₀. Xtrack supplies them as derivatives with respect to the relative momentum deviation δ, which the manual's collision matrices use unscaled; integrating the collision matrix with Carlson elliptic integrals gives the correct rates and agrees with Xfields' Nagaitsev model at zero vertical dispersion. For protons at β₀ = 0.45 with beta function βₓ = 8 m, dispersion Dₓ = 1.7 m and slope Dₓ′ = 0.11, the longitudinal cooling rate is −2.890 × 10⁻³ s⁻¹ instead of −2.596 × 10⁻³ s⁻¹, 11.36% too large in magnitude; at β₀ = 0.75 the error is 22.43%.",
   "justification": null,
   "locations": [
    {
@@ -4235,7 +4235,7 @@
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "With `engine='single-rf-harmonic'`, `generate_longitudinal_coordinates` samples the energy coordinate p_τ (`ptau`) for the requested reference particle, but converts it to the relative momentum deviation δ (`delta`) through a temporary `Particles` built without the reference mass, so the default proton mass is used for every species. The relativistic relation δ = √(1 + p_τ² + 2p_τ/β₀) − 1, with the reference speed β₀ = v/c of the actual species, gives the correct value, and the proton case agrees with it. For a 5 MeV/c positron bunch matched to 1 kV RF at harmonic 1 in a 100 m line, one particle gets δ = 0.03520 instead of 1.919×10⁻⁴, another 0.1245 instead of 7.083×10⁻⁴. Positions `zeta` are correct; nonproton references are affected.",
+  "summary": "With `engine='single-rf-harmonic'`, `generate_longitudinal_coordinates` samples the energy coordinate p_τ (`ptau`) for the requested reference particle, but converts it to the relative momentum deviation δ (`delta`) through a temporary `Particles` built without the reference mass, so the default proton mass is used for every species. The relativistic relation δ = √(1 + p_τ² + 2p_τ/β₀) − 1, with the reference speed β₀ = v/c of the actual species, gives the correct value, and the proton case agrees with it. For a 5 MeV/c positron bunch matched to 1 kV RF at harmonic 1 in a 100 m line, one particle gets δ = 0.03520 instead of 1.919×10⁻⁴, another 0.1245 instead of 7.083×10⁻⁴. Positions `zeta` are correct.",
   "justification": null,
   "locations": [
    {
@@ -4622,7 +4622,7 @@
   "severity": "Silent wrong result",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "In Xdeps, the dependency-graph library behind Xtrack's deferred expressions, `Manager.copy` deep-copies the containers, the tasks (expressions computing dependent values) and the dependency maps separately, so the returned containers and tasks refer to different copies and references into the copy stay bound to a hidden manager. `Manager.set_value` promises to update the target and run its dependent tasks, and `copy.deepcopy` of the whole manager keeps the copied graph connected. With `a.output = a.input * b.gain`, `a.input` = 4 and `b.gain` = 2.5, setting the copied gain to 7 leaves the copied output at 10 instead of 28; redefining it as `9 * a.input` and setting the input to 6 then gives 42 instead of 54. Users who copy a dependency manager directly are affected; no Xtrack element, matching or tracking path was tested.",
+  "summary": "In Xdeps, the dependency-graph library behind Xtrack's deferred expressions, `Manager.copy` deep-copies the containers, the tasks (expressions computing dependent values) and the dependency maps separately, so the returned containers and tasks refer to different copies and references into the copy stay bound to a hidden manager. `Manager.set_value` promises to update the target and run its dependent tasks, and `copy.deepcopy` of the whole manager keeps the copied graph connected. With `a.output = a.input * b.gain`, `a.input` = 4 and `b.gain` = 2.5, setting the copied gain to 7 leaves the copied output at 10 instead of 28; redefining it as `9 * a.input` and setting the input to 6 then gives 42 instead of 54.",
   "justification": null,
   "locations": [
    {
@@ -4854,7 +4854,7 @@
   "tags": [
    "partly-source-only"
   ],
-  "summary": "The linear engine of `generate_longitudinal_coordinates` samples independent Gaussian `zeta` and `delta` with RMS momentum spread σ_δ = σ_z/|β_z|, where σ_z is the RMS bunch length and β_z (`bets0`) the periodic longitudinal beta function, discarding the position-momentum correlation and momentum variance required by a nonzero periodic longitudinal alpha. An independent covariance solve establishes the stationary ellipse. For 3 GeV/c protons on segments with (`bets`, `qs`) = (7 m, 0.045) and (21 m, 0.08), and σ_z = 3×10⁻⁴ m, the sampled bunch-length variance after one turn is 0.8108 of its initial value instead of 1. The matched-Gaussian-bunch wrapper reproduces the mismatch; the multibunch wrapper shares the sampler by source reading. Strong focusing magnifies the effect, while a weak synchrotron tune of 1.429×10⁻³ still gives a relative variance change of 3.790×10⁻⁵.",
+  "summary": "The linear engine of `generate_longitudinal_coordinates` samples independent Gaussian `zeta` and `delta` with RMS momentum spread σ_δ = σ_z/|β_z|, where σ_z is the RMS bunch length and β_z (`bets0`) the periodic longitudinal beta function, discarding the position-momentum correlation and momentum variance required by a nonzero periodic longitudinal alpha. An independent covariance solve establishes the stationary ellipse. For 3 GeV/c protons on segments with (`bets`, `qs`) = (7 m, 0.045) and (21 m, 0.08), and σ_z = 3×10⁻⁴ m, the sampled bunch-length variance after one turn is 0.8108 of its initial value instead of 1. The matched-Gaussian-bunch wrapper reproduces the mismatch. A weak synchrotron tune of 1.429×10⁻³ still gives a relative variance change of 3.790×10⁻⁵.",
   "justification": null,
   "locations": [
    {
@@ -4942,7 +4942,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Writing through a shared CPU slice of `Particles.delta` changes the relative momentum deviation δ without updating the dependent energy and momentum fields, so subsequent tracking uses inconsistent coordinates. Relativistic kinematics and the expanded-drift map require those fields to change together, as direct indexed assignment does. Setting a 1 GeV/c proton to δ = 0.3 through a view, then tracking 1.7 m with normalized horizontal momentum `px` = 0.0008, gives x = 1.360 mm instead of 1.046 mm. Strided views, the output of NumPy universal functions (`out=`) and aliased in-place writes also bypass updates, and slices of read-only arrays accept prohibited writes. NumPy-backed CPU arrays are affected; direct indexed assignment preserves the required consistency.",
+  "summary": "Writing through a shared CPU slice of `Particles.delta` changes the relative momentum deviation δ without updating the dependent energy and momentum fields, so subsequent tracking uses inconsistent coordinates. Relativistic kinematics and the expanded-drift map require those fields to change together, as direct indexed assignment does. Setting a 1 GeV/c proton to δ = 0.3 through a view, then tracking 1.7 m with normalized horizontal momentum `px` = 0.0008, gives x = 1.360 mm instead of 1.046 mm. Strided views, the output of NumPy universal functions (`out=`) and aliased in-place writes also bypass updates, and slices of read-only arrays accept prohibited writes. Direct indexed assignment preserves the required consistency.",
   "justification": null,
   "locations": [
    {
@@ -5026,7 +5026,7 @@
   "severity": "Wrong physics",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Copying a `SpaceChargeBiGaussian` and changing its public longitudinal-profile population leaves the tracking kernel using the old intensity, because the copied child fields are disconnected from the parent's storage. At fixed geometry the kick must scale linearly with population, as a freshly constructed control confirms. For a 0.7 m element with longitudinal RMS size 0.13 m and transverse RMS size 1.2 mm, increasing the population from 7.000×10⁹ to 1.750×10¹⁰ leaves a 1.3 GeV/c proton at the bunch center and x = 0.7 mm with normalized horizontal momentum `px` = 3.145×10⁻⁶ instead of 7.862×10⁻⁶. Both default-buffer and same-buffer copies fail. The tested scope is embedded fields copied by `HybridClass.copy()` on serial CPU; the original object remains unchanged.",
+  "summary": "Copying a `SpaceChargeBiGaussian` and changing its public longitudinal-profile population leaves the tracking kernel using the old intensity, because the copied child fields are disconnected from the parent's storage. At fixed geometry the kick must scale linearly with population, as a freshly constructed control confirms. For a 0.7 m element with longitudinal RMS size 0.13 m and transverse RMS size 1.2 mm, increasing the population from 7.000×10⁹ to 1.750×10¹⁰ leaves a 1.3 GeV/c proton at the bunch center and x = 0.7 mm with normalized horizontal momentum `px` = 3.145×10⁻⁶ instead of 7.862×10⁻⁶. Both default-buffer and same-buffer copies fail. The original object remains unchanged.",
   "justification": null,
   "locations": [
    {

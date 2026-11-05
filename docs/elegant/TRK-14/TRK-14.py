@@ -4,9 +4,9 @@ With spin tracking enabled, POLAR's narrow-cone, wide-cone and von Mises–Fishe
 (not-a-number) spin components for every tested particle when the polarization axis is (0, 0, ±1).
 At requested polarizations P = 0.25 and 0.8, all 12 spins become nonfinite without warning; the
 tilted axis (0.6, 0, 0.8) gives 12 finite unit spins. Rotations should preserve unit spin length,
-and a narrow cone should satisfy S·v = P, where S is the spin and v the unit axis. The shared
-singular rotation establishes the extension to all 0 < P < 1 by source inspection, affecting
-preparation of longitudinally polarized beams.
+and a narrow cone should satisfy S·v = P, where S is the spin and v the unit axis. The rotation
+these modes share is singular on that axis, so by source inspection the failure extends to every
+0 < P < 1.
 
 The script tracks 12 identical electrons with spin tracking enabled through a POLAR element for each
 mode, P of 0.25 and 0.8, and the axes (0, 0, 1) and (0, 0, -1), and counts the particles whose three

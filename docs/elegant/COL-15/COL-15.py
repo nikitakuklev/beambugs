@@ -6,7 +6,6 @@ identical to setting 0, while an equivalent single-mode TRFMODE leaves the beam 
 16-electron bunch with momentum 750 mₑc, charge 0.7000 nC and horizontal offset 8.000 mm, an
 800.0 MHz mode with quality factor Q = 12 and shunt impedance Rₛ = 6×10⁷ Ω/m produces momentum
 changes up to 0.02984 mₑc and horizontal slope changes up to 1.557×10⁻⁴ where none are allowed.
-Users delaying beam perturbations during field buildup are affected.
 
 The script tracks the same bunch through one FTRFMODE and through the equivalent single-mode TRFMODE
 for one pass with RIGID_UNTIL_PASS = 0, 1 and 9, and records the largest momentum and slope

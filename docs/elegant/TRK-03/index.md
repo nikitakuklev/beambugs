@@ -16,7 +16,7 @@ hide:
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [stored-K1 overwrite, compute_matrices.c:1649–1650](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L1649-L1650)<br>[body strength, multipole.c:791–795](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L791-L795)<br>[entrance fringe, multipole.c:1131–1132](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1131-L1132)<br>[exit fringe, multipole.c:1224–1225](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1224-L1225)<br>[nonlinear fringe coefficient, fringe.c:110](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/fringe.c#L110)<br>[K1, BORE and B definitions, track_data.c:1253–1258](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1253-L1258) |
 
-KQUAD can be specified by pole-tip field B and bore radius BORE instead of normalized gradient K₁. With nonlinear fringes enabled and K₁ left at its default zero, the body uses the field-derived strength but both fringes use zero strength until a matrix or Twiss output request overwrites K₁. The same beam then leaves the same magnet differently depending on whether optics output was requested; after the request it matches the equivalent explicit K₁. For a 0.4 m magnet with K₁ = 5 m⁻² and electron momentum 2000 mₑc, exit slopes change by up to 1.749 µrad and positions by up to 95.29 nm. Pole-tip quadrupoles with enabled fringes are affected.
+KQUAD can be specified by pole-tip field B and bore radius BORE instead of normalized gradient K₁. With nonlinear fringes enabled and K₁ left at its default zero, the body uses the field-derived strength but both fringes use zero strength until a matrix or Twiss output request overwrites K₁. The same beam then leaves the same magnet differently depending on whether optics output was requested; after the request it matches the equivalent explicit K₁. For a 0.4 m magnet with K₁ = 5 m⁻² and electron momentum 2000 mₑc, exit slopes change by up to 1.749 µrad and positions by up to 95.29 nm.
 
 ??? example "Reproducer: TRK-03.py"
 
@@ -31,7 +31,7 @@ KQUAD can be specified by pole-tip field B and bore radius BORE instead of norma
     The same beam then leaves the same magnet differently depending on whether optics output was
     requested; after the request it matches the equivalent explicit K₁. For a 0.4 m magnet with K₁ = 5
     m⁻² and electron momentum 2000 mₑc, exit slopes change by up to 1.749 µrad and positions by up to
-    95.29 nm. Pole-tip quadrupoles with enabled fringes are affected.
+    95.29 nm.
 
     The script tracks twelve particles through the magnet described by B and BORE, with and without a
     matrix or Twiss request, and compares each result with the same magnet described by the equivalent
@@ -315,6 +315,10 @@ KQUAD can be specified by pole-tip field B and bore radius BORE instead of norma
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
+| Found (fringes receive the stored K1, not the pole-tip conversion) | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source reading, not executed for this claim |
+| Found (a matrix request overwrites K1 and changes later fringe tracking) | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6-astra` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
+| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-15 | 2026.4.0 (`d177ff5347c7`), source with SDDS 3fa650ee9a1c, CPU, serial |
 | Confirmed | `gpt-6-astra` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 | Confirmed | `gpt-6.1-sol` | high | 2026-10-25 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
 

@@ -1,12 +1,12 @@
 # OPT-08: Row 2 of the first table column reuses row 1's cache
 #
 # When the first column of a `twiss` table reads the per-row optics cache, for example with
-# `base_cols=[]` or a custom `base_cols` list that starts with an optics column, row 2 of that
-# column repeats row 1. Each row must describe its own sample, and drift transport of the start
-# values, β(s) = β₀ − 2α₀s + γ₀s², gives the expected value. In a lattice of thin quadrupoles and 1
-# m drifts, `beta1` at s = 1 m reads 1.529 m, the value at s = 0, instead of 3.441 m, while the
-# `alpha1` column of the same call is correct. Only row 2 of the first column is wrong. The default
-# `base_cols` start with `"index"`, which does not use the cache, so default tables are unaffected.
+# `base_cols=[]` or a custom `base_cols` starting with an optics column, row 2 of that column
+# repeats row 1. Each row must describe its own sample, and drift transport of the start values,
+# β(s) = β₀ − 2α₀s + γ₀s², gives the expected value. In a lattice of thin quadrupoles and 1 m
+# drifts, `beta1` at s = 1 m reads 1.529 m, the value at s = 0, instead of 3.441 m, while the
+# `alpha1` column of the same call is correct. The default `base_cols` start with `"index"`, which
+# does not use the cache, so default tables are unaffected.
 #
 # The script runs `twiss` on the lattice drift, thin quadrupole, drift, thin quadrupole (1 GeV/c
 # electrons, RF off) with the columns `beta1` and `alpha1`, once with the default `base_cols` and

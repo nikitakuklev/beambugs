@@ -5,8 +5,7 @@
 # because it reads a field `tilt` where the electric multipole field is named `etilt`. The electric
 # multipole's own `show` uses `etilt`, and the magnetic branch, which reads its own `tilt` field,
 # writes `Kn1=0.2,tilt1=0.1` for a control element. An element with `En0 = 1` fails instead of
-# producing text containing `En0=1.0`. Only lattices with electric multipoles are affected, and the
-# failure is loud.
+# producing text containing `En0=1.0`. The failure is loud.
 #
 # The script calls `writebl` on a Beamline holding one element with `En0 = 1.0` and expects a
 # `Beamline` expression containing `En0=1.0`. It also prints the field names of the electric
