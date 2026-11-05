@@ -32827,7 +32827,7 @@
       "commit": "7514db36f764",
       "build": "source with SDDS a3f730a14c49, CPU, serial"
      },
-     "scope": "accelerating RFCW; the standalone off-reference LSCDRIFT sub-claim is the reference-momentum convention (Rejected candidates)"
+     "scope": "accelerating RFCW"
     }
    ],
    "verified": {
