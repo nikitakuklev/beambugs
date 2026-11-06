@@ -109,6 +109,7 @@ def symplectic_error(initial, gamma, strength, length, step):
     return np.max(np.abs(jacobian.T @ j @ jacobian - j))
 
 
+bad = False
 try:
     SIM.beam.ref.reset()
     SIM.beam.ref.set_species("proton")
@@ -167,14 +168,22 @@ try:
                     / (2 * d**2 * slices)
                 )
                 error = observed[4] - expected[4]
-                assert abs(error - predicted_error) < 2e-15, (error, predicted_error)
+                if strength > 0:
+                    assert abs(error) < 2e-15, error
+                elif abs(error) >= 2e-15:
+                    assert abs(error - predicted_error) < 2e-15, (error, predicted_error)
+                    bad = True
                 print(
                     f"{name} k={strength:+g} slices={slices}: t={observed[4]:.15g} ODE={expected[4]:.15g} error={error:.15g} predicted_sign_error={predicted_error:.15g}"
                 )
             for step in (1e-4, 3e-5):
                 residual = symplectic_error(initial, gamma, strength, length, step)
                 print(f"  symplectic_residual step={step:g}: {residual:.12g}")
-                assert residual < 5e-10 if strength > 0 else residual > 1e-4
-    print("DEFECT REPRODUCED")
+                if strength > 0:
+                    assert residual < 5e-10
+                elif residual >= 5e-10:
+                    assert residual > 1e-4
+                    bad = True
 finally:
     SIM.finalize()
+print("DEFECT REPRODUCED" if bad else "NOT REPRODUCED")

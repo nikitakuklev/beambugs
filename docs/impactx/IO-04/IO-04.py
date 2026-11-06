@@ -12,9 +12,7 @@ give finite positions and, at zero bunch charge, both signs give identical resul
 The script initializes `Thermal` distributions of 2049 particles for protons, H⁻, positrons and
 electrons at equal γ and intensity, for fixed-mass charges Z = ±1 and ±2, at zero and 10⁻²⁰ C bunch
 charge, and for a second parameter set with a halo, each in a fresh child process with the same
-random seed. It checks that every negative-charge case with nonzero bunch charge has all positions
-NaN and finite momenta, that the other cases are finite, and that opposite-sign pairs share
-identical momenta. For opposite-sign pairs it integrates the spherical Gauss-law and
+random seed. It checks whether negative-charge samples have finite positions, requires finite positive-charge and zero-charge controls, and compares opposite-sign samples and momenta. For opposite-sign pairs it integrates the spherical Gauss-law and
 Boltzmann-density equations and requires identical finite solutions for both signs. Temporary arrays
 are written beside the script and removed on exit.
 """
@@ -237,6 +235,7 @@ def main():
         flush=True,
     )
     print("AMReX serial default seed 1 in each fresh child process.", flush=True)
+    bad = False
     with TemporaryDirectory(prefix="io-04-", dir=HERE) as directory:
         output = Path(directory)
         results = {}
@@ -259,10 +258,11 @@ def main():
             child.check_returncode()
             row = json.loads((output / f"{spec['name']}.json").read_text())
             results[row["name"]] = row
-            expected_finite = row["z"] > 0 or row["bunch_charge"] == 0
-            assert row["all_finite"] == expected_finite
+            if row["z"] > 0 or row["bunch_charge"] == 0:
+                assert row["all_finite"]
+            bad |= not row["all_finite"]
             assert row["finite_components"][3:] == [row["n"]] * 3
-            if not expected_finite:
+            if not row["all_finite"]:
                 assert row["nan_components"][:3] == [row["n"]] * 3
             print(
                 f"{row['name']}: expected_finite_positions={row['n']} "
@@ -281,7 +281,7 @@ def main():
             with np.load(output / f"{right}.npz") as data:
                 b = data["data"].copy()
             assert np.array_equal(a[:, 3:], b[:, 3:])
-            if left in ("charge_Z1", "intensity_Z1_Q0") and right != "charge_Z-1":
+            if np.isfinite(a).all() and np.isfinite(b).all():
                 assert np.array_equal(a, b)
             print(
                 f"PAIRED {left} / {right}: exact_momenta={np.array_equal(a[:, 3:], b[:, 3:])} "
@@ -308,7 +308,7 @@ def main():
             f"Checked {len(results)} Thermal cases and charge-symmetric continuum oracles.",
             flush=True,
         )
-    print("DEFECT REPRODUCED", flush=True)
+    print("DEFECT REPRODUCED" if bad else "NOT REPRODUCED", flush=True)
 
 
 if __name__ == "__main__":

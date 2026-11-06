@@ -13,8 +13,7 @@ space-charge kick at γ = 7 and at high γ, with identical rest-frame sources an
 the (βγ)²-scaled kicks on zero-weight tracers, which must be equal. It reproduces the high-γ result
 with a γ = 7 source squeezed longitudinally and scaled in charge by the ratio of reconstructed to
 true γ, and compares the deficit with the exact interior field of the corresponding ellipsoid; the
-sphere's exact field checks the baseline. A γ = 10⁴ control checks that the installed build
-reconstructs γ with a fused multiply-add, which needs Python 3.13 for `math.fma`. Each native case
+sphere's exact field checks the baseline. A γ = 10⁴ control measures whether the build uses fused or separately rounded reconstruction, with the same surrogate tolerance for either choice; Python 3.13 supplies `math.fma`. Each native case
 runs in a fresh child process.
 """
 
@@ -136,17 +135,18 @@ def case(cells, gamma, squeeze=1.0, charge_factor=1.0):
         )
         spherical_oracle = abs(ref.charge) * length / (ref.mass * c * c) * field
         beta_solver = math.sqrt(1 - 1 / gamma**2)
-        # This wheel contracts 1-beta*beta. The gamma=1e4 paired surrogate
-        # distinguishes fused and separately rounded arithmetic experimentally.
+        # Keep both rounding models: compiler contraction changes across builds.
+        # A measured gamma=1e4 control selects the model before the defect cases.
+        # The supplied-gamma model also permits a solver that preserves the input.
         reconstructed = 1 / math.sqrt(math.fma(-beta_solver, beta_solver, 1.0))
         result = dict(
             settings=dict(cells=cells, gamma=gamma, squeeze=squeeze, charge_factor=charge_factor),
             gamma=gamma,
             bg=bg,
             beta_solver=beta_solver,
-            gamma_solver=reconstructed,
+            gamma_solver_fused=reconstructed,
             gamma_solver_separate=1 / math.sqrt(1 - beta_solver**2),
-            a=reconstructed / gamma,
+            supplied_gamma=gamma,
             particles=len(positions),
             observed=observed.tolist(),
             scaled=scaled.tolist(),
@@ -180,12 +180,36 @@ def run(cells, gamma, squeeze=1.0, charge_factor=1.0):
 
 
 def main():
+    # Determine arithmetic from native kicks, never from a version or source label.
+    low_control, high_control = run(32, 7.0), run(32, 1e4)
+    base_control = np.asarray(low_control["scaled"])
+    elevated_control = np.asarray(high_control["scaled"])
+    valid_control = np.abs(base_control) > np.max(np.abs(base_control)) * 1e-10
+    residuals = {}
+    for key in ("gamma_solver_fused", "gamma_solver_separate", "supplied_gamma"):
+        squeeze = (high_control[key] / high_control["gamma"]) / (
+            low_control[key] / low_control["gamma"]
+        )
+        surrogate = np.asarray(run(32, 7.0, squeeze, squeeze)["scaled"])
+        residuals[key] = float(
+            np.max(
+                np.abs(
+                    (elevated_control[valid_control] - surrogate[valid_control])
+                    / base_control[valid_control]
+                )
+            )
+        )
+    matches = [key for key, residual in residuals.items() if residual < 5e-13]
+    assert len(matches) == 1, residuals
+    model = matches[0]
+    assert all(residual > 1e-10 for key, residual in residuals.items() if key != model), residuals
+    print(f"gamma10000_arithmetic_control model={model} residuals={residuals}", flush=True)
     reproduced = True
     for cells, gamma in ((32, 6e7), (48, 6e7), (64, 6e7), (32, 2e7), (32, 4e7), (32, 1e4)):
         low, high = run(cells, 7.0), run(cells, gamma)
         # Match both the effective stretched geometry and source charge. Include
         # the low-energy reconstruction error when constructing the surrogate.
-        squeeze = high["a"] / low["a"]
+        squeeze = (high[model] / high["gamma"]) / (low[model] / low["gamma"])
         surrogate = run(cells, 7.0, squeeze, squeeze)
         base, elevated, mimicked = (np.asarray(r["scaled"]) for r in (low, high, surrogate))
         valid = np.abs(base) > np.max(np.abs(base)) * 1e-10
@@ -194,7 +218,7 @@ def main():
         # Lorentz similarity requires (beta*gamma)^2*delta_px to stay constant.
         # A sphere squeezed to aR with charge aQ gives an ellipsoid whose
         # interior transverse field ratio is 3*Ax, Ax=a/2*integral below.
-        a = high["a"]
+        a = high[model] / high["gamma"]
         integral, error = quad(
             lambda u, a=a: 1 / ((1 + u) ** 2 * math.sqrt(a * a + u)),
             0,
@@ -208,7 +232,7 @@ def main():
         oracle = np.asarray(low["sphere_oracle"])
         print(
             f"cells={cells} gamma={gamma:g} sources={low['particles'] - 6} "
-            f"gamma_solver={high['gamma_solver']:.16g} stretch_ratio={a:.16g} "
+            f"gamma_solver={high[model]:.16g} stretch_ratio={a:.16g} "
             f"low_scaled={base[1, 0]:.16g} high_scaled={elevated[1, 0]:.16g} "
             f"ratio={ratio:.16g} required_ratio=1 wrong_ellipsoid_limit={wrong_limit:.16g} "
             f"surrogate_residual={residual:.12g} "
@@ -220,22 +244,7 @@ def main():
         if gamma == 6e7:
             reproduced &= abs(ratio - 1) > 0.08
             assert abs(ratio - wrong_limit) < 4e-4
-        if gamma == 1e4:
-            separate_squeeze = (high["gamma_solver_separate"] / high["gamma"]) / (
-                low["gamma_solver_separate"] / low["gamma"]
-            )
-            separate = np.asarray(run(cells, 7.0, separate_squeeze, separate_squeeze)["scaled"])
-            separate_residual = float(
-                np.max(np.abs((elevated[valid] - separate[valid]) / base[valid]))
-            )
-            print(
-                f"gamma10000_fused_residual={residual:.12g} separate_residual={separate_residual:.12g}",
-                flush=True,
-            )
-            assert separate_residual > 1e-10
     print("DEFECT REPRODUCED" if reproduced else "NOT REPRODUCED")
-    if not reproduced:
-        raise AssertionError("Expected the beta-interface similarity failure")
 
 
 if __name__ == "__main__":

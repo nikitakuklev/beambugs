@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-11-05 on ImpactX development (`f9c2a82`) |
 | Source | [`Gauss2p5dPush.cpp#L62-L147`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/Gauss2p5dPush.cpp#L62-L147)<br>[caller](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/Gauss2p5dPush.cpp#L240-L299)<br>[manual](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2462-L2480) |
 
 `Gauss2p5D` space charge computes its transverse forces with a quadrature that treats the initial interval [0, δ], δ = `gauss_taylor_delta`, separately, and divides that interval's contribution by three a second time when it completes the Simpson sum. The forces therefore carry a bias that does not vanish as the number of quadrature points grows. Direct integration of the Gaussian Coulomb convolution, checked against Gauss's law for a round beam, gives the correct forces. With δ = 0.01, 4001 points and a test particle at (x, y) = (σx, 0.6σy), aspect ratio σy/σx = 0.25 gives relative errors of −5.736×10⁻⁵ in px and −1.648×10⁻⁵ in py; aspect ratio 4 gives −2.312×10⁻⁴ and −8.103×10⁻⁴. At the default 101 points, ordinary Simpson discretization error adds to this bias.

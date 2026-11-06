@@ -22940,6 +22940,13 @@
     "kind": "pull",
     "url": "https://github.com/BLAST-ImpactX/impactx/pull/1734",
     "relation": "filed"
+   },
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1761,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1761",
+    "relation": "discussion"
    }
   ],
   "provenance": {
@@ -23133,23 +23140,29 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
-    "result": "reproduced"
+    "result": "not reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-10-27",
    "code": {
-    "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "ref": "ImpactX 26.10",
+    "commit": "615921c6867c"
    },
-   "head": true,
-   "head_not_reproduced": null
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-11-05",
+    "code": {
+     "ref": "ImpactX development",
+     "commit": "f9c2a82e24b7"
+    }
+   }
   },
   "models": [
    "claude-opus-5-5",
@@ -23745,23 +23758,29 @@
     }
    ],
    "verified": {
-    "date": "2026-10-30",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "dfd49f22c34f",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
-    "result": "reproduced"
+    "result": "not reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-30",
+   "date": "2026-10-28",
    "code": {
-    "ref": "ImpactX development",
-    "commit": "dfd49f22c34f"
+    "ref": "ImpactX 26.10",
+    "commit": "615921c6867c"
    },
-   "head": true,
-   "head_not_reproduced": null
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-11-05",
+    "code": {
+     "ref": "ImpactX development",
+     "commit": "f9c2a82e24b7"
+    }
+   }
   },
   "models": [
    "gpt-6-astra",
@@ -23801,7 +23820,15 @@
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1162-L1170"
    }
   ],
-  "upstream": [],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1759,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1759",
+    "relation": "fix"
+   }
+  ],
   "provenance": {
    "found": [
     {
@@ -23828,23 +23855,29 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
-    "result": "reproduced"
+    "result": "not reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-10-28",
    "code": {
-    "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "ref": "ImpactX 26.10",
+    "commit": "615921c6867c"
    },
-   "head": true,
-   "head_not_reproduced": null
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-11-05",
+    "code": {
+     "ref": "ImpactX development",
+     "commit": "f9c2a82e24b7"
+    }
+   }
   },
   "models": [
    "gpt-6-astra",
@@ -23954,7 +23987,15 @@
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/ReferenceParticle.H#L123-L126"
    }
   ],
-  "upstream": [],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1760,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1760",
+    "relation": "fix"
+   }
+  ],
   "provenance": {
    "found": [
     {
@@ -24575,20 +24616,20 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
     "result": "reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "f9c2a82e24b7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -24715,6 +24756,13 @@
    }
   ],
   "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1757,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1757",
+    "relation": "discussion"
+   },
    {
     "repository": "BLAST-ImpactX/impactx",
     "number": 1481,
@@ -24876,7 +24924,15 @@
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L257-L285"
    }
   ],
-  "upstream": [],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1762,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1762",
+    "relation": "fix"
+   }
+  ],
   "provenance": {
    "found": [
     {
@@ -24903,23 +24959,29 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
-    "result": "reproduced"
+    "result": "not reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-10-28",
    "code": {
-    "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "ref": "ImpactX 26.10",
+    "commit": "615921c6867c"
    },
-   "head": true,
-   "head_not_reproduced": null
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-11-05",
+    "code": {
+     "ref": "ImpactX development",
+     "commit": "f9c2a82e24b7"
+    }
+   }
   },
   "models": [
    "gpt-6-astra",
@@ -25275,20 +25337,20 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
     "result": "reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "f9c2a82e24b7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25387,20 +25449,20 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
     "result": "reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "f9c2a82e24b7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25439,7 +25501,15 @@
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/ReducedBeamCharacteristics.cpp#L335"
    }
   ],
-  "upstream": [],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1757,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1757",
+    "relation": "discussion"
+   }
+  ],
   "provenance": {
    "found": [
     {
@@ -25517,7 +25587,15 @@
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L239-L253"
    }
   ],
-  "upstream": [],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1762,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1762",
+    "relation": "fix"
+   }
+  ],
   "provenance": {
    "found": [
     {
@@ -25544,23 +25622,29 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
-    "result": "reproduced"
+    "result": "not reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-10-28",
    "code": {
-    "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "ref": "ImpactX 26.10",
+    "commit": "615921c6867c"
    },
-   "head": true,
-   "head_not_reproduced": null
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-11-05",
+    "code": {
+     "ref": "ImpactX development",
+     "commit": "f9c2a82e24b7"
+    }
+   }
   },
   "models": [
    "gpt-6-astra",
@@ -25600,7 +25684,15 @@
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L252"
    }
   ],
-  "upstream": [],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1762,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1762",
+    "relation": "fix"
+   }
+  ],
   "provenance": {
    "found": [
     {
@@ -25627,23 +25719,29 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
-    "result": "reproduced"
+    "result": "not reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-10-28",
    "code": {
-    "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "ref": "ImpactX 26.10",
+    "commit": "615921c6867c"
    },
-   "head": true,
-   "head_not_reproduced": null
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-11-05",
+    "code": {
+     "ref": "ImpactX development",
+     "commit": "f9c2a82e24b7"
+    }
+   }
   },
   "models": [
    "gpt-6-astra",
@@ -25691,7 +25789,15 @@
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L277-L290"
    }
   ],
-  "upstream": [],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1738,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1738",
+    "relation": "fix"
+   }
+  ],
   "provenance": {
    "found": [
     {
@@ -25718,23 +25824,29 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
-    "result": "reproduced"
+    "result": "not reproduced"
    }
   },
   "last_reproduced": {
    "date": "2026-10-29",
    "code": {
-    "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "ref": "ImpactX 26.10",
+    "commit": "615921c6867c"
    },
-   "head": true,
-   "head_not_reproduced": null
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-11-05",
+    "code": {
+     "ref": "ImpactX development",
+     "commit": "f9c2a82e24b7"
+    }
+   }
   },
   "models": [
    "gpt-6-astra",
@@ -25812,23 +25924,29 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
-    "result": "reproduced"
+    "result": "not reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-10-28",
    "code": {
-    "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "ref": "ImpactX 26.10",
+    "commit": "615921c6867c"
    },
-   "head": true,
-   "head_not_reproduced": null
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-11-05",
+    "code": {
+     "ref": "ImpactX development",
+     "commit": "f9c2a82e24b7"
+    }
+   }
   },
   "models": [
    "gpt-6-astra",
@@ -25857,7 +25975,15 @@
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1681-L1697"
    }
   ],
-  "upstream": [],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1727,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1727",
+    "relation": "filed"
+   }
+  ],
   "provenance": {
    "found": [
     {
@@ -25884,23 +26010,29 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
-    "result": "reproduced"
+    "result": "not reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-10-28",
    "code": {
-    "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "ref": "ImpactX 26.10",
+    "commit": "615921c6867c"
    },
-   "head": true,
-   "head_not_reproduced": null
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-11-05",
+    "code": {
+     "ref": "ImpactX development",
+     "commit": "f9c2a82e24b7"
+    }
+   }
   },
   "models": [
    "gpt-6-astra",
@@ -26766,20 +26898,20 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
     "result": "reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "f9c2a82e24b7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -26833,7 +26965,15 @@
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L1139-L1246"
    }
   ],
-  "upstream": [],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1755,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1755",
+    "relation": "report"
+   }
+  ],
   "provenance": {
    "found": [
     {
@@ -26860,20 +27000,20 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
     "result": "reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "f9c2a82e24b7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -27212,20 +27352,20 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-05",
     "code": {
      "ref": "development",
-     "commit": "fa0a43b9bb07",
-     "build": "source, CPU, double, serial"
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
     },
     "result": "reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "f9c2a82e24b7"
    },
    "head": true,
    "head_not_reproduced": null

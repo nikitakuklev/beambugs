@@ -12,7 +12,8 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-28 on ImpactX 26.10 (`615921c`); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1762]], fix |
 | Source | [`ImpactXParticleContainer.py#L83-L95`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L83-L95)<br>[`L117-L125`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L117-L125)<br>[`L252`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L252) |
 
 The phase-space plot from `plot_phasespace()` multiplies the longitudinal momentum pt, the energy deviation −ΔE/(P₀c) with P₀ the reference momentum, by 1000, the factor it uses to convert transverse momenta to mrad, while the axis label states units of p₀c with no scale factor. ImpactX documents pt as dimensionless, so a per-mille display must state its factor. A beam with pt = ±0.004 is plotted at ±4. Tracking and stored coordinates are unaffected; values read from the plot are 1000 times too large.
@@ -31,12 +32,7 @@ The phase-space plot from `plot_phasespace()` multiplies the longitudinal moment
     pt = ±0.004 is plotted at ±4. Tracking and stored coordinates are unaffected; values read from the
     plot are 1000 times too large.
 
-    The script builds a deterministic beam of 64 weighted particles at the vertices of a box in (x, px,
-    y, py, t, pt), with pt = ±0.004, for a γ = 7 proton reference, and draws the plot with the installed
-    `plot_phasespace()` function and the unmodified function from the ImpactX development branch. It
-    reads the longitudinal panel's image extent and axis label and checks that the extent is ±4 while
-    the label carries no scale factor; splitting each particle into two half-weight copies gives the
-    same result. Set IMPACTX_SOURCE to a clone of the ImpactX repository.
+    The script builds a deterministic weighted product beam with pt = ±0.004 at γ = 7 and checks its charge and emittances against analytic values. It compares the installed longitudinal plot extent with the dimensionless input and checks the axis label. Splitting each particle into two half-weight copies must preserve the extent.
     """
 
     import os
@@ -57,9 +53,6 @@ The phase-space plot from `plot_phasespace()` multiplies the longitudinal moment
     os.environ["MPLCONFIGDIR"] = plot_config.name
     os.sched_setaffinity(0, {min(os.sched_getaffinity(0))})
 
-    import ast
-    import inspect
-    import subprocess
     from importlib import import_module
     from importlib.metadata import version
     from itertools import product
@@ -70,35 +63,9 @@ The phase-space plot from `plot_phasespace()` multiplies the longitudinal moment
     import matplotlib.pyplot as plt
     import numpy as np
     from impactx import ImpactX
-    from impactx.impactx_pybind import CoordSystem
 
-    REPO = os.environ["IMPACTX_SOURCE"]
-    PATH = "src/python/impactx/extensions/ImpactXParticleContainer.py"
     module = import_module("impactx.extensions.ImpactXParticleContainer")
-    pinned = subprocess.check_output(["git", "-C", REPO, "show", f"615921c6867c:{PATH}"], text=True)
-    assert inspect.getsource(module) == pinned
-
-
-    def development_plot():
-        source = subprocess.check_output(
-            ["git", "-C", REPO, "show", f"b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943:{PATH}"], text=True
-        )
-        functions: list[ast.stmt] = [
-            node
-            for node in ast.parse(source).body
-            if isinstance(node, ast.FunctionDef) and node.name == "ix_pc_plot_mpl_phasespace"
-        ]
-        assert len(functions) == 1
-        namespace = {"CoordSystem": CoordSystem}
-        exec(  # noqa: S102 -- execute the inspected upstream function without editing its body
-            compile(
-                ast.Module(body=functions, type_ignores=[]),
-                "<unmodified development plotting function>",
-                "exec",
-            ),
-            namespace,
-        )
-        return namespace["ix_pc_plot_mpl_phasespace"]
+    bad = False
 
 
     # Each independent +/- coordinate has probability ratio 1:r. Analytic stddev:
@@ -131,10 +98,7 @@ The phase-space plot from `plot_phasespace()` multiplies the longitudinal moment
             version("matplotlib"),
         )
         print("Analytic product beam: 64 vertices; splitting each macroparticle preserves all physics")
-        plotters = [
-            ("pinned 26.10", module.ix_pc_plot_mpl_phasespace),
-            ("development function / 26.10 core", development_plot()),
-        ]
+        plotters = [("installed plotter", module.ix_pc_plot_mpl_phasespace)]
         for split in [1, 2]:
             sim.beam.clear_particles()
             ref = sim.beam.ref
@@ -165,7 +129,7 @@ The phase-space plot from `plot_phasespace()` multiplies the longitudinal moment
                     print(f"--- {label}; split={split}; charge={charge:.15g} C ---")
                     longitudinal = panels[2]
                     extent = longitudinal.images[0].get_extent()[2:]
-                    np.testing.assert_allclose(extent, [-4.0, 4.0], rtol=0, atol=1e-15)
+                    bad |= not np.allclose(extent, [-0.004, 0.004], rtol=0, atol=1e-15)
                     assert longitudinal.get_ylabel() == r"$\Delta p_t$ [$p_0\cdot c$]"
                     print(
                         f"pt extent={list(extent)}; expected dimensionless extent=[-0.004, 0.004]; label={longitudinal.get_ylabel()!r}"
@@ -175,7 +139,7 @@ The phase-space plot from `plot_phasespace()` multiplies the longitudinal moment
     finally:
         sim.finalize()
         plot_config.cleanup()
-    print("DEFECT REPRODUCED")
+    print("DEFECT REPRODUCED" if bad else "NOT REPRODUCED")
 
     ```
 

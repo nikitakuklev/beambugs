@@ -15,6 +15,7 @@ hide:
 | Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1733]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1734]], filed from this evidence |
+| Discussed in | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1761]] |
 | Source | [`ExactCFbend.H#L349-L366`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactCFbend.H#L349-L366) |
 
 `ExactCFbend` leaves the skew-dipole coefficient `k_skew[0]` out of its orbital kick, so a skew dipole produces no vertical steering. In the element's curvilinear field model the skew dipole gives Bₓ/(Bρ) = kₛ/(1 + hx), with Bρ the magnetic rigidity, h the curvature and kₛ = `k_skew[0]`, so an on-axis particle must leave a body of length L with `py` = kₛ·L. For an on-axis proton in `ExactCFbend(ds=0.7, k_normal=[0.3], k_skew=[0.02])`, `py` is 0 instead of 0.01400, with one and with four slices.

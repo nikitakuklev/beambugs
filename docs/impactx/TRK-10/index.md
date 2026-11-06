@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-30 on ImpactX development (`dfd49f2`) |
+| Last reproduced | 2026-10-28 on ImpactX 26.10 (`615921c`); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1742]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1743]], filed from this evidence |
 | Source | [`ChrPlasmaLens.H#L219-L223`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrPlasmaLens.H#L219-L223) |
@@ -135,6 +135,7 @@ In a defocusing `ChrPlasmaLens` (negative strength `k`), one arrival-time term p
         return np.max(np.abs(jacobian.T @ j @ jacobian - j))
 
 
+    bad = False
     try:
         SIM.beam.ref.reset()
         SIM.beam.ref.set_species("proton")
@@ -193,17 +194,25 @@ In a defocusing `ChrPlasmaLens` (negative strength `k`), one arrival-time term p
                         / (2 * d**2 * slices)
                     )
                     error = observed[4] - expected[4]
-                    assert abs(error - predicted_error) < 2e-15, (error, predicted_error)
+                    if strength > 0:
+                        assert abs(error) < 2e-15, error
+                    elif abs(error) >= 2e-15:
+                        assert abs(error - predicted_error) < 2e-15, (error, predicted_error)
+                        bad = True
                     print(
                         f"{name} k={strength:+g} slices={slices}: t={observed[4]:.15g} ODE={expected[4]:.15g} error={error:.15g} predicted_sign_error={predicted_error:.15g}"
                     )
                 for step in (1e-4, 3e-5):
                     residual = symplectic_error(initial, gamma, strength, length, step)
                     print(f"  symplectic_residual step={step:g}: {residual:.12g}")
-                    assert residual < 5e-10 if strength > 0 else residual > 1e-4
-        print("DEFECT REPRODUCED")
+                    if strength > 0:
+                        assert residual < 5e-10
+                    elif residual >= 5e-10:
+                        assert residual > 1e-4
+                        bad = True
     finally:
         SIM.finalize()
+    print("DEFECT REPRODUCED" if bad else "NOT REPRODUCED")
 
     ```
 

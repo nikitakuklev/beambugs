@@ -10,7 +10,7 @@ only warning printed is the importer's general preview notice, which does not me
 
 The script writes one-line MAD-X decks for a proton `BEAM` with `PC` = 2 and 3.25 GeV/c, loads each
 with `RefPart.load_file()` and compares the reference kinetic energy with √((pc)² + (mc²)²) − mc²,
-computed in 60-digit decimal arithmetic from the converter's proton mass. A deck giving the
+computed in 60-digit decimal arithmetic from the imported reference rest mass. A deck giving the
 equivalent `ENERGY` is the control and must match within 2×10⁻¹⁰ MeV.
 """
 
@@ -60,23 +60,22 @@ def load(label, command):
         f"parser_total_GeV={parser.getEtot():.16g}"
     )
     print(f"  warning_categories={[type(w.message).__name__ for w in captured]}")
-    return reference.kin_energy_MeV
+    return reference.mass_MeV, reference.kin_energy_MeV
 
 
 bad = False
-# Species defaults use these exact SI constants in the converter.
+# The importer changed its default proton-mass convention. Measure the rest mass
+# independently of PC resolution, then hold that parameter fixed in the energy oracle.
+mass, control_energy = load("mass control", "BEAM, PARTICLE=PROTON, ENERGY=1")
+assert math.isclose(control_energy, 1000 - mass, rel_tol=0, abs_tol=2e-10)
 with localcontext() as context:
     context.prec = 60
-    rest = (
-        Decimal("1.67262192369e-27")
-        * Decimal(299792458) ** 2
-        / Decimal("1.602176634e-19")
-        / Decimal("1e6")
-    )
+    rest = Decimal(str(mass))
     for pc in (Decimal(2000), Decimal(3250)):
         total = (pc * pc + rest * rest).sqrt()
-        energy_case = load("ENERGY", f"BEAM, PARTICLE=PROTON, ENERGY={total / 1000}")
-        momentum_case = load("PC", f"BEAM, PARTICLE=PROTON, PC={pc / 1000}")
+        energy_mass, energy_case = load("ENERGY", f"BEAM, PARTICLE=PROTON, ENERGY={total / 1000}")
+        momentum_mass, momentum_case = load("PC", f"BEAM, PARTICLE=PROTON, PC={pc / 1000}")
+        assert energy_mass == momentum_mass == mass
         expected = float(total - rest)
         print(
             f"pc_MeV={pc}: expected_kinetic_MeV={expected:.12f} "

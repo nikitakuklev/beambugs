@@ -7,13 +7,7 @@ emittances as the diagnostic keys with an `n` suffix, equal to β₀γ₀ times 
 x legend shows 168.7 nm while the normalized emittance is 1168 nm, a factor β₀γ₀ = 6.928. The
 numerical diagnostics are correct; only the plot annotation is wrong, by the factor β₀γ₀.
 
-The script builds a deterministic beam of 64 weighted particles at the vertices of a box in (x, px,
-y, py, t, pt) for a γ₀ = 7 proton reference, so that its geometric and normalized emittances follow
-analytically, and checks both sets of diagnostic keys against them. It draws the plot with the
-installed `plot_phasespace()` function and with the unmodified function from the ImpactX development
-branch, and asserts that each legend shows the geometric value under the normalized symbol.
-Repeating with each particle split into two half-weight copies, which leaves the emittances
-unchanged, gives the same mismatch. Set IMPACTX_SOURCE to a clone of the ImpactX repository.
+The script builds a deterministic weighted product beam at γ₀ = 7 and checks its geometric and normalized emittances against analytic values. It compares the installed plot legends with the normalized-emittance diagnostics, then repeats with each particle split into two half-weight copies. The verdict comes from the displayed values; particle splitting must preserve the diagnostics.
 """
 
 import os
@@ -34,9 +28,6 @@ plot_config = TemporaryDirectory(prefix=".ENV-03-mpl-", dir=Path(__file__).resol
 os.environ["MPLCONFIGDIR"] = plot_config.name
 os.sched_setaffinity(0, {min(os.sched_getaffinity(0))})
 
-import ast
-import inspect
-import subprocess
 from importlib import import_module
 from importlib.metadata import version
 from itertools import product
@@ -47,36 +38,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 from impactx import ImpactX
-from impactx.impactx_pybind import CoordSystem
 from quantiphy import Quantity
 
-REPO = os.environ["IMPACTX_SOURCE"]
-PATH = "src/python/impactx/extensions/ImpactXParticleContainer.py"
 module = import_module("impactx.extensions.ImpactXParticleContainer")
-pinned = subprocess.check_output(["git", "-C", REPO, "show", f"615921c6867c:{PATH}"], text=True)
-assert inspect.getsource(module) == pinned
-
-
-def development_plot():
-    source = subprocess.check_output(
-        ["git", "-C", REPO, "show", f"b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943:{PATH}"], text=True
-    )
-    functions: list[ast.stmt] = [
-        node
-        for node in ast.parse(source).body
-        if isinstance(node, ast.FunctionDef) and node.name == "ix_pc_plot_mpl_phasespace"
-    ]
-    assert len(functions) == 1
-    namespace = {"CoordSystem": CoordSystem}
-    exec(  # noqa: S102 -- execute the inspected upstream function without editing its body
-        compile(
-            ast.Module(body=functions, type_ignores=[]),
-            "<unmodified development plotting function>",
-            "exec",
-        ),
-        namespace,
-    )
-    return namespace["ix_pc_plot_mpl_phasespace"]
+bad = False
 
 
 # Each independent +/- coordinate has probability ratio 1:r. Analytic stddev:
@@ -109,10 +74,7 @@ try:
         version("matplotlib"),
     )
     print("Analytic product beam: 64 vertices; splitting each macroparticle preserves all physics")
-    plotters = [
-        ("pinned 26.10", module.ix_pc_plot_mpl_phasespace),
-        ("development function / 26.10 core", development_plot()),
-    ]
+    plotters = [("installed plotter", module.ix_pc_plot_mpl_phasespace)]
     for split in [1, 2]:
         sim.beam.clear_particles()
         ref = sim.beam.ref
@@ -143,16 +105,11 @@ try:
                 print(f"--- {label}; split={split}; charge={charge:.15g} C ---")
                 for j, (plane, panel) in enumerate(zip("xyt", panels)):
                     legend = panel.get_legend().get_title().get_text().splitlines()[0]
-                    assert (
-                        legend
-                        == rf"$\epsilon_{{n,{plane}}}=$"
-                        + f"{Quantity(moments['emittance_' + plane], 'm'):.3}"
-                    )
-                    assert (
-                        legend
-                        != rf"$\epsilon_{{n,{plane}}}=$"
+                    expected = (
+                        rf"$\epsilon_{{n,{plane}}}=$"
                         + f"{Quantity(moments['emittance_' + plane + 'n'], 'm'):.3}"
                     )
+                    bad |= legend != expected
                     print(
                         f"{plane}: legend={legend!r}; analytic geometric={emittances[j]:.15g} m; normalized={bg * emittances[j]:.15g} m"
                     )
@@ -161,4 +118,4 @@ try:
 finally:
     sim.finalize()
     plot_config.cleanup()
-print("DEFECT REPRODUCED")
+print("DEFECT REPRODUCED" if bad else "NOT REPRODUCED")

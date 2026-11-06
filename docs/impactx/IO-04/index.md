@@ -12,7 +12,8 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX 26.10 (`615921c`); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1738]], fix |
 | Source | [`Thermal.H#L99-L108`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L99-L108)<br>[`matched_scale_radius` at L162-L172](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L162-L172)<br>[caller](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/initialization/InitDistribution.cpp#L310-L312)<br>[L354-L356](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/initialization/InitDistribution.cpp#L354-L356)<br>[sampler contract](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L277-L290) |
 
 Initializing a `Thermal` distribution for a negatively charged species, such as electrons or H⁻, with positive focusing strength k and nonzero bunch charge returns NaN for every particle position, while the momenta are finite and the call returns normally. In the source, the radius calculation raises a self-field coefficient formed with the signed species charge to the power 2/3. Reversing the charge sign leaves the repulsive self-force unchanged, so the distribution must equal that of the opposite charge; an independent integration of Gauss's law with a Boltzmann density gives that finite solution. In the electron and H⁻ cases all 2049 positions are NaN, while positive species give finite positions and, at zero bunch charge, both signs give identical results.
@@ -36,9 +37,7 @@ Initializing a `Thermal` distribution for a negatively charged species, such as 
     The script initializes `Thermal` distributions of 2049 particles for protons, H⁻, positrons and
     electrons at equal γ and intensity, for fixed-mass charges Z = ±1 and ±2, at zero and 10⁻²⁰ C bunch
     charge, and for a second parameter set with a halo, each in a fresh child process with the same
-    random seed. It checks that every negative-charge case with nonzero bunch charge has all positions
-    NaN and finite momenta, that the other cases are finite, and that opposite-sign pairs share
-    identical momenta. For opposite-sign pairs it integrates the spherical Gauss-law and
+    random seed. It checks whether negative-charge samples have finite positions, requires finite positive-charge and zero-charge controls, and compares opposite-sign samples and momenta. For opposite-sign pairs it integrates the spherical Gauss-law and
     Boltzmann-density equations and requires identical finite solutions for both signs. Temporary arrays
     are written beside the script and removed on exit.
     """
@@ -261,6 +260,7 @@ Initializing a `Thermal` distribution for a negatively charged species, such as 
             flush=True,
         )
         print("AMReX serial default seed 1 in each fresh child process.", flush=True)
+        bad = False
         with TemporaryDirectory(prefix="io-04-", dir=HERE) as directory:
             output = Path(directory)
             results = {}
@@ -283,10 +283,11 @@ Initializing a `Thermal` distribution for a negatively charged species, such as 
                 child.check_returncode()
                 row = json.loads((output / f"{spec['name']}.json").read_text())
                 results[row["name"]] = row
-                expected_finite = row["z"] > 0 or row["bunch_charge"] == 0
-                assert row["all_finite"] == expected_finite
+                if row["z"] > 0 or row["bunch_charge"] == 0:
+                    assert row["all_finite"]
+                bad |= not row["all_finite"]
                 assert row["finite_components"][3:] == [row["n"]] * 3
-                if not expected_finite:
+                if not row["all_finite"]:
                     assert row["nan_components"][:3] == [row["n"]] * 3
                 print(
                     f"{row['name']}: expected_finite_positions={row['n']} "
@@ -305,7 +306,7 @@ Initializing a `Thermal` distribution for a negatively charged species, such as 
                 with np.load(output / f"{right}.npz") as data:
                     b = data["data"].copy()
                 assert np.array_equal(a[:, 3:], b[:, 3:])
-                if left in ("charge_Z1", "intensity_Z1_Q0") and right != "charge_Z-1":
+                if np.isfinite(a).all() and np.isfinite(b).all():
                     assert np.array_equal(a, b)
                 print(
                     f"PAIRED {left} / {right}: exact_momenta={np.array_equal(a[:, 3:], b[:, 3:])} "
@@ -332,7 +333,7 @@ Initializing a `Thermal` distribution for a negatively charged species, such as 
                 f"Checked {len(results)} Thermal cases and charge-symmetric continuum oracles.",
                 flush=True,
             )
-        print("DEFECT REPRODUCED", flush=True)
+        print("DEFECT REPRODUCED" if bad else "NOT REPRODUCED", flush=True)
 
 
     if __name__ == "__main__":

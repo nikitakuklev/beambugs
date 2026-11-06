@@ -10,16 +10,17 @@ sign and are 1.233e6 times too large. Orders up to 13 are correct; signed overfl
 higher-order values compiler-dependent.
 
 The script uses a reference particle with 1000 MeV rest energy and 1000 MeV kinetic energy, and
-particles at x = 0.25 m and 0.125 m with all other coordinates zero. For powers 12, 13 and 17 it
+particles at x = 0.25 m and 0.125 m with all other coordinates zero. For powers 11, 12, 13 and 17 it
 pushes them through a thin `Multipole` and through a 0.2 m `ExactMultipole` with one second-order
 step, with a normal or skew strength chosen so that the exact kick at x = 0.25 m is 1e-3 (1e-8 for
 power 17), and compares the kicks with Python's exact factorial and with its 32-bit wrapped value.
-Power 12 (order 13) is the control and must be exact.
+Accepted orders are compared with the exact oracle; explicit ValueError rejection of orders beyond the safe range counts as supported input validation. Thin order 13 and thick order 12 are controls and must be exact.
 """
 
 import ctypes
 import math
 import os
+from functools import partial
 
 for variable in (
     "NPROC",
@@ -64,9 +65,10 @@ def push(element, points):
     return sim.beam.to_df(local=True)[["momentum_x", "momentum_y"]].to_numpy(copy=True)
 
 
+bad = False
 try:
     print(f"native C int width={ctypes.sizeof(ctypes.c_int) * 8}")
-    for exponent in (12, 13, 17):
+    for exponent in (11, 12, 13, 17):
         order = exponent + 1
         amplitude = 1e-3 if exponent < 17 else 1e-8
         x = 0.25
@@ -86,11 +88,12 @@ try:
             models = [
                 (
                     "thin",
-                    elements.Multipole(multipole=order, K_normal=normal, K_skew=skew),
+                    partial(elements.Multipole, multipole=order, K_normal=normal, K_skew=skew),
                 ),
                 (
                     "thick",
-                    elements.ExactMultipole(
+                    partial(
+                        elements.ExactMultipole,
                         ds=length,
                         k_normal=thick_normal,
                         k_skew=thick_skew,
@@ -109,19 +112,30 @@ try:
                 * positions[:, None] ** exponent
                 / math.factorial(exponent)
             )
-            for name, element in models:
+            for name, construct in models:
+                safe_order = 13 if name == "thin" else 12
+                try:
+                    element = construct()
+                except ValueError as exc:
+                    if order <= safe_order:
+                        raise
+                    print(f"{name} {component} order={order}: rejected unsupported order: {exc}")
+                    continue
                 observed = push(element, positions)
-                np.testing.assert_allclose(
-                    observed, expected * overflow_factor, rtol=2e-14, atol=1e-23
-                )
-                if exponent == 12:
+                matches = np.allclose(observed, expected, rtol=2e-14, atol=1e-23)
+                if order <= safe_order:
                     np.testing.assert_allclose(observed, expected, rtol=2e-14, atol=1e-23)
-                else:
+                elif not matches:
+                    # Confirm the overflow signature independently of the verdict.
+                    np.testing.assert_allclose(
+                        observed, expected * overflow_factor, rtol=2e-14, atol=1e-23
+                    )
                     assert not np.allclose(observed, expected, rtol=1e-12, atol=1e-23)
+                    bad = True
                 index = 0 if component == "normal" else 1
                 print(
                     f"{name} {component} order={order}: expected={expected[0, index]:.15g} actual={observed[0, index]:.15g} ratio={observed[0, index] / expected[0, index]:.15g}"
                 )
-    print("DEFECT REPRODUCED")
 finally:
     sim.finalize()
+print("DEFECT REPRODUCED" if bad else "NOT REPRODUCED")

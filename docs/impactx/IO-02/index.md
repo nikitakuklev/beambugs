@@ -12,7 +12,8 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-28 on ImpactX 26.10 (`615921c`); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1762]], fix |
 | Source | [`ImpactXParticleContainer.py#L97-L125`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L97-L125)<br>[`L239-L253`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L239-L253) |
 
 The phase-space plot from `plot_phasespace()` labels its charge histograms Q [C/bin] but counts macroparticles instead of summing their charges q_ref·w, where q_ref is the reference-particle charge and w the number of real particles a macroparticle represents. The displayed values are therefore counts, and bins whose particles carry different weights also have wrong relative charges. For a 1.550 nC test beam, a 2×2 x–px histogram shows 16 in every bin instead of the charges from 8.613×10⁻¹¹ to 8.613×10⁻¹⁰ C that a direct sum of q_ref·w gives, and splitting each macroparticle into two half-weight copies doubles every bin while the beam is unchanged. The numerical charge and moment diagnostics are correct.
@@ -33,13 +34,7 @@ The phase-space plot from `plot_phasespace()` labels its charge histograms Q [C/
     into two half-weight copies doubles every bin while the beam is unchanged. The numerical charge and
     moment diagnostics are correct.
 
-    The script builds a deterministic beam of 64 weighted particles at the vertices of a box in (x, px,
-    y, py, t, pt) for a γ = 7 proton reference, checks its total charge and emittances against analytic
-    values, and draws the plot with two bins per axis using the installed `plot_phasespace()` function
-    and the unmodified function from the ImpactX development branch. It compares each panel's displayed
-    bins with charges summed directly as q_ref·w over the known sign categories. Repeating with each
-    particle split into two half-weight copies, which leaves the beam unchanged, doubles the displayed
-    bins. Set IMPACTX_SOURCE to a clone of the ImpactX repository.
+    The script builds a deterministic weighted product beam at γ = 7 and checks its total charge and emittances against analytic values. It compares the installed two-bin phase-space histograms with charges summed directly over known sign categories. Repeating with each particle split into two half-weight copies must preserve the physical bin charges.
     """
 
     import os
@@ -60,9 +55,6 @@ The phase-space plot from `plot_phasespace()` labels its charge histograms Q [C/
     os.environ["MPLCONFIGDIR"] = plot_config.name
     os.sched_setaffinity(0, {min(os.sched_getaffinity(0))})
 
-    import ast
-    import inspect
-    import subprocess
     from importlib import import_module
     from importlib.metadata import version
     from itertools import product
@@ -73,35 +65,9 @@ The phase-space plot from `plot_phasespace()` labels its charge histograms Q [C/
     import matplotlib.pyplot as plt
     import numpy as np
     from impactx import ImpactX
-    from impactx.impactx_pybind import CoordSystem
 
-    REPO = os.environ["IMPACTX_SOURCE"]
-    PATH = "src/python/impactx/extensions/ImpactXParticleContainer.py"
     module = import_module("impactx.extensions.ImpactXParticleContainer")
-    pinned = subprocess.check_output(["git", "-C", REPO, "show", f"615921c6867c:{PATH}"], text=True)
-    assert inspect.getsource(module) == pinned
-
-
-    def development_plot():
-        source = subprocess.check_output(
-            ["git", "-C", REPO, "show", f"b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943:{PATH}"], text=True
-        )
-        functions: list[ast.stmt] = [
-            node
-            for node in ast.parse(source).body
-            if isinstance(node, ast.FunctionDef) and node.name == "ix_pc_plot_mpl_phasespace"
-        ]
-        assert len(functions) == 1
-        namespace = {"CoordSystem": CoordSystem}
-        exec(  # noqa: S102 -- execute the inspected upstream function without editing its body
-            compile(
-                ast.Module(body=functions, type_ignores=[]),
-                "<unmodified development plotting function>",
-                "exec",
-            ),
-            namespace,
-        )
-        return namespace["ix_pc_plot_mpl_phasespace"]
+    bad = False
 
 
     # Each independent +/- coordinate has probability ratio 1:r. Analytic stddev:
@@ -134,10 +100,7 @@ The phase-space plot from `plot_phasespace()` labels its charge histograms Q [C/
             version("matplotlib"),
         )
         print("Analytic product beam: 64 vertices; splitting each macroparticle preserves all physics")
-        plotters = [
-            ("pinned 26.10", module.ix_pc_plot_mpl_phasespace),
-            ("development function / 26.10 core", development_plot()),
-        ]
+        plotters = [("installed plotter", module.ix_pc_plot_mpl_phasespace)]
         for split in [1, 2]:
             sim.beam.clear_particles()
             ref = sim.beam.ref
@@ -172,12 +135,17 @@ The phase-space plot from `plot_phasespace()` labels its charge histograms Q [C/
                         expected = np.zeros((2, 2))
                         for b, population in zip(bits, weights):
                             expected[b[2 * j + 1], b[2 * j]] += ref.charge * population
-                        np.testing.assert_array_equal(displayed, np.full((2, 2), 16 * split))
                         np.testing.assert_allclose(expected.sum(), charge, rtol=3e-15, atol=0)
-                        assert not np.allclose(
+                        shape_matches = np.allclose(
                             expected / expected.sum(), displayed / displayed.sum(), rtol=1e-10, atol=0
                         )
-                        assert panel.images[0].colorbar.ax.get_ylabel() == r"$Q$ [C/bin]"
+                        bad |= not (
+                            shape_matches and np.allclose(displayed, expected, rtol=3e-15, atol=0)
+                        )
+                        assert panel.images[0].colorbar.ax.get_ylabel() in (
+                            r"$Q$ [C/bin]",
+                            r"$|Q|$ [C/bin]",
+                        )
                         print(
                             f"{plane}: displayed bins={displayed.tolist()} sum={displayed.sum():g}; physical bins={expected.tolist()}"
                         )
@@ -186,7 +154,7 @@ The phase-space plot from `plot_phasespace()` labels its charge histograms Q [C/
     finally:
         sim.finalize()
         plot_config.cleanup()
-    print("DEFECT REPRODUCED")
+    print("DEFECT REPRODUCED" if bad else "NOT REPRODUCED")
 
     ```
 

@@ -14,6 +14,7 @@ hide:
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1481]] |
+| Discussed in | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1757]] |
 | Source | [`EmittanceInvariants.cpp#L119-L134`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/EmittanceInvariants.cpp#L119-L134)<br>[`CovarianceMatrixMath.H#L59-L90`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/CovarianceMatrixMath.H#L59-L90) |
 
 With eigenemittance diagnostics enabled, `beam_moments()` returns wrong eigenemittances, or three NaNs, when the beam's emittances differ widely or two are equal, for both particle beams and `Envelope`. In the source, the characteristic cubic is formed from differences of trace invariants, which loses the small modes, and `acos` is then evaluated without guarding its domain. For an uncoupled beam the documented eigenemittances equal the projected normalized rms emittances, which an independent Hermitian eigensolver reproduces to within 5×10⁻¹⁵ relative. At γ = 2, an uncoupled beam with normalized emittances 0.01, 0.02 and 1000 µm gives eigenemittances 0.05116, 0.05584 and 1000 µm, and 1, 1 and 1000 µm give three NaNs. A moderate spread (1, 2 and 3 µm) is correct, as are the projected emittances.

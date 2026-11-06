@@ -12,7 +12,8 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-28 on ImpactX 26.10 (`615921c`); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1727]], filed from this evidence |
 | Source | [`madx_to_impactx.py#L1681-L1697`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1681-L1697) |
 
 Importing a MAD-X `BEAM, PARTICLE=ION` with explicit `MASS` and `CHARGE` into ImpactX discards both in favor of a fixed default ion mass and charge, so the reference mass, charge, kinetic energy and rigidity are wrong before tracking starts. MAD-X documents independent mass and charge overrides for ions, and native MAD-X keeps them for this input. For an alpha particle, `BEAM, PARTICLE=ION, MASS=3.7273794, CHARGE=2, ENERGY=10` (GeV), ImpactX uses a mass of 939.6 MeV and charge 1, giving 9060 MeV kinetic energy instead of 6273 MeV. The importer prints that it ignores `MASS` and `CHARGE`; an unrecognized particle name keeps them.
