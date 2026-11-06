@@ -27295,7 +27295,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -27378,7 +27378,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -27453,7 +27453,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -27533,7 +27533,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -27616,7 +27616,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -27691,7 +27691,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -27766,7 +27766,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -27841,7 +27841,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -28010,7 +28010,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -28797,7 +28797,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -28876,7 +28876,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -28953,7 +28953,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -29033,7 +29033,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -29113,7 +29113,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -29188,7 +29188,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -29263,7 +29263,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -29338,7 +29338,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -29417,7 +29417,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -30170,7 +30170,7 @@
      "code": {
       "ref": "xfields 0.27.5",
       "commit": "223b4fa134a1",
-      "build": "installed wheel and main worktree, CPU, serial"
+      "build": "installed wheel and main-branch source, CPU, serial"
      }
     }
    ],
@@ -30191,7 +30191,7 @@
     "code": {
      "ref": "xfields main",
      "commit": "223b4fa134a1",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -30250,7 +30250,7 @@
      "code": {
       "ref": "xfields 0.27.5",
       "commit": "223b4fa134a1",
-      "build": "installed wheel and main worktree, CPU, serial"
+      "build": "installed wheel and main-branch source, CPU, serial"
      }
     }
    ],
@@ -30271,7 +30271,7 @@
     "code": {
      "ref": "xfields main",
      "commit": "223b4fa134a1",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -30336,7 +30336,7 @@
      "code": {
       "ref": "xfields 0.27.5",
       "commit": "223b4fa134a1",
-      "build": "installed wheel and main worktree, CPU, serial"
+      "build": "installed wheel and main-branch source, CPU, serial"
      }
     }
    ],
@@ -30357,7 +30357,7 @@
     "code": {
      "ref": "xfields main",
      "commit": "223b4fa134a1",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -30415,7 +30415,7 @@
      "code": {
       "ref": "xfields 0.27.5",
       "commit": "223b4fa134a1",
-      "build": "installed wheel and main worktree, CPU, serial"
+      "build": "installed wheel and main-branch source, CPU, serial"
      }
     }
    ],
@@ -30436,7 +30436,7 @@
     "code": {
      "ref": "xfields main",
      "commit": "223b4fa134a1",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -30494,7 +30494,7 @@
      "code": {
       "ref": "xfields 0.27.5",
       "commit": "223b4fa134a1",
-      "build": "installed wheel and main worktree, CPU, serial"
+      "build": "installed wheel and main-branch source, CPU, serial"
      }
     }
    ],
@@ -30506,7 +30506,7 @@
      "code": {
       "ref": "xfields 0.27.5",
       "commit": "223b4fa134a1",
-      "build": "installed wheel and main worktree, CPU, serial"
+      "build": "installed wheel and main-branch source, CPU, serial"
      }
     }
    ],
@@ -30515,7 +30515,7 @@
     "code": {
      "ref": "xfields main",
      "commit": "223b4fa134a1",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -31835,7 +31835,7 @@
     "code": {
      "ref": "xpart main",
      "commit": "2633e528018a",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -31911,7 +31911,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -31986,7 +31986,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -32066,7 +32066,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }
@@ -32146,7 +32146,7 @@
     "code": {
      "ref": "xtrack main",
      "commit": "3cd8bfca8d7c",
-     "build": "main source worktrees, forced kernel compilation, CPU, serial"
+     "build": "main-branch source, forced kernel compilation, CPU, serial"
     },
     "result": "reproduced"
    }

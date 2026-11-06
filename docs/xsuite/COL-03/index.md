@@ -130,6 +130,6 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-26 | xfields 0.27.5 (`223b4fa134a1`), installed wheel and main worktree, CPU, serial |
+| Found | `gpt-6-astra` | xhigh | 2026-10-26 | xfields 0.27.5 (`223b4fa134a1`), installed wheel and main-branch source, CPU, serial |
 | Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-30 | xfields 0.27.5 (`223b4fa134a1`), installed packages, kernels compiled from installed source, CPU, double, serial |
 
