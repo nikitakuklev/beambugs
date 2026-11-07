@@ -34,9 +34,11 @@ An entry is published when all of these hold:
 A level applies to the principal claim of an entry.
 A CPU run does not establish GPU, MPI or single-precision behavior; unless an entry says otherwise, reproductions use serial CPU builds in double precision.
 
-## Severity
+## Failure
 
-| Severity | Meaning |
+The kind of failure; `severity` in `defects.json`.
+
+| Failure | Meaning |
 |---|---|
 | Wrong physics | The model computes a physically wrong result for a supported input. |
 | Silent wrong result | A wrong number with no warning or error. |

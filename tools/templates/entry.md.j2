@@ -11,7 +11,7 @@ hide:
 |---|---|
 | Code | [{{ code.name }}](../index.md) · {{ e.area }} |
 | Priority | {{ e.priority }} |
-| Severity | {{ e.severity }} |
+| Failure | {{ e.severity }} |
 | Evidence | {{ e.level }} |
 {% set r = e.last_reproduced %}
 {% set pkg = r.code.ref.split()[0] if code.repositories else code.name %}

@@ -25,7 +25,7 @@ Some reproducers also need: {{ extras | join(', ') }}.
 
 <div class="bb-filters" data-column="Area"></div>
 
-| ID | Priority | Defect | Area | Severity | Last reproduced | Issue | PR |
+| ID | Priority | Defect | Area | Failure | Last reproduced | Issue | PR |
 |---|---|---|---|---|---|---|---|
 {% for e in rows %}
 | [{{ e.id }}]({{ e.id }}/index.md){% if e.last_reproduced.head_not_reproduced %}<span class="bb-fixed"></span>{% endif %} | {{ e.priority }} | {{ e.title }}{% for t in e.tags %} <span class="bb-tag">{{ t }}</span>{% endfor %} | {{ e.area }} | {{ e.severity }} | {{ e.last_reproduced.date }} ({{ ran(e.last_reproduced.code, code) }}) | {{ links(e, 'issue') }} | {{ links(e, 'pull') }} |
