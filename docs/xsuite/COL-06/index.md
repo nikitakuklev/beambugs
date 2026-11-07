@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xfields main (`3f06c87`, head build) |
+| Last reproduced | 2026-10-29 on xfields release [v0.27.7](https://github.com/xsuite/xfields/tree/v0.27.7) (`3f06c87`) |
 | Tags | <span class="bb-tag">contract-unsettled</span> [?](../../methodology.md#tags) |
 | Source | [`primitive_func_2p5d`, fftsolvers.py:321–327](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/solvers/fftsolvers.py#L321-L327)<br>[:173](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/solvers/fftsolvers.py#L173)<br>[:230](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/solvers/fftsolvers.py#L230)<br>[`SpaceCharge3D_track_local_particle`, spacecharge3d.h:55–60](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/spacecharge_src/spacecharge3d.h#L55-L60)<br>[manual's modulated-2D kick](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L302-L310)<br>[xfields.tex:3907–3936](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L3907-L3936) |
 

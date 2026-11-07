@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [rad_g_integrals, bmad/modules/rad_6d_mod.f90:878–884](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L878-L884)<br>[curvature-integral outputs, bmad/modules/rad_6d_mod.f90:738–744](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L738-L744) |
 
 Computing radiation curvature integrals for a tilted element rotates the second component using an already-rotated first component. An orthogonal rotation must use the original vector for both components and preserve its norm. For a short quadrupole tilted by 45°, the second integrated-curvature component is 2.500 × 10⁻⁷ instead of 3.536 × 10⁻⁷, an underestimate of 29.29%. The untilted case provides the rotation control.

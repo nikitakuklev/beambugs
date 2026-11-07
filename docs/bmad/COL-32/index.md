@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [ibs1 supported dispatch, bmad/multiparticle/ibs_mod.f90:659–673](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L659-L673)<br>[stale routine-header formula list, bmad/multiparticle/ibs_mod.f90:590–603](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L590-L603)<br>[complete parameters namelist, bsim/ibs_ring/ibs_ring.f90:79–107](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L79-L107)<br>[ibs_ring manual, Kubo and Oide generalization, bsim/ibs_ring/doc/ibs_ring.tex:161–176](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/doc/ibs_ring.tex#L161-L176) |
 
 When users select the documented ibs_ring Kubo method, the IBS dispatch stops because it has no kubo branch. The accompanying use_t6_cache option is also absent from the driver's namelist and causes an input error. A bjmt control reaches the rate calculation successfully. The manual should remove these driver options and direct covariance-based calculations to envelope_ibs.

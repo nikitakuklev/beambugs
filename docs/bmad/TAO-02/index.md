@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`tao_geo_lm_func`, tao/code/tao_geodesic_lm_optimizer_mod.f90:148–163](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_geodesic_lm_optimizer_mod.f90#L148-L163)<br>[`jacobian`, tao/code/tao_geodesic_lm_optimizer_mod.f90:204–231](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_geodesic_lm_optimizer_mod.f90#L204-L231)<br>[“Optimization Overview”, Eq. `m1`, tao/doc/optimization.tex:50–65](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/optimization.tex#L50-L65) |
 

@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [Bmad manual, Beam_Init_Struct Structure (`s:beam.init.struct`), bmad/doc/beam-init.tex:264–283](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/beam-init.tex#L264-L283)<br>[bunch_init_end_calc time offset and center, bmad/multiparticle/beam_utils.f90:1891–1914](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1891-L1914)<br>[coordinate-dependent finalization, bmad/multiparticle/beam_utils.f90:1938–1972](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1938-L1972) |
 

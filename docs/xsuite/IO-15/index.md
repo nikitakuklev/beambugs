@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-07 on xtrack main (`f09e0fb`, head build) |
+| Last reproduced | 2026-11-07 on xtrack release [v0.118.6](https://github.com/xsuite/xtrack/tree/v0.118.6) (`f09e0fb`) |
 | Discussed in | [[gh:https://github.com/xsuite/xsuite/issues/481]] |
 | Source | [to_madx_sequence, mad_writer.py:720–745](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/mad_writer.py#L720-L745)<br>[public export contract, line.py:877–894](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/line.py#L877-L894) |
 

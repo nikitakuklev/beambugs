@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-30 on ImpactX development (`dfd49f2`, head build) |
+| Last reproduced | 2026-10-30 on ImpactX commit [`dfd49f2`](https://github.com/BLAST-ImpactX/impactx/commit/dfd49f22c34f), committed 2026-10-30 |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1740]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1741]], filed from this evidence |
 | Source | [`PolygonAperture.H#L167-L169`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/PolygonAperture.H#L167-L169) |

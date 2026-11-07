@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`write_lattice_elegant_format`, duplicate-name skip](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L485-L488)<br>[multipole splitting](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L678-L698) |
 

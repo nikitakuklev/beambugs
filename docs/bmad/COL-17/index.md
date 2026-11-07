@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [setup input contract, bmad/space_charge/high_energy_space_charge_mod.f90:12–32](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/high_energy_space_charge_mod.f90#L12-L32)<br>[setup_high_energy_space_charge_calc length selection, bmad/space_charge/high_energy_space_charge_mod.f90:132–145](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/high_energy_space_charge_mod.f90#L132-L145) |
 
 When the high-energy space-charge setup receives a branch allocated exactly through its last tracking element, it reads the next element before applying the last-element length rule. That next element lies outside the supplied array. A bounds-checked build stops on index 2 for a branch whose final index is 1. The same routine succeeds when the branch has an extra allocated element.

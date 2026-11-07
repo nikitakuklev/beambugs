@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`tao_pipe_cmd`, `lat_list` filtering, tao/code/tao_pipe_cmd.f90:5162–5168](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_pipe_cmd.f90#L5162-L5168)<br>[Tao manual, “pipe lat_list” (`p:lat.list`), tao/doc/pipe-interface-commands.tex:1398–1416](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/pipe-interface-commands.tex#L1398-L1416) |
 
 A track-only lattice listing truncates a secondary branch using the tracking-element count of branch zero. A secondary branch with six tracking elements returns indices 0 through 3 instead of 0 through 6 when the primary branch has three tracking elements. The unfiltered response contains every element and its correct longitudinal position. The filter must use the selected element’s own branch count.

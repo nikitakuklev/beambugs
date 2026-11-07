@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [event probability, matter.c:127–128](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L127-L128)<br>[transfer sampling, matter.c:249–250](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L249-L250)<br>[`ELECTRON_RECOIL`, track_data.c:2143](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2143) |
 
 For relativistic electrons in MATTER with ELECTRON_RECOIL and NUCLEAR_BREMSSTRAHLUNG enabled, recoil-transfer rates are suppressed by about the momentum P, measured in mₑc, at transfers above binding energies and small compared with incident kinetic energy. The event rate contains 1/P, but sampled transfers are subtracted directly from the Lorentz factor γ. For 20000 electrons at P = 1000 crossing 0.01 m of dilute helium, the free-electron Møller integral predicts 42.22 electrons losing at least 1.022 keV; serial and three-rank parallel runs give none despite active recoil sampling. The Poisson probability of zero such transfers under that reference is 4.408×10⁻¹⁹.

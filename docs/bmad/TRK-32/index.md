@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`track_a_quadrupole`, bmad/low_level/track_a_quadrupole.f90:75–120](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_quadrupole.f90#L75-L120)<br>[Bmad manual, “Tracking Backwards” (`s:back.track`), bmad/doc/tracking.tex:728–748](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/tracking.tex#L728-L748) |
 
 A particle travelling backward through a stepped quadrupole receives the full element reference-clock correction at every integration step. On axis the force vanishes, so the flight time and longitudinal coordinate must be independent of the number of steps. For a 1 m quadrupole at 1 MeV/c, one step gives z = −2 m and elapsed time 3.746 ns, while eight steps give z = −16 m and 56.19 ns. The correction uses the element reference time without the signed step fraction.

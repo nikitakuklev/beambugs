@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`tao_alias_translate`, tao/code/tao_get_user_input_mod.f90:534–568](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_get_user_input_mod.f90#L534-L568)<br>[“alias” (`s:alias`), tao/doc/command-list.tex:99–124](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/command-list.tex#L99-L124) |
 
 Tao rejects surplus arguments to an alias that uses a placeholder, although the manual says to append arguments without matching placeholders. Defining inspect as pipe ele:mat6 [[1]] and invoking inspect E mat6 reports an extra-arguments error. The equivalent direct matrix query succeeds and gives the analytic drift matrix. The alias should expand to that same query under the documented rule.

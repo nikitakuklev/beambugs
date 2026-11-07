@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-07 on xfields main (`3f06c87`, head build) |
+| Last reproduced | 2026-11-07 on xfields release [v0.27.7](https://github.com/xsuite/xfields/tree/v0.27.7) (`3f06c87`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`NagaitsevIBS.integrals`, _analytical.py:588–635](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L588-L635)<br>[integrals contract, lines 523–575](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L523-L575)<br>[API signature, _api.py:30–42](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_api.py#L30-L42)<br>[dispatch, lines 88–110](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_api.py#L88-L110)<br>[convergent positive Carlson integral and its full-equality identity,
 xfields.tex:2520–2544](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L2520-L2544)<br>[amplitude convention, lines 2493–2504](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L2493-L2504)<br>[emittance-rate equations, lines 2607–2625](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L2607-L2625) |

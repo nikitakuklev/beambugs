@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`bend_angle_fiducial` and `bend_angle_fiducial2`, bmad/low_level/set_flags_for_changed_attribute.f90:949–998](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/set_flags_for_changed_attribute.f90#L949-L998)<br>[Bmad manual, “Bend: Fiducial Point Calculations” (`s:bend.fiducial`), bmad/doc/charged-tracking.tex:715–733](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L715-L733) |
 
 Changing the angle of a symmetric bend about its center fiducial produces asymmetric face angles and the wrong arc length. Starting from length 1 m, angle 0.1 rad and zero face angles, setting the angle to 0.2 rad gives length 1.002 m, entrance face angle zero and exit face angle 0.1503 rad. Holding the center and face planes fixed requires length 1 m and both face angles 0.05000 rad, as the circle-plane intersection shows. The implementation updates the exit angle twice and reuses already changed curvature.

@@ -12,7 +12,7 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on ImpactX development (`f9c2a82`, head build) |
+| Last reproduced | 2026-11-05 on ImpactX commit [`f9c2a82`](https://github.com/BLAST-ImpactX/impactx/commit/f9c2a82e24b7), committed 2026-11-05 |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1728]], filed from this evidence |
 | Source | [`Insert.cpp#L64-L74`](https://github.com/BLAST-ImpactX/impactx/blob/fa0a43b9bb07decba15daa38ed56ca947160ed1d/src/elements/transformation/Insert.cpp#L64-L74)<br>[`RFCavity.H#L294-L317`](https://github.com/BLAST-ImpactX/impactx/blob/fa0a43b9bb07decba15daa38ed56ca947160ed1d/src/elements/RFCavity.H#L294-L317) |
 

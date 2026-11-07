@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [hdf5_read_bunch reads signed momentum, bmad/hdf5/hdf5_read_beam.f90:389–395](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L389-L395)<br>[momentum conversion, bmad/hdf5/hdf5_read_beam.f90:562–585](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L562-L585)<br>[hdf5_write_beam, bmad/hdf5/hdf5_write_beam.f90:203–209](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_write_beam.f90#L203-L209)<br>[coord_struct direction contract, bmad/modules/bmad_struct.f90:584–586](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bmad_struct.f90#L584-L586)<br>[Bmad manual, HDF5 Particle Beam Data Storage (`s:hdf5.beam`), bmad/doc/hdf5-programming.tex:121–129](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/hdf5-programming.tex#L121-L129) |
 

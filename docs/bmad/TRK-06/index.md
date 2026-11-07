@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [multilayer_track, interior interface, bmad/photon/track1_photon_mod.f90:549–555](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/track1_photon_mod.f90#L549-L555)<br>[vacuum interface, bmad/photon/track1_photon_mod.f90:583–595](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/track1_photon_mod.f90#L583-L595)<br>[Bmad manual, Multilayer_mirror, bmad/doc/elements.tex:3934–3945](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L3934-L3945) |
 
 Multilayer mirrors use an incorrectly normalized vacuum-interface coefficient for π polarization, whose electric field lies in the incidence plane. A one-cell tungsten/boron-carbide mirror at 9 keV and 0.02 rad grazing angle returns reflectivity 0.001190 instead of 0.001193, an error of −0.2443%. Matching tangential electric and magnetic fields at each layer independently establishes the expected reflection. At π/4 the result is 1.793e-9 instead of 1.546e-18, a large relative error in a tiny reflected intensity; perpendicular σ polarization passes.

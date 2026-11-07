@@ -12,7 +12,7 @@ hide:
 | Priority | P5 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-22 on SciBmad 0.6.0 (`62399f9`, committed 2026-10-14); not reproduced on SciBmad main (`ae9423d`), 2026-11-07 |
+| Last reproduced | 2026-10-22 on SciBmad release [v0.6.0](https://github.com/bmad-sim/SciBmad.jl/tree/v0.6.0) (`62399f9`) |
 | Issue | [[gh:https://github.com/bmad-sim/SciBmad.jl/issues/150]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/SciBmad.jl/pull/151]], filed from this evidence<br>[[gh:https://github.com/bmad-sim/SciBmad.jl/pull/158]], fix |
 | Source | [`src/adv.jl:28-30`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/adv.jl#L28-L30) |

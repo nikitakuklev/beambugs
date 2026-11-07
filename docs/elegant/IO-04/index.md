@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on SDDS master (`a3f730a`, head build) |
+| Last reproduced | 2026-11-04 on SDDS commit [`a3f730a`](https://github.com/rtsoliday/SDDS/commit/a3f730a14c49), committed 2026-10-31 |
 | Source | [`sum = partial_sum`, moments.c:365–367](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/moments.c#L365-L367)<br>[weighted branch, moments.c:426–430](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/moments.c#L426-L430)<br>[wrappers, moments.c:324–327 and 382–385](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/moments.c#L324-L327)<br>[prototypes, include/mdb.h:886–893](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/include/mdb.h#L886-L893) |
 
 The SDDS routines `accumulateMoments` and `accumulateWeightedMoments` return the mean, rms and standard deviation of data supplied in batches (first call with reset = 1, later calls with reset = 0), but in their default single-thread form they do not combine the batches. For the values 2, 4, 8, 10 supplied as [2, 4] then [8, 10], the mean is 6, the rms √46 = 6.782 and the sample standard deviation √(40/3) = 3.651, as one call over all four values gives. The unweighted routine returns a mean of 4.5 (the last batch's sum over the total count) and the unit-weight routine returns 9 (the last batch's mean).

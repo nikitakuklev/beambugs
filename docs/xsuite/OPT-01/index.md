@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
+| Last reproduced | 2026-10-26 on xtrack release [v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4) (`3cd8bfc`) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`track_rf_kick_single_particle`, track_rf.h:68–169](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_rf.h#L68-L169)<br>[`TPSA_SUPPORTED_ELEMENTS`](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/prebuilt_kernel_definitions/element_types.py#L127-L148)<br>[public API](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/apireference.rst#L1090-L1126) |
 

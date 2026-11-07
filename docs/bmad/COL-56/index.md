@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`parser_read_old_format_lr_wake`, bmad/parsing/bmad_parser_mod.f90:1877–1929](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/bmad_parser_mod.f90#L1877-L1929) |
 
 A legacy long-range wake file with gaps between populated rows can silently change a retained mode’s polarization. The parser compacts the rows but reads the polarization angle from the output index instead of the input row. Modes in rows one and three with angles zero and 0.2500 turns parse successfully, but the second mode becomes unpolarized with angle zero; the same modes in consecutive rows preserve both angles.

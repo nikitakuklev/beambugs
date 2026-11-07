@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`deposit_particles`, bmad/space_charge/open_spacecharge_mod.f90:303–305](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_mod.f90#L303-L305)<br>[lines 315–318](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_mod.f90#L315-L318)<br>[lines 343–363](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_mod.f90#L343-L363)<br>[lines 134–153](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_mod.f90#L134-L153) |
 
 Calling the space-charge helper `deposit_particles` with `total_charge` and at least 50,000 particles uses an uninitialized per-particle charge in its OpenMP region, corrupting the charge mesh even with one thread. The private charge is never assigned, although trilinear deposition must conserve the requested total charge. With total charge 1, the mesh sum is 1.000 at 49,999 particles and 0 at 50,000; an explicit per-particle charge array gives 1.000 at both counts. Bmad's space-charge and CSR tracking callers use explicit charges and avoid this branch.

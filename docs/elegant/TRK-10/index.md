@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Tags | <span class="bb-tag">contract-unsettled</span> <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`applySimpleDipoleEdgeKick`, csbend.c:6723–6749](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6723-L6749)<br>[entrance model-3 call, csbend.c:1421](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1421)<br>[exit model-3 call, csbend.c:1611](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1611)<br>[finite-gap angle, csbend.c:1139–1142](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1139-L1142)<br>[canonical conversions, csbend.c:1733–1751](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1733-L1751)<br>[model-3 documentation, csbend.tex:88–89](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L88-L89)<br>[model-1 documentation, csbend.tex:69–74](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L69-L74) |
 

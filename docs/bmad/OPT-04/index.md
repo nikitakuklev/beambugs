@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [chrom_calc, bmad/code/chrom_calc.f90:208–225](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/chrom_calc.f90#L208-L225)<br>[open-line selection, bmad/code/chrom_calc.f90:232–241](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/chrom_calc.f90#L232-L241)<br>[argument contract, bmad/code/chrom_calc.f90:9–29](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/chrom_calc.f90#L9-L29) |
 
 Requesting only the high-momentum orbit from the chromaticity routine returns success with the wrong chromaticity and an untracked orbit endpoint. Requesting only the low-momentum orbit crashes. Each optional orbit output should work independently and leave the chromaticity unchanged. In a four-cell FODO ring, the high-only call gives −0.07250 instead of −0.1450, while supplying both outputs or neither agrees with independent thick-lens differentiation.

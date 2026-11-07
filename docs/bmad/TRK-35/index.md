@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`track_a_bend::apply_multipole_kicks`, bmad/low_level/track_a_bend.f90:397–409](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_bend.f90#L397-L409)<br>[native `make_mat6_bmad` dispatch, bmad/low_level/make_mat6_bmad.f90:68–75](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/make_mat6_bmad.f90#L68-L75) |
 
 Analytic transfer matrices for bends with exact curved multipoles disagree with derivatives of their particle map. The exact-basis branch overwrites the derivative of the position-dependent kick factor instead of multiplying that derivative by the integration step. In a 0.8 m bend with curvature 0.2 m⁻¹ and quadrupole strength 0.7 m⁻², the horizontal-pure matrix gives −0.5564 m⁻¹ for the response of exit normalized horizontal momentum to entrance horizontal position, instead of −0.5575 m⁻¹ (0.1984% error). The vertical-pure basis has the same defect; exact_multipoles = off passes, and requesting a matrix leaves the particle trajectory unchanged.

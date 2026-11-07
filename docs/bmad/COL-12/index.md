@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [calc_density_derivative_complex, bmad/space_charge/csr3d_mod.f90:182–204](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr3d_mod.f90#L182-L204)<br>[track1_bunch_csr3d status, bmad/space_charge/csr_and_space_charge_mod.f90:1854–1860](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1854-L1860) |
 

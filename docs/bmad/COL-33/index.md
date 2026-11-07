@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [current input units, bsim/ibs_ring/ibs_ring.f90:86–93](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L86-L93)<br>[ibs_rates0.out population assignment, bsim/ibs_ring/ibs_ring.f90:280–290](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L280-L290)<br>[correct initial conversion, bsim/ibs_ring/ibs_ring.f90:210–213](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L210-L213)<br>[scan conversion, bsim/ibs_ring/ibs_ring.f90:269–274](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L269-L274)<br>[final-output conversion, bsim/ibs_ring/ibs_ring.f90:353–357](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L353-L357) |
 
 When ibs_ring writes ibs_rates0.out, it converts the requested current to bunch population without converting milliamperes to amperes. That output therefore uses 1000 times the requested population. At 0.001 mA in a 75.20 m ring, it uses 1.566e9 particles instead of 1.566e6. Other current-conversion paths include the missing factor.

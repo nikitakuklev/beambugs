@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`, head build) |
+| Last reproduced | 2026-10-29 on xcoll release [v0.12.5](https://github.com/xsuite/xcoll/tree/v0.12.5) (`64e13f5`) |
 | Source | [`LossMap.add_particles`, lossmap.py:496–497](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L496-L497) |
 
 `LossMap.add_particles` adds the energy of the whole accumulated population to `tot_energy_initial` on every call, so a loss map built from several batches counts the earlier batches again. The initial energy is additive: splitting an ensemble into batches or reordering them must not change it. For seven primary protons at 3 TeV/c, the merged map reports 2.100 × 10¹³ eV, batches of 2 then 5 report 2.700 × 10¹³ eV and 5 then 2 report 3.600 × 10¹³ eV; two equal batches report 3 times one batch's energy instead of 2. `num_initial` is correct, and loss maps filled in a single call are unaffected.

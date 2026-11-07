@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-31 on GTPSA main (`a5790a7`, head build) |
+| Last reproduced | 2026-10-31 on GTPSA release [v1.5.6](https://github.com/bmad-sim/GTPSA.jl/tree/v1.5.6) (`a5790a7`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`src/getset.jl:87-100`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/getset.jl#L87-L100)<br>[`:130-142`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/getset.jl#L130-L142)<br>[`:55-66`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/getset.jl#L55-L66)<br>[`src/methods.jl:46`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/methods.jl#L46)<br>[`SciBmad.jl/src/adv.jl:28`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/adv.jl#L28) |
 

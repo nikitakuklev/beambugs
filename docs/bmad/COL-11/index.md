@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [csr_bin_particles, bmad/space_charge/csr_and_space_charge_mod.f90:631–673](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L631-L673) |
 
 With slice-width flooring enabled, the charge-weighted average width retains only the final eligible bin’s numerator while its denominator includes all eligible charge. Narrow slices consequently receive too small a minimum width, affecting the longitudinal and transverse space-charge forces. In a 400-particle example, the two central widths remain 0.2864 mm instead of reaching the required 0.5265 mm floor. Independent triangular-overlap integration reproduces the baseline charges and widths before applying the full weighted average.

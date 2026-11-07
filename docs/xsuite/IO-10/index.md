@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xpart main (`2633e52`, head build) |
+| Last reproduced | 2026-10-29 on xpart release [v0.23.23](https://github.com/xsuite/xpart/tree/v0.23.23) (`2633e52`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`generate_longitudinal_coordinates`, generate_longitudinal.py:371–390](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L371-L390)<br>[line characterization](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L23-L140)<br>[public contract](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L175-L195)<br>[matched-bunch wrapper](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/matched_gaussian.py#L171-L215) |
 

@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
+| Last reproduced | 2026-10-29 on ImpactX commit [`fa0a43b`](https://github.com/BLAST-ImpactX/impactx/commit/fa0a43b9bb07), committed 2026-10-28 |
 | Source | [`Sol.H#L112`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/Sol.H#L112) |
 
 A `Sol` with zero strength, `ks=0`, as when a solenoid is switched off in a scan or knob, returns NaN `x` and `y`, because the map divides by α = `ks`/2. The zero-field limit is a drift, since sin(αL)/α → L for length L, and both `Sol(ks=1e-9)` and `Drift` give it. A proton entering a 0.7 m `Sol(ks=0)` at `x` = 13 mm, `px` = 0.021, `y` = −17 mm and `py` = 0.008 exits with NaN `x` and `y` instead of 27.70 mm and −11.40 mm; the momenta and longitudinal coordinates are correct.

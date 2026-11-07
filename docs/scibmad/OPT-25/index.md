@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on NonlinearNormalForm main (`7e40539`, head build) |
+| Last reproduced | 2026-10-31 on NonlinearNormalForm release [v0.5.3](https://github.com/bmad-sim/NonlinearNormalForm.jl/tree/v0.5.3) (`7e40539`) |
 | Source | [`src/vectorfield.jl:138-180`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L138-L180)<br>[`nv = length(v)`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L156)<br>[`setray!`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L175)<br>[`vectorfield.jl:138-145`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L138-L145)<br>[`:162`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L162) |
 
 With a valid TPSA definition `init`, NonlinearNormalForm's `VectorField` keyword constructor throws `MethodError: no method matching length(::Nothing)` whenever the orbital rays `v` are omitted. This blocks `init` with a matrix `v_matrix`, `init` with spin-only input, and `init` alone, because the constructor counts `v` before reaching the branch intended to allocate missing rays. For a 2×2 rotation generator on `Descriptor(2, 2)`, explicit rays build the expected field and the `DAMap` matrix constructor reproduces the matrix exactly. Literal `VectorField()` instead fails earlier because no TPSA definition was supplied; it does not demonstrate this counting error.

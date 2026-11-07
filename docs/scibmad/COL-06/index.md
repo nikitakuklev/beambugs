@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
+| Last reproduced | 2026-10-31 on SciBmad commit [`ae9423d`](https://github.com/bmad-sim/SciBmad.jl/commit/ae9423d703b4), committed 2026-10-28 |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`SciBmad.jl/src/track.jl:322-350`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L322-L350)<br>[`track.jl:305-307`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L305-L307)<br>[`track.jl:327-328`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L327-L328)<br>[`track.jl:340-350`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L340-L350) |
 

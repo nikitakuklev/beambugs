@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">experimental</span> <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [bend integrated-strength division, bmad/output/write_lattice_elegant_format.f90:581–586](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L581-L586)<br>[quadrupole, sextupole and octupole divisions, bmad/output/write_lattice_elegant_format.f90:600–637](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L600-L637)<br>[multipole scaling, bmad/code/multipole_ele_to_ab.f90:535–572](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/multipole_ele_to_ab.f90#L535-L572) |
 

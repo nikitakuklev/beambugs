@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [track_a_lcavity::fringe_kick, bmad/low_level/track_a_lcavity.f90:269–276](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_lcavity.f90#L269-L276)<br>[transverse fringe application, bmad/low_level/track_a_lcavity.f90:309–312](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_lcavity.f90#L309-L312)<br>[Bmad Manual, LCavity Tracking / Edge kick, bmad/doc/charged-tracking.tex:1203–1235](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L1203-L1235)<br>[Bmad Manual, RF fringe fields, equation `pqe2c`, bmad/doc/fringe-fields.tex:455–465](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/fringe-fields.tex#L455-L465) |
 

@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [cimp1 accuracy contract, bmad/multiparticle/ibs_rates_mod.f90:604–614](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_rates_mod.f90#L604-L614)<br>[CIMP scattering interpolation, bmad/multiparticle/ibs_rates_mod.f90:711–815](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_rates_mod.f90#L711-L815) |
 
 The CIMP IBS approximation exceeds its stated 1% interpolation accuracy inside its supported domain. Default-real coefficient rounding is amplified by polynomial cancellation, and the original decimal polynomial also misses the accuracy target near the upper endpoint. For the scattering function g at argument 300, the result is 0.07907 instead of 0.08410, a 5.987% deficit; at 2999 it is 0.01003 instead of 0.01188, a 15.56% deficit. Evaluating the original coefficients at high precision still leaves a 1.561% deficit at 2999.

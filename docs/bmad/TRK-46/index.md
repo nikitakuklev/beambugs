@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [check_aperture_limit header](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/check_aperture_limit.f90#L4-L20)<br>[momentum check before geometric apertures](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/check_aperture_limit.f90#L57-L63)<br>[charged-particle momentum guard](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/orbit_too_large.f90#L85-L118) |
 
 The aperture-check header promises particle loss when either |pₓ| or |pᵧ| exceeds one, where pₓ and pᵧ are transverse momenta divided by the reference momentum. The routine instead requires their squared sum to stay at or below (1 + δ)², where δ is the relative total-momentum offset. A particle with pₓ = 1.1 and δ = 0.2 survives, while pₓ = pᵧ = 0.8 at δ = 0 is lost, in agreement with the requirement for real longitudinal momentum. With default momentum checking, this physical guard remains active when geometric apertures are disabled.

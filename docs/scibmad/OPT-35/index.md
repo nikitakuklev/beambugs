@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on GTPSA main (`a5790a7`, head build) |
+| Last reproduced | 2026-10-29 on GTPSA release [v1.5.6](https://github.com/bmad-sim/GTPSA.jl/tree/v1.5.6) (`a5790a7`) |
 | Source | [`src/methods.jl:562-565`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/methods.jl#L562-L565)<br>[`src/methods.jl:532-544`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/methods.jl#L532-L544)<br>[`methods.jl:519-530`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/methods.jl#L519-L530)<br>[`:551-560`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/methods.jl#L551-L560)<br>[`src/low_level/rtpsa.jl:2128-2139`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/low_level/rtpsa.jl#L2128-L2139) |
 
 GTPSA's allocating `inv`, and `inv!` into a zero destination, lose parameter-dependent orbital terms of nonlinear total degree, because the destination's parameter rows are not initialized to identity substitutions. The failure includes transfer maps linear in phase space and linear in a parameter. For X = 2x + 0.3p and P = −0.7x + 0.395p + 0.7Xab, with parameters a and b, the inverse's p coefficient of Xab is 0 instead of −1.400; the parameterized shear (x, p + κx²) likewise loses its inverse x²κ coefficient −1. Algebraic reversal, identity-seeded destinations and NonlinearNormalForm's independent inverse agree. Parameter-free and parameter-only linear controls pass.

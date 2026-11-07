@@ -12,7 +12,7 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-23 on BeamTracking main (`d8e45fd`, head build) |
+| Last reproduced | 2026-10-23 on BeamTracking commit [`d8e45fd`](https://github.com/bmad-sim/BeamTracking.jl/commit/d8e45fdc25db), committed 2026-10-23 |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/unpack_bl.jl:139-160`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L139-L160)<br>[`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:127`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L127)<br>[`BeamTracking.jl/src/kernels/ibs_kick.jl:37-42`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L37-L42)<br>[`unpack_bl.jl:345`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L345)<br>[`ibs_kick.jl:37-42`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L37-L42) |
 

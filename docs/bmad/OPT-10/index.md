@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [make_mat6 input reference, bmad/code/make_mat6.f90:105–117](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/make_mat6.f90#L105-L117)<br>[returned and stored output references, bmad/code/make_mat6.f90:174–196](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/make_mat6.f90#L174-L196)<br>[map-reference contract, bmad/doc/ele-struct.tex:540–550](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/ele-struct.tex#L540-L550) |
 
 Constructing a linear tracking map at a nonzero incident orbit stores that orbit as the input reference but stores the zero-orbit expansion as the output reference. The two records should satisfy the documented affine relation between the matrix, constant vector and reference coordinates. In a 1.2 m quadrupole, the stored output is zero while its affine reconstruction begins at x = 0.8394 mm and normalized horizontal momentum −0.0005447. The returned particle orbit is correct at zero momentum offset.

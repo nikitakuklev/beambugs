@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [normal.h append and cache gate, tao/code/tao_evaluate_a_datum.f90:1812–1818](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_evaluate_a_datum.f90#L1812-L1818)<br>[tao_add_to_normal_mode_h_array, tao/code/tao_init_data_mod.f90:918–940](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_init_data_mod.f90#L918-L940)<br>[cache reset, tao/code/tao_ptc_normal_form.f90:49–50](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_ptc_normal_form.f90#L49-L50)<br>[normal.h data contract, tao/doc/data.tex:1394–1403](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/data.tex#L1394-L1403) |
 
 Requesting a new normal.h monomial after the first cached calculation in a Tao session returns zero instead of its coefficient. In a thin-sextupole ring, h₃₀₀₀₀₀ is −1.330 m⁻¹ᐟ² when requested first, but a later h₂₁₀₀₀₀ query returns zero instead of −3.990 m⁻¹ᐟ². Reversing the request order reverses which term is lost; registering both before calculation gives both nonzero values. Independent thin-lens optics and the sextupole generator predict the coefficients, while the source shows that adding a monomial leaves the cache marked complete.

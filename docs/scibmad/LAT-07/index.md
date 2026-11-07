@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on Beamlines main (`35fe016`, head build) |
+| Last reproduced | 2026-10-31 on Beamlines release [v0.11.0](https://github.com/bmad-sim/Beamlines.jl/tree/v0.11.0) (`35fe016`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Pull request | [[gh:https://github.com/bmad-sim/Beamlines.jl/pull/171]], fix |
 | Source | [`Beamlines.jl/ext/BeamlinesGTPSAExt/BeamlinesGTPSAExt.jl:16-20`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/ext/BeamlinesGTPSAExt/BeamlinesGTPSAExt.jl#L16-L20)<br>[`Beamlines.jl/src/defexpr.jl:132-160`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/defexpr.jl#L132-L160)<br>[`Beamlines.jl/src/defexpr.jl:94-99`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/defexpr.jl#L94-L99)<br>[`Beamlines.jl/src/context.jl:88-97`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/context.jl#L88-L97) |

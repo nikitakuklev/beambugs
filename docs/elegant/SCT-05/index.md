@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [event probability, matter.c:127–128](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L127-L128)<br>[matter.c:187](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L187)<br>[matter.c:246–251](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L246-L251)<br>[matter.c:258–283](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L258-L283)<br>[`ELECTRON_RECOIL`, track_data.c:2143](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2143)<br>[matter.c:84–85](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L84-L85) |
 
 In MATTER, enabling ELECTRON_RECOIL while ENERGY_DECAY and NUCLEAR_BREMSSTRAHLUNG are disabled omits the documented recoil energy loss. The energy-processing gates ignore standalone recoil, although collisions with target electrons must transfer positive energy. For 20000 electrons of momentum 1000 mₑc crossing 0.01 m of dilute helium, a Poisson approximation to the option's event rate predicts 6894 ± 67.21 electrons losing energy, but recoil-only output is bit-identical to all-off output. Enabling bremsstrahlung activates thousands of recoil losses, isolating the activation failure.

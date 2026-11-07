@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on Beamlines main (`35fe016`, head build) |
+| Last reproduced | 2026-10-31 on Beamlines release [v0.11.0](https://github.com/bmad-sim/Beamlines.jl/tree/v0.11.0) (`35fe016`) |
 | Source | [`Beamlines.jl/src/io.jl:98`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/io.jl#L98)<br>[`Beamlines.jl/src/io.jl:13-14`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/io.jl#L13-L14)<br>[`Beamlines.jl/src/emultipole.jl:180-185`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/emultipole.jl#L180-L185)<br>[`:55`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/emultipole.jl#L55)<br>[`Beamlines.jl/src/io.jl:1-4`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/io.jl#L1-L4) |
 
 `writebl`, the Beamlines function that writes a lattice as Julia code and is documented as internal and under development, raises a `FieldError` for any element with an electric multipole, because it reads a field `tilt` where the electric multipole field is named `etilt`. The electric multipole's own `show` uses `etilt`, and the magnetic branch, which reads its own `tilt` field, writes `Kn1=0.2,tilt1=0.1` for a control element. An element with `En0 = 1` fails instead of producing text containing `En0=1.0`. The failure is loud.

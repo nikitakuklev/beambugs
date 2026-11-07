@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-06 on Bmad 20261031-0 (`c4c629f`, committed 2026-10-31) |
+| Last reproduced | 2026-11-06 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [spin_of contract and table access, sim_utils/interfaces/particle_species_mod.f90:1451–1478](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/interfaces/particle_species_mod.f90#L1451-L1478)<br>[Helion/antihelion IDs and subatomic bounds, sim_utils/interfaces/particle_species_mod.f90:57–76](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/interfaces/particle_species_mod.f90#L57-L76)<br>[the intrinsic-spin table, sim_utils/interfaces/particle_species_mod.f90:91–103](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/interfaces/particle_species_mod.f90#L91-L103)<br>[named-species manual, bmad/doc/lattice-file.tex:812–823](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/lattice-file.tex#L812-L823)<br>[field-based spin generation, bmad/spin/spin_omega.f90:40–50](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/spin/spin_omega.f90#L40-L50) |
 

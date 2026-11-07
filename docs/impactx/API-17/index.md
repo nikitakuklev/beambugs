@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
+| Last reproduced | 2026-10-29 on ImpactX commit [`fa0a43b`](https://github.com/BLAST-ImpactX/impactx/commit/fa0a43b9bb07), committed 2026-10-28 |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`src/python/impactx/dashboard/Run/simulation.py#L89-L131`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/dashboard/Run/simulation.py#L89-L131)<br>[`src/python/impactx/dashboard/Input/defaults.py#L64-L74`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/dashboard/Input/defaults.py#L64-L74)<br>[`src/ImpactX.cpp#L129-L154`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/ImpactX.cpp#L129-L154)<br>[`src/particles/ImpactXParticleContainer.cpp#L106-L123`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/ImpactXParticleContainer.cpp#L106-L123) |
 

@@ -12,7 +12,7 @@ hide:
 | Priority | P1 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-22 on SciBmad 0.6.0 (`62399f9`, committed 2026-10-14); not reproduced on SciBmad main (`ae9423d`), 2026-11-07 |
+| Last reproduced | 2026-10-22 on SciBmad release [v0.6.0](https://github.com/bmad-sim/SciBmad.jl/tree/v0.6.0) (`62399f9`) |
 | Issue | [[gh:https://github.com/bmad-sim/SciBmad.jl/issues/154]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/SciBmad.jl/pull/155]], filed from this evidence |
 | Source | [`src/twiss/twiss_map.jl:134-146`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_map.jl#L134-L146)<br>[`twiss.jl:75-82`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L75-L82)<br>[`136-138`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L136-L138) |

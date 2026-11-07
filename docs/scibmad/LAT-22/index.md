@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-22 on bmad-ecosystem 20261020-0 (`19b8afb`, committed 2026-10-20) |
+| Last reproduced | 2026-10-22 on bmad-ecosystem release [20261020-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261020-0) (`19b8afb`) |
 | Source | [`bmad/bmad/output/write_lattice_scibmad_format.f90:350`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L350)<br>[`:480`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L480)<br>[`:888-910`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L888-L910) |
 
 Bmad's SciBmad exporter binds the lattice's variable Context to the name `c1` after defining elements, overwriting any element whose name becomes `c1`. Bmad names are case-insensitive, so both `c1` and `C1` trigger the collision. Loading then fails with “Unable to construct Branch: entry 2 of elements is a Context{Any}”, while the same lattice with element name `c2` loads. A Branch named `c1` instead overwrites the Context and also prevents loading; renaming only the generated Context binding and its final reference makes the tested collisions load. The exporter gives no incomplete-translation warning.

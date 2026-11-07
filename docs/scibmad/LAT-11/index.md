@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`, head build) |
+| Last reproduced | 2026-10-31 on BeamTracking commit [`0bf3585`](https://github.com/bmad-sim/BeamTracking.jl/commit/0bf3585fdc9c), committed 2026-10-28 |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`BeamTracking.jl/src/kernels/aperture.jl:4-7`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/aperture.jl#L4-L7)<br>[`BeamTracking.jl/src/kernels/aperture.jl:21-25`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/aperture.jl#L21-L25)<br>[`SciBmad.jl/docs/src/track.md:72-73`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/track.md#L72-L73)<br>[`BeamTracking.jl/src/types.jl:15-18`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L15-L18)<br>[`BeamTracking.jl/src/kernels/drift_kick.jl:66-67`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/drift_kick.jl#L66-L67)<br>[`BeamTracking.jl/test/RungeKuttaTracking_test.jl:331-337`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/test/RungeKuttaTracking_test.jl#L331-L337) |
 

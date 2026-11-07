@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on SpaceCharge main (`ae30463`, head build) |
+| Last reproduced | 2026-10-29 on SpaceCharge release [v1.3.0](https://github.com/bmad-sim/SpaceCharge.jl/tree/v1.3.0) (`ae30463`) |
 | Source | [`SpaceCharge.jl/src/mesh.jl:155-178`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/mesh.jl#L155-L178)<br>[`src/deposition.jl:38-84`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/deposition.jl#L38-L84)<br>[`mesh.jl:99-117`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/mesh.jl#L99-L117)<br>[`test/test_mesh.jl:61-69`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/test/test_mesh.jl#L61-L69) |
 
 The automatic `Mesh3D` constructor with Float32 precision can create bounds that leave its own input particles outside valid cloud-in-cell (CIC) deposition cells. The constructor promises padded bounds suitable for deposition, but exact rational arithmetic shows that Float32 rounding removes the required margin. For input horizontal positions 0 and 1.000 m on a 65×9×9 mesh, deposition addresses nodes 65 and 66 although only 65 exist, raising `BoundsError` instead of depositing the total 2.000 pC; a 17-node grid also fails even though its upper bound exceeds 1 m. Automatic Float64 bounds and sufficiently padded manual Float32 bounds deposit successfully.

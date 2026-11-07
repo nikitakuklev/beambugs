@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`probability_tables_setup`, track_a_converter.f90:421–428](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_converter.f90#L421-L428)<br>[Bmad manual, “Converter Tracking”, `s:converter.track`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L754-L764) |
 
 Applying an angular cut to a converter increases its outgoing physical yield instead of reducing it. For a normalized synthetic distribution and angle_out_max = 0.15, the accepted fraction is 0.06149, but the returned weight is 16.26. The weight is the reciprocal of the required fraction, so even a restrictive cut produces more weight than the unrestricted converter. Integrating the supplied angular density analytically establishes the required normalization.

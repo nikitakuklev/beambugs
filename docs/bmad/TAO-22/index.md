@@ -12,7 +12,7 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [show matrix -radiation, tao/code/tao_show_this.f90:5267–5284](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_show_this.f90#L5267-L5284)<br>[ptc_setup_map_with_radiation, bmad/ptc/ptc_map_with_radiation_mod.f90:198–213](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ptc_map_with_radiation_mod.f90#L198-L213) |
 
 Running show matrix -radiation in Tao labels the full damped transport as T-Matrix without Damping and reports the separate damping factor D as the identity. For a 1 GeV/c electron passing through a 1 m sector bend of radius 2 m, the display reports a symplectic error of 7.184 × 10⁻⁶. The displayed matrix matches the damping-enabled backend, while disabling damping gives an undamped map with symplectic error below 4 × 10⁻¹⁴. An independent prescribed-map case confirms that both factorization options correctly reconstruct transport and noise covariance.

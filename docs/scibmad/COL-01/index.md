@@ -12,7 +12,7 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`, head build) |
+| Last reproduced | 2026-10-31 on BeamTracking commit [`0bf3585`](https://github.com/bmad-sim/BeamTracking.jl/commit/0bf3585fdc9c), committed 2026-10-28 |
 | Issue | [[gh:https://github.com/bmad-sim/BeamTracking.jl/issues/380]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/BeamTracking.jl/pull/381]], filed from this evidence |
 | Source | [`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:115-129`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L115-L129)<br>[`BeamTracking.jl/src/utils/beam_statistics.jl:4-48`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/beam_statistics.jl#L4-L48)<br>[`BeamTracking.jl/src/kernels/ibs_kick.jl:5`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L5)<br>[`85-87`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L85-L87)<br>[`bmad/multiparticle/beam_utils.f90:1367,1379-1380`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/multiparticle/beam_utils.f90#L1367-L1380) |

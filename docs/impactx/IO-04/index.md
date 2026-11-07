@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX 26.10 (`615921c`, committed 2026-10-05); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Last reproduced | 2026-10-29 on ImpactX release [26.10](https://github.com/BLAST-ImpactX/impactx/tree/26.10) (`615921c`) |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1738]], fix |
 | Source | [`Thermal.H#L99-L108`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L99-L108)<br>[`matched_scale_radius` at L162-L172](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L162-L172)<br>[caller](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/initialization/InitDistribution.cpp#L310-L312)<br>[L354-L356](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/initialization/InitDistribution.cpp#L354-L356)<br>[sampler contract](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L277-L290) |
 

@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`twiss_propagate1`, overwritten `rel_p2`, bmad/code/twiss_propagate1.f90:133–145](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/twiss_propagate1.f90#L133-L145)<br>[projected slope conversion, bmad/code/twiss_propagate1.f90:283–289](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/twiss_propagate1.f90#L283-L289)<br>[Bmad manual, “Dispersion Calculation”, `s:dispersion`, `dexds`, bmad/doc/optics.tex:381–417](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/optics.tex#L381-L417) |
 
 Propagating an off-momentum lattice can return projected dispersion slopes that disagree with the modal slopes even without transverse coupling. The projected conversion uses the exit-to-entrance momentum ratio where it requires the actual exit relative momentum q = 1 + δ, with δ the fractional momentum offset. For δ = 0.2, normalized transverse momenta (0.03, −0.02), and zero momentum dispersion, the projected slopes are (−0.03, 0.02) instead of the documented paraxial derivatives (−0.02083, 0.01389).

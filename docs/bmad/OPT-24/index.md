@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [full-step radiation coefficients, bmad/low_level/symp_lie_bmad.f90:123–134](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L123-L134)<br>[wiggler radiation calls, bmad/low_level/symp_lie_bmad.f90:254–258](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L254-L258)<br>[quadrupole/solenoid radiation calls, bmad/low_level/symp_lie_bmad.f90:354–357](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L354-L357)<br>[radiation_kick, bmad/low_level/symp_lie_bmad.f90:1469–1493](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L1469-L1493)<br>[Bmad manual, Radiation Damping and Excitation, bmad/doc/synchrotron-radiation.tex:12–45](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/synchrotron-radiation.tex#L12-L45) |
 

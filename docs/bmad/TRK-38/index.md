@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`track1_radiation`, bmad/modules/radiation_mod.f90:86–148](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/radiation_mod.f90#L86-L148) |
 
 A deterministic radiation kick changes the momentum coordinate without updating the particle record’s speed β = v/c. The record should satisfy β = p/√(p² + m²c²) at the new physical momentum. A half-element kick in a 10 m bend of curvature 0.1 m⁻¹ at 10 GeV/c changes relative momentum by −7.040 × 10⁻⁴ but leaves β too high by 1.840 × 10⁻¹². The effect is small at this energy but exceeds floating-point rounding.

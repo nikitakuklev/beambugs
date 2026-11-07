@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
+| Last reproduced | 2026-10-26 on xtrack release [v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4) (`3cd8bfc`) |
 | Tags | <span class="bb-tag">experimental</span> <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |
 | Source | [`track_rf.h:51–58`](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_rf.h#L51-L58) |
 

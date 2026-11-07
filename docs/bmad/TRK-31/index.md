@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`sbend_body_with_k1_map`, bmad/low_level/track_a_bend.f90:525–570](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_bend.f90#L525-L570)<br>[Bmad manual, coordinate time direction, bmad/doc/tracking.tex:34–78](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/tracking.tex#L34-L78) |
 
 Backward-time tracking through a combined-function bend uses a small-phase polynomial for every negative phase, even when its magnitude is large. The body map should evaluate the same trigonometric or hyperbolic solution at negative length. For a 2 m bend with curvature 0.1 m⁻¹, quadrupole strength 1 m⁻² and entrance x = y = 1 mm, it returns x = −1.020 mm and y = 3.000 mm instead of −0.4252 mm and 3.762 mm. A forward/backward round trip leaves a −1.803 mm vertical residual.

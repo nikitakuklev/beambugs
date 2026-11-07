@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [quadrupole and sbend k1 serialization, bmad/output/write_lattice_mad_format.f90:740–756](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L740-L756)<br>[lcavity reference-momentum update, bmad/output/write_lattice_mad_format.f90:927–934](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L927-L934) |
 
 Exporting a combined-function bend after an accelerating cavity leaves its normalized quadrupole gradient k₁ at the local momentum normalization. The MAD-X writer converts the cavity to an RF cavity and renormalizes downstream strengths to the starting momentum, including an ordinary quadrupole with the same k₁. After acceleration from 1 GeV to 2 GeV, k₁ = 0.2 m⁻² exports as 0.4000 m⁻² for the quadrupole but remains 0.2 m⁻² for the bend. Magnetic-rigidity scaling requires 0.4000 m⁻² for both, so the bend’s exported gradient is half the required value.

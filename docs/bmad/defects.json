@@ -64,8 +64,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -157,8 +159,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -252,8 +256,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -333,8 +339,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -425,8 +433,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -511,8 +521,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -600,8 +612,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -685,8 +699,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -774,8 +790,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -860,8 +878,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -949,8 +969,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1031,8 +1053,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1112,8 +1136,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1228,16 +1254,20 @@
    "date": "2026-10-21",
    "code": {
     "ref": "Bmad 20261020-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "19b8afb46a40",
-    "committed": "2026-10-20"
+    "committed": "2026-10-20",
+    "release": "20261020-0"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "Bmad 20261031-0",
+     "repository": "bmad-sim/bmad-ecosystem",
      "commit": "c4c629fc9071",
-     "committed": "2026-10-31"
+     "committed": "2026-10-31",
+     "release": "20261031-0"
     },
     "head": true
    }
@@ -1326,8 +1356,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1406,8 +1438,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1499,8 +1533,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1580,8 +1616,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1668,8 +1706,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1759,8 +1799,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1842,8 +1884,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1927,8 +1971,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2014,8 +2060,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2095,8 +2143,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2182,8 +2232,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2273,8 +2325,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2363,8 +2417,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2453,8 +2509,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2534,8 +2592,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2619,8 +2679,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2700,8 +2762,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2781,8 +2845,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2874,8 +2940,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2957,8 +3025,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3048,8 +3118,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3133,8 +3205,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3220,8 +3294,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3297,8 +3373,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3378,8 +3456,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3458,8 +3538,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3545,8 +3627,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3638,8 +3722,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3733,8 +3819,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3821,8 +3909,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3916,8 +4006,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4011,8 +4103,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4098,8 +4192,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4184,8 +4280,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4274,8 +4372,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4358,8 +4458,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4462,8 +4564,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4547,8 +4651,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4642,8 +4748,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4727,8 +4835,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4827,8 +4937,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4917,8 +5029,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5022,8 +5136,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -5131,8 +5247,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -5234,8 +5352,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -5317,8 +5437,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -5442,8 +5564,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -5549,8 +5673,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -5679,8 +5805,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -5816,8 +5944,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -5926,8 +6056,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -6011,8 +6143,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -6183,8 +6317,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -6358,8 +6494,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -6469,8 +6607,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -6625,8 +6765,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -6757,8 +6899,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -6841,8 +6985,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6919,8 +7065,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7018,8 +7166,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7102,8 +7252,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7191,8 +7343,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7278,8 +7432,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7359,8 +7515,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7457,8 +7615,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7538,8 +7698,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7622,8 +7784,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7702,8 +7866,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7786,8 +7952,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7867,8 +8035,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7948,8 +8118,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8033,8 +8205,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8118,8 +8292,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8203,8 +8379,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8294,8 +8472,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8392,8 +8572,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8490,8 +8672,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8588,8 +8772,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8699,8 +8885,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8795,8 +8983,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8893,8 +9083,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8977,8 +9169,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9065,8 +9259,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9157,8 +9353,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9255,8 +9453,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9336,8 +9536,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9435,8 +9637,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9527,8 +9731,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9623,8 +9829,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9717,8 +9925,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9805,8 +10015,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9895,8 +10107,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9988,8 +10202,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -10116,8 +10332,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -10250,8 +10468,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -10368,8 +10588,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -10492,8 +10714,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -10653,8 +10877,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -10762,8 +10988,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -10851,8 +11079,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -10941,8 +11171,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11022,8 +11254,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11104,8 +11338,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11191,8 +11427,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11282,8 +11520,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11363,8 +11603,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11466,8 +11708,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11567,8 +11811,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11653,8 +11899,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11730,8 +11978,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11812,8 +12062,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11892,8 +12144,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11968,8 +12222,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -12063,8 +12319,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -12164,8 +12422,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -12255,8 +12515,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -12357,8 +12619,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -12452,8 +12716,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -12555,8 +12821,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -12642,8 +12910,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -12727,8 +12997,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -12804,8 +13076,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -12906,16 +13180,20 @@
    "date": "2026-10-21",
    "code": {
     "ref": "Bmad 20261020-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "19b8afb46a40",
-    "committed": "2026-10-20"
+    "committed": "2026-10-20",
+    "release": "20261020-0"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "Bmad 20261031-0",
+     "repository": "bmad-sim/bmad-ecosystem",
      "commit": "c4c629fc9071",
-     "committed": "2026-10-31"
+     "committed": "2026-10-31",
+     "release": "20261031-0"
     },
     "head": true
    }
@@ -12997,8 +13275,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -13078,8 +13358,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -13162,8 +13444,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -13243,8 +13527,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -13323,8 +13609,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -13429,8 +13717,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -13530,8 +13820,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -13630,8 +13922,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -13732,8 +14026,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -13841,8 +14137,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -13938,8 +14236,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -14034,8 +14334,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -14123,8 +14425,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -14219,8 +14523,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -14311,8 +14617,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -14409,8 +14717,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -14510,8 +14820,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -14601,8 +14913,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -14701,8 +15015,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -14808,8 +15124,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -14894,8 +15212,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -14988,8 +15308,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -15083,8 +15405,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -15186,8 +15510,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -15270,8 +15596,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -15354,8 +15682,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -15438,8 +15768,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -15515,8 +15847,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -15600,8 +15934,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -15685,8 +16021,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -15762,8 +16100,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -15839,8 +16179,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -15931,16 +16273,20 @@
    "date": "2026-10-20",
    "code": {
     "ref": "Bmad 20261020-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "19b8afb46a40",
-    "committed": "2026-10-20"
+    "committed": "2026-10-20",
+    "release": "20261020-0"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "Bmad 20261031-0",
+     "repository": "bmad-sim/bmad-ecosystem",
      "commit": "c4c629fc9071",
-     "committed": "2026-10-31"
+     "committed": "2026-10-31",
+     "release": "20261031-0"
     },
     "head": true
    }
@@ -16021,8 +16367,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -16107,8 +16455,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -16193,8 +16543,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -16278,8 +16630,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -16376,8 +16730,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -16475,8 +16831,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -16575,8 +16933,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -16685,8 +17045,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -16773,8 +17135,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -16862,8 +17226,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -16967,8 +17333,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -17080,8 +17448,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -17207,8 +17577,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -17336,8 +17708,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -17449,8 +17823,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -17570,8 +17946,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -17684,8 +18062,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -17768,8 +18148,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -17855,8 +18237,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -17940,8 +18324,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -18027,8 +18413,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -18104,8 +18492,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -18199,8 +18589,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -18290,8 +18682,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -18371,8 +18765,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -18464,8 +18860,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -18563,8 +18961,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -18650,8 +19050,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -18731,8 +19133,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -18826,8 +19230,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -18912,8 +19318,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -19012,8 +19420,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -19100,8 +19510,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -19192,8 +19604,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -19292,8 +19706,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -19390,8 +19806,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -19482,8 +19900,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -19582,8 +20002,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -19674,8 +20096,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -19776,8 +20200,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -19861,8 +20287,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -19942,8 +20370,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -20023,8 +20453,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -20108,8 +20540,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -20193,8 +20627,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -20278,8 +20714,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -20359,8 +20797,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -20448,8 +20888,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -20538,8 +20980,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -20641,8 +21085,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -20733,8 +21179,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -20830,8 +21278,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -20925,8 +21375,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -21050,8 +21502,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -21130,8 +21584,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -21219,8 +21675,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -21300,8 +21758,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -21394,8 +21854,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -21501,8 +21963,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -21594,8 +22058,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -21681,8 +22147,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -21766,8 +22234,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -21854,8 +22324,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -21947,8 +22419,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -22045,8 +22519,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -22123,8 +22599,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -22226,16 +22704,20 @@
    "date": "2026-10-20",
    "code": {
     "ref": "Bmad 20261020-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "19b8afb46a40",
-    "committed": "2026-10-20"
+    "committed": "2026-10-20",
+    "release": "20261020-0"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "Bmad 20261031-0",
+     "repository": "bmad-sim/bmad-ecosystem",
      "commit": "c4c629fc9071",
-     "committed": "2026-10-31"
+     "committed": "2026-10-31",
+     "release": "20261031-0"
     },
     "head": true
    }
@@ -22319,8 +22801,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -22401,8 +22885,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -22487,8 +22973,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -22587,8 +23075,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -22693,8 +23183,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -22796,8 +23288,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -22886,8 +23380,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -22982,8 +23478,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -23074,8 +23572,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -23159,8 +23659,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -23255,8 +23757,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -23344,8 +23848,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -23436,8 +23942,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -23522,8 +24030,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -23624,8 +24134,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -23738,8 +24250,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -23846,8 +24360,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -23938,8 +24454,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -24025,8 +24543,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -24128,8 +24648,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -24233,8 +24755,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -24302,8 +24826,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -24389,8 +24915,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -24525,8 +25053,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -24619,8 +25149,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -24706,8 +25238,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -24797,8 +25331,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -24878,8 +25414,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -24959,8 +25497,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25040,8 +25580,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25123,8 +25665,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25204,8 +25748,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25285,8 +25831,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25372,8 +25920,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25455,8 +26005,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25536,8 +26088,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25617,8 +26171,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25706,8 +26262,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25801,8 +26359,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25896,8 +26456,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -25993,8 +26555,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -26090,8 +26654,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -26185,8 +26751,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -26278,8 +26846,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -26369,8 +26939,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -26460,8 +27032,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -26555,8 +27129,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -26659,8 +27235,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -26748,8 +27326,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -26841,8 +27421,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "Bmad 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": true,
    "head_not_reproduced": null

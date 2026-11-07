@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xdeps main (`6484795`, head build) |
+| Last reproduced | 2026-10-29 on xdeps release [v0.11.1](https://github.com/xsuite/xdeps/tree/v0.11.1) (`6484795`) |
 | Source | [MeritFunctionForMatch._clip_to_max_steps, optimize.py:417–425](https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/optimize/optimize.py#L417-L425)<br>[Vary.max_step contract](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/match.py#L461-L462) |
 
 `Line.match()` can accept an iteration that exceeds an earlier variable's `Vary.max_step`, because clipping a later variable rescales the already clipped step vector and enlarges it. A common scale factor must satisfy every bound at once and not depend on variable order. For dimensionless variables a and b starting at 0, with targets 6 and 12 and maximum steps 0.2 and 0.8, the accepted changes are 0.4000 and 0.8000 instead of the correctly scaled 0.2000 and 0.4000: a moves twice its allowed amount, while reversing the variable order gives the correct result. It occurs when several variables are limited at once, even with unit weights, and in an accepted iteration, not only in a trial evaluation.

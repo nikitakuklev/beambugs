@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xfields main (`3f06c87`, head build) |
+| Last reproduced | 2026-10-29 on xfields release [v0.27.7](https://github.com/xsuite/xfields/tree/v0.27.7) (`3f06c87`) |
 | Source | [`WakeTracker.track`, waketracker.py:125–150](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/waketracker/waketracker.py#L125-L150)<br>[advancing its moments history](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/element_with_slicer.py#L213) |
 
 `WakeTracker.track` returns early when no particle is alive, before advancing the stored wake-source history, so a turn in which the whole bunch is lost does not age the history. A turn without sources must still age it, as calls with live particles outside the slicing window or with zero weight do, and direct convolution gives the expected delays and expiry. With a three-turn history in a 20 m ring and a 1.4 GeV/c proton source of weight 5, a witness one empty turn later receives `px` = 4.024 × 10⁻⁹ instead of 2.441 × 10⁻⁹, and two empty turns later 4.024 × 10⁻⁹ instead of 0, after the source should have expired.

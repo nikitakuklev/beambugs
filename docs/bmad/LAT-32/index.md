@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [indexed-access contract and deprecation, bmad/low_level/pointer_to_indexed_attribute.f90:1–29](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/pointer_to_indexed_attribute.f90#L1-L29)<br>[multipole and component dispatch, bmad/low_level/pointer_to_indexed_attribute.f90:104–176](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/pointer_to_indexed_attribute.f90#L104-L176) |
 
 The deprecated indexed-attribute routine rejects the spin tracking method and electric multipoles that named attribute lookup can access. On a quadrupole, named access returns the spin-method pointer and an electric B₀ coefficient set to 2, while both indexed calls report an error and return no pointer. The routine's indexed-access contract and its unreachable electric dispatch branch establish the discrepancy; named lookup provides a working access path.

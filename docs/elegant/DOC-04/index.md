@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [averaging_factor, elegant.tex:4492–4503](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4492-L4503)<br>[setup, insertSCeffects.cc:136–139](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L136-L139)<br>[filter, insertSCeffects.cc:316–323](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L316-L323)<br>[SCMULT storage, track.h:3454–3459](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track.h#L3454-L3459) |
 
 The manual's nonlinear SCMULT averaging equation reads σ̂ᵢ = fσᵢ + (1−f)σ̂ᵢ, with f = `averaging_factor`, σᵢ the actual and σ̂ᵢ the filtered rms beam size on turn i. For every allowed f > 0 this reduces to σ̂ᵢ = σᵢ, no filtering, whereas the text and the sizes shaping Elegant's field follow the preceding-turn recurrence σ̂ᵢ = fσᵢ + (1−f)σ̂ᵢ₋₁. For a 5.000 pC bunch with kick-point horizontal rms size 0.9000 mm on turn 1 and 0.9375 mm on turn 2, f = 0.2000 gives σ̂ = 0.9075 mm, 3.201% below the printed equation. With σ̂ in field shape and kick strength, the first particle's second-turn slope kicks differ from the printed equation's by −0.1450% horizontally, +0.4543% vertically.

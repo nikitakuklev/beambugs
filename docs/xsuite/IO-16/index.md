@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-07 on xtrack main (`f09e0fb`, head build) |
+| Last reproduced | 2026-11-07 on xtrack release [v0.118.6](https://github.com/xsuite/xtrack/tree/v0.118.6) (`f09e0fb`) |
 | Source | [MAD-X name mapping, mad_writer.py:743–745](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/mad_writer.py#L743-L745)<br>[public corresponding-sequence contract](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/line.py#L877-L894)<br>[colon/slash input-name tests](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/tests/test_mad_writer.py#L73-L89) |
 
 MAD-X sequence export can map distinct native elements to the same target name and return text that MAD-X refuses to parse. Colon and slash replacements make q:one, q/one and q__one collide; case-only native differences also collide in MAD-X. Two quadrupoles of lengths 0.2000 and 0.4000 m become duplicate declarations despite having different gradients. Independently parsing a uniquely named control preserves both bodies and their expected positions.

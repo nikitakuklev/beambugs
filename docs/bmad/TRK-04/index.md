@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [em_field_calc, planar wiggler, bmad/code/em_field_calc.f90:735–761](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/em_field_calc.f90#L735-L761)<br>[Bmad manual, Periodic Type Wigglers, bbkykz, bmad/doc/elements.tex:5664–5675](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L5664-L5675) |
 
 Planar-wiggler field evaluation returns incorrect derivatives of the longitudinal magnetic field. For a 1 T wiggler with 0.2 m period and horizontal wave number 13 m⁻¹, at transverse position (x, y) = (3, 2) mm and longitudinal position s = 370 mm the returned derivatives are (0.4110, −1.870, 18.49) T/m instead of (0.02579, −25.46, 1.160) T/m. Analytic differentiation and fourth-order finite differences of the returned field agree on the expected values. The field itself and the derivatives of its two transverse components are correct.

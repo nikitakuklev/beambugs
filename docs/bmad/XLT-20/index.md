@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [parse_and_write_element bend strength, util_programs/mad_to_bmad/madx_to_bmad.py:549–555](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L549-L555)<br>[bend multipole scale, bmad/code/multipole_ele_to_ab.f90:535–539](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/multipole_ele_to_ab.f90#L535-L539)<br>[relative multipole application, bmad/code/multipole_ele_to_ab.f90:584–589](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/multipole_ele_to_ab.f90#L584-L589)<br>[Bmad manual, “Multipole Attributes: Magnetic and Electric” (`s:multip`), bmad/doc/attributes.tex:2076–2093](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L2076-L2093) |
 
 Importing a MAD-X bend with skew dipole strength k₀s multiplies it by the bend angle and then applies Bmad’s default relative-multipole scaling. The physical integrated skew field should be k₀sL, where L is bend length. With L = 2 m, angle = 0.1 rad, and k₀s = 0.001 m⁻¹, the imported integrated strength is 0.00001000 instead of 0.002000, a factor of 200 too small. A zero-angle bend loses the skew field entirely; an explicit unscaled integrated coefficient restores the expected vertical momentum kick.

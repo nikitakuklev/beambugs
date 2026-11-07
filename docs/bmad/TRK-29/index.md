@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`track_a_bend`, bmad/low_level/track_a_bend.f90:88–149](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_bend.f90#L88-L149)<br>[`rel_tracking_charge_to_mass`, bmad/code/rel_tracking_charge_to_mass.f90:2–32](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/rel_tracking_charge_to_mass.f90#L2-L32) |
 
 An on-axis positron tracked through an electron-reference sector bend receives no deflection from the native near-axis map. The general map and Runge–Kutta tracking follow the oppositely curved orbit. For a 1 m bend with curvature 0.1 m⁻¹, the native result is horizontal position x = 0 and normalized horizontal momentum = 0 instead of 0.1014 m and 0.1997. Moving the entrance x by only 0.1 μm activates the general map and restores the deflection.

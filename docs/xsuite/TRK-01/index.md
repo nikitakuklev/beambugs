@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
+| Last reproduced | 2026-10-26 on xtrack release [v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4) (`3cd8bfc`) |
 | Source | [`track_solenoid_single_particle`, track_magnet_drift.h:468–531](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_drift.h#L468-L531)<br>[entrance potential at track_magnet_edge.h:72–75](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_edge.h#L72-L75) |
 
 Xtrack's `UniformSolenoid` and a constant-profile `VariableSolenoid` move every particle along the reference-species trajectory, ignoring its charge-to-mass ratio relative to the reference species, χ. Because the solenoid strength `ks` is normalized to the reference rigidity, a particle with ratio χ must see χ·`ks`; the exact solenoid map and an independent integration of the Lorentz force both require this. A 1 GeV/c particle with twice the reference charge and the same mass (χ = 2) entering a 0.7 m solenoid with `ks` = 0.8 m⁻¹ at x = 3 mm exits at y = −0.7968 mm instead of −1.350 mm. Reference-species particles are tracked correctly.

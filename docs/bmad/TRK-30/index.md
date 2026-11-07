@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`solenoid_track_and_mat`, bmad/low_level/solenoid_track_and_mat.f90:38–57](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/solenoid_track_and_mat.f90#L38-L57)<br>[Bmad manual, “Solenoid Tracking” (`s:solenoid.std`), bmad/doc/charged-tracking.tex:1623–1653](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L1623-L1653)<br>[`rel_tracking_charge_to_mass`, bmad/code/rel_tracking_charge_to_mass.f90:27–32](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/rel_tracking_charge_to_mass.f90#L27-L32) |
 
 A solenoid with an electron reference rotates equal-mass electrons and positrons with the same handedness in native tracking. The relative charge factor already contains the tracked charge sign, and multiplying by the tracked charge again cancels that reversal. For a 1 m solenoid of strength 1 m⁻¹ and entrance x = 1 mm, both species leave at y = −0.4207 mm; the positron should leave at +0.4207 mm. The analytic solenoid map and Runge–Kutta tracking agree on the required sign.

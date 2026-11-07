@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
+| Last reproduced | 2026-10-26 on xtrack release [v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4) (`3cd8bfc`) |
 | Source | [`thin_slice_multipole.h`](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/thin_slice_multipole.h#L22-L48)<br>[`track_magnet_particles`](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet.h#L338-L369)<br>[reference-frame kick](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_kick.h#L151-L160) |
 
 Thin slicing of a `Multipole(isthick=True)` applies the element's full reference bend angle `hxl` in every slice, so each extra slice adds spurious bending. At the reference momentum, a dipole kick `knl[0]` equal to `hxl` cancels the reference-frame kick exactly, so a particle starting on the reference orbit must stay there for any number of slices. For a 1 m element with `knl[0]` = `hxl` = 0.01 rad and a 1 GeV/c proton, four slices give x = 15.00 mm and normalized horizontal momentum `px` = 0.03000 instead of zero for both. The unsliced element and a single slice keep the particle on axis.

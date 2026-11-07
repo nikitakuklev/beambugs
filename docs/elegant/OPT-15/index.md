@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [`null_matrices`, matrix.c:183–200](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matrix.c#L183-L200)<br>[`initialize_matrices`, matrix.c:130–177](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matrix.c#L130-L177)<br>[`run_matrix_output`, matrix_output.c:422–429](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matrix_output.c#L422-L429)<br>[`SDDS_set_matrices`, matrix_output.c:733–752](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matrix_output.c#L733-L752)<br>[`individual_matrices` writes the individual on-trajectory matrices of the elements, elegant.tex:5362–5363](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5362-L5363) |
 
 Elegant's `matrix_output` with `individual_matrices=1` should write the map of each element on its own trajectory, but the second- and third-order coefficients of an element carry leftover values from earlier elements. A 1 m drift after a 0.4 m quadrupole with K1 = 0.7 m⁻² is written with T161 = 0.3243, T262 = 0.05496, U1661 = −0.3204 and U2662 = −0.05457, while a drift does not depend on the relative momentum offset δ and all four are 0. Putting the drift first or switching the quadrupole off gives zeros.

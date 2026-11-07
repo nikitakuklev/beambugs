@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on Beamlines main (`35fe016`, head build) |
+| Last reproduced | 2026-10-31 on Beamlines release [v0.11.0](https://github.com/bmad-sim/Beamlines.jl/tree/v0.11.0) (`35fe016`) |
 | Source | [`Beamlines.jl/src/virtual.jl:629-638`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L629-L638)<br>[`Beamlines.jl/src/virtual.jl:641-644`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L641-L644)<br>[`Beamlines.jl/src/utils.jl:5`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/utils.jl#L5)<br>[`:632`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L632)<br>[`:637`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L637) |
 
 Giving a positive species a negative reference rigidity `p_over_q_ref`, in the `Beamline` constructor, by assignment or by switching `species_ref` from electron to proton, logs a sign correction but keeps the negative value. Signed rigidity R obeys pc = qRc with a forward reference momentum, so R must carry the sign of the charge q; the same state requested through `pc_ref` is rejected. For a proton line given `p_over_q_ref` = −3, the stored reference is R = −3.000 T·m, `pc_ref` = −0.8994 GeV and `E_ref` = −1.300 GeV, instead of +3.000 T·m, +0.8994 GeV and +1.300 GeV. Negatively charged species are corrected; for positive species every absolute reference quantity derived from the rigidity has the wrong sign.

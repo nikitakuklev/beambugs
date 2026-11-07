@@ -12,7 +12,7 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`parse_and_write_element`, util_programs/mad_to_bmad/madx_to_bmad.py:548–555](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L548-L555)<br>[bmad/doc/elements.tex:514–516](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L514-L516)<br>[MAD-X bend.html:135–139](https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/7998e738eca575c82a424138517c2a17115f3cdb/doc/usrguide/Introduction/bend.html#L135-L139) |
 
 Importing a MAD-X sector bend with explicit nonzero total dipole strength k₀ assigns Bmad's field error dg = k₀, adding the design curvature g = angle/L to the intended field. For an ideal 1 m bend with angle 0.1 rad and k₀ = 0.1 m⁻¹, this doubles the field to 0.2 m⁻¹. An on-axis particle then exits at x = −49.96 mm and normalized horizontal momentum pₓ = −0.09983, matching an independent circle calculation, while MAD-X keeps it on the design orbit. The correct import without taper is dg = k₀ − g, zero here. The same sector bend without explicit k₀ imports correctly.

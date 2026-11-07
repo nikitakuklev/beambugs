@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`polarizeBeam`, generate_bunch.c:1367–1508](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/generate_bunch.c#L1367-L1508)<br>[axis normalization and two-state routing, generate_bunch.c:1381–1391](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/generate_bunch.c#L1381-L1391)<br>[narrow-cone rotation, generate_bunch.c:1451–1453](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/generate_bunch.c#L1451-L1453)<br>[wide-cone rotation, generate_bunch.c:1472–1474](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/generate_bunch.c#L1472-L1474)<br>[von Mises–Fisher rotation, generate_bunch.c:1491–1493](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/generate_bunch.c#L1491-L1493)<br>[`performQuaternionRotation`, spinUpdate.c:127–163](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/spinUpdate.c#L127-L163)<br>[POLAR manual, polar.tex:1–19](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/polar.tex#L1-L19)<br>[POLAR dispatch, do_tracking.c:2001–2004](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2001-L2004) |
 

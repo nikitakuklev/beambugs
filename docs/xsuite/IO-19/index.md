@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-06 on xtrack 0.118.2 (`ad5e808`, committed 2026-10-19); not reproduced on xtrack main (`f09e0fb`), 2026-11-07 |
+| Last reproduced | 2026-11-06 on xtrack release [v0.118.2](https://github.com/xsuite/xtrack/tree/v0.118.2) (`ad5e808`) |
 | Pull request | [[gh:https://github.com/xsuite/xtrack/pull/923]], fix |
 | Discussed in | [[gh:https://github.com/xsuite/xtrack/pull/922]] |
 | Source | [Line.configure_spin signature and docstring, line.py:5108–5116](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/line.py#L5108-L5116)<br>[validation and state update, lines 5117–5127](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/line.py#L5117-L5127) |

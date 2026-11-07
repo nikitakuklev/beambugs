@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-06 on Elegant master (`0355dd6`, committed 2026-11-03) |
+| Last reproduced | 2026-11-06 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [src/limit_amplitudes.c:1816–1822](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/limit_amplitudes.c#L1816-L1822)<br>[src/limit_amplitudes.c:1835–1895](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/limit_amplitudes.c#L1835-L1895)<br>[src/track_data.c:3941–3949](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3941-L3949) |
 
 TAPERAPR with zero or omitted length rejects particles strictly inside both openings when either active transverse plane has unequal positive endpoint half-widths. An aperture tapering from 14.00 to 9.000 mm removes the centred ray and rays at ±6.000 mm, although all remain inside both endpoints. Direct endpoint inequalities establish survival without choosing a collapsed-taper convention. Both taper directions, both planes, reflection and displaced/rolled placement reproduce; positive-length and equal-width controls preserve the correct survivors.

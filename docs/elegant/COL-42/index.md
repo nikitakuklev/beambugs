@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`7514db3`](https://github.com/rtsoliday/elegant/commit/7514db36f764), committed 2026-11-04 |
 | Source | [zero angle, csbend.c:2743–2757](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2743-L2757)<br>[large radius, csbend.c:2839–2844](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2839-L2844)<br>[CSBEND quadrupole branch, csbend.c:805–826](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L805-L826)<br>[matrix, compute_matrices.c:1883–1887](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L1883-L1887)<br>[CSRCSBEND manual, csrcsbend.tex:25–28](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csrcsbend.tex#L25-L28) |
 
 A CSRCSBEND with ANGLE = 0, or with a bend radius above 10⁶ m, tracks as a drift and drops a finite quadrupole gradient K1, although its manual says it behaves like CSBEND outside CSR, and CSBEND tracks the same element as a quadrupole. For a 0.8 m element with K1 = 1.7 m⁻² and an electron at x = 0.2 mm, linear quadrupole transport, which CSBEND and KQUAD match within 5×10⁻¹² m, gives x = 0.1007 mm and x′ = −0.2253 mrad; CSRCSBEND returns x = 0.2 mm and x′ = 0. At ANGLE = 0 this happens silently; at ANGLE = 10⁻⁷ rad it prints "Treated as EDRIFT".

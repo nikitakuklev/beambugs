@@ -60,8 +60,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -144,8 +146,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -220,8 +224,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -301,8 +307,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -385,8 +393,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -461,8 +471,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -537,8 +549,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -613,8 +627,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -698,16 +714,20 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack 0.118.2",
+    "repository": "xsuite/xtrack",
     "commit": "ad5e808cdc5b",
-    "committed": "2026-10-19"
+    "committed": "2026-10-19",
+    "release": "v0.118.2"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-10-29",
     "code": {
      "ref": "xtrack main",
+     "repository": "xsuite/xtrack",
      "commit": "f09e0fbda37b",
-     "committed": "2026-10-29"
+     "committed": "2026-10-29",
+     "release": "v0.118.6"
     },
     "head": true
    }
@@ -786,8 +806,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -866,8 +888,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -947,8 +971,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1028,8 +1054,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1109,8 +1137,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1194,8 +1224,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1284,8 +1316,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1372,8 +1406,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1503,8 +1539,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1623,8 +1661,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1747,8 +1787,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1844,8 +1886,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1946,8 +1990,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2071,8 +2117,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2207,8 +2255,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2305,8 +2355,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2438,8 +2490,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2548,8 +2602,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2699,8 +2755,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2851,8 +2909,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2938,8 +2998,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3018,8 +3080,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3096,8 +3160,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3177,8 +3243,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3258,8 +3326,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3334,8 +3404,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3410,8 +3482,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3486,8 +3560,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3566,8 +3642,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3646,8 +3724,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xdeps main",
+    "repository": "xsuite/xdeps",
     "commit": "64847952ef3a",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": "v0.11.1"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3732,8 +3812,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xdeps main",
+    "repository": "xsuite/xdeps",
     "commit": "64847952ef3a",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": "v0.11.1"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3814,8 +3896,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3896,8 +3980,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3985,8 +4071,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4071,8 +4159,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4180,8 +4270,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4285,8 +4377,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4391,8 +4485,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4493,8 +4589,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4603,8 +4701,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4716,8 +4816,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4819,8 +4921,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4931,16 +5035,20 @@
    "date": "2026-11-06",
    "code": {
     "ref": "xtrack 0.118.2",
+    "repository": "xsuite/xtrack",
     "commit": "ad5e808cdc5b",
-    "committed": "2026-10-19"
+    "committed": "2026-10-19",
+    "release": "v0.118.2"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-06",
     "code": {
      "ref": "xtrack main",
+     "repository": "xsuite/xtrack",
      "commit": "f09e0fbda37b",
-     "committed": "2026-10-29"
+     "committed": "2026-10-29",
+     "release": "v0.118.6"
     },
     "head": true
    }
@@ -5061,16 +5169,20 @@
    "date": "2026-11-06",
    "code": {
     "ref": "xtrack 0.118.2",
+    "repository": "xsuite/xtrack",
     "commit": "ad5e808cdc5b",
-    "committed": "2026-10-19"
+    "committed": "2026-10-19",
+    "release": "v0.118.2"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-06",
     "code": {
      "ref": "xtrack main",
+     "repository": "xsuite/xtrack",
      "commit": "f09e0fbda37b",
-     "committed": "2026-10-29"
+     "committed": "2026-10-29",
+     "release": "v0.118.6"
     },
     "head": true
    }
@@ -5202,8 +5314,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5291,8 +5405,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5374,8 +5490,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "223b4fa134a1",
-    "committed": "2026-10-16"
+    "committed": "2026-10-16",
+    "release": "v0.27.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5455,8 +5573,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "223b4fa134a1",
-    "committed": "2026-10-16"
+    "committed": "2026-10-16",
+    "release": "v0.27.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5542,8 +5662,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "223b4fa134a1",
-    "committed": "2026-10-16"
+    "committed": "2026-10-16",
+    "release": "v0.27.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5622,8 +5744,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "223b4fa134a1",
-    "committed": "2026-10-16"
+    "committed": "2026-10-16",
+    "release": "v0.27.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5702,8 +5826,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "223b4fa134a1",
-    "committed": "2026-10-16"
+    "committed": "2026-10-16",
+    "release": "v0.27.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5811,8 +5937,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5892,8 +6020,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xcoll main",
+    "repository": "xsuite/xcoll",
     "commit": "64e13f596c87",
-    "committed": "2026-10-01"
+    "committed": "2026-10-01",
+    "release": "v0.12.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5969,8 +6099,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xcoll main",
+    "repository": "xsuite/xcoll",
     "commit": "64e13f596c87",
-    "committed": "2026-10-01"
+    "committed": "2026-10-01",
+    "release": "v0.12.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6046,8 +6178,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xcoll main",
+    "repository": "xsuite/xcoll",
     "commit": "64e13f596c87",
-    "committed": "2026-10-01"
+    "committed": "2026-10-01",
+    "release": "v0.12.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6123,8 +6257,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xcoll main",
+    "repository": "xsuite/xcoll",
     "commit": "64e13f596c87",
-    "committed": "2026-10-01"
+    "committed": "2026-10-01",
+    "release": "v0.12.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6200,8 +6336,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6278,8 +6416,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6361,8 +6501,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xcoll main",
+    "repository": "xsuite/xcoll",
     "commit": "64e13f596c87",
-    "committed": "2026-10-01"
+    "committed": "2026-10-01",
+    "release": "v0.12.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6438,8 +6580,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xcoll main",
+    "repository": "xsuite/xcoll",
     "commit": "64e13f596c87",
-    "committed": "2026-10-01"
+    "committed": "2026-10-01",
+    "release": "v0.12.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6515,8 +6659,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xcoll main",
+    "repository": "xsuite/xcoll",
     "commit": "64e13f596c87",
-    "committed": "2026-10-01"
+    "committed": "2026-10-01",
+    "release": "v0.12.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6598,8 +6744,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6679,8 +6827,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6771,8 +6921,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6864,8 +7016,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6959,8 +7113,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7076,8 +7232,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7203,8 +7361,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "xcoll 0.12.5",
+    "repository": "xsuite/xcoll",
     "commit": "64e13f596c87",
-    "committed": "2026-10-01"
+    "committed": "2026-10-01",
+    "release": "v0.12.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7322,8 +7482,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7427,8 +7589,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7539,8 +7703,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7646,8 +7812,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "xcoll 0.12.5",
+    "repository": "xsuite/xcoll",
     "commit": "64e13f596c87",
-    "committed": "2026-10-01"
+    "committed": "2026-10-01",
+    "release": "v0.12.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7750,8 +7918,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xfields main",
+    "repository": "xsuite/xfields",
     "commit": "3f06c8791ea5",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.27.7"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7829,8 +7999,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xpart main",
+    "repository": "xsuite/xpart",
     "commit": "2633e528018a",
-    "committed": "2026-10-16"
+    "committed": "2026-10-16",
+    "release": "v0.23.23"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7906,8 +8078,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7982,8 +8156,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8063,8 +8239,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8144,8 +8322,10 @@
    "date": "2026-10-26",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "3cd8bfca8d7c",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.118.4"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8225,8 +8405,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xdeps main",
+    "repository": "xsuite/xdeps",
     "commit": "64847952ef3a",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": "v0.11.1"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8298,8 +8480,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xpart main",
+    "repository": "xsuite/xpart",
     "commit": "2633e528018a",
-    "committed": "2026-10-16"
+    "committed": "2026-10-16",
+    "release": "v0.23.23"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8376,8 +8560,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xpart main",
+    "repository": "xsuite/xpart",
     "commit": "2633e528018a",
-    "committed": "2026-10-16"
+    "committed": "2026-10-16",
+    "release": "v0.23.23"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8468,8 +8654,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xpart main",
+    "repository": "xsuite/xpart",
     "commit": "2633e528018a",
-    "committed": "2026-10-16"
+    "committed": "2026-10-16",
+    "release": "v0.23.23"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8569,8 +8757,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8682,8 +8872,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8773,8 +8965,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8908,8 +9102,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9000,8 +9196,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9087,8 +9285,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9194,8 +9394,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9309,8 +9511,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9407,16 +9611,20 @@
    "date": "2026-11-06",
    "code": {
     "ref": "xtrack 0.118.2",
+    "repository": "xsuite/xtrack",
     "commit": "ad5e808cdc5b",
-    "committed": "2026-10-19"
+    "committed": "2026-10-19",
+    "release": "v0.118.2"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-07",
     "code": {
      "ref": "xtrack main",
+     "repository": "xsuite/xtrack",
      "commit": "f09e0fbda37b",
-     "committed": "2026-10-29"
+     "committed": "2026-10-29",
+     "release": "v0.118.6"
     },
     "head": true
    }
@@ -9555,8 +9763,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9711,8 +9921,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9803,8 +10015,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xsuite main",
+    "repository": "xsuite/xsuite",
     "commit": "fb7df34faa78",
-    "committed": "2026-11-02"
+    "committed": "2026-11-02",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -9960,8 +10174,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -10094,8 +10310,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -10189,8 +10407,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -10303,8 +10523,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -10427,8 +10649,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -10541,8 +10765,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "xtrack main",
+    "repository": "xsuite/xtrack",
     "commit": "f09e0fbda37b",
-    "committed": "2026-10-29"
+    "committed": "2026-10-29",
+    "release": "v0.118.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -10628,8 +10854,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xobjects main",
+    "repository": "xsuite/xobjects",
     "commit": "dfe34ae824bd",
-    "committed": "2026-10-16"
+    "committed": "2026-10-16",
+    "release": "v0.7.2"
    },
    "head": true,
    "head_not_reproduced": null
@@ -10709,8 +10937,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "xobjects main",
+    "repository": "xsuite/xobjects",
     "commit": "dfe34ae824bd",
-    "committed": "2026-10-16"
+    "committed": "2026-10-16",
+    "release": "v0.7.2"
    },
    "head": true,
    "head_not_reproduced": null

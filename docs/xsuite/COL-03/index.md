@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xfields main (`223b4fa`, head build) |
+| Last reproduced | 2026-10-26 on xfields release [v0.27.5](https://github.com/xsuite/xfields/tree/v0.27.5) (`223b4fa`) |
 | Tags | <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |
 | Source | [`p2m_rectmesh3d_xparticles`, charge_deposition.h:120–136](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/fieldmaps/interpolated_src/charge_deposition.h#L120-L136)<br>[`update_from_particles` API](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/fieldmaps/interpolated.py#L311-L381)<br>[particle contract](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L216-L235) |
 

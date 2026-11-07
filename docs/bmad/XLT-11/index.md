@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [first multipole branch, util_programs/mad_to_bmad/madx_to_bmad.py:564–565](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L564-L565)<br>[unreachable array expansion, util_programs/mad_to_bmad/madx_to_bmad.py:629–637](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L629-L637)<br>[bmad/doc/attributes.tex:2045–2058](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L2045-L2058) |
 
 Importing a MAD-X multipole with an integrated-strength array produces invalid Bmad attributes. The importer leaves knl and ksl as array-valued fields instead of expanding them into individual multipole orders, so Bmad rejects the generated lattice. For knl = {0, 0, 0.8}, the required coefficient is k2l = 0.8; the output instead contains knl = 0,0,.8. An earlier multipole branch makes the array-expansion branch unreachable.

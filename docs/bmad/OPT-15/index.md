@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [transverse normalization, bmad/code/twiss_from_mat6.f90:50–58](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/twiss_from_mat6.f90#L50-L58)<br>[periodic dispersion solve, bmad/code/twiss_from_mat6.f90:108–130](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/twiss_from_mat6.f90#L108-L130)<br>[Bmad manual, “Dispersion Calculation”, `s:dispersion`, `dexds`, bmad/doc/optics.tex:381–417](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/optics.tex#L381-L417) |
 
 Enabling normalize_twiss in the periodic Twiss initializer at nonzero fractional momentum offset δ changes the physical dispersion by mixing normalized and ordinary coordinates. For the transverse one-turn matrix M₄ and momentum-source column c, the closed-orbit derivative D must solve (I − M₄)D = c in one coordinate system. A map at δ = 0.2 with D = (0.8, 0.13, 0.4, −0.05) returns (0.8951, 0.1170, 0.4223, −0.04347) when normalization is enabled, while disabling it recovers D.

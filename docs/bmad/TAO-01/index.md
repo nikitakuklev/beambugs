@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`tao_svd_func`, tao/code/tao_svd_optimizer_mod.f90:172–177](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_svd_optimizer_mod.f90#L172-L177)<br>[`tao_mrq_func`, tao/code/tao_lm_optimizer_mod.f90:213–217](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_lm_optimizer_mod.f90#L213-L217)<br>[geodesic `jacobian`, tao/code/tao_geodesic_lm_optimizer_mod.f90:204–210](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_geodesic_lm_optimizer_mod.f90#L204-L210)<br>[`tao_get_opt_vars`, tao/code/tao_get_opt_vars.f90:44–72](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_get_opt_vars.f90#L44-L72)<br>[“Optimization Overview”, Eq. `m1`, tao/doc/optimization.tex:50–65](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/optimization.tex#L50-L65) |
 

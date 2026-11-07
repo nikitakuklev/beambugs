@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Issue | [[gh:https://github.com/bmad-sim/bmad-ecosystem/issues/2214]] |
 | Pull request | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2215]], fix |
 | Source | [csr_bin_kicks, bmad/space_charge/csr_and_space_charge_mod.f90:769–770](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L769-L770)<br>[lsc_kick_params_calc, bmad/space_charge/csr_and_space_charge_mod.f90:1141–1142](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1141-L1142)<br>[csr_and_sc_apply_kicks, bmad/space_charge/csr_and_space_charge_mod.f90:1609–1610](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1609-L1610)<br>[classical_radius, bmad/code/classical_radius.f90:14–23](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/classical_radius.f90#L14-L23) |

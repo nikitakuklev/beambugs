@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [Klein–Nishina total, CBScat.c:447–456](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/CBScat.c#L447-L456)<br>[per-electron total, CBScat.c:217](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/CBScat.c#L217)<br>[scatter probability, CBScat.c:289–300](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/CBScat.c#L289-L300)<br>[cross-section choices, cbscat.tex:52–62](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/cbscat.tex#L52-L62)<br>[positive wavelength, CBScat.c:113–114](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/CBScat.c#L113-L114) |
 
 When Elegant's CBSCAT element, which models laser Compton scattering, uses its default Klein–Nishina cross section, the total cross section it evaluates just above ε = 10⁻⁶ can be negative, where ε is the laser photon energy in the electron rest frame divided by mₑc². Cancellation between large terms destroys the result, and then no electron scatters. For 25 mₑc electrons, a head-on laser and a Thomson probability of 0.025, the code's total is −28.95 times the Thomson value at ε = 1.200×10⁻⁶ instead of 1.000, and none of 24000 electrons scatters instead of about 600; at ε = 5.000×10⁻⁶ the ratio is 0.6069 and 345 scatter.

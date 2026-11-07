@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [`trackKickMap`, kickmap.c:92–99](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/kickmap.c#L92-L99)<br>[`radCoef` and `isrCoef`, kickmap.c:60–61](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/kickmap.c#L60-L61)<br>[parameter dictionary, track_data.c:3469–3470](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3469-L3470)<br>[UKICKMAP coefficients, ukickmap.c:56–59](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ukickmap.c#L56-L59)<br>[GKICKMAP manual, gkickmap.tex:1–22](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/gkickmap.tex#L1-L22) |
 
 Selecting ISR = 1 with SYNCH_RAD = 0 in GKICKMAP also applies classical radiation loss, despite the switches independently selecting excitation and mean loss. In a one-slice, 0.6 m map at reference momentum p₀ = 4200 mₑc, with entrance slope x′ = 0.004 and horizontal slope kick 0.025, the unwanted relative-momentum loss is 1.450×10⁻⁷. A separate small-angle radiation calculation agrees with the classical-only control within 10⁻¹⁶, while the radiation-free control preserves momentum. With paired random seeds, the ISR-only and both-enabled runs give identical particle momenta instead of differing by that loss.

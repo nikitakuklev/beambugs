@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-07 on xsuite main (`fb7df34`, head build) |
+| Last reproduced | 2026-11-07 on xsuite commit [`fb7df34`](https://github.com/xsuite/xsuite/commit/fb7df34faa78), committed 2026-11-02 |
 | Source | [particle-coordinate definitions and exact conversions, xtrack.tex:334–358](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L334-L358)<br>[small-offset expansion, lines 383–390](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L383-L390)<br>[physics_man.tex:143](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/physics_man.tex#L143)<br>[particles.py:1740–1777](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L1740-L1777) |
 
 The physics manual’s exact conversion from normalized energy deviation pτ to particle speed β uses 1−β₀ where 1−β₀² is required, with β₀ the reference speed in units of c. At pτ = 0 and β₀ = 0.6000, the printed equation gives β = 0.7746 instead of 0.6000, an excess of 29.10%. The relativistic mass shell requires the squared reference speed and agrees with native particle state. The error is confined to the documented equation; native energy-to-speed conversion is correct.

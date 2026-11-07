@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [track1_bunch dispatch, bmad/multiparticle/beam_mod.f90:283–320](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_mod.f90#L283-L320)<br>[mesh-kick dispatch, bmad/space_charge/csr_and_space_charge_mod.f90:1646–1650](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1646-L1650)<br>[CSR and Space Charge Methods, s:csr.sc.meth, bmad/doc/methods.tex:648–650](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L648-L650) |
 
 Selecting cathode_fft_3d with s-based tracking silently transports the bunch without space charge. This method is documented for time-based tracking only, so the incompatible configuration should be rejected. In a 1 cm drift, the exit position–momentum covariance is 1.000e−13 m and the longitudinal covariance is zero, exactly matching space charge off. The ordinary FFT method gives nonzero collective kicks for the same bunch.

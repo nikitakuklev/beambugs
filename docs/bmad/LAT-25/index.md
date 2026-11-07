@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`makeup_control_slave` buffers, bmad/modules/bookkeeper_mod.f90:1564–1567](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bookkeeper_mod.f90#L1564-L1567)<br>[`overlay_change_this` append, bmad/modules/bookkeeper_mod.f90:1815–1829](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bookkeeper_mod.f90#L1815-L1829) |
 
 An overlay assigning more than twenty distinct real attributes of one element overruns fixed bookkeeping buffers. Assigning twenty normal multipole coefficients of a quadrupole succeeds, while adding the valid twenty-first coefficient crashes during lattice parsing. Bounds checking identifies an access to element 21 of a twenty-element pointer array. All twenty-one attributes are valid and should receive the requested value 0.001 without memory corruption.

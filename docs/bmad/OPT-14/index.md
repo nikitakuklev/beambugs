@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`twiss_from_mat6`, bmad/code/twiss_from_mat6.f90:110–139](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/twiss_from_mat6.f90#L110-L139)<br>[Bmad manual, “Dispersion Calculation”, `s:dispersion`, `dexds`, bmad/doc/optics.tex:381–417](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/optics.tex#L381-L417) |
 
 Calling the periodic Twiss initializer with vertical reference-orbit momentum gives incorrect vertical and b-mode dispersion slopes. The documented paraxial derivative is η′/q − pᵧ/q², where q = 1 + δ, δ is fractional momentum offset, pᵧ is vertical momentum divided by reference momentum, and η′ = ∂pᵧ/∂δ. At δ = 0.2, pᵧ = −0.02 and η′ = −0.05, both slopes are −0.008333 instead of −0.02778; horizontal and a-mode slopes agree with the derivative.

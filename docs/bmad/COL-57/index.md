@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`randomize_lr_wake_frequencies`, bmad/multiparticle/wake_mod.f90:12–49](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L12-L49) |
 
 Calling the long-range wake frequency randomizer on an element without a wake crashes before returning its status. The routine’s contract permits this input and requires a normal return with the status false. An initialized element with no wake receives a segmentation fault, while an allocated wake with zero frequency spread returns normally.

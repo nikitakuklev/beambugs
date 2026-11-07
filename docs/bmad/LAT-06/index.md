@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`ran_uniform_scalar`, sim_utils/math/random_mod.f90:939–970](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/math/random_mod.f90#L939-L970)<br>[Ziggurat lazy initialization, sim_utils/math/random_mod.f90:250–259](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/math/random_mod.f90#L250-L259)<br>[exact-Gaussian lazy initialization and rejection loop, sim_utils/math/random_mod.f90:339–379](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/math/random_mod.f90#L339-L379)<br>[`this_seed_put`, sim_utils/math/random_mod.f90:813–837](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/math/random_mod.f90#L813-L837)<br>[`pointer_to_ran_state`, sim_utils/math/random_mod.f90:1129–1136](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/math/random_mod.f90#L1129-L1136) |
 

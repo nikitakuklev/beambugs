@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [write_lattice_mad_format initial dispersion, bmad/output/write_lattice_mad_format.f90:1133–1139](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L1133-L1139)<br>[“MAD and Bmad Energy-Time Phase Space Coordinates” (`energy.phase.space`), bmad/doc/phase-space.tex:227–240](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/phase-space.tex#L227-L240) |
 
 Exporting initial dispersion at finite reference speed copies Bmad derivatives with respect to relative momentum into MAD-X fields defined with respect to PT, the normalized energy offset. At the reference orbit the chain rule requires division by β₀, the reference speed divided by light speed. For a 1 MeV/c electron in a 0.5 m drift, the imported horizontal dispersion becomes 0.7569 m instead of 0.8500 m, an error of 10.95%. Scaling the four exported initial dispersions by 1/β₀ restores the independent drift result.

@@ -12,7 +12,7 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-06 on Elegant master (`0355dd6`, committed 2026-11-03) |
+| Last reproduced | 2026-11-06 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [src/track_data.c:3954–3979](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3954-L3979)<br>[src/shrfdf.c:65–90](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/shrfdf.c#L65-L90)<br>[doc/shrfdf.tex:1–31](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/shrfdf.tex#L1-L31) |
 
 SHRFDF labels PHASE0 through PHASE9 in Hz although they are angular offsets in radians. Each phase is added directly to the harmonic argument before taking its sine or cosine. Independent scans of all ten modes show 2π periodicity and a crest at π/2; an input of 90 gives 0.8940 of crest rather than the degree-based crest. The generated parameter dictionary repeats the incorrect unit, while PERIOD_PHASE is correctly labelled RAD. Tracking already uses radians consistently.

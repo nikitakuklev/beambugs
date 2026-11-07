@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [bunch_struct index comment, bmad/modules/bmad_struct.f90:1130–1142](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bmad_struct.f90#L1130-L1142)<br>[init_beam_distribution, bmad/multiparticle/beam_utils.f90:253–275](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L253-L275)<br>[bunch_init_end_calc, bmad/multiparticle/beam_utils.f90:1985–1989](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1985-L1989)<br>[init_bunch_distribution argument contract, bmad/multiparticle/beam_utils.f90:318–322](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L318-L322) |
 
 Initializing a beam assigns stored bunch indices starting at zero, while the bunch structure comment says the head bunch has index one. The initializer uses the same zero-based value to set the bunch time offset. Three bunches separated by 4 ns have stored indices 0, 1 and 2 and time offsets 0, 4 and 8 ns. Documentation should distinguish the one-based array position from the stored index and timing convention.

@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [make_mat6_high_energy_space_charge, bmad/space_charge/high_energy_space_charge_mod.f90:248–257](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/high_energy_space_charge_mod.f90#L248-L257)<br>[track1_high_energy_space_charge, bmad/space_charge/high_energy_space_charge_mod.f90:187–208](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/high_energy_space_charge_mod.f90#L187-L208) |
 
 With linear high-energy space-charge tracking enabled for a tilted, anisotropic Gaussian bunch, the transfer matrix rotates the kick opposite to particle tracking. The matrix must equal the derivative of the particle map. At a tilt of 0.37 rad, both tracked transverse cross-plane responses are +2.118e−6 m⁻¹ while the matrix gives −2.118e−6 m⁻¹. An independently rotated Gaussian response agrees with tracking, and the matrix diagonals agree.

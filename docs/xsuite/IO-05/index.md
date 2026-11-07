@@ -12,7 +12,7 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
+| Last reproduced | 2026-10-26 on xtrack release [v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4) (`3cd8bfc`) |
 | Source | [`Alignment`, mad_loader.py:403–420](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/mad_loader.py#L403-L420)<br>[`make_composite_element`, lines 723–729](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/mad_loader.py#L723-L729) |
 
 Xtrack's MAD-X importer (via cpymad, the Python interface to MAD-X) adds a bend's `EALIGN` roll `DPSI` to its design tilt in `rot_s_rad`, rotating the reference bending plane instead of applying an alignment roll in the unchanged design frame. A pure sector-bend roll must produce vertical steering, as MAD-X and an Xtrack control using `rot_s_rad_no_frame` establish. For a 1 m `SBEND` of angle 0.001 rad with `DPSI` = 0.01 rad, zero design tilt and beam-direction flag `bv = 1`, the exit vertical momentum `py` is below 8×10⁻²¹ instead of −1.000×10⁻⁵, and the exit `y` is 3.253×10⁻²¹ m instead of −5.000×10⁻⁶ m. MAD-X sector-bend roll-error studies lose essentially all this vertical steering.

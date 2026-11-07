@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
+| Last reproduced | 2026-10-26 on xtrack release [v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4) (`3cd8bfc`) |
 | Source | [`get_R_matrix`, transfer_matrices.py:54–69](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/transfer_matrices.py#L54-L69)<br>[reference-field copy](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/build_particles.py#L301-L313) |
 
 The finite-difference transfer matrix (`get_R_matrix`) and open Twiss propagation drop the supplied orbit's clock `time_s`, resetting the RF clock of an absolute-time cavity. Shifting the clock while compensating with the cavity phase leaves tracking and its derivatives unchanged, as the analytic RF focusing and central differences that keep the full particle state confirm. For a 1 GeV/c proton and a 1 MV, 100 MHz cavity with a compensated clock phase of π/3 rad, the longitudinal focusing term, the change of momentum coordinate `pzeta` per longitudinal offset `zeta`, is −1.970 × 10⁻³ m⁻¹ instead of −3.941 × 10⁻³ m⁻¹, and open Twiss generates `pzeta` = −1.188 × 10⁻³ instead of zero. Zero-clock controls pass.

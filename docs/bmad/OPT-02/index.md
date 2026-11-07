@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [radiation_map_setup, bmad/modules/radiation_mod.f90:231–249](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/radiation_mod.f90#L231-L249) |
 
 Constructing a radiation map for a bend with exact multipoles silently switches exact multipoles off on the original element. An auxiliary map calculation must preserve the original element’s field model. In a 2 m combined-function bend at 3 GeV, identical radiation-disabled tracking before and after setup changes the exit horizontal position from 1.403 mm to 1.420 mm. The 16.91 μm shift follows a change from horizontally pure exact multipoles to the approximate field model.

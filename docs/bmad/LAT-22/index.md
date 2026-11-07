@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [hdf5_read_beam header, bmad/hdf5/hdf5_read_beam.f90:70–78](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L70-L78)<br>[hdf5_read_grid_field header, bmad/hdf5/hdf5_read_grid_field.f90:49–55](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_grid_field.f90#L49-L55)<br>[openPMD 1.1.0 root-header contract](https://github.com/openPMD/openPMD-standard/blob/1.1.0/STANDARD.md#hierarchy-of-the-data-file)<br>[upcoming 2.0 draft](https://github.com/openPMD/openPMD-standard/blob/upcoming-2.0.0/STANDARD.md#hierarchy-of-the-data-file) |
 

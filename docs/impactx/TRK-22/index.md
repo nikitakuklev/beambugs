@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-07 on ImpactX development (`f9c2a82`, head build) |
+| Last reproduced | 2026-11-07 on ImpactX commit [`f9c2a82`](https://github.com/BLAST-ImpactX/impactx/commit/f9c2a82e24b7), committed 2026-11-05 |
 | Tags | <span class="bb-tag">known-limitation</span> <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1391]] |
 | Discussed in | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1195]] |

@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [radiation_integrals element dispatch, bmad/code/radiation_integrals.f90:458–491](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/radiation_integrals.f90#L458-L491)<br>[later wiggler dispatch, bmad/code/radiation_integrals.f90:514–539](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/radiation_integrals.f90#L514-L539)<br>[linac accumulation, bmad/code/radiation_integrals.f90:570–579](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/radiation_integrals.f90#L570-L579)<br>[Bmad manual, Synchrotron Radiation Integrals, bmad/doc/synchrotron-radiation.tex:283–295](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/synchrotron-radiation.tex#L283-L295) |
 
 Radiation-integral calculations skip sextupoles and octupoles when both steering attributes are zero, even if the supplied orbit passes through a nonzero field. The curvature integrals I₂ = ∫g²ds and I₃ = ∫|g|³ds must be positive on these displaced trajectories, where g is curvature. A 650 MeV/c electron entering a 6 cm sextupole with normalized strength K₂ = 160 m⁻³ at x = 8 mm gives zero for both integrals, instead of 1.570×10⁻⁶ m⁻¹ and 8.035×10⁻⁹ m⁻². Octupoles and magnet offsets show the same omission; on-axis and zero-strength controls return the correct zero.

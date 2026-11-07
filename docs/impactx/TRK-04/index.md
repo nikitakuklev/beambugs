@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
+| Last reproduced | 2026-10-29 on ImpactX commit [`fa0a43b`](https://github.com/BLAST-ImpactX/impactx/commit/fa0a43b9bb07), committed 2026-10-28 |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1731]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1732]], filed from this evidence |
 | Source | [`SoftQuad.H#L548-L555`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftQuad.H#L548-L555)<br>[`SoftSol.H#L648-L655`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L648-L655)<br>[`RFCavity.H#L604-L611`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/RFCavity.H#L604-L611)<br>[`tracking/common.H#L168-L170`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/tracking/common.H#L168-L170) |

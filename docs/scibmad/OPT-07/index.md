@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
+| Last reproduced | 2026-10-31 on SciBmad commit [`ae9423d`](https://github.com/bmad-sim/SciBmad.jl/commit/ae9423d703b4), committed 2026-10-28 |
 | Source | [`src/twiss/twiss_operators.jl:649-654`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L649-L654)<br>[`twiss_operators.jl:691-696`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L691-L696)<br>[`twiss_operators.jl:645-646`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L645-L646)<br>[`NonlinearNormalForm.jl/src/sagan_rubin.jl:48-50`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/sagan_rubin.jl#L48-L50) |
 
 With RF on, a `twiss` run with knob parameters and a maximum order above 1 omits the factor sin(2πφ₃), with φ₃ the synchrotron phase advance in turns, from `slip`, `etac` and `alphac`. Adding an unused knob must preserve each constant value, and in a ring without dispersion the tracked one-turn M₅₆/β₀ (β₀ the reference speed divided by c) agrees with the slip computed without knobs. For 1 GeV/c protons in a thin-quadrupole cell with a 2 MV, harmonic-1 cavity, the unused knob changes `slip` from 1.604 m to 17.87 m and `etac` from −0.4678 to −5.214. Order-1 runs with knobs take the separate matrix branch, which keeps the sine.

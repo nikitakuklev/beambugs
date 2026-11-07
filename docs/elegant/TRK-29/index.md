@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [B branch in tracking, do_tracking.c:2359–2375](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2359-L2375)<br>[`updateSpinForSolenoid` strength choice, spinUpdate.c:194–197](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/spinUpdate.c#L194-L197)<br>[SOLE matrix, compute_matrices.c:1552–1558](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L1552-L1558)<br>[SOLE parameters, track_data.c:555–556](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L555-L556) |
 
 A SOLE solenoid given both a nonzero strength KS and a nonzero field B is tracked with the strength that B implies, while its matrix and Twiss output use KS; the parameter description says B is used only if KS is zero. For an electron at momentum 200 mₑc in a 0.65 m solenoid with KS = 0.9000 m⁻¹ and B = −0.02500 T (equivalent to KS = 0.07333 m⁻¹), the matrix output gives the documented transfer element R₁₁ = cos²(KS·L/2) = 0.9169, with L the length, but tracked particles follow R₁₁ = 0.9994. With spin tracking, an on-axis spin turns by 0.04772 rad instead of 0.5857 rad. Either parameter alone gives consistent tracking and optics.

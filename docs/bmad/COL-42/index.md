@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [strong-beam speed and encounter geometry, bmad/low_level/track_a_beambeam.f90:161–171](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_beambeam.f90#L161-L171)<br>[kinematic energy update, bmad/low_level/track_a_beambeam.f90:241–250](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_beambeam.f90#L241-L250)<br>[Bmad manual, unequal beam velocities, bmad/doc/elements.tex:407–412](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L407-L412)<br>[BeamBeam Tracking, equation dpz12, bmad/doc/charged-tracking.tex:377–396](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L377-L396) |
 
 For unequal beam speeds, the beam–beam tracker uses the equal-speed coefficient in its kinematic longitudinal kick. The documented coefficient is 1/[2(1 + βw/βs)(1 + δ)], where βw and βs are the weak- and strong-beam speeds in units of c and δ is relative momentum; tracking uses 1/[4(1 + δ)]. At βw = √3/2 and βs = 1/2, the longitudinal kick is 36.60% too large. Equal-speed beams recover the documented coefficient.

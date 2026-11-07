@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-28 on ImpactX 26.10 (`615921c`, committed 2026-10-05); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Last reproduced | 2026-10-28 on ImpactX release [26.10](https://github.com/BLAST-ImpactX/impactx/tree/26.10) (`615921c`) |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1759]], fix |
 | Source | [`Multipole.H#L54-L60`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/Multipole.H#L54-L60)<br>[`ExactMultipole.H#L307-L322`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactMultipole.H#L307-L322)<br>[multipole contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1162-L1170) |
 

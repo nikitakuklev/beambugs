@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`bunch_init_end_calc`, bmad/multiparticle/beam_utils.f90:1985–2010](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1985-L2010)<br>[`bunch_struct`, bmad/modules/bmad_struct.f90:1127–1142](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bmad_struct.f90#L1127-L1142)<br>[`bunch_finalizer`, bmad/multiparticle/beam_file_io.f90:1072–1088](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L1072-L1088) |
 
 Initializing a beam from a particle file can return live counts and charge that disagree with the final particles. An ASCII bunch with states alive, lost, alive and final charges 2, 4, 6 returns three live particles and live charge 12 instead of two and 8. An all-live HDF5 bunch rescaled from total charge 6 to 12 keeps live charge 6. Live metadata must be computed from the final charges of particles whose state is alive.

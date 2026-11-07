@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [setup_high_energy_space_charge_calc, bmad/space_charge/high_energy_space_charge_mod.f90:132–143](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/high_energy_space_charge_mod.f90#L132-L143) |
 
 A branch containing one tracking element receives only half of its prescribed high-energy space-charge interaction length. The last-element rule overwrites the first-element rule, leaving L/2 instead of the full branch length L. For a 0.6 m drift, the kick constant is 5.095e−10 instead of 1.019e−9, a factor-of-two underestimate.

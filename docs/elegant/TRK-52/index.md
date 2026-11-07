@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-06 on Elegant master (`0355dd6`, committed 2026-11-03) |
+| Last reproduced | 2026-11-06 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [src/track_data.c:1010–1013](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1010-L1013)<br>[src/do_tracking.c:2010–2028](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2010-L2028)<br>[src/compute_matrices.c:1936–1943](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L1936-L1943)<br>[src/do_tracking.c:3866–3905](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L3866-L3905)<br>[src/multipole.c:791–795](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L791-L795) |
 
 Setting ENERGY.CENTRAL_ENERGY to a total Lorentz factor γ makes particle tracking select the reference momentum for γ + 1, while the parameter definition and optics use γ. For electrons at γ = 5.000, tracking selects 5.916 mc instead of 4.899 mc, a 20.76% excess. A later ENERGY with MATCH_PARTICLES = 1 transfers this error to the beam; a following 0.7000 m drift then takes 2.368 ns instead of 2.383 ns. Explicit CENTRAL_MOMENTUM gives the correct result, while rebasing alone preserves particle momentum and field-free flight time.

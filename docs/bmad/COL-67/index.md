@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [full-current equilibrium calculation, bsim/ibs_ring/ibs_ring.f90:238–244](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L238-L244)<br>[natural-emittance output contract and rate calls, bsim/ibs_ring/ibs_ring.f90:277–292](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L277-L292)<br>[zero-current inputs and saved mode, bsim/ibs_ring/ibs_ring.f90:181–214](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L181-L214)<br>[ibs_equib_der mutates element beam sizes, bmad/multiparticle/ibs_mod.f90:296–339](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L296-L339) |
 
 When ibs_ring uses its derivative method to find equilibrium, its initial growth-rate output uses the equilibrium beam sizes instead of the specified natural, zero-current values. In a 0.001 mA example, horizontal and vertical emittances exceed their requested natural values by 1.523% and 12.39%. At the same population, the first element's vertical growth rate is 2601 s⁻¹ instead of 3025 s⁻¹, 14.01% low. Evaluating the rate kernel with the requested natural beam sizes establishes the expected result.

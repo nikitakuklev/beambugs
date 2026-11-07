@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [csr_bin_particles deposition and derivatives, bmad/space_charge/csr_and_space_charge_mod.f90:513–578](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L513-L578)<br>[csr_bin_kicks derivative input, bmad/space_charge/csr_and_space_charge_mod.f90:776–788](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L776-L788)<br>[Bmad manual, 1_Dim CSR Calculation, s:csr.1d, bmad/doc/multiparticle.tex:398–411](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/multiparticle.tex#L398-L411) |
 
 When describing one-dimensional CSR binning, the manual says that particle density is deposited again into bins shifted by half a bin width. The implementation deposits triangular particle charge once and obtains the edge density derivative from adjacent bin-charge differences. A three-particle calculation agrees with that single deposition and finite-difference rule. The manual should describe the single charge array and the derivative used for the CSR kick.

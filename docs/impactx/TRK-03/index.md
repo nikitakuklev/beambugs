@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-27 on ImpactX 26.10 (`615921c`, committed 2026-10-05); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Last reproduced | 2026-10-27 on ImpactX release [26.10](https://github.com/BLAST-ImpactX/impactx/tree/26.10) (`615921c`) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1729]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1730]], filed from this evidence |
 | Source | [`DipEdge.H#L345-L353`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/DipEdge.H#L345-L353) |

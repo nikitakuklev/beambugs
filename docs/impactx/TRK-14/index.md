@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
+| Last reproduced | 2026-10-29 on ImpactX commit [`fa0a43b`](https://github.com/BLAST-ImpactX/impactx/commit/fa0a43b9bb07), committed 2026-10-28 |
 | Tags | <span class="bb-tag">extreme-regime</span> [?](../../methodology.md#tags) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1573]] |
 | Source | [`ChrUniformAcc.H#L172-L174`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrUniformAcc.H#L172-L174)<br>[`L204-L206`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrUniformAcc.H#L204-L206)<br>[`L273`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrUniformAcc.H#L273) |

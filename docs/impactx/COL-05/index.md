@@ -12,7 +12,7 @@ hide:
 | Priority | P5 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on ImpactX development (`f9c2a82`, head build) |
+| Last reproduced | 2026-11-05 on ImpactX commit [`f9c2a82`](https://github.com/BLAST-ImpactX/impactx/commit/f9c2a82e24b7), committed 2026-11-05 |
 | Tags | <span class="bb-tag">extreme-regime</span> [?](../../methodology.md#tags) |
 | Discussed in | [[gh:https://github.com/BLAST-WarpX/warpx/pull/7178]]<br>[[gh:https://github.com/BLAST-ImpactX/impactx/pull/1621]] |
 | Source | [`PoissonSolve.cpp#L52-L61`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/PoissonSolve.cpp#L52-L61)<br>[`PoissonSolver.H#L270-L284`](https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/PoissonSolver.H#L270-L284)<br>[integrated Green function](https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/IntegratedGreenFunctionSolver.H#L83-L96)<br>[kick normalization](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/GatherAndPush.cpp#L98-L119)<br>[3D model contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2456-L2460)<br>[equation](https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/PoissonSolver.H#L157-L172) |

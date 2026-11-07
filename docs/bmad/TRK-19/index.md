@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [track_a_lcavity::this_energy_kick, bmad/low_level/track_a_lcavity.f90:354–364](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_lcavity.f90#L354-L364)<br>[Bmad Manual, LCavity, equation `dergl`, bmad/doc/elements.tex:3313–3318](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L3313-L3318)<br>[Bmad Manual, LCavity Tracking, equation `vkrq`, bmad/doc/charged-tracking.tex:1173–1179](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L1173-L1179)<br>[fringe_kick, bmad/low_level/track_a_lcavity.f90:269–276](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_lcavity.f90#L269-L276) |
 
 A positron tracked through an electron-reference linear cavity receives the electron energy-kick sign. The native body kick omits the tracked-to-reference charge ratio required by the cavity equation. In a thin 10 kV traveling-wave cavity at crest, a positron 10% above the 1 MeV/c reference gains 10.00 keV instead of losing 10.00 keV. The electron linear-cavity case and both charge signs in an RF cavity agree with the voltage law.

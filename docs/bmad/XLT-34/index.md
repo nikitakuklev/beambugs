@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`sad_ele_to_bmad`, zero-length QUAD/SEXT/OCT branches](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/sad_to_bmad/sad_to_bmad.py#L566-L591)<br>[the generic rotation rule](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/sad_to_bmad/sad_to_bmad.py#L183-L189)<br>[Bmad manual, “Sad_Mult”, `s:sad.mult`, rotation convention](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L5065-L5068)<br>[Bmad manual, “Magnetostatic Multipole Fields”, `s:mag.field`, equation `qlpbb`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/electromagnetic-fields.tex#L92-L116) |
 
 Importing a zero-length SAD QUAD, SEXT or OCT reverses the sense of its ROTATE angle. For a quadrupole with K1 = 0.5 m⁻¹ and ROTATE = 0.17 rad, a particle at (x, y) = (1, 2) mm receives normalized transverse momenta (pₓ, pᵧ) = (−0.8049, 0.7760) mrad instead of (−0.1379, 1.109) mrad. SAD’s rotation requires the negative angle in Bmad’s per-order tilt. Finite-length imports and equivalent skew MULT inputs use the correct convention, exposing the zero-length branch’s sign reversal.

@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on NonlinearNormalForm main (`7e40539`, head build) |
+| Last reproduced | 2026-10-29 on NonlinearNormalForm release [v0.5.3](https://github.com/bmad-sim/NonlinearNormalForm.jl/tree/v0.5.3) (`7e40539`) |
 | Source | [`src/vectorfield.jl:176-177`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L176-L177)<br>[`src/map.jl:387-388`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L387-L388)<br>[`vectorfield.jl:164-169`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L164-L169)<br>[`src/set.jl:56-84`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/set.jl#L56-L84) |
 
 NonlinearNormalForm's `VectorField`, `DAMap` and `TPSAMap` keyword constructors allocate spin storage when given `q_map`, a matrix of linear quaternion coefficients, but leave those coefficients zero unless the constant quaternion `q` is also given. With explicit orbital rays and map dimensions, requesting (q1[x], q3[p]) = (0.375, −0.125) returns (0, 0) in all three constructors. An explicit zero `q` or a direct `setquat!` call preserves both coefficients exactly. A pure linear `VectorField` spin generator legitimately has a zero constant quaternion, so this is a genuine spin-initialization failure. The map tests establish the omitted coefficients without asserting that a zero constant quaternion represents a physical spin rotation.

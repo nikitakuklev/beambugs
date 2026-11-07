@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`7514db3`](https://github.com/rtsoliday/elegant/commit/7514db36f764), committed 2026-11-04 |
 | Source | [declaration, csbend.c:2626](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2626)<br>[Makefile, Makefile:230](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/Makefile#L230)<br>[Makefile.mpi, Makefile.mpi:187](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/Makefile.mpi#L187)<br>[cleanup, csbend.c:4042–4055](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4042-L4055)<br>[IGF allocation, csbend.c:3447–3452](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3447-L3452)<br>[IGF, track_data.c:2071](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2071) |
 
 In the default build, a CSRCSBEND with IGF=1 frees its integrated-Green-function arrays at exit but keeps the static pointers to them, so the next CSRCSBEND of the run reallocates or frees the released memory again. For 5001 electrons in a 0.8 m, 0.4 rad bend with 128 bins, one step through one IGF bend completes, but a second step, a second pass, a second IGF bend or a following CSRCSBEND without IGF each abort with a double free, and Valgrind reports the invalid realloc or free. A single traversal of one IGF bend with no later CSRCSBEND is unaffected.

@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">experimental</span> <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |
 | Source | [track1_bunch_csr3d kick, bmad/space_charge/csr_and_space_charge_mod.f90:2005–2019](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L2005-L2019)<br>[experimental status and sbend restriction, bmad/space_charge/csr_and_space_charge_mod.f90:1909–1922](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1909-L1922)<br>[FFT space-charge clock update, bmad/space_charge/csr_and_space_charge_mod.f90:1737–1741](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1737-L1741)<br>[Bmad manual, Charged Particle Phase Space Coordinates, zbctt and zbbzb, bmad/doc/phase-space.tex:81–120](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/phase-space.tex#L81-L120) |
 

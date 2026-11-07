@@ -12,7 +12,7 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [ibs_matrix_C argument comments, bmad/multiparticle/envelope_mod.f90:720–728](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/envelope_mod.f90#L720-L728)<br>[beam_envelope_ibs argument comments, bmad/multiparticle/envelope_mod.f90:758–766](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/envelope_mod.f90#L758-L766)<br>[tail-cut impact parameter, bmad/multiparticle/envelope_mod.f90:909–918](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/envelope_mod.f90#L909-L918)<br>[tau_a comment, bmad/multiparticle/ibs_mod.f90:10–12](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L10-L12)<br>[driver damping-time calculation, bsim/envelope_ibs/envelope_ibs.f90:210–216](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/envelope_ibs/envelope_ibs.f90#L210-L216)<br>[longest-mode choice and call, bsim/envelope_ibs/envelope_ibs.f90:239–252](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/envelope_ibs/envelope_ibs.f90#L239-L252) |
 

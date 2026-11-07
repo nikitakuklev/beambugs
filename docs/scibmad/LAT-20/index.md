@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-22 on bmad-ecosystem 20261020-0 (`19b8afb`, committed 2026-10-20) |
+| Last reproduced | 2026-10-22 on bmad-ecosystem release [20261020-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261020-0) (`19b8afb`) |
 | Tags | <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |
 | Source | [`bmad/bmad/output/write_lattice_scibmad_format.f90:875-879`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L875-L879)<br>[`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:13`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L13)<br>[`bmad/util_programs/bmad_to_scibmad/bmad_to_scibmad.f90:56-58`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/util_programs/bmad_to_scibmad/bmad_to_scibmad.f90#L56-L58) |
 

@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`tao_pipe_cmd`, `global` response, tao/code/tao_pipe_cmd.f90:4604–4612](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_pipe_cmd.f90#L4604-L4612)<br>[Tao manual, “pipe global” and “pipe global:optimization”, tao/doc/pipe-interface-commands.tex:1251–1286](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/pipe-interface-commands.tex#L1251-L1286) |
 
 A pipe global response contains two copies each of n_opti_cycles and n_opti_loops. Both copies have identical values, matching the corresponding optimization-only response. Parameter names must be unique within a response so clients can validate and consume its schema. Removing the repeated records preserves all parameter values.

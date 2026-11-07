@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-21 on Bmad 20261020-0 (`19b8afb`, committed 2026-10-20); not reproduced on Bmad 20261031-0 (`c4c629f`), 2026-11-05 |
+| Last reproduced | 2026-10-21 on Bmad release [20261020-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261020-0) (`19b8afb`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Issue | [[gh:https://github.com/bmad-sim/bmad-ecosystem/issues/2230]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2231]], filed from this evidence |

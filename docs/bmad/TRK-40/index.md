@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`track1` interior-start guard, bmad/code/track1.f90:177–192](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/track1.f90#L177-L192)<br>[`init_to_edge` and error contract, bmad/code/track1.f90:12–40](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/track1.f90#L12-L40) |
 
 With init_to_edge disabled, standard tracking accepts a live particle inside an element instead of reporting that this tracker requires an edge start. The guard compares the particle state with the inside location constant, so it cannot detect a live interior start. A particle starting halfway through a 1.2 m quadrupole receives the full 1.2 m map and returns no error. For entrance x = 1 mm and normalized horizontal momentum 0.0003, the returned x = 0.8394 mm and normalized horizontal momentum −0.0005447 match the full-element solution.

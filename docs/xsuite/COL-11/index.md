@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xfields main (`3f06c87`, head build) |
+| Last reproduced | 2026-10-29 on xfields release [v0.27.7](https://github.com/xsuite/xfields/tree/v0.27.7) (`3f06c87`) |
 | Source | [`ElectronLensInterpolated_track_local_particle`, electronlens_interpolated.h:46–57](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/electronlens_src/electronlens_interpolated.h#L46-L57) |
 
 `ElectronLensInterpolated` omits the inverse particle-speed factor from the transit time and uses the reference speed throughout, so kicks are too small by the factor β₀, the reference speed over c, already at zero relative momentum deviation δ. Integrating the Lorentz force of the counter-propagating electrons over the transit time L/(βc), with the same stored field derivative, gives the correct impulse. For a 0.6 A, 15 kV, 0.8 m lens and a 600 MeV/c proton (β₀ = 0.5387), `px` is −3.870 × 10⁻⁵ instead of −7.184 × 10⁻⁵, and at δ = 0.25 the kick stays unchanged instead of becoming 0.8784 times the reference kick.

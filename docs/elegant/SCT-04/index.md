@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [collision slice, matter.c:232–240](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L232-L240)<br>[no-collision slice, matter.c:241–245](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L241-L245)<br>[multiple-scattering branch, matter.c:197–201](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L197-L201)<br>[slice model, matter.tex:21–37](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/matter.tex#L21-L37)<br>[MATTER parameters, track_data.c:2137–2138](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2137-L2138) |
 
 When MATTER uses single scattering in a finite-length target, each slice containing a collision omits the transverse drift from the slope entering that slice. Correct transport must include that slope times the slice length, in addition to the displacement from the scattering kick. In a one-slice, 0.01 m helium target, shifting the incoming horizontal and vertical slopes by 0.002 and −0.003 leaves all scattered electrons' exit positions unchanged, instead of shifting them by 20.00 µm and −30.00 µm; unscattered electrons drift correctly. Earlier kicks can also expose the error in later slices.

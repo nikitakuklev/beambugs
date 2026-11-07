@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [lsc_kick_params_calc, bmad/space_charge/csr_and_space_charge_mod.f90:1288–1320](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1288-L1320)<br>[Slice Space Charge Calculation, s:sc.slice / kelsz, bmad/doc/multiparticle.tex:438–474](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/multiparticle.tex#L438-L474) |
 
 With transverse dependence enabled for slice longitudinal space charge, changing the interaction length changes how the longitudinal kick depends on transverse position in a frozen bunch. The kick per metre at a 1 mm horizontal displacement is −5.174e−4, −5.757e−4 and −5.816e−4 m⁻¹ for steps of 0.001, 0.01 and 0.1 m. It should be independent of step length, as the on-axis control is. Four derivative primitives omit the normalization carried by the on-axis kick, breaking the scaling of the rational approximation.

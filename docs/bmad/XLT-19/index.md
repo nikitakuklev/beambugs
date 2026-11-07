@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [ele_type_translate mappings, util_programs/elegant_to_bmad/elegant_to_bmad.py:79–169](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/elegant_to_bmad/elegant_to_bmad.py#L79-L169)<br>[parse_element lookup and serialization, util_programs/elegant_to_bmad/elegant_to_bmad.py:567–600](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/elegant_to_bmad/elegant_to_bmad.py#L567-L600)<br>[Bmad key lookup and rejection, bmad/parsing/bmad_parser.f90:733–752](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/bmad_parser.f90#L733-L752)<br>[announces beta status](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/elegant_to_bmad/elegant_to_bmad.py#L993) |
 

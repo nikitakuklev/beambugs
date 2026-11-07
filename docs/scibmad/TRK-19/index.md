@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on BeamTracking main (`0bf3585`, head build) |
+| Last reproduced | 2026-10-29 on BeamTracking commit [`0bf3585`](https://github.com/bmad-sim/BeamTracking.jl/commit/0bf3585fdc9c), committed 2026-10-28 |
 | Source | [src/kernels/implicit.jl:789–807](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L789-L807)<br>[src/kernels/implicit.jl:792](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L792)<br>[docs/src/track.md:178–203](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/track.md#L178-L203)<br>[src/kernels/rfcavity_kick.jl:47–98](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/rfcavity_kick.jl#L47-L98) |
 
 A callback whose coordinate transforms only take particles out for observation and back in changes their momentum in a time-dependent scalar potential. The observer contract requires an unchanged trajectory, and an independent mass-shell calculation identifies an incorrect time in the inward conversion. For a proton in a 0.6000 m element with dimensionless potential φ = κct·16(s/L)²(1 − s/L)², where κ = 0.3000 m⁻¹, c is light speed, t is time, s is position and L is the element length, the final relative momentum offset is 0.1993 instead of 0.1835. Constant-potential and no-op-callback controls agree with tracking without an observer; the error requires both the coordinate transforms and time dependence.

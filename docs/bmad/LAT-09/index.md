@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`write_ascii_beam_file` column list, bmad/multiparticle/beam_file_io.f90:155–157](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L155-L157)<br>[identifier header formatting, bmad/multiparticle/beam_file_io.f90:224–235](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L224-L235)<br>[identifier value formatting, bmad/multiparticle/beam_file_io.f90:257–277](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L257-L277)<br>[ASCII reader identifier/index handling, bmad/multiparticle/beam_file_io.f90:1001–1016](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L1001-L1016)<br>[column and row-index contract, bmad/doc/beam-init.tex:363–382](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/beam-init.tex#L363-L382) |
 
 Writing a beam as ASCII omits the persistent particle identifier ix_user. Identifiers 101, 102, 103 read back as −1, −1, −1 while the particles’ horizontal positions survive. The emitted row index is ignored by the reader and cannot preserve identity through filtering or reordering. The same identifiers survive an HDF5 round trip.

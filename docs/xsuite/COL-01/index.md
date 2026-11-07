@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xfields main (`223b4fa`, head build) |
+| Last reproduced | 2026-10-26 on xfields release [v0.27.5](https://github.com/xsuite/xfields/tree/v0.27.5) (`223b4fa`) |
 | Source | [`LongitudinalProfileQGaussian.cq_from_q`, qgaussian.py:45–58](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/longitudinal_profiles/qgaussian.py#L45-L58)<br>[manual's q-Gaussian formula](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L411-L439) |
 
 `LongitudinalProfileQGaussian` normalizes the q-Gaussian line density with gamma functions whose numerator and denominator overflow separately, so for an index `q` near, but not equal to, 1 the density and the space-charge kicks it drives are NaN. The normalization is finite, as a log-beta-function evaluation and adaptive quadrature confirm. For a unit-population, unit-RMS profile at `q` = 0.999 and 1.001, the centre density is NaN instead of 0.3988 and 0.3991 m⁻¹, and a 1 GeV/c proton at x = 1 mm in a Gaussian space-charge lens gets `px` NaN instead of 2.561 × 10⁻⁵ and 2.562 × 10⁻⁵. Values from 0.995 to 1.005 fail except within 10⁻⁶ of 1, where an intentional Gaussian approximation applies; 0.99 and 1.01 are correct.

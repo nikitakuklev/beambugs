@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [Bmad manual, HDF5 Particle Beam Data Storage (`s:hdf5.beam`), bmad/doc/hdf5-programming.tex:29–42](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/hdf5-programming.tex#L29-L42)<br>[hdf5_write_beam species subgroup, bmad/hdf5/hdf5_write_beam.f90:157–167](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_write_beam.f90#L157-L167) |
 
 Writing an HDF5 beam stores species and charge metadata in a species subgroup below each particles group. The manual instead places speciesType, numParticles, totalCharge and chargeLive directly in the particles group. A three-electron record stores these attributes under /data/00001/particles/electron/, with total charge 6 pC and live charge 4 pC. Readers following the documented path look one group too high.

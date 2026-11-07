@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [Bmad manual, “Coupling and Normal Modes”, mode-flip example `t0ef0`, bmad/doc/optics.tex:156–188](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/optics.tex#L156-L188)<br>[forward transport convention, bmad/doc/optics.tex:11–18](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/optics.tex#L11-L18) |
 
 Following the mode-flip example in the optics manual transports the one-turn matrix with the conjugation reversed. If coordinates obey x₂ = M₁₂ x₁, the matrix at the second point must be T₂ = M₁₂ T₁ M₁₂⁻¹, as the earlier convention in the same chapter states. For an explicit symplectic example with unequal off-diagonal blocks, the displayed formula gives T₂₁₁ = 2.697 instead of −0.5236 and fails the identity T₂ M₁₂ = M₁₂ T₁.

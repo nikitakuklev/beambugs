@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`calc_out_coords`, track_a_converter.f90:268–300](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_converter.f90#L268-L300)<br>[`calc_out_coords2`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_converter.f90#L332-L335)<br>[the spin assignment](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_converter.f90#L251-L252)<br>[`converter_distribution_parser`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/converter_distribution_parser.f90#L172-L201)<br>[converter-model paper, “Spin Tracking”](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/converter_element_modeling/paper/converter.tex#L242-L247) |
 
 Interpolating a converter distribution between incoming momenta leaves the outgoing longitudinal polarization unassigned. Two tables with polarization transfers 0.25 and 0.75 require a transfer of 0.5 at their momentum midpoint. Diagnostic initialization exposes an undefined value in all 128 samples; adding the missing weighted interpolation gives exactly 0.5 in every sample. The ordinary production library returns zero for this fixture.

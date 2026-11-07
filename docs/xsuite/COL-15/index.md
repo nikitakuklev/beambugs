@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`, head build) |
+| Last reproduced | 2026-10-29 on xcoll release [v0.12.5](https://github.com/xsuite/xcoll/tree/v0.12.5) (`64e13f5`) |
 | Source | [`LossMap.lossmap`, lossmap.py:161–172](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L161-L172) |
 
 `LossMap` exports a collimator row only when particles were absorbed in it (`summary.n` > 0), so energy deposited by particles that leave the collimator is lost through `to_json` and `from_json`. The summary holds that energy before export, and a round trip must preserve it. For 20 protons at 400 GeV/c through 0.6 mm of carbon-fibre composite with no absorption, the collimator's 2.865 × 10⁶ eV becomes 0 after export and reload. The restored map still compares equal to the original, because equality compares the same filtered export. Saved loss maps miss the deposits of every collimator in which no particle was absorbed.

@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xfields main (`3f06c87`, head build) |
+| Last reproduced | 2026-10-29 on xfields release [v0.27.7](https://github.com/xsuite/xfields/tree/v0.27.7) (`3f06c87`) |
 | Source | [`ElectronCloud_track_local_particle`, electroncloud.h:45–57](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/electroncloud_src/electroncloud.h#L45-L57) |
 
 `ElectronCloud` multiplies its longitudinal kick by the reference charge `q0` but not its transverse kicks, so for `q0` ≠ 1 the kicks no longer derive from one scalar potential and the map is not symplectic. Kicks from a single potential have equal mixed derivatives, ∂(Δpx)/∂ζ = ∂(Δpζ)/∂x, and the canonical energy coordinate `pzeta` (pζ) carries no charge factor. For a 3 GeV/c reference in a 0.7 m element with potential 0.031·xζ − 0.017·yζ, ∂(Δpx)/∂ζ is −0.02170, while ∂(Δpζ)/∂x is −0.04340 for `q0` = 2 and +0.04340 for `q0` = −2 instead of −0.02170. A negative reference charge reverses only the longitudinal kick; references with `q0` = 1 are unaffected.

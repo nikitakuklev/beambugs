@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`track_all` allocation guard and output access, bmad/code/track_all.f90:57–77](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/track_all.f90#L57-L77)<br>[`reallocate_coord_n`, bmad/low_level/reallocate_coord.f90:26–52](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/reallocate_coord.f90#L26-L52) |
 
 Calling track_all with an orbit array one record shorter than the lattice requires can write beyond the allocation. The routine grows smaller arrays but compares their size with the last required index, forgetting that the orbit starts at index zero. A two-element lattice supplied with indices 0:1 bypasses reallocation and attempts to write index 2; bounds checking reports the invalid access. A correctly sized array tracks successfully.

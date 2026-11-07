@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`tao_load_this_datum`, tao/code/tao_data_and_eval_mod.f90:512–535](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_data_and_eval_mod.f90#L512-L535)<br>[Tao manual, “Calculation of δD for a Datum” (`s:del.d`), tao/doc/optimization.tex:128–138](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/optimization.tex#L128-L138) |
 
 A single-element abs_max constraint, or an abs_min constraint with identical start and end elements, ignores its reference element when taking the absolute value. In a one-metre drift with a 3 mm entrance offset, both return 4.000 mm instead of the referenced displacement of 1.000 mm. Tao’s documented order is to subtract the reference value before taking the absolute value. Ordinary target constraints and a non-wrapped range retain the reference subtraction.

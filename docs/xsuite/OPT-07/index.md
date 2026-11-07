@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
+| Last reproduced | 2026-10-26 on xtrack release [v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4) (`3cd8bfc`) |
 | Source | [`_add_periodic_solution_data_to_twiss_result`, twiss_postprocess_and_complem_results.py:30–71](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_postprocess_and_complem_results.py#L30-L71) |
 
 Periodic Twiss on a subrange of a line divides the longitudinal response by the length of the whole parent line, corrupting the reported slip factor η and momentum compaction. Both are defined with the length of the selected periodic map, and the computed transfer matrix agrees with that local map. For a 2 m `LineSegmentMap` with momentum compaction 0.02, zero RF voltage and a 1 GeV/c proton reference, adding an untracked 10 m prefix changes η from −0.4482 to −0.07470 and the momentum compaction from 0.02000 to 0.3935, although these dimensionless quantities should not change. This occurs for constant-energy 4D periodic subranges with unused prefixes or suffixes; the selected matrix itself stays correct.

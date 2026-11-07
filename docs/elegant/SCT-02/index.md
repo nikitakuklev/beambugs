@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [`track_IBS` output transfer, ibs_tracking.c:559–610](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L559-L610)<br>[`dump_IBScatter` output, ibs_tracking.c:1262–1281](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L1262-L1281)<br>[IBSCATTER element flags, track_data.c:4237](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L4237) |
 
 A single-slice IBSCATTER in linac mode (SMOOTH=1, ISRING=0) writes incorrect rate diagnostics under three-rank Pelegant. The local columns dIBSRatex, dIBSRatey and dIBSRatez are all zero, and the vertical growth-rate parameter yGrowthRate is uninitialized. Serial diagnostics agree with independent Bjorken–Mtingwa integration, and amplified-update controls give matching serial and parallel particles. For a 1 nC electron bunch at momentum 800 mₑc, the correct first-site local rates are −0.9384, −0.8231 and 568.0 s⁻¹, and the vertical growth rate is −0.8024 s⁻¹.

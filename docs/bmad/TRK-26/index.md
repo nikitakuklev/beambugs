@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [track1_spin_taylor, bmad/spin/track1_spin_taylor.f90:36–50](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/spin/track1_spin_taylor.f90#L36-L50)<br>[stored spin expansion origin, bmad/spin/sprint_spin_taylor_map.f90:270–274](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/spin/sprint_spin_taylor_map.f90#L270-L274)<br>[automatic SPRINT map, bmad/spin/ele_to_spin_taylor.f90:30–31](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/spin/ele_to_spin_taylor.f90#L30-L31)<br>[track_taylor reference-orbit contract, bmad/modules/taylor_mod.f90:710–741](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/taylor_mod.f90#L710-L741) |
 

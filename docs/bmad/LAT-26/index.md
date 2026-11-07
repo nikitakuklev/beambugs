@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`makeup_super_slave1` aperture selection, bmad/modules/bookkeeper_mod.f90:1441–1455](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bookkeeper_mod.f90#L1441-L1455)<br>[`create_element_slice` contract, bmad/code/create_element_slice.f90:1–29](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/create_element_slice.f90#L1-L29) |
 
 A temporary full-length slice with one lord and apertures at both ends keeps only the exit check. In a 1.2 m quadrupole, a particle starting at x = 2 mm outside a 1 mm aperture is lost by the original element but survives its slice, reaching x = 65.56 μm at the exit. The analytic quadrupole map confirms the exit position; preserving both physical ends requires the entrance loss to remain in force.

@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
+| Last reproduced | 2026-10-26 on xtrack release [v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4) (`3cd8bfc`) |
 | Source | [`DipoleEdge._update_r21_r43`, dipole_edge.py:126–134](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/dipole_edge.py#L126-L134)<br>[`DipoleEdgeLinear_single_particle`](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_dipole_edge_linear.h#L30-L38) |
 
 `DipoleEdge(model='linear')` applies the particle's charge-to-mass ratio relative to the reference species, χ, to its vertical edge kick but not inside the finite-gap angle correction, so non-reference species get wrong vertical focusing. The analytic fringe formula, and the equivalence between scaling the charge and scaling the field, require the leading zero-face-angle kick to scale with charge squared at fixed mass and momentum. With dipole strength `k` = 0.1 m⁻¹, half-gap `hgap` = 0.02 m, fringe integral `fint` = 0.5, zero face angle and y = 10 µm, a 1 GeV/c particle with twice the reference charge gets normalized vertical momentum 4.000 × 10⁻⁹ instead of 8.000 × 10⁻⁹. Reference-species and zero-gap edges are correct, and the `full` edge model scales correctly.

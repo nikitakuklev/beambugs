@@ -12,7 +12,7 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [show universe chromaticity calculation and label, tao/code/tao_show_this.f90:5943–5956](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_show_this.f90#L5943-L5956)<br>[chrom_calc low-momentum orbit, bmad/code/chrom_calc.f90:120–134](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/chrom_calc.f90#L120-L134) |
 
 Tao’s show universe output labels chromaticity as dQ/(dE/E) while displaying the derivative with respect to relative momentum. Here Q is tune, E is total energy, and δ is relative momentum deviation; the energy derivative is (dQ/dδ)/β₀², where β₀ is the reference speed divided by the speed of light. For a 1 MeV/c electron FODO ring, the displayed horizontal value is −0.02977 while the energy derivative is −0.03754. Independent matrix differentiation matches the displayed momentum derivative; at 1 GeV/c the conversion is below the display precision.

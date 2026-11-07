@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
+| Last reproduced | 2026-10-29 on ImpactX commit [`fa0a43b`](https://github.com/BLAST-ImpactX/impactx/commit/fa0a43b9bb07), committed 2026-10-28 |
 | Source | [`WakeConvolution.cpp#L36-L49`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/wakefields/WakeConvolution.cpp#L36-L49)<br>[`WakeConvolution.H#L56-L66`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/wakefields/WakeConvolution.H#L56-L66) |
 
 The Python helper `impactx.wakeconvolution.w_t_rf`, the short-range dipole wake W⊥(s) of a periodic accelerating structure at distance s behind the source, uses the bracket u·e⁻ᵘ with u = √(s/s₀) (s₀ a fitted length), where the cited Bane model (SLAC-PUB-9663, 2003, Eqs. 15–16) has 1 − (1 + u)·e⁻ᵘ. Bane's form rises linearly in s at short range; the implemented one starts as √s. For a cell resembling the Next Linear Collider design (iris radius 4.92 mm, gap 6.89 mm, period 8.75 mm) the wake is 19.34 times too large at s/s₀ = 0.01 and 1.392 times at s/s₀ = 1. Its documentation also calls it a resistive-wall wake and states units of V/m/pC/mm although it returns SI. Built-in tracking does not call it.

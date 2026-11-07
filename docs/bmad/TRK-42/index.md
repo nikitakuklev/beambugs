@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [physical_constants](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/interfaces/physical_constants.f90#L10-L65) |
 
 The physical-constants module claims CODATA 2022 values but supplies different central values for the classical electron radius and electron magnetic anomaly. The compiled radius exceeds the CODATA value by 0.7807 parts per billion, and the anomaly by 0.1121 parts per billion. Direct extraction of the compiled constants and comparison with the NIST CODATA table establish the mismatch.

@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">contract-unsettled</span> [?](../../methodology.md#tags) |
 | Source | [`sr_longitudinal_wake_particle`, bmad/multiparticle/wake_mod.f90:320–380](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L320-L380)<br>[`sr_transverse_wake_particle`, bmad/multiparticle/wake_mod.f90:416–456](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L416-L456)<br>[`Short--Range Wakes (s:sr.wake.eq), delvp1 and pelqxw2`, bmad/doc/wakefields.tex:26–69](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/wakefields.tex#L26-L69) |
 

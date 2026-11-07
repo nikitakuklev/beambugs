@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
+| Last reproduced | 2026-10-31 on SciBmad commit [`ae9423d`](https://github.com/bmad-sim/SciBmad.jl/commit/ae9423d703b4), committed 2026-10-28 |
 | Source | [`SciBmad.jl/examples/python/nonlinear-twiss.ipynb:333`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/python/nonlinear-twiss.ipynb#L333) |
 
 The Python example notebook `nonlinear-twiss.ipynb` contains `nparray(tw2.dbeta1 / tw2.beta1` without a closing parenthesis, in notebook cell 15 counting all cells from zero (code cell 8 counting only code cells). Parsing the notebook's code cells reports `SyntaxError: '(' was never closed`, and an independent count finds one opening and no closing parenthesis on the offending line. It is the only syntax error found by that parser check.

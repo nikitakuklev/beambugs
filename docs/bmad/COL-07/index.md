@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [xlafun2 / lafun2, bmad/space_charge/open_spacecharge_mod.f90:967–1001](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_mod.f90#L967-L1001)<br>[osc_get_cgrn_freespace, bmad/space_charge/open_spacecharge_mod.f90:913–942](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_mod.f90#L913-L942) |
 
 The integrated free-space Green functions evaluate singular expressions directly when valid grid offsets put cell corners on coordinate axes. With cell size h = 1/1024 m and offset (h/2, h/2, 0), a 4 × 4 × 4 solve returns 128 nonfinite electric-field components and 64 nonfinite potentials. The cell integrals are finite; direct volume integration gives a sampled field of (3559, 1166, 0) V/m. Zero and full-cell offsets remain finite.

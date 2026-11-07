@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [make_mat6, bmad/code/make_mat6.f90:105–117](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/make_mat6.f90#L105-L117)<br>[track_a_drift, bmad/low_level/track_a_drift.f90:94–109](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_drift.f90#L94-L109) |
 
 Linear drift tracking constructs its reference map with zero momentum offset but retains the incident particle’s off-momentum speed. The longitudinal coefficient must use the reference speed and equal Lm²/(p₀² + m²), where L is drift length, m is particle mass and p₀ is reference momentum in units with c = 1. For a 1.7 m electron drift at p₀c = 1 MeV with fractional momentum offset 0.2 and initial longitudinal coordinate 0.03 m, the exit coordinate is 0.1076 m instead of 0.1004 m. The transverse first-order map remains correct.

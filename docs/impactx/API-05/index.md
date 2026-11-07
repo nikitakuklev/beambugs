@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
+| Last reproduced | 2026-10-29 on ImpactX commit [`fa0a43b`](https://github.com/BLAST-ImpactX/impactx/commit/fa0a43b9bb07), committed 2026-10-28 |
 | Source | [`Survey.py#L85-L86`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/plot/Survey.py#L85-L86) |
 
 `plot_survey()` draws each quadrupole above or below the axis according to the sign of `k`·charge, but `Quad.k` and `ChrQuad(unit=0).k` are already normalized by the signed rigidity, so a positive `k` focuses horizontally for either charge. The plot's docstring defines a positive height as horizontal focusing, and particle tracking and the analytic transfer matrix confirm the focusing direction for both charges. A 0.5 m `Quad` with `k` = 1 m⁻² focuses a 1000 MeV electron exactly as it does a proton (matrix element R₂₁ = −0.4794 m⁻¹), yet it is drawn with height −0.8 instead of +0.8. For electrons and other negative species every `Quad` and normalized `ChrQuad` is drawn reversed; tracking is correct, and `ChrQuad` with a physical gradient (`unit=1`) is drawn correctly.

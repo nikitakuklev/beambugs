@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on AtomicAndPhysicalConstants main (`750a9f2`, head build) |
+| Last reproduced | 2026-10-29 on AtomicAndPhysicalConstants release [v0.11.6](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/tree/v0.11.6) (`750a9f2`) |
 | Discussed in | [[gh:https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/pull/306]] |
 | Source | [src/constants.jl:183](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/constants.jl#L183)<br>[src/species_data.jl:26](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/species_data.jl#L26)<br>[src/species_data.jl:42](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/species_data.jl#L42)<br>[src/constructors.jl:11–43](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/constructors.jl#L11-L43)<br>[src/functions.jl:164–167](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/functions.jl#L164-L167)<br>[test/values_test.jl:34](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/test/values_test.jl#L34)<br>[src/functions.jl:142–150](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/functions.jl#L142-L150)<br>[docs/src/constants.md:91–121](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/docs/src/constants.md#L91-L121) |
 

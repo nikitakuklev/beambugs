@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xfields main (`223b4fa`, head build) |
+| Last reproduced | 2026-10-26 on xfields release [v0.27.5](https://github.com/xsuite/xfields/tree/v0.27.5) (`223b4fa`) |
 | Source | [`BeamBeamBiGaussian2D.compute_spacial_moments`, beambeam2d.py:272–283](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/beambeam2d.py#L272-L283)<br>[collective pipeline](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/beambeam2d.py#L238-L266) |
 
 In 2D strong-strong beam-beam, `BeamBeamBiGaussian2D.compute_spacial_moments` sums every stored particle row without checking `particles.state`, so lost particles enter the population, centroid and size passed to the opposing beam. Removing a lost particle cannot change the collision, and with lost rows excluded the kicks agree with the analytic round-Gaussian field and the manual's beam-beam Lorentz factor. For four live 1 GeV/c protons at x, y = ±1 mm (weight 10¹⁰ each) plus one lost particle at x = 20 mm, the exchanged population is 5 × 10¹⁰ instead of 4 × 10¹⁰, the horizontal variance 6.480 × 10⁻⁵ m² instead of 1.000 × 10⁻⁶ m², and one opposing particle's horizontal kick +6.845 × 10⁻⁶ instead of −1.994 × 10⁻⁵.

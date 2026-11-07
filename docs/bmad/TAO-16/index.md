@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [tao_top_level initialization status, tao/code/tao_top_level.f90:42–59](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_top_level.f90#L42-L59)<br>[tao_program, tao/program/tao_program.f90:7–17](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/program/tao_program.f90#L7-L17)<br>[command loop, tao/code/tao_top_level.f90:74–111](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_top_level.f90#L74-L111) |
 
 Starting Tao with an invalid command-line option or a missing explicit initialization file produces error diagnostics, executes none of the requested commands, and returns status zero. Invalid pipe and set commands also return zero after reporting errors. An unknown top-level command aborts its command file and returns the same success status. Automation needs an unsuccessful exit status to distinguish these failures from a completed run.

@@ -78,8 +78,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -155,8 +157,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -245,16 +249,20 @@
    "date": "2026-10-27",
    "code": {
     "ref": "ImpactX 26.10",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "615921c6867c",
-    "committed": "2026-10-05"
+    "committed": "2026-10-05",
+    "release": "26.10"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
+     "repository": "BLAST-ImpactX/impactx",
      "commit": "f9c2a82e24b7",
-     "committed": "2026-11-05"
+     "committed": "2026-11-05",
+     "release": null
     },
     "head": true
    }
@@ -355,8 +363,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -445,8 +455,10 @@
    "date": "2026-10-30",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "dfd49f22c34f",
-    "committed": "2026-10-30"
+    "committed": "2026-10-30",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -539,8 +551,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -614,8 +628,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -699,8 +715,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -782,8 +800,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -872,16 +892,20 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "615921c6867c",
-    "committed": "2026-10-05"
+    "committed": "2026-10-05",
+    "release": "26.10"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
+     "repository": "BLAST-ImpactX/impactx",
      "commit": "f9c2a82e24b7",
-     "committed": "2026-11-05"
+     "committed": "2026-11-05",
+     "release": null
     },
     "head": true
    }
@@ -972,16 +996,20 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "615921c6867c",
-    "committed": "2026-10-05"
+    "committed": "2026-10-05",
+    "release": "26.10"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
+     "repository": "BLAST-ImpactX/impactx",
      "commit": "f9c2a82e24b7",
-     "committed": "2026-11-05"
+     "committed": "2026-11-05",
+     "release": null
     },
     "head": true
    }
@@ -1057,8 +1085,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1143,8 +1173,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1236,8 +1268,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1314,8 +1348,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1495,8 +1531,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": false,
    "head_not_reproduced": null
@@ -1590,8 +1628,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1689,8 +1729,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1811,8 +1853,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1899,8 +1943,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2005,8 +2051,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2174,8 +2222,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2270,8 +2320,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2351,8 +2403,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2434,16 +2488,20 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "615921c6867c",
-    "committed": "2026-10-05"
+    "committed": "2026-10-05",
+    "release": "26.10"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
+     "repository": "BLAST-ImpactX/impactx",
      "commit": "f9c2a82e24b7",
-     "committed": "2026-11-05"
+     "committed": "2026-11-05",
+     "release": null
     },
     "head": true
    }
@@ -2570,8 +2628,10 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "b701a6e9d1f9",
-    "committed": "2026-10-23"
+    "committed": "2026-10-23",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2655,8 +2715,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2735,8 +2797,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2818,8 +2882,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2931,8 +2997,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3041,8 +3109,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3143,8 +3213,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3269,8 +3341,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3386,8 +3460,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3474,8 +3550,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3561,16 +3639,20 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "615921c6867c",
-    "committed": "2026-10-05"
+    "committed": "2026-10-05",
+    "release": "26.10"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
+     "repository": "BLAST-ImpactX/impactx",
      "commit": "f9c2a82e24b7",
-     "committed": "2026-11-05"
+     "committed": "2026-11-05",
+     "release": null
     },
     "head": true
    }
@@ -3661,16 +3743,20 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "615921c6867c",
-    "committed": "2026-10-05"
+    "committed": "2026-10-05",
+    "release": "26.10"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
+     "repository": "BLAST-ImpactX/impactx",
      "commit": "f9c2a82e24b7",
-     "committed": "2026-11-05"
+     "committed": "2026-11-05",
+     "release": null
     },
     "head": true
    }
@@ -3769,16 +3855,20 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX 26.10",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "615921c6867c",
-    "committed": "2026-10-05"
+    "committed": "2026-10-05",
+    "release": "26.10"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
+     "repository": "BLAST-ImpactX/impactx",
      "commit": "f9c2a82e24b7",
-     "committed": "2026-11-05"
+     "committed": "2026-11-05",
+     "release": null
     },
     "head": true
    }
@@ -3892,8 +3982,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3991,8 +4083,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4086,16 +4180,20 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "615921c6867c",
-    "committed": "2026-10-05"
+    "committed": "2026-10-05",
+    "release": "26.10"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
+     "repository": "BLAST-ImpactX/impactx",
      "commit": "f9c2a82e24b7",
-     "committed": "2026-11-05"
+     "committed": "2026-11-05",
+     "release": null
     },
     "head": true
    }
@@ -4175,16 +4273,20 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "615921c6867c",
-    "committed": "2026-10-05"
+    "committed": "2026-10-05",
+    "release": "26.10"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
+     "repository": "BLAST-ImpactX/impactx",
      "commit": "f9c2a82e24b7",
-     "committed": "2026-11-05"
+     "committed": "2026-11-05",
+     "release": null
     },
     "head": true
    }
@@ -4271,8 +4373,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4348,8 +4452,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4423,8 +4529,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4499,8 +4607,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4578,8 +4688,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4661,8 +4773,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4738,8 +4852,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4819,8 +4935,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4904,8 +5022,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4985,8 +5105,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5076,8 +5198,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5179,8 +5303,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5267,8 +5393,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5348,8 +5476,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5437,8 +5567,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "fa0a43b9bb07",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5535,8 +5667,10 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5675,8 +5809,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5779,8 +5915,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": false,
    "head_not_reproduced": null
@@ -5893,8 +6031,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": false,
    "head_not_reproduced": null
@@ -6008,8 +6148,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -6097,8 +6239,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
+    "repository": "BLAST-ImpactX/impactx",
     "commit": "f9c2a82e24b7",
-    "committed": "2026-11-05"
+    "committed": "2026-11-05",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null

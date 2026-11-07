@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [z_at_surface, segmented plane, bmad/photon/photon_utils_mod.f90:118–122](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/photon_utils_mod.f90#L118-L122)<br>[init_surface_segment, bmad/parsing/bmad_parser_mod.f90:8222–8299](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/bmad_parser_mod.f90#L8222-L8299)<br>[Bmad manual, Displacement, H_Misalign, and Segmented Surface Grids, bmad/doc/attributes.tex:1469–1481](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L1469-L1481) |
 
 Segmented photon surfaces reverse the signed height slopes of their flat facets. For a facet of the surface z=−1.7x²−0.6y², the height at (93, −101) mm is −23.60 mm instead of the supporting plane’s −25.20 mm. Returned slope values describe the correct plane, while finite differences of the returned heights have the opposite signs. A photon intersection follows the incorrect height, producing a 1.600 mm displacement error.

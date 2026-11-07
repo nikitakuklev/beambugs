@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`, head build) |
+| Last reproduced | 2026-10-29 on xcoll release [v0.12.5](https://github.com/xsuite/xcoll/tree/v0.12.5) (`64e13f5`) |
 | Source | [`LossMap._make_coll_summary`, lossmap.py:698–701](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L698-L701) |
 
 The collimator summary of `LossMap` computes the primary energy `e_prim` from the absorbed primary energy plus the secondary-particle deposit counter, instead of the primary one. The Everest kernel accumulates primary and secondary deposits separately, so without absorption `e_prim` must equal the primary counter. For 20 protons at 400 GeV/c through 0.6 mm of carbon-fibre composite without absorption, an all-primary batch reports `e_prim` = 0 instead of 2.865 × 10⁶ eV, and an all-secondary batch 2.865 × 10⁶ eV instead of 0. The total collimator energy is correct; its split into primary and secondary deposits is wrong.

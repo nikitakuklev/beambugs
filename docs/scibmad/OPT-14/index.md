@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on BatchSolve main (`ac41c09`, head build) |
+| Last reproduced | 2026-10-31 on BatchSolve release [v0.1.5](https://github.com/mattsignorelli/BatchSolve.jl/tree/v0.1.5) (`ac41c09`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`src/rootfinders/newton.jl:254-278`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L254-L278)<br>[`:266`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L266)<br>[`:274`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L274)<br>[`:276`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L276)<br>[`newton.jl:172-179`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L172-L179)<br>[`SciBmad.jl/src/closed_orbit.jl:135`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/closed_orbit.jl#L135)<br>[`one-torus.jl:64-69`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/experimental/one-torus.jl#L64-L69) |
 

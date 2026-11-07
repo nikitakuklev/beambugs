@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [apply_fft_3d_kicks deposition, bmad/space_charge/csr_and_space_charge_mod.f90:1695–1708](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1695-L1708)<br>[field-to-momentum conversion, bmad/space_charge/csr_and_space_charge_mod.f90:1723–1741](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1723-L1741) |
 
 For homogeneous bunches of multiply charged ions, s-based FFT space charge omits the test particle’s charge state from the field-to-momentum conversion. At fixed deposited charge, mass and kinematics, a charge +2 particle must receive twice the +1 impulse by the Lorentz force. Equal-mass species instead both receive a normalized horizontal kick of 3.901e−9; the +2 expectation is 7.802e−9. The +1 control agrees with the force calculation.

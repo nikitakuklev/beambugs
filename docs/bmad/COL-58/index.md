@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-20 on Bmad 20261020-0 (`19b8afb`, committed 2026-10-20); not reproduced on Bmad 20261031-0 (`c4c629f`), 2026-11-05 |
+| Last reproduced | 2026-10-20 on Bmad release [20261020-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261020-0) (`19b8afb`) |
 | Pull request | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2225]], fix |
 | Source | [`parser_read_sr_wake`, bmad/parsing/bmad_parser_mod.f90:1625–1658](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/bmad_parser_mod.f90#L1625-L1658)<br>[`historical parser_read_sr_wake`, bmad/parsing/bmad_parser_mod.f90:1625–1641](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/parsing/bmad_parser_mod.f90#L1625-L1641)<br>[`Short-Range Longitudinal Wake With a Wake Table (s:sr.wake.z.long)`, bmad/doc/attributes.tex:3123–3139](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L3123-L3139) |
 

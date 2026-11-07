@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack 0.118.2 (`ad5e808`, committed 2026-10-19); not reproduced on xtrack main (`f09e0fb`), 2026-10-29 |
+| Last reproduced | 2026-10-26 on xtrack release [v0.118.2](https://github.com/xsuite/xtrack/tree/v0.118.2) (`ad5e808`) |
 | Pull request | [[gh:https://github.com/xsuite/xtrack/pull/923]], fix |
 | Source | [`magnet_spin`, track_magnet_radiation.h:141–166](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_radiation.h#L141-L166) |
 

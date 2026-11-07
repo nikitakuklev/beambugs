@@ -12,7 +12,7 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
+| Last reproduced | 2026-10-26 on xtrack release [v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4) (`3cd8bfc`) |
 | Source | [`ThinSliceRBend.get_equivalent_element`, slice_elements_thin.py:220–242](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_thin.py#L220-L242) |
 
 `Line.optimize_for_tracking()` silently turns off the configured mean synchrotron radiation in thin slices of a curved-body `RBend`. The classical radiated power predicts a finite energy loss, the unoptimized slices reproduce it, and an equivalent sector `Bend` keeps it after optimization. For a 3 GeV/c electron in a rectangular bend with 1 m arc length, bend angle 0.01 rad and `Teapot(1)` slicing, optimization changes the energy loss from 114.0 eV to zero. The `straight-body` model bypasses this conversion.

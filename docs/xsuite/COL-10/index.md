@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`, head build) |
+| Last reproduced | 2026-10-29 on xcoll release [v0.12.5](https://github.com/xsuite/xcoll/tree/v0.12.5) (`64e13f5`) |
 | Source | [`LossMap._create_aperture_pos_dict`, lossmap.py:881–885](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L881-L885) |
 
 For a reversed line (`line_is_reversed=True`), a non-interpolated loss map computes the reflected aperture position L − s, with L the circumference, and then overwrites it with the unreflected expression, so the flag has no effect on aperture positions. The intended reflection is explicit in the code. An interior aperture at 4 m, with neighbour midpoints at 2.5 and 6.5 m, has centre 4.5 m, which must become 7.5 m in a reversed 12 m ring; the reversed map reports 4.5 m.

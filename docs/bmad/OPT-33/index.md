@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Pull request | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2108]] |
 | Source | [track_a_wiggler body matrix, bmad/low_level/track_a_wiggler.f90:100–150](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_wiggler.f90#L100-L150)<br>[Bmad manual, Periodic Type Wigglers, bmad/doc/elements.tex:5697–5723](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L5697-L5723)<br>[Bmad manual, Linear Transfer Map (Mat6) Calculation Methods, bmad/doc/methods.tex:253–260](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L253-L260) |

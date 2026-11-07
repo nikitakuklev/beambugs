@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xdeps main (`6484795`, head build) |
+| Last reproduced | 2026-10-29 on xdeps release [v0.11.1](https://github.com/xsuite/xdeps/tree/v0.11.1) (`6484795`) |
 | Source | [MeritFunctionForMatch._clip_to_max_steps, optimize.py:417–425](https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/optimize/optimize.py#L417-L425)<br>[_x_to_knobs, optimize.py:220](https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/optimize/optimize.py#L220)<br>[Vary.max_step contract](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/match.py#L461-L462) |
 
 Giving a matching variable a `weight` other than one changes its effective `max_step` in the variable's own units. The solver works in weighted coordinates, so converting back to the variable must convert the maximum step too, leaving the accepted physical bound independent of weight. For a dimensionless variable starting at 3, targeting 20 and limited to `max_step` = 0.2, one accepted `Line.match()` iteration changes it by 2.000 with weight 10 and by 0.02000 with weight 0.1, instead of 0.2000. Weighted variables can therefore exceed the requested bound or be needlessly restricted; unit weight is correct, and a single variable suffices to trigger the error.

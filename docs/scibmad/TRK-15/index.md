@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-07 on Beamlines 0.11.0 (`35fe016`, head build) |
+| Last reproduced | 2026-11-07 on Beamlines release [v0.11.0](https://github.com/bmad-sim/Beamlines.jl/tree/v0.11.0) (`35fe016`) |
 | Source | [src/element.jl:250–256](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/element.jl#L250-L256)<br>[ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl:1–32](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl#L1-L32) |
 
 The docstring of the default tracking method `SciBmadStandard` says that elements without an exact map use "the symplectic integrator `Yoshida(order=4, num_steps=1)`". No `Yoshida` type exists in SciBmad, Beamlines or BeamTracking, and no tracking method has a `num_steps` field. The default method maps to `Symplectic` with keyword `n_steps`, at order 2 for exact bodies and order 4 otherwise. A user who copies the documented method gets an `UndefVarError`; tracking itself is unaffected.

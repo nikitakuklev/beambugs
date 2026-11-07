@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-06 on xtrack 0.118.2 (`ad5e808`, committed 2026-10-19); not reproduced on xtrack main (`f09e0fb`), 2026-11-06 |
+| Last reproduced | 2026-11-06 on xtrack release [v0.118.2](https://github.com/xsuite/xtrack/tree/v0.118.2) (`ad5e808`) |
 | Pull request | [[gh:https://github.com/xsuite/xtrack/pull/923]], fix |
 | Discussed in | [[gh:https://github.com/xsuite/xtrack/pull/922]] |
 | Source | [_find_spin_fixed_point, spin.py:23–38](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/spin.py#L23-L38)<br>[residual function, lines 41–56](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/spin.py#L41-L56)<br>[ActionCall.get_targets, optimize.py:2838–2843](https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/optimize/optimize.py#L2838-L2843)<br>[twiss.py:188–192](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss.py#L188-L192)<br>[spin_polarization.rst:4–6](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/spin_polarization.rst#L4-L6)<br>[xtrack.tex:6752–6768](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L6752-L6768) |

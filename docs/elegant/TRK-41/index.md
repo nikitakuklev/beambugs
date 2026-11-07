@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`7514db3`](https://github.com/rtsoliday/elegant/commit/7514db36f764), committed 2026-11-04 |
 | Source | [`trackRfCavityWithWakes`, simple_rfca.c:525–532](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L525-L532)<br>[simple_rfca.c:546–585](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L546-L585)<br>[simple_rfca.c:718–736](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L718-L736)<br>[RFCA manual, rfca.tex:1–3](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfca.tex#L1-L3)<br>[parameter table, track_data.c:610–612](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L610-L612) |
 
 With STANDING_WAVE=1, BODY_FOCUS_MODEL=none, N_KICKS > 1 and automatic phasing, RFCA references the first integration kick, so the documented PHASE=90 setting misses the crest. For a half-wavelength gap (0.3747 m at 400 MHz, VOLT = 0.8000 MV) and 5.110 GeV electrons, the crest is approximately 90°/N, where N is N_KICKS, with gain 512.6 keV for N = 8. PHASE=90 instead gives approximately VOLT/N: 100.0 keV for N = 8 and 12.50 keV for N = 64. These formulas are exact in the speed-of-light limit. The one-kick, matrix and travelling-wave controls keep the crest at 90° to the tested ultrarelativistic tolerance.

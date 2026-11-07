@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-07 on xfields main (`3f06c87`, head build) |
+| Last reproduced | 2026-11-07 on xfields release [v0.27.7](https://github.com/xsuite/xfields/tree/v0.27.7) (`3f06c87`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [FFTSolver3D construction and public Poisson contract, fftsolvers.py:37–114](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/solvers/fftsolvers.py#L37-L114)<br>[primitive_func_3d, lines 309–318](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/solvers/fftsolvers.py#L309-L318)<br>[field-map derivative, interpolated.py:438–470](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/fieldmaps/interpolated.py#L438-L470)<br>[Coulomb convolution and uniform-cell integral, xfields.tex:3830–3896](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L3830-L3896)<br>[TriLinearInterpolatedFieldMap solver construction, interpolated.py:510–518](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/fieldmaps/interpolated.py#L510-L518)<br>[SpaceCharge3D longitudinal scaling, spacecharge.py:110–119](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/spacecharge.py#L110-L119)<br>[upstream PIC regression, test_spacecharge.py:140–206](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/tests/test_spacecharge.py#L140-L206) |
 

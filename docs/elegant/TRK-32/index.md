@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`7514db3`](https://github.com/rtsoliday/elegant/commit/7514db36f764), committed 2026-11-04 |
 | Source | [`track_through_ccbend_impl`, ccbend.c:518–529](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L518-L529)<br>[ccbend.c:637–642](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L637-L642)<br>[parameter table, track_data.c:3818–3823](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3818-L3823)<br>[manual, ccbend.tex:89–95](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ccbend.tex#L89-L95) |
 
 A CCBEND whose only error is the roll ETILT, with DX, DY, DZ, EPITCH and EYAW all zero, applies the misalignment transform at the exit but not at the entrance. A nonzero DX, even 10⁻¹⁶ m, restores the full transform, so the result jumps at zero displacement. For a 0.9 m, 0.12 rad bend rolled by 2 mrad, an on-axis electron leaves at y = 8.262×10⁻¹⁹ m and y′ = −1.199×10⁻⁴ instead of y = −1.079×10⁻⁴ m and y′ = −2.390×10⁻⁴, the limit from both sides of DX = 0, which the small-angle estimates for a rolled dipole confirm. A roll-only error thus gives half the vertical kick and no vertical displacement.

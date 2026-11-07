@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
+| Last reproduced | 2026-10-31 on SciBmad commit [`ae9423d`](https://github.com/bmad-sim/SciBmad.jl/commit/ae9423d703b4), committed 2026-10-28 |
 | Source | [`SciBmad.jl/src/track.jl:182`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L182)<br>[`SciBmad.jl/src/track.jl:130-131`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L130-L131)<br>[`BeamTracking.jl/src/types.jl:78-79`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L78-L79)<br>[`BeamTracking.jl/src/types.jl:102-114`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L102-L114) |
 
 Passing per-particle weights to `track` as the documented vector of length `n_particles` raises a `TypeError` before tracking begins, because the keyword is declared `Union{AbstractMatrix,Nothing}`. `track(...; weight=[0.25, 0.75])` therefore fails on documented input. The same vector passed through an explicit `Bunch` is kept as [0.25, 0.75] in a zero-turn control, confirming that the underlying bunch API accepts it.

@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`, head build) |
+| Last reproduced | 2026-10-31 on BeamTracking commit [`0bf3585`](https://github.com/bmad-sim/BeamTracking.jl/commit/0bf3585fdc9c), committed 2026-10-28 |
 | Source | [src/utils/find_stuff.jl:22–43](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/find_stuff.jl#L22-L43)<br>[src/kernels/integrators.jl:20–21](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/integrators.jl#L20-L21)<br>[src/kernels/integrators.jl:82–83](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/integrators.jl#L82-L83)<br>[src/callbacks.jl:4](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/callbacks.jl#L4)<br>[src/callbacks.jl:26–29](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/callbacks.jl#L26-L29) |
 
 A user callback inside an ordinary RF cavity or an electrostatic separator receives the element's entrance reference time at every interior step. The callback contract requires the reference time at the current position s, which at fixed reference energy grows with the reference flight time s/(β₀c), where β₀c is the reference speed. For a proton with reference momentum p₀c = 2mc², twice its rest energy, in a 2.000 m element tracked in four second-order symplectic steps, the callback at s = 1.500 m sees a time increment of 0 instead of 5.594 ns. Drifts report the correct times, and the element-exit callback is correct.

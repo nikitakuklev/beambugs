@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [track1_crystal, trajectory weighting, bmad/photon/track1_photon_mod.f90:961–972](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/track1_photon_mod.f90#L961-L972)<br>[Bmad manual, Incoherent Photon Tracking, panda1, bmad/doc/xray-tracking.tex:27–48](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/xray-tracking.tex#L27-L48) |
 
 Laue crystal tracking includes an absent polarization when calculating the displacement of a purely polarized photon. A 20 µm silicon (111) crystal with asymmetry parameter 0.55 gives the same surface-frame displacement to pure π, pure σ and mixed inputs. For an incoming angle of −20 µrad, pure σ public tracking returns exit x=0.3413 µm instead of 0.3786 µm, an error of −37.27 nm. Independent two-beam dispersion and energy-flow calculations recover the individual polarization paths within the implemented branch-averaging model.

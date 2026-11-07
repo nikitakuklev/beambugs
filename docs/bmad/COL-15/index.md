@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [sc_field_calc cutoff, bmad/space_charge/space_charge_mod.f90:126–138](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/space_charge_mod.f90#L126-L138)<br>[direct-plus-image assembly, bmad/space_charge/open_spacecharge_mod.f90:665–691](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_mod.f90#L665-L691)<br>[Bmad manual, Space_Charge_Common_Struct, s:sc.com, bmad/doc/param-structs.tex:503–508](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/param-structs.tex#L503-L508) |
 
 When cathode image fields are enabled, the cutoff compares the image field with the sum of direct and image fields instead of the direct bunch field. Cancellation changes whether images remain enabled. In a 27-particle example, the largest image/direct component ratio is 0.6762, while the image/total ratio is 0.7083. A cutoff of 0.6922 therefore retains images even though the documented bunch-field criterion would disable them.

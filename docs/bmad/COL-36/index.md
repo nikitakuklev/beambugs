@@ -12,7 +12,7 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [touschek_rate1 input comments, bmad/multiparticle/touschek_mod.f90:400–404](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/touschek_mod.f90#L400-L404)<br>[geometry-dependent emittance assignment, bmad/multiparticle/touschek_mod.f90:474–495](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/touschek_mod.f90#L474-L495)<br>[beam-size variances, bmad/multiparticle/touschek_mod.f90:513–516](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/touschek_mod.f90#L513-L516) |
 
 When callers follow the Touschek rate helper's comments, they provide normalized emittances for a ring and geometric emittances for an open line. The calculation does the reverse: it uses ring inputs directly in beam-size variances and divides open-line inputs by the Lorentz factor γ. For identical local optics at γ = 1e5, an open-line input scaled by γ exactly matches the closed-ring loss rate of 0.5845 particles/s; the same unscaled input gives 6.160 particles/s. The comments should describe geometric ring inputs and the open branch's ultrarelativistic normalized convention.

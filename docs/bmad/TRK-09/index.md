@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [z_at_surface, polynomial and ellipse, bmad/photon/photon_utils_mod.f90:132–148](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/photon_utils_mod.f90#L132-L148)<br>[qfunc, arc-length integrand, bmad/photon/to_surface_coords.f90:34–39](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/to_surface_coords.f90#L34-L39)<br>[Bmad manual, Surface Properties for X-Ray elements, xs2ij4, bmad/doc/attributes.tex:1262–1279](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L1262-L1279)<br>[Detector, bmad/doc/elements.tex:1592–1594](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L1592-L1594) |
 
 Curved photon detectors combining polynomial and elliptical curvature report the wrong surface coordinate because polynomial height derivatives have reversed signs. For z=−0.7x²+(√(1−0.64x²)−1)/1.3 at x=0.17 m, the reported slope is 0.1535 instead of −0.3225. The detector’s arc coordinate is 0.1707 m instead of 0.1729 m, an error of −2.228 mm. Analytic derivatives, finite differences and independent quadrature agree; pure polynomial or pure elliptical curvature gives the correct arc length.

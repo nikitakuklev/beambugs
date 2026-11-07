@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`write_lattice_mad_format`, lcavity branch](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L917-L932)<br>[`lat_sanity_check`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/lat_sanity_check.f90#L656-L661)<br>[Bmad manual, “Lcavity”, `s:lcav`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L3276-L3295) |
 
 Exporting a zero-length traveling-wave lcavity to MAD8 loses its specified accelerating voltage. A 1 MV cavity at crest is written without DELTAE, the MAD8 energy-gain parameter, giving zero gain instead of 1 MeV; the same voltage at length 0.5 m writes DELTAE = 1 MeV. The writer computes gradient times length, which vanishes for the valid zero-length representation. The stored voltage and the finite-length control establish the missing energy gain.

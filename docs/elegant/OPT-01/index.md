@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [`computeChromaticAlphaValue`, nonperiodic branch, src/chrom.c:1192–1200](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/chrom.c#L1192-L1200)<br>[`computeChromaticityValue`, src/chrom.c:1166–1167](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/chrom.c#L1166-L1167)<br>[`computeChromaticities`, assigning `dalphax` and `dalphay`, src/chrom.c:867–895](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/chrom.c#L867-L895)<br>[`dalphax/dp` and `dalphay/dp` are the chromatic derivatives of the alpha functions, dα/dδ, manual, doc/elegant.tex:8234–8235](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8234-L8235) |
 
 Elegant's `twiss_output` with `matched=0` propagates user-given entrance optics through a non-periodic beamline and writes the momentum derivatives of the Twiss alpha functions, `dalphax/dp` and `dalphay/dp`. These columns instead hold the derivatives of the betatron phase, 2π times the chromaticities. For a 0.5 m quadrupole with K1 = 0.6 m⁻² followed by a 1 m drift, entering with βx = 3 m, αx = 0.4, βy = 2 m and αy = −0.3, the exact hard-edge map gives dαx/dδ = 0.004523 and dαy/dδ = 1.549, where δ is the relative momentum offset; Elegant writes −0.3591 and 0.07649. The tune and beta derivatives are correct.

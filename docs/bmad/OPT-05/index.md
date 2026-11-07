@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [transfer_matrix_calc, bmad/code/transfer_matrix_calc.f90:110–115](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/transfer_matrix_calc.f90#L110-L115)<br>[routine contract, bmad/code/transfer_matrix_calc.f90:15–40](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/transfer_matrix_calc.f90#L15-L40)<br>[initialization, bmad/code/transfer_matrix_calc.f90:67–68](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/transfer_matrix_calc.f90#L67-L68)<br>[composition, bmad/code/transfer_matrix_calc.f90:122–128](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/transfer_matrix_calc.f90#L122-L128) |
 
 Requesting a backward transfer matrix in an open lattice crashes when the optional affine-vector output is omitted. The matrix-only call should return the inverse of the forward matrix. Through a 2 m drift, the same backward call succeeds when the affine vector is supplied and returns the expected horizontal drift coefficient of −2 m and a zero vector.

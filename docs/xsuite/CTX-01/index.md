@@ -12,7 +12,7 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xobjects main (`dfe34ae`, head build) |
+| Last reproduced | 2026-10-29 on xobjects release [v0.7.2](https://github.com/xsuite/xobjects/tree/v0.7.2) (`dfe34ae`) |
 | Source | [`LinkedArrayCpu`, context_cpu.py:172–187](https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/xobjects/context_cpu.py#L172-L187)<br>[`BaseLinkedArray.__setitem__`, linkedarray.py:27–36](https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/xobjects/linkedarray.py#L27-L36)<br>[`Particles.delta` setter](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L1213-L1225) |
 
 Writing through a shared CPU slice of `Particles.delta` changes the relative momentum deviation δ without updating the dependent energy and momentum fields, so subsequent tracking uses inconsistent coordinates. Relativistic kinematics and the expanded-drift map require those fields to change together, as direct indexed assignment does. Setting a 1 GeV/c proton to δ = 0.3 through a view, then tracking 1.7 m with normalized horizontal momentum `px` = 0.0008, gives x = 1.360 mm instead of 1.046 mm. Strided views, the output of NumPy universal functions (`out=`) and aliased in-place writes also bypass updates, and slices of read-only arrays accept prohibited writes. Direct indexed assignment preserves the required consistency.

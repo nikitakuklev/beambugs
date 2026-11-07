@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-07 on xtrack main (`f09e0fb`, head build) |
+| Last reproduced | 2026-11-07 on xtrack release [v0.118.6](https://github.com/xsuite/xtrack/tree/v0.118.6) (`f09e0fb`) |
 | Tags | <span class="bb-tag">extreme-regime</span> <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Pull request | [[gh:https://github.com/xsuite/xtrack/pull/911]], fix |
 | Source | [`Wedge_single_particle`, track_wedge.h:23–51](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_wedge.h#L23-L51)<br>[public Wedge API, wedge.py:9–23](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/wedge.py#L9-L23)<br>[both orderings, wedge.h:23–32](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/wedge.h#L23-L32)<br>[dipole-wedge map, xtrack.tex:2754–2782](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L2754-L2782) |

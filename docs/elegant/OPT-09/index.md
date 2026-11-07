@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [`compute_twiss_parameters`, `alpha3` accumulation, twiss.cc:2400–2404](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2400-L2404)<br>[`x = x(0) + η δ + η2 δ² + η3 δ³`, twiss.cc:253–259](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L253-L259)<br>[`alphac3` is the third-order momentum compaction, doc/elegant.tex:8254–8255](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8254-L8255)<br>[`alphac3` as an optimization symbol, doc/elegant.tex:6184–6185](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L6184-L6185) |
 
 Elegant's `twiss_output` reports the third-order momentum compaction `alphac3`, the δ³ coefficient of the relative path length with δ the relative momentum offset, but adds a product of two second-order dispersions that belongs to δ⁴. For a prescribed stable 10 m cell with second-order term T166 = 0.2 m (closed orbit x = 0.1 m·δ²) and path term T511 = 0.3 m⁻¹ (path length ∝ x²), the path is 10 m + 0.003 m·δ⁴, so `alphac3` must be 0, but Elegant writes 3.000×10⁻⁴. Tracking 12 particles on the closed orbit reproduces the quartic path, and removing either term gives zero.

@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on NonlinearNormalForm main (`7e40539`, head build) |
+| Last reproduced | 2026-10-31 on NonlinearNormalForm release [v0.5.3](https://github.com/bmad-sim/NonlinearNormalForm.jl/tree/v0.5.3) (`7e40539`) |
 | Source | [`NonlinearNormalForm.jl/src/vectorfield.jl:237-248`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L237-L248)<br>[`vectorfield.jl:196`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L196)<br>[`vectorfield.jl:258-299`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L258-L299)<br>[`forest/code/Ci_tpsa.f90:3424`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/forest/code/Ci_tpsa.f90#L3424) |
 
 For vector fields with spin, written as (orbital part, spin quaternion), NonlinearNormalForm's in-place Lie bracket `lb!` uses the result field G instead of the second input H in its spin part, so the bracket is not antisymmetric. The commutator of the package's own Lie operators, and the bracket in Forest's FPP, require the term H·∇f where the code computes G·∇f. For F = (0, x·i) and H = (∂ₓ, 0), the spin component [F,H].q₁ is 0 instead of −1, and for generic polynomial fields the spin part is off by 5.0 in norm while the orbital part is exact. `lb!` is unexported, and its only caller, the correction step of `log`, changes only how fast `log` converges, so no public output is known to change.

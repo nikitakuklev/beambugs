@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`tao_datum_integrate` second moments, tao/code/tao_data_and_eval_mod.f90:769–775](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_data_and_eval_mod.f90#L769-L775)<br>[Tao manual, “Calculation of δD for a Datum”, RMS definition (`s:del.d`), tao/doc/optimization.tex:168–171](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/optimization.tex#L168-L171) |
 
 Tao’s RMS range reduction squares the endpoint samples and applies trapezoidal quadrature, instead of integrating the square of the documented linear interpolation. An exactly linear, centered orbit over a one-metre drift returns 0.5000 mm instead of 0.2887 mm, making the variance three times too large. Its mean and integral are zero. Integrating a linear segment with endpoint values a and b requires a second moment proportional to (a² + ab + b²)/3.

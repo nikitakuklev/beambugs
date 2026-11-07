@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [autoscale_phase_and_amp, DC branch, bmad/low_level/autoscale_phase_and_amp.f90:277–305](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/autoscale_phase_and_amp.f90#L277-L305)<br>[Bmad Manual, Automatic Phase and Amplitude Scaling of RF Fields, `s:autoscale`, bmad/doc/attributes.tex:2876–2925](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L2876-L2925) |
 
 A zero-frequency electron gun with amplitude autoscaling enabled reports success but keeps its original field scale. The converged scale is overwritten when saved element attributes are restored. A 0.1 m constant field of −500.0 kV/m gives 50.00 keV instead of the requested 100.0 keV; integrating the electric field requires a scale of two.

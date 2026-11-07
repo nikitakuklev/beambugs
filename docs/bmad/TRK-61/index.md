@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-06 on Bmad 20261031-0 (`c4c629f`, committed 2026-10-31) |
+| Last reproduced | 2026-11-06 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [longitudinal-field boundary contract, bmad/low_level/calc_next_fringe_edge.f90:1–15](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/calc_next_fringe_edge.f90#L1-L15)<br>[parent offset, particle position and clipped boundaries, bmad/low_level/calc_next_fringe_edge.f90:124–147](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/calc_next_fringe_edge.f90#L124-L147)<br>[returned edge and distance, bmad/low_level/calc_next_fringe_edge.f90:214–222](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/calc_next_fringe_edge.f90#L214-L222)<br>[native spin reconstruction, bmad/spin/track1_spin_integration.f90:48–95](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/spin/track1_spin_integration.f90#L48-L95) |
 

@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`track_a_patch` reference correction, bmad/low_level/track_a_patch.f90:121–130](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_patch.f90#L121-L130)<br>[geometric Jacobian and row rescaling, bmad/low_level/track_a_patch.f90:163–200](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_patch.f90#L163-L200)<br>[Bmad manual, “Patch Tracking” (`s:patch.std`), bmad/doc/charged-tracking.tex:1348–1385](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L1348-L1385) |
 
 A patch that changes reference energy computes geometric matrix terms using both incoming- and outgoing-normalized momenta. Reference renormalization should leave the geometric displacement and its derivative with respect to incoming coordinates unchanged. For a 1 m longitudinal offset and a 100 keV reference-energy increase at 1 MeV/c, x is correctly 0.1857 m, but M₁₆, the derivative of x with respect to relative momentum, is −0.1585 m instead of −0.1761 m. Finite differences also expose the error in a pitched energy-changing patch, while a geometric patch without an energy change passes.

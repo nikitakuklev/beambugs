@@ -12,7 +12,7 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
+| Last reproduced | 2026-10-31 on SciBmad commit [`ae9423d`](https://github.com/bmad-sim/SciBmad.jl/commit/ae9423d703b4), committed 2026-10-28 |
 | Issue | [[gh:https://github.com/bmad-sim/SciBmad.jl/issues/152]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/SciBmad.jl/pull/153]], filed from this evidence |
 | Source | [`src/twiss/twiss.jl:750-751`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L750-L751)<br>[`twiss_operators.jl:624-696`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L624-L696)<br>[`twiss.jl:358`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L358)<br>[`bmad/code/momentum_compaction.f90:47-59`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/code/momentum_compaction.f90#L47-L59)<br>[`tao_evaluate_a_datum.f90:1718`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/tao/code/tao_evaluate_a_datum.f90#L1718)<br>[`:2771`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/tao/code/tao_evaluate_a_datum.f90#L2771) |

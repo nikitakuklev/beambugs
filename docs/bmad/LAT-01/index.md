@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`write_ascii_beam_file`, bmad/multiparticle/beam_file_io.f90:155–214](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L155-L214)<br>[routine contract, bmad/multiparticle/beam_file_io.f90:115–125](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L115-L125)<br>[particle serialization, bmad/multiparticle/beam_file_io.f90:249–277](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L249-L277) |
 
 When live-only ASCII output filters a bunch whose first particle is lost, it can replace the retained particles’ charge, direction and field with values inferred from the discarded particle. A two-particle example retains one particle but reads back charge 1 instead of 2, direction +1 instead of −1, and zero field instead of (0.6, 0.8). Filtering should preserve the supported data of every retained particle. Writing the same bunch without filtering preserves these values.

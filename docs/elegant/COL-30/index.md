@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [insertSCMULT, get_beamline.c:2379–2403](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/get_beamline.c#L2379-L2403)<br>[end insertion, get_beamline.c:466–475](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/get_beamline.c#L466-L475)<br>[skip, elegant.tex:4483–4484](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4483-L4484)<br>[important notes, elegant.tex:4516–4517](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4516-L4517)<br>[elegant.tex:11666–11667](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L11666-L11667) |
 
 With the default skip = 0, insert_sceffects adds its single end-of-beamline SCMULT only if the name and type selectors match at least one element: a name absent from the lattice, or a type no element has, leaves the ring without space charge, and the run completes without a warning. The manual states that skip = 0 inserts one SCMULT at the end of the beamline regardless of whether name or type is given, and the manual's linear kick for that element is the expected value. In a one-segment ring with a 0.8000 nC bunch at momentum 10.00 mₑc, the expected slope kick of 2.379×10⁻⁴ becomes exactly zero, while name = "*" gives it.

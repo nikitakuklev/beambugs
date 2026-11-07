@@ -94,8 +94,10 @@
    "date": "2026-10-24",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "d8e45fdc25db",
-    "committed": "2026-10-23"
+    "committed": "2026-10-23",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -194,8 +196,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -321,8 +325,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -425,8 +431,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -552,8 +560,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -699,16 +709,20 @@
    "date": "2026-10-22",
    "code": {
     "ref": "BeamTracking 0.8.7",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "65e343f9afda",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.8.7"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-07",
     "code": {
      "ref": "BeamTracking 0.8.7",
+     "repository": "bmad-sim/BeamTracking.jl",
      "commit": "0bf3585fdc9c",
-     "committed": "2026-10-28"
+     "committed": "2026-10-28",
+     "release": null
     },
     "head": true
    }
@@ -797,8 +811,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -900,8 +916,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1013,8 +1031,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1144,8 +1164,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1288,8 +1310,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1376,8 +1400,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "Beamlines 0.11.0",
+    "repository": "bmad-sim/Beamlines.jl",
     "commit": "35fe0162c72d",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.11.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1512,8 +1538,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1674,16 +1702,20 @@
    "date": "2026-10-23",
    "code": {
     "ref": "BeamTracking 0.8.7",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "65e343f9afda",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.8.7"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-07",
     "code": {
      "ref": "BeamTracking 0.8.7",
+     "repository": "bmad-sim/BeamTracking.jl",
      "commit": "0bf3585fdc9c",
-     "committed": "2026-10-28"
+     "committed": "2026-10-28",
+     "release": null
     },
     "head": true
    }
@@ -1821,8 +1853,10 @@
    "date": "2026-10-24",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "d8e45fdc25db",
-    "committed": "2026-10-23"
+    "committed": "2026-10-23",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -1906,8 +1940,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2023,8 +2059,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2152,8 +2190,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2261,8 +2301,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "AtomicAndPhysicalConstants main",
+    "repository": "bmad-sim/AtomicAndPhysicalConstants.jl",
     "commit": "750a9f276b7d",
-    "committed": "2026-10-26"
+    "committed": "2026-10-26",
+    "release": "v0.11.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2381,8 +2423,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "BeamTracking 0.8.7",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2476,8 +2520,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "BeamTracking 0.8.7",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2604,8 +2650,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -2731,16 +2779,20 @@
    "date": "2026-10-22",
    "code": {
     "ref": "SciBmad 0.6.0",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "62399f930847",
-    "committed": "2026-10-14"
+    "committed": "2026-10-14",
+    "release": "v0.6.0"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-07",
     "code": {
      "ref": "SciBmad main",
+     "repository": "bmad-sim/SciBmad.jl",
      "commit": "ae9423d703b4",
-     "committed": "2026-10-28"
+     "committed": "2026-10-28",
+     "release": null
     },
     "head": true
    }
@@ -2854,16 +2906,20 @@
    "date": "2026-10-22",
    "code": {
     "ref": "SciBmad 0.6.0",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "62399f930847",
-    "committed": "2026-10-14"
+    "committed": "2026-10-14",
+    "release": "v0.6.0"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-07",
     "code": {
      "ref": "SciBmad main",
+     "repository": "bmad-sim/SciBmad.jl",
      "commit": "ae9423d703b4",
-     "committed": "2026-10-28"
+     "committed": "2026-10-28",
+     "release": null
     },
     "head": true
    }
@@ -2964,8 +3020,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3070,8 +3128,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3189,8 +3249,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3275,8 +3337,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3356,8 +3420,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3461,16 +3527,20 @@
    "date": "2026-10-22",
    "code": {
     "ref": "SciBmad 0.6.0",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "62399f930847",
-    "committed": "2026-10-14"
+    "committed": "2026-10-14",
+    "release": "v0.6.0"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-07",
     "code": {
      "ref": "SciBmad main",
+     "repository": "bmad-sim/SciBmad.jl",
      "commit": "ae9423d703b4",
-     "committed": "2026-10-28"
+     "committed": "2026-10-28",
+     "release": null
     },
     "head": true
    }
@@ -3592,8 +3662,10 @@
    "date": "2026-10-24",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "5f0fb83ac889",
-    "committed": "2026-10-15"
+    "committed": "2026-10-15",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -3688,8 +3760,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3776,8 +3850,10 @@
    "date": "2026-10-24",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3900,8 +3976,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4010,8 +4088,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BatchSolve main",
+    "repository": "mattsignorelli/BatchSolve.jl",
     "commit": "ac41c095255d",
-    "committed": "2026-09-22"
+    "committed": "2026-09-22",
+    "release": "v0.1.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4106,8 +4186,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BatchSolve main",
+    "repository": "mattsignorelli/BatchSolve.jl",
     "commit": "ac41c095255d",
-    "committed": "2026-09-22"
+    "committed": "2026-09-22",
+    "release": "v0.1.5"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4206,8 +4288,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "FundamentalFrequencies main",
+    "repository": "bmad-sim/FundamentalFrequencies.jl",
     "commit": "f208dc0724b6",
-    "committed": "2026-05-10"
+    "committed": "2026-05-10",
+    "release": "v0.1.2"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4348,8 +4432,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4447,8 +4533,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4548,8 +4636,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "GTPSA main",
+    "repository": "bmad-sim/GTPSA.jl",
     "commit": "a5790a7deaa6",
-    "committed": "2026-07-13"
+    "committed": "2026-07-13",
+    "release": "v1.5.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4663,8 +4753,10 @@
    "date": "2026-10-23",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "5f0fb83ac889",
-    "committed": "2026-10-15"
+    "committed": "2026-10-15",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4752,8 +4844,10 @@
    "date": "2026-10-23",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "5f0fb83ac889",
-    "committed": "2026-10-15"
+    "committed": "2026-10-15",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -4852,8 +4946,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4949,8 +5045,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5058,8 +5156,10 @@
    "date": "2026-10-24",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "5f0fb83ac889",
-    "committed": "2026-10-15"
+    "committed": "2026-10-15",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5147,8 +5247,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5232,8 +5334,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5317,8 +5421,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5390,8 +5496,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5483,8 +5591,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5564,8 +5674,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5661,8 +5773,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5742,8 +5856,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -5833,8 +5949,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5914,8 +6032,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -6003,8 +6123,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "GTPSA main",
+    "repository": "bmad-sim/GTPSA.jl",
     "commit": "a5790a7deaa6",
-    "committed": "2026-07-13"
+    "committed": "2026-07-13",
+    "release": "v1.5.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6108,8 +6230,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "GTPSA main",
+    "repository": "bmad-sim/GTPSA.jl",
     "commit": "a5790a7deaa6",
-    "committed": "2026-07-13"
+    "committed": "2026-07-13",
+    "release": "v1.5.6"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6225,8 +6349,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "dfc5c2697e53",
-    "committed": "2026-11-06"
+    "committed": "2026-11-06",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -6347,8 +6473,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "dfc5c2697e53",
-    "committed": "2026-11-06"
+    "committed": "2026-11-06",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -6462,8 +6590,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -6621,16 +6751,20 @@
    "date": "2026-10-22",
    "code": {
     "ref": "BeamTracking 0.8.7",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "65e343f9afda",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.8.7"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-07",
     "code": {
      "ref": "BeamTracking 0.8.7",
+     "repository": "bmad-sim/BeamTracking.jl",
      "commit": "0bf3585fdc9c",
-     "committed": "2026-10-28"
+     "committed": "2026-10-28",
+     "release": null
     },
     "head": true
    }
@@ -6739,8 +6873,10 @@
    "date": "2026-10-30",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -6843,8 +6979,10 @@
    "date": "2026-10-24",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6939,8 +7077,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "NonlinearNormalForm main",
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
     "commit": "7e4053985736",
-    "committed": "2026-09-11"
+    "committed": "2026-09-11",
+    "release": "v0.5.3"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7036,8 +7176,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -7144,8 +7286,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SpaceCharge main",
+    "repository": "bmad-sim/SpaceCharge.jl",
     "commit": "ae3046330572",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v1.3.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7262,8 +7406,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SpaceCharge main",
+    "repository": "bmad-sim/SpaceCharge.jl",
     "commit": "ae3046330572",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v1.3.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7382,8 +7528,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -7475,8 +7623,10 @@
    "date": "2026-10-23",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "d8e45fdc25db",
-    "committed": "2026-10-23"
+    "committed": "2026-10-23",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -7552,8 +7702,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -7633,8 +7785,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -7718,8 +7872,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "SpaceCharge main",
+    "repository": "bmad-sim/SpaceCharge.jl",
     "commit": "ae3046330572",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v1.3.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7823,8 +7979,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -7954,8 +8112,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -8059,8 +8219,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "BeamTracking 0.8.7",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -8192,8 +8354,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "BeamTracking 0.8.7",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -8295,8 +8459,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "SpaceCharge main (1.3.0)",
+    "repository": "bmad-sim/SpaceCharge.jl",
     "commit": "ae3046330572",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v1.3.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8395,8 +8561,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
+    "repository": "bmad-sim/Beamlines.jl",
     "commit": "35fe0162c72d",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.11.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8515,8 +8683,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
+    "repository": "bmad-sim/Beamlines.jl",
     "commit": "35fe0162c72d",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.11.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8639,8 +8809,10 @@
    "date": "2026-11-07",
    "code": {
     "ref": "Beamlines 0.11.0",
+    "repository": "bmad-sim/Beamlines.jl",
     "commit": "35fe0162c72d",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.11.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8741,8 +8913,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
+    "repository": "bmad-sim/Beamlines.jl",
     "commit": "35fe0162c72d",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.11.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8844,16 +9018,20 @@
    "date": "2026-10-22",
    "code": {
     "ref": "BeamTracking 0.8.7",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "65e343f9afda",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.8.7"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-07",
     "code": {
      "ref": "BeamTracking 0.8.7",
+     "repository": "bmad-sim/BeamTracking.jl",
      "commit": "0bf3585fdc9c",
-     "committed": "2026-10-28"
+     "committed": "2026-10-28",
+     "release": null
     },
     "head": true
    }
@@ -8956,8 +9134,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
+    "repository": "bmad-sim/Beamlines.jl",
     "commit": "35fe0162c72d",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.11.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9062,8 +9242,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
+    "repository": "bmad-sim/Beamlines.jl",
     "commit": "35fe0162c72d",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.11.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9158,8 +9340,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -9248,8 +9432,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -9357,8 +9543,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -9463,8 +9651,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -9563,8 +9753,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
+    "repository": "bmad-sim/Beamlines.jl",
     "commit": "35fe0162c72d",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.11.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9663,16 +9855,20 @@
    "date": "2026-10-22",
    "code": {
     "ref": "BeamTracking 0.8.7",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "65e343f9afda",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.8.7"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-07",
     "code": {
      "ref": "BeamTracking 0.8.7",
+     "repository": "bmad-sim/BeamTracking.jl",
      "commit": "0bf3585fdc9c",
-     "committed": "2026-10-28"
+     "committed": "2026-10-28",
+     "release": null
     },
     "head": true
    }
@@ -9787,8 +9983,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -9875,8 +10073,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -9958,8 +10158,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -10044,8 +10246,10 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
+    "repository": "bmad-sim/SciBmad.jl",
     "commit": "ae9423d703b4",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -10156,8 +10360,10 @@
    "date": "2026-10-22",
    "code": {
     "ref": "bmad-ecosystem 20261020-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "19b8afb46a40",
-    "committed": "2026-10-20"
+    "committed": "2026-10-20",
+    "release": "20261020-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -10286,8 +10492,10 @@
    "date": "2026-10-22",
    "code": {
     "ref": "bmad-ecosystem 20261020-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "19b8afb46a40",
-    "committed": "2026-10-20"
+    "committed": "2026-10-20",
+    "release": "20261020-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -10361,8 +10569,10 @@
    "date": "2026-10-22",
    "code": {
     "ref": "bmad-ecosystem 20261020-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "19b8afb46a40",
-    "committed": "2026-10-20"
+    "committed": "2026-10-20",
+    "release": "20261020-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -10457,8 +10667,10 @@
    "date": "2026-10-22",
    "code": {
     "ref": "bmad-ecosystem 20261020-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "19b8afb46a40",
-    "committed": "2026-10-20"
+    "committed": "2026-10-20",
+    "release": "20261020-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -10539,8 +10751,10 @@
    "date": "2026-10-22",
    "code": {
     "ref": "bmad-ecosystem 20261020-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "19b8afb46a40",
-    "committed": "2026-10-20"
+    "committed": "2026-10-20",
+    "release": "20261020-0"
    },
    "head": false,
    "head_not_reproduced": null
@@ -10682,8 +10896,10 @@
    "date": "2026-10-30",
    "code": {
     "ref": "BeamTracking 0.8.7",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "d8e45fdc25db",
-    "committed": "2026-10-23"
+    "committed": "2026-10-23",
+    "release": null
    },
    "head": false,
    "head_not_reproduced": null
@@ -10807,8 +11023,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
+    "repository": "bmad-sim/BeamTracking.jl",
     "commit": "0bf3585fdc9c",
-    "committed": "2026-10-28"
+    "committed": "2026-10-28",
+    "release": null
    },
    "head": true,
    "head_not_reproduced": null
@@ -10908,8 +11126,10 @@
    "date": "2026-10-29",
    "code": {
     "ref": "Beamlines main",
+    "repository": "bmad-sim/Beamlines.jl",
     "commit": "35fe0162c72d",
-    "committed": "2026-10-13"
+    "committed": "2026-10-13",
+    "release": "v0.11.0"
    },
    "head": true,
    "head_not_reproduced": null
@@ -11014,8 +11234,10 @@
    "date": "2026-11-06",
    "code": {
     "ref": "bmad-ecosystem 20261031-0",
+    "repository": "bmad-sim/bmad-ecosystem",
     "commit": "c4c629fc9071",
-    "committed": "2026-10-31"
+    "committed": "2026-10-31",
+    "release": "20261031-0"
    },
    "head": false,
    "head_not_reproduced": null

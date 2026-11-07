@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [rates and slicing, matter.c:118–136](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L118-L136)<br>[event draws, matter.c:246–250](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L246-L250)<br>[`PLIMIT`, track_data.c:2150](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2150)<br>[slice model, matter.tex:21–31](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/matter.tex#L21-L31)<br>[`ELECTRON_RECOIL`, track_data.c:2143](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2143) |
 
 In MATTER with ELECTRON_RECOIL and NUCLEAR_BREMSSTRAHLUNG enabled, the material is sliced so that only the elastic-scattering probability per slice stays below PLIMIT; the recoil probability per slice has no bound. When it exceeds one, every electron receives exactly one recoil per slice instead of a Poisson-distributed number. For electrons of momentum 20 mₑc crossing 1 m of dilute hydrogen with 2.500 expected recoils each, the model's own rates leave exp(−2.500) = 8.208% of electrons without energy loss; Elegant leaves none at the default PLIMIT, and the expected fraction once PLIMIT forces 377 slices. At the default PLIMIT, saturation needs momenta below 66.55 mₑc in hydrogen.

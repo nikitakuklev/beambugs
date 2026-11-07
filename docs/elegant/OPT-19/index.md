@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`7514db3`](https://github.com/rtsoliday/elegant/commit/7514db36f764), committed 2026-11-04 |
 | Source | [`determineMatrixHigherOrder`, src/analyze.c:1528–1531](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L1528-L1531)<br>[frees Q and sets `M->Q = NULL`, src/matrix.c:439–443](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matrix.c#L439-L443)<br>[`remove_s_dependent_matrix_elements`, src/matrix.c:1271–1290](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matrix.c#L1271-L1290)<br>[`global_settings`, src/global_settings.nl:29](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/global_settings.nl#L29) |
 
 Setting `global_settings tracking_matrix_cleanup=1`, which removes spurious path-coordinate terms from element maps that Elegant derives by tracking, makes Elegant crash with a segmentation fault when the matrix order is 2, the `run_setup` default. The clean-up writes third-order coefficients after the third-order storage of the map has been freed. A beamline of two CCBENDs, whose maps are derived by tracking, ends with "Terminated by SIGSEGV" when its second-order matrix is computed; the same input at order 3, or with the clean-up off, finishes and writes R56 = 0.05613 m.

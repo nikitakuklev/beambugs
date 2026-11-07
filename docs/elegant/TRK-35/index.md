@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
+| Last reproduced | 2026-11-04 on Elegant commit [`7514db3`](https://github.com/rtsoliday/elegant/commit/7514db36f764), committed 2026-11-04 |
 | Source | [`integrate_csbend_ordn_expanded`, csbend.c:2159–2167](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2159-L2167)<br>[csbend.c:2253](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2253)<br>[parameter table, track_data.c:1977](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1977) |
 
 A CSBEND with EXPAND_HAMILTONIAN=1 accumulates the path length without the leading curvature term hx, where h is the curvature and x the horizontal offset, so the bend body adds no first-order path dependence on x, the slope x′ or the momentum deviation δ. For a 1.2 m, 0.13 rad sector bend, the path-length matrix elements R51, R52 and R56 are 9.992×10⁻¹¹, 7.772×10⁻¹¹ m and −1.835×10⁻⁸ m instead of the linear sector-bend values 0.1296, 0.07789 m and 3.377×10⁻³ m, which the exact Hamiltonian reproduces. The dispersion R16 = 0.07789 m is kept, so a ring of such bends loses the momentum compaction of its bends.

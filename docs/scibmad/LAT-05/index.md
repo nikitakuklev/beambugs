@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-22 on BeamTracking 0.8.7 (`65e343f`, committed 2026-10-13); not reproduced on BeamTracking 0.8.7 (`0bf3585`), 2026-11-07 |
+| Last reproduced | 2026-10-22 on BeamTracking release [v0.8.7](https://github.com/bmad-sim/BeamTracking.jl/tree/v0.8.7) (`65e343f`) |
 | Issue | [[gh:https://github.com/bmad-sim/BeamTracking.jl/issues/374]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/BeamTracking.jl/pull/375]], filed from this evidence |
 | Source | [`BeamTracking.jl/src/batch.jl:102-103`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L102-L103)<br>[`BeamTracking.jl/src/batch.jl:131`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L131) |

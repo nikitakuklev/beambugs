@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [track1_diffraction_plate_or_mask, attenuation and phase, bmad/photon/track1_photon_mod.f90:199–209](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/track1_photon_mod.f90#L199-L209)<br>[path-length coefficient contract, bmad/interface/xraylib_interface.f90:28–31](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/interface/xraylib_interface.f90#L28-L31)<br>[Bmad manual, Mask Wall For Diffraction Plate and Mask Elements, bmad/doc/attributes.tex:1913–1916](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L1913-L1916)<br>[Mask, bmad/doc/elements.tex:3525–3531](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L3525-L3531) |
 
 Oblique photons transmitted through a material-filled mask receive the normal-incidence attenuation and phase. For a 20 µm titanium section at 9 keV and local longitudinal direction cosine 0.8, the field amplitude is 0.5154 instead of 0.4367. Straight-ray geometry requires a 25 µm material path, and Beer attenuation and optical phase both use that length. An oblique ray and a laboratory-axis ray through a pitched mask give the same error; normal incidence passes.

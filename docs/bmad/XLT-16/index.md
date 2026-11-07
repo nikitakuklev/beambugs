@@ -12,7 +12,7 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
+| Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`parse_and_write_element`, util_programs/mad_to_bmad/madx_to_bmad.py:575–580](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L575-L580)<br>[600–605](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L600-L605)<br>[622–627](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L622-L627) |
 
 Importing a MAD-X quadrupole, sextupole or octupole whose only strength is k1s, k2s or k3s discards that strength after setting the skew roll. The imported magnet has zero field. A 0.7 m skew quadrupole with k1s = 1.3 m⁻² becomes a drift with no transverse coupling, while MAD-X and the analytic transfer matrix give R₁₃ = 0.3189 and R₄₁ = 0.9131 m⁻¹, using coordinates (x, pₓ, y, pᵧ) with momenta normalized to the reference momentum. Assigning k1 = 1.3 to the import restores that matrix. Specifying both normal and skew strengths selects a separate importer branch.
