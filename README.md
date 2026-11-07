@@ -18,6 +18,7 @@ Site: https://nikitakuklev.github.io/beambugs/
 | `docs/methodology.md` | Criteria, levels, severity, priority. Hand-written. |
 | `codes.yaml` | Exported codes: names, upstream repository, ledger location, area files. |
 | `tools/export.py`, `tools/templates/` | Exporter from the private ledgers. |
+| `tools/commits.json` | Upstream commit dates and observed branch tips that decide whether a run is current. Generated. |
 | `hooks/upstream_state.py` | Build hook that shows the current state of linked issues and PRs. |
 
 Entry pages link to the source and download of every helper their scripts need,
@@ -28,8 +29,9 @@ relative to the entry's `page`, with helpers at `../helpers/<name>.py`.
 ## Regenerate and build
 
 ```sh
+export GITHUB_TOKEN=$(gh auth token)   # commit lookups not yet in tools/commits.json
 python tools/export.py impactx          # needs the private ledger named in codes.yaml
-python tools/export.py --check impactx  # parse and report the gate, write nothing
+python tools/export.py --check impactx  # parse and report the gate, write nothing under docs/
 mkdocs serve                            # BEAMBUGS_OFFLINE=1 skips GitHub state lookups
 ```
 

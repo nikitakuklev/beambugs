@@ -15,9 +15,9 @@ ledger, the templates or the exporter, then regenerate.
 | `title`, `summary` | Specific failure and the public paragraph. |
 | `area`, `priority`, `severity`, `level` | Classification; see `docs/methodology.md`. |
 | `locations` | Source permalinks of the faulty code. |
-| `upstream` | Linked issues and PRs: `repository`, `number`, `kind`, `url`, `relation` (`filed` from this evidence, or `existing report`). Live state is shown on the site only. |
-| `provenance` | `found` and `confirmed` lists (`model`, `effort`, `date`, `code` {`ref`, `commit`, `build`}, optional `scope`), `verified` (last head reproduction). |
-| `last_reproduced` | Most recent reproducing run: `date`, `code` {`ref`, `commit`}, `head` (true if it was the development head), `head_not_reproduced` (the head run, when it no longer reproduces). |
+| `upstream` | Linked issues and PRs: `repository`, `number`, `kind`, `url`, `relation` (`filed` from this evidence; others' `report` of the defect, `fix` of it, or `discussion` of it or its cause). Live state is shown on the site only. |
+| `provenance` | `found` and `confirmed` lists (`model`, `effort`, `date`, `code` {`ref`, `commit`, `build`}, optional `scope`), `verified` (last recorded run on a head build). |
+| `last_reproduced` | Most recent current reproducing run (else the most recent one, for a defect fixed upstream): `date`, `code` {`ref`, `commit`, `committed` (commit date)}, `head` (the commit was the development-branch head), `head_not_reproduced` (the head run, when it no longer reproduces). |
 | `models` | Distinct models in `found` and `confirmed`. |
 | `reproducers` | Download paths relative to `page`: `<ID>*.py`/`.jl`/`.sh` scripts and input directories are local to the entry; imported `_*.py` helpers (including transitive imports) use `../helpers/<name>.py`. |
 | `requirements` | Third-party Python packages the reproducer and its helpers import besides the code itself. |
@@ -30,8 +30,8 @@ Install the code as described under "Running the reproducers" on its code page
 script and save its linked `_*.py` helpers in the same local directory, then
 run it from any directory, one script per process. It ends with
 `DEFECT REPRODUCED` or `NOT REPRODUCED`; a nonzero exit
-status means the run failed. Scripts that read the code's sources state the
-environment variable they need in their opening description.
+status means the run failed. A script that needs more than the code page's
+setup states it in a `Setup:` paragraph of its opening description.
 
 Helpers are published once per code in `docs/<code>/helpers/`; its `index.md`
 shows their source. Entry pages link to each required helper's source and download.
@@ -39,11 +39,30 @@ shows their source. Entry pages link to each required helper's source and downlo
 ## Changing the site
 
 - Exporter rules: an entry is published only if it passes the gate in
-  `Entry.gate_failures` (level, reproducer or justification, two distinct
-  models, summary, a main script that opens with `<ID>: <title>` and the
-  Summary verbatim). `--check` reports the gate without writing. The exporter fails on malformed ledger input instead of
-  skipping it.
+  `Entry.gate_failures` (a current run, level, reproducer or justification,
+  two distinct models in `found` and `confirmed`, summary, a main script that
+  opens with `<ID>: <title>` and the Summary verbatim). A run is current when
+  it is the `verified` head run, its commit was at most `CURRENT_DAYS` (7)
+  days old on the run date, or the commit is still the tip of the code's
+  `branch` in `codes.yaml`; a `verified` run that no longer reproduces keeps a
+  fixed defect current. `--check` reports the gate without writing under
+  `docs/`. The exporter fails on malformed ledger input instead of skipping it.
+- Publication is permanent. A defect fixed before its entry reaches `origin/main`
+  leaves the ledger; a published one stays as a fixed entry (its `verified` run
+  does not reproduce). The exporter, including `--check`, fails when an entry
+  under `docs/<code>/` on `origin/main` is missing from the ledger or fails the
+  gate, unless the code's `merged` map in `codes.yaml` names the entry that
+  absorbed it. Fetch `origin` first if the site was pushed from elsewhere.
+- `filed.md` rows open with the linked entry ID (`| [TRK-05](...) |`) or `| — |`
+  for a filing without a published entry; any other row is an error. Those links
+  carry relation `filed`.
+- Commit dates and observed branch tips come from the GitHub API and are
+  cached in `tools/commits.json`, whose facts do not change once observed; set
+  `GITHUB_TOKEN` when new commits need lookups. `codes.yaml` maps each
+  provenance ref's package prefix to its repository (`repositories`).
 - `[[gh:owner/repo#N]]` in generated Markdown is rendered by
   `hooks/upstream_state.py` with the live GitHub state; API failures stop the
-  build.
+  build. The code tables write our filings as `[[gh:<URL> filed]]`; with
+  `extra: mark_filed: true` in `mkdocs.yml` (required, true or false) the hook
+  puts a small marker after those links.
 - Adding a code: an entry in `codes.yaml` and a nav line in `mkdocs.yml`.

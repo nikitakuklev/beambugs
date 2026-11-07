@@ -1,0 +1,252 @@
+{
+ "BLAST-ImpactX/impactx": {
+  "615921c6867c": {
+   "committed": "2026-10-05",
+   "sha": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+   "superseded": true,
+   "tip_seen": null
+  },
+  "b701a6e9d1f9": {
+   "committed": "2026-10-23",
+   "sha": "b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943",
+   "superseded": false,
+   "tip_seen": null
+  },
+  "dfd49f22c34f": {
+   "committed": "2026-10-30",
+   "sha": "dfd49f22c34f7a239b71d6168037843c1e45d1d4",
+   "superseded": false,
+   "tip_seen": null
+  },
+  "f9c2a82e24b7": {
+   "committed": "2026-11-05",
+   "sha": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+   "superseded": true,
+   "tip_seen": null
+  },
+  "fa0a43b9bb07": {
+   "committed": "2026-10-28",
+   "sha": "fa0a43b9bb07decba15daa38ed56ca947160ed1d",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "bmad-sim/AtomicAndPhysicalConstants.jl": {
+  "750a9f276b7d": {
+   "committed": "2026-10-26",
+   "sha": "750a9f276b7d69d5363b7b9324ce8f4f96439d62",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "bmad-sim/BeamTracking.jl": {
+  "0bf3585fdc9c": {
+   "committed": "2026-10-28",
+   "sha": "0bf3585fdc9c5b41859b23b92854376b933a4fe6",
+   "superseded": false,
+   "tip_seen": null
+  },
+  "65e343f9afda": {
+   "committed": "2026-10-13",
+   "sha": "65e343f9afda8a208fdfaeb487d615b0ca5a408e",
+   "superseded": true,
+   "tip_seen": null
+  },
+  "d8e45fdc25db": {
+   "committed": "2026-10-23",
+   "sha": "d8e45fdc25dbebf4be8195e69be04df13d7383b1",
+   "superseded": true,
+   "tip_seen": null
+  }
+ },
+ "bmad-sim/Beamlines.jl": {
+  "35fe0162c72d": {
+   "committed": "2026-10-13",
+   "sha": "35fe0162c72d0899a02a67eb929e8a900a165bc1",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "bmad-sim/FundamentalFrequencies.jl": {
+  "f208dc0724b6": {
+   "committed": "2026-05-10",
+   "sha": "f208dc0724b6c22dc85d9f018c6e8b50bce37591",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "bmad-sim/GTPSA.jl": {
+  "a5790a7deaa6": {
+   "committed": "2026-07-13",
+   "sha": "a5790a7deaa62c13d3edc168d5f98b15e8a3c490",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "bmad-sim/NonlinearNormalForm.jl": {
+  "7e4053985736": {
+   "committed": "2026-09-11",
+   "sha": "7e40539857368faf9784736ad29c8f0ae6e70a23",
+   "superseded": true,
+   "tip_seen": null
+  },
+  "dfc5c2697e53": {
+   "committed": "2026-11-06",
+   "sha": "dfc5c2697e5385e2eceb97c8164f415dd1598709",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "bmad-sim/SciBmad.jl": {
+  "5f0fb83ac889": {
+   "committed": "2026-10-15",
+   "sha": "5f0fb83ac8899c1e26d4522ccc8e54c59633307f",
+   "superseded": true,
+   "tip_seen": null
+  },
+  "62399f930847": {
+   "committed": "2026-10-14",
+   "sha": "62399f930847e9e0f29afa6beb27ff7eee9baee2",
+   "superseded": true,
+   "tip_seen": null
+  },
+  "ae9423d703b4": {
+   "committed": "2026-10-28",
+   "sha": "ae9423d703b4e612ae66e9deb0546aa79f62a340",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "bmad-sim/SpaceCharge.jl": {
+  "ae3046330572": {
+   "committed": "2026-10-13",
+   "sha": "ae30463305729aec2f04d4687ffd547b94750cb2",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "bmad-sim/bmad-ecosystem": {
+  "19b8afb46a40": {
+   "committed": "2026-10-20",
+   "sha": "19b8afb46a400d12a53a92d616e02359b3b2b71f",
+   "superseded": true,
+   "tip_seen": null
+  },
+  "c4c629fc9071": {
+   "committed": "2026-10-31",
+   "sha": "c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3",
+   "superseded": true,
+   "tip_seen": null
+  }
+ },
+ "mattsignorelli/BatchSolve.jl": {
+  "ac41c095255d": {
+   "committed": "2026-09-22",
+   "sha": "ac41c095255df9a3d4f33c4242a4e5d69e32a7ec",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "rtsoliday/SDDS": {
+  "a3f730a14c49": {
+   "committed": "2026-10-31",
+   "sha": "a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "rtsoliday/elegant": {
+  "0355dd6aca12": {
+   "committed": "2026-11-03",
+   "sha": "0355dd6aca12c861971fbf8f3ae78a0ded991734",
+   "superseded": true,
+   "tip_seen": null
+  },
+  "7514db36f764": {
+   "committed": "2026-11-04",
+   "sha": "7514db36f7646d3dd05e221eb249a194fd0d7431",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "xsuite/xcoll": {
+  "64e13f596c87": {
+   "committed": "2026-10-01",
+   "sha": "64e13f596c879cb28edded913e3c97261a3401f2",
+   "superseded": false,
+   "tip_seen": "2026-11-07"
+  }
+ },
+ "xsuite/xdeps": {
+  "64847952ef3a": {
+   "committed": "2026-10-28",
+   "sha": "64847952ef3ab1f882e2f51ba5d697dd5f6a088b",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "xsuite/xfields": {
+  "223b4fa134a1": {
+   "committed": "2026-10-16",
+   "sha": "223b4fa134a1435be9b45ef21ae8903f96c5f685",
+   "superseded": true,
+   "tip_seen": null
+  },
+  "3f06c8791ea5": {
+   "committed": "2026-10-29",
+   "sha": "3f06c8791ea54ed2c38bdc40a39cc70487d8a419",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "xsuite/xobjects": {
+  "dfe34ae824bd": {
+   "committed": "2026-10-16",
+   "sha": "dfe34ae824bd8b202015f4350e655238b5bb9511",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "xsuite/xpart": {
+  "2633e528018a": {
+   "committed": "2026-10-16",
+   "sha": "2633e528018af2e2de24db94122fbab7956ab12e",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "xsuite/xsuite": {
+  "e0913e0a1802": {
+   "committed": "2026-10-19",
+   "sha": "e0913e0a18028b2fce06991aebed6150876124b3",
+   "superseded": true,
+   "tip_seen": null
+  },
+  "fb7df34faa78": {
+   "committed": "2026-11-02",
+   "sha": "fb7df34faa78eb977b91d46a1b1079c62bbd35dc",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
+ "xsuite/xtrack": {
+  "3cd8bfca8d7c": {
+   "committed": "2026-10-26",
+   "sha": "3cd8bfca8d7c611ba413088d3d343bc469e57006",
+   "superseded": false,
+   "tip_seen": null
+  },
+  "ad5e808cdc5b": {
+   "committed": "2026-10-19",
+   "sha": "ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028",
+   "superseded": true,
+   "tip_seen": null
+  },
+  "f09e0fbda37b": {
+   "committed": "2026-10-29",
+   "sha": "f09e0fbda37bf01616ed5b9fb9c53dae1d432b57",
+   "superseded": false,
+   "tip_seen": null
+  }
+ }
+}

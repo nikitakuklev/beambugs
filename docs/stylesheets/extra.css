@@ -17,6 +17,8 @@
 .md-typeset .bb-done { color: #8250df; }
 .md-typeset .bb-closed { color: #cf222e; }
 .md-typeset .bb-dropped { color: #6e7781; }
+/* Marker after an issue or PR filed from beambugs evidence. */
+.md-typeset .bb-filed { font-size: .8em; color: var(--md-default-fg-color--light); }
 /* Tags next to defect titles. */
 .md-typeset .bb-tag {
   display: inline-block; padding: 0 .45em; margin-left: .2em;

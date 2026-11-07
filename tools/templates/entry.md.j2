@@ -15,7 +15,7 @@ hide:
 | Evidence | {{ e.level }} |
 {% set r = e.last_reproduced %}
 {% set n = r.head_not_reproduced %}
-| Last reproduced | {{ r.date }} on {{ r.code.ref }} (`{{ r.code.commit[:7] }}`){% if n %}; not reproduced on {{ n.code.ref }} (`{{ n.code.commit[:7] }}`), {{ n.date }}{% endif %} |
+| Last reproduced | {{ r.date }} on {{ r.code.ref }} (`{{ r.code.commit[:7] }}`, {% if r.head %}head build{% else %}committed {{ r.code.committed }}{% endif %}){% if n %}; not reproduced on {{ n.code.ref }} (`{{ n.code.commit[:7] }}`), {{ n.date }}{% endif %} |
 {% if e.tags %}
 | Tags | {% for t in e.tags %}<span class="bb-tag">{{ t }}</span> {% endfor %}[?](../../methodology.md#tags) |
 {% endif %}
@@ -39,12 +39,8 @@ hide:
 **Why no reproducer.** {{ e.justification }}
 
 {% endif %}
-{% if helper_names %}
-Download these shared helpers into the same directory as the reproducer scripts:
-
-{% for name in helper_names %}
-- [Download {{ name }}](../helpers/{{ name }}) · [View source](../helpers/index.md#{{ name[:-3] }})
-{% endfor %}
+{% if main %}
+Run `{{ languages[main] }} {{ main }}`{% if helper_names %} with {% for n in helper_names %}[{{ n }}](../helpers/{{ n }}){% if not loop.last %}{{ ' and ' if loop.revindex == 2 else ', ' }}{% endif %}{% endfor %} in the same directory{% endif %}.
 
 {% endif %}
 {% for name, text in sources.items() if name not in helper_names %}

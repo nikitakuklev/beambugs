@@ -5,6 +5,9 @@ pull request is open, closed or merged without the exporter tracking it. Uses
 GITHUB_TOKEN when set; unauthenticated requests are limited to 60 per hour.
 Any API failure stops the build; set BEAMBUGS_OFFLINE=1 to render plain links
 without states (local previews only).
+
+`[[gh:<URL> filed]]` marks an issue or PR filed from beambugs evidence; with
+`extra: {mark_filed: true}` in mkdocs.yml the link gets a small marker after it.
 """
 
 from __future__ import annotations
@@ -16,13 +19,14 @@ import urllib.error
 import urllib.request
 
 PLACEHOLDER = re.compile(
-    r"\[\[gh:(https://github\.com/([\w.-]+/[\w.-]+)/(?:issues|pull)/(\d+)[^\]\s]*)\]\]"
+    r"\[\[gh:(https://github\.com/([\w.-]+/[\w.-]+)/(?:issues|pull)/(\d+)[^\]\s]*)( filed)?\]\]"
 )
 # (icon shortcode, css class, tooltip) per GitHub state.
 ICONS = {
     "issue-open": ("octicons-issue-opened-16", "bb-open", "Open issue"),
     "issue-completed": ("octicons-issue-closed-16", "bb-done", "Closed issue (completed)"),
     "issue-not_planned": ("octicons-skip-16", "bb-dropped", "Closed issue (not planned)"),
+    "issue-duplicate": ("octicons-skip-16", "bb-dropped", "Closed issue (duplicate)"),
     "issue-closed": ("octicons-issue-closed-16", "bb-done", "Closed issue"),
     "pull-open": ("octicons-git-pull-request-16", "bb-open", "Open pull request"),
     "pull-draft": ("octicons-git-pull-request-draft-16", "bb-dropped", "Draft pull request"),
@@ -30,6 +34,7 @@ ICONS = {
     "pull-closed": ("octicons-git-pull-request-closed-16", "bb-closed", "Closed pull request"),
 }
 _cache: dict[tuple[str, int], str] = {}
+FILED_MARK = ' :material-alpha-b-circle-outline:{ .bb-filed title="Filed from beambugs evidence" }'
 
 
 def _get(url: str) -> dict:
@@ -69,14 +74,19 @@ def _state(repo: str, number: int) -> str:
     return _cache[key]
 
 
-def _render(match: re.Match) -> str:
+def _render(match: re.Match, mark_filed: bool) -> str:
     url, repo, number = match.group(1), match.group(2), int(match.group(3))
     link = f"[{repo.split('/')[1]}#{number}]({url})"
+    if mark_filed and match.group(4):
+        link += FILED_MARK
     if os.environ.get("BEAMBUGS_OFFLINE") == "1":
         return link
     icon, css, tooltip = ICONS[_state(repo, number)]
     return f':{icon}:{{ .{css} title="{tooltip}" }} {link}'
 
 
-def on_page_markdown(markdown: str, **kwargs) -> str:
-    return PLACEHOLDER.sub(_render, markdown)
+def on_page_markdown(markdown: str, config, **kwargs) -> str:
+    mark_filed = config["extra"]["mark_filed"]  # required: mkdocs.yml states the choice
+    if not isinstance(mark_filed, bool):
+        raise TypeError(f"mkdocs.yml extra.mark_filed must be true or false, not {mark_filed!r}")
+    return PLACEHOLDER.sub(lambda m: _render(m, mark_filed), markdown)

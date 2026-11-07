@@ -4,7 +4,9 @@
 
 1. **Discovery.** An AI model examines one subsystem of a code against its documentation, source contracts, analytic results or another code, and writes a runnable reproducer for each candidate.
 2. **Confirmation.** A different model rechecks the candidate with an independent method: an analytic invariant, finite differences, an independent numerical integration, the documented contract or another code. Rerunning the discovery reproducer does not count.
-3. **Head verification.** The reproducer is run on a build of the code's current upstream head. The entry's *Last reproduced* row gives the date, branch or release and commit of the most recent run, and notes a later development-branch run that no longer reproduces the defect; the provenance table names the builds.
+3. **Current run.** The reproducer has run on the development-branch head, or on a commit at most seven days old on the day it ran. Upstream heads move faster than every entry can be rerun; the week bounds how much upstream change a reproduction can miss. A head run is a recorded run on a head build, or a run on a commit that is still the branch tip when the site is generated. When a code spans several packages whose heads are incompatible, its head build takes the code's head and the newest version of each package that the code accepts. A head run that no longer reproduces the defect also counts: the defect is fixed upstream.
+
+The entry's *Last reproduced* row gives the date, release or branch and commit of the most recent current run, with "head build" or the commit date, and notes a later head run that no longer reproduces the defect; the provenance table names the builds.
 
 Before an observation becomes an entry, it is separated from coordinate conventions, documented model approximations and unsupported inputs.
 Coordinates, signs, charge and reference normalization, slicing and splitting are resolved before comparing with another code.
@@ -19,6 +21,7 @@ An entry is published when all of these hold:
 
 - its evidence level is **Reproduced, independently rechecked** or **Probe-pinned**;
 - it has a standalone reproducer, or a stated reason why none is possible and what establishes the defect instead;
+- it has a current run;
 - the models that found and confirmed it include at least two distinct models, identified by exact model ID.
 
 ## Evidence levels
@@ -83,4 +86,4 @@ A row with a scope established only that part of the claim.
 
 Each reproducer builds its case inline, prints observed and expected values with the expected value's derivation, and ends with `DEFECT REPRODUCED` or `NOT REPRODUCED`.
 A nonzero exit status means the run failed, not a verdict.
-Each script opens with the entry's title and summary, then a short description of how it demonstrates the defect. Reproducers that read the code's sources or git history take the path of a clone from an environment variable that the description names; they stop with an error when it is unset. Installation and run instructions are on each code's page.
+Each script opens with the entry's title and summary, then a short description of how it demonstrates the defect. Installation and run instructions are on each code's page. A script that needs more, such as a source clone named by an environment variable, MPI or Valgrind, says so in a paragraph starting `Setup:` after the summary; it stops with an error when a required variable is unset.

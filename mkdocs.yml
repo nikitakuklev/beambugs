@@ -42,6 +42,10 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
+extra:
+  # Mark issues and PRs filed from beambugs evidence in the code tables' Issue and PR columns.
+  mark_filed: true
+
 extra_css:
   - stylesheets/extra.css
 

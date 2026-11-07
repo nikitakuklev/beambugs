@@ -1,9 +1,16 @@
 # Codes exported into beambugs. `ledger` is the private ledger directory the
 # exporter reads; it is only needed to regenerate docs/, not to build the site.
+# `branch` is the development branch whose head makes a run current; `repositories`
+# maps the package prefix of a provenance ref (`xtrack 0.118.2`) to its repository,
+# and a ref without a prefix belongs to `repository`. An optional `merged` map
+# ({old ID: absorbing ID}) lets a published entry leave the site after its
+# defect was merged into another entry; no other published entry may leave.
 bmad:
   name: Bmad
   homepage: https://www.classe.cornell.edu/bmad/
   repository: bmad-sim/bmad-ecosystem
+  branch: main
+  repositories: {}
   ledger: /mnt/apollo/ref_docs/bmad/upstream_defects
   areas:
     tracking.md: Tracking, RF, fields and spin
@@ -14,36 +21,32 @@ bmad:
     tao.md: Tao
   modules: []
   run: |
-    Build Bmad ecosystem release `20261031-0` (`c4c629fc9071`) from source, including
-    Tao, `bmad_to_mad_sad_elegant` and the regression executables. The reproducers ran
-    with GNU Fortran 15.3.0, double precision, OpenMP enabled and serial Bmad libraries. Configure
-    `util/dist_prefs` for GNU Fortran and the installed dependencies, source
-    `util/dist_source_me`, run `util/dist_build_production`, then run `mk` inside
-    `regression_tests`. Keep the complete build tree, including its CMake compile/link
-    recipes, libraries and Fortran module files. Set `BMAD_DIST` to that tree's absolute
-    path (the directory containing `production` and `regression_tests`). Source-reading
-    and importer scripts also require `BMAD_SOURCE`, the matching ecosystem source tree;
-    a distribution build containing its archived sources can serve both variables.
+    1. Build Bmad ecosystem release `20261031-0` (`c4c629fc9071`) from source, with GNU Fortran,
+       double precision, OpenMP enabled and serial Bmad libraries (the reproducers ran with GNU
+       Fortran 15.3.0): configure `util/dist_prefs` for GNU Fortran and the installed dependencies,
+       source `util/dist_source_me`, run `util/dist_build_production`, then run `mk` inside
+       `regression_tests`. This builds Tao, `bmad_to_mad_sad_elegant` and the regression executables.
+    2. Keep the complete build tree, including its CMake compile/link recipes, libraries, Fortran
+       module files and the compiler that built them; the reproducers compile inline Fortran with
+       those recipes.
+    3. Set `BMAD_DIST` to that tree's absolute path (the directory containing `production` and
+       `regression_tests`) and `BMAD_SOURCE` to the matching ecosystem source tree; a distribution
+       build containing its archived sources can serve both variables.
+    4. Install NumPy and the additional Python packages listed below. MAD-X checks use cpymad 1.19.0
+       with MAD-X 5.09.03.
+    5. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
+       [helpers directory](helpers/index.md), and save the helpers beside the script.
+    6. Run `python <ID>.py` with `OMP_NUM_THREADS=1`, one script per process.
 
-    The Touschek-background reproducer (COL-30) also needs `libbsim.a` in the production
-    build and Open MPI's `mpifort` and `mpiexec` on `PATH`, compatible with the build's
-    Fortran compiler (the run used Open MPI 5.0.10). It compiles the unchanged
-    `touschek_background` sources from `BMAD_SOURCE` in a temporary directory and runs
-    two MPI ranks against the serial libraries. Select one allowed CPU with
-    `taskset -c <cpu> python COL-30.py`; both ranks share that CPU with one thread each.
-
-    Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
-    [helpers directory](helpers/index.md). Save the helpers beside the script and run
-    `python <ID>.py`, one script per process with `OMP_NUM_THREADS=1`. NumPy is required;
-    the additional Python packages are listed below. MAD-X checks use cpymad 1.19.0
-    with MAD-X 5.09.03. Elegant checks require serial Elegant and SDDS (the runs used
-    rtsoliday/elegant `0355dd6aca12` and rtsoliday/SDDS `a3f730a14c49`), with their bin
-    directories on `PATH`, `ELEGANT_BIN` set to the Elegant executable, and `RPN_DEFNS`
-    set to SDDS's `defns.rpn`. Those checks use pysdds; HDF5 checks use h5py.
+    A script that needs more than this states it in a `Setup:` paragraph of its description.
+    Scripts that run Elegant used serial Elegant from rtsoliday/elegant `0355dd6aca12` and SDDS
+    from rtsoliday/SDDS `a3f730a14c49`.
 impactx:
   name: ImpactX
   homepage: https://impactx.readthedocs.io
   repository: BLAST-ImpactX/impactx
+  branch: development
+  repositories: {}
   ledger: /mnt/apollo/ref_docs/impactx/upstream_defects
   areas:
     tracking.md: Tracking
@@ -55,13 +58,26 @@ impactx:
   modules: [impactx, amrex]
   # Shown once on the code page, above the generated list of extra packages.
   run: |
-    Install the CPU build of ImpactX 26.10 (`pip install impactx-noacc==26.10`), on which
-    the reproducers ran. Download a reproducer and run it with `python <ID>.py`, one
-    script per process.
+    1. Install the CPU build of ImpactX 26.10, on which the reproducers ran:
+       `pip install impactx-noacc==26.10`.
+    2. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
+       [helpers directory](helpers/index.md), and save the helpers beside the script.
+    3. Run `python <ID>.py`, one script per process.
+
+    A script that needs more than this states it in a `Setup:` paragraph of its description.
 xsuite:
   name: Xsuite
   homepage: https://xsuite.readthedocs.io
   repository: xsuite/xsuite
+  branch: main
+  repositories:
+    xsuite: xsuite/xsuite
+    xtrack: xsuite/xtrack
+    xfields: xsuite/xfields
+    xpart: xsuite/xpart
+    xobjects: xsuite/xobjects
+    xdeps: xsuite/xdeps
+    xcoll: xsuite/xcoll
   ledger: /mnt/apollo/ref_docs/xsuite/upstream_defects
   areas:
     tracking.md: Tracking
@@ -71,16 +87,31 @@ xsuite:
     contexts_kernels.md: Contexts and kernels
   modules: [xsuite, xtrack, xpart, xobjects, xfields, xdeps, xcoll, xwakes]
   run: |
-    Install Xsuite 0.66.3 (`pip install xsuite==0.66.3`; the reproducers ran with xtrack
-    0.118.2, xfields 0.27.5, xpart 0.23.23, xobjects 0.7.2, xdeps 0.10.21 and xcoll
-    0.12.5) and build its prebuilt CPU kernels with `xsuite-prebuild regenerate`.
-    Download a reproducer and the `_*.py` helpers linked on its entry page from the
-    shared [helpers directory](helpers/index.md). Save the helpers beside the script
-    and run `python <ID>.py`, one script per process.
+    1. Install Xsuite 0.66.3 (`pip install xsuite==0.66.3`); the reproducers ran with xtrack
+       0.118.2, xfields 0.27.5, xpart 0.23.23, xobjects 0.7.2, xdeps 0.10.21 and xcoll 0.12.5.
+    2. Build its prebuilt CPU kernels with `xsuite-prebuild regenerate`. Scripts that use the
+       `_prebuilt` helper forbid kernel compilation and run only these kernels.
+    3. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
+       [helpers directory](helpers/index.md), and save the helpers beside the script.
+    4. Run `python <ID>.py`, one script per process.
+
+    A script that needs more than this states it in a `Setup:` paragraph of its description.
 scibmad:
   name: SciBmad
   homepage: https://github.com/bmad-sim/SciBmad.jl
   repository: bmad-sim/SciBmad.jl
+  branch: main
+  repositories:
+    SciBmad: bmad-sim/SciBmad.jl
+    BeamTracking: bmad-sim/BeamTracking.jl
+    Beamlines: bmad-sim/Beamlines.jl
+    GTPSA: bmad-sim/GTPSA.jl
+    NonlinearNormalForm: bmad-sim/NonlinearNormalForm.jl
+    SpaceCharge: bmad-sim/SpaceCharge.jl
+    FundamentalFrequencies: bmad-sim/FundamentalFrequencies.jl
+    AtomicAndPhysicalConstants: bmad-sim/AtomicAndPhysicalConstants.jl
+    BatchSolve: mattsignorelli/BatchSolve.jl
+    bmad-ecosystem: bmad-sim/bmad-ecosystem
   ledger: /mnt/apollo/ref_docs/scibmad/upstream_defects
   areas:
     tracking.md: Tracking
@@ -89,13 +120,27 @@ scibmad:
     lattice_api.md: Lattice and API
   modules: []
   run: |
-    Install Julia 1.13 and the packages `SciBmad` (0.6.0), `SpaceCharge` and `ForwardDiff`.
-    Download a reproducer and run it with `julia <ID>.jl`, one script per process and one
-    thread (`JULIA_NUM_THREADS=1`).
+    1. Install Julia 1.13 (the reproducers ran on 1.13.2).
+    2. In one Julia environment, add SciBmad, BeamTracking and AtomicAndPhysicalConstants at the
+       unreleased `main` commits the reproducers ran on: SciBmad `5f0fb83` (version 0.6.0),
+       BeamTracking `d8e45fd` (0.8.7) and AtomicAndPhysicalConstants `4095d79` (0.11.5). Add
+       SpaceCharge 1.3.0. The other dependencies ran at their releases Beamlines 0.11.0, GTPSA 1.5.6,
+       TPSAInterface 0.3.1, NonlinearNormalForm 0.5.3, BatchSolve 0.1.5 and FundamentalFrequencies
+       0.1.2.
+    3. Download a reproducer. For a Python launcher (`<ID>.py`), also download the `_*.py` helpers
+       linked on its entry page from the shared [helpers directory](helpers/index.md) and save them
+       beside the script.
+    4. Run `julia <ID>.jl` (or `python <ID>.py`) in that environment with one thread
+       (`JULIA_NUM_THREADS=1`), one script per process.
+
+    A script that needs more than this states it in a `Setup:` paragraph of its description.
 elegant:
   name: Elegant
   homepage: https://ops.aps.anl.gov/elegant.html
   repository: rtsoliday/elegant
+  branch: master
+  repositories:
+    SDDS: rtsoliday/SDDS
   ledger: /mnt/apollo/ref_docs/elegant/upstream_defects
   areas:
     tracking.md: Tracking
@@ -105,25 +150,14 @@ elegant:
     lattice_io.md: Lattices, particles and I/O
   modules: []
   run: |
-    Build serial Elegant, Pelegant and the SDDS tools from rtsoliday/elegant master
-    `0355dd6aca12` and rtsoliday/SDDS master `a3f730a14c49`, on which the reproducers ran
-    (CPU, Open MPI, no CUDA). Put the `elegant` and SDDS `bin` directories on `PATH` and set
-    `RPN_DEFNS` to the `defns.rpn` file of SDDS; Elegant does not start without it. Download a
-    reproducer and the `_*.py` helpers linked on its entry page from the shared
-    [helpers directory](helpers/index.md). Save the helpers beside the script and run
-    `python <ID>.py`, which runs
-    serial Elegant; `--mpi` adds a 3-rank Pelegant run (needs `mpirun`), and entries that occur
-    only under MPI (COL-02, COL-20, COL-26, IO-01, SCT-02, SCT-03, SCT-24) always run Pelegant with a
-    serial control. SCT-24 uses five ranks to exercise distributed IBSCATTER integration;
-    the other MPI reproducers use three. The extra `COL-24-mpi.py` also always runs Pelegant
-    with serial controls;
-    `COL-24.py` runs the single-bunch case in serial by default. `TRK-03-fse.py` adds the
-    fractional-strength and zero-field controls for TRK-03. COL-29, COL-32, COL-34 to COL-46,
-    COL-50 to COL-52, DOC-06, DOC-07, DOC-10, DOC-11, OPT-16 to OPT-31, SCT-01, SCT-17 to SCT-23,
-    SCT-25 and TRK-47 run serial Elegant only. COL-32, COL-38, COL-40, COL-41, COL-50 and SCT-01
-    also need Valgrind (COL-50 can use `VALGRIND_OPTS=--vgdb=no` without disabling Memcheck),
-    and SCT-17 runs
-    the `ibsEmittance` program of the Elegant build. DOC-01, DOC-10 and DOC-11 need an Elegant
-    source checkout named by `ELEGANT_SOURCE`, and IO-02 to IO-04 `gcc` with the SDDS libraries
-    of the build. COL-51 accepts only the expected status-1 bunch-count abort; unrelated
-    failures raise, and its native run uses the shared 600 s timeout.
+    1. Build serial Elegant and the SDDS tools from rtsoliday/elegant master `0355dd6aca12` and
+       rtsoliday/SDDS master `a3f730a14c49`, on which the reproducers ran (CPU, no CUDA). For MPI
+       runs, also build Pelegant with Open MPI.
+    2. Put the `elegant` and SDDS `bin` directories on `PATH` and set `RPN_DEFNS` to the `defns.rpn`
+       file of SDDS; Elegant does not start without it.
+    3. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
+       [helpers directory](helpers/index.md), and save the helpers beside the script.
+    4. Run `python <ID>.py`, which runs serial Elegant. Most scripts also accept `--mpi`, which adds a
+       3-rank Pelegant run of the same cases and needs Pelegant and Open MPI `mpirun` on `PATH`.
+
+    A script that needs more than this states it in a `Setup:` paragraph of its description.
