@@ -12,15 +12,12 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`parse_and_write_element`, util_programs/mad_to_bmad/madx_to_bmad.py:575–580](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L575-L580)<br>[600–605](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L600-L605)<br>[622–627](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L622-L627) |
 
 Importing a MAD-X quadrupole, sextupole or octupole whose only strength is k1s, k2s or k3s discards that strength after setting the skew roll. The imported magnet has zero field. A 0.7 m skew quadrupole with k1s = 1.3 m⁻² becomes a drift with no transverse coupling, while MAD-X and the analytic transfer matrix give R₁₃ = 0.3189 and R₄₁ = 0.9131 m⁻¹, using coordinates (x, pₓ, y, pᵧ) with momenta normalized to the reference momentum. Assigning k1 = 1.3 to the import restores that matrix. Specifying both normal and skew strengths selects a separate importer branch.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _translators.py](../helpers/_translators.py) · [View source](../helpers/index.md#_translators)
+Run `python XLT-16.py` with [_bmad.py](../helpers/_bmad.py) and [_translators.py](../helpers/_translators.py) in the same directory.
 
 ??? example "Reproducer: XLT-16.py"
 
@@ -37,12 +34,11 @@ Download these shared helpers into the same directory as the reproducer scripts:
     restores that matrix. Specifying both normal and skew strengths selects a separate importer
     branch.
 
-    The script translates with madx_to_bmad.py a 0.7 m MAD-X quadrupole, sextupole and octupole
-    whose only strength is k1s, k2s or k3s = 1.3, and reads the imported length, tilt and normal
-    strength with Tao. For the skew quadrupole it also compares the transverse transfer matrix of
-    the imported element with MAD-X TWISS of the source and with the closed-form solution of the
-    skew-quadrupole equations x″ = K y, y″ = K x. A copy of the import with k1 = 1.3 added is the
-    receiving-code control. Set BMAD_SOURCE to the pinned source checkout.
+    The script translates with madx_to_bmad.py a 0.7 m MAD-X quadrupole, sextupole and octupole whose
+    only strength is k1s, k2s or k3s = 1.3, and reads the imported length, tilt and normal strength with
+    Tao. For the skew quadrupole it also compares the transverse transfer matrix of the imported element
+    with MAD-X TWISS of the source and with the closed-form solution of the skew-quadrupole equations x″
+    = K y, y″ = K x. A copy of the import with k1 = 1.3 added is the receiving-code control.
     """
 
     import numpy as np

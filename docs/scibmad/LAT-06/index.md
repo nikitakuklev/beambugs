@@ -12,10 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on Beamlines main (`35fe016`) |
+| Last reproduced | 2026-10-31 on Beamlines main (`35fe016`, head build) |
 | Source | [`Beamlines.jl/src/bmultipole.jl:151-158`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/bmultipole.jl#L151-L158)<br>[`Beamlines.jl/src/emultipole.jl:135-141`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/emultipole.jl#L135-L141)<br>[`Beamlines.jl/src/element.jl:486-493`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/element.jl#L486-L493)<br>[`element.jl:493`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/element.jl#L493)<br>[`bmultipole.jl:129`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/bmultipole.jl#L129)<br>[`:159-165`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/bmultipole.jl#L159-L165) |
 
 Assigning a multipole tilt that needs a wider number type than the element's stored strengths raises `Incorrect value for BMultipoleParams` when that multipole order already exists. `tilt1 = 0.1` on the Float32 `Quadrupole(Kn1=1f0)` fails, as does a ForwardDiff `Dual` tilt on an ordinary Float64 quadrupole, and the electric `etilt1` fails the same way. The assignment should store the promoted value, as it does for an order the element does not yet have (`tilt2 = 0.1` returns 0.1) and for an assignment that needs no promotion. Derivatives with respect to multipole tilts therefore cannot be taken by assigning a `Dual` tilt; the failure is loud and produces no wrong values.
+
+Run `julia LAT-06.jl`.
 
 ??? example "Reproducer: LAT-06.jl"
 

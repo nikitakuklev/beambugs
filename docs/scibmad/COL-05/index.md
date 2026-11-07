@@ -12,10 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-31 on NonlinearNormalForm main (`7e40539`) |
+| Last reproduced | 2026-10-31 on NonlinearNormalForm main (`7e40539`, head build) |
 | Source | [`NonlinearNormalForm.jl/src/map.jl:319-341`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L319-L341)<br>[`map.jl:288`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L288)<br>[`map.jl:319-336`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L319-L336)<br>[`map.jl:337-341`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L337-L341) |
 
 Constructing a `DAMap` with keywords fails when neither `nv`, the number of orbital variables, nor the orbital rays `v` are given. The constructor promises to infer `nv` from the other supplied data or from its default, but afterwards overwrites that inference with `length(v)`, which fails when `v` is `nothing`. With a six-variable, first-order GTPSA (truncated power series) descriptor, passing a 6×6 identity matrix as `v_matrix`, a six-entry reference vector `v0`, or no orbital data raises `MethodError` instead of constructing a map, while the same calls with `nv=6` succeed. Calls that supply `v` also work, and SciBmad's Twiss constructor avoids the failure by passing `nv` explicitly.
+
+Run `julia COL-05.jl`.
 
 ??? example "Reproducer: COL-05.jl"
 

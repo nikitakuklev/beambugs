@@ -9,13 +9,16 @@ so for a 10 MeV proton the transfer-matrix focusing term R₂₁ is 0 instead of
 m⁻¹. The same lattice written out element by element imports all seven elements, and a single
 unrepeated cell imports correctly.
 
-Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
-parser modules from that clone behind package shells, replacing only the reactive state object so
-that no Trame web UI or server is needed, and imports an inline input that appends a 0.4 m drift and
-then extends the lattice by `cell * 3`. It rebuilds the lattice from the parser's records and
-compares its length and 6×6 transfer map for a 10 MeV proton with analytic drift and quadrupole
-matrices, as it does for the original input executed directly; the import also must print no
-message. The same input with the cells written out, and with a single cell, are the controls.
+Setup: `IMPACTX_SOURCE` set to a clone of BLAST-ImpactX/impactx at tag `26.10`; the script loads the
+dashboard modules from it.
+
+The script loads the dashboard's unmodified parser modules from that clone behind package shells,
+replacing only the reactive state object so that no Trame web UI or server is needed, and imports an
+inline input that appends a 0.4 m drift and then extends the lattice by `cell * 3`. It rebuilds the
+lattice from the parser's records and compares its length and 6×6 transfer map for a 10 MeV proton
+with analytic drift and quadrupole matrices, as it does for the original input executed directly;
+the import also must print no message. The same input with the cells written out, and with a single
+cell, are the controls.
 """
 
 import os

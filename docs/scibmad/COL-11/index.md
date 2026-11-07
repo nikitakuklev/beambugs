@@ -12,10 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on BeamTracking main (`0bf3585`) |
-| Source | [`BeamTracking.jl/src/kernels/sagan_cavity.jl:193-198,215-216`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L193-L216)<br>[`SciBmad.jl/docs/src/sagancavity-physics.md:104-107`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L104-L107) |
+| Last reproduced | 2026-10-29 on BeamTracking main (`0bf3585`, head build) |
+| Source | [`BeamTracking.jl/src/kernels/sagan_cavity.jl:193-198,215-216`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L193-L216)<br>[`SciBmad.jl/docs/src/sagancavity-physics.md:104-107`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L104-L107) |
 
 The `SaganCavity` RF energy kick applies two full-strength electric spin rotations, doubling the leading spin rotation of particles with transverse momentum. An independent high-precision integral of the Thomas–BMT spin equation requires the single integrated electric impulse, or half-strength rotations if it is split around the acceleration. For a proton with P₀c, the reference momentum times the speed of light, equal to three rest energies and normalized horizontal momentum 0.1300, a 2000 eV energy gain in a zero-length cavity rotates the spin by −1.136 × 10⁻⁶ rad instead of −5.682 × 10⁻⁷ rad. Public tracking agrees with the kernel, and an on-axis particle is not rotated; exact doubling is established in the weak-gain limit, not for arbitrary finite gains.
+
+Run `julia COL-11.jl`.
 
 ??? example "Reproducer: COL-11.jl"
 

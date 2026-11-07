@@ -12,10 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-30 on bmad-ecosystem 20261020-0 (`19b8afb`) |
+| Last reproduced | 2026-10-22 on bmad-ecosystem 20261020-0 (`19b8afb`, committed 2026-10-20) |
 | Source | [`bmad/bmad/output/write_lattice_scibmad_format.f90:350`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L350)<br>[`:480`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L480)<br>[`:888-910`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L888-L910) |
 
 Bmad's SciBmad exporter binds the lattice's variable Context to the name `c1` after defining elements, overwriting any element whose name becomes `c1`. Bmad names are case-insensitive, so both `c1` and `C1` trigger the collision. Loading then fails with “Unable to construct Branch: entry 2 of elements is a Context{Any}”, while the same lattice with element name `c2` loads. A Branch named `c1` instead overwrites the Context and also prevents loading; renaming only the generated Context binding and its final reference makes the tested collisions load. The exporter gives no incomplete-translation warning.
+
+Run `julia LAT-22.jl`.
 
 ??? example "Reproducer: LAT-22.jl"
 
@@ -32,10 +34,12 @@ Bmad's SciBmad exporter binds the lattice's variable Context to the name `c1` af
     # generated Context binding and its final reference makes the tested collisions load. The exporter
     # gives no incomplete-translation warning.
     #
+    # Setup: `BMAD_SOURCE` set to the root of a bmad-ecosystem `20261020-0` build (the directory
+    # containing `production/bin`); the script runs its `bmad_to_scibmad` program.
+    #
     # The script exports a one-quadrupole lattice with the quadrupole named `c1`, `C1` and `c2` in turn
     # using Bmad's `bmad_to_scibmad` program and loads each file; every name should load, and `c2` is
-    # the control. After each load it prints what the name `c1` holds. Set `BMAD_SOURCE` to the root of
-    # a Bmad build, so that the program is `$BMAD_SOURCE/production/bin/bmad_to_scibmad`.
+    # the control. After each load it prints what the name `c1` holds.
     using SciBmad
     haskey(ENV, "BMAD_SOURCE") || error("set BMAD_SOURCE to the root of the bmad-ecosystem 20261020-0 build (the directory that contains production/bin)")
     const BIN = joinpath(ENV["BMAD_SOURCE"], "production", "bin", "bmad_to_scibmad")

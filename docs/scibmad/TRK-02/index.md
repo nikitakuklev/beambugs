@@ -12,10 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`) |
-| Source | [ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl:15](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl#L15)<br>[src/kernels/sagan_cavity.jl:188–189](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L188-L189)<br>[ext/BeamTrackingBeamlinesExt/utils_bl.jl:217–220](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L217-L220)<br>[src/rf.jl:6–7](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/rf.jl#L6-L7)<br>[src/utils/z_to_time.jl:26](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/z_to_time.jl#L26) |
+| Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`, head build) |
+| Source | [ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl:15](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl#L15)<br>[src/kernels/sagan_cavity.jl:188–189](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L188-L189)<br>[ext/BeamTrackingBeamlinesExt/utils_bl.jl:217–220](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L217-L220)<br>[src/rf.jl:6–7](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/rf.jl#L6-L7)<br>[src/utils/z_to_time.jl:26](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/z_to_time.jl#L26) |
 
 With `SaganCavity` tracking, the `BelowTransition` and `AboveTransition` zero-phase references select each other's stable zero crossing, so the longitudinal restoring kick has the wrong sign and the cavity runs on the unstable slope. Below transition a late particle must gain energy and above transition it must lose energy, as the phase-stability condition and independent tracking in a drift-only ring establish. In a 1.000 kV, 100.0 MHz cavity, a proton or electron at 0.8944 times light speed arriving late, at longitudinal offset z = −0.02000 m, loses 46.85 eV below transition instead of gaining 46.85 eV. The `Accelerating` crest and ordinary RF transition phases are correct.
+
+Run `julia TRK-02.jl`.
 
 ??? example "Reproducer: TRK-02.jl"
 

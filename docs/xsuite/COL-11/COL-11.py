@@ -12,8 +12,7 @@ The script builds a lens from a normalized Gaussian density on a 49 × 49 grid a
 unit-charge particles with electron and proton masses at 0.6 and 1.7 GeV/c from a grid vertex, where
 the interpolated field derivative equals the stored one. It compares each kick with the Lorentz
 impulse computed from that derivative, and tracks protons at δ = 0 and 0.25 to compare the ratio of
-their kicks with the change in transit speed. It requires the installed prebuilt kernels
-(compilation is forbidden).
+their kicks with the change in transit speed.
 """
 
 import xfields as xf

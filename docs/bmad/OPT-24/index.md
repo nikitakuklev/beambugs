@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [full-step radiation coefficients, bmad/low_level/symp_lie_bmad.f90:123–134](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L123-L134)<br>[wiggler radiation calls, bmad/low_level/symp_lie_bmad.f90:254–258](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L254-L258)<br>[quadrupole/solenoid radiation calls, bmad/low_level/symp_lie_bmad.f90:354–357](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L354-L357)<br>[radiation_kick, bmad/low_level/symp_lie_bmad.f90:1469–1493](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L1469-L1493)<br>[Bmad manual, Radiation Damping and Excitation, bmad/doc/synchrotron-radiation.tex:12–45](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/synchrotron-radiation.tex#L12-L45) |
 
 With radiation enabled in symp_lie_bmad wiggler or quadrupole tracking, every integration step applies two full-step radiation kicks. The mean energy loss and quantum-excitation variance therefore approach twice the values required by the radiation formulas. For an electron at Lorentz factor γ = 1000 in a ten-period, 1 m planar wiggler, the fractional momentum loss is 1.879×10⁻⁶ instead of 9.393×10⁻⁷. A 4000-particle fluctuation check gives 2.042 times the expected variance, and a quadrupole shows the same doubled mean loss.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) · [View source](../helpers/index.md#_srdt_wiggler_maps)
+Run `python OPT-24.py` with [_bmad.py](../helpers/_bmad.py) and [_srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) in the same directory.
 
 ??? example "Reproducer: OPT-24.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     With radiation enabled in symp_lie_bmad wiggler or quadrupole tracking, every integration step applies two full-step radiation kicks. The mean energy loss and quantum-excitation variance therefore approach twice the values required by the radiation formulas. For an electron at Lorentz factor γ = 1000 in a ten-period, 1 m planar wiggler, the fractional momentum loss is 1.879×10⁻⁶ instead of 9.393×10⁻⁷. A 4000-particle fluctuation check gives 2.042 times the expected variance, and a quadrupole shows the same doubled mean loss.
 
-    The script tracks electrons and protons through a planar wiggler and a quadrupole and compares mean loss with analytic curvature integrals. It checks 4000 seeded fluctuation tracks in each wiggler and validates radiation-off and independent Runge–Kutta controls. BMAD_DIST selects the production build.
+    The script tracks electrons and protons through a planar wiggler and a quadrupole and compares mean loss with analytic curvature integrals. It checks 4000 seeded fluctuation tracks in each wiggler and validates radiation-off and independent Runge–Kutta controls.
     """
 
     from _bmad import compare, fortran, verdict

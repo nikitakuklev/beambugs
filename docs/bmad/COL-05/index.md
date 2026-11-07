@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [sc_field_calc early return, bmad/space_charge/space_charge_mod.f90:75–99](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/space_charge_mod.f90#L75-L99)<br>[field outputs, bmad/space_charge/space_charge_mod.f90:148–160](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/space_charge_mod.f90#L148-L160)<br>[sc_step, bmad/space_charge/space_charge_mod.f90:248–269](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/space_charge_mod.f90#L248-L269) |
 
 When fewer than two eligible particles remain in a time-based space-charge calculation, the field routine returns without clearing its electric and magnetic outputs. With cathode images off, the skipped calculation should leave zero fields, but an earlier field can reach subsequent tracking. After seven of eight particles are lost, the survivor retains an electric field of (−5818, −5818, −2215) V/m. A fresh one-particle call also preserves arbitrary electric and magnetic sentinel values, locating an unwritten-output path.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_fields.py](../helpers/_collective_fields.py) · [View source](../helpers/index.md#_collective_fields)
+Run `python COL-05.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_fields.py](../helpers/_collective_fields.py) in the same directory.
 
 ??? example "Reproducer: COL-05.py"
 
@@ -38,8 +35,8 @@ Download these shared helpers into the same directory as the reproducer scripts:
     values, locating an unwritten-output path.
 
     The script computes fields for eight particles and calls the routine again after seven are lost,
-    with cathode images off. A separate fresh program supplies arbitrary electric and magnetic
-    sentinels to a one-particle call. Set BMAD_DIST to the build root.
+    with cathode images off. A separate fresh program supplies arbitrary electric and magnetic sentinels
+    to a one-particle call.
     """
 
     import numpy as np

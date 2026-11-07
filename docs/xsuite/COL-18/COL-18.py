@@ -13,8 +13,7 @@ blocks v·[[1, a], [a, a² + 40000]], v = σ², a = 700 m⁻¹, at radii includi
 of the cutoff, and compares the width kick with the Gaussian prediction; controls vary width, charge
 sign, expansion, intensity and momentum. As an independent check it differentiates the executed
 radial kick with respect to ζ at signed offsets, integrates it from 0 to 2σ with 48 Gauss–Legendre
-points and compares with the analytic radial difference. It requires the installed prebuilt kernels
-(compilation is forbidden).
+points and compares with the analytic radial difference.
 """
 
 # The execution helper must set thread limits before numerical imports.

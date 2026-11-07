@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [write_beam_file header, declaration and dispatch, bmad/multiparticle/beam_file_io.f90:20–59](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L20-L59) |
 
 Calling write_beam_file without a format argument writes an extensionless output as ASCII, although the API header labels HDF5 as the default. The header also calls the format argument logical, while the implementation accepts an integer enumeration. The extensionless output is byte-identical to explicitly selected ASCII, and both default.h5 and default.hdf5 produce HDF5 files. The header should describe filename-dependent selection and the integer argument type.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_12_particle_contracts.py](../helpers/_s3_12_particle_contracts.py) · [View source](../helpers/index.md#_s3_12_particle_contracts)
+Run `python LAT-16.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_12_particle_contracts.py](../helpers/_s3_12_particle_contracts.py) in the same directory.
 
 ??? example "Reproducer: LAT-16.py"
 

@@ -12,10 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on Beamlines main (`35fe016`) |
+| Last reproduced | 2026-10-31 on Beamlines main (`35fe016`, head build) |
 | Source | [`Beamlines.jl/src/virtual.jl:754-755`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L754-L755)<br>[`Beamlines.jl/src/virtual.jl:667-673`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L667-L673)<br>[`Beamlines.jl/src/virtual.jl:688-694`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L688-L694)<br>[`Beamlines.jl/src/beamline.jl:161-166`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/beamline.jl#L161-L166)<br>[`Beamlines.jl/src/beamline.jl:585-587`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/beamline.jl#L585-L587)<br>[`:723`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L723)<br>[`:755`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L755)<br>[`:755`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L755)<br>[`:672`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L672)<br>[`:693`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L693) |
 
 The relative reference getters `dE_ref`, `dpc_ref` and `dp_over_q_ref` should each give the change from the upstream Beamline in its own unit, but fail in two cases. In the first Beamline of a `Branch`, where the code takes the upstream reference as zero so that relative equals absolute, each returns whichever reference is stored; a later Beamline that sets no reference repeats the upstream increment instead of 0. For a proton segment storing `E_ref` = 2.000 GeV, `dpc_ref` is 2.000×10⁹ instead of 1.766 GeV/c and `dp_over_q_ref` is 2.000×10⁹ instead of 5.892 T·m. Segments that keep `pc_ref` at 1.200 GeV/c report `dpc_ref` = 0.2000 GeV/c instead of 0. The getters return these wrong values without warning.
+
+Run `julia LAT-02.jl`.
 
 ??? example "Reproducer: LAT-02.jl"
 

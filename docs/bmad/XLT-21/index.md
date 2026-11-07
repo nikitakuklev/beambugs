@@ -12,18 +12,13 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`write_lattice_mad_format`, bmad/output/write_lattice_mad_format.f90:741–745](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L741-L745)<br>[lines 780–784](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L780-L784)<br>[908–913](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L908-L913)<br>[bmad/doc/attributes.tex:2010](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L2010)<br>[`multipole_ele_to_ab`, bmad/code/multipole_ele_to_ab.f90:62](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/multipole_ele_to_ab.f90#L62) |
 
 MAD-X and MAD8 export reactivates quadrupoles, sextupoles, solenoids and RF cavities switched off with is_on = False. For a 0.5 m quadrupole with normalized gradient K₁ = 1.2 m⁻² between two 1 m drifts, the drift formula and Bmad give exit beta functions βₓ = βᵧ = 6.250 m from an initial waist with βₓ = βᵧ = 5 m. MAD-X TWISS of the export instead gives βₓ = 0.9211 m and βᵧ = 18.32 m, the switched-on optics. The exported sextupole, solenoid and cavity likewise retain their full strengths. Elegant correctly omits the switched-off quadrupole strength.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s4_17_translations.py](../helpers/_s4_17_translations.py) · [View source](../helpers/index.md#_s4_17_translations)
-- [Download _translators.py](../helpers/_translators.py) · [View source](../helpers/index.md#_translators)
-- [Download _s3_24_translations.py](../helpers/_s3_24_translations.py) · [View source](../helpers/index.md#_s3_24_translations)
+Run `python XLT-21.py` with [_bmad.py](../helpers/_bmad.py), [_s4_17_translations.py](../helpers/_s4_17_translations.py), [_translators.py](../helpers/_translators.py) and [_s3_24_translations.py](../helpers/_s3_24_translations.py) in the same directory.
 
 ??? example "Reproducer: XLT-21.py"
 

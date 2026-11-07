@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-22 on bmad-ecosystem 20261020-0 (`19b8afb`) |
+| Last reproduced | 2026-10-22 on bmad-ecosystem 20261020-0 (`19b8afb`, committed 2026-10-20) |
 | Tags | <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |
-| Source | [`bmad/bmad/output/write_lattice_scibmad_format.f90:875-879`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L875-L879)<br>[`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:13`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/general_bl.jl#L13)<br>[`bmad/util_programs/bmad_to_scibmad/bmad_to_scibmad.f90:56-58`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/util_programs/bmad_to_scibmad/bmad_to_scibmad.f90#L56-L58) |
+| Source | [`bmad/bmad/output/write_lattice_scibmad_format.f90:875-879`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L875-L879)<br>[`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:13`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L13)<br>[`bmad/util_programs/bmad_to_scibmad/bmad_to_scibmad.f90:56-58`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/util_programs/bmad_to_scibmad/bmad_to_scibmad.f90#L56-L58) |
 
 For a Bmad line containing reversed elements, such as `line = (--d)`, the exporter `bmad_to_scibmad` writes `reverse(ele)` calls, and loading the file fails with `MethodError: no method matching reverse(::LineElement)`. Beamlines defines no element-orientation support, and BeamTracking's source explicitly marks reversed elements as future work; a runtime method check independently confirms that `reverse(::LineElement)` does not exist. The exporter gives no incomplete-translation warning for the reproduced lattice.
+
+Run `julia LAT-20.jl`.
 
 ??? example "Reproducer: LAT-20.jl"
 
@@ -32,11 +34,13 @@ For a Bmad line containing reversed elements, such as `line = (--d)`, the export
     # independently confirms that `reverse(::LineElement)` does not exist. The exporter gives no
     # incomplete-translation warning for the reproduced lattice.
     #
+    # Setup: `BMAD_SOURCE` set to the root of a bmad-ecosystem `20261020-0` build (the directory
+    # containing `production/bin`); the script runs its `bmad_to_scibmad` program.
+    #
     # The script exports `lat: line = (--d)`, with `d` a 1 m drift, using Bmad's `bmad_to_scibmad`
     # program, reports whether the translator flagged an incomplete translation, and loads the emitted
     # file; a loadable lattice or a translator warning is expected. It also checks whether a
-    # `reverse(::LineElement)` method exists. Set `BMAD_SOURCE` to the root of a Bmad build, so that the
-    # program is `$BMAD_SOURCE/production/bin/bmad_to_scibmad`.
+    # `reverse(::LineElement)` method exists.
     using SciBmad
     haskey(ENV, "BMAD_SOURCE") || error("set BMAD_SOURCE to the root of the bmad-ecosystem 20261020-0 build (the directory that contains production/bin)")
     const BIN = joinpath(ENV["BMAD_SOURCE"], "production", "bin", "bmad_to_scibmad")

@@ -10,12 +10,13 @@
 # agree with Tao within a relative 2.500×10⁻⁴. Source inspection shows the 2π scaling missing for
 # lcavity export too.
 #
+# Setup: `BMAD_SOURCE` set to the root of a bmad-ecosystem `20261020-0` build (the directory
+# containing `production/bin`); the script runs its `bmad_to_scibmad` program.
+#
 # The script exports a 1 m, 1 MV, 100 MHz rfcavity for a 1 GeV/c proton with Bmad `phi0` = 0, 1 and
 # 0.25 using Bmad's `bmad_to_scibmad` program, tracks a reference particle through each emitted
 # lattice and prints its relative momentum deviation after the cavity. `phi0` = 0 and 1 describe the
-# same cavity, so their results must agree; Tao gives 0 for both and 1.371×10⁻³ for 0.25. Set
-# `BMAD_SOURCE` to the root of a Bmad build, so that the program is
-# `$BMAD_SOURCE/production/bin/bmad_to_scibmad`.
+# same cavity, so their results must agree; Tao gives 0 for both and 1.371×10⁻³ for 0.25.
 using SciBmad
 haskey(ENV, "BMAD_SOURCE") || error("set BMAD_SOURCE to the root of the bmad-ecosystem 20261020-0 build (the directory that contains production/bin)")
 const BIN = joinpath(ENV["BMAD_SOURCE"], "production", "bin", "bmad_to_scibmad")

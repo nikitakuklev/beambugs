@@ -12,12 +12,14 @@ hide:
 | Priority | P1 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-22 on SciBmad 0.6.0 (`62399f9`); not reproduced on SciBmad main (`ae9423d`), 2026-10-31 |
+| Last reproduced | 2026-10-22 on SciBmad 0.6.0 (`62399f9`, committed 2026-10-14); not reproduced on SciBmad main (`ae9423d`), 2026-11-07 |
 | Issue | [[gh:https://github.com/bmad-sim/SciBmad.jl/issues/154]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/SciBmad.jl/pull/155]], filed from this evidence |
 | Source | [`src/twiss/twiss_map.jl:134-146`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_map.jl#L134-L146)<br>[`twiss.jl:75-82`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L75-L82)<br>[`136-138`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L136-L138) |
 
 A `twiss` chromatic derivative column `d<col>_<n>` with scalar output, such as `dx_2` or `dbeta1_2`, returns the nth derivative with respect to the momentum offset δ divided by n. The docstring promises the nth derivative itself, n! times the stored Taylor coefficient, which the `as_taylor_series=true` output, nested ForwardDiff and finite differences of tracking all give. For a thin-quadrupole cell with `chrom=4`, `dbeta1_2` is 2.585 m instead of 5.171 m, and `dbeta1_3` is −7.457 m instead of −22.37 m. Every scalar column of order 2 and higher is low by exactly n; first-order columns such as `dx` and `dbeta1` are correct.
+
+Run `julia OPT-02.jl`.
 
 ??? example "Reproducer: OPT-02.jl"
 

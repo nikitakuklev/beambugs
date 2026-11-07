@@ -11,8 +11,7 @@ instead of 8.653 × 10⁶ eV. By source reading, the secondary-particle counter,
 The script tracks 20 protons from x = 3 mm through the collimator (jaw 1 mm) with per-particle seeds
 7001–7020, all surviving, once with unit weights and once with weights 1, 2, 3, 4, 5 repeated four
 times. The per-particle energy losses are identical in both runs; the script checks that the
-accumulated deposit equals their unweighted sum and compares it with the weighted sum. It requires
-the installed prebuilt kernels (compilation is forbidden).
+accumulated deposit equals their unweighted sum and compares it with the weighted sum.
 """
 
 from _prebuilt import CTX, identity, kernels, np, xc, xt

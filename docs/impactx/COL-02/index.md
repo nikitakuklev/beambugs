@@ -12,12 +12,14 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1708]] |
 | Source | [`ISRPush.cpp#L36-L47`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/wakefields/ISRPush.cpp#L36-L47) |
 
 With incoherent synchrotron radiation (ISR) enabled, ImpactX uses the electron classical radius for every species, although the radiated power scales with the species radius r_q = q²/(4πε₀mc²). Classical radiation theory gives the ultrarelativistic fractional momentum loss over a path ds at bending radius ρ as (2/3)·r_q·(βγ)³·ds/ρ². A 7 TeV (kinetic) proton reference over 100 m at ρ = 2800 m loses 9.954×10⁻⁹ of its momentum instead of 5.421×10⁻¹², 1836 times too much. Electrons are correct, but ISR accepts any species, and an ion of mass M and charge Ze radiates M/(Z²mₑ) times too much; from the source, the same radius also sets the quantum-excitation variance.
+
+Run `python COL-02.py`.
 
 ??? example "Reproducer: COL-02.py"
 

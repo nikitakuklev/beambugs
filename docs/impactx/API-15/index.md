@@ -12,10 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Source | [`src/python/elements.cpp#L2239-L2251`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/elements.cpp#L2239-L2251)<br>[`src/elements/Programmable.cpp#L19-L57`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/Programmable.cpp#L19-L57)<br>[`src/particles/PushAll.H#L105-L132`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/PushAll.H#L105-L132)<br>[`docs/source/usage/python.rst#L2323-L2352`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L2323-L2352) |
 
 A `Programmable` element's reference-particle callback loses its changes to the reference particle unless the script holds a Python object for `sim.beam.ref` while tracking. The documented contract applies the reference update before beam transport with no such prerequisite, and analytic drift and energy-gain formulas give the required result. A 0.375 m programmable drift traversed over three periods at γ = 1.25 leaves the reference at s = 0 instead of 1.125 m, and an electron energy update leaves γ at 1.050 instead of 1.250, after which the beam's normalized momenta are off by up to 1.376×10⁻⁴. Holding `sim.beam.ref` gives the correct result, as the bundled example and tests do; holding only `sim.beam` or a copy of the reference does not.
+
+Run `python API-15.py`.
 
 ??? example "Reproducer: API-15.py"
 

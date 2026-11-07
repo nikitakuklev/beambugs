@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [multi_coulomb_log species lookup](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L737-L759)<br>[lat%param alias](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/allocate_branch_array.f90#L76-L80)<br>[bjmt1 species lookup](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_rates_mod.f90#L76-L85) |
 
 Calling multi_coulomb_log for an ion element in a secondary branch uses the root branch’s
@@ -22,9 +22,7 @@ factor 120, placing the element beneath an electron root branch changes the clas
 from 28.23 to 41.81. The rate routine at a fixed logarithm agrees between placements;
 lattice-level IBS drivers use the root branch and avoid this mismatch.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-46.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-46.py"
 

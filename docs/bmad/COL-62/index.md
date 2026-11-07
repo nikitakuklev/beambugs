@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`Short--Range Wakes (s:sr.wake.eq), delvp2 and delvp3`, bmad/doc/wakefields.tex:26–53](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/wakefields.tex#L26-L53)<br>[`Short-Range Wakes (s:sr.wake.syntax)`, bmad/doc/attributes.tex:3036–3049](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L3036-L3049)<br>[`sr_longitudinal_wake_particle`, bmad/multiparticle/wake_mod.f90:343–380](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L343-L380) |
 
 The manual’s short-range longitudinal wake equations interchange the source and witness offsets for two position-dependent modes. The equation described as linear in the leading particle’s horizontal position uses the witness position, while the trailing-particle vertical equation weights the source. Tracking follows the attribute definitions: its kick ratios are the source horizontal offset, 0.002000 m, and the witness vertical offset, 0.009000 m, instead of 0.007000 m and 0.004000 m from the displayed equations.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) · [View source](../helpers/index.md#_wake_tables_and_bbu)
+Run `python COL-62.py` with [_bmad.py](../helpers/_bmad.py) and [_wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) in the same directory.
 
 ??? example "Reproducer: COL-62.py"
 

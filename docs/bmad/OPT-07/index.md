@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [rad_g_integrals, bmad/modules/rad_6d_mod.f90:878–884](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L878-L884)<br>[curvature-integral outputs, bmad/modules/rad_6d_mod.f90:738–744](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L738-L744) |
 
 Computing radiation curvature integrals for a tilted element rotates the second component using an already-rotated first component. An orthogonal rotation must use the original vector for both components and preserve its norm. For a short quadrupole tilted by 45°, the second integrated-curvature component is 2.500 × 10⁻⁷ instead of 3.536 × 10⁻⁷, an underestimate of 29.29%. The untilted case provides the rotation control.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) · [View source](../helpers/index.md#_s3_14_optics_matrix_radiation)
+Run `python OPT-07.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) in the same directory.
 
 ??? example "Reproducer: OPT-07.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Computing radiation curvature integrals for a tilted element rotates the second component using an already-rotated first component. An orthogonal rotation must use the original vector for both components and preserve its norm. For a short quadrupole tilted by 45°, the second integrated-curvature component is 2.500 × 10⁻⁷ instead of 3.536 × 10⁻⁷, an underestimate of 29.29%. The untilted case provides the rotation control.
 
-    The script integrates curvature in a short quadrupole, then rotates both the quadrupole and its incoming particle by 45°. It compares the tilted vector with a two-component orthogonal rotation of the untilted result. BMAD_DIST supplies the production build.
+    The script integrates curvature in a short quadrupole, then rotates both the quadrupole and its incoming particle by 45°. It compares the tilted vector with a two-component orthogonal rotation of the untilted result.
     """
 
     import numpy as np

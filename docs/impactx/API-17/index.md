@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`src/python/impactx/dashboard/Run/simulation.py#L89-L131`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/dashboard/Run/simulation.py#L89-L131)<br>[`src/python/impactx/dashboard/Input/defaults.py#L64-L74`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/dashboard/Input/defaults.py#L64-L74)<br>[`src/ImpactX.cpp#L129-L154`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/ImpactX.cpp#L129-L154)<br>[`src/particles/ImpactXParticleContainer.cpp#L106-L123`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/ImpactXParticleContainer.cpp#L106-L123) |
 
 A simulation set up in the ImpactX dashboard with coherent synchrotron radiation (CSR) enabled and space charge disabled is exported without the required `particle_shape` setting, so the generated script raises `RuntimeError` ("particle_shape is not set") in `init_grids()`. The generator tests `if not state.space_charge`, but disabled space charge is the string `"false"`, which is truthy, so the shape line is skipped. ImpactX requires a particle shape whenever CSR is enabled; for 24 electrons at 75 MeV through a 0.125 m drift, inserting `sim.particle_shape = 1` before `init_grids()` lets the export run to s = 0.125 m. Exports with CSR off, or with CSR and 3D space charge, set the shape and run.
+
+Run `python API-17.py`.
 
 ??? example "Reproducer: API-17.py"
 
@@ -34,14 +36,16 @@ A simulation set up in the ImpactX dashboard with coherent synchrotron radiation
     `init_grids()` lets the export run to s = 0.125 m. Exports with CSR off, or with CSR and 3D space
     charge, set the shape and run.
 
-    Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
-    modules from that clone, each checked equal to the installed copy, substitutes only the Trame UI
-    construction and a state object that delivers every registered server-side handler, and exports a 75
-    MeV electron Gaussian beam of 24 particles through one 0.125 m drift. Each export runs unchanged in
-    a fresh child process; the CSR-only exports with shapes 1 and 3 fail in `init_grids()`. The
-    controls, the same exports with only `sim.particle_shape` inserted before `init_grids()`, an export
-    with CSR off and one with CSR and 3D space charge, must keep the selected shape and 24 finite
-    particles and reach s = 0.125 m.
+    Setup: `IMPACTX_SOURCE` set to a clone of BLAST-ImpactX/impactx at tag `26.10`; the script loads the
+    dashboard modules from it.
+
+    The script loads the dashboard's unmodified modules from that clone, each checked equal to the
+    installed copy, substitutes only the Trame UI construction and a state object that delivers every
+    registered server-side handler, and exports a 75 MeV electron Gaussian beam of 24 particles through
+    one 0.125 m drift. Each export runs unchanged in a fresh child process; the CSR-only exports with
+    shapes 1 and 3 fail in `init_grids()`. The controls, the same exports with only `sim.particle_shape`
+    inserted before `init_grids()`, an export with CSR off and one with CSR and 3D space charge, must
+    keep the selected shape and 24 finite particles and reach s = 0.125 m.
     """
 
     import os

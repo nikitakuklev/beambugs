@@ -12,15 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [strong_beam_center, bmad/low_level/track_a_beambeam.f90:312–324](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_beambeam.f90#L312-L324)<br>[Bmad manual, BeamBeam crabbing polynomial, bmad/doc/elements.tex:375–389](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L375-L389) |
 
 Beam–beam crabbing interprets its coefficients as an angle polynomial, while the manual defines a transverse displacement polynomial. For a linear coefficient a and strong-beam longitudinal coordinate u, tracking uses x = u sin(a) instead of the documented x = ua, and also changes the longitudinal coordinate by cos(a). At a = 0.3 rad the transverse slice offset is 1.493% smaller than the documented displacement. The formulas agree to first order in small angle.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-39.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-39.py"
 

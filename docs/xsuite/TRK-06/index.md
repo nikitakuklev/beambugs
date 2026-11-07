@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Source | [`LineSegmentMap.__init__`, line_segment_map.py:270–291](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/line_segment_map.py#L270-L291) |
 
 `LineSegmentMap` treats a scalar second tune derivative `ddqx` or `ddqy` as a first derivative when the matching linear chromaticity `dqx` or `dqy` is exactly zero. A specified second derivative must make the tune depend quadratically, and therefore evenly, on the relative momentum deviation δ. With `qx` = 0.2, `dqx` = 0, `ddqx` = 2.4 and initial x = 1 mm, the exit position is 0.5776 mm at δ = −2% and 0.01257 mm at δ = +2%, instead of 0.3061 mm at both. The analytic rotation and the equivalent derivative array `dnqx=[0.2, 0, 2.4]` agree on the correct value, so specifying arrays avoids the bug; the vertical keywords have the same defect.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python TRK-06.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: TRK-06.py"
 

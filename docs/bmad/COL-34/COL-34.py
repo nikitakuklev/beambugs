@@ -2,9 +2,9 @@
 
 When callers follow the envelope IBS argument comments, they supply a damping rate where the tail-cut calculation requires a damping time in seconds. The implementation divides a ratio of volume to speed by that input to form a squared impact parameter, which requires time units. In a fixed diagonal beam covariance, passing 100 instead of a 0.01 s damping time increases the diffusion norm by a factor of 1.621. The envelope driver already passes the longest mode damping time; the argument comments should describe that convention.
 
-The script evaluates the envelope IBS kernel on the same diagonal covariance with a damping time
-and its reciprocal. It compares the finite diffusion outputs and reads the argument descriptions
-from BMAD_SOURCE. BMAD_DIST selects the production library.
+The script evaluates the envelope IBS kernel on the same diagonal covariance with a damping time and
+its reciprocal. It compares the finite diffusion outputs and reads the argument descriptions from
+BMAD_SOURCE.
 """
 
 import numpy as np

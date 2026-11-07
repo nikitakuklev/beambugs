@@ -2,7 +2,7 @@
 
 Backward-time tracking through a combined-function bend uses a small-phase polynomial for every negative phase, even when its magnitude is large. The body map should evaluate the same trigonometric or hyperbolic solution at negative length. For a 2 m bend with curvature 0.1 m⁻¹, quadrupole strength 1 m⁻² and entrance x = y = 1 mm, it returns x = −1.020 mm and y = 3.000 mm instead of −0.4252 mm and 3.762 mm. A forward/backward round trip leaves a −1.803 mm vertical residual.
 
-The script compares positive- and negative-time tracking with the combined-function body solution and checks a forward/backward round trip. The particle keeps forward spatial direction while time_dir changes sign. Set BMAD_DIST to the build root.
+The script compares positive- and negative-time tracking with the combined-function body solution and checks a forward/backward round trip. The particle keeps forward spatial direction while time_dir changes sign.
 """
 
 import numpy as np

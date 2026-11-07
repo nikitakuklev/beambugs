@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [tao_call_cmd, tao/code/tao_call_cmd.f90:43–53](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_call_cmd.f90#L43-L53)<br>[saved flags, tao/code/tao_call_cmd.f90:111–113](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_call_cmd.f90#L111-L113)<br>[tao_close_command_file, tao/code/tao_close_command_file.f90:22–24](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_close_command_file.f90#L22-L24)<br>[call, s:call, tao/doc/command-list.tex:161–164](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/command-list.tex#L161-L164) |
 
 Calling a Tao command file with -no_calc still recalculates the lattice after edits inside the file. The manual promises to disable calculation until the file finishes and then restore its initial state. After a drift changes from 1.7 m to 2.5 m, an interior orbit query already returns x = 0.05101 m instead of the deferred 0.03501 m. An analytic drift map and the final orbit query establish that the update happens too early.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) · [View source](../helpers/index.md#_tao_contracts_normal_form)
+Run `python TAO-14.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) in the same directory.
 
 ??? example "Reproducer: TAO-14.py"
 

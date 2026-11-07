@@ -56,8 +56,8 @@ MEAN_MODEL = C / P0 * (1 / QCUT - 1)
 # Electrons that suffer any recoil in the model's process, in a Poisson approximation to the
 # sampler's total rate: it shows that the sampler runs, so the missing tail is not an activation
 # failure. The element has 61 independent Bernoulli sections of probability MEAN_RECOIL/61, whose
-# exact at-least-one expectation is 6913.18 with binomial sigma 67.26; both counts recorded in the
-# ledger pass either 5-sigma comparison.
+# exact at-least-one expectation is 6913.18 with binomial sigma 67.26; the recorded serial and MPI
+# counts, 6910 and 6956, pass either 5-sigma comparison.
 MEAN_RECOIL = C / P0 * (1 / BS_Y0 - 1)
 RECOIL_EXPECTED = COUNT * -np.expm1(-MEAN_RECOIL)
 RECOIL_SIGMA = np.sqrt(RECOIL_EXPECTED * np.exp(-MEAN_RECOIL))

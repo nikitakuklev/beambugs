@@ -7,8 +7,7 @@ variance three times too large. Its mean and integral are zero. Integrating a li
 with endpoint values a and b requires a second moment proportional to (a² + ab + b²)/3.
 
 The script centers an orbit in a drift and requests RMS, average, and integral constraints. It
-checks the endpoints and zero mean, then compares RMS with direct integration of the linear
-orbit. BMAD_DIST supplies Tao.
+checks the endpoints and zero mean, then compares RMS with direct integration of the linear orbit.
 """
 
 import math

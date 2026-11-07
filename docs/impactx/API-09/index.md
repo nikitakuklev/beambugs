@@ -12,11 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`helper.py#L122-L162`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/file_imports/python/helper.py#L122-L162) |
 
 The ImpactX dashboard's import of Python input files reads Twiss parameters with a pattern that keeps only the mantissa of numbers in scientific notation and skips negative values. Re-importing the dashboard's own export must restore the same beam, whose covariance follows from the Courant–Snyder parameters β, α and the emittance ε. A Gaussian beam exported with `beta_x=1`, `emitt_x=1e-6` and `alpha_x=-0.5` re-imports with `emitt_x=1` and no `alpha_x`, so the initial x variance is 1 m² instead of 1.000×10⁻⁶ m². The omitted `alpha_x` keeps the interface's previous value; at the default of zero this also removes the 5.000×10⁻⁷ m x–pₓ correlation. The y and t emittances lose their exponents as well; an emittance written in fixed-decimal form imports correctly.
+
+Run `python API-09.py`.
 
 ??? example "Reproducer: API-09.py"
 
@@ -35,13 +37,15 @@ The ImpactX dashboard's import of Python input files reads Twiss parameters with
     emittances lose their exponents as well; an emittance written in fixed-decimal form imports
     correctly.
 
-    Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
-    parser, defaults, distribution-conversion and export modules from that clone behind package shells,
-    replacing only the reactive state object so that no Trame web UI or server is needed. It exports a
-    10 MeV proton Gaussian beam with x-plane Twiss parameters β = 1 m, ε = 10⁻⁶ m and α = −0.5, parses
-    the export back, initializes both beams in the installed core and compares each x–pₓ covariance
-    block with ε·[[β, −α], [−α, (1 + α²)/β]]. The export with the x emittance rewritten as `0.000001` is
-    the control.
+    Setup: `IMPACTX_SOURCE` set to a clone of BLAST-ImpactX/impactx at tag `26.10`; the script loads the
+    dashboard modules from it.
+
+    The script loads the dashboard's unmodified parser, defaults, distribution-conversion and export
+    modules from that clone behind package shells, replacing only the reactive state object so that no
+    Trame web UI or server is needed. It exports a 10 MeV proton Gaussian beam with x-plane Twiss
+    parameters β = 1 m, ε = 10⁻⁶ m and α = −0.5, parses the export back, initializes both beams in the
+    installed core and compares each x–pₓ covariance block with ε·[[β, −α], [−α, (1 + α²)/β]]. The
+    export with the x emittance rewritten as `0.000001` is the control.
     """
 
     import os

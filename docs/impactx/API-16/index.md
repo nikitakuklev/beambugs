@@ -12,11 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`src/python/impactx/dashboard/Input/lattice/variable_handler.py#L128-L147`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/dashboard/Input/lattice/variable_handler.py#L128-L147)<br>[`src/python/impactx/dashboard/Input/lattice/ui.py#L137-L178`](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/dashboard/Input/lattice/ui.py#L137-L178) |
 
 In the ImpactX dashboard, when several equal elements, such as identical drifts, have their lengths bound to one lattice variable, changing the variable can leave some at the old length, because the update finds elements by value equality instead of identity. N drifts bound to a length L must total N·L. For eight equal drifts bound in reverse order and changed from 0.125 m to 0.375 m, the exported lattice is 2.5 m long instead of 3 m, and a test particle at γ = 3.5 exits at x = −1.600 mm instead of −1.700 mm, with no error shown. Binding in index order or giving the drifts distinct names avoids it.
+
+Run `python API-16.py`.
 
 ??? example "Reproducer: API-16.py"
 
@@ -33,14 +35,16 @@ In the ImpactX dashboard, when several equal elements, such as identical drifts,
     of −1.700 mm, with no error shown. Binding in index order or giving the drifts distinct names avoids
     it.
 
-    Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads fifteen unmodified
-    dashboard modules from that clone, each checked equal to the installed copy, substitutes only the
-    Trame UI construction and a state object that delivers every registered server-side handler, and
-    drives the dashboard controls to create equal drifts, bind their lengths to a variable L and change
-    L. It exports each lattice with the dashboard's generator, tracks twelve particles at γ = 3.5
-    through it in a fresh child process and compares them with N drifts of the new length. Eight drifts
-    bound in reverse order, and five and four with L decreased and increased, show the bug; forward
-    binding order and distinct names are the controls.
+    Setup: `IMPACTX_SOURCE` set to a clone of BLAST-ImpactX/impactx at tag `26.10`; the script loads the
+    dashboard modules from it.
+
+    The script loads fifteen unmodified dashboard modules from that clone, each checked equal to the
+    installed copy, substitutes only the Trame UI construction and a state object that delivers every
+    registered server-side handler, and drives the dashboard controls to create equal drifts, bind their
+    lengths to a variable L and change L. It exports each lattice with the dashboard's generator, tracks
+    twelve particles at γ = 3.5 through it in a fresh child process and compares them with N drifts of
+    the new length. Eight drifts bound in reverse order, and five and four with L decreased and
+    increased, show the bug; forward binding order and distinct names are the controls.
     """
 
     import os

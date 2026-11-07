@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [radial kick, ionEffects.cc:1485](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ionEffects.cc#L1485)<br>[helper selection, ionEffects.cc:1411–1412](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ionEffects.cc#L1411-L1412)<br>[Gaussian branch, do_tracking.c:6316–6322](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L6316-L6322)<br>[BEAMBEAM manual, beambeam.tex:6–8](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/beambeam.tex#L6-L8) |
 
 A Gaussian BEAMBEAM opposing bunch with transverse rms widths σₓ and σᵧ satisfying |σₓ − σᵧ|/σₓ < 10⁻⁹ turns a centered particle's slopes and momentum into NaN, even at zero opposing charge. The immediate output retains the invalid particles without reporting losses, and Elegant exits successfully. Symmetry and the continuous radial-force limit require zero kick at the center. For σₓ = σᵧ = 1.300 mm, off-axis particles at horizontal position x = 0.1σₓ have finite kicks agreeing with the analytic force, while a centered particle with σᵧ/σₓ = 1.02 retains zero slopes and momentum 1300 mₑc.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-13.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-13.py"
 

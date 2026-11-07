@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [actual radius, csbend.c:2846–2852](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2846-L2852)<br>[CSR constant, csbend.c:3132–3133](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3132-L3133)<br>[slippage, csbend.c:3437–3438](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3437-L3438)<br>[IGF argument, csbend.c:3456–3458](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3456-L3458)<br>[drift hand-off, csbend.c:3961](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3961)<br>[CSBEND manual, errors, csbend.tex:124–133](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L124-L133)<br>[CSRCSBEND manual, csrcsbend.tex:25–28](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csrcsbend.tex#L25-L28) |
 
 CSRCSBEND computes the CSR strength, the transient slippage length and the argument of the integrated Green function (IGF=1) from the nominal radius ρ = L/ANGLE, although FSE, the documented field-strength error, bends the orbit on the radius ρ/(1 + FSE). Steady-state CSR scales as the field curvature to the power 2/3, so the wake should grow by (1 + FSE)^(2/3); in a 0.6 m, 0.3 rad bend whose FSE = 0 wake matches the analytic Gaussian wake within 0.1470%, the wake is instead identical for FSE = 0, 0.02 and 0.1. At FSE = 0.02 the wake should be 1.329% stronger and the slippage length 2.339 mm instead of 2.250 mm; the IGF wake is also unchanged.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _csr.py](../helpers/_csr.py) · [View source](../helpers/index.md#_csr)
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-36.py` with [_csr.py](../helpers/_csr.py) and [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-36.py"
 

@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`rad1_damp_and_stoc_mats`, bmad/modules/rad_6d_mod.f90:494–507](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L494-L507)<br>[lines 540–551](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L540-L551)<br>[lines 384–405](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L384-L405)<br>[`rad_damp_and_stoc_mats`, rad_6d_mod.f90:335–338](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L335-L338)<br>[`tracking_rad_map_setup`, bmad/low_level/tracking_rad_map_setup.f90:54](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/tracking_rad_map_setup.f90#L54)<br>[bmad/modules/radiation_mod.f90:238–246](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/radiation_mod.f90#L238-L246) |
 
 For a planar wiggler with 8 or 16 complete periods, the radiation-matrix quadrature samples only field peaks through refinement level five and accepts an aliased integral. At both tested tolerances, a 3.2 m, 16-period, 1 T wiggler at 3 GeV gives the radiation integral I₂ = 0.03196 m⁻¹ and relative energy loss 1.215×10⁻⁵. These are twice I₂ = L gₘₐₓ²/2 = 0.01598 m⁻¹ and the corresponding loss 6.074×10⁻⁶, where L is the length and gₘₐₓ is the peak curvature. The conventional radiation-integral routine agrees with the analytic I₂.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python OPT-03.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: OPT-03.py"
 

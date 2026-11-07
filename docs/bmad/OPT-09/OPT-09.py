@@ -2,7 +2,7 @@
 
 Linear drift tracking constructs its reference map with zero momentum offset but retains the incident particle’s off-momentum speed. The longitudinal coefficient must use the reference speed and equal Lm²/(p₀² + m²), where L is drift length, m is particle mass and p₀ is reference momentum in units with c = 1. For a 1.7 m electron drift at p₀c = 1 MeV with fractional momentum offset 0.2 and initial longitudinal coordinate 0.03 m, the exit coordinate is 0.1076 m instead of 0.1004 m. The transverse first-order map remains correct.
 
-The script constructs and applies the linear map for a 1.7 m drift at reference and off-reference momentum. It checks the transverse map and reference-momentum control, then compares the longitudinal coefficient with the derivative of the exact drift at the reference speed. BMAD_DIST supplies the build.
+The script constructs and applies the linear map for a 1.7 m drift at reference and off-reference momentum. It checks the transverse map and reference-momentum control, then compares the longitudinal coefficient with the derivative of the exact drift at the reference speed.
 """
 
 import numpy as np

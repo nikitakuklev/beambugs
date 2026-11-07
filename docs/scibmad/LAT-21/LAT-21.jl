@@ -8,12 +8,13 @@
 # reproduces the loaded values, and tracking confirms the missed loss. The wrong limits load without
 # a warning.
 #
+# Setup: `BMAD_SOURCE` set to the root of a bmad-ecosystem `20261020-0` build (the directory
+# containing `production/bin`); the script runs its `bmad_to_scibmad` program.
+#
 # The script exports three collimators with half-apertures (x, y) = (0.01, 0.3), (2, 15) and
 # (0.00025, 120) m using Bmad's `bmad_to_scibmad` program, loads the file and compares each limit
 # with Bmad's value and with a Printf model of the truncated Fortran format. It then tracks a
-# particle at x = 0.02 m through the collimators, which must lose it at the 0.01 m limit. Set
-# `BMAD_SOURCE` to the root of a Bmad build, so that the program is
-# `$BMAD_SOURCE/production/bin/bmad_to_scibmad`.
+# particle at x = 0.02 m through the collimators, which must lose it at the 0.01 m limit.
 using SciBmad, Printf
 const BT = SciBmad.BeamTracking
 haskey(ENV, "BMAD_SOURCE") || error("set BMAD_SOURCE to the root of the bmad-ecosystem 20261020-0 build (the directory that contains production/bin)")

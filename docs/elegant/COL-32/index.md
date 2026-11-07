@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [SC_SPEC, get_beamline.c:2327–2330](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/get_beamline.c#L2327-L2330)<br>[addSCSpec, get_beamline.c:2339–2357](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/get_beamline.c#L2339-L2357)<br>[notice, get_beamline.c:2399–2400](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/get_beamline.c#L2399-L2400)<br>[verbosity, elegant.tex:4491](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4491) |
 
 insert_sceffects accepts verbosity but never copies it into the stored insertion specification, whose verbosity field, left uninitialized on the heap, then decides whether a notice is printed for each inserted SCMULT. With verbosity = 5 and one insertion, the run prints no notice, and Valgrind reports a conditional jump on an uninitialized value in the insertion routine, created by the allocation of the specification. The manual says larger nonzero values of verbosity request more printed detail, and the source prints the notice for positive values. The kicks are unaffected.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _scinsert.py](../helpers/_scinsert.py) · [View source](../helpers/index.md#_scinsert)
+Run `python COL-32.py` with [_elegant.py](../helpers/_elegant.py) and [_scinsert.py](../helpers/_scinsert.py) in the same directory.
 
 ??? example "Reproducer: COL-32.py"
 
@@ -36,12 +33,13 @@ Download these shared helpers into the same directory as the reproducer scripts:
     allocation of the specification. The manual says larger nonzero values of verbosity request more
     printed detail, and the source prints the notice for positive values. The kicks are unaffected.
 
-    The script runs serial Elegant under Valgrind (which must be on PATH) on a one-segment ring (a
-    0.8 nC bunch of 243 particles and a 1 m EMATRIX quarter turn) with insert_sceffects name = "R",
-    skip = 1 and verbosity = 5. Expected are one insertion notice and no use of uninitialized memory;
-    the verdict is Valgrind's report of a conditional jump on an uninitialized value in insertSCMULT,
-    originating in the allocation of the insertion specification. The same run without
-    insert_sceffects is the control.
+    Setup: `valgrind` on `PATH`; the script runs serial Elegant under Memcheck.
+
+    The script runs serial Elegant under Valgrind on a one-segment ring (a 0.8 nC bunch of 243 particles
+    and a 1 m EMATRIX quarter turn) with insert_sceffects name = "R", skip = 1 and verbosity = 5.
+    Expected are one insertion notice and no use of uninitialized memory; the verdict is Valgrind's
+    report of a conditional jump on an uninitialized value in insertSCMULT, originating in the
+    allocation of the insertion specification. The same run without insert_sceffects is the control.
     """
 
     import os

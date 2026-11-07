@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [absorption test, concat_beamline.c:81–82](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/concat_beamline.c#L81-L82)<br>[sequence replaced, concat_beamline.c:113–121](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/concat_beamline.c#L113-L121)<br>[final sequence, concat_beamline.c:162–173](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/concat_beamline.c#L162-L173)<br>[MATR dispatch, do_tracking.c:2055–2060](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2055-L2060)<br>[orbit-only transport, do_tracking.c:4719–4720](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L4719-L4720)<br>[SOLE flags, track_data.c:4172](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L4172)<br>[ROTATE flags, track_data.c:4200](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L4200)<br>[SOLE, do_tracking.c:2380–2382](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2380-L2382)<br>[ROTATE, do_tracking.c:1988–1992](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L1988-L1992)<br>[warning, elegant.c:990–992](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L990-L992)<br>[concat_order, elegant.tex:7248–7249](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7248-L7249)<br>[spin_tracking, elegant.tex:7291–7292](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7291-L7292)<br>[spin-aware elements, elegant.tex:11191–11192](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L11191-L11192) |
 
 With spin tracking enabled and a nonzero concat_order in run_setup, Elegant replaces each sequence of matrix elements of at most that order, even a single element, by one generic matrix element that transports only the orbit, so the spin rotations of absorbed SOLE solenoids and ROTATE elements are lost. For an on-axis electron at momentum 200 mₑc in a 0.65 m SOLE with KS = 0.9000 m⁻¹, the Thomas–BMT precession of 0.5857 rad, which concat_order = 0 reproduces, vanishes at concat_order = 2 and 3 while the orbit is unchanged. A ROTATE with TILT = 0.3000 rad leaves the spin unrotated at concat_order = 1. The only warning says that concatenation reduces accuracy.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _sole.py](../helpers/_sole.py) · [View source](../helpers/index.md#_sole)
+Run `python TRK-30.py` with [_elegant.py](../helpers/_elegant.py) and [_sole.py](../helpers/_sole.py) in the same directory.
 
 ??? example "Reproducer: TRK-30.py"
 

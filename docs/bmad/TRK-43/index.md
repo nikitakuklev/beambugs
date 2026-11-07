@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [FOREST rest masses](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/forest/code/a_scratch_size.f90#L97-L103)<br>[physical_constants](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/interfaces/physical_constants.f90#L10-L65) |
 
 Changing an electron drift from native tracking to PTC changes its longitudinal coordinate because the two libraries use different electron rest masses. At reference momentum 1 MeV/c, relative momentum offset δ = 0.2 and length 1.7 m, the exit longitudinal coordinate differs by 8.450 × 10⁻¹⁰ m. The exact finite-speed drift formula agrees with each result when supplied with that library’s mass. The proton rest masses also differ in source.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) · [View source](../helpers/index.md#_tracking_contracts_materials)
+Run `python TRK-43.py` with [_bmad.py](../helpers/_bmad.py) and [_tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) in the same directory.
 
 ??? example "Reproducer: TRK-43.py"
 

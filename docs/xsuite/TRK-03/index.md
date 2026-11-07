@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Source | [`longitudinal_motion`, linesegmentmap.h:282–304](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/linesegmentmap.h#L282-L304) |
 
 `LineSegmentMap` with `longitudinal_mode='linear_fixed_rf'` gives an electron NaN longitudinal coordinates at a valid, stable RF phase. Xsuite's RF convention uses the magnitude of the reference charge, so the analytic linear synchrotron rotation is the same for electrons and positrons of equal momentum. For a 1 GeV/c electron starting 1 mm ahead of the reference in a 1 m segment with 1 MV at 100 MHz, momentum compaction 0.01 and RF phase π, the expected exit position `zeta` is 1.000 mm and its normalized conjugate momentum `pzeta` is 2.096 × 10⁻⁶; both come out NaN. Tracking the element on its own leaves the particle alive, while the default `Line.track()` marks it lost; positrons are tracked correctly.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python TRK-03.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: TRK-03.py"
 

@@ -3,9 +3,8 @@
 When users follow the ibs_ring description of the Bjorken–Mtingwa formula, its cimp selector runs Completely Integrated Modified Piwinski instead; Bjorken–Mtingwa uses bjmt. The Coulomb-log summary and driver comments also misidentify choices 3 and 4, which execute Bane and Kubo/Oide forms respectively. At one fixed electron-beam working point, cimp gives a longitudinal growth rate of 2.979 s⁻¹ while bjmt gives 2.513 s⁻¹. The input descriptions should name the algorithms selected by the existing branches.
 
 The script runs both ibs1 selectors and calls their named kernels directly at identical fixed
-optics. It also checks Coulomb-log choices 3 and 4 against separate analytic evaluations of
-their tail-cut formulas. BMAD_DIST selects the production library and BMAD_SOURCE supplies the
-manual.
+optics. It also checks Coulomb-log choices 3 and 4 against separate analytic evaluations of their
+tail-cut formulas. BMAD_SOURCE supplies the manual.
 """
 
 import math

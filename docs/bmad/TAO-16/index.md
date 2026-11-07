@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [tao_top_level initialization status, tao/code/tao_top_level.f90:42–59](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_top_level.f90#L42-L59)<br>[tao_program, tao/program/tao_program.f90:7–17](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/program/tao_program.f90#L7-L17)<br>[command loop, tao/code/tao_top_level.f90:74–111](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_top_level.f90#L74-L111) |
 
 Starting Tao with an invalid command-line option or a missing explicit initialization file produces error diagnostics, executes none of the requested commands, and returns status zero. Invalid pipe and set commands also return zero after reporting errors. An unknown top-level command aborts its command file and returns the same success status. Automation needs an unsuccessful exit status to distinguish these failures from a completed run.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) · [View source](../helpers/index.md#_tao_contracts_normal_form)
+Run `python TAO-16.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) in the same directory.
 
 ??? example "Reproducer: TAO-16.py"
 

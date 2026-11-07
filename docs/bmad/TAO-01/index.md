@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`tao_svd_func`, tao/code/tao_svd_optimizer_mod.f90:172–177](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_svd_optimizer_mod.f90#L172-L177)<br>[`tao_mrq_func`, tao/code/tao_lm_optimizer_mod.f90:213–217](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_lm_optimizer_mod.f90#L213-L217)<br>[geodesic `jacobian`, tao/code/tao_geodesic_lm_optimizer_mod.f90:204–210](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_geodesic_lm_optimizer_mod.f90#L204-L210)<br>[`tao_get_opt_vars`, tao/code/tao_get_opt_vars.f90:44–72](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_get_opt_vars.f90#L44-L72)<br>[“Optimization Overview”, Eq. `m1`, tao/doc/optimization.tex:50–65](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/optimization.tex#L50-L65) |
 
 When a zero-weight optimization variable precedes a variable with a nonzero penalty, Tao assigns the penalty derivative to the wrong variable. The SVD and Levenberg–Marquardt penalty row is [1, 0] where central differences give [0, 1]. For quadrupole strengths x and y with objective x² + y² + (y − 0.1)², one SVD cycle returns (0.3000, 0) with merit 0.1000 instead of the exact minimum at (0, 0.05000) with merit 0.005000. Reordering the same variables so the penalized one comes first gives the correct derivatives and minimum.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_optimization_io.py](../helpers/_tao_optimization_io.py) · [View source](../helpers/index.md#_tao_optimization_io)
+Run `python TAO-01.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_optimization_io.py](../helpers/_tao_optimization_io.py) in the same directory.
 
 ??? example "Reproducer: TAO-01.py"
 
@@ -37,9 +34,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     minimum at (0, 0.05000) with merit 0.005000. Reordering the same variables so the penalized one
     comes first gives the correct derivatives and minimum.
 
-    The script compares both optimizer Jacobians with central differences, then compares one SVD
-    cycle with the analytic least-squares solution. Reordering the same variables is a control for
-    both the derivatives and the fit. BMAD_DIST supplies the executable and compiler/link recipe.
+    The script compares both optimizer Jacobians with central differences, then compares one SVD cycle
+    with the analytic least-squares solution. Reordering the same variables is a control for both the
+    derivatives and the fit.
     """
 
     import re

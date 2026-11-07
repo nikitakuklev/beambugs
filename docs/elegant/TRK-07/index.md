@@ -12,15 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">contract-unsettled</span> [?](../../methodology.md#tags) |
 | Source | [phase and local frequency, mod_rfca.c:183–188](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/mod_rfca.c#L183-L188)<br>[energy kick, mod_rfca.c:254](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/mod_rfca.c#L254)<br>[manual phase model, modrf.tex:23–37](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/modrf.tex#L23-L37) |
 
 With damped phase modulation, MODRF uses a local angular frequency that is not the derivative of its bunch-centroid phase. The frequency omits both exponential attenuation and the derivative of the damping envelope, so the energy variation within the bunch disagrees with the specified phase waveform. For a 200 MHz, 10 kV cavity with 25° phase modulation at 90 MHz, decay rate α = 4 × 10⁸ s⁻¹ and bunch-centre time T = 2 ns, the slope dγ/dt is −2.383 × 10⁷ s⁻¹ instead of −2.255 × 10⁷ s⁻¹, 5.711% too steep; γ is the Lorentz factor. The manual specifies the same local-frequency formula.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-07.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-07.py"
 

@@ -2,7 +2,7 @@
 
 A moved wall-transition aperture compares the current particle position in the aperture frame with the previous position in the laboratory frame. A particle remaining at the aperture centre can therefore appear to cross a wall and be marked lost. For a rectangular aperture with 10 mm half-widths and a 100 mm horizontal offset, identical old and current horizontal positions of 100 mm produce a loss. The centred-aperture control stays alive, as required for a stationary transverse point.
 
-The script checks a stationary transverse point with zero and nonzero aperture offsets. It compares the returned state with alive, since neither case crosses the wall. Set BMAD_DIST to the build root.
+The script checks a stationary transverse point with zero and nonzero aperture offsets. It compares the returned state with alive, since neither case crosses the wall.
 """
 
 from _bmad import compare, fortran, verdict

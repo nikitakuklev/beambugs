@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [symp_lie_bmad radiation coefficients, bmad/low_level/symp_lie_bmad.f90:123–134](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L123-L134)<br>[radiation_map_setup reference-species coefficients, bmad/modules/rad_6d_mod.f90:477–489](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L477-L489)<br>[Bmad manual, Radiation Damping and Excitation, bmad/doc/synchrotron-radiation.tex:12–45](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/synchrotron-radiation.tex#L12-L45) |
 
 Tracking a particle on a reference of another charge state makes symp_lie_bmad use the reference species’ radiation coefficients. The same particle in the same magnetic field at the same momentum must have the same radiation loss, independent of the reference species. For a carbon-12 ion of charge +3, changing the reference from +3 to +6 changes the calculated loss by 0.05488%, even though the radiation-off transverse trajectory is identical. The coefficients must use the tracked particle’s classical radius and Lorentz factor; separate charge-factor and integration-step errors also affect the absolute loss.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python OPT-29.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: OPT-29.py"
 
@@ -31,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Tracking a particle on a reference of another charge state makes symp_lie_bmad use the reference species’ radiation coefficients. The same particle in the same magnetic field at the same momentum must have the same radiation loss, independent of the reference species. For a carbon-12 ion of charge +3, changing the reference from +3 to +6 changes the calculated loss by 0.05488%, even though the radiation-off transverse trajectory is identical. The coefficients must use the tracked particle’s classical radius and Lorentz factor; separate charge-factor and integration-step errors also affect the absolute loss.
 
-    The script tracks the same carbon-12 +3 particle through a ten-period wiggler with matched +3 and mixed +6 references and checks native reference-species invariance. Scratch copies isolate the two other radiation faults and provide a tracked-species coefficient control. BMAD_DIST supplies the build and BMAD_SOURCE supplies symp_lie_bmad.f90."""
+    The script tracks the same carbon-12 +3 particle through a ten-period wiggler with matched +3 and mixed +6 references and checks native reference-species invariance. Scratch copies isolate the two other radiation faults and provide a tracked-species coefficient control. BMAD_SOURCE supplies symp_lie_bmad.f90."""
 
     import numpy as np
     from _bmad import compare, fortran, source, verdict

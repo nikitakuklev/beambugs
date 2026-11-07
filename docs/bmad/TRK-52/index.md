@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [multipole_ele_to_kt contract](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/multipole_ele_to_kt.f90#L4-L16)<br>[skew-coefficient branch](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/multipole_ele_to_kt.f90#L57-L73)<br>[Bmad Manual, “Straight Line Element Orientation” (s:straight.orient)](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L608-L609)<br>[“Magnetostatic Multipole Fields” (s:mag.field)](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/electromagnetic-fields.tex#L96-L109) |
 
 A multipole with any nonzero skew coefficient loses its whole-element tilt when converted to strengths and angles for native tracking. With normal strength K₁L = 0.5 m⁻¹, skew strength K₁SL = 0.2 m⁻¹ and tilt = 0.17 rad, a particle at (x, y) = (1, 2) mm receives normalized transverse momenta (pₓ, pᵧ) = (−0.1000, 1.200) × 10⁻³ instead of (−0.4945, 1.098) × 10⁻³. The same omission affects its matrix, reference-bend geometry, displays and exports that consume those angles. PTC, Taylor tracking and an equivalent strength-and-angle element reproduce the rotated field.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) · [View source](../helpers/index.md#_tracking_contracts_materials)
+Run `python TRK-52.py` with [_bmad.py](../helpers/_bmad.py) and [_tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) in the same directory.
 
 ??? example "Reproducer: TRK-52.py"
 

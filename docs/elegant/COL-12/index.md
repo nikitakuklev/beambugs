@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [Gaussian call, do_tracking.c:6316](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L6316)<br>[uniform call, do_tracking.c:6326](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L6326)<br>[parabolic call, do_tracking.c:6329](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L6329)<br>[species setup, elegant.c:3264–3283](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3264-L3283)<br>[BEAMBEAM manual, beambeam.tex:1–2](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/beambeam.tex#L1-L2)<br>[CHARGE parameter, track_data.c:3986](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3986) |
 
 Tracking positrons through BEAMBEAM after `change_particle name=positron` gives them the same kick as electrons from a fixed opposing bunch, deflecting them in the wrong direction. Reversing the tracked charge at fixed mass and source must reverse the kick; an independent enclosed-charge calculation verifies the electron control and predicts the opposite positron kick. For a positive 0.7000 nC uniform opposing bunch of radius 1.700 mm, a positron with momentum 1700 mₑc at horizontal position x = 0.2300 mm receives a horizontal slope change Δx′ = −1.153×10⁻⁶ instead of +1.153×10⁻⁶.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-12.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-12.py"
 

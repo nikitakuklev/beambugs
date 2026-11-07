@@ -2,7 +2,7 @@
 
 Enabling the bunch-charge ramp in the beam-breakup simulation overwrites the circular queue slot with the chronological bunch number. The first insertion records slot zero even though the bunch occupies slot one. The next insertion reports a bunch-array overflow and aborts; the same lattice completes with ramping disabled.
 
-The script runs the BBU executable with a fixed random seed on the same lattice with ramping disabled and enabled. It checks completion of the control and identifies the queue-overflow diagnostic and abort in the ramped case. BMAD_DIST selects the build.
+The script runs the BBU executable with a fixed random seed on the same lattice with ramping disabled and enabled. It checks completion of the control and identifies the queue-overflow diagnostic and abort in the ramped case.
 """
 
 from _bmad import RunFailure, run, verdict

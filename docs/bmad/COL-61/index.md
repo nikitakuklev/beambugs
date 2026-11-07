@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`sr_z_long_wake`, bmad/multiparticle/wake_mod.f90:552–558](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L552-L558)<br>[`sr_z_long_wake`, bmad/multiparticle/wake_mod.f90:590–607](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L590-L607)<br>[`s:sr.wake.z.long`, bmad/doc/attributes.tex:3110–3118](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L3110-L3118) |
 
 A tabulated short-range wake can accept an outlier under its one-percent tolerance, skip that particle during charge deposition, and then give it a kick interpolated from wrapped grid nodes. With one outlier among 101 particles, all particles remain alive and the core receives the expected normalized momentum kick of −1.000 × 10⁻⁶. The outlier instead receives −5.720 × 10⁻⁶ where a zero-continued table gives zero. Signed interpolation weights of 1.500 and −0.500 explain this result.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) · [View source](../helpers/index.md#_wake_tables_and_bbu)
+Run `python COL-61.py` with [_bmad.py](../helpers/_bmad.py) and [_wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) in the same directory.
 
 ??? example "Reproducer: COL-61.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     A tabulated short-range wake can accept an outlier under its one-percent tolerance, skip that particle during charge deposition, and then give it a kick interpolated from wrapped grid nodes. With one outlier among 101 particles, all particles remain alive and the core receives the expected normalized momentum kick of −1.000 × 10⁻⁶. The outlier instead receives −5.720 × 10⁻⁶ where a zero-continued table gives zero. Signed interpolation weights of 1.500 and −0.500 explain this result.
 
-    The script tracks 100 core particles and one outlier that lies outside the table’s deposition window. It checks the live count and all core kicks, then compares the outlier with a zero-continued table sum. BMAD_DIST selects the build.
+    The script tracks 100 core particles and one outlier that lies outside the table’s deposition window. It checks the live count and all core kicks, then compares the outlier with a zero-continued table sum.
     """
 
     import numpy as np

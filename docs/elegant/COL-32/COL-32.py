@@ -7,12 +7,13 @@ reports a conditional jump on an uninitialized value in the insertion routine, c
 allocation of the specification. The manual says larger nonzero values of verbosity request more
 printed detail, and the source prints the notice for positive values. The kicks are unaffected.
 
-The script runs serial Elegant under Valgrind (which must be on PATH) on a one-segment ring (a
-0.8 nC bunch of 243 particles and a 1 m EMATRIX quarter turn) with insert_sceffects name = "R",
-skip = 1 and verbosity = 5. Expected are one insertion notice and no use of uninitialized memory;
-the verdict is Valgrind's report of a conditional jump on an uninitialized value in insertSCMULT,
-originating in the allocation of the insertion specification. The same run without
-insert_sceffects is the control.
+Setup: `valgrind` on `PATH`; the script runs serial Elegant under Memcheck.
+
+The script runs serial Elegant under Valgrind on a one-segment ring (a 0.8 nC bunch of 243 particles
+and a 1 m EMATRIX quarter turn) with insert_sceffects name = "R", skip = 1 and verbosity = 5.
+Expected are one insertion notice and no use of uninitialized memory; the verdict is Valgrind's
+report of a conditional jump on an uninitialized value in insertSCMULT, originating in the
+allocation of the insertion specification. The same run without insert_sceffects is the control.
 """
 
 import os

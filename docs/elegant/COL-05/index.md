@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [uniform prefactor, insertSCeffects.cc:545](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L545)<br>[linear uniform prefactor, insertSCeffects.cc:516](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L516)<br>[Gaussian prefactor, insertSCeffects.cc:547](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L547)<br>[switch description, elegant.tex:4489–4490](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4489-L4490)<br>[scmult.tex:24–39](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/scmult.tex#L24-L39) |
 
 With `insert_sceffects`, `nonlinear=1` and `uniform_distribution=1`, SCMULT's unsliced coasting-beam prefactor is 1/√12 = 0.2887 of its correct value for both round and elliptical beams. An independent Gaussian transverse-field integral with uniform number density N/(√12 σₛ), where N is the particle population and σₛ the rms longitudinal length, establishes the missing normalization. In an 8 m ring with 1 nC of electrons at 10 mₑc and 1 mm rms transverse sizes, a sampled round-beam particle after a 1 m drift receives −3.558×10⁻⁷ rad instead of −1.233×10⁻⁶ rad, a 71.13% suppression. Linear controls obey their own force law, and the 1 m round-beam case removes the separate integration-weight error.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _scring.py](../helpers/_scring.py) · [View source](../helpers/index.md#_scring)
+Run `python COL-05.py` with [_elegant.py](../helpers/_elegant.py) and [_scring.py](../helpers/_scring.py) in the same directory.
 
 ??? example "Reproducer: COL-05.py"
 

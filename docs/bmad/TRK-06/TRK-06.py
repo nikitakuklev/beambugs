@@ -9,7 +9,7 @@ tiny reflected intensity; perpendicular σ polarization passes.
 
 The script tracks 9 keV photons through W/boron-carbide mirrors with 1, 3 and 7 cells at grazing
 angles 0.02, 0.25 and π/4 rad. It matches each interface independently with the same semi-infinite
-bottom-material termination and checks σ polarization as a control; BMAD_DIST selects the build.
+bottom-material termination and checks σ polarization as a control;
 """
 
 import os

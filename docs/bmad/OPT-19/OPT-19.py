@@ -2,9 +2,9 @@
 
 The chromaticity API describes its perturbation arguments as energy changes, although the routine differentiates tune Q with respect to fractional momentum δ. At reference speed β₀c, fractional energy and momentum changes obey dE/E = β₀² dδ, so the energy derivative requires division by β₀². In a 12-cell electron FODO ring at 1 MeV/c, the horizontal result is −0.3572 per fractional momentum instead of the labelled energy derivative −0.4505.
 
-The script executes chrom_calc on a finite-beta FODO ring and compares its result with an
-analytic momentum secant. It converts that secant to an energy derivative and reads the chrom_calc argument descriptions
-using BMAD_SOURCE. BMAD_DIST selects the build.
+The script executes chrom_calc on a finite-beta FODO ring and compares its result with an analytic
+momentum secant. It converts that secant to an energy derivative and reads the chrom_calc argument
+descriptions using BMAD_SOURCE.
 """
 
 import numpy as np
@@ -89,7 +89,7 @@ h = values[2]
 secant = (tune(h) - tune(-h)) / (2 * h)
 require(values[:2], secant, atol=2e-10, rtol=3e-9)
 # Differentiate E^2=(pc)^2+(mc^2)^2 at p=p0: dE/E=beta0^2 d(delta).
-# The mass is Bmad's compiled electron mass (its CODATA value is a separate ledger entry).
+# The mass is Bmad's compiled electron mass (its CODATA value is a separate entry, TRK-42).
 mass = 510998.95069
 beta2 = 1e12 / (1e12 + mass**2)
 expected = secant / beta2

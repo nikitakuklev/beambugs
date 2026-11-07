@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`Long-Range Wakes (s:lr.wake.syntax)`, bmad/doc/attributes.tex:3233–3246](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L3233-L3246)<br>[`parser_read_lr_wake`, bmad/parsing/bmad_parser_mod.f90:1758–1763](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/bmad_parser_mod.f90#L1758-L1763)<br>[`track1_lr_wake`, bmad/multiparticle/wake_mod.f90:151–159](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L151-L159)<br>[`Long--Range Wakes (s:lr.wake.eq), do2q`, bmad/doc/wakefields.tex:120–127](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/wakefields.tex#L120-L127) |
 
 Copying the long-range wake example gives a damping rate smaller by a factor of 2π than the manual’s quality-factor relation requires. For frequency 1.650 GHz and quality factor 70,000, the example supplies 1.179 × 10⁴ s⁻¹ instead of 7.405 × 10⁴ s⁻¹. The parser stores that value directly and tracking uses it as the exponential damping rate, making the decay time 6.283 times too long.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) · [View source](../helpers/index.md#_wake_tables_and_bbu)
+Run `python COL-65.py` with [_bmad.py](../helpers/_bmad.py) and [_wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) in the same directory.
 
 ??? example "Reproducer: COL-65.py"
 

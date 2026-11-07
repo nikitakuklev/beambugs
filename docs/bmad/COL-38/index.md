@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [bbi_slice_calc, bmad/low_level/bbi_slice_calc.f90:30–39](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/bbi_slice_calc.f90#L30-L39)<br>[Bmad manual, BeamBeam (s:beambeam), bmad/doc/elements.tex:335–343](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L335-L343)<br>[BeamBeam Tracking (s:beambeam.std), bmad/doc/charged-tracking.tex:321–330](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L321-L330) |
 
 A beam–beam element places equal-charge Gaussian slices at probability midpoints instead of the charge centroids specified in the manual. For two slices, the positions are ±0.6745 times the bunch RMS length rather than the conditional means ±0.7979 times that length. The offsets are 15.46% smaller than the documented values. A single slice is correctly centered at zero.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-38.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-38.py"
 

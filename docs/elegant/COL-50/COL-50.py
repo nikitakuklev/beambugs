@@ -2,7 +2,9 @@
 
 With `BIN_ONCE=1` and a wake `OUTPUT_FILE`, CSRCSBEND leaves its retained histogram scaled after writing each page and attempts to restore elements one past both histogram arrays. Later output pages should retain the initial density and derivative, but for a 100.0 pC bunch represented by 4096 particles, the second page integrates to 7.319×10⁻⁴ pC and the fourth to 3.921×10⁻¹⁴ pC. The derivative grows by a factor of 5.321×10⁷ per additional page instead of remaining unchanged, and Valgrind confirms invalid reads and writes. The tested tracking kicks are unchanged by wake output.
 
-The script tracks deterministic Gaussian quantiles through a four-slice bend and compares all-page, last-only, interval-two and disabled wake output, with a rebinned control. It integrates the reported current, checks the repeated scaling against the macroparticle charge and bin width, and compares final coordinates. It also runs the retained and rebinned cases under Valgrind, which must be on PATH with Elegant and RPN_DEFNS set.
+Setup: `valgrind` on `PATH`; the script runs some cases of serial Elegant under Memcheck.
+
+The script tracks deterministic Gaussian quantiles through a four-slice bend and compares all-page, last-only, interval-two and disabled wake output, with a rebinned control. It integrates the reported current, checks the repeated scaling against the macroparticle charge and bin width, and compares final coordinates. It also runs the retained and rebinned cases under Valgrind.
 """
 
 import re

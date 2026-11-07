@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [binned tracking, rfmode.cc:712–717](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/rfmode.cc#L712-L717)<br>[binless tracking, rfmode.cc:1633–1638](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/rfmode.cc#L1633-L1638)<br>[caller, do_tracking.c:2387–2395](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2387-L2395)<br>[setup, rfmode.cc:1232](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/rfmode.cc#L1232)<br>[loads the frequency table, rfmode.cc:1413–1431](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/rfmode.cc#L1413-L1431)<br>[waveforms, rfmode.tex:87–99](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfmode.tex#L87-L99)<br>[parameter metadata, track_data.c:2187](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2187) |
 
 In single-bunch RFMODE tracking, a constant frequency multiplier a supplied through FREQ_WAVEFORM, with FREQ divided by a to preserve the resonant frequency, scales the stored beam-induced voltage by √a on every traversal. A stationary passive cavity should follow the same damped response as the direct-frequency setting, which agrees with an independent parallel-RLC circuit calculation. For quality factor Q = 11.00, shunt impedance RA = 200.0 kΩ, frequency 0.8300 GHz and a 0.3000 nC electron bunch represented by 18 macroparticles, the fifth-traversal tail energy loss is 9366 eV for a = 1.440 or 1.247×10⁴ eV for a = 0.2500, instead of 1.015×10⁴ eV.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-22.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-22.py"
 

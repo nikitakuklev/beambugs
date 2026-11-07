@@ -2,7 +2,9 @@
 
 With use_beam enabled in touschek_background, bunch compression measured by beam tracking is omitted from the propagated energy spread written to sigma_p.out. The propagation loop updates an unused scalar instead of the spread carried between elements. For a factor-two linear compression at 1 GeV with zero radiation excitation and disabled intrabeam scattering, the application reports a relative spread of 10⁻⁶ instead of 2 × 10⁻⁶, a 50% underestimate. The identity map gives the correct unchanged spread.
 
-The script compiles the complete, unchanged application from BMAD_SOURCE against BMAD_DIST and the installed Open MPI, then runs two MPI ranks on the CPU selected with taskset. Fixed particles traverse an identity map, a longitudinal scaling map, and another identity map; analytic covariance transport and a separate beam-tracking program check the expected spread. Identity, expansion, and fixed-bunch-length cases isolate the compression correction, and all compiled programs are removed after execution.
+Setup: `libbsim.a` in the production build, Open MPI `mpifort` and `mpiexec` on `PATH`, compatible with the build's Fortran compiler (the run used Open MPI 5.0.10), and the run pinned to one CPU (`taskset -c <cpu>`); the script compiles the `touschek_background` program and runs two MPI ranks, one thread each, on that CPU.
+
+The script compiles the complete, unchanged application from BMAD_SOURCE against BMAD_DIST and the installed Open MPI, then runs two MPI ranks. Fixed particles traverse an identity map, a longitudinal scaling map, and another identity map; analytic covariance transport and a separate beam-tracking program check the expected spread. Identity, expansion, and fixed-bunch-length cases isolate the compression correction, and all compiled programs are removed after execution.
 """
 
 from __future__ import annotations

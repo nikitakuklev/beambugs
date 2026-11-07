@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [track_a_foil scattering loop](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_foil.f90#L58-L109)<br>[energy-loss subdivision](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_foil.f90#L114-L135)<br>[Bmad Manual, “Scattering in a Foil” (s:foil.scatter), Eq. sszpb](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L1032-L1097)<br>[“ds_step and num_steps Parameters” (s:ds.step)](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L664-L677)<br>[foil defaults](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/set_ele_defaults.f90#L180-L188) |
 
 A foil reapplies its full-thickness scattering kick at every integration subdivision instead of sharing the scattering variance across the foil. For a 150 MeV/c proton in carbon with areal density 0.012 kg/m², deterministic unit draws give a normalized transverse kick of 0.002255 with one step and 0.02259 with the default ten steps. Independent integration of the Highland scattering and mean energy-loss formulas reproduces those repeated full-material kicks. For independent random draws and small energy loss, the loop implies approximately ten times the intended variance at the default setting.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) · [View source](../helpers/index.md#_tracking_contracts_materials)
+Run `python TRK-54.py` with [_bmad.py](../helpers/_bmad.py) and [_tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) in the same directory.
 
 ??? example "Reproducer: TRK-54.py"
 

@@ -12,12 +12,14 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
+| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
 | Issue | [[gh:https://github.com/bmad-sim/SciBmad.jl/issues/152]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/SciBmad.jl/pull/153]], filed from this evidence |
-| Source | [`src/twiss/twiss.jl:744-745`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L744-L745)<br>[`twiss_operators.jl:596-668`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L596-L668)<br>[`twiss.jl:352`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L352)<br>[`bmad/code/momentum_compaction.f90:47-59`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/code/momentum_compaction.f90#L47-L59)<br>[`tao_evaluate_a_datum.f90:1718`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/tao/code/tao_evaluate_a_datum.f90#L1718)<br>[`:2771`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/tao/code/tao_evaluate_a_datum.f90#L2771) |
+| Source | [`src/twiss/twiss.jl:750-751`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L750-L751)<br>[`twiss_operators.jl:624-696`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L624-L696)<br>[`twiss.jl:358`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L358)<br>[`bmad/code/momentum_compaction.f90:47-59`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/code/momentum_compaction.f90#L47-L59)<br>[`tao_evaluate_a_datum.f90:1718`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/tao/code/tao_evaluate_a_datum.f90#L1718)<br>[`:2771`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/tao/code/tao_evaluate_a_datum.f90#L2771) |
 
 The `twiss` summary value `alphac`, labelled the momentum compaction α_p = (1/C) dC/dδ (C the orbit length, δ the relative momentum offset), is computed from the coordinate slip, like the slip factor `etac`. For coasting beams on momentum whose closed orbit has zero longitudinal advance, `alphac` equals `etac` and is low by 1/γ² (γ the Lorentz factor). For 1 GeV/c protons it is −0.4682 instead of 0 in a straight cell and −0.2238 instead of 0.2443 in a cell with bends, as analytic transport and tracking establish. `etac` also loses velocity and closed-orbit time corrections: its straight-cell order-2 δ coefficient is 0.7470 instead of 1.185, and nonzero closed-orbit longitudinal advance corrupts its value. Protons and ions are most affected; ultrarelativistic electron errors are small.
+
+Run `julia OPT-06.jl`.
 
 ??? example "Reproducer: OPT-06.jl"
 

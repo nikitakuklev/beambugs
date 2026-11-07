@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`create_girder` parsed-state copy, bmad/parsing/create_girder.f90:50–62](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/create_girder.f90#L50-L62)<br>[`makeup_control_slave` girder transform, bmad/modules/bookkeeper_mod.f90:1590–1649](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bookkeeper_mod.f90#L1590-L1649)<br>[Bmad manual, “Girder” (`s:girder`), off-state contract, bmad/doc/elements.tex:2874–2875](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L2874-L2875) |
 
 A girder declared off is created enabled, and explicitly turning it off leaves its displacement applied to attached magnets. A 1 cm girder offset remains on a 1 m quadrupole with strength 1 m⁻², moving a centered particle to x = 4.597 mm with normalized horizontal momentum pₓ = 0.008415. An off girder is documented as unshifted relative to its reference frame, so this centered quadrupole must leave x and pₓ zero. The measured orbit matches the analytic map of the displaced magnet.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _multipass_slicing.py](../helpers/_multipass_slicing.py) · [View source](../helpers/index.md#_multipass_slicing)
+Run `python LAT-29.py` with [_bmad.py](../helpers/_bmad.py) and [_multipass_slicing.py](../helpers/_multipass_slicing.py) in the same directory.
 
 ??? example "Reproducer: LAT-29.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     A girder declared off is created enabled, and explicitly turning it off leaves its displacement applied to attached magnets. A 1 cm girder offset remains on a 1 m quadrupole with strength 1 m⁻², moving a centered particle to x = 4.597 mm with normalized horizontal momentum pₓ = 0.008415. An off girder is documented as unshifted relative to its reference frame, so this centered quadrupole must leave x and pₓ zero. The measured orbit matches the analytic map of the displaced magnet.
 
-    The script parses a disabled girder, then explicitly switches it off and on through the API with bookkeeping. It checks the on-state orbit against the displaced-quadrupole map and the off state against zero displacement and zero orbit. BMAD_DIST selects the build.
+    The script parses a disabled girder, then explicitly switches it off and on through the API with bookkeeping. It checks the on-state orbit against the displaced-quadrupole map and the off state against zero displacement and zero orbit.
     """
 
     import math

@@ -6,6 +6,8 @@ message reads 8 bytes before the position array instead of safely reporting the 
 With samples at 2 m and 3 m and an interval from 0 to 1 m, the run stops with a value that is not a
 sample position in the message, and a memory checker confirms an invalid read of size 8.
 
+Setup: `valgrind` on `PATH`; the script runs serial Elegant under Memcheck.
+
 The script writes a one-element IONEFFECTS lattice spanning 0 to 1 m and runs serial Elegant under
 Valgrind with four pressure profiles: two that reach the interval (samples at 0, 0.5 and 1 m, and
 only at 0.2 and 0.8 m), which are controls that must complete without an invalid read, one sampled

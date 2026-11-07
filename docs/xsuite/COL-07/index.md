@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`) |
+| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`, head build) |
 | Source | [`LossMap._create_aperture_pos_dict`, lossmap.py:863–888](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L863-L888)<br>[loss-density normalization](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/plot.py#L215-L230) |
 
 For a non-interpolated loss map (`interpolation=False`), `LossMap` bounds each aperture cell by the midpoints to its neighbours without wrapping the first and last neighbours around the ring. Those two cells get negative lengths and displaced centres, whereas periodic midpoint cells must have positive lengths summing to the circumference. For apertures at 1, 4 and 9 m in a 12 m ring, the lengths are −2.5, 4 and −1.5 m instead of 3.5, 4 and 4.5 m, summing to 0 instead of 12 m, and the end-cell centres are 3.75 and 5.75 m instead of 0.75 and 8.75 m. Non-interpolated ring loss maps report wrong loss densities and positions in the boundary cells; interior cells are correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-07.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-07.py"
 
@@ -40,7 +37,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     The script tracks three 2 GeV/c protons into the three apertures, checks where they were lost, and
     builds the loss map with `correct_aperture_absorption=False` and no material or scattering engine.
     It compares the cell lengths and centres with periodic midpoint cells built from the positive cyclic
-    gaps between apertures. It requires the installed prebuilt kernels (compilation is forbidden).
+    gaps between apertures.
     """
 
     from _prebuilt import CTX, identity, kernels, np, report, xc, xt

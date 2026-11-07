@@ -8,7 +8,7 @@ elemental lookup and transmits with the expected amplitude 0.5154.
 
 The script calls the material helper and public track1 for silicon and titanium clear mask sections
 at normal incidence. It checks successful coefficient calculation, live state, Beer attenuation and
-optical phase modulo 2π; BMAD_DIST selects the build.
+optical phase modulo 2π;
 """
 
 import os

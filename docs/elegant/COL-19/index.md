@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [calloc, insertSCeffects.cc:386–390](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L386-L390)<br>[occupied-bin guard, insertSCeffects.cc:411](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L411)<br>[interpolation, insertSCeffects.cc:464–466](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L464-L466)<br>[slice parameters, elegant.tex:4504–4511](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4504-L4511)<br>[SDDS loading, sdds_beam.c:446](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sdds_beam.c#L446)<br>[drift, compute_matrices.c:614](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L614)<br>[`computeTimeCoordinatesOnly`, trwake.c:539–549](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L539-L549) |
 
 Linear SCMULT tracking with time slicing and slice interpolation leaves empty slices' transverse centroids at zero instead of using the whole-bunch centroids specified by the manual. Mixing those values with occupied slices breaks translation symmetry: a common transverse displacement changes the self-kicks, whose mean must remain zero for the symmetric test bunch. For 20 electrons carrying 0.2000 nC in 100.0 ps slices with one empty neighbor, a displacement of (1.700, −2.200) mm produces a mean horizontal slope of 5.597×10⁻⁶ instead of zero. Extrapolation can also reverse the erroneous mean.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _scmult_ring.py](../helpers/_scmult_ring.py) · [View source](../helpers/index.md#_scmult_ring)
+Run `python COL-19.py` with [_elegant.py](../helpers/_elegant.py) and [_scmult_ring.py](../helpers/_scmult_ring.py) in the same directory.
 
 ??? example "Reproducer: COL-19.py"
 

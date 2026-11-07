@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [sc_field_calc cutoff, bmad/space_charge/space_charge_mod.f90:126–138](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/space_charge_mod.f90#L126-L138)<br>[direct-plus-image assembly, bmad/space_charge/open_spacecharge_mod.f90:665–691](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_mod.f90#L665-L691)<br>[Bmad manual, Space_Charge_Common_Struct, s:sc.com, bmad/doc/param-structs.tex:503–508](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/param-structs.tex#L503-L508) |
 
 When cathode image fields are enabled, the cutoff compares the image field with the sum of direct and image fields instead of the direct bunch field. Cancellation changes whether images remain enabled. In a 27-particle example, the largest image/direct component ratio is 0.6762, while the image/total ratio is 0.7083. A cutoff of 0.6922 therefore retains images even though the documented bunch-field criterion would disable them.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_contracts.py](../helpers/_collective_contracts.py) · [View source](../helpers/index.md#_collective_contracts)
+Run `python COL-15.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_contracts.py](../helpers/_collective_contracts.py) in the same directory.
 
 ??? example "Reproducer: COL-15.py"
 
@@ -31,9 +28,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     When cathode image fields are enabled, the cutoff compares the image field with the sum of direct and image fields instead of the direct bunch field. Cancellation changes whether images remain enabled. In a 27-particle example, the largest image/direct component ratio is 0.6762, while the image/total ratio is 0.7083. A cutoff of 0.6922 therefore retains images even though the documented bunch-field criterion would disable them.
 
-    The script evaluates the direct and total fields for the same 27 stationary particles on a 16³
-    mesh. It derives the image field by subtraction, tests a cutoff between the two component
-    ratios, and checks zero and high cutoffs as controls. BMAD_DIST selects the production build.
+    The script evaluates the direct and total fields for the same 27 stationary particles on a 16³ mesh.
+    It derives the image field by subtraction, tests a cutoff between the two component ratios, and
+    checks zero and high cutoffs as controls.
     """
 
     import numpy as np

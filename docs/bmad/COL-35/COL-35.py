@@ -5,7 +5,7 @@ When the envelope radiation-diffusion helper is called for a heavier species, it
 The script calls the production diffusion helper for electrons, positrons and protons at equal
 Lorentz factor and curvature. It checks charge-conjugate equality and compares the species ratio
 with the classical-radius and recoil-mass factors, then checks the electron value against Bmad's
-physical constants. BMAD_DIST selects the build.
+physical constants.
 """
 
 from _bmad import compare, fortran, verdict

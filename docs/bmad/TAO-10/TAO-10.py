@@ -7,9 +7,9 @@ invalid model, base, and design values. Its default invalid-value setting leaves
 and merit at zero, while the clock average should be 4.336 ns and its integral 4.336 ns·m. The
 constructed wrapped positions and reordered values must be passed together.
 
-The script requests all three reductions over a wrapped range and a non-wrapped control in
-separate Tao processes. It verifies every clock sample analytically, identifies the exact
-invalid-data diagnostic, and checks the resulting flags and merit. BMAD_DIST supplies Tao.
+The script requests all three reductions over a wrapped range and a non-wrapped control in separate
+Tao processes. It verifies every clock sample analytically, identifies the exact invalid-data
+diagnostic, and checks the resulting flags and merit.
 """
 
 import math

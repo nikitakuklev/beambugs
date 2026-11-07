@@ -9,11 +9,10 @@ documented convention and 0.9800 mm under the implemented convention. The two
 maps describe points immediately before and after the kick; their equilibrium
 bunch lengths and tunes agree.
 
-The script builds a stable linear Taylor ring and a copy with an explicit kick
-at its beginning, then tracks from each side of that kick. Scalar kick equations
-and analytic matched covariances check the returned matrices independently.
-Zero-inductance, identity-map and bunch-length controls isolate the order mismatch;
-BMAD_DIST selects the compiled Bmad distribution.
+The script builds a stable linear Taylor ring and a copy with an explicit kick at its beginning,
+then tracks from each side of that kick. Scalar kick equations and analytic matched covariances
+check the returned matrices independently. Zero-inductance, identity-map and bunch-length controls
+isolate the order mismatch;
 """
 
 from __future__ import annotations

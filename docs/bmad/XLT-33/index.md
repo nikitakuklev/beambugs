@@ -12,17 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`write_lattice_elegant_format`, duplicate-name skip](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L485-L488)<br>[multipole splitting](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L678-L698) |
 
 An Elegant export becomes invalid when a multipole with multiple nonzero orders appears more than once. The first occurrence is split into one MULT per order, but later occurrences retain an original name that has no definition, so Elegant rejects the lattice. The same failure occurs for the paired end multipoles generated from a thick element’s field errors. Replacing the later reference with the split elements makes the repeated thin-multipole example agree with Bmad tracking.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_24_translations.py](../helpers/_s3_24_translations.py) · [View source](../helpers/index.md#_s3_24_translations)
-- [Download _s4_17_translations.py](../helpers/_s4_17_translations.py) · [View source](../helpers/index.md#_s4_17_translations)
+Run `python XLT-33.py` with [_bmad.py](../helpers/_bmad.py), [_s3_24_translations.py](../helpers/_s3_24_translations.py) and [_s4_17_translations.py](../helpers/_s4_17_translations.py) in the same directory.
 
 ??? example "Reproducer: XLT-33.py"
 
@@ -33,7 +29,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     An Elegant export becomes invalid when a multipole with multiple nonzero orders appears more than once. The first occurrence is split into one MULT per order, but later occurrences retain an original name that has no definition, so Elegant rejects the lattice. The same failure occurs for the paired end multipoles generated from a thick element’s field errors. Replacing the later reference with the split elements makes the repeated thin-multipole example agree with Bmad tracking.
 
-    The script exports a repeated thin multipole and a quadrupole with two orders of field error. It verifies Elegant’s exact undefined-name error and checks a repaired thin-multipole beamline against Bmad. ELEGANT_BIN and RPN_DEFNS select the receiving executable and definitions.
+    Setup: `ELEGANT_BIN` set to a serial Elegant executable and `RPN_DEFNS` to the `defns.rpn` file of SDDS; the script runs the exported lattices in Elegant.
+
+    The script exports a repeated thin multipole and a quadrupole with two orders of field error. It verifies Elegant’s exact undefined-name error and checks a repaired thin-multipole beamline against Bmad.
     """
 
     import re

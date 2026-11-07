@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [radiation_integrals averaged branch, bmad/code/radiation_integrals.f90:518–534](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/radiation_integrals.f90#L518-L534)<br>[Bmad manual, Synchrotron Radiation Integrals, bmad/doc/synchrotron-radiation.tex:283–295](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/synchrotron-radiation.tex#L283-L295)<br>[Bmad manual, photon-number relation, bmad/doc/synchrotron-radiation.tex:332–338](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/synchrotron-radiation.tex#L332-L338)<br>[Bmad manual, Periodic Type Wiggler fields, bmad/doc/elements.tex:5664–5695](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L5664-L5695) |
 
 For averaged planar and helical wigglers, the photon-count radiation integral I₀ omits the element length; the planar formula also uses 2/3 instead of the absolute-cosine average 2/π. The integral I₀ = ∫γ|g|ds must scale with length and be additive under subdivision, where γ is the relativistic energy factor and g is curvature. At 650 MeV/c and 0.3 T, a 0.48 m planar wiggler returns 117.3 instead of 53.78, and splitting it into four pieces raises the result to 469.3. The corresponding helical values are 176.0 and 704.0 instead of 84.48; the squared- and cubed-curvature integrals remain correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) · [View source](../helpers/index.md#_srdt_wiggler_maps)
+Run `python OPT-37.py` with [_bmad.py](../helpers/_bmad.py) and [_srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) in the same directory.
 
 ??? example "Reproducer: OPT-37.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     For averaged planar and helical wigglers, the photon-count radiation integral I₀ omits the element length; the planar formula also uses 2/3 instead of the absolute-cosine average 2/π. The integral I₀ = ∫γ|g|ds must scale with length and be additive under subdivision, where γ is the relativistic energy factor and g is curvature. At 650 MeV/c and 0.3 T, a 0.48 m planar wiggler returns 117.3 instead of 53.78, and splitting it into four pieces raises the result to 469.3. The corresponding helical values are 176.0 and 704.0 instead of 84.48; the squared- and cubed-curvature integrals remain correct.
 
-    The script compares complete-period planar and helical wigglers at two lengths and with four-piece subdivision. It derives I0, I2 and I3 from the absolute field moments, checks three cache modes and validates the I2/I3 and zero-field controls. BMAD_DIST selects the production build.
+    The script compares complete-period planar and helical wigglers at two lengths and with four-piece subdivision. It derives I0, I2 and I3 from the absolute field moments, checks three cache modes and validates the I2/I3 and zero-field controls.
     """
 
     import math

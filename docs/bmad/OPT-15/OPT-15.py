@@ -7,10 +7,9 @@ D must solve (I − M₄)D = c in one coordinate system. A map at δ = 0.2 with 
 0.4, −0.05) returns (0.8951, 0.1170, 0.4223, −0.04347) when normalization is enabled, while
 disabling it recovers D.
 
-The script builds a stable periodic map whose fixed-point derivative is prescribed
-analytically. It executes the compiled initializer with normalization off and on, validates the
-first as a control, and compares the second with a raw-coordinate linear solve. BMAD_DIST
-selects the build.
+The script builds a stable periodic map whose fixed-point derivative is prescribed analytically. It
+executes the compiled initializer with normalization off and on, validates the first as a control,
+and compares the second with a raw-coordinate linear solve.
 """
 
 import numpy as np

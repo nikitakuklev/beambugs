@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [Stupakov sum, csbend.c:5088–5112](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5088-L5112)<br>[CSRDRIFT manual, csrdrift.tex:21–27](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csrdrift.tex#L21-L27) |
 
 CSRDRIFT with USE_STUPAKOV=1 and the upstream bend’s default TRAPAZOID_INTEGRATION=1 starts its trapezoid sum one bin behind each particle and omits the interval from zero to one bin. For a 35 μm rms Gaussian bunch after a 0.6 m, 0.3 rad bend with 400 bins, adaptive integration of the same formula gives a wake that the code misses by up to 7.085% of its peak 1 mm behind the bend, 5.306% at 10 mm and 2.348% at 100 mm. Restoring that interval reduces these errors to 0.1425%, 0.09961% and 0.05389%. The non-trapezoid path uses a right-endpoint sum instead.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _csr.py](../helpers/_csr.py) · [View source](../helpers/index.md#_csr)
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-39.py` with [_csr.py](../helpers/_csr.py) and [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-39.py"
 

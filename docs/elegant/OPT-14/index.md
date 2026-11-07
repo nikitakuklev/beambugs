@@ -12,14 +12,12 @@ hide:
 | Priority | P1 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [`performSliceAnalysis`, whole-beam values, sliceAnalysis.c:543–546](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sliceAnalysis.c#L543-L546)<br>[the per-slice values, sliceAnalysis.c:594–601](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sliceAnalysis.c#L594-L601)<br>[`exact_normalized_emittance` states that the approximate normalized emittance is ε⟨βγ⟩, elegant.tex:4143–4144](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4143-L4144)<br>[slice analysis always uses that approximate computation, elegant.tex:7572–7573](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7572-L7573) |
 
 Elegant's `slice_analysis` normalizes each longitudinal slice's geometric emittance with the reference momentum instead of the slice's mean momentum, while the whole-beam normalization includes the mean momentum offset. For three monoenergetic slices at 900 mₑc with geometric emittance 2.400×10⁻⁷ m, the physical normalized emittance is 2.160×10⁻⁴ m in both planes. Reference momenta of 450 and 1350 mₑc produce 1.080×10⁻⁴ and 3.240×10⁻⁴ m; even references 1% below or above the slice momentum give −1% or +1% errors, and the dispersion-corrected values behave identically.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-14.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-14.py"
 

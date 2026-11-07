@@ -9,7 +9,7 @@ curvature gives the correct arc length.
 
 The script evaluates polynomial, elliptical and mixed one-dimensional detector surfaces at x=0.17 m.
 It checks derivatives against analytic formulas and a fourth-order stencil, then compares surface
-coordinates with independent arc-length quadrature; BMAD_DIST selects the build.
+coordinates with independent arc-length quadrature;
 """
 
 import os

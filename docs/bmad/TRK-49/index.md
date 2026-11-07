@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [test_fortran comparison](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/regression_tests/test_fortran.py#L336-L372) |
 
 An upstream regression test can pass after writing only a matching prefix of its expected output. The pytest comparator pairs available records and repeats the check for excess current records, so it never rejects a shorter current file. A current file with one matching record passes against two expected records. Equal-length output and an extra-current-record control establish that the missing-tail check is the omitted branch.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python TRK-49.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: TRK-49.py"
 

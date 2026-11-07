@@ -2,7 +2,7 @@
 
 A multipass line containing magnetic multipole elements loses the multipole arrays of its tracked passes. For a particle at horizontal position x = 1 mm, two thin quadrupole passes, each with integrated strength 0.25 m⁻¹, produce zero normalized horizontal momentum kick instead of −0.0005000, and their matrix focusing terms vanish. The alternative multipole representation crashes when its deleted arrays are read. Ordinary repeated elements retain their kicks and matrices.
 
-The script compares ordinary and multipass lines at the same reference momentum and checks the thin-quadrupole formula. It also checks the alternative multipole representation against a successful ordinary-element control and identifies the missing-array crash. BMAD_DIST selects the build.
+The script compares ordinary and multipass lines at the same reference momentum and checks the thin-quadrupole formula. It also checks the alternative multipole representation against a successful ordinary-element control and identifies the missing-array crash.
 """
 
 import resource

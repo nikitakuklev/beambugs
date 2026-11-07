@@ -2,7 +2,7 @@
 
 With init_to_edge disabled, standard tracking accepts a live particle inside an element instead of reporting that this tracker requires an edge start. The guard compares the particle state with the inside location constant, so it cannot detect a live interior start. A particle starting halfway through a 1.2 m quadrupole receives the full 1.2 m map and returns no error. For entrance x = 1 mm and normalized horizontal momentum 0.0003, the returned x = 0.8394 mm and normalized horizontal momentum −0.0005447 match the full-element solution.
 
-The script compares an edge-start control with the independent quadrupole body solution. It then sets location to inside at s = 0.6 m and disables automatic edge initialization, checking whether track1 reports an error. Set BMAD_DIST to the build root.
+The script compares an edge-start control with the independent quadrupole body solution. It then sets location to inside at s = 0.6 m and disables automatic edge initialization, checking whether track1 reports an error.
 """
 
 import numpy as np

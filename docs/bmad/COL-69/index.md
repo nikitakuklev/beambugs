@@ -12,7 +12,7 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`pwd_mat`, bmad/multiparticle/longitudinal_profile_mod.f90:658–699](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/longitudinal_profile_mod.f90#L658-L699)<br>[`map_ref_orb_out = %mat6 * map_ref_orbit_in + %vec0`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/ele-struct.tex#L540-L550)<br>[“Potential well distortion (pwd)”](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/doc/ibs_ring.tex#L218-L240)<br>[`set_pwd_ele` header](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/longitudinal_profile_mod.f90#L533-L538)<br>[calculation](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/longitudinal_profile_mod.f90#L611-L619)<br>[`transfer_matrix_calc` starts at the end of its indexed element](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/transfer_matrix_calc.f90#L1-L36)<br>[`residual_pwd_sig_z`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L934-L940)<br>[ibs_ring driver disables PWD and retains its element-1 insertion code](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L109-L134) |
 
 Calling pwd_mat according to its documented matrix product gives a different
@@ -24,9 +24,7 @@ documented convention and 0.9800 mm under the implemented convention. The two
 maps describe points immediately before and after the kick; their equilibrium
 bunch lengths and tunes agree.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-69.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-69.py"
 
@@ -44,11 +42,10 @@ Download these shared helpers into the same directory as the reproducer scripts:
     maps describe points immediately before and after the kick; their equilibrium
     bunch lengths and tunes agree.
 
-    The script builds a stable linear Taylor ring and a copy with an explicit kick
-    at its beginning, then tracks from each side of that kick. Scalar kick equations
-    and analytic matched covariances check the returned matrices independently.
-    Zero-inductance, identity-map and bunch-length controls isolate the order mismatch;
-    BMAD_DIST selects the compiled Bmad distribution.
+    The script builds a stable linear Taylor ring and a copy with an explicit kick at its beginning,
+    then tracks from each side of that kick. Scalar kick equations and analytic matched covariances
+    check the returned matrices independently. Zero-inductance, identity-map and bunch-length controls
+    isolate the order mismatch;
     """
 
     from __future__ import annotations

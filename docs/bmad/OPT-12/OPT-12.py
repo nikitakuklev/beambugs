@@ -2,7 +2,7 @@
 
 Requesting a single-element transfer matrix whose cached reference orbit already matches returns an error flag despite a valid matrix. This happens both with and without an explicit reference-orbit array. In a 1.2 m quadrupole of strength 0.7 m⁻², the cached horizontal position coefficient remains the correct 0.5369, but the call reports failure. A successful cache hit should report success just like recomputation.
 
-The script exercises both single-element cache branches in separate processes, with and without an explicit orbit array. It verifies the cached quadrupole coefficient against the analytic thick-lens cosine before inspecting the error flag. BMAD_DIST supplies the build.
+The script exercises both single-element cache branches in separate processes, with and without an explicit orbit array. It verifies the cached quadrupole coefficient against the analytic thick-lens cosine before inspecting the error flag.
 """
 
 import numpy as np

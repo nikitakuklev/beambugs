@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [forced thin multiple scattering, matter.c:204–213](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L204-L213)<br>[coordinate update, matter.c:283](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L283)<br>[standard multiple scattering, matter.c:203](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L203)<br>[forced multiple scattering, matter.tex:40–46](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/matter.tex#L40-L46)<br>[coordinate definition, elegant.tex:373–376](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L373-L376)<br>[MATTER parameters, track_data.c:2137–2138](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2137-L2138) |
 
 With FORCE_MCS=1 in a MATTER element thinner than 0.001 radiation lengths and ENERGY_DECAY=0, Elegant advances the longitudinal coordinate by the axial length L alone. At speed βc, the flight time must be at least √(L² + Δx² + Δy²)/(βc), where Δx and Δy are transverse displacements between the endpoints. In dilute helium with L = 0.4 m, electrons at momentum 2.000 mₑc with slopes (0.001, 0.003) violate this bound by 7.459×10⁻¹⁵ s; at 2.400 mₑc with slopes (−0.02, 0.015), the deficit is 4.516×10⁻¹³ s.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python SCT-12.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: SCT-12.py"
 

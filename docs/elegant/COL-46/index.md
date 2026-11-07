@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Tags | <span class="bb-tag">contract-unsettled</span> <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [binTimeDistribution, wake.c:539–545](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L539-L545)<br>[convolution and kick, wake.c:273–290](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L273-L290)<br>[wake.c:514–529](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L514-L529)<br>[WAKE manual, wake.tex:1–12](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/wake.tex#L1-L12)<br>[CORGPIPE table, wake.c:678–686](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L678-L686)<br>[CORGPIPE manual, corgpipe.tex:1–5](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/corgpipe.tex#L1-L5)<br>[CORGPLATES table, wake.c:816–820](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L816-L820)<br>[cwake.c:399](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/cwake.c#L399) |
 
 With default binning and gather settings, WAKE uses the full table value W(0) for charge in a particle’s own bin. If W(0) is the positive-delay limit W(0⁺), this adds an endpoint excess; the beam-loading value is W(0⁺)/2. CORGPIPE generates full-origin tables: for a uniform 0.8 nC, 4 ps bunch in a 0.1 m pipe, the mean loss exceeds the exact particle sum by 4.288% at the default step and 1.058% at a quarter step. Halving the origin leaves 0.02645% binning error in the default-step cosine control. WAKE’s manual leaves the origin convention unspecified; tables already containing W(0⁺)/2 avoid this endpoint excess.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _wake.py](../helpers/_wake.py) · [View source](../helpers/index.md#_wake)
+Run `python COL-46.py` with [_elegant.py](../helpers/_elegant.py) and [_wake.py](../helpers/_wake.py) in the same directory.
 
 ??? example "Reproducer: COL-46.py"
 

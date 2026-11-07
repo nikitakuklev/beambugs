@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [branch selection, matter.c:115–149](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L115-L149)<br>[matter.c:193–213](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L193-L213)<br>[event draws, matter.c:246–250](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L246-L250)<br>[writeback, matter.c:258–263](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L258-L263)<br>[`FORCE_MCS`, track_data.c:2158](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2158)<br>[forced multiple scattering, matter.tex:40–71](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/matter.tex#L40-L71)<br>[energy loss, matter.tex:73–77](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/matter.tex#L73-L77)<br>[energy options, track_data.c:2142–2143](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2142-L2143)<br>[matter.c:84–85](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L84-L85) |
 
 Setting FORCE_MCS=1 in MATTER stops all bremsstrahlung and electron-recoil energy loss, even with NUCLEAR_BREMSSTRAHLUNG and ELECTRON_RECOIL enabled; the manual describes FORCE_MCS only as a choice of angular-scattering model, without effect above 0.001 radiation lengths. For 60000 electrons at momentum 2000 mₑc crossing hydrogen of 4×10⁻⁵ radiation lengths, the source's own photon rate predicts 56.92 electrons emitting a photon, and none does (probability 1.856×10⁻²⁵); with recoil added, every electron should lose energy and none does. In lead of 0.002 radiation lengths, 463.5 of 10000 electrons should emit a photon and none does. The deterministic ENERGY_DECAY loss is unaffected.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _matter_model.py](../helpers/_matter_model.py) · [View source](../helpers/index.md#_matter_model)
+Run `python SCT-14.py` with [_elegant.py](../helpers/_elegant.py) and [_matter_model.py](../helpers/_matter_model.py) in the same directory.
 
 ??? example "Reproducer: SCT-14.py"
 

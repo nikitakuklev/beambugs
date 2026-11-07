@@ -12,15 +12,12 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [touschek_rate1 input comments, bmad/multiparticle/touschek_mod.f90:400–404](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/touschek_mod.f90#L400-L404)<br>[geometry-dependent emittance assignment, bmad/multiparticle/touschek_mod.f90:474–495](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/touschek_mod.f90#L474-L495)<br>[beam-size variances, bmad/multiparticle/touschek_mod.f90:513–516](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/touschek_mod.f90#L513-L516) |
 
 When callers follow the Touschek rate helper's comments, they provide normalized emittances for a ring and geometric emittances for an open line. The calculation does the reverse: it uses ring inputs directly in beam-size variances and divides open-line inputs by the Lorentz factor γ. For identical local optics at γ = 1e5, an open-line input scaled by γ exactly matches the closed-ring loss rate of 0.5845 particles/s; the same unscaled input gives 6.160 particles/s. The comments should describe geometric ring inputs and the open branch's ultrarelativistic normalized convention.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_contracts.py](../helpers/_collective_contracts.py) · [View source](../helpers/index.md#_collective_contracts)
+Run `python COL-36.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_contracts.py](../helpers/_collective_contracts.py) in the same directory.
 
 ??? example "Reproducer: COL-36.py"
 
@@ -31,10 +28,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     When callers follow the Touschek rate helper's comments, they provide normalized emittances for a ring and geometric emittances for an open line. The calculation does the reverse: it uses ring inputs directly in beam-size variances and divides open-line inputs by the Lorentz factor γ. For identical local optics at γ = 1e5, an open-line input scaled by γ exactly matches the closed-ring loss rate of 0.5845 particles/s; the same unscaled input gives 6.160 particles/s. The comments should describe geometric ring inputs and the open branch's ultrarelativistic normalized convention.
 
-    The script calls the production Touschek routine with identical local optics and longitudinal
-    beam sizes in closed and open geometries. It checks equality after multiplying the open
-    emittances by γ and contrasts the same unscaled input. BMAD_DIST selects the library and
-    BMAD_SOURCE supplies the disputed comments.
+    The script calls the production Touschek routine with identical local optics and longitudinal beam
+    sizes in closed and open geometries. It checks equality after multiplying the open emittances by γ
+    and contrasts the same unscaled input. BMAD_SOURCE supplies the disputed comments.
     """
 
     from _bmad import compare, fortran, verdict

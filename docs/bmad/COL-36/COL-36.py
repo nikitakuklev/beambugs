@@ -2,10 +2,9 @@
 
 When callers follow the Touschek rate helper's comments, they provide normalized emittances for a ring and geometric emittances for an open line. The calculation does the reverse: it uses ring inputs directly in beam-size variances and divides open-line inputs by the Lorentz factor γ. For identical local optics at γ = 1e5, an open-line input scaled by γ exactly matches the closed-ring loss rate of 0.5845 particles/s; the same unscaled input gives 6.160 particles/s. The comments should describe geometric ring inputs and the open branch's ultrarelativistic normalized convention.
 
-The script calls the production Touschek routine with identical local optics and longitudinal
-beam sizes in closed and open geometries. It checks equality after multiplying the open
-emittances by γ and contrasts the same unscaled input. BMAD_DIST selects the library and
-BMAD_SOURCE supplies the disputed comments.
+The script calls the production Touschek routine with identical local optics and longitudinal beam
+sizes in closed and open geometries. It checks equality after multiplying the open emittances by γ
+and contrasts the same unscaled input. BMAD_SOURCE supplies the disputed comments.
 """
 
 from _bmad import compare, fortran, verdict

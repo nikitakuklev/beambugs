@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`parser_expand_line` automatic END insertion, bmad/parsing/bmad_parser_mod.f90:5951–5958](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/bmad_parser_mod.f90#L5951-L5958)<br>[Bmad manual, “Branch Construction Overview” (`s:branch.construct`), bmad/doc/lines-and-lists.tex:25–28](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/lines-and-lists.tex#L25-L28) |
 
 A beam line ending with an explicit END marker gains a second END marker by default. A drift followed by END expands to D, END, END, with three tracked elements and two identical terminal names, instead of the documented D, END sequence. The manual explicitly promises to suppress automatic insertion when an ending END marker is already present. Setting no_end_marker to true produces the expected two-element sequence.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _multipass_slicing.py](../helpers/_multipass_slicing.py) · [View source](../helpers/index.md#_multipass_slicing)
+Run `python LAT-34.py` with [_bmad.py](../helpers/_bmad.py) and [_multipass_slicing.py](../helpers/_multipass_slicing.py) in the same directory.
 
 ??? example "Reproducer: LAT-34.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     A beam line ending with an explicit END marker gains a second END marker by default. A drift followed by END expands to D, END, END, with three tracked elements and two identical terminal names, instead of the documented D, END sequence. The manual explicitly promises to suppress automatic insertion when an ending END marker is already present. Setting no_end_marker to true produces the expected two-element sequence.
 
-    The script parses the same drift and explicit END marker with automatic insertion enabled and disabled. It checks branch length and the suppression control, then compares the default element names and counts with the manual's contract. BMAD_DIST selects the build.
+    The script parses the same drift and explicit END marker with automatic insertion enabled and disabled. It checks branch length and the suppression control, then compares the default element names and counts with the manual's contract.
     """
 
     from _bmad import compare, fortran, verdict

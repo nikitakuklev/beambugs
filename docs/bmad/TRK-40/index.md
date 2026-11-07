@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`track1` interior-start guard, bmad/code/track1.f90:177–192](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/track1.f90#L177-L192)<br>[`init_to_edge` and error contract, bmad/code/track1.f90:12–40](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/track1.f90#L12-L40) |
 
 With init_to_edge disabled, standard tracking accepts a live particle inside an element instead of reporting that this tracker requires an edge start. The guard compares the particle state with the inside location constant, so it cannot detect a live interior start. A particle starting halfway through a 1.2 m quadrupole receives the full 1.2 m map and returns no error. For entrance x = 1 mm and normalized horizontal momentum 0.0003, the returned x = 0.8394 mm and normalized horizontal momentum −0.0005447 match the full-element solution.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) · [View source](../helpers/index.md#_orbital_matrices_radiation)
+Run `python TRK-40.py` with [_bmad.py](../helpers/_bmad.py) and [_orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) in the same directory.
 
 ??? example "Reproducer: TRK-40.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     With init_to_edge disabled, standard tracking accepts a live particle inside an element instead of reporting that this tracker requires an edge start. The guard compares the particle state with the inside location constant, so it cannot detect a live interior start. A particle starting halfway through a 1.2 m quadrupole receives the full 1.2 m map and returns no error. For entrance x = 1 mm and normalized horizontal momentum 0.0003, the returned x = 0.8394 mm and normalized horizontal momentum −0.0005447 match the full-element solution.
 
-    The script compares an edge-start control with the independent quadrupole body solution. It then sets location to inside at s = 0.6 m and disables automatic edge initialization, checking whether track1 reports an error. Set BMAD_DIST to the build root.
+    The script compares an edge-start control with the independent quadrupole body solution. It then sets location to inside at s = 0.6 m and disables automatic edge initialization, checking whether track1 reports an error.
     """
 
     import numpy as np

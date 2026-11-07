@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`, committed 2026-11-03) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [occupied range, lrwake.c:59–84](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L59-L84)<br>[growth check, lrwake.c:90–103](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L90-L103)<br>[caller, lrwake.c:292–300](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L292-L300)<br>[early return, lrwake.c:532–533](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L532-L533)<br>[capacity, lrwake.c:681–688](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L681-L688)<br>[shift and append, lrwake.c:383–396](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L383-L396)<br>[history sum, lrwake.c:418–424](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L418-L424)<br>[lrwake.c:442–444](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L442-L444)<br>[TURNS_TO_KEEP, track_data.c:2584](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2584)<br>[history buffer, lrwake.tex:22–33](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/lrwake.tex#L22-L33)<br>[bunch IDs, elegant.tex:498–503](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L498-L503) |
 
 When an end bunch of a multibunch beam is lost, LRWAKE keeps more turns of wake sources than TURNS_TO_KEEP requests. Its history holds TURNS_TO_KEEP times the initial bunch count but advances on each pass by only the surviving count, so stale turns are never dropped; the correct loss sums the sources of the requested turns, as tracking without a loss confirms. For two 1.000 nC bunches at 511.0 MeV/c in a constant 1.000×10¹² V/C longitudinal wake with TURNS_TO_KEEP = 2, the surviving bunch loses 3.000 keV per pass instead of 1.000 keV from the third pass on, whichever end bunch was lost. With TURNS_TO_KEEP = 1 it keeps losing 1.000 keV per pass instead of nothing.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-47.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-47.py"
 

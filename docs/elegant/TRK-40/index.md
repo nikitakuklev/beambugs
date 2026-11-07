@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [`applyRadialCanonicalMultipoleKicks`, multipole.c:1584–1616](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1584-L1616)<br>[`integrate_kick_multipole_ordn`, multipole.c:1437–1440](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1437-L1440)<br>[multipole.c:1488–1510](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1488-L1510)<br>[multipole.h:205–208](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.h#L205-L208)<br>[track_data.c:1305](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1305)<br>[kquad.tex:119–123](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/kquad.tex#L119-L123) |
 
 A KQUAD with RADIAL=1, a radially focusing lens, computes its classical radiation from field shapes that are not scaled by the strength K₁, so it radiates at K₁ = 0 and the loss grows with the square of N_SLICES. For a 3.066 GeV electron at (x, y) = (2, 1) mm through a 0.7 m lens, integrating the orbit and its radiation gives fractional energy losses of 0 at K₁ = 0 and 1.952×10⁻⁹ at K₁ = 1.3 m⁻²; with 32 slices Elegant gives 2.650×10⁻⁶ and 2.155×10⁻⁶. On the y = 0 plane the normal quadrupole, which exerts the same force, agrees with the integration.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-40.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-40.py"
 

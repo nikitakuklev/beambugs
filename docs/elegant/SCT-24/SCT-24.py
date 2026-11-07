@@ -10,13 +10,16 @@ from 61.32 to 85.32 MeV over 24.00 m, five ranks raise the rms momentum spread b
 9.208×10⁻⁴ instead of 4.219×10⁻⁴, 2.183 times too much; the transverse increments are 2.462 and
 2.384 times too large.
 
-The script tracks a 1024-particle, 500 pC electron beam through 48 cells of a 0.3 m drift and a
-0.2 m, 0.5 MV DC cavity to a single-slice, smooth, linac-mode IBSCATTER, in serial elegant and in
-5-rank Pelegant, which always runs (--mpi is implied; oversubscribed). Each increment of the rms xp,
-yp and p is measured against a FACTOR=0 run; the expected longitudinal increment is the flight time
-times the trapezoid average of serial elegant's local rates, which splitting the line cannot change.
-The controls are 5-rank Pelegant with PARALLEL_INTEGRATION=0 and the same line at zero cavity
-voltage, which must both equal serial elegant to rounding.
+Setup: always runs 5-rank Pelegant (Open MPI `mpirun` on `PATH`, oversubscribed) beside serial
+Elegant, because the distributed IBSCATTER integration runs only on more than three ranks.
+
+The script tracks a 1024-particle, 500 pC electron beam through 48 cells of a 0.3 m drift and a 0.2
+m, 0.5 MV DC cavity to a single-slice, smooth, linac-mode IBSCATTER, in serial elegant and in 5-rank
+Pelegant. Each increment of the rms xp, yp and p is measured against a FACTOR=0 run; the expected
+longitudinal increment is the flight time times the trapezoid average of serial elegant's local
+rates, which splitting the line cannot change. The controls are 5-rank Pelegant with
+PARALLEL_INTEGRATION=0 and the same line at zero cavity voltage, which must both equal serial
+elegant to rounding.
 """
 
 import sys

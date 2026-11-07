@@ -12,16 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`) |
+| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`, head build) |
 | Source | [KnobOptimizer.__init__, match.py:1334–1351](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/match.py#L1334-L1351)<br>[Vary.limits contract](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/match.py#L454-L456) |
 
 `match_knob()` applies a variable's absolute `Vary.limits` to the additive correction it solves for, without subtracting the variable's starting value. The correction's allowed interval must be the limits shifted by that starting value, and ordinary matching respects the absolute bounds. For a dimensionless variable starting at 8 with limits [−10, 10] and target 12, the generated knob reaches 12.00 instead of stopping at the allowed maximum 10.00. Conversely, starting at 8 with valid limits [7, 10] and target 9 fails during knob setup. The error appears at the matched endpoint itself, without extrapolation or later combination of knobs.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _matching.py](../helpers/_matching.py) · [View source](../helpers/index.md#_matching)
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python OPT-12.py` with [_matching.py](../helpers/_matching.py), [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: OPT-12.py"
 

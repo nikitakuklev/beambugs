@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">extreme-regime</span> [?](../../methodology.md#tags) |
 | Source | [touschek_rate1, bmad/multiparticle/touschek_mod.f90:535–546](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/touschek_mod.f90#L535-L546)<br>[Bmad manual, Touschek Scattering (s:touschek), bmad/doc/multiparticle.tex:228–246](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/multiparticle.tex#L228-L246) |
 
 The Touschek rate integral stops at the dimensionless scattering variable τ = 1 instead of extending to infinity. When the bunch rest-frame transverse momenta are relativistic, the omitted tail can dominate the loss rate. At Lorentz factor 10⁵, geometric emittances 10 nm, beta functions 10 m and 20 m, and momentum aperture 3%, the rate is 0.5845 particles/s instead of 4.790 particles/s. This underestimates the loss rate by 87.80% and overestimates the lifetime by a factor of 8.196.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-25.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-25.py"
 

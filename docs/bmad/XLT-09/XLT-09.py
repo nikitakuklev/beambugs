@@ -8,11 +8,14 @@ give. Adding the linear term −0.5x leaves the result at −2.000 mrad instead 
 Writing the coefficient as t211 with order = 2 restores the expected slopes within the
 canonical-momentum to slope conversion error.
 
+Setup: serial Elegant on `PATH` and `RPN_DEFNS` set to the `defns.rpn` file of SDDS; the script
+tracks the exported lattice in Elegant.
+
 The script exports with bmad_to_mad_sad_elegant two Bmad taylor maps, the identity plus the
-quadratic term px += −2 x², and the same map with a linear term px += −0.5 x added. It tracks
-a particle at x = 1 mm through each export in Elegant and compares the exit slope with the
-polynomial value and with Bmad. An independently written EMATRIX with `t211` and `order = 2`
-is the receiving-code control; Elegant must be on PATH with RPN_DEFNS set.
+quadratic term px += −2 x², and the same map with a linear term px += −0.5 x added. It tracks a
+particle at x = 1 mm through each export in Elegant and compares the exit slope with the polynomial
+value and with Bmad. An independently written EMATRIX with `t211` and `order = 2` is the
+receiving-code control.
 """
 
 from _bmad import compare, verdict

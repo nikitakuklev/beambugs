@@ -2,7 +2,7 @@
 
 After `change_particle name=positron`, longitudinal space-charge kicks reverse in LSCDRIFT and in the space-charge contributions of RFCW and CSRDRIFT. Reversing all source and witness charges must preserve the self-force, but both voltage generators omit the source-charge sign required by the energy-update routine. For a 100.0 pC Gaussian bunch with normalized momentum βγ = 30.00, where β is speed divided by the speed of light and γ is the Lorentz factor, a 1.000 m effective LSCDRIFT kick gives a particle one rms bunch length behind the centre +2799 eV instead of −2799 eV. A zero-charge control gives no kick.
 
-The script tracks deterministic Gaussian longitudinal quantiles with equal transverse rms sizes through a zero-length LSCDRIFT with a one-metre effective length. It reconstructs exact energy changes particle by particle, compares the two species by charge conjugation, and checks a zero-charge control. Use --mpi to add three-rank Pelegant, with the native programs on PATH and RPN_DEFNS set.
+The script tracks deterministic Gaussian longitudinal quantiles with equal transverse rms sizes through a zero-length LSCDRIFT with a one-metre effective length. It reconstructs exact energy changes particle by particle, compares the two species by charge conjugation, and checks a zero-charge control. Use --mpi to add three-rank Pelegant.
 """
 
 import numpy as np

@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`quadrupole_matrix`, focusing-branch δ² coefficients of both transverse blocks, quad_matrix.c:162–199](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L162-L199)<br>[the corresponding coefficients, quad_matrix.c:259–296](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L259-L296) |
 
 Elegant's aligned, hard-edge QUAD writes incorrect third-order matrix coefficients for transverse transport proportional to δ², where δ is the relative momentum offset. For length L = 0.5 m and strength K₁ = 0.6 m⁻², exact transport has R₁₁(δ) = cos(u/√(1+δ)), with u = √(K₁) L, giving U₁₆₆₁ = −0.07222; Elegant writes −0.07245, with relative errors across both planes of 0.1853% to 0.6598%. In a one-period FODO cell using cubic lens maps, d²νₓ/dδ² and d³νₓ/dδ³ are 0.1300 and −0.07925 instead of 0.1268 and −0.08637, where νₓ is the horizontal tune.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _cubic_optics.py](../helpers/_cubic_optics.py) · [View source](../helpers/index.md#_cubic_optics)
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-06.py` with [_cubic_optics.py](../helpers/_cubic_optics.py) and [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-06.py"
 

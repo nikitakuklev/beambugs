@@ -12,10 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
-| Source | [`src/normal.jl:627-628`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L627-L628)<br>[`SciBmad.jl/src/twiss/twiss.jl:731-741`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L731-L741)<br>[`twiss.jl:368-451`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L368-L451)<br>[`twiss.jl:58`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L58)<br>[`twiss.jl:148`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L148) |
+| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
+| Source | [`src/normal.jl:627-628`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L627-L628)<br>[`SciBmad.jl/src/twiss/twiss.jl:737-747`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L737-L747)<br>[`twiss.jl:374-457`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L374-L457)<br>[`twiss.jl:62`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L62)<br>[`twiss.jl:151`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L151) |
 
 `twiss` builds the summary tunes and the `phi` phase-advance columns by adding the principal phase angle, in (−½, ½] turn, of each interval between sampled rows, so an interval longer than half a turn aliases the integer part. For a ring of eight thin FODO cells, sampling only element 17 (`at=[17]`, after four cells) gives q₁ = −0.8515 instead of 1.149 and a phase of −0.4257 instead of 0.5743 turns at s = 8 m; thin-lens matrix products and sampling every cell establish the accumulated values. The documented summary-only `at=[]` call treats the ring as one interval and returns 0.1485. Fractional tunes stay correct; the integer part is lost wherever an interval between sampled rows exceeds half a turn.
+
+Run `julia OPT-18.jl`.
 
 ??? example "Reproducer: OPT-18.jl"
 

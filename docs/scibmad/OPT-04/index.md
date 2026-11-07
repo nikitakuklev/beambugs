@@ -12,11 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
+| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
-| Source | [`src/twiss/twiss_operators.jl:132-136`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L132-L136)<br>[`twiss_operators.jl:200-207`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L200-L207)<br>[`twiss_operators.jl:60`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L60)<br>[`twiss.jl:181-189`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L181-L189)<br>[`NonlinearNormalForm.jl/src/de_moivre.jl:5-11`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/de_moivre.jl#L5-L11) |
+| Source | [`src/twiss/twiss_operators.jl:132-136`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L132-L136)<br>[`twiss_operators.jl:200-207`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L200-L207)<br>[`twiss_operators.jl:60`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L60)<br>[`twiss.jl:188-196`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L188-L196)<br>[`NonlinearNormalForm.jl/src/de_moivre.jl:5-11`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/de_moivre.jl#L5-L11) |
 
 In its linear branch (expansion order 1), `twiss` builds the De Moivre matrices `B` and `E`, which split the one-turn matrix and the beam moments by mode, from columns of A⁻¹, the inverse normalizing matrix, instead of its rows. In an uncoupled plane the documented definition gives E₁ = [β −α; −α γ], and the corresponding B₁ matches a tracked one-turn Jacobian to 1.8e-15. For a thin-quadrupole cell with β = 3.441 m and α = −1.376, the returned E₁[1,2] and E₁[2,1] are 0 and 1.776 instead of 1.376, and E₁[2,2] is 0.2906 m⁻¹ instead of 0.8412 m⁻¹. The horizontal beam-size term used by `dynamic_aperture` stays correct in uncoupled lattices; by source algebra, its vertical mode-1 term and coupled lattices are wrong.
+
+Run `julia OPT-04.jl`.
 
 ??? example "Reproducer: OPT-04.jl"
 

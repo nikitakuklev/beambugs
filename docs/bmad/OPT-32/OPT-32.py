@@ -2,7 +2,7 @@
 
 In the averaged helical-wiggler model, the native horizontal Jacobian differentiates the cubic horizontal kick using the vertical coordinate. The horizontal derivative must depend on the square of the horizontal coordinate. For a 0.48 m, 1.1 T wiggler at 0.7 GeV/c with horizontal position x = 2.4 mm, vertical position y = 0 and fractional momentum offset δ = 0.19, M₂₁ is −0.04463 m⁻¹ instead of −0.04541 m⁻¹, a 1.720% focusing error. Here M₂₁ is the derivative of horizontal normalized momentum with respect to x. The vertical block, equal-plane coordinates and zero-field controls give the correct transverse derivatives.
 
-The script checks unequal-plane and equal-plane helical-wiggler orbits and zero-field controls. It compares native and auto matrices with a split-map analytic model, complex-step derivatives and two fourth-order trajectory stencils. BMAD_DIST selects the production build.
+The script checks unequal-plane and equal-plane helical-wiggler orbits and zero-field controls. It compares native and auto matrices with a split-map analytic model, complex-step derivatives and two fourth-order trajectory stencils.
 """
 
 import numpy as np

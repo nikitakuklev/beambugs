@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [write_lattice_mad_format starting coordinates, bmad/output/write_lattice_mad_format.f90:1126–1139](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L1126-L1139)<br>[bmad/doc/phase-space.tex:227–240](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/phase-space.tex#L227-L240) |
 
 Exporting a finite-beta starting particle to MAD-X writes incorrect longitudinal and energy coordinates. The writer uses T = zβ₀ and PT = δ/β₀, where z is the Bmad longitudinal coordinate, δ is relative momentum offset, and β₀ is reference speed divided by light speed. The required coordinates are T = z/β and PT = (E − E₀)/(p₀c), with particle speed βc, particle energy E, reference energy E₀ and reference momentum p₀. A 1 MeV/c electron with z = 0.03 m and δ = 0.2 gets T = 0.02671 m instead of 0.03261 m and PT = 0.2246 instead of 0.1813; the transverse coordinates remain correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _lattice_import_export.py](../helpers/_lattice_import_export.py) · [View source](../helpers/index.md#_lattice_import_export)
+Run `python XLT-14.py` with [_bmad.py](../helpers/_bmad.py) and [_lattice_import_export.py](../helpers/_lattice_import_export.py) in the same directory.
 
 ??? example "Reproducer: XLT-14.py"
 

@@ -10,7 +10,7 @@ paths within the implemented branch-averaging model.
 The script tracks pure π, pure σ and mixed polarization through an asymmetric Si(111) Laue crystal
 at three incoming angles. A two-by-two dispersion eigensystem and Poynting energy flow independently
 calculate each individual polarization path, which is then checked against pure-input displacement
-and public track1 exit coordinates. BMAD_DIST selects the build.
+and public track1 exit coordinates.
 """
 
 import os

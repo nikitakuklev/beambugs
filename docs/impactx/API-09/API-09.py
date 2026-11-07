@@ -10,13 +10,15 @@ value; at the default of zero this also removes the 5.000×10⁻⁷ m x–pₓ c
 emittances lose their exponents as well; an emittance written in fixed-decimal form imports
 correctly.
 
-Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
-parser, defaults, distribution-conversion and export modules from that clone behind package shells,
-replacing only the reactive state object so that no Trame web UI or server is needed. It exports a
-10 MeV proton Gaussian beam with x-plane Twiss parameters β = 1 m, ε = 10⁻⁶ m and α = −0.5, parses
-the export back, initializes both beams in the installed core and compares each x–pₓ covariance
-block with ε·[[β, −α], [−α, (1 + α²)/β]]. The export with the x emittance rewritten as `0.000001` is
-the control.
+Setup: `IMPACTX_SOURCE` set to a clone of BLAST-ImpactX/impactx at tag `26.10`; the script loads the
+dashboard modules from it.
+
+The script loads the dashboard's unmodified parser, defaults, distribution-conversion and export
+modules from that clone behind package shells, replacing only the reactive state object so that no
+Trame web UI or server is needed. It exports a 10 MeV proton Gaussian beam with x-plane Twiss
+parameters β = 1 m, ε = 10⁻⁶ m and α = −0.5, parses the export back, initializes both beams in the
+installed core and compares each x–pₓ covariance block with ε·[[β, −α], [−α, (1 + α²)/β]]. The
+export with the x emittance rewritten as `0.000001` is the control.
 """
 
 import os

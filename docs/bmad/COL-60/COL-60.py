@@ -2,7 +2,7 @@
 
 When a bunch exceeds a tabulated short-range wake’s support, the error path marks only the final stored particle lost. With the first particle outside the table and the last inside it, the outlier remains alive while the in-window particle is lost. Both kicks remain zero, although the documented unrecoverable support error requires tracking of the whole bunch to stop.
 
-The script puts the first particle outside the wake window and the final particle inside it. It requires the support-error diagnostic and zero kicks, then compares both loss flags with rejection of the whole bunch. BMAD_DIST selects the build.
+The script puts the first particle outside the wake window and the final particle inside it. It requires the support-error diagnostic and zero kicks, then compares both loss flags with rejection of the whole bunch.
 """
 
 import re

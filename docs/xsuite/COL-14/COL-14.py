@@ -11,8 +11,7 @@ into primary and secondary deposits is wrong.
 The script tracks two unit-weight batches of 20 protons from x = 3 mm through the collimator (jaw 1
 mm, seeds 7001–7020), all surviving: one batch starts as primary particles, the other in state
 `SECONDARY_PARTICLE`. It reads the kernel's two deposit counters, then compares the loss map's total
-and primary collimator energy with them. It requires the installed prebuilt kernels (compilation is
-forbidden).
+and primary collimator energy with them.
 """
 
 from _prebuilt import CTX, identity, kernels, np, xc, xt

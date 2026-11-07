@@ -12,14 +12,12 @@ hide:
 | Priority | P1 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`, committed 2026-11-03) |
 | Source | [`incrementRadIntegrals`, CCBEND branch, src/twiss.cc:3091–3102](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3091-L3102)<br>[`incrementRadIntegrals`, LGBEND branch, src/twiss.cc:3103–3124](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3103-L3124)<br>[the generic bend branch, src/twiss.cc:3331–3335](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3331-L3335)<br>[the common per-element output, src/twiss.cc:3346–3351](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3346-L3351)<br>[`addLgbendRadiationIntegrals`, src/lgbend.c:814–912](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lgbend.c#L814-L912)<br>[`completeRadiationIntegralComputation`, src/twiss.cc:3363–3369](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3363-L3369)<br>[`radiation_integrals` option, manual, doc/elegant.tex:8092–8095](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8092-L8095) |
 
 With `twiss_output`, `radiation_integrals=1` and `n_periods` greater than 1, Elegant adds, for CCBEND (canonical combined-function bend) and LGBEND (multi-segment straight-pole bend) elements, the integrals I₁ to I₅ of one period to the totals without multiplying by `n_periods`, although the per-element contributions are multiplied. For a cell of two 1 m bends with curvature 0.1 m⁻¹ at 6000 mₑc, I₂ must be 0.02000 m⁻¹ for one period and 0.04000 m⁻¹ for two, but Elegant writes 0.02000 m⁻¹ for both. The energy loss per turn then stays at 24.88 keV instead of doubling to 49.77 keV, and the damping times double instead of staying unchanged. The same cell with SBEN bends, or written out twice with one period, is correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-03.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-03.py"
 

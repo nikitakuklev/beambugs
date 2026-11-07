@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`update_fibre_from_ele`, bmad/ptc/update_fibre_from_ele.f90:151–154](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/update_fibre_from_ele.f90#L151-L154)<br>[`ele_to_fibre`, bmad/ptc/ele_to_fibre.f90:410–417](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ele_to_fibre.f90#L410-L417)<br>[`ptc_bookkeeper`, bmad/ptc/ptc_bookkeeper.f90:37](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ptc_bookkeeper.f90#L37)<br>[`lattice_bookkeeper`, bmad/code/lattice_bookkeeper.f90:69](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/lattice_bookkeeper.f90#L69) |
 
 When lattice bookkeeping updates an lcavity's existing PTC fibre, its element representation, the phase conversion multiplies turns by 2π twice. An update with unchanged attributes must preserve the constructed phase and particle map. With phase φ₀ = 0.13 turns, the correct lag π/2 − 2πφ₀ = 0.7540 rad becomes π/2 − (2π)²φ₀ = −3.561 rad. In a 1 MV cavity, the reference electron's energy gain changes from 684.5 keV to 407.6 keV after that unchanged bookkeeping pass. Bmad standard tracking avoids this PTC update path.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python TRK-15.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: TRK-15.py"
 

@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [`computeTuneShiftWithAmplitudeM`, src/twiss.cc:4556–4561](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L4556-L4561)<br>[outputs are derivatives of the tunes with respect to A, doc/elegant.tex:8412–8413](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8412-L8413)<br>[concatenated multi-turn third-order matrix method appears reliable for many cases, doc/elegant.tex:8403–8404](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8403-L8404)<br>[deprecates the command, doc/elegant.tex:8389–8392](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8389-L8392)<br>[the matrix method does not work well with all lattices, doc/elegant.tex:8442–8446](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8442-L8446) |
 
 Elegant's `tune_shift_with_amplitude` with `turns=0` averages the multi-turn third-order map over the betatron ellipse with the slope phase written as α sin θ + cos θ instead of sin θ + α cos θ, where α is the Twiss alpha at the start of the ring. The coefficients then depend on the starting point, and the cross terms dνx/dAy and dνy/dAx differ. For eight FODO cells with one thin octupole of K3L = 3 m⁻³, first-order perturbation theory gives dνx/dAx = 1.411, dνx/dAy = dνy/dAx = −7.538 and dνy/dAy = 10.07 m⁻¹; Elegant gives 3.658, −29.47, −19.54 and 39.35 m⁻¹ from one start and 1.416, −86.53, −7.561 and 115.5 m⁻¹ from another. The tracking method (`turns` > 0) agrees with theory.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-20.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-20.py"
 

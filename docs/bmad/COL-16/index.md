@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">experimental</span> <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |
 | Source | [track1_bunch_csr3d kick, bmad/space_charge/csr_and_space_charge_mod.f90:2005–2019](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L2005-L2019)<br>[experimental status and sbend restriction, bmad/space_charge/csr_and_space_charge_mod.f90:1909–1922](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1909-L1922)<br>[FFT space-charge clock update, bmad/space_charge/csr_and_space_charge_mod.f90:1737–1741](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1737-L1741)<br>[Bmad manual, Charged Particle Phase Space Coordinates, zbctt and zbbzb, bmad/doc/phase-space.tex:81–120](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/phase-space.tex#L81-L120) |
 
 When the experimental three-dimensional CSR wrapper changes a particle's speed, it updates β, the speed divided by the speed of light c, without rescaling the longitudinal coordinate z. Bmad defines z = βc(t₀ − t), where t₀ and t are reference and particle arrival times, so an instantaneous kick must preserve z/β. A 1 nC bunch at 10 MeV/c in a 1 cm bend leaves a 7.624 pm discrepancy between z and its stored arrival-time value. A zero-charge bunch satisfies the coordinate relation.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_contracts.py](../helpers/_collective_contracts.py) · [View source](../helpers/index.md#_collective_contracts)
+Run `python COL-16.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_contracts.py](../helpers/_collective_contracts.py) in the same directory.
 
 ??? example "Reproducer: COL-16.py"
 
@@ -32,9 +29,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     When the experimental three-dimensional CSR wrapper changes a particle's speed, it updates β, the speed divided by the speed of light c, without rescaling the longitudinal coordinate z. Bmad defines z = βc(t₀ − t), where t₀ and t are reference and particle arrival times, so an instantaneous kick must preserve z/β. A 1 nC bunch at 10 MeV/c in a 1 cm bend leaves a 7.624 pm discrepancy between z and its stored arrival-time value. A zero-charge bunch satisfies the coordinate relation.
 
-    The script tracks 27 fixed particles through the complete CSR3D wrapper on a 4³ mesh at zero, 1
-    nC and 2 nC charge. At the exit it compares z with βc times the difference between reference and
-    stored particle times. BMAD_DIST selects the production build.
+    The script tracks 27 fixed particles through the complete CSR3D wrapper on a 4³ mesh at zero, 1 nC
+    and 2 nC charge. At the exit it compares z with βc times the difference between reference and stored
+    particle times.
     """
 
     from _bmad import compare, fortran, verdict

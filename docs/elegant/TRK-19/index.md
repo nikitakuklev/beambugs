@@ -12,15 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`set_up_derivatives`, T_TMCF fiducial, motion.cc:617–624](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/motion.cc#L617-L624)<br>[`add_to_particle_energy`, simple_rfca.c:1140](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1140)<br>[setup comment, motion.cc:609–614](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/motion.cc#L609-L614)<br>[`FIDUCIAL` dictionary entry, track_data.c:881](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L881)<br>[fields are spatially constant, track_data.c:860–862](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L860-L862)<br>[bare `average` mode, motion.cc:1540–1566](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/motion.cc#L1540-L1566)<br>[`t,median`, track.h:1419–1423](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track.h#L1419-L1423) |
 
 A TMCF cavity using a particle fiducial, including the serial default t,median, estimates transit time using transverse positions instead of slopes. Translating a parallel beam through a transversely uniform field must leave its energy unchanged. For electrons of momentum p = 17 mₑc in a 0.16 m, 0.9 GHz, 250 kV/m cavity, translation by (0.12, −0.08) m produces a 0.01597 rad phase error and increases exit momentum by 7.643×10⁻⁴ mₑc; adding the analytic phase correction restores the on-axis result. For small offsets, the leading error is quadratic: 1.512 μrad at x = y = 1 mm. Bare average and light-speed fiducials remain invariant.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-19.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-19.py"
 

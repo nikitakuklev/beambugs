@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [track_a_lcavity::fringe_kick, bmad/low_level/track_a_lcavity.f90:269–276](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_lcavity.f90#L269-L276)<br>[transverse fringe application, bmad/low_level/track_a_lcavity.f90:309–312](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_lcavity.f90#L309-L312)<br>[Bmad Manual, LCavity Tracking / Edge kick, bmad/doc/charged-tracking.tex:1203–1235](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L1203-L1235)<br>[Bmad Manual, RF fringe fields, equation `pqe2c`, bmad/doc/fringe-fields.tex:455–465](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/fringe-fields.tex#L455-L465) |
 
 The displayed LCavity tracking equations predict twice the transverse entrance focusing applied by the native tracker. For a 0.8 MV cavity with reference momentum 2 MeV/c and active length 0.5996 m, the measured horizontal focusing coefficient is −0.3336 m⁻¹, while those equations give −0.6671 m⁻¹. Removing the body transport from finite-difference tracking matrices isolates the edge. The manual’s separate RF-fringe derivation agrees with the implemented half-gradient coefficient.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _rf_and_spin.py](../helpers/_rf_and_spin.py) · [View source](../helpers/index.md#_rf_and_spin)
+Run `python TRK-20.py` with [_bmad.py](../helpers/_bmad.py) and [_rf_and_spin.py](../helpers/_rf_and_spin.py) in the same directory.
 
 ??? example "Reproducer: TRK-20.py"
 

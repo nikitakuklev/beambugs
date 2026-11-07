@@ -2,7 +2,7 @@
 
 Reordering the stored particles of an otherwise identical bunch changes its tabulated short-range wake kicks. The dispatcher selects the table origin by averaging the storage indices of the head and tail, rather than their longitudinal coordinates. In a three-particle case, the leading particle’s normalized momentum kick changes from −1.194 × 10⁻⁶ to −1.000 × 10⁻⁶ under a storage permutation. A direct calculation with a fixed physical center agrees with an independent charge-deposition and interpolation sum.
 
-The script tracks a fixed three-particle set in two storage orders and remaps both results to physical order. A direct call with a fixed midpoint is checked against an independent cloud-in-cell sum. BMAD_DIST selects the build.
+The script tracks a fixed three-particle set in two storage orders and remaps both results to physical order. A direct call with a fixed midpoint is checked against an independent cloud-in-cell sum.
 """
 
 import numpy as np

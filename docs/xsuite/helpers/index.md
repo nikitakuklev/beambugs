@@ -315,6 +315,130 @@ Save the linked helpers in the same directory as the downloaded reproducer scrip
 
     ```
 
+## `_madx_io.py` { #_madx_io }
+
+[Download _madx_io.py](_madx_io.py)
+
+??? example "Source: _madx_io.py"
+
+    ```python
+    """Independent MAD-X parsing, PTC tracking and MAD-NG 4D and 6D tracking for deterministic interchange reproducers.
+
+    MAD-X and MAD-NG run in children inheriting CPU affinity and thread limits. Their
+    scratch files live beside this helper and are removed when the service exits.
+    """
+
+    from importlib.metadata import version
+    from pathlib import Path
+    from tempfile import TemporaryDirectory
+
+    import _prebuilt  # noqa: F401 -- Set numerical threads before cpymad imports NumPy.
+    from cpymad.madx import Madx
+
+
+    def consume(source, sequence="testseq"):
+        with (
+            TemporaryDirectory(prefix="madx-io-", dir=Path(__file__).resolve().parent) as scratch,
+            Madx(stdout=False, cwd=scratch) as mad,
+        ):
+            try:
+                mad.input(source)
+                mad.beam(particle="proton", pc=3)
+                mad.use(sequence=sequence)
+                seq = mad.sequence[sequence]
+                rows = [
+                    (
+                        e.name,
+                        float(e.at),
+                        float(e.l),
+                        float(e.k1) if e.base_type.name == "quadrupole" else 0.0,
+                    )
+                    for e in seq.elements
+                    if e.name not in (sequence + "$start", sequence + "$end")
+                ]
+                result = {
+                    "status": "accepted",
+                    "length": float(seq.length),
+                    "elements": rows,
+                    "expanded_names": [e.name for e in seq.expanded_elements],
+                }
+                print(f"CONSUMER cpymad={version('cpymad')} MAD-X={mad.version}")
+                return result
+            except RuntimeError as exc:
+                return {"status": "RuntimeError", "error": str(exc)}
+
+
+    def ptc_track(source, initial, pc, sequence="testseq"):
+        """Parse `source`, read back each magnet's (name, L, KNL, KSL) and track one
+        ray (x, px, y, py) through PTC (model 2, method 6, 20 steps, 4D, not exact)."""
+        x, px, y, py = initial
+        with (
+            TemporaryDirectory(prefix="madx-io-", dir=Path(__file__).resolve().parent) as scratch,
+            Madx(stdout=False, cwd=scratch) as mad,
+        ):
+            mad.input(source)
+            mad.beam(particle="proton", pc=pc)
+            mad.use(sequence=sequence)
+            magnets = [
+                (e.name, float(e.l), [float(v) for v in e.knl], [float(v) for v in e.ksl])
+                for e in mad.sequence[sequence].elements
+                if e.base_type.name not in ("marker", "drift")
+            ]
+            mad.input(
+                "ptc_create_universe; "
+                "ptc_create_layout, model=2, method=6, nst=20, exact=false; "
+                f"ptc_start, x={x:.17g}, px={px:.17g}, y={y:.17g}, py={py:.17g}; "
+                "ptc_track, icase=4, onetable=true, dump=false; ptc_track_end; ptc_end;"
+            )
+            table = mad.table.trackone
+            end = [float(table.x[-1]), float(table.px[-1]), float(table.y[-1]), float(table.py[-1])]
+            print(f"CONSUMER cpymad={version('cpymad')} MAD-X={mad.version} PTC s_end={float(table.s[-1])!r}")
+            return magnets, end
+
+
+    def madng_track(line, initial):
+        """Load `line` into MAD-NG through the public `Line.to_madng` and track one ray
+        (x, px, y, py) with t = pt = 0 (method 6, 20 slices per element). Returns the
+        exit (x, px, y, py) and the length of the sequence MAD-NG built."""
+        x, px, y, py = initial
+        with TemporaryDirectory(prefix="madng-io-", dir=Path(__file__).resolve().parent) as scratch:
+            mng = line.to_madng(sequence_name="seq", temp_fname=str(Path(scratch) / "line"),
+                                stdout=str(Path(scratch) / "stdout.txt"))
+            mng.send(f"""
+                local _, mflw = track {{ sequence=seq, method=6, nslice=20, save=false,
+                    X0={{ x={x:.17g}, px={px:.17g}, y={y:.17g}, py={py:.17g}, t=0, pt=0 }} }}
+                py:send(MAD.vector {{ mflw[1].x, mflw[1].px, mflw[1].y, mflw[1].py, seq.l }})
+                py:send(MAD.env.version)
+            """)
+            values = [float(v) for v in mng.recv().ravel()]
+            ng_version = mng.recv()
+            mng.close()
+        print(f"CONSUMER pymadng={version('pymadng')} MAD-NG={ng_version} sequence length={values[4]!r}")
+        return values[:4], values[4]
+
+
+    def madng_track_6d(line, initial):
+        """Like `madng_track`, for a full ray (x, px, y, py, t, pt). MAD-NG's pt is the
+        energy deviation over the reference p0c, so an energy gain is p0c * pt. Returns
+        the exit (x, px, y, py, t, pt) and the length of the sequence MAD-NG built."""
+        x, px, y, py, t, pt = initial
+        with TemporaryDirectory(prefix="madng-io-", dir=Path(__file__).resolve().parent) as scratch:
+            mng = line.to_madng(sequence_name="seq", temp_fname=str(Path(scratch) / "line"),
+                                stdout=str(Path(scratch) / "stdout.txt"))
+            mng.send(f"""
+                local _, mflw = track {{ sequence=seq, method=6, nslice=20, save=false,
+                    X0={{ x={x:.17g}, px={px:.17g}, y={y:.17g}, py={py:.17g}, t={t:.17g}, pt={pt:.17g} }} }}
+                py:send(MAD.vector {{ mflw[1].x, mflw[1].px, mflw[1].y, mflw[1].py, mflw[1].t, mflw[1].pt, seq.l }})
+                py:send(MAD.env.version)
+            """)
+            values = [float(v) for v in mng.recv().ravel()]
+            ng_version = mng.recv()
+            mng.close()
+        print(f"CONSUMER pymadng={version('pymadng')} MAD-NG={ng_version} sequence length={values[6]!r}")
+        return values[:6], values[6]
+
+    ```
+
 ## `_matching.py` { #_matching }
 
 [Download _matching.py](_matching.py)
@@ -448,5 +572,226 @@ Save the linked helpers in the same directory as the downloaded reproducer scrip
 
     def particles(**kwargs):
         return xt.Particles(_context=CTX, p0c=1e9, **kwargs)
+
+    ```
+
+## `_reference_momentum.py` { #_reference_momentum }
+
+[Download _reference_momentum.py](_reference_momentum.py)
+
+??? example "Source: _reference_momentum.py"
+
+    ```python
+    """Analytic reference-change fixtures for transfer, covariance and W checks.
+
+    The reference species is a proton, with canonical momenta normalized to local
+    p0c. Conventional updates preserve zeta/beta0, rather than absolute time.
+    """
+
+    from _prebuilt import CTX, np, xt
+
+    P0 = 650e6
+    MASS = xt.PROTON_MASS_EV
+    W0 = np.eye(6)
+    for j, beta, alpha in ((0, 2.7, -0.4), (2, 1.6, 0.2), (4, 3.2, 0.0)):
+        W0[j : j + 2, j : j + 2] = [[np.sqrt(beta), 0], [-alpha / np.sqrt(beta), 1 / np.sqrt(beta)]]
+    NEMITT = np.array([1.7e-6, 0.9e-6])
+    # Canonical geometric emittance is epsilon_n * mass0 / p0c in eV units.
+    SIGMA0 = W0[:4, :4] @ np.diag(np.repeat(NEMITT * MASS / P0, 2)) @ W0[:4, :4].T
+
+
+    def cases():
+        """Yield native changes and their exact canonical linear transport."""
+        energy = np.hypot(P0, MASS)
+        for kind in ("absolute", "increment", "segment", "accelerating_segment", "cavity"):
+            for ratio in (1.0, 1.8, 0.8):
+                if kind == "cavity" and ratio != 1:
+                    continue
+                p = xt.Particles(_context=CTX, p0c=P0, mass0=MASS, zeta=0.013)
+                if kind == "absolute":
+                    element = xt.ReferenceEnergyChange(p0c=P0 * ratio)
+                elif kind == "increment":
+                    element = xt.ReferenceEnergyIncrease(Delta_p0c=P0 * (ratio - 1))
+                elif kind in ("segment", "accelerating_segment"):
+                    gain = np.hypot(P0 * ratio, MASS) - energy
+                    element = xt.LineSegmentMap(
+                        energy_ref_increment=gain,
+                        energy_increment=gain if kind == "accelerating_segment" else 0,
+                    )
+                else:
+                    element = xt.Cavity(voltage=100e6, frequency=0, phase=np.pi / 2)
+                line = xt.Line(elements={"change": element, "end": xt.Marker()})
+                line.particle_ref = p.copy()
+                line.build_tracker(_context=CTX)
+                t = (P0 * ratio / np.hypot(P0 * ratio, MASS)) / (P0 / energy)
+                # Pure rebasing conserves physical energy and transverse momentum.
+                expected = np.diag([1.0, 1 / ratio, 1.0, 1 / ratio, t, 1 / (ratio * t)])
+                if kind in ("segment", "accelerating_segment"):
+                    # LineSegmentMap smooths the transverse normalization equally
+                    # between position and momentum, unlike a standalone rebase.
+                    expected[:4, :4] = np.eye(4) / np.sqrt(ratio)
+                yield kind, ratio, t, line, p, expected
+
+
+    def twiss_modes(kind):
+        # Ordinary cavities suppress the physical energy kick in 4D Twiss.
+        return ("6d",) if kind == "cavity" else ("4d", "6d")
+
+
+    def twiss(line, p, mode):
+        init = xt.TwissInit(particle_on_co=p.copy(), W_matrix=W0.copy(), element_name="change")
+        return line.twiss(init=init, method=mode, chrom=False)
+
+    ```
+
+## `_spin_ring.py` { #_spin_ring }
+
+[Download _spin_ring.py](_spin_ring.py)
+
+??? example "Source: _spin_ring.py"
+
+    ```python
+    """Deterministic spin-Twiss rings and direct one-turn transport.
+
+    The default uses the serial prebuilt-kernel setup of the other reproducers. Explicitly setting
+    XSUITE_FORCE_KERNEL_COMPILATION=1 uses the common source-compilation setup,
+    so the same decks can check a complete Xtrack head source build.
+    """
+
+    import os
+
+    for name in (
+        "OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS",
+        "NUMEXPR_NUM_THREADS", "NPROC", "PJRT_NPROC",
+    ):
+        os.environ[name] = "1"
+
+    import numpy as np
+    import xobjects as xo
+    import xtrack as xt
+    from _common import report
+
+    _MODE = os.environ.get("XSUITE_FORCE_KERNEL_COMPILATION", "0")
+    if _MODE == "1":
+        from _common import prepare
+
+        CTX = xo.ContextCpu(omp_num_threads=0)
+
+        def setup():
+            prepare()
+            xo.settings.force_kernel_compilation = True
+            print("KERNEL_MODE forced source compilation; CPU serial, binary64")
+
+        def kernels():
+            assert xo.settings.force_kernel_compilation
+            print("KERNEL_MODE forced source compilation completed")
+
+    elif _MODE == "0":
+        from _prebuilt import CTX, identity, kernels
+
+        def setup():
+            identity()
+
+    else:
+        raise ValueError("XSUITE_FORCE_KERNEL_COMPILATION must be 0 or 1")
+
+    __all__ = ["G", "components", "kernels", "matrix", "np", "report", "ring", "setup", "track_spin"]
+    G = 0.00115965218128
+
+
+    def ring(tilt=0.0, *, rf=False):
+        # Opposite frame rotations conjugate the map: the vertical invariant axis
+        # becomes (-sin(tilt), cos(tilt), 0), without changing orbital or spin tunes.
+        gamma, nbend = 200.0, 32
+        elements = [xt.Rotation(rot_s_rad=tilt)]
+        for index in range(nbend):
+            elements.extend([
+                xt.Multipole(knl=[0, (-1) ** index * 0.12]),
+                xt.Bend(
+                    length=1.0, angle=2 * np.pi / nbend, k0_from_h=True,
+                    model="bend-kick-bend", num_multipole_kicks=1,
+                    edge_entry_active=False, edge_exit_active=False,
+                ),
+            ])
+        if rf:
+            from scipy.constants import c
+
+            beta = np.sqrt(1 - 1 / gamma**2)
+            elements.append(xt.Cavity(
+                voltage=2e4, frequency=20 * beta * c / nbend, phase=np.pi,
+            ))
+        elements.append(xt.Rotation(rot_s_rad=-tilt))
+        line = xt.Line(elements=elements)
+        line.particle_ref = xt.Particles(
+            _context=CTX, mass0=xt.ELECTRON_MASS_EV, q0=-1, gamma0=gamma,
+            anomalous_magnetic_moment=G,
+        )
+        line.build_tracker(_context=CTX)
+        return line
+
+
+    def components(particle):
+        return np.array([particle.spin_x[0], particle.spin_y[0], particle.spin_z[0]])
+
+
+    def track_spin(line, spin):
+        line.config.XTRACK_MULTIPOLE_NO_SYNRAD = False
+        particle = line.particle_ref.copy()
+        particle.spin_x, particle.spin_y, particle.spin_z = spin
+        line.track(particle)
+        assert particle.state[0] == 1
+        return components(particle)
+
+
+    def matrix(line, amplitude=1.0):
+        return np.column_stack([
+            track_spin(line, basis * amplitude) / amplitude for basis in np.eye(3)
+        ])
+
+    ```
+
+## `_wedge_geometry.py` { #_wedge_geometry }
+
+[Download _wedge_geometry.py](_wedge_geometry.py)
+
+??? example "Source: _wedge_geometry.py"
+
+    ```python
+    """High-precision local forward circle-plane intersection for dipole-wedge checks."""
+
+    import mpmath as mp
+
+
+    def geometry(theta, k, initial):
+        theta, k = mp.mpf(theta), mp.mpf(k)
+        x, px, y, py, zeta = map(mp.mpf, initial)
+        pz2 = 1 - px * px - py * py
+        assert pz2 >= 0, "The stored particle must have real longitudinal momentum"
+        pz = mp.sqrt(pz2)
+        ct, st = mp.cos(theta), mp.sin(theta)
+        u, v = px * ct + pz * st, pz * ct - px * st
+        assert v > 0, "Select the local forward intersection"
+        if k == 0:
+            flight = x * st / v
+            xx, zz = x + px * flight, pz * flight
+            expected = [xx * ct + zz * st, u, y + py * flight, py, zeta - flight]
+            return expected, (pz2, flight, zz * ct - xx * st, v)
+        # The Lorentz orbit meets Z*cos(theta)-X*sin(theta)=0.
+        # With t=tan(phi/2), (E+U)*t^2+2*V*t+(E-U)=0.
+        # Form E-U directly and rationalize the small root to retain weak-field motion.
+        e_minus_u = -k * x * st
+        e_plus_u = 2 * u + e_minus_u
+        radical = v * v - e_plus_u * e_minus_u
+        assert radical > 0
+        t = -e_minus_u / (v + mp.sqrt(radical))
+        phi = 2 * mp.atan(t)
+        c, s = mp.cos(phi), mp.sin(phi)
+        px_lab, pz_lab = px * c - pz * s, pz * c + px * s
+        xx = x + (-2 * pz * mp.sin(phi / 2) ** 2 + px * s) / k
+        zz = (2 * px * mp.sin(phi / 2) ** 2 + pz * s) / k
+        flight = phi / k
+        # chi=1, delta=0, rvv=1 and zero reference length: Delta zeta=-flight.
+        expected = [xx * ct + zz * st, px_lab * ct + pz_lab * st, y + py * flight, py, zeta - flight]
+        return expected, (pz2, flight, zz * ct - xx * st, pz_lab * ct - px_lab * st)
 
     ```

@@ -3,8 +3,8 @@
 When users set the element step size using either spelling in the CSR parameter description, the lattice parser rejects the input. The manual names csr_ds_track and csr_track_step, while the accepted attribute is csr_ds_step. Both CSR wrappers also print the stale name CSR_TRACK_STEP in their missing-step diagnostic. The documented names and diagnostics should identify csr_ds_step and retain the global ds_track_step fallback.
 
 The script parses an sbend with csr_ds_step as a successful control, then tries each documented
-spelling in a fresh parser process. It checks the explicit bad-attribute diagnostic and the
-manual text from BMAD_SOURCE. BMAD_DIST selects the production build.
+spelling in a fresh parser process. It checks the explicit bad-attribute diagnostic and the manual
+text from BMAD_SOURCE.
 """
 
 from _bmad import verdict

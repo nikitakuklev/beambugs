@@ -12,10 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on FundamentalFrequencies main (`f208dc0`) |
+| Last reproduced | 2026-10-31 on FundamentalFrequencies main (`f208dc0`, head build) |
 | Source | [`src/FundamentalFrequencies.jl:108-114`](https://github.com/bmad-sim/FundamentalFrequencies.jl/blob/f208dc0724b6c22dc85d9f018c6e8b50bce37591/src/FundamentalFrequencies.jl#L108-L114)<br>[`:111`](https://github.com/bmad-sim/FundamentalFrequencies.jl/blob/f208dc0724b6c22dc85d9f018c6e8b50bce37591/src/FundamentalFrequencies.jl#L111)<br>[`:113`](https://github.com/bmad-sim/FundamentalFrequencies.jl/blob/f208dc0724b6c22dc85d9f018c6e8b50bce37591/src/FundamentalFrequencies.jl#L113)<br>[`:26`](https://github.com/bmad-sim/FundamentalFrequencies.jl/blob/f208dc0724b6c22dc85d9f018c6e8b50bce37591/src/FundamentalFrequencies.jl#L26)<br>[`:60`](https://github.com/bmad-sim/FundamentalFrequencies.jl/blob/f208dc0724b6c22dc85d9f018c6e8b50bce37591/src/FundamentalFrequencies.jl#L60) |
 
 FundamentalFrequencies' `naff` (Numerical Analysis of Fundamental Frequencies) uses a conjugated, unnormalized Gram–Schmidt projection, corrupting later spectral lines and amplitudes. Under the package's own inner product, removing an earlier basis signal Uⱼ from Uᵢ requires the coefficient ⟨Uᵢ,Uⱼ⟩/⟨Uⱼ,Uⱼ⟩, and a corrected projection restores orthogonality. For 513 samples over 512 intervals with frequencies 0.2134, 0.2179 and 0.3171 cycles per sample and amplitudes 1, 0.6 and 0.02, the third reported line rediscovers the first and has zero amplitude. Correcting the projection and amplitude normalization recovers the missing 0.3171 line with amplitude 0.02000. The first two frequency estimates are unchanged by that correction, and changing `tol` has no effect.
+
+Run `julia OPT-16.jl`.
 
 ??? example "Reproducer: OPT-16.jl"
 

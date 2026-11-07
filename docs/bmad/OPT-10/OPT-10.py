@@ -2,7 +2,7 @@
 
 Constructing a linear tracking map at a nonzero incident orbit stores that orbit as the input reference but stores the zero-orbit expansion as the output reference. The two records should satisfy the documented affine relation between the matrix, constant vector and reference coordinates. In a 1.2 m quadrupole, the stored output is zero while its affine reconstruction begins at x = 0.8394 mm and normalized horizontal momentum −0.0005447. The returned particle orbit is correct at zero momentum offset.
 
-The script constructs a linear quadrupole map for a nonzero transverse input at zero momentum offset. It verifies the returned particle against a thick-lens solution, then tests the documented affine identity for the stored reference records. BMAD_DIST supplies the build.
+The script constructs a linear quadrupole map for a nonzero transverse input at zero momentum offset. It verifies the returned particle against a thick-lens solution, then tests the documented affine identity for the stored reference records.
 """
 
 import numpy as np

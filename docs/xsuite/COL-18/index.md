@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xfields main (`3f06c87`) |
+| Last reproduced | 2026-10-29 on xfields main (`3f06c87`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`compute_Gx_Gy`, compute_gx_gy.h:25–35](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/fieldmaps/bigaussian_src/compute_gx_gy.h#L25-L35)<br>[synchro-beam energy kick](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/beambeam_src/beambeam3d.h#L263-L281)<br>[Gaussian potential derivatives and round expressions](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L938-L994)<br>[longitudinal map](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L1005-L1038) |
 
 For round beam slices whose width changes along the collision, `compute_Gx_Gy` uses on-axis variance derivatives inside a fixed radius of 100 nm, corrupting the width contribution of 3D beam-beam to `pzeta`. Gauss's law and the Gaussian heat equation require the radial dependence exp(−r²/(2σ²)), with σ the RMS beam size; integrating the longitudinal derivative of the executed transverse kick along the radius confirms it. For 9 GeV/c positrons and an expanding 35 nm slice, the width kick at r = 2σ is 7.840 × 10⁻¹¹ instead of 1.061 × 10⁻¹¹, a factor e² too large; at σ = 35 µm and r = 99.9 nm the relative error is 4.073 × 10⁻⁶. Transverse kicks are correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-18.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-18.py"
 
@@ -43,8 +40,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     of the cutoff, and compares the width kick with the Gaussian prediction; controls vary width, charge
     sign, expansion, intensity and momentum. As an independent check it differentiates the executed
     radial kick with respect to ζ at signed offsets, integrates it from 0 to 2σ with 48 Gauss–Legendre
-    points and compares with the analytic radial difference. It requires the installed prebuilt kernels
-    (compilation is forbidden).
+    points and compares with the analytic radial difference.
     """
 
     # The execution helper must set thread limits before numerical imports.

@@ -7,9 +7,9 @@ with δ the fractional momentum offset. For δ = 0.2, normalized transverse mome
 −0.02), and zero momentum dispersion, the projected slopes are (−0.03, 0.02) instead of the
 documented paraxial derivatives (−0.02083, 0.01389).
 
-The script tracks an off-momentum drift and checks unchanged momenta and zero momentum
-dispersion. It compares projected slopes with the paraxial quotient-rule derivative and
-validates modal slopes as a control. BMAD_DIST selects the build.
+The script tracks an off-momentum drift and checks unchanged momenta and zero momentum dispersion.
+It compares projected slopes with the paraxial quotient-rule derivative and validates modal slopes
+as a control.
 """
 
 import numpy as np

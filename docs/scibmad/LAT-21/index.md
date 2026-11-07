@@ -12,10 +12,12 @@ hide:
 | Priority | P1 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-30 on bmad-ecosystem 20261020-0 (`19b8afb`) |
+| Last reproduced | 2026-10-22 on bmad-ecosystem 20261020-0 (`19b8afb`, committed 2026-10-20) |
 | Source | [`bmad/bmad/output/write_lattice_scibmad_format.f90:685-688`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L685-L688)<br>[`:845-858`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L845-L858)<br>[`bmad/bmad/output/write_lattice_file_mod.f90:184-199`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_file_mod.f90#L184-L199)<br>[`Beamlines.jl/src/aperture.jl:17-20`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/aperture.jl#L17-L20) |
 
 Bmad's SciBmad exporter writes aperture limits through a 24-character string, dropping the final exponent digit of the 25-character number format. A nonzero limit a·10ᵉ m therefore loads as a·10ᵗ m, with t = e/10 truncated toward zero; only magnitudes in [1, 10) m keep their exponent. Half-apertures of 0.01 m, 0.3 m and 15 m load as 1 m, 3 m and 1.5 m, and a particle at x = 0.02 m passes a collimator whose intended half-aperture is 0.01 m. An independent model of the format reproduces the loaded values, and tracking confirms the missed loss. The wrong limits load without a warning.
+
+Run `julia LAT-21.jl`.
 
 ??? example "Reproducer: LAT-21.jl"
 
@@ -32,12 +34,13 @@ Bmad's SciBmad exporter writes aperture limits through a 24-character string, dr
     # reproduces the loaded values, and tracking confirms the missed loss. The wrong limits load without
     # a warning.
     #
+    # Setup: `BMAD_SOURCE` set to the root of a bmad-ecosystem `20261020-0` build (the directory
+    # containing `production/bin`); the script runs its `bmad_to_scibmad` program.
+    #
     # The script exports three collimators with half-apertures (x, y) = (0.01, 0.3), (2, 15) and
     # (0.00025, 120) m using Bmad's `bmad_to_scibmad` program, loads the file and compares each limit
     # with Bmad's value and with a Printf model of the truncated Fortran format. It then tracks a
-    # particle at x = 0.02 m through the collimators, which must lose it at the 0.01 m limit. Set
-    # `BMAD_SOURCE` to the root of a Bmad build, so that the program is
-    # `$BMAD_SOURCE/production/bin/bmad_to_scibmad`.
+    # particle at x = 0.02 m through the collimators, which must lose it at the 0.01 m limit.
     using SciBmad, Printf
     const BT = SciBmad.BeamTracking
     haskey(ENV, "BMAD_SOURCE") || error("set BMAD_SOURCE to the root of the bmad-ecosystem 20261020-0 build (the directory that contains production/bin)")

@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [`propagate_twiss_parameters`, KSEXT case of the coupling sum, src/twiss.cc:873–876](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L873-L876)<br>[SEXT structure, src/track.h:1545–1549](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track.h#L1545-L1549)<br>[KSEXT structure, src/track.h:2329–2332](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track.h#L2329-L2332)<br>[the coupling computation includes vertical orbit in sextupoles and vertical sextupole displacement, doc/elegant.tex:8258–8261](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8258-L8261) |
 
 Elegant's `twiss_output` coupling estimate (`couplingIntegral`, `emittanceRatio`) includes the skew gradient K2·(y − DY) of vertically displaced sextupoles, but for a KSEXT it reads DY through the SEXT data layout, where the KSEXT stores its YAW. A vertically displaced KSEXT therefore contributes no coupling, and a yawed one contributes as if displaced by its YAW in meters. In an eight-cell FODO ring with one 0.08 m sextupole of K2 = 4 m⁻³ displaced by DY = 0.7 mm, the single-source formula and a SEXT both give a coupling integral of 3.983×10⁻⁴; the equivalent KSEXT gives 0, and a KSEXT with YAW = 0.7 mrad and no displacement gives 3.983×10⁻⁴ instead of 0.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-22.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-22.py"
 

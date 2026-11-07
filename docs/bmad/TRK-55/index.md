@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [track_a_foil energy update](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_foil.f90#L130-L135)<br>[Bmad Manual, “Charged Particle Phase Space Coordinates,” Eq. zbctt](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/phase-space.tex#L80-L94)<br>[“Foil” (s:foil)](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L2445-L2450) |
 
 A foil changes particle speed through energy loss but leaves its longitudinal coordinate z unchanged. Since z = −βc(t − t₀), with β the speed divided by the speed of light c and t − t₀ the arrival-time offset, unchanged arrival and reference times require z to scale by the final-to-initial speed ratio. A 150 MeV/c proton entering a carbon foil at z = 23 mm exits with z = 23 mm instead of 22.96 mm, an error of 40.58 μm. The stored time and independently reconstructed absolute-time coordinate identify the omitted z update.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) · [View source](../helpers/index.md#_tracking_contracts_materials)
+Run `python TRK-55.py` with [_bmad.py](../helpers/_bmad.py) and [_tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) in the same directory.
 
 ??? example "Reproducer: TRK-55.py"
 

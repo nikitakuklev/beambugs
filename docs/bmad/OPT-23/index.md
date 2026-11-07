@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [linac radiation coefficients, bmad/code/radiation_integrals.f90:566–589](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/radiation_integrals.f90#L566-L589)<br>[energy-loss and damping coefficients, bmad/code/radiation_integrals.f90:603–646](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/radiation_integrals.f90#L603-L646)<br>[fluctuation constant, bmad/low_level/symp_lie_bmad.f90:58–58](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L58-L58)<br>[damping/fluctuation factors, bmad/low_level/symp_lie_bmad.f90:123–133](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L123-L133)<br>[Bmad manual, species classical radius, bmad/doc/synchrotron-radiation.tex:27–36](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/synchrotron-radiation.tex#L27-L36)<br>[linac radiation formulas, bmad/doc/synchrotron-radiation.tex:428–455](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/synchrotron-radiation.tex#L428-L455) |
 
 For multiply charged ions, radiation_integrals and symp_lie_bmad use a unit-charge radiation coefficient instead of the species coefficient proportional to Q², where Q is charge in elementary-charge units. Carbon-12 with Q = 6 loses only 592.2 eV per turn in a test ring instead of 2.132 × 10⁴ eV, and its linac energy spread is 150.9 eV instead of 905.3 eV. Damping, emittance growth and stochastic energy variance inherit the missing factor of 36, while unit-charge controls and the separate native radiation-map loss obey the species scaling.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) · [View source](../helpers/index.md#_dispersion_and_moments)
+Run `python OPT-23.py` with [_bmad.py](../helpers/_bmad.py) and [_dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) in the same directory.
 
 ??? example "Reproducer: OPT-23.py"
 
@@ -37,10 +34,10 @@ Download these shared helpers into the same directory as the reproducer scripts:
     Damping, emittance growth and stochastic energy variance inherit the missing factor of 36,
     while unit-charge controls and the separate native radiation-map loss obey the species scaling.
 
-    The script runs the same ring and open line for unit-charge particles and carbon-12. It
-    compares radiation-integral loss, damping, energy spread and emittance growth with the manual’s
-    species-radius formulas and checks the native radiation-map loss independently. BMAD_DIST
-    selects the build; the companion tracking script checks mean loss and fluctuations.
+    The script runs the same ring and open line for unit-charge particles and carbon-12. It compares
+    radiation-integral loss, damping, energy spread and emittance growth with the manual’s
+    species-radius formulas and checks the native radiation-map loss independently. The companion
+    tracking script checks mean loss and fluctuations.
     """
 
     import numpy as np

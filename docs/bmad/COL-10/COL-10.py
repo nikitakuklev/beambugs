@@ -8,7 +8,7 @@ strengths agree.
 
 The script solves a uniformly charged cell and compares three field vectors with converged
 Gauss–Legendre volume quadrature. Compiler-kind, prefactor, field-direction and relative-strength
-checks isolate the shared normalization error. Set BMAD_DIST to the build root.
+checks isolate the shared normalization error.
 """
 
 import numpy as np

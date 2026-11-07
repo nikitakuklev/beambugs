@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`) |
+| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`, head build) |
 | Source | [`LossMap._create_aperture_pos_dict`, lossmap.py:881–885](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L881-L885) |
 
 For a reversed line (`line_is_reversed=True`), a non-interpolated loss map computes the reflected aperture position L − s, with L the circumference, and then overwrites it with the unreflected expression, so the flag has no effect on aperture positions. The intended reflection is explicit in the code. An interior aperture at 4 m, with neighbour midpoints at 2.5 and 6.5 m, has centre 4.5 m, which must become 7.5 m in a reversed 12 m ring; the reversed map reports 4.5 m.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-10.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-10.py"
 
@@ -38,7 +35,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     The script tracks three protons into apertures at 1, 4 and 9 m and builds forward and reversed loss
     maps from these losses. It checks the forward centre of the interior aperture `ap1`, whose cell does
     not cross the ring boundary, and compares its reversed centre, looked up by name, with L minus that
-    centre. It requires the installed prebuilt kernels (compilation is forbidden).
+    centre.
     """
 
     from _prebuilt import CTX, identity, kernels, np, report, xc, xt

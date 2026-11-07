@@ -2,7 +2,7 @@
 
 Calling the long-range wake frequency randomizer on an element without a wake crashes before returning its status. The routine’s contract permits this input and requires a normal return with the status false. An initialized element with no wake receives a segmentation fault, while an allocated wake with zero frequency spread returns normally.
 
-The script calls the frequency randomizer in two fresh processes, first with an allocated zero-spread wake and then with no wake. It requires successful completion of the control and identifies the absent-wake segmentation fault. BMAD_DIST selects the build.
+The script calls the frequency randomizer in two fresh processes, first with an allocated zero-spread wake and then with no wake. It requires successful completion of the control and identifies the absent-wake segmentation fault.
 """
 
 from _bmad import RunFailure, fortran, verdict

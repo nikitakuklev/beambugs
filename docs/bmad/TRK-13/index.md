@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [update_fibre_from_ele contract, bmad/ptc/update_fibre_from_ele.f90:1–13](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/update_fibre_from_ele.f90#L1-L13)<br>[electric coefficient updates, bmad/ptc/update_fibre_from_ele.f90:105–124](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/update_fibre_from_ele.f90#L105-L124) |
 
 Editing an electric multipole to exactly zero leaves its old field active in a persistent PTC layout. A 0.4 m electric quadrupole with a 1.3 GeV/c proton reference retains normalized horizontal momentum 5.161e-7 after its gradient is changed from 800 kV/m² to zero. A separately constructed zero-field element gives zero kick, and setting a tiny nonzero gradient clears the macroscopic kick. The update loop skips zero electric coefficients instead of overwriting their stored values.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) · [View source](../helpers/index.md#_s3_19_fields_photons_ptc)
+Run `python TRK-13.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) in the same directory.
 
 ??? example "Reproducer: TRK-13.py"
 
@@ -37,8 +34,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The script creates a persistent PTC layout, edits B1_ELEC through the public setter and bookkeeping
     sequence, and tracks between the element’s integration nodes. It compares exact-zero updates with a
-    separately constructed zero-field element and a 1e-70 nonzero coefficient control; BMAD_DIST selects
-    the build.
+    separately constructed zero-field element and a 1e-70 nonzero coefficient control;
     """
 
     import os

@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`ran_uniform_scalar`, sim_utils/math/random_mod.f90:939–970](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/math/random_mod.f90#L939-L970)<br>[Ziggurat lazy initialization, sim_utils/math/random_mod.f90:250–259](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/math/random_mod.f90#L250-L259)<br>[exact-Gaussian lazy initialization and rejection loop, sim_utils/math/random_mod.f90:339–379](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/math/random_mod.f90#L339-L379)<br>[`this_seed_put`, sim_utils/math/random_mod.f90:813–837](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/math/random_mod.f90#L813-L837)<br>[`pointer_to_ran_state`, sim_utils/math/random_mod.f90:1129–1136](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/math/random_mod.f90#L1129-L1136) |
 
 Passing a fresh explicit random state to the random-number generator selects that state but seeds the global or thread state instead. With seed 12345, six uniform draws are all zero; subsequent scalar Ziggurat and fresh scalar exact-Gaussian calls fail to return. Lazy initialization must seed the selected state or reject it. Copies obtained through the documented seeding and state APIs produce matching scalar and vector streams.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_11_particle_io.py](../helpers/_s3_11_particle_io.py) · [View source](../helpers/index.md#_s3_11_particle_io)
+Run `python LAT-06.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_11_particle_io.py](../helpers/_s3_11_particle_io.py) in the same directory.
 
 ??? example "Reproducer: LAT-06.py"
 

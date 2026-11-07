@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [`process_particle_command`, elegant.c:3264–3309](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3264-L3309)<br>[custom branch, elegant.c:3292–3298](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3292-L3298)<br>[anomalous moments, elegant.c:3249–3250](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3249-L3250)<br>[initial value, track_data.c:27](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L27)<br>[spinUpdate.c:205](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/spinUpdate.c#L205)<br>[namelist, elegant.nl:66–70](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.nl#L66-L70)<br>[change_particle, elegant.tex:1497–1517](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L1497-L1517) |
 
 Selecting a custom particle with change_particle sets its mass and charge but not its anomalous magnetic moment a, which keeps the value of the species selected before, or the electron's in a fresh run. Spin tracking of the same custom particle therefore depends on earlier change_particle commands. For a custom particle with the electron's mass and charge at momentum 200 mₑc, an on-axis spin (1, 0, 0) through a 0.65 m SOLE with KS = 0.9000 m⁻¹ ends at sᵧ = −0.5528 when custom is the only selection, but at −0.9980 after a proton selection, the Thomas–BMT result for the proton's a = 1.793. No input sets a for a custom particle.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _sole.py](../helpers/_sole.py) · [View source](../helpers/index.md#_sole)
+Run `python TRK-31.py` with [_elegant.py](../helpers/_elegant.py) and [_sole.py](../helpers/_sole.py) in the same directory.
 
 ??? example "Reproducer: TRK-31.py"
 

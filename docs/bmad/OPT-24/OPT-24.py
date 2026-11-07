@@ -2,7 +2,7 @@
 
 With radiation enabled in symp_lie_bmad wiggler or quadrupole tracking, every integration step applies two full-step radiation kicks. The mean energy loss and quantum-excitation variance therefore approach twice the values required by the radiation formulas. For an electron at Lorentz factor γ = 1000 in a ten-period, 1 m planar wiggler, the fractional momentum loss is 1.879×10⁻⁶ instead of 9.393×10⁻⁷. A 4000-particle fluctuation check gives 2.042 times the expected variance, and a quadrupole shows the same doubled mean loss.
 
-The script tracks electrons and protons through a planar wiggler and a quadrupole and compares mean loss with analytic curvature integrals. It checks 4000 seeded fluctuation tracks in each wiggler and validates radiation-off and independent Runge–Kutta controls. BMAD_DIST selects the production build.
+The script tracks electrons and protons through a planar wiggler and a quadrupole and compares mean loss with analytic curvature integrals. It checks 4000 seeded fluctuation tracks in each wiggler and validates radiation-off and independent Runge–Kutta controls.
 """
 
 from _bmad import compare, fortran, verdict

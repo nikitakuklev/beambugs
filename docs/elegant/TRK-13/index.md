@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`integrate_csbend_ordn`, csbend.c:1930–1935](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1930-L1935)<br>[`updateSpinQuaternionLocalFS`, spinUpdate.c:47–125](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/spinUpdate.c#L47-L125)<br>[`convertToDipoleCanonicalCoordinates`, csbend.c:1733–1741](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1733-L1741)<br>[radiation branch, csbend.c:1938–1950](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1938-L1950)<br>[spin_tracking, elegant.tex:7291–7292](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7291-L7292)<br>[CSBEND among spin-aware elements, elegant.tex:11191–11193](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L11191-L11193) |
 
 With spin tracking enabled, CSBEND's unexpanded-Hamiltonian integrator passes canonical momenta to a spin routine that expects slopes, giving incorrect electron spin precession. For initial spin (0, 0, 1) in a planar 1.2 m, 0.22 rad bend at reference momentum p₀ = 800 mₑc, relative momentum offset δ = 0.4 and entrance slope x′ = 0.16, exact circular motion and Thomas–BMT predict an exit spin angle of −0.1552 rad relative to the exit reference axis. Tracking converges to −0.1605 rad, an error of 5.297 mrad that slice refinement cannot remove. The on-axis, on-momentum control agrees.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-13.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-13.py"
 

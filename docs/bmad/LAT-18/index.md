@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [Bmad manual, Beam_Init_Struct Structure (`s:beam.init.struct`), bmad/doc/beam-init.tex:21–33](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/beam-init.tex#L21-L33)<br>[random_state_struct, sim_utils/math/random_mod.f90:22–41](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/math/random_mod.f90#L22-L41)<br>[beam_init_struct, bmad/modules/bmad_struct.f90:1184–1190](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bmad_struct.f90#L1184-L1190)<br>[init_bunch_distribution converter selection, bmad/multiparticle/beam_utils.f90:408–413](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L408-L413) |
 
 Omitting the Gaussian-converter setting selects Ziggurat in both the beam-initialization structure and the random-state structure. The manual instead lists exact as the default and gives only exact and quick as choices. Runtime initialization of both structures exposes the disagreement directly. The documented default and supported converter list should include Ziggurat.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_12_particle_contracts.py](../helpers/_s3_12_particle_contracts.py) · [View source](../helpers/index.md#_s3_12_particle_contracts)
+Run `python LAT-18.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_12_particle_contracts.py](../helpers/_s3_12_particle_contracts.py) in the same directory.
 
 ??? example "Reproducer: LAT-18.py"
 

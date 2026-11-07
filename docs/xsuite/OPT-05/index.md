@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Source | [`longitudinal_motion`, linesegmentmap.h:240–305](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/linesegmentmap.h#L240-L305)<br>[4D Twiss sets explicitly](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_defaults_and_input_preparation.py#L412-L413) |
 
 `twiss4d()` keeps the RF energy kicks of a `LineSegmentMap` in its longitudinal modes `linear_fixed_rf` and `nonlinear`, although 4D (transverse-only) optics assumes fixed energy. With RF off, 4D optics requires constant momentum, and a frozen segment followed by an ordinary cavity satisfies it. For a 1 GeV/c proton through a 1 m segment with tunes 0.2 and 0.3, 1 MV at 100 MHz, momentum compaction 0.01 and initial longitudinal offset 1 mm, the exit relative momentum deviation δ is −3.940 × 10⁻⁶ in `linear_fixed_rf` and −3.941 × 10⁻⁶ in `nonlinear` mode instead of zero. Periodic and open Twiss are both affected; the `linear_fixed_qs` mode and the ordinary cavity keep the momentum fixed.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python OPT-05.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: OPT-05.py"
 

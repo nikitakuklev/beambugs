@@ -9,7 +9,7 @@ both elements give the expected values with normalization disabled.
 
 The script tracks an off-momentum drift and thin quadrupole with each normalization setting. It
 checks the orbit and entrance dispersion, then compares exit dispersion with derivatives of the
-exact drift and thin-lens maps. BMAD_DIST selects the build.
+exact drift and thin-lens maps.
 """
 
 import numpy as np

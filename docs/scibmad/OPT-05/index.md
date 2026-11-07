@@ -12,11 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
+| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
-| Source | [`src/twiss/twiss_operators.jl:210-223`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L210-L223)<br>[`haskey(cache.persistent_matrix, nj_mat)`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L217)<br>[`twiss_operators.jl:220`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L220)<br>[`twiss_operators.jl:218`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L218)<br>[`twiss.jl:181-189`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L181-L189)<br>[`twiss_operators.jl:122`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L122) |
+| Source | [`src/twiss/twiss_operators.jl:210-223`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L210-L223)<br>[`haskey(cache.persistent_matrix, nj_mat)`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L217)<br>[`twiss_operators.jl:220`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L220)<br>[`twiss_operators.jl:218`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L218)<br>[`twiss.jl:188-196`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L188-L196)<br>[`twiss_operators.jl:122`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L122) |
 
 Requesting the De Moivre matrix `E1` from coasting `twiss` above order 1, such as `twiss(chrom=2)`, throws `UndefVarError: nj_mat` instead of returning the documented matrix, because its map-valued branch reads undefined variables. For a thin-quadrupole test cell, both −B₁S from the working `B1` output (S the symplectic form) and the Twiss form [β −α; −α γ] give E₁ = [3.441 1.376; 1.376 0.8412], with β in m and γ in m⁻¹. By source inspection, `E1` and `E2` fail in higher-order coasting runs, and `E1`–`E3` in higher-order RF runs with knob parameters. Order-1 optics and RF optics without knobs take a separate linear branch; `E3` is explicitly unavailable for coasting beams.
+
+Run `julia OPT-05.jl`.
 
 ??? example "Reproducer: OPT-05.jl"
 

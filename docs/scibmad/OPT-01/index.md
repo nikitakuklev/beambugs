@@ -12,10 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
-| Source | [`src/twiss/twiss.jl:466-474`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L466-L474)<br>[`twiss.jl:499-503`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L499-L503)<br>[`twiss_operators.jl:531`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L531)<br>[`twiss.jl:241-245`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L241-L245)<br>[`twiss.jl:108-113`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L108-L113)<br>[`twiss.jl:242`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L242)<br>[`twiss.jl:272`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L272) |
+| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
+| Source | [`src/twiss/twiss.jl:472-480`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L472-L480)<br>[`twiss.jl:505-509`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L505-L509)<br>[`twiss_operators.jl:531`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L531)<br>[`twiss.jl:247-251`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L247-L251)<br>[`twiss.jl:111-116`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L111-L116)<br>[`twiss.jl:248`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L248)<br>[`twiss.jl:278`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L278) |
 
 For a coasting beam (RF off), `twiss(delta0=δ₀)` finds the closed orbit at the momentum offset δ₀ but tracks the map from δ = 0, and a run started from an initial normalizing map `a_initial` ignores both `delta0` and `v0`. Thin-lens transfer matrices and Jacobians of tracking at δ₀ give the correct optics: for 1 GeV/c electrons in a thin-quadrupole cell at δ₀ = 0.01, `twiss` returns the tune q₁ = 0.1436 and β₁ = 3.441 m instead of 0.1422 and 3.421 m, and `pz` = 0. In a checked ring with dispersion the tabulated orbit does not close and the spin tune is taken at δ = 0. Periodic optics with RF on are unaffected, but `a_initial` still bypasses `v0`.
+
+Run `julia OPT-01.jl`.
 
 ??? example "Reproducer: OPT-01.jl"
 

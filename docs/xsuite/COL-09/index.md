@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`) |
+| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`, head build) |
 | Source | [`LossMap.tot_energy_aperture`, lossmap.py:140–154](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L140-L154) |
 
 In a non-interpolated loss map (`interpolation=False`), `LossMap.tot_energy_aperture` sums the binned aperture store, although this mode records aperture energies in unbinned storage, so it returns zero and `tot_energy` omits all aperture losses. With no collimator losses both totals must equal the sum of the per-aperture energies that `aperture_losses` reports, which match the mass-shell energy 3·√((p₀c)² + m²), with p₀ the momentum and m the proton rest energy. For three 2 GeV/c protons lost at the apertures of a 12 m ring, the per-aperture energies sum to 6.627 × 10⁹ eV, while `tot_energy_aperture` and `tot_energy` are both 0.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-09.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-09.py"
 
@@ -39,8 +36,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The script tracks three 2 GeV/c protons into apertures at 1, 4 and 9 m and builds the loss map with
     `correct_aperture_absorption=False`. It checks the per-aperture energies against the mass-shell sum
-    and that no collimator energy is recorded, then compares both public totals with that sum. It
-    requires the installed prebuilt kernels (compilation is forbidden).
+    and that no collimator energy is recorded, then compares both public totals with that sum.
     """
 
     from _prebuilt import CTX, identity, kernels, np, report, xc, xt

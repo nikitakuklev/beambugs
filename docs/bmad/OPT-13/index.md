@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [transfer_matrix_calc, bmad/code/transfer_matrix_calc.f90:84–88](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/transfer_matrix_calc.f90#L84-L88)<br>[endpoint defaults, bmad/code/transfer_matrix_calc.f90:21–36](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/transfer_matrix_calc.f90#L21-L36) |
 
 Requesting a closed-lattice transfer matrix with a start element and no end element returns identity. The documented omitted-endpoint contract promises a full turn back to the start element. In a 2 m FODO cell, the horizontal angle-to-position coefficient is zero instead of 2.150 m, as an independent thick-lens map establishes. Explicitly requesting one turn avoids the defect.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) · [View source](../helpers/index.md#_s3_14_optics_matrix_radiation)
+Run `python OPT-13.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) in the same directory.
 
 ??? example "Reproducer: OPT-13.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Requesting a closed-lattice transfer matrix with a start element and no end element returns identity. The documented omitted-endpoint contract promises a full turn back to the start element. In a 2 m FODO cell, the horizontal angle-to-position coefficient is zero instead of 2.150 m, as an independent thick-lens map establishes. Explicitly requesting one turn avoids the defect.
 
-    The script compares omitted and explicit one-turn endpoints in a FODO cell. It constructs the expected map by multiplying independent thick-lens quadrupole and drift matrices, then conjugates the cell map to the exit of the first quadrupole. BMAD_DIST supplies the build.
+    The script compares omitted and explicit one-turn endpoints in a FODO cell. It constructs the expected map by multiplying independent thick-lens quadrupole and drift matrices, then conjugates the cell map to the exit of the first quadrupole.
     """
 
     import numpy as np

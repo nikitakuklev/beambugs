@@ -2,9 +2,9 @@
 
 When the experimental three-dimensional CSR wrapper changes a particle's speed, it updates β, the speed divided by the speed of light c, without rescaling the longitudinal coordinate z. Bmad defines z = βc(t₀ − t), where t₀ and t are reference and particle arrival times, so an instantaneous kick must preserve z/β. A 1 nC bunch at 10 MeV/c in a 1 cm bend leaves a 7.624 pm discrepancy between z and its stored arrival-time value. A zero-charge bunch satisfies the coordinate relation.
 
-The script tracks 27 fixed particles through the complete CSR3D wrapper on a 4³ mesh at zero, 1
-nC and 2 nC charge. At the exit it compares z with βc times the difference between reference and
-stored particle times. BMAD_DIST selects the production build.
+The script tracks 27 fixed particles through the complete CSR3D wrapper on a 4³ mesh at zero, 1 nC
+and 2 nC charge. At the exit it compares z with βc times the difference between reference and stored
+particle times.
 """
 
 from _bmad import compare, fortran, verdict

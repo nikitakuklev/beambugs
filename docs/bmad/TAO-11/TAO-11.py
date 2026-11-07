@@ -6,9 +6,9 @@ instead of 6.671 ns and is marked valid. The comparison tests the second segment
 against itself, so it never replaces the first candidate. The maximum must include both segments
 of the evaluation range.
 
-The script samples the reference clock around a ring and requests its maximum over QD through
-the ring boundary to QF. It verifies the clock samples from the speed and circumference, then
-checks the valid datum against the maximum of both segments. BMAD_DIST supplies Tao.
+The script samples the reference clock around a ring and requests its maximum over QD through the
+ring boundary to QF. It verifies the clock samples from the speed and circumference, then checks the
+valid datum against the maximum of both segments.
 """
 
 import math

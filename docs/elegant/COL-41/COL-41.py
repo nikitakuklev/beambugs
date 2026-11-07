@@ -2,11 +2,13 @@
 
 In the default build, a CSRCSBEND with IGF=1 frees its integrated-Green-function arrays at exit but keeps the static pointers to them, so the next CSRCSBEND of the run reallocates or frees the released memory again. For 5001 electrons in a 0.8 m, 0.4 rad bend with 128 bins, one step through one IGF bend completes, but a second step, a second pass, a second IGF bend or a following CSRCSBEND without IGF each abort with a double free, and Valgrind reports the invalid realloc or free. A single traversal of one IGF bend with no later CSRCSBEND is unaffected.
 
-The script tracks 5001 electrons (Gaussian quantiles, σ_ct = 12 μm, p = 1500 mₑc, 10⁻¹⁸ C) through
-a 0.8 m, 0.4 rad, 24-slice CSRCSBEND with STEADY_STATE=1, IGF=1 and BINS=128. One step through
-one bend is the control and must complete. The cases are two steps, two passes, a second IGF bend
-and a following IGF=0 bend; each must complete like the control. For each, the script prints the
-exit of a plain run and the first invalid heap operation Valgrind (which must be on PATH) reports.
+Setup: `valgrind` on `PATH`; the script runs some cases of serial Elegant under Memcheck.
+
+The script tracks 5001 electrons (Gaussian quantiles, σ_ct = 12 μm, p = 1500 mₑc, 10⁻¹⁸ C) through a
+0.8 m, 0.4 rad, 24-slice CSRCSBEND with STEADY_STATE=1, IGF=1 and BINS=128. One step through one
+bend is the control and must complete. The cases are two steps, two passes, a second IGF bend and a
+following IGF=0 bend; each must complete like the control. For each, the script prints the exit of a
+plain run and the first invalid heap operation Valgrind reports.
 """
 
 import re

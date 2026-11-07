@@ -12,15 +12,12 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [kick split, simple_rfca.c:525–532](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L525-L532)<br>[LSC call, simple_rfca.c:792–793](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L792-L793)<br>[impedance, lsc.c:625–628](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L625-L628)<br>[lsc.c:502](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L502)<br>[reference update, simple_rfca.c:1116–1117](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1116-L1117)<br>[simple_rfca.c:1207](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1207)<br>[1278](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1278)<br>[wake.c:318–319](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L318-L319)<br>[RFCW manual, rfcw.tex:14–19](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfcw.tex#L14-L19) |
 
 An RFCW with LSC=1 computes every longitudinal space-charge kick with the beam momentum at the cavity entrance, whatever N_KICKS is, while the method the manual cites uses the local momentum. For an electron bunch of 160 μm rms length and 240 μm rms transverse size accelerated from γ = 6 to 30 in one 0.8 m cavity, the energy kick at +1σ is 3.590 times the correct value. At high energy the factor is somewhat below the element's energy ratio: 1.611 for a 15 μm modulation accelerated from 135 to 250 MeV kinetic energy. One-kick RFCWs with CHANGE_P0=1, or a longitudinal wake (even all zero) with CHANGE_P0=1, give the correct kick within 0.35%.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _lsc.py](../helpers/_lsc.py) · [View source](../helpers/index.md#_lsc)
+Run `python COL-44.py` with [_elegant.py](../helpers/_elegant.py) and [_lsc.py](../helpers/_lsc.py) in the same directory.
 
 ??? example "Reproducer: COL-44.py"
 

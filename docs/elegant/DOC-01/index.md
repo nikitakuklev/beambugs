@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [manual text for `alphac`, `alphac2` and `alphac3`, doc/elegant.tex:8254–8257](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8254-L8257)<br>[orbit series definition, twiss.cc:253–260](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L253-L260)<br>[`alpha3` accumulation, twiss.cc:2398–2409](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2398-L2409) |
 
 The Elegant manual gives the path length as s = s₀ + αc L δ + αc2 L δ² + αc3 L δ², with δ the relative momentum offset, for the Twiss outputs `alphac`, `alphac2` and `alphac3`. The last power should be 3: `alphac3` is the coefficient of δ³. For a prescribed one-turn map of length 10 m with path 10 m + 2 m·δ² + 7 m·δ³, Elegant writes αc = 0, αc2 = 0.2000 and αc3 = 0.7000, and tracking gives 10.01 m at δ = −0.1 and 10.03 m at δ = +0.1; the printed equation predicts 10.09 m at both.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _matr.py](../helpers/_matr.py) · [View source](../helpers/index.md#_matr)
+Run `python DOC-01.py` with [_elegant.py](../helpers/_elegant.py) and [_matr.py](../helpers/_matr.py) in the same directory.
 
 ??? example "Reproducer: DOC-01.py"
 
@@ -35,12 +32,15 @@ Download these shared helpers into the same directory as the reproducer scripts:
     path 10 m + 2 m·δ² + 7 m·δ³, Elegant writes αc = 0, αc2 = 0.2000 and αc3 = 0.7000, and tracking
     gives 10.01 m at δ = −0.1 and 10.03 m at δ = +0.1; the printed equation predicts 10.09 m at both.
 
-    The script reads the compaction equation from `doc/elegant.tex` of the Elegant source checkout named
-    by `ELEGANT_SOURCE` and exits if it is missing or unrecognized. It prescribes the one-turn map with
-    zero transverse orbit and dispersion, reads `alphac`, `alphac2` and `alphac3` from `twiss_output`,
-    and tracks particles at six momentum offsets to obtain the path length from their arrival times. It
-    compares the tracked path with the manual's equation and with the equation using δ³. A map without
-    the cubic term, for which the two equations coincide, is the control.
+    Setup: `ELEGANT_SOURCE` set to a clone of rtsoliday/elegant; the script reads the manual's LaTeX
+    source from it.
+
+    The script reads the compaction equation from the checkout's `doc/elegant.tex` and exits if it is
+    missing or unrecognized. It prescribes the one-turn map with zero transverse orbit and dispersion,
+    reads `alphac`, `alphac2` and `alphac3` from `twiss_output`, and tracks particles at six momentum
+    offsets to obtain the path length from their arrival times. It compares the tracked path with the
+    manual's equation and with the equation using δ³. A map without the cubic term, for which the two
+    equations coincide, is the control.
     """
 
     import os

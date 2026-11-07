@@ -12,10 +12,12 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
-| Source | [`SciBmad.jl/src/track.jl:76`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L76)<br>[`:84`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L84)<br>[`:277`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L277)<br>[`:101`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L101) |
+| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
+| Source | [`SciBmad.jl/src/track.jl:76`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L76)<br>[`:84`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L84)<br>[`:277`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L277)<br>[`:101`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L101) |
 
 The `TrackingResult` docstring and field comment state that `elapsed_time` is in minutes, but the value comes from Julia's `@elapsed`, which returns seconds, and the result's own display labels it seconds. For 10⁵ particles tracked over 10 000 turns, `elapsed_time` is 0.9718 while a wall clock around `track` reads 0.9767 s, a ratio of 0.9949, where a value in minutes would give 1/60 = 0.01667. Tracking results are unaffected.
+
+Run `julia LAT-14.jl`.
 
 ??? example "Reproducer: LAT-14.jl"
 

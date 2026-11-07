@@ -12,10 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on NonlinearNormalForm main (`7e40539`) |
+| Last reproduced | 2026-10-31 on NonlinearNormalForm main (`7e40539`, head build) |
 | Source | [`src/vectorfield.jl:477`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L477)<br>[`src/map.jl:755`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L755)<br>[`map.jl:755`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/map.jl#L755)<br>[`src/operators.jl:255`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/operators.jl#L255)<br>[`src/vectorfield.jl:469-473`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L469-L473)<br>[`src/vectorfield.jl:486-503`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L486-L503)<br>[`:489-491`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L489-L491)<br>[`:500`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L500)<br>[`src/vectorfield.jl:129-135`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L129-L135)<br>[`:130-131`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L130-L131)<br>[`vectorfield.jl:12-14`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/vectorfield.jl#L12-L14) |
 
 Several out-of-place (allocating) operations on NonlinearNormalForm maps and vector fields throw instead of computing. `F * m` (a vector field acting on a `DAMap`) and `2.0 * m` are ambiguous method calls, the Lie bracket `lb(F, H)` references an undefined `G`, `exp(F, m)` with a real field and a complex map reads an undefined `m1prom`, and the copy constructor `VectorField(F)` reads an undefined `V0`. On the same inputs, the in-place kernels `mul!` and `lb!` give the analytic results, `exp` with both arguments complex runs, and `Test.detect_ambiguities` lists exactly the two `*` ambiguities. Every failure is a loud error; no wrong value is returned.
+
+Run `julia OPT-13.jl`.
 
 ??? example "Reproducer: OPT-13.jl"
 

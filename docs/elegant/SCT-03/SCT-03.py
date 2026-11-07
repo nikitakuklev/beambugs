@@ -8,6 +8,9 @@ only when tracking is enabled, and the freeing routine dereferences it. For thre
 and 40 generated particles per element, serial Elegant writes three pages of 40 particles, and
 Pelegant with do_track = 1 does too, but Pelegant with do_track = 0 aborts.
 
+Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the
+defect occurs only under MPI.
+
 The script runs touschek_scatter on a three-element TSCATTER lattice with 40 generated particles per
 element, once in serial Elegant and twice in 3-rank Pelegant, with tracking disabled and enabled. It
 compares the pages of the scattered-particle file with the expected three pages of 40 and reports

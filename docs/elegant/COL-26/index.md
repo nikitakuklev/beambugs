@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [local-empty skip, trwake.c:86–88](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L86-L88)<br>[global extrema, trwake.c:118–121](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L118-L121)<br>[length check, trwake.c:122–128](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L122-L128)<br>[binned check, trwake.c:171–176](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L171-L176)<br>[histogram sum, trwake.c:206–213](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L206-L213)<br>[global bunch range, lrwake.c:74–84](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L74-L84)<br>[local bunch counts, lrwake.c:149–166](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L149-L166)<br>[bunch-mode input, elegant.tex:481–506](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L481-L506)<br>[bunched mode, trwake.tex:59–62](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/trwake.tex#L59-L62)<br>[BUNCHED_BEAM_MODE, track_data.c:2612](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2612)<br>[TRWAKE caller, do_tracking.c:2483–2486](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2483-L2486)<br>[CHARGE, do_tracking.c:1441–1457](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L1441-L1457)<br>[row partition, SDDS_MPI_binary.c:2235–2252](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/SDDSlib/SDDS_MPI_binary.c#L2235-L2252) |
 
 With automatic bins and bunch mode, TRWAKE tracking under MPI (Pelegant) combines different bunches when each of two tracking ranks holds one whole bunch. Skipping locally empty bunches pairs reductions for different bunches; the correct same-bunch causal sum is recovered by serial tracking and by distributing both bunches across both ranks. For two 16.00 pC bunches 80.00 ps apart, the second bunch's last particle receives a horizontal slope kick of 1.364×10⁻⁶ instead of 1.670×10⁻⁷. At 800.0 ps separation, the grouped MPI run aborts even though each bunch individually fits within the 512.0 ps wake table.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-26.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-26.py"
 
@@ -36,6 +34,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     second bunch's last particle receives a horizontal slope kick of 1.364×10⁻⁶ instead of 1.670×10⁻⁷.
     At 800.0 ps separation, the grouped MPI run aborts even though each bunch individually fits within
     the 512.0 ps wake table.
+
+    Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the
+    defect occurs only under MPI.
 
     The script tracks two 16-particle bunches through one dipole TRWAKE with a linear causal wake and
     automatic bins, with the bunches 80 ps, 160 ps and 800 ps apart. The correct kick is a direct causal

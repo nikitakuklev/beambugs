@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`) |
+| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`EverestCollimator_track_local_particle`, everest_collimator.h:226–234](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/beam_elements/elements_src/everest_collimator.h#L226-L234)<br>[Geant4 accumulator](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/scattering_routines/geant4/track.py#L128-L129) |
 
 `EverestCollimator` adds each particle's energy loss to its deposited-energy counters without the macroparticle `weight`, the number of physical particles a macroparticle represents. The deposited energy is the sum of `weight` times energy loss, the weighting Xcoll's Geant4 interface applies to the same counters. For 20 protons at 400 GeV/c through 0.6 mm of carbon-fibre composite with fixed random seeds, weights 1 to 5 give a primary deposit of 2.865 × 10⁶ eV, the same as unit weights, instead of 8.653 × 10⁶ eV. By source reading, the secondary-particle counter, `EverestBlock` and `EverestCrystal` contain the same expression.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-13.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-13.py"
 
@@ -41,8 +38,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     The script tracks 20 protons from x = 3 mm through the collimator (jaw 1 mm) with per-particle seeds
     7001–7020, all surviving, once with unit weights and once with weights 1, 2, 3, 4, 5 repeated four
     times. The per-particle energy losses are identical in both runs; the script checks that the
-    accumulated deposit equals their unweighted sum and compares it with the weighted sum. It requires
-    the installed prebuilt kernels (compilation is forbidden).
+    accumulated deposit equals their unweighted sum and compares it with the weighted sum.
     """
 
     from _prebuilt import CTX, identity, kernels, np, xc, xt

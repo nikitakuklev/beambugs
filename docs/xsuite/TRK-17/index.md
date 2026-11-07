@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`) |
+| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`LimitPolygon_track_local_particle`, limitpolygon.h:24–89](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/limitpolygon.h#L24-L89)<br>[vertex contract and constructor](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/limit_polygon.py#L12-L128)<br>[centroid tests](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/tests/test_apertures.py#L397-L416) |
 
 On serial CPU, `LimitPolygon` also accepts a disk around its local origin when the polygon lies away from that origin, so particles outside the aperture survive. Independent convex half-plane tests give the correct acceptance, and writing the same geometry as centered vertices plus an element translation restores it. For a rectangle spanning 4–8 mm horizontally and ±1.5 mm vertically before rotation, 358 of 2114 sampled particles survive instead of 56, and all 302 false survivors lie in the spurious 4 mm-radius disk. The error occurs for both vertex orderings and in line tracking. Source inspection also finds that on GPU a particle exactly at the local origin bypasses the test.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python TRK-17.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: TRK-17.py"
 

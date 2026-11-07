@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [initial beta, track_rf.c:166](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_rf.c#L166)<br>[drift timing, track_rf.c:173–189](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_rf.c#L173-L189)<br>[kick and momentum update, track_rf.c:198–215](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_rf.c#L198-L215)<br>[final beta, track_rf.c:217–222](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_rf.c#L217-L222)<br>[RFDF kick model, rfdf.tex:15–33](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfdf.tex#L15-L33)<br>[CUDA RFDF kernel, gpu_cuda_runtime.cu:3639–3684](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/gpu/gpu_cuda_runtime.cu#L3639-L3684) |
 
 RFDF computes particle speed at entrance and reuses it for drift timing after kicks change the momentum. For one midpoint kick, vacuum kinematics require the final half drift to use the outgoing speed, as a phase-matched drift–thin-deflector–drift control confirms. In magnetic-deflection mode, a 0.2 m, 300 kV, 100 MHz element with an electron entering at x = 0.04 m and momentum p = 2 mₑc gives 747.7 ps instead of 746.0 ps, 1.671 ps late. At p = 100 mₑc the error is 15.42 as.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-06.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-06.py"
 

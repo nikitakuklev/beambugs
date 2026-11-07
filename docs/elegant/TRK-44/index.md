@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Tags | <span class="bb-tag">contract-unsettled</span> [?](../../methodology.md#tags) |
 | Source | [`trackRfCavityWithWakes`, simple_rfca.c:521](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L521)<br>[simple_rfca.c:723–733](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L723-L733)<br>[simple_rfca.c:1010](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1010)<br>[parameter table, track_data.c:603](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L603) |
 
 An RFCA with nonzero Q, described as a cavity that charges up to its voltage from zero, ramps the voltage as VOLT·√(1 − e^(−ωt/Q)), with ω the angular RF frequency and t the time since the reference time. The envelope equation of a resonant mode driven at its frequency from rest gives VOLT·(1 − e^(−ωt/2Q)); the square-root law rises with infinite initial slope and stays above it. For a 350 MHz, 200 kV cavity with Q = 3500, the kick after 100 RF periods (285.7 ns) is 81.07 kV instead of 17.17 kV, 4.722 times too large, and 153.9 kV instead of 72.32 kV after 1.429 µs. Both laws reach VOLT in steady state.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-44.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-44.py"
 

@@ -2,7 +2,7 @@
 
 Calling track_all with an orbit array one record shorter than the lattice requires can write beyond the allocation. The routine grows smaller arrays but compares their size with the last required index, forgetting that the orbit starts at index zero. A two-element lattice supplied with indices 0:1 bypasses reallocation and attempts to write index 2; bounds checking reports the invalid access. A correctly sized array tracks successfully.
 
-The script first checks a correctly sized array against the production library and a bounds-checked copy of the pin’s unmodified track_all source. It then runs the one-short array against that checked copy and requires the specific index-2 bounds failure. Set BMAD_DIST to the build root and BMAD_SOURCE to its matching source tree.
+The script first checks a correctly sized array against the production library and a bounds-checked copy of the pin’s unmodified track_all source. It then runs the one-short array against that checked copy and requires the specific index-2 bounds failure.
 """
 
 from _bmad import RunFailure, compare, fortran, source, verdict

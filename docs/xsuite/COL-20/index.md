@@ -12,16 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xfields main (`3f06c87`) |
+| Last reproduced | 2026-10-29 on xfields main (`3f06c87`, head build) |
 | Source | [`BjorkenMtingwaIBS._ax`, _analytical.py:1064–1075](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L1064-L1075)<br>[`_bx`:1122–1139](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L1122-L1139)<br>[plane constant](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L1455-L1458)<br>[horizontal integrand](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/ibs/_analytical.py#L1582-L1589)<br>[matrix integral](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xfields.tex#L2641-L2700) |
 
 `BjorkenMtingwaIBS` divides by the horizontal dispersion invariant Hₓ, which is zero where both the dispersion `dx` and its slope `dpx` vanish, so one such sampled location makes the horizontal growth rate Kₓ NaN. The collision-matrix integral is regular there for positive emittances and momentum spread, and independent Carlson-integral and Nagaitsev evaluations give finite rates. For protons at reference speed β₀ = 0.45 (in units of c) with zero dispersion, Kₓ is NaN instead of −2.872 × 10⁻³ s⁻¹; in a three-segment line with only one zero-invariant location, it is NaN instead of −7.397 × 10⁻⁴ s⁻¹. NumPy emits division warnings and the other planes stay finite; a nonzero `dpx` avoids the singularity even when `dx` = 0.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _ibs.py](../helpers/_ibs.py) · [View source](../helpers/index.md#_ibs)
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-20.py` with [_ibs.py](../helpers/_ibs.py), [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-20.py"
 
@@ -44,8 +40,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     of Xfields, for protons at β₀ = 0.45. Five cases cover zero dispersion, a tiny `dx` = 10⁻⁹ m
     continuity control, `dx` = 0 with `dpx` = 0.11, zero horizontal with nonzero vertical dispersion,
     and a three-segment line in which only one location has Hₓ = 0. At zero dispersion it also checks
-    the reference rates against the rest-frame kinetic-energy invariant. It requires the installed
-    prebuilt kernels (compilation is forbidden).
+    the reference rates against the rest-frame kinetic-energy invariant.
     """
 
     from _ibs import PARAMS, local_oracle, run_case

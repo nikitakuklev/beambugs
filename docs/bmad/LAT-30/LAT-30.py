@@ -2,7 +2,7 @@
 
 Changing the angle of a symmetric bend about its center fiducial produces asymmetric face angles and the wrong arc length. Starting from length 1 m, angle 0.1 rad and zero face angles, setting the angle to 0.2 rad gives length 1.002 m, entrance face angle zero and exit face angle 0.1503 rad. Holding the center and face planes fixed requires length 1 m and both face angles 0.05000 rad, as the circle-plane intersection shows. The implementation updates the exit angle twice and reuses already changed curvature.
 
-The script changes only ANGLE through Bmad's attribute setter and runs bookkeeping. It verifies the initial symmetric geometry and computes the new radius from the intersection of the new circle with the original face plane. BMAD_DIST selects the build.
+The script changes only ANGLE through Bmad's attribute setter and runs bookkeeping. It verifies the initial symmetric geometry and computes the new radius from the intersection of the new circle with the original face plane.
 """
 
 import math

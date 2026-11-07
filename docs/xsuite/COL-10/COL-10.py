@@ -9,7 +9,7 @@ which must become 7.5 m in a reversed 12 m ring; the reversed map reports 4.5 m.
 The script tracks three protons into apertures at 1, 4 and 9 m and builds forward and reversed loss
 maps from these losses. It checks the forward centre of the interior aperture `ap1`, whose cell does
 not cross the ring boundary, and compares its reversed centre, looked up by name, with L minus that
-centre. It requires the installed prebuilt kernels (compilation is forbidden).
+centre.
 """
 
 from _prebuilt import CTX, identity, kernels, np, report, xc, xt

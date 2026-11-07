@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [`compute_matrix`, compute_matrices.c:1793–1798](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L1793-L1798)<br>[`track_through_csbend`, csbend.c:1111](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1111)<br>[csbend.c:1504–1506](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1504-L1506)<br>[csbend.c:6678–6700](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6678-L6700)<br>[manual, csbend.tex:76–80](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L76-L80) |
 
 CSBEND fits the FSE_CORRECTION strength adjustment only when a command such as twiss_output computes the bend's transfer matrix; a run that only tracks applies no correction and prints no warning. For an error-free 0.75 m, 0.09 rad bend with edge model 2 or 4, the corrected bend, obtained after twiss_output or by setting the fitted FSE by hand, has exit slope x′ = 0 and, with FSE_CORRECTION=1, the nominal path 0.75 m. Tracking alone gives x′ = 5.031×10⁻⁶ and a path 4.441×10⁻⁵ m shorter, so adding a twiss_output command changes the tracked orbit.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _csbend_fse.py](../helpers/_csbend_fse.py) · [View source](../helpers/index.md#_csbend_fse)
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-39.py` with [_csbend_fse.py](../helpers/_csbend_fse.py) and [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-39.py"
 

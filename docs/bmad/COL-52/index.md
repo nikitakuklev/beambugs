@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`parser_read_sr_wake`, bmad/parsing/bmad_parser_mod.f90:1472–1484](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/bmad_parser_mod.f90#L1472-L1484)<br>[`parser_read_sr_wake`, bmad/parsing/bmad_parser_mod.f90:1663–1665](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/bmad_parser_mod.f90#L1663-L1665)<br>[`sr_z_long_wake`, bmad/multiparticle/wake_mod.f90:532–558](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L532-L558) |
 
 Replacing a tabulated short-range wake with a mode-only definition leaves the old table spacing active after its arrays have been emptied. Tracking then reports that the bunch exceeds the table window and marks a particle lost. A single electron macroparticle receives the same normalized momentum kick, −0.0005000, as the mode-only control, but is lost instead of remaining alive.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) · [View source](../helpers/index.md#_wake_tables_and_bbu)
+Run `python COL-52.py` with [_bmad.py](../helpers/_bmad.py) and [_wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) in the same directory.
 
 ??? example "Reproducer: COL-52.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Replacing a tabulated short-range wake with a mode-only definition leaves the old table spacing active after its arrays have been emptied. Tracking then reports that the bunch exceeds the table window and marks a particle lost. A single electron macroparticle receives the same normalized momentum kick, −0.0005000, as the mode-only control, but is lost instead of remaining alive.
 
-    The script parses a table followed by a mode-only replacement, then parses the final definition alone as a control. Each fresh process tracks one charged particle and reports table size, spacing, state and kick. BMAD_DIST selects the build.
+    The script parses a table followed by a mode-only replacement, then parses the final definition alone as a control. Each fresh process tracks one charged particle and reports table size, spacing, state and kick.
     """
 
     import re

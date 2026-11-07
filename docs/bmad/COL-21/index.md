@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [track1_bunch_csr shielding-image loop, bmad/space_charge/csr_and_space_charge_mod.f90:347–368](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L347-L368)<br>[transverse slice kick, bmad/space_charge/csr_and_space_charge_mod.f90:1605–1610](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1605-L1610)<br>[direct-source condition, csr_and_space_charge_mod.f90:828–833](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L828-L833) |
 
 Combining transverse slice space charge with shielding images multiplies the kick by −2 for an odd image count and by +2 for an even nonzero count. Shielding images belong to the coherent synchrotron radiation calculation and should not change the slice-model force. In a 1 cm drift with 10 MeV/c electrons and 10 pC bunch charge, the space-charge change in the position–momentum covariance is 3.231e−11, −6.462e−11 and 6.462e−11 m for zero, one and two images. Longitudinal slice space charge is calculated at the direct-source iteration and avoids this multiplier.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_fields.py](../helpers/_collective_fields.py) · [View source](../helpers/index.md#_collective_fields)
+Run `python COL-21.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_fields.py](../helpers/_collective_fields.py) in the same directory.
 
 ??? example "Reproducer: COL-21.py"
 
@@ -32,10 +29,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Combining transverse slice space charge with shielding images multiplies the kick by −2 for an odd image count and by +2 for an even nonzero count. Shielding images belong to the coherent synchrotron radiation calculation and should not change the slice-model force. In a 1 cm drift with 10 MeV/c electrons and 10 pC bunch charge, the space-charge change in the position–momentum covariance is 3.231e−11, −6.462e−11 and 6.462e−11 m for zero, one and two images. Longitudinal slice space charge is calculated at the direct-source iteration and avoids this multiplier.
 
-    The script runs fresh deterministic Tao bunches with space charge off and with slice space charge
-    at zero, one and two shielding images. It subtracts the drift-only covariance and requires all 2000
+    The script runs fresh deterministic Tao bunches with space charge off and with slice space charge at
+    zero, one and two shielding images. It subtracts the drift-only covariance and requires all 2000
     particles to survive. With CSR off, the tracked covariance must be independent of image count.
-    Set BMAD_DIST to the build root.
     """
 
     import numpy as np

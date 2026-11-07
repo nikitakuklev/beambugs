@@ -2,7 +2,7 @@
 
 When srdt evaluates skew or rotated multipoles, it discards the multipole rotation and uses the returned strength as a normal component. Normal resonance-driving terms require the real part of the rotated multipole coefficient. In a FODO ring, a pure skew sextupole produces the normal sextupole driving coefficient h₂₁₀₀₀ = −1.865 instead of zero, and rotating a normal thin multipole by π/3 leaves −1.865 instead of reversing it to +1.865. A mixed sextupole with integrated normal and skew strengths 0.5 and 0.2 m⁻² is overcounted by 7.703%.
 
-The script puts a thin element at zero betatron phase in a 16-bend FODO ring at 1 GeV total electron energy. It compares normal, skew, tilted, pole-rotated, reversed and mixed sextupoles with an independent expansion of their kick potential. BMAD_DIST selects the production build.
+The script puts a thin element at zero betatron phase in a 16-bend FODO ring at 1 GeV total electron energy. It compares normal, skew, tilted, pole-rotated, reversed and mixed sextupoles with an independent expansion of their kick potential.
 """
 
 import numpy as np

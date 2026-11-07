@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`) |
+| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`, head build) |
 | Source | [`LossMap.lossmap`, lossmap.py:161–172](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L161-L172) |
 
 `LossMap` exports a collimator row only when particles were absorbed in it (`summary.n` > 0), so energy deposited by particles that leave the collimator is lost through `to_json` and `from_json`. The summary holds that energy before export, and a round trip must preserve it. For 20 protons at 400 GeV/c through 0.6 mm of carbon-fibre composite with no absorption, the collimator's 2.865 × 10⁶ eV becomes 0 after export and reload. The restored map still compares equal to the original, because equality compares the same filtered export. Saved loss maps miss the deposits of every collimator in which no particle was absorbed.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-15.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-15.py"
 
@@ -40,8 +37,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     The script tracks 20 unit-weight protons from x = 3 mm through the collimator (jaw 1 mm, seeds
     7001–7020), all surviving, and checks the in-memory collimator energy against the kernel's deposit
     counter. It then writes the loss map to JSON in a temporary directory, reloads it, and compares the
-    restored collimator energy, and the equality test, with the original. It requires the installed
-    prebuilt kernels (compilation is forbidden).
+    restored collimator energy, and the equality test, with the original.
     """
 
     import tempfile

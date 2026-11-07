@@ -12,15 +12,12 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`parse_and_write_element`, util_programs/mad_to_bmad/madx_to_bmad.py:548–555](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L548-L555)<br>[bmad/doc/elements.tex:514–516](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L514-L516)<br>[MAD-X bend.html:135–139](https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/7998e738eca575c82a424138517c2a17115f3cdb/doc/usrguide/Introduction/bend.html#L135-L139) |
 
 Importing a MAD-X sector bend with explicit nonzero total dipole strength k₀ assigns Bmad's field error dg = k₀, adding the design curvature g = angle/L to the intended field. For an ideal 1 m bend with angle 0.1 rad and k₀ = 0.1 m⁻¹, this doubles the field to 0.2 m⁻¹. An on-axis particle then exits at x = −49.96 mm and normalized horizontal momentum pₓ = −0.09983, matching an independent circle calculation, while MAD-X keeps it on the design orbit. The correct import without taper is dg = k₀ − g, zero here. The same sector bend without explicit k₀ imports correctly.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _translators.py](../helpers/_translators.py) · [View source](../helpers/index.md#_translators)
+Run `python XLT-07.py` with [_bmad.py](../helpers/_bmad.py) and [_translators.py](../helpers/_translators.py) in the same directory.
 
 ??? example "Reproducer: XLT-07.py"
 
@@ -37,11 +34,11 @@ Download these shared helpers into the same directory as the reproducer scripts:
     without taper is dg = k₀ − g, zero here. The same sector bend without explicit k₀ imports
     correctly.
 
-    The script translates with madx_to_bmad.py a MAD-X sbend with L = 1 m, angle 0.1 rad and
-    k0 = 0.1 m⁻¹, the ideal bend written with its field explicit, and the same bend without k0 as
-    the control. It reads the imported dg and tracks the imported lattice in Tao from a zero orbit.
-    MAD-X TWISS of the source deck, which must stay on the design orbit, is the receiving-code
-    reference, and the exact circle in the doubled field accounts for the observed orbit. Set BMAD_SOURCE to the pinned source checkout.
+    The script translates with madx_to_bmad.py a MAD-X sbend with L = 1 m, angle 0.1 rad and k0 = 0.1
+    m⁻¹, the ideal bend written with its field explicit, and the same bend without k0 as the control. It
+    reads the imported dg and tracks the imported lattice in Tao from a zero orbit. MAD-X TWISS of the
+    source deck, which must stay on the design orbit, is the receiving-code reference, and the exact
+    circle in the doubled field accounts for the observed orbit.
     """
 
     from _bmad import compare, verdict

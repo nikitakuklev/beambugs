@@ -12,12 +12,14 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-27 on ImpactX 26.10 (`615921c`); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Last reproduced | 2026-10-27 on ImpactX 26.10 (`615921c`, committed 2026-10-05); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1729]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1730]], filed from this evidence |
 | Source | [`DipEdge.H#L345-L353`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/DipEdge.H#L345-L353) |
 
 With the nonlinear `DipEdge` model and `modify_ref_part=True`, ImpactX adds the fringe kick, normalized to the reference momentum P₀, directly to the reference particle's `px`, which is stored in units of mc. Since P₀/(mc) = βγ, the reference must instead be deflected by βγ times the kick the beam receives with `modify_ref_part=False`. For `psi` = 0.25 rad, `rc` = 1 m, `g` = 0.1 m and a reference entering along the axis, the reference `px` is −0.004474 at every energy instead of −0.007749 at γ = 2 and −0.04452 at γ = 10. The reference deflection is too small above βγ = 1 and too large below; the kick applied to the beam with `modify_ref_part=False` is not affected.
+
+Run `python TRK-03.py`.
 
 ??? example "Reproducer: TRK-03.py"
 

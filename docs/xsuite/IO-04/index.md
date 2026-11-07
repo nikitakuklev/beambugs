@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Source | [`MadLoader.init_line_expressions`, mad_loader.py:437–461](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/mad_loader.py#L437-L461) |
 
 When a MAD-X lattice is imported with deferred expressions and a variable-renaming map (`replace_in_expr`), `MadLoader` renames variables inside expressions but registers each deferred expression under its original name, so the renamed variable keeps only its initial value. A later knob change must propagate, as an independent MAD-X session and the analytic relation confirm. Importing `base_a = 2e-4; derived_a := 2*base_a` and a horizontal kicker with `kick := derived_a`, renaming both variables to `base_b` and `derived_b` and then setting `base_b = 3e-4` leaves `derived_b` and the tracked horizontal momentum `px` at 4.000×10⁻⁴ instead of 6.000×10⁻⁴. Initial values are correct and renaming only numeric variables works; renamed deferred variables stay frozen while other terms of downstream expressions keep updating.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python IO-04.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: IO-04.py"
 

@@ -6,9 +6,9 @@ T₂ = M₁₂ T₁ M₁₂⁻¹, as the earlier convention in the same chapter 
 symplectic example with unequal off-diagonal blocks, the displayed formula gives T₂₁₁ = 2.697
 instead of −0.5236 and fails the identity T₂ M₁₂ = M₁₂ T₁.
 
-The script reads the manual formula through BMAD_SOURCE and builds an explicit symplectic
-mode-flip example. It evaluates both conjugations using the compiled Bmad matrix inversion
-routine, then checks the forward vector-map identity in NumPy. BMAD_DIST selects the build.
+The script reads the manual formula through BMAD_SOURCE and builds an explicit symplectic mode-flip
+example. It evaluates both conjugations using the compiled Bmad matrix inversion routine, then
+checks the forward vector-map identity in NumPy.
 """
 
 import numpy as np

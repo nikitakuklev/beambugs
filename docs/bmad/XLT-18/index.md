@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [CLI aperture-option contract, util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90:23–27](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90#L23-L27)<br>[writer aperture-option contract, bmad/output/write_lattice_mad_format.f90:36–39](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L36-L39)<br>[MAD-X aperture output guard, bmad/output/write_lattice_mad_format.f90:987–997](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L987-L997)<br>[option parser, util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90:65–67](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90#L65-L67)<br>[MAD-X dispatch, util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90:126–129](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90#L126-L129) |
 
 The translator documentation says the noaperture option is ignored for MAD-X non-drift elements that can carry aperture attributes. In fact, using the option suppresses those attributes. A quadrupole with 0.01 m and 0.02 m half-apertures exports both limits normally and neither with noaperture. The option documentation and the output guard therefore specify different behavior.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _lattice_import_export.py](../helpers/_lattice_import_export.py) · [View source](../helpers/index.md#_lattice_import_export)
+Run `python XLT-18.py` with [_bmad.py](../helpers/_bmad.py) and [_lattice_import_export.py](../helpers/_lattice_import_export.py) in the same directory.
 
 ??? example "Reproducer: XLT-18.py"
 

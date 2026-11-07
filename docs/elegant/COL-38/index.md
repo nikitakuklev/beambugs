@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [reset, csbend.c:4616–4619](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4616-L4619)<br>[declaration, csbend.c:3921](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3921)<br>[wavelength, csbend.c:3953–3955](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3953-L3955)<br>[hand-off, csbend.c:4007–4009](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4007-L4009)<br>[index_min_max, findMinMax.c:116–123](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/findMinMax.c#L116-L123)<br>[wavelength mode, csbend.c:4381–4383](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4381-L4383)<br>[radiation angle, csbend.c:4389–4392](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4389-L4392)<br>[radiation-only factor, csbend.c:4493–4495](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4493-L4495)<br>[WAVELENGTH_MODE, track_data.c:2700](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2700)<br>[CSRDRIFT manual, csrdrift.tex:62–65](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csrdrift.tex#L62-L65) |
 
 With SPREAD=1 and WAVELENGTH_MODE="peak-to-peak", CSRDRIFT's beam-spreading model takes its wavelength from two wake indices that are never set: the extremum search runs on the wake array before the bend hands it over and returns without writing them. For a 0.1 pC, 35 μm rms bunch after a 0.6 m, 0.3 rad bend, the radiation-only spread formula with the 0.1791 mm peak-to-peak wavelength gives an attenuation factor of 0.003415 for a 0.4 m drift, but the kick is applied unattenuated (factor 1), and Valgrind reports the use of uninitialized values in the drift. The default sigmaz mode differs from the formula by about 1.020×10⁻⁸ relative.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _csr.py](../helpers/_csr.py) · [View source](../helpers/index.md#_csr)
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-38.py` with [_csr.py](../helpers/_csr.py) and [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-38.py"
 
@@ -37,13 +34,15 @@ Download these shared helpers into the same directory as the reproducer scripts:
     unattenuated (factor 1), and Valgrind reports the use of uninitialized values in the drift. The
     default sigmaz mode differs from the formula by about 1.020×10⁻⁸ relative.
 
-    The script tracks 40001 electrons (Gaussian quantiles, σ_ct = 35 μm, p = 4000 mₑc, 0.1 pC, x
-    spread over ±30 μm) through a one-slice 0.6 m, 0.3 rad CSRCSBEND (400 bins, STEADY_STATE=1) and a
-    0.4 m CSRDRIFT with one kick, without SPREAD and with SPREAD=1, SPREAD_MODE="radiation-only" and
-    BUNCHLENGTH_MODE="rms" in both wavelength modes. Expected attenuation factors follow the
-    model's formula with the bend-exit beam size and the wavelength the mode selects; the sigmaz
-    mode is the control. Both spread modes are then run under Valgrind (which must be on PATH),
-    which must report no use of uninitialized values in the drift.
+    Setup: `valgrind` on `PATH`; the script runs some cases of serial Elegant under Memcheck.
+
+    The script tracks 40001 electrons (Gaussian quantiles, σ_ct = 35 μm, p = 4000 mₑc, 0.1 pC, x spread
+    over ±30 μm) through a one-slice 0.6 m, 0.3 rad CSRCSBEND (400 bins, STEADY_STATE=1) and a 0.4 m
+    CSRDRIFT with one kick, without SPREAD and with SPREAD=1, SPREAD_MODE="radiation-only" and
+    BUNCHLENGTH_MODE="rms" in both wavelength modes. Expected attenuation factors follow the model's
+    formula with the bend-exit beam size and the wavelength the mode selects; the sigmaz mode is the
+    control. Both spread modes are then run under Valgrind, which must report no use of uninitialized
+    values in the drift.
     """
 
     import re

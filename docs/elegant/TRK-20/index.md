@@ -12,15 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`set_up_derivatives`, MAPSOLENOID rotations, motion.cc:481–482](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/motion.cc#L481-L482)<br>[`setupRotate3Matrix`, tilt_matrices.c:218–255](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/tilt_matrices.c#L218-L255)<br>[`derivatives_mapSolenoid` position rotation, motion.cc:1055](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/motion.cc#L1055)<br>[`derivatives_mapSolenoid` field rotation, motion.cc:1101](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/motion.cc#L1101)<br>[MAPSOLENOID dictionary, track_data.c:2781–2783](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2781-L2783) |
 
 In Elegant's MAPSOLENOID, the misalignment angles ETILT, EYAW and EPITCH rotate the particle into the element frame with one matrix and rotate the field back with another that is not its inverse when more than one angle is nonzero. A particle travelling along the map's own axis, parallel to a uniform axial field, must feel no force, but the field points in a different direction. With a 0.7 m map of 1.200 mT, p = 13 mₑc, ETILT = 0.17, EYAW = −0.11 and EPITCH = 0.13 rad, the slopes change by −8.214×10⁻⁴ (x′) and −8.546×10⁻⁴ (y′) instead of zero; each angle alone is exact. The error is second order in the angles.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-20.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-20.py"
 

@@ -12,11 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`pals_to_impactx.py#L100-L130`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/pals_to_impactx.py#L100-L130) |
 
 Importing a PALS (Particle Accelerator Lattice Standard) lattice into ImpactX silently ignores body offsets (`BodyShiftP`) and apertures (`ApertureP`) on drifts and quadrupoles. A body shift d displaces the element and its field, so a particle u is transported as M·(u − d) + d for element map M; native `ChrQuad(dx=d)` and `Drift` plus `Aperture` give them. For a γ = 5 proton, a 0.2 m quadrupole with `Kn1` = 2 m⁻² offset by 1 mm leaves an on-axis particle at normalized momentum pₓ = 0 instead of 3.947×10⁻⁴, and a 0.2 m drift with an active ±1 mm rectangular exit aperture passes all four particles where two should be lost. An inactive aperture correctly has no effect.
+
+Run `python API-07.py`.
 
 ??? example "Reproducer: API-07.py"
 
@@ -33,13 +35,17 @@ Importing a PALS (Particle Accelerator Lattice Standard) lattice into ImpactX si
     0 instead of 3.947×10⁻⁴, and a 0.2 m drift with an active ±1 mm rectangular exit aperture passes all
     four particles where two should be lost. An inactive aperture correctly has no effect.
 
-    Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script checks that the installed PALS
-    converter equals the pinned source in that clone, then imports, for a γ = 5 proton, a 0.2 m
-    quadrupole (`Kn1` = 2 m⁻²) with horizontal body offsets of +1 mm and −0.6 mm, and a 0.2 m drift with
-    a ±1 mm rectangular exit aperture, inactive and active. Quadrupole tracking is compared with M·(u −
-    d) + d from a matrix exponential and with native `ChrQuad(dx=d)`; four particles with zero momenta,
-    two of them outside the aperture, are compared with the survivors of direct inequalities and of a
-    native `Drift` followed by an `Aperture`. The inactive aperture is the control.
+    Setup: `IMPACTX_SOURCE` set to a full clone of BLAST-ImpactX/impactx, and `git` on `PATH`; the
+    script reads the PALS converter at tag `26.10` (`615921c6867c`) and at commit `b701a6e9d1f9` from
+    its history.
+
+    The script checks that the installed PALS converter equals the pinned source in that clone, then
+    imports, for a γ = 5 proton, a 0.2 m quadrupole (`Kn1` = 2 m⁻²) with horizontal body offsets of +1
+    mm and −0.6 mm, and a 0.2 m drift with a ±1 mm rectangular exit aperture, inactive and active.
+    Quadrupole tracking is compared with M·(u − d) + d from a matrix exponential and with native
+    `ChrQuad(dx=d)`; four particles with zero momenta, two of them outside the aperture, are compared
+    with the survivors of direct inequalities and of a native `Drift` followed by an `Aperture`. The
+    inactive aperture is the control.
     """
 
     import os

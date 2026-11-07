@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [`switchRbendPlane`, ccbend.c:1414–1418](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L1414-L1418)<br>[entrance call, ccbend.c:523](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L523)<br>[exit call, ccbend.c:643](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L643)<br>[`USE_NEW_SWITCH_CODE 0`, ccbend.c:1379](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L1379)<br>[disabled branch with the factor, ccbend.c:1398](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L1398)<br>[manual, elegant.tex:374](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L374)<br>[internals, elegantInternals.tex:37](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegantInternals.tex#L37)<br>[CCBEND model, ccbend.tex:1–15](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ccbend.tex#L1-L15)<br>[parameter L, track_data.c:3786](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3786) |
 
 CCBEND's entrance and exit plane changes add each straight flight's axial projection to the path instead of its signed length. For positive-angle uniform dipoles without radiation, an independent helix construction shows a timing error that survives increased slicing and reference correction. With L = 1.300 m, bend angle 0.2400 rad and reference momentum 10 mₑc, a particle at x = 12.00 mm, horizontal slope x′ = −0.02500 and 12% higher momentum has a path 2.635 μm too long, or 8.826 fs late. At x = 0.1000 mm and x′ = 0.1000 mrad on momentum, the error is −0.1980 μm. The on-axis, on-momentum reference particle is unaffected.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-09.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-09.py"
 

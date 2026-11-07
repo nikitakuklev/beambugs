@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [`lostParticle` declaration, touschekScatter.c:345](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L345)<br>[tracking branch, touschekScatter.c:735–797](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L735-L797)<br>[cleanup, touschekScatter.c:886–889](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L886-L889)<br>[`free_czarray_2d`, mdblib/array.c:420–424](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdblib/array.c#L420-L424)<br>[namelist default, touschekScatter.nl:37](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.nl#L37)<br>[touschek_scatter, elegant.tex:7699](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7699)<br>[`do_track`, elegant.tex:7809–7813](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7809-L7813) |
 
 When Pelegant, Elegant's MPI version, runs the touschek_scatter command with its default do_track = 0, which generates the scattered particles without tracking them, it crashes with a segmentation fault after generating the particles at the first TSCATTER element. Serial Elegant completes the same input. The cleanup frees the array of lost particles on the master rank, but that array exists only when tracking is enabled, and the freeing routine dereferences it. For three TSCATTER elements and 40 generated particles per element, serial Elegant writes three pages of 40 particles, and Pelegant with do_track = 1 does too, but Pelegant with do_track = 0 aborts.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python SCT-03.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: SCT-03.py"
 
@@ -35,6 +33,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     only when tracking is enabled, and the freeing routine dereferences it. For three TSCATTER elements
     and 40 generated particles per element, serial Elegant writes three pages of 40 particles, and
     Pelegant with do_track = 1 does too, but Pelegant with do_track = 0 aborts.
+
+    Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the
+    defect occurs only under MPI.
 
     The script runs touschek_scatter on a three-element TSCATTER lattice with 40 generated particles per
     element, once in serial Elegant and twice in 3-rank Pelegant, with tracking disabled and enabled. It

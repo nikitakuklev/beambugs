@@ -5,9 +5,9 @@ have identical values, matching the corresponding optimization-only response. Pa
 must be unique within a response so clients can validate and consume its schema. Removing the
 repeated records preserves all parameter values.
 
-The script counts every parameter name in pipe global and checks the repeated values against
-pipe global:optimization. It requires the expected parameter schema and successful command
-completion before assigning a verdict. BMAD_DIST supplies Tao.
+The script counts every parameter name in pipe global and checks the repeated values against pipe
+global:optimization. It requires the expected parameter schema and successful command completion
+before assigning a verdict.
 """
 
 from collections import Counter

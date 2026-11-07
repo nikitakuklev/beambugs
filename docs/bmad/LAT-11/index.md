@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`hdf5_read_bunch`, bmad/hdf5/hdf5_read_beam.f90:564–584](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L564-L584)<br>[public momentum-policy contract, bmad/hdf5/hdf5_read_beam.f90:7–24](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L7-L24)<br>[The momentum-shift diagnostics, bmad/hdf5/hdf5_read_beam.f90:538–551](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L538-L551) |
 
 Reading an HDF5 beam at a different reference momentum without specifying conserve_momentum combines incompatible defaults. Changing the reference from 1 to 1.7 MeV/c keeps the relative total-momentum deviation δ = 0.1 but changes transverse momenta divided by the reference momentum from (0.04, −0.02) to (0.02353, −0.01176). The documented default is false, which retains all three normalized momentum coordinates. Explicit false preserves those coordinates; the source’s warning branches describe the opposite momentum policy.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_11_particle_io.py](../helpers/_s3_11_particle_io.py) · [View source](../helpers/index.md#_s3_11_particle_io)
+Run `python LAT-11.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_11_particle_io.py](../helpers/_s3_11_particle_io.py) in the same directory.
 
 ??? example "Reproducer: LAT-11.py"
 

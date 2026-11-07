@@ -9,7 +9,7 @@ space charge performs the required refresh.
 
 The script applies a zero kick, a small negative kick and a larger diagnostic positive kick to
 electrons. It derives β from the mass shell and z from fixed arrival time, independently of Bmad’s
-conversion routine. Set BMAD_DIST to the build root.
+conversion routine.
 """
 
 import numpy as np

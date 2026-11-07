@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [bbu_add_a_bunch ramp selection](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/code/bbu_track_mod.f90#L599-L608)<br>[ramp count construction](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/bbu/bbu_program.f90#L53-L61)<br>[ramp_pattern parameter](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/bbu/doc/bbu.tex#L237-L248) |
 
 A BBU simulation with a repeating bunch-charge ramp omits the final supplied pattern entry. The
@@ -20,10 +20,7 @@ program counts all supplied values, but the insertion routine subtracts one agai
 the pattern index. A three-entry pattern [1, 2, 3] produces charge factors [1, 2, 1] instead of
 [1, 2, 3]. The documented pattern repeats all entries.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _ibs_charge_and_modes.py](../helpers/_ibs_charge_and_modes.py) · [View source](../helpers/index.md#_ibs_charge_and_modes)
+Run `python COL-55.py` with [_bmad.py](../helpers/_bmad.py) and [_ibs_charge_and_modes.py](../helpers/_ibs_charge_and_modes.py) in the same directory.
 
 ??? example "Reproducer: COL-55.py"
 

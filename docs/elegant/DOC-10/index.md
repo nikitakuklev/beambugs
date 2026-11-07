@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [amplitude definition in `tune_shift_with_amplitude`, doc/elegant.tex:8412–8413](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8412-L8413)<br>[in the `twiss_output` column list, doc/elegant.tex:8241–8242](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8241-L8242)<br>[the namelist listing, doc/elegant.tex:8425](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8425)<br>[`Ax = x²(1 + αx²)/βx`, src/twiss.cc:3595](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3595)<br>[`Ay`, src/twiss.cc:3610](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3610)<br>[`lines_only = 1`, src/twiss.nl:28](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.nl#L28) |
 
 The Elegant manual defines the amplitude of `tune_shift_with_amplitude` and of the `twiss_output` columns dnux/dAx, dnux/dAy, dnuy/dAx and dnuy/dAy as A_q = (1 + α_q)q²/β_q, with α_q, β_q the Twiss functions and q = x or y, and lists the `lines_only` default as 0. Elegant uses the Courant–Snyder invariant (1 + α_q²)q²/β_q and defaults `lines_only` to 1. At a start with αx = −0.8574 and βx = 6.877 m, a particle at x = 1.999 mm has Ax = 1.008 μm, where the printed formula gives 0.08286 μm; omitting `lines_only` with a 4×4 grid tracks 7 points on two lines instead of the 16 of the documented default.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python DOC-10.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: DOC-10.py"
 
@@ -36,12 +34,14 @@ Download these shared helpers into the same directory as the reproducer scripts:
     omitting `lines_only` with a 4×4 grid tracks 7 points on two lines instead of the 16 of the
     documented default.
 
-    The script reads both statements from `doc/elegant.tex` of the Elegant source checkout named by
-    `ELEGANT_SOURCE` (required) and exits if either is missing or unrecognized. It then runs serial
-    Elegant `tune_shift_with_amplitude` in tracking mode on eight FODO cells with one thin octupole,
-    started where αx = −0.8574, and compares the written amplitudes Ax with x²(1 + αx²)/βx and with
-    the manual's x²(1 + αx)/βx; it counts the tracked grid points with `lines_only` omitted and with
-    `lines_only=0`, the documented default.
+    Setup: `ELEGANT_SOURCE` set to a clone of rtsoliday/elegant; the script reads the manual's LaTeX
+    source from it.
+
+    The script reads both statements from the checkout's `doc/elegant.tex` and exits if either is
+    missing or unrecognized. It then runs serial Elegant `tune_shift_with_amplitude` in tracking mode on
+    eight FODO cells with one thin octupole, started where αx = −0.8574, and compares the written
+    amplitudes Ax with x²(1 + αx²)/βx and with the manual's x²(1 + αx)/βx; it counts the tracked grid
+    points with `lines_only` omitted and with `lines_only=0`, the documented default.
     """
 
     import os

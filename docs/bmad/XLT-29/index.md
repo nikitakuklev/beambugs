@@ -12,18 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`write_lattice_mad_format`, bmad/output/write_lattice_mad_format.f90:946–963](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L946-L963)<br>[lines 267–286](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L267-L286)<br>[bmad/doc/elements.tex:3864–3878](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L3864-L3878)<br>[MAD-X multipole.html:55–60](https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/7998e738eca575c82a424138517c2a17115f3cdb/doc/usrguide/Introduction/multipole.html#L55-L60)<br>[src/trrun.f90:1273–1280](https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/7998e738eca575c82a424138517c2a17115f3cdb/src/trrun.f90#L1273-L1280)<br>[1367–1368](https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/7998e738eca575c82a424138517c2a17115f3cdb/src/trrun.f90#L1367-L1368) |
 
 Exporting an ab_multipole’s dipole components a₀ and b₀, or the corresponding end-multipole errors of a thick magnet, to MAD-X removes their kicks at the reference momentum. Bmad applies normalized momentum changes Δpₓ = −b₀ and Δpᵧ = a₀, but MAD-X interprets the exported order-zero coefficients as design terms and gives no on-momentum kick. For a₀ = 0.0007300 on an ab_multipole or a 0.5 m quadrupole with zero main strength, Bmad gives pᵧ = 0.0007300 while MAD-X TRACK and TWISS give zero. Handwritten MAD-X multipoles establish the same receiving-code behavior independently of the exporter.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s4_17_translations.py](../helpers/_s4_17_translations.py) · [View source](../helpers/index.md#_s4_17_translations)
-- [Download _translators.py](../helpers/_translators.py) · [View source](../helpers/index.md#_translators)
-- [Download _s3_24_translations.py](../helpers/_s3_24_translations.py) · [View source](../helpers/index.md#_s3_24_translations)
+Run `python XLT-29.py` with [_bmad.py](../helpers/_bmad.py), [_s4_17_translations.py](../helpers/_s4_17_translations.py), [_translators.py](../helpers/_translators.py) and [_s3_24_translations.py](../helpers/_s3_24_translations.py) in the same directory.
 
 ??? example "Reproducer: XLT-29.py"
 

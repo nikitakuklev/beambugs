@@ -12,12 +12,14 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">extreme-regime</span> [?](../../methodology.md#tags) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1573]] |
 | Source | [`ChrUniformAcc.H#L172-L174`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrUniformAcc.H#L172-L174)<br>[`L204-L206`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrUniformAcc.H#L204-L206)<br>[`L273`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrUniformAcc.H#L273) |
 
 `ChrAcc` with a tiny nonzero acceleration `ez` = qE/(mc²) (E the longitudinal electric field) divides a logarithm of a near-unity ratio and differences of nearly equal momenta by `ez`, so rounding corrupts the transverse map, the arrival time `t` and the reference time. A 65-digit quadrature of the documented Hamiltonian gives the correct values. For a proton at γ = 2 entering a 0.4 m element with `ez` = 1e-14 m⁻¹ at x = 0.01 m, `px` = 0.02, `x` exits at 0.01846 m instead of 0.01782 m, `t` is off by 0.002584 m and the reference `ct` is 0.4663 m instead of 0.4619 m. At `ez` = 1e-16 m⁻¹ the particle is not moved. Both signs fail.
+
+Run `python TRK-14.py`.
 
 ??? example "Reproducer: TRK-14.py"
 

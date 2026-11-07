@@ -12,11 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`) |
+| Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
-| Source | [`BeamTracking.jl/src/kernels/aperture.jl:4-7`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/aperture.jl#L4-L7)<br>[`BeamTracking.jl/src/kernels/aperture.jl:21-25`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/aperture.jl#L21-L25)<br>[`SciBmad.jl/docs/src/track.md:72-73`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/track.md#L72-L73)<br>[`BeamTracking.jl/src/types.jl:15-18`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L15-L18)<br>[`BeamTracking.jl/src/kernels/drift_kick.jl:67-68`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/drift_kick.jl#L67-L68)<br>[`BeamTracking.jl/test/RungeKuttaTracking_test.jl:331-337`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/test/RungeKuttaTracking_test.jl#L331-L337) |
+| Source | [`BeamTracking.jl/src/kernels/aperture.jl:4-7`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/aperture.jl#L4-L7)<br>[`BeamTracking.jl/src/kernels/aperture.jl:21-25`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/aperture.jl#L21-L25)<br>[`SciBmad.jl/docs/src/track.md:72-73`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/track.md#L72-L73)<br>[`BeamTracking.jl/src/types.jl:15-18`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L15-L18)<br>[`BeamTracking.jl/src/kernels/drift_kick.jl:66-67`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/drift_kick.jl#L66-L67)<br>[`BeamTracking.jl/test/RungeKuttaTracking_test.jl:331-337`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/test/RungeKuttaTracking_test.jl#L331-L337) |
 
 Rectangular aperture tracking overwrites an already-lost particle's loss-side code when its frozen coordinates lie outside a later aperture. A particle at x = y = 0.2 m first lost at an `x2_limit = 0.1` m aperture has state 4 (`STATE_LOST_POS_X`), but a later `y2_limit = 0.1` m aperture changes it to state 6 (`STATE_LOST_POS_Y`). The state should remain 4: the drift kernel keeps an already-set loss state, and BeamTracking's Runge–Kutta tests assert that a lost particle keeps its state. Source inspection shows the same missing live-particle check in the elliptical aperture kernel. Loss-side diagnostics are silently corrupted; surviving particles are unaffected.
+
+Run `julia LAT-11.jl`.
 
 ??? example "Reproducer: LAT-11.jl"
 

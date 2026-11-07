@@ -12,17 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`sad_ele_to_bmad`, zero-length BEND strength rules](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/sad_to_bmad/sad_to_bmad.py#L558-L564)<br>[BEND ROTATE/DROTATE rules](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/sad_to_bmad/sad_to_bmad.py#L152-L153)<br>[Bmad manual, “Multipole”, `s:mult`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L3860-L3878)<br>[`attribute_bookkeeper`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/attribute_bookkeeper.f90#L589-L597) |
 
 Importing a zero-length SAD BEND produces a missing dipole kick or invalid Bmad attributes. A dipole strength K0 = 1 mrad becomes a multipole without the required K0L status; Bmad emits a fatal diagnostic and resets its strength to zero. ROTATE and DROTATE become attributes that are invalid for a multipole, while a nonzero reference angle ANGLE becomes an invalid zero-length sbend. Handwritten translations that distinguish the dipole kick from the reference bend agree with SAD’s thin-map equations.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_24_translations.py](../helpers/_s3_24_translations.py) · [View source](../helpers/index.md#_s3_24_translations)
-- [Download _s4_17_translations.py](../helpers/_s4_17_translations.py) · [View source](../helpers/index.md#_s4_17_translations)
+Run `python XLT-35.py` with [_bmad.py](../helpers/_bmad.py), [_s3_24_translations.py](../helpers/_s3_24_translations.py) and [_s4_17_translations.py](../helpers/_s4_17_translations.py) in the same directory.
 
 ??? example "Reproducer: XLT-35.py"
 

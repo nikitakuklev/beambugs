@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`, committed 2026-11-03) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`do_tracking`, per-element slice-analysis call, do_tracking.c:2895–2911](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2895-L2911)<br>[the end-of-beamline call after the element loop, do_tracking.c:3071–3090](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L3071-L3090)<br>[the tracking context passed to elements, do_tracking.c:1194](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L1194)<br>[`performSliceAnalysisOutput`, sliceAnalysis.c:394–484](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sliceAnalysis.c#L394-L484)<br>[`setupSliceAnalysis`, sliceAnalysis.c:168–175](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sliceAnalysis.c#L168-L175)<br>[`slice_analysis` places the final slice analysis at the end of the beamline in symbols for optimization equations, named as the output columns, elegant.tex:7566–7570](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7566-L7570)<br>[with `final_values_only` nonzero the slice quantities are computed only at the end of the beamline, elegant.tex:7593–7594](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7593-L7594)<br>[`slice_analysis not supported for parallel version`, elegant.c:2342–2345](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L2342-L2345) |
 
 Elegant's `slice_analysis` with `final_values_only=1`, which the manual says computes the slice quantities only at the end of the beamline, never computes them in serial tracking: the run succeeds, but the output file holds no data page and the optimization symbols named after its columns stay at zero. For 128 particles with mean x = 2 mm and x′ = 0.4 mrad through drifts of 0.7 and 1.6 m, the drift map gives the final centroid Cx = 2.920 mm, which the default `final_values_only=0` writes and stores at the end of the line. With `final_values_only=1` the file has no rows, and the symbols Cx and particles read 0 instead of 2.920 mm and 128.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-30.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-30.py"
 

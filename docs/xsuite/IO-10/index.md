@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xpart main (`2633e52`) |
+| Last reproduced | 2026-10-29 on xpart main (`2633e52`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`generate_longitudinal_coordinates`, generate_longitudinal.py:371–390](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L371-L390)<br>[line characterization](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L23-L140)<br>[public contract](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L175-L195)<br>[matched-bunch wrapper](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/matched_gaussian.py#L171-L215) |
 
 The linear engine of `generate_longitudinal_coordinates` samples independent Gaussian `zeta` and `delta` with RMS momentum spread σ_δ = σ_z/|β_z|, where σ_z is the RMS bunch length and β_z (`bets0`) the periodic longitudinal beta function, discarding the position-momentum correlation and momentum variance required by a nonzero periodic longitudinal alpha. An independent covariance solve establishes the stationary ellipse. For 3 GeV/c protons on segments with (`bets`, `qs`) = (7 m, 0.045) and (21 m, 0.08), and σ_z = 3×10⁻⁴ m, the sampled bunch-length variance after one turn is 0.8108 of its initial value instead of 1. The matched-Gaussian-bunch wrapper reproduces the mismatch. A weak synchrotron tune of 1.429×10⁻³ still gives a relative variance change of 3.790×10⁻⁵.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python IO-10.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: IO-10.py"
 

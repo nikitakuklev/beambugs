@@ -2,7 +2,7 @@
 
 A deterministic radiation kick changes the momentum coordinate without updating the particle record’s speed β = v/c. The record should satisfy β = p/√(p² + m²c²) at the new physical momentum. A half-element kick in a 10 m bend of curvature 0.1 m⁻¹ at 10 GeV/c changes relative momentum by −7.040 × 10⁻⁴ but leaves β too high by 1.840 × 10⁻¹². The effect is small at this energy but exceeds floating-point rounding.
 
-The script applies the entrance radiation kick with damping disabled and enabled, keeping fluctuations off. It reconstructs β from the returned momentum and compiled electron mass and checks the damping-off control. Set BMAD_DIST to the build root.
+The script applies the entrance radiation kick with damping disabled and enabled, keeping fluctuations off. It reconstructs β from the returned momentum and compiled electron mass and checks the damping-off control.
 """
 
 import numpy as np

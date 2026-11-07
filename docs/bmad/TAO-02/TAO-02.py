@@ -7,8 +7,7 @@ y = −0.2000 m⁻², its residual norm squared is 0.1300 while Tao reports meri
 reaches the analytic weighted optimum on the same one-variable problem.
 
 The script compiles a probe of the geodesic residual vector and compares it with the weighted
-objective. Separate Tao processes run geodesic LM and an SVD control against the analytic
-minimum. BMAD_DIST supplies the build.
+objective. Separate Tao processes run geodesic LM and an SVD control against the analytic minimum.
 """
 
 import re

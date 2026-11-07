@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [track_a_lcavity_old, bmad/low_level/track_a_lcavity_old.f90:449–490](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_lcavity_old.f90#L449-L490)<br>[ele_reference_energy_correction, bmad/low_level/ele_reference_energy_correction.f90:47–54](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/ele_reference_energy_correction.f90#L47-L54)<br>[Bmad Manual, tracking and time direction, bmad/doc/tracking.tex:50–77](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/tracking.tex#L50-L77) |
 
 The legacy linear-cavity tracker selected by n_rf_steps = 0 mishandles reference momentum at zero length and in backward time. A zero-length 2 MV cavity leaves a 5 MeV/c particle unaccelerated and retains the 5 MeV/c reference instead of the required 7.007 MeV/c exit reference. After a powered finite cavity is tracked forward and then backward, the returned particle has momentum 4.178 MeV/c instead of its initial 5 MeV/c and retains the exit reference. The stepped tracker restores the initial orbit and reference in both powered and off finite-cavity round trips.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _rf_and_spin.py](../helpers/_rf_and_spin.py) · [View source](../helpers/index.md#_rf_and_spin)
+Run `python TRK-23.py` with [_bmad.py](../helpers/_bmad.py) and [_rf_and_spin.py](../helpers/_rf_and_spin.py) in the same directory.
 
 ??? example "Reproducer: TRK-23.py"
 

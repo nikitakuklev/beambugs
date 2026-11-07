@@ -12,20 +12,20 @@
   "justification": null,
   "locations": [
    {
-    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:482",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L482"
+    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:486",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L486"
    },
    {
-    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:497",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L497"
+    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:501",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L501"
    },
    {
     "label": "src/kernels/rfcavity_kick.jl:106–114",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/rfcavity_kick.jl#L106-L114"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/rfcavity_kick.jl#L106-L114"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/utils_bl.jl:214–226",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L214-L226"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L214-L226"
    },
    {
     "label": "src/rf.jl:4–5",
@@ -36,12 +36,12 @@
     "url": "https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/rf.jl#L66"
    },
    {
-    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:484",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L484"
+    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:488",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L488"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/utils_bl.jl:217–222",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L217-L222"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L217-L222"
    }
   ],
   "upstream": [],
@@ -94,7 +94,8 @@
    "date": "2026-10-24",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "d8e45fdc25db"
+    "commit": "d8e45fdc25db",
+    "committed": "2026-10-23"
    },
    "head": true,
    "head_not_reproduced": null
@@ -124,15 +125,15 @@
   "locations": [
    {
     "label": "ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl:15",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl#L15"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl#L15"
    },
    {
     "label": "src/kernels/sagan_cavity.jl:188–189",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L188-L189"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L188-L189"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/utils_bl.jl:217–220",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L217-L220"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L217-L220"
    },
    {
     "label": "src/rf.jl:6–7",
@@ -140,7 +141,7 @@
    },
    {
     "label": "src/utils/z_to_time.jl:26",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/z_to_time.jl#L26"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/z_to_time.jl#L26"
    }
   ],
   "upstream": [],
@@ -193,7 +194,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -222,15 +224,15 @@
   "locations": [
    {
     "label": "ext/BeamTrackingBeamlinesExt/exact_bl.jl:12–31",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/exact_bl.jl#L12-L31"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/exact_bl.jl#L12-L31"
    },
    {
     "label": "src/kernels/bend_kick.jl:187–195",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/bend_kick.jl#L187-L195"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/bend_kick.jl#L187-L195"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/exact_bl.jl:34–42",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/exact_bl.jl#L34-L42"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/exact_bl.jl#L34-L42"
    },
    {
     "label": "src/bend.jl:7–9",
@@ -242,7 +244,7 @@
    },
    {
     "label": "src/tracking_methods.jl:69–74",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/tracking_methods.jl#L69-L74"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/tracking_methods.jl#L69-L74"
    },
    {
     "label": "bmad/modules/fringe_mod.f90:183–207",
@@ -319,7 +321,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -349,15 +352,15 @@
   "locations": [
    {
     "label": "src/kernels/patch.jl:7",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/patch.jl#L7"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/patch.jl#L7"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/unpack_bl.jl:90",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L90"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L90"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/unpack_bl.jl:348",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L348"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L348"
    },
    {
     "label": "src/patch.jl:16",
@@ -422,7 +425,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -452,35 +456,35 @@
   "locations": [
    {
     "label": "src/kernels/sagan_cavity.jl:19–22",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L19-L22"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L19-L22"
    },
    {
     "label": "src/kernels/sagan_cavity.jl:85–88",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L85-L88"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L85-L88"
    },
    {
     "label": "src/kernels/sagan_cavity.jl:101–105",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L101-L105"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L101-L105"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/unpack_bl.jl:357–467",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L357-L467"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L357-L467"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/unpack_bl.jl:421",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L421"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L421"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/unpack_bl.jl:465",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L465"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L465"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/unpack_bl.jl:133–136",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L133-L136"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L133-L136"
    },
    {
     "label": "src/types.jl:41",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L41"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L41"
    }
   ],
   "upstream": [
@@ -548,7 +552,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -681,11 +686,11 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-07",
     "code": {
-     "ref": "BeamTracking main",
+     "ref": "BeamTracking 0.8.7",
      "commit": "0bf3585fdc9c",
-     "build": "main-branch sources of 2026-10-29 (SciBmad ae9423d703b4, BeamTracking 0bf3585fdc9c, AtomicAndPhysicalConstants 750a9f276b7d), Julia 1.13.2, CPU, one thread"
+     "build": "pinned package set (SciBmad ae9423d703b4, Beamlines 0.11.0 35fe0162c72d, AtomicAndPhysicalConstants 0.11.6 750a9f276b7d), Julia 1.13.2, CPU, one thread"
     },
     "result": "not reproduced"
    }
@@ -694,15 +699,18 @@
    "date": "2026-10-22",
    "code": {
     "ref": "BeamTracking 0.8.7",
-    "commit": "65e343f9afda"
+    "commit": "65e343f9afda",
+    "committed": "2026-10-13"
    },
    "head": false,
    "head_not_reproduced": {
-    "date": "2026-10-29",
+    "date": "2026-11-07",
     "code": {
-     "ref": "BeamTracking main",
-     "commit": "0bf3585fdc9c"
-    }
+     "ref": "BeamTracking 0.8.7",
+     "commit": "0bf3585fdc9c",
+     "committed": "2026-10-28"
+    },
+    "head": true
    }
   },
   "models": [
@@ -730,23 +738,23 @@
   "locations": [
    {
     "label": "src/utils/find_stuff.jl:22–43",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/find_stuff.jl#L22-L43"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/find_stuff.jl#L22-L43"
    },
    {
     "label": "src/kernels/integrators.jl:20–21",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/integrators.jl#L20-L21"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/integrators.jl#L20-L21"
    },
    {
     "label": "src/kernels/integrators.jl:82–83",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/integrators.jl#L82-L83"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/integrators.jl#L82-L83"
    },
    {
     "label": "src/callbacks.jl:4",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/callbacks.jl#L4"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/callbacks.jl#L4"
    },
    {
     "label": "src/callbacks.jl:26–29",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/callbacks.jl#L26-L29"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/callbacks.jl#L26-L29"
    }
   ],
   "upstream": [],
@@ -789,7 +797,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -826,19 +835,19 @@
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/utils_bl.jl:199–210",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L199-L210"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L199-L210"
    },
    {
-    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:482",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L482"
+    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:486",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L486"
    },
    {
-    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:497",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L497"
+    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:501",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L501"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl:15",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl#L15"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl#L15"
    }
   ],
   "upstream": [],
@@ -891,7 +900,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -922,19 +932,19 @@
   "locations": [
    {
     "label": "ext/BeamTrackingBeamlinesExt/unpack_bl.jl:139–318",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L139-L318"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L139-L318"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/unpack_bl.jl:357–366",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L357-L366"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L357-L366"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/rungekutta.jl:16–21",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/rungekutta.jl#L16-L21"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/rungekutta.jl#L16-L21"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/rungekutta.jl:70",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/rungekutta.jl#L70"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/rungekutta.jl#L70"
    },
    {
     "label": "src/misc.jl:147–169",
@@ -946,11 +956,11 @@
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/unpack_bl.jl:263",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L263"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L263"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/rungekutta.jl:39–51",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/rungekutta.jl#L39-L51"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/rungekutta.jl#L39-L51"
    }
   ],
   "upstream": [],
@@ -1003,7 +1013,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1032,27 +1043,27 @@
   "locations": [
    {
     "label": "docs/src/sagancavity-physics.md:59–69",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L59-L69"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L59-L69"
    },
    {
     "label": "docs/src/sagancavity-physics.md:73–81",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L73-L81"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L73-L81"
    },
    {
     "label": "docs/src/sagancavity-physics.md:83–84",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L83-L84"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L83-L84"
    },
    {
     "label": "docs/src/sagancavity-physics.md:159–164",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L159-L164"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L159-L164"
    },
    {
     "label": "docs/src/sagancavity-physics.md:170–181",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L170-L181"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L170-L181"
    },
    {
     "label": "src/kernels/sagan_cavity.jl:252–279",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L252-L279"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L252-L279"
    },
    {
     "label": "bmad/low_level/track_a_lcavity.f90:265–308",
@@ -1060,7 +1071,7 @@
    },
    {
     "label": "src/kernels/sagan_cavity.jl:222–231",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L222-L231"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L222-L231"
    }
   ],
   "upstream": [],
@@ -1133,7 +1144,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1163,35 +1175,35 @@
   "locations": [
    {
     "label": "docs/src/sagancavity-tracking.md:16",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-tracking.md#L16"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-tracking.md#L16"
    },
    {
     "label": "docs/src/sagancavity-tracking.md:28",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-tracking.md#L28"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-tracking.md#L28"
    },
    {
     "label": "docs/src/sagancavity-tracking.md:32",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-tracking.md#L32"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-tracking.md#L32"
    },
    {
     "label": "docs/src/sagancavity-tracking.md:42",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-tracking.md#L42"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-tracking.md#L42"
    },
    {
     "label": "docs/src/sagancavity-tracking.md:56–58",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-tracking.md#L56-L58"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-tracking.md#L56-L58"
    },
    {
     "label": "docs/src/sagancavity-physics.md:37",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L37"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L37"
    },
    {
     "label": "docs/src/sagancavity-physics.md:95",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L95"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L95"
    },
    {
     "label": "src/tracking_methods.jl:79–89",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/tracking_methods.jl#L79-L89"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/tracking_methods.jl#L79-L89"
    },
    {
     "label": "src/rf.jl:9",
@@ -1276,7 +1288,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1295,45 +1308,25 @@
  {
   "code": "scibmad",
   "id": "TRK-15",
-  "title": "Stale docstrings: `Bunch` callback signature, `SciBmadStandard` \"Yoshida\"",
+  "title": "`SciBmadStandard` docstring names a nonexistent `Yoshida` integrator",
   "area": "Tracking",
   "priority": "P4",
   "severity": "Documentation or example mismatch",
   "level": "Reproduced, independently rechecked",
   "tags": [],
-  "summary": "Two docstrings describe interfaces that do not exist: the `Bunch` docstring prescribes a three-argument callback that tracking cannot call, and the `SciBmadStandard` docstring names a nonexistent `Yoshida` integrator. The callback call site passes nine arguments, so a callback written as documented, `callback(coords, ds_step, g)`, raises `MethodError`. The default method actually uses `Symplectic` with keyword `n_steps`, at order 2 for exact bodies and order 4 otherwise, not `Yoshida(order=4, num_steps=1)`.",
+  "summary": "The docstring of the default tracking method `SciBmadStandard` says that elements without an exact map use \"the symplectic integrator `Yoshida(order=4, num_steps=1)`\". No `Yoshida` type exists in SciBmad, Beamlines or BeamTracking, and no tracking method has a `num_steps` field. The default method maps to `Symplectic` with keyword `n_steps`, at order 2 for exact bodies and order 4 otherwise. A user who copies the documented method gets an `UndefVarError`; tracking itself is unaffected.",
   "justification": null,
   "locations": [
-   {
-    "label": "src/types.jl:80–86",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L80-L86"
-   },
    {
     "label": "src/element.jl:250–256",
     "url": "https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/element.jl#L250-L256"
    },
    {
-    "label": "src/callbacks.jl:4",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/callbacks.jl#L4"
-   },
-   {
-    "label": "src/callbacks.jl:59–61",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/callbacks.jl#L59-L61"
-   },
-   {
     "label": "ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl:1–32",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl#L1-L32"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl#L1-L32"
    }
   ],
-  "upstream": [
-   {
-    "repository": "bmad-sim/BeamTracking.jl",
-    "number": 370,
-    "kind": "pull",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/pull/370",
-    "relation": "fix"
-   }
-  ],
+  "upstream": [],
   "provenance": {
    "found": [
     {
@@ -1344,19 +1337,7 @@
       "ref": "BeamTracking 0.8.7",
       "commit": "65e343f9afda",
       "build": "release sources, Julia 1.13.2, CPU, Float64"
-     },
-     "scope": "callback signature"
-    },
-    {
-     "model": "gpt-6-astra",
-     "effort": "xhigh",
-     "date": "2026-10-22",
-     "code": {
-      "ref": "BeamTracking 0.8.7",
-      "commit": "65e343f9afda",
-      "build": "release sources, Julia 1.13.2, CPU, Float64"
-     },
-     "scope": "Yoshida docstring"
+     }
     }
    ],
    "confirmed": [
@@ -1368,19 +1349,7 @@
       "ref": "BeamTracking 0.8.7",
       "commit": "65e343f9afda",
       "build": "release sources, Julia 1.13.2, CPU, Float64"
-     },
-     "scope": "callback signature"
-    },
-    {
-     "model": "gpt-6-sol",
-     "effort": "xhigh",
-     "date": "2026-10-22",
-     "code": {
-      "ref": "BeamTracking 0.8.7",
-      "commit": "65e343f9afda",
-      "build": "release sources, Julia 1.13.2, CPU, Float64"
-     },
-     "scope": "Yoshida docstring"
+     }
     },
     {
      "model": "claude-opus-5-5",
@@ -1394,20 +1363,21 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-07",
     "code": {
-     "ref": "BeamTracking main",
-     "commit": "0bf3585fdc9c",
-     "build": "main-branch sources of 2026-10-29 (SciBmad ae9423d703b4, BeamTracking 0bf3585fdc9c, AtomicAndPhysicalConstants 750a9f276b7d), Julia 1.13.2, CPU, one thread"
+     "ref": "Beamlines 0.11.0",
+     "commit": "35fe0162c72d",
+     "build": "pinned package set (SciBmad ae9423d703b4, BeamTracking 0bf3585fdc9c, AtomicAndPhysicalConstants 0.11.6 750a9f276b7d), Julia 1.13.2, CPU, one thread"
     },
     "result": "reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-11-07",
    "code": {
-    "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "ref": "Beamlines 0.11.0",
+    "commit": "35fe0162c72d",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1437,59 +1407,59 @@
   "locations": [
    {
     "label": "src/utils/math_simd.jl:30–38",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/math_simd.jl#L30-L38"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/math_simd.jl#L30-L38"
    },
    {
     "label": "src/utils/math_simd.jl:47–55",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/math_simd.jl#L47-L55"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/math_simd.jl#L47-L55"
    },
    {
     "label": "src/utils/math_simd.jl:35",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/math_simd.jl#L35"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/math_simd.jl#L35"
    },
    {
     "label": "src/utils/math_simd.jl:52",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/math_simd.jl#L52"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/math_simd.jl#L52"
    },
    {
     "label": "src/utils/math_simd.jl:97",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/math_simd.jl#L97"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/math_simd.jl#L97"
    },
    {
     "label": "src/kernels/bend_kick.jl:114",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/bend_kick.jl#L114"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/bend_kick.jl#L114"
    },
    {
     "label": "src/kernels/bend_kick.jl:141",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/bend_kick.jl#L141"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/bend_kick.jl#L141"
    },
    {
     "label": "src/kernels/solenoid_kick.jl:74",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/solenoid_kick.jl#L74"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/solenoid_kick.jl#L74"
    },
    {
     "label": "src/kernels/elsep.jl:43",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/elsep.jl#L43"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/elsep.jl#L43"
    },
    {
     "label": "src/utils/coord_transforms.jl:80",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/coord_transforms.jl#L80"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/coord_transforms.jl#L80"
    },
    {
     "label": "src/utils/math_simd.jl:24–29",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/math_simd.jl#L24-L29"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/math_simd.jl#L24-L29"
    },
    {
     "label": "src/utils/math_simd.jl:91–96",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/math_simd.jl#L91-L96"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/math_simd.jl#L91-L96"
    },
    {
     "label": "src/utils/math_simd.jl:33",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/math_simd.jl#L33"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/math_simd.jl#L33"
    },
    {
     "label": "src/utils/math_simd.jl:50",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/math_simd.jl#L50"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/math_simd.jl#L50"
    }
   ],
   "upstream": [],
@@ -1542,7 +1512,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1690,23 +1661,32 @@
     }
    ],
    "verified": {
-    "date": "2026-10-24",
+    "date": "2026-11-07",
     "code": {
-     "ref": "BeamTracking main",
-     "commit": "d8e45fdc25db",
-     "build": "main-branch source, Julia 1.13.2, CPU, Float64, serial"
+     "ref": "BeamTracking 0.8.7",
+     "commit": "0bf3585fdc9c",
+     "build": "pinned package set (SciBmad ae9423d703b4, Beamlines 0.11.0 35fe0162c72d, AtomicAndPhysicalConstants 0.11.6 750a9f276b7d), Julia 1.13.2, CPU, one thread"
     },
-    "result": "reproduced"
+    "result": "not reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-24",
+   "date": "2026-10-23",
    "code": {
-    "ref": "BeamTracking main",
-    "commit": "d8e45fdc25db"
+    "ref": "BeamTracking 0.8.7",
+    "commit": "65e343f9afda",
+    "committed": "2026-10-13"
    },
-   "head": true,
-   "head_not_reproduced": null
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "BeamTracking 0.8.7",
+     "commit": "0bf3585fdc9c",
+     "committed": "2026-10-28"
+    },
+    "head": true
+   }
   },
   "models": [
    "claude-opus-5-5",
@@ -1734,67 +1714,67 @@
   "locations": [
    {
     "label": "symplectic_bl.jl:147",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L147"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L147"
    },
    {
-    "label": "symplectic_bl.jl:189",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L189"
+    "label": "symplectic_bl.jl:190",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L190"
    },
    {
-    "label": "symplectic_bl.jl:235",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L235"
+    "label": "symplectic_bl.jl:239",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L239"
    },
    {
-    "label": "symplectic_bl.jl:264",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L264"
+    "label": "symplectic_bl.jl:268",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L268"
    },
    {
-    "label": "symplectic_bl.jl:302",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L302"
+    "label": "symplectic_bl.jl:306",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L306"
    },
    {
-    "label": "symplectic_bl.jl:399",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L399"
+    "label": "symplectic_bl.jl:403",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L403"
    },
    {
-    "label": "symplectic_bl.jl:421",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L421"
+    "label": "symplectic_bl.jl:425",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L425"
    },
    {
-    "label": "symplectic_bl.jl:455",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L455"
+    "label": "symplectic_bl.jl:459",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L459"
    },
    {
-    "label": "symplectic_bl.jl:554",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L554"
+    "label": "symplectic_bl.jl:558",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L558"
    },
    {
-    "label": "symplectic_bl.jl:595",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L595"
+    "label": "symplectic_bl.jl:599",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L599"
    },
    {
     "label": "src/kernels/bend_kick.jl:37–39",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/bend_kick.jl#L37-L39"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/bend_kick.jl#L37-L39"
    },
    {
     "label": "src/kernels/fringe.jl:13",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L13"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L13"
    },
    {
     "label": "src/kernels/fringe.jl:17",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L17"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L17"
    },
    {
     "label": "src/kernels/fringe.jl:63",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L63"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L63"
    },
    {
     "label": "src/kernels/fringe.jl:67",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L67"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L67"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/utils_bl.jl:115–116",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L115-L116"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L115-L116"
    },
    {
     "label": "src/operators.jl:116–118",
@@ -1841,7 +1821,8 @@
    "date": "2026-10-24",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "d8e45fdc25db"
+    "commit": "d8e45fdc25db",
+    "committed": "2026-10-23"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1869,20 +1850,20 @@
   "justification": null,
   "locations": [
    {
-    "label": "src/kernels/implicit.jl:781–799",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/implicit.jl#L781-L799"
+    "label": "src/kernels/implicit.jl:789–807",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L789-L807"
    },
    {
-    "label": "src/kernels/implicit.jl:784",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/implicit.jl#L784"
+    "label": "src/kernels/implicit.jl:792",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L792"
    },
    {
     "label": "docs/src/track.md:178–203",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/track.md#L178-L203"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/track.md#L178-L203"
    },
    {
     "label": "src/kernels/rfcavity_kick.jl:47–98",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/rfcavity_kick.jl#L47-L98"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/rfcavity_kick.jl#L47-L98"
    }
   ],
   "upstream": [],
@@ -1925,7 +1906,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1954,31 +1936,31 @@
   "locations": [
    {
     "label": "ext/BeamTrackingBeamlinesExt/general_bl.jl:17–34",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/general_bl.jl#L17-L34"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L17-L34"
    },
    {
     "label": "src/utils/coord_transforms.jl:52",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/coord_transforms.jl#L52"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/coord_transforms.jl#L52"
    },
    {
     "label": "src/kernels/alignment.jl:61–70",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/alignment.jl#L61-L70"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/alignment.jl#L61-L70"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/exact_bl.jl:25–31",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/exact_bl.jl#L25-L31"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/exact_bl.jl#L25-L31"
    },
    {
-    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:415–438",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L415-L438"
+    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:419–442",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L419-L442"
    },
    {
     "label": "src/kernels/bend_kick.jl:38–70",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/bend_kick.jl#L38-L70"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/bend_kick.jl#L38-L70"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl:25",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl#L25"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl#L25"
    },
    {
     "label": "Beamlines.jl/src/alignment.jl:1–8",
@@ -1994,11 +1976,11 @@
    },
    {
     "label": "docs/src/coordinates.md:174–179",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/coordinates.md#L174-L179"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/coordinates.md#L174-L179"
    },
    {
     "label": "docs/src/coordinates.md:592–594",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/coordinates.md#L592-L594"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/coordinates.md#L592-L594"
    }
   ],
   "upstream": [],
@@ -2041,7 +2023,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2070,7 +2053,7 @@
   "locations": [
    {
     "label": "ext/BeamTrackingBeamlinesExt/unpack_bl.jl:215–242",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L215-L242"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L215-L242"
    },
    {
     "label": "Beamlines.jl/src/element.jl:12",
@@ -2078,35 +2061,35 @@
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl:25",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl#L25"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl#L25"
    },
    {
-    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:411–440",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L411-L440"
+    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:415–444",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L415-L444"
    },
    {
     "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:2–17",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L2-L17"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L2-L17"
    },
    {
     "label": "src/kernels/integrators.jl:5–31",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/integrators.jl#L5-L31"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/integrators.jl#L5-L31"
    },
    {
     "label": "src/kernels/fringe.jl:13–18",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L13-L18"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L13-L18"
    },
    {
     "label": "src/kernels/fringe.jl:62–68",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L62-L68"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L62-L68"
    },
    {
     "label": "src/kernels/fringe.jl:300",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L300"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L300"
    },
    {
     "label": "src/kernels/fringe.jl:311–312",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L311-L312"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L311-L312"
    },
    {
     "label": "Beamlines.jl/src/bend.jl:29–34",
@@ -2114,19 +2097,19 @@
    },
    {
     "label": "docs/src/coordinates.md:160–179",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/coordinates.md#L160-L179"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/coordinates.md#L160-L179"
    },
    {
     "label": "docs/src/coordinates.md:558–600",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/coordinates.md#L558-L600"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/coordinates.md#L558-L600"
    },
    {
-    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:394–408",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L394-L408"
+    "label": "ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:398–412",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L398-L412"
    },
    {
     "label": "src/kernels/bend_kick.jl:129–148",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/bend_kick.jl#L129-L148"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/bend_kick.jl#L129-L148"
    }
   ],
   "upstream": [],
@@ -2169,7 +2152,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2197,36 +2181,36 @@
   "justification": null,
   "locations": [
    {
-    "label": "src/constants.jl:177",
-    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/constants.jl#L177"
+    "label": "src/constants.jl:183",
+    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/constants.jl#L183"
    },
    {
     "label": "src/species_data.jl:26",
-    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/species_data.jl#L26"
+    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/species_data.jl#L26"
    },
    {
     "label": "src/species_data.jl:42",
-    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/species_data.jl#L42"
+    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/species_data.jl#L42"
    },
    {
     "label": "src/constructors.jl:11–43",
-    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/constructors.jl#L11-L43"
+    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/constructors.jl#L11-L43"
    },
    {
     "label": "src/functions.jl:164–167",
-    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/functions.jl#L164-L167"
+    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/functions.jl#L164-L167"
    },
    {
     "label": "test/values_test.jl:34",
-    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/test/values_test.jl#L34"
+    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/test/values_test.jl#L34"
    },
    {
     "label": "src/functions.jl:142–150",
-    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/src/functions.jl#L142-L150"
+    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/src/functions.jl#L142-L150"
    },
    {
-    "label": "docs/src/constants.md:83–113",
-    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/4095d795a50aafd63687f66f868bb4adcb034a08/docs/src/constants.md#L83-L113"
+    "label": "docs/src/constants.md:91–121",
+    "url": "https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/blob/750a9f276b7d69d5363b7b9324ce8f4f96439d62/docs/src/constants.md#L91-L121"
    }
   ],
   "upstream": [
@@ -2277,7 +2261,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "AtomicAndPhysicalConstants main",
-    "commit": "750a9f276b7d"
+    "commit": "750a9f276b7d",
+    "committed": "2026-10-26"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2294,6 +2279,222 @@
  },
  {
   "code": "scibmad",
+  "id": "TRK-23",
+  "title": "SaganCavity loses small momentum increments through endpoint subtraction",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "With Float32 particle coordinates, SaganCavity loses accuracy in small relative momentum changes by subtracting two full momenta. For a proton at Lorentz factor γ=2 receiving 1.000 keV, the stored relative momentum offset δ=(p−p₀)/p₀ is 7.089×10⁻⁷ instead of 7.105×10⁻⁷, understating the gain by 2.339 eV (0.2339%). An independent solution of the relativistic energy–momentum relation establishes the expected value; the existing rationalized reference-momentum helper retains Float32 accuracy. The same subtraction affects fringe energy changes. Scalar and SIMD tracking reproduce the error, while the ordinary RF conversion uses a rationalized expression.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "SciBmad docs/src/track.md:202–214",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/track.md#L202-L214"
+   },
+   {
+    "label": "docs/src/sagancavity-tracking.md:22–32",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-tracking.md#L22-L32"
+   },
+   {
+    "label": "BeamTracking src/kernel.jl:18–26",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernel.jl#L18-L26"
+   },
+   {
+    "label": "149–150",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernel.jl#L149-L150"
+   },
+   {
+    "label": "src/kernels/sagan_cavity.jl:179–211",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L179-L211"
+   },
+   {
+    "label": "257–262",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L257-L262"
+   },
+   {
+    "label": "src/kernels/sagan_cavity.jl:332–345",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L332-L345"
+   },
+   {
+    "label": "350–352",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L350-L352"
+   },
+   {
+    "label": "src/kernels/sagan_cavity.jl:74–116",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L74-L116"
+   },
+   {
+    "label": "src/kernels/rfcavity_kick.jl:52–97",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/rfcavity_kick.jl#L52-L97"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "bmad-sim/BeamTracking.jl",
+    "number": 246,
+    "kind": "pull",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/pull/246",
+    "relation": "discussion"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "BeamTracking main",
+      "commit": "d8e45fdc25dbebf4be8195e69be04df13d7383b1",
+      "build": "pinned source (BeamTracking 0.8.7, SciBmad 0.6.0 5f0fb83ac889, Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float32/Float64, scalar/SIMD, one thread"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "BeamTracking main",
+      "commit": "d8e45fdc25dbebf4be8195e69be04df13d7383b1",
+      "build": "pinned source (BeamTracking 0.8.7, SciBmad 0.6.0 5f0fb83ac889, Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float32/Float64, scalar/SIMD and zero-length KA CPU, one thread"
+     },
+     "scope": "body kick and fringe momentum conversion"
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "BeamTracking 0.8.7",
+     "commit": "0bf3585fdc9c5b41859b23b92854376b933a4fe6",
+     "build": "source archives in a copy of the 2026-10-29 head environment: SciBmad main ae9423d703b4 with the newest BeamTracking it accepts (main is 0.9.0), NonlinearNormalForm main dfc5c2697e53, AtomicAndPhysicalConstants 750a9f276b7d; Julia 1.13.2, CPU, Float64, one thread"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "BeamTracking 0.8.7",
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-23.py"
+  ],
+  "requirements": [],
+  "page": "scibmad/TRK-23/"
+ },
+ {
+  "code": "scibmad",
+  "id": "TRK-24",
+  "title": "Long absolute clocks erase particle time offsets before parameter evaluation",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Fast time-dependent element parameters lose particle arrival-time resolution when evaluated against a long absolute reference clock. The conversion forms one floating-point absolute time before calling the user's function, so subtracting a clock origin inside that function cannot recover the offset. With a 50-hour clock, a zero-length RF kick whose voltage is modulated at 400.8 MHz gains 0.9997 MeV instead of 0.9871 MeV for a 10.00 ps early arrival, a 1.275% error. An analytic thin-kicker calculation independently confirms the timing mechanism. Constant-voltage relative RF remains accurate, and short clocks or slow parameter variation have much smaller errors.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`SciBmad docs/src/timedependent.md:25–44`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/timedependent.md#L25-L44"
+   },
+   {
+    "label": "`src/utils/z_to_time.jl:15–29`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/z_to_time.jl#L15-L29"
+   },
+   {
+    "label": "`src/kernel.jl:239–246`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernel.jl#L239-L246"
+   },
+   {
+    "label": "`src/kernel.jl:217–222`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernel.jl#L217-L222"
+   },
+   {
+    "label": "`ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl:15–19`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl#L15-L19"
+   },
+   {
+    "label": "`src/kernels/sagan_cavity.jl:179–211`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L179-L211"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "BeamTracking main",
+      "commit": "d8e45fdc25dbebf4be8195e69be04df13d7383b1",
+      "build": "source (BeamTracking 0.8.7, SciBmad 0.6.0 5f0fb83ac889, Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float64, scalar/SIMD, one thread"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "BeamTracking main",
+      "commit": "d8e45fdc25dbebf4be8195e69be04df13d7383b1",
+      "build": "source (BeamTracking 0.8.7, SciBmad 0.6.0 5f0fb83ac889, Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float64, scalar/SIMD, one thread"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "BeamTracking 0.8.7",
+     "commit": "0bf3585fdc9c5b41859b23b92854376b933a4fe6",
+     "build": "source archives in a copy of the 2026-10-29 head environment: SciBmad main ae9423d703b4 with the newest BeamTracking it accepts (main is 0.9.0), NonlinearNormalForm main dfc5c2697e53, AtomicAndPhysicalConstants 750a9f276b7d; Julia 1.13.2, CPU, Float64, one thread"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "BeamTracking 0.8.7",
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-24.py",
+   "../helpers/_scibmad.py"
+  ],
+  "requirements": [],
+  "page": "scibmad/TRK-24/"
+ },
+ {
+  "code": "scibmad",
   "id": "OPT-01",
   "title": "Coasting `twiss` ignores `delta0`; `a_initial` runs ignore `delta0` and `v0`",
   "area": "Optics and maps",
@@ -2305,32 +2506,32 @@
   "justification": null,
   "locations": [
    {
-    "label": "`src/twiss/twiss.jl:466-474`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L466-L474"
+    "label": "`src/twiss/twiss.jl:472-480`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L472-L480"
    },
    {
-    "label": "`twiss.jl:499-503`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L499-L503"
+    "label": "`twiss.jl:505-509`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L505-L509"
    },
    {
     "label": "`twiss_operators.jl:531`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L531"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L531"
    },
    {
-    "label": "`twiss.jl:241-245`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L241-L245"
+    "label": "`twiss.jl:247-251`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L247-L251"
    },
    {
-    "label": "`twiss.jl:108-113`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L108-L113"
+    "label": "`twiss.jl:111-116`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L111-L116"
    },
    {
-    "label": "`twiss.jl:242`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L242"
+    "label": "`twiss.jl:248`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L248"
    },
    {
-    "label": "`twiss.jl:272`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L272"
+    "label": "`twiss.jl:278`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L278"
    }
   ],
   "upstream": [],
@@ -2403,7 +2604,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2516,11 +2718,11 @@
     }
    ],
    "verified": {
-    "date": "2026-10-31",
+    "date": "2026-11-07",
     "code": {
      "ref": "SciBmad main",
      "commit": "ae9423d703b4",
-     "build": "main-branch sources of 2026-10-29 (SciBmad ae9423d703b4, BeamTracking 0bf3585fdc9c, AtomicAndPhysicalConstants 750a9f276b7d), Julia 1.13.2, CPU, one thread"
+     "build": "pinned package set (BeamTracking 0bf3585fdc9c, Beamlines 0.11.0 35fe0162c72d, NonlinearNormalForm 0.5.3 7e4053985736, AtomicAndPhysicalConstants 0.11.6 750a9f276b7d), Julia 1.13.2, CPU, one thread"
     },
     "result": "not reproduced"
    }
@@ -2529,15 +2731,18 @@
    "date": "2026-10-22",
    "code": {
     "ref": "SciBmad 0.6.0",
-    "commit": "62399f930847"
+    "commit": "62399f930847",
+    "committed": "2026-10-14"
    },
    "head": false,
    "head_not_reproduced": {
-    "date": "2026-10-31",
+    "date": "2026-11-07",
     "code": {
      "ref": "SciBmad main",
-     "commit": "ae9423d703b4"
-    }
+     "commit": "ae9423d703b4",
+     "committed": "2026-10-28"
+    },
+    "head": true
    }
   },
   "models": [
@@ -2636,11 +2841,11 @@
     }
    ],
    "verified": {
-    "date": "2026-10-31",
+    "date": "2026-11-07",
     "code": {
      "ref": "SciBmad main",
      "commit": "ae9423d703b4",
-     "build": "main-branch sources of 2026-10-29 (SciBmad ae9423d703b4, BeamTracking 0bf3585fdc9c, AtomicAndPhysicalConstants 750a9f276b7d), Julia 1.13.2, CPU, one thread"
+     "build": "pinned package set (BeamTracking 0bf3585fdc9c, Beamlines 0.11.0 35fe0162c72d, NonlinearNormalForm 0.5.3 7e4053985736, AtomicAndPhysicalConstants 0.11.6 750a9f276b7d), Julia 1.13.2, CPU, one thread"
     },
     "result": "not reproduced"
    }
@@ -2649,15 +2854,18 @@
    "date": "2026-10-22",
    "code": {
     "ref": "SciBmad 0.6.0",
-    "commit": "62399f930847"
+    "commit": "62399f930847",
+    "committed": "2026-10-14"
    },
    "head": false,
    "head_not_reproduced": {
-    "date": "2026-10-31",
+    "date": "2026-11-07",
     "code": {
      "ref": "SciBmad main",
-     "commit": "ae9423d703b4"
-    }
+     "commit": "ae9423d703b4",
+     "committed": "2026-10-28"
+    },
+    "head": true
    }
   },
   "models": [
@@ -2687,19 +2895,19 @@
   "locations": [
    {
     "label": "`src/twiss/twiss_operators.jl:132-136`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L132-L136"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L132-L136"
    },
    {
     "label": "`twiss_operators.jl:200-207`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L200-L207"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L200-L207"
    },
    {
     "label": "`twiss_operators.jl:60`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L60"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L60"
    },
    {
-    "label": "`twiss.jl:181-189`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L181-L189"
+    "label": "`twiss.jl:188-196`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L188-L196"
    },
    {
     "label": "`NonlinearNormalForm.jl/src/de_moivre.jl:5-11`",
@@ -2756,7 +2964,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2788,27 +2997,27 @@
   "locations": [
    {
     "label": "`src/twiss/twiss_operators.jl:210-223`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L210-L223"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L210-L223"
    },
    {
     "label": "`haskey(cache.persistent_matrix, nj_mat)`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L217"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L217"
    },
    {
     "label": "`twiss_operators.jl:220`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L220"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L220"
    },
    {
     "label": "`twiss_operators.jl:218`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L218"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L218"
    },
    {
-    "label": "`twiss.jl:181-189`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L181-L189"
+    "label": "`twiss.jl:188-196`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L188-L196"
    },
    {
     "label": "`twiss_operators.jl:122`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L122"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L122"
    }
   ],
   "upstream": [],
@@ -2861,7 +3070,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2890,16 +3100,16 @@
   "justification": null,
   "locations": [
    {
-    "label": "`src/twiss/twiss.jl:744-745`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L744-L745"
+    "label": "`src/twiss/twiss.jl:750-751`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L750-L751"
    },
    {
-    "label": "`twiss_operators.jl:596-668`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L596-L668"
+    "label": "`twiss_operators.jl:624-696`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L624-L696"
    },
    {
-    "label": "`twiss.jl:352`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L352"
+    "label": "`twiss.jl:358`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L358"
    },
    {
     "label": "`bmad/code/momentum_compaction.f90:47-59`",
@@ -2979,7 +3189,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3008,16 +3219,16 @@
   "justification": null,
   "locations": [
    {
-    "label": "`src/twiss/twiss_operators.jl:621-626`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L621-L626"
+    "label": "`src/twiss/twiss_operators.jl:649-654`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L649-L654"
    },
    {
-    "label": "`twiss_operators.jl:663-668`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L663-L668"
+    "label": "`twiss_operators.jl:691-696`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L691-L696"
    },
    {
-    "label": "`twiss_operators.jl:617-618`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L617-L618"
+    "label": "`twiss_operators.jl:645-646`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L645-L646"
    },
    {
     "label": "`NonlinearNormalForm.jl/src/sagan_rubin.jl:48-50`",
@@ -3064,7 +3275,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3093,15 +3305,15 @@
   "locations": [
    {
     "label": "`src/twiss/twiss_df.jl:24-26`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_df.jl#L24-L26"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_df.jl#L24-L26"
    },
    {
     "label": "`twiss_df.jl:47-58`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_df.jl#L47-L58"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_df.jl#L47-L58"
    },
    {
-    "label": "`twiss.jl:115-117`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L115-L117"
+    "label": "`twiss.jl:118-120`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L118-L120"
    }
   ],
   "upstream": [],
@@ -3144,7 +3356,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3235,11 +3448,11 @@
     }
    ],
    "verified": {
-    "date": "2026-10-31",
+    "date": "2026-11-07",
     "code": {
      "ref": "SciBmad main",
      "commit": "ae9423d703b4",
-     "build": "main-branch sources of 2026-10-29 (SciBmad ae9423d703b4, BeamTracking 0bf3585fdc9c, AtomicAndPhysicalConstants 750a9f276b7d), Julia 1.13.2, CPU, one thread"
+     "build": "pinned package set (BeamTracking 0bf3585fdc9c, Beamlines 0.11.0 35fe0162c72d, NonlinearNormalForm 0.5.3 7e4053985736, AtomicAndPhysicalConstants 0.11.6 750a9f276b7d), Julia 1.13.2, CPU, one thread"
     },
     "result": "not reproduced"
    }
@@ -3248,15 +3461,18 @@
    "date": "2026-10-22",
    "code": {
     "ref": "SciBmad 0.6.0",
-    "commit": "62399f930847"
+    "commit": "62399f930847",
+    "committed": "2026-10-14"
    },
    "head": false,
    "head_not_reproduced": {
-    "date": "2026-10-31",
+    "date": "2026-11-07",
     "code": {
      "ref": "SciBmad main",
-     "commit": "ae9423d703b4"
-    }
+     "commit": "ae9423d703b4",
+     "committed": "2026-10-28"
+    },
+    "head": true
    }
   },
   "models": [
@@ -3287,43 +3503,43 @@
   "locations": [
    {
     "label": "`src/experimental/one-torus.jl`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/experimental/one-torus.jl"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/experimental/one-torus.jl"
    },
    {
     "label": "`one-torus.jl:171-172`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/experimental/one-torus.jl#L171-L172"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/experimental/one-torus.jl#L171-L172"
    },
    {
     "label": "`one-torus.jl:308-309`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/experimental/one-torus.jl#L308-L309"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/experimental/one-torus.jl#L308-L309"
    },
    {
     "label": "`one-torus.jl:79`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/experimental/one-torus.jl#L79"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/experimental/one-torus.jl#L79"
    },
    {
     "label": "`one-torus.jl:418-462`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/experimental/one-torus.jl#L418-L462"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/experimental/one-torus.jl#L418-L462"
    },
    {
     "label": "`one-torus.jl:353`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/experimental/one-torus.jl#L353"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/experimental/one-torus.jl#L353"
    },
    {
     "label": "`one-torus.jl:421`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/experimental/one-torus.jl#L421"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/experimental/one-torus.jl#L421"
    },
    {
     "label": "`one-torus.jl:448`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/experimental/one-torus.jl#L448"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/experimental/one-torus.jl#L448"
    },
    {
     "label": "`src/twiss/twiss_types.jl:30-45`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_types.jl#L30-L45"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_types.jl#L30-L45"
    },
    {
-    "label": "`twiss.jl:731-741`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L731-L741"
+    "label": "`twiss.jl:737-747`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L737-L747"
    }
   ],
   "upstream": [],
@@ -3376,7 +3592,8 @@
    "date": "2026-10-24",
    "code": {
     "ref": "SciBmad main",
-    "commit": "5f0fb83ac889"
+    "commit": "5f0fb83ac889",
+    "committed": "2026-10-15"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3471,7 +3688,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3558,7 +3776,8 @@
    "date": "2026-10-24",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3681,7 +3900,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3733,11 +3953,11 @@
    },
    {
     "label": "`SciBmad.jl/src/closed_orbit.jl:135`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/closed_orbit.jl#L135"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/closed_orbit.jl#L135"
    },
    {
     "label": "`one-torus.jl:64-69`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/experimental/one-torus.jl#L64-L69"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/experimental/one-torus.jl#L64-L69"
    }
   ],
   "upstream": [],
@@ -3790,7 +4010,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BatchSolve main",
-    "commit": "ac41c095255d"
+    "commit": "ac41c095255d",
+    "committed": "2026-09-22"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3885,7 +4106,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BatchSolve main",
-    "commit": "ac41c095255d"
+    "commit": "ac41c095255d",
+    "committed": "2026-09-22"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3984,7 +4206,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "FundamentalFrequencies main",
-    "commit": "f208dc0724b6"
+    "commit": "f208dc0724b6",
+    "committed": "2026-05-10"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4013,40 +4236,40 @@
   "justification": null,
   "locations": [
    {
-    "label": "`src/twiss/twiss.jl:277-280`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L277-L280"
+    "label": "`src/twiss/twiss.jl:283-286`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L283-L286"
    },
    {
-    "label": "`twiss.jl:79`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L79"
+    "label": "`twiss.jl:82`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L82"
    },
    {
     "label": "`docs/src/optimize.md:130`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/optimize.md#L130"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/optimize.md#L130"
    },
    {
     "label": "`140`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/optimize.md#L140"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/optimize.md#L140"
    },
    {
     "label": "`147`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/optimize.md#L147"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/optimize.md#L147"
    },
    {
     "label": "`docs/src/optimize.md:100`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/optimize.md#L100"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/optimize.md#L100"
    },
    {
     "label": "`63`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/parametric-nf.md#L63"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/parametric-nf.md#L63"
    },
    {
     "label": "`130`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/parametric-nf.md#L130"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/parametric-nf.md#L130"
    },
    {
     "label": "`167`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/parametric-nf.md#L167"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/parametric-nf.md#L167"
    },
    {
     "label": "`NonlinearNormalForm.jl/src/normal.jl:61-94`",
@@ -4057,12 +4280,12 @@
     "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L116"
    },
    {
-    "label": "`twiss.jl:75-82`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L75-L82"
+    "label": "`twiss.jl:78-85`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L78-L85"
    },
    {
-    "label": "`:99`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L99"
+    "label": "`:102`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L102"
    }
   ],
   "upstream": [],
@@ -4125,7 +4348,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4157,20 +4381,20 @@
     "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L627-L628"
    },
    {
-    "label": "`SciBmad.jl/src/twiss/twiss.jl:731-741`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L731-L741"
+    "label": "`SciBmad.jl/src/twiss/twiss.jl:737-747`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L737-L747"
    },
    {
-    "label": "`twiss.jl:368-451`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L368-L451"
+    "label": "`twiss.jl:374-457`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L374-L457"
    },
    {
-    "label": "`twiss.jl:58`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L58"
+    "label": "`twiss.jl:62`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L62"
    },
    {
-    "label": "`twiss.jl:148`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L148"
+    "label": "`twiss.jl:151`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L151"
    }
   ],
   "upstream": [],
@@ -4223,7 +4447,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4270,7 +4495,7 @@
    },
    {
     "label": "`SciBmad.jl/src/adv.jl:28`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/adv.jl#L28"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/adv.jl#L28"
    }
   ],
   "upstream": [],
@@ -4323,7 +4548,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "GTPSA main",
-    "commit": "a5790a7deaa6"
+    "commit": "a5790a7deaa6",
+    "committed": "2026-07-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4352,7 +4578,7 @@
   "locations": [
    {
     "label": "`src/adv.jl:28-30`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/adv.jl#L28-L30"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/adv.jl#L28-L30"
    },
    {
     "label": "`NonlinearNormalForm.jl/src/normal.jl:699`",
@@ -4371,20 +4597,20 @@
     "url": "https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/methods.jl#L316-L321"
    },
    {
-    "label": "`SciBmad.jl/src/twiss/twiss.jl:744-750`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L744-L750"
+    "label": "`SciBmad.jl/src/twiss/twiss.jl:750-756`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L750-L756"
    },
    {
     "label": "`adv.jl:29`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/adv.jl#L29"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/adv.jl#L29"
    },
    {
-    "label": "`twiss.jl:99`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L99"
+    "label": "`twiss.jl:102`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L102"
    },
    {
     "label": "`docs/src/quickstart.md:264-266`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/quickstart.md#L264-L266"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/quickstart.md#L264-L266"
    }
   ],
   "upstream": [],
@@ -4437,7 +4663,8 @@
    "date": "2026-10-23",
    "code": {
     "ref": "SciBmad main",
-    "commit": "5f0fb83ac889"
+    "commit": "5f0fb83ac889",
+    "committed": "2026-10-15"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4466,11 +4693,11 @@
   "locations": [
    {
     "label": "`src/adv.jl:39`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/adv.jl#L39"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/adv.jl#L39"
    },
    {
     "label": "`adv.jl:32-33`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/adv.jl#L32-L33"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/adv.jl#L32-L33"
    },
    {
     "label": "`TPSAInterface.jl/src/TPSAInterface.jl:155-158`",
@@ -4525,7 +4752,8 @@
    "date": "2026-10-23",
    "code": {
     "ref": "SciBmad main",
-    "commit": "5f0fb83ac889"
+    "commit": "5f0fb83ac889",
+    "committed": "2026-10-15"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4624,7 +4852,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4652,16 +4881,16 @@
   "justification": null,
   "locations": [
    {
-    "label": "`src/twiss/twiss_operators.jl:920-977`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L920-L977"
+    "label": "`src/twiss/twiss_operators.jl:948-1004`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L948-L1004"
    },
    {
-    "label": "`:940`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L940"
+    "label": "`:967`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L967"
    },
    {
-    "label": "`:974`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L974"
+    "label": "`:1001`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L1001"
    },
    {
     "label": "`map.jl:614`",
@@ -4672,12 +4901,12 @@
     "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/ext/NonlinearNormalFormGTPSAExt.jl#L29-L38"
    },
    {
-    "label": "`:1013`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L1013"
+    "label": "`:1040`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L1040"
    },
    {
-    "label": "`:1018`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L1018"
+    "label": "`:1045`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L1045"
    }
   ],
   "upstream": [],
@@ -4720,7 +4949,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4750,32 +4980,32 @@
   "justification": null,
   "locations": [
    {
-    "label": "`src/twiss/twiss.jl:242`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L242"
+    "label": "`src/twiss/twiss.jl:248`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L248"
    },
    {
-    "label": "`:358-363`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L358-L363"
+    "label": "`:364-369`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L364-L369"
    },
    {
     "label": "`closed_orbit.jl:241`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/closed_orbit.jl#L241"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/closed_orbit.jl#L241"
    },
    {
     "label": "`:235`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/closed_orbit.jl#L235"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/closed_orbit.jl#L235"
    },
    {
     "label": "`:132`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/closed_orbit.jl#L132"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/closed_orbit.jl#L132"
    },
    {
     "label": "`:143`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/closed_orbit.jl#L143"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/closed_orbit.jl#L143"
    },
    {
-    "label": "`twiss.jl:112-113`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L112-L113"
+    "label": "`twiss.jl:115-116`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L115-L116"
    }
   ],
   "upstream": [],
@@ -4828,7 +5058,8 @@
    "date": "2026-10-24",
    "code": {
     "ref": "SciBmad main",
-    "commit": "5f0fb83ac889"
+    "commit": "5f0fb83ac889",
+    "committed": "2026-10-15"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4916,7 +5147,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5000,7 +5232,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5084,7 +5317,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5156,7 +5390,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5185,23 +5420,23 @@
   "locations": [
    {
     "label": "`src/kernels/implicit.jl:138-147`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/implicit.jl#L138-L147"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L138-L147"
    },
    {
     "label": "`:228-236`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/implicit.jl#L228-L236"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L228-L236"
    },
    {
     "label": "`:243`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/implicit.jl#L243"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L243"
    },
    {
     "label": "`SciBmad.jl/README.md:24`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/README.md#L24"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/README.md#L24"
    },
    {
     "label": "`:34`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/README.md#L34"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/README.md#L34"
    },
    {
     "label": "`Beamlines.jl/src/misc.jl:97-113`",
@@ -5248,7 +5483,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5276,12 +5512,12 @@
   "justification": null,
   "locations": [
    {
-    "label": "`src/twiss/twiss.jl:330`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L330"
+    "label": "`src/twiss/twiss.jl:336`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L336"
    },
    {
-    "label": "`twiss.jl:103-107`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L103-L107"
+    "label": "`twiss.jl:106-110`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L106-L110"
    },
    {
     "label": "`Beamlines.jl/src/misc.jl:18-52`",
@@ -5328,7 +5564,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5424,7 +5661,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5452,12 +5690,12 @@
   "justification": null,
   "locations": [
    {
-    "label": "`src/twiss/twiss_operators.jl:849-911`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L849-L911"
+    "label": "`src/twiss/twiss_operators.jl:877-939`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss_operators.jl#L877-L939"
    },
    {
-    "label": "`src/twiss/twiss.jl:175-180`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L175-L180"
+    "label": "`src/twiss/twiss.jl:182-187`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L182-L187"
    },
    {
     "label": "`bmad/doc/optics.tex:505-527`",
@@ -5504,7 +5742,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5594,7 +5833,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5623,15 +5863,15 @@
   "locations": [
    {
     "label": "`src/dynamic_aperture.jl:189`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/dynamic_aperture.jl#L189"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/dynamic_aperture.jl#L189"
    },
    {
     "label": "`:193`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/dynamic_aperture.jl#L193"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/dynamic_aperture.jl#L193"
    },
    {
     "label": "`:32-33`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/dynamic_aperture.jl#L32-L33"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/dynamic_aperture.jl#L32-L33"
    }
   ],
   "upstream": [],
@@ -5674,7 +5914,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5762,7 +6003,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "GTPSA main",
-    "commit": "a5790a7deaa6"
+    "commit": "a5790a7deaa6",
+    "committed": "2026-07-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5866,7 +6108,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "GTPSA main",
-    "commit": "a5790a7deaa6"
+    "commit": "a5790a7deaa6",
+    "committed": "2026-07-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -5883,6 +6126,246 @@
  },
  {
   "code": "scibmad",
+  "id": "OPT-37",
+  "title": "Repeated eigenvalues lose conjugate eigenvector pairing",
+  "area": "Optics and maps",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "With repeated eigenvalues, `mat_eigen` can pair eigenvectors from different modes using conjugate eigenvalues alone. An uncoupled stable matrix returns 12 nonfinite entries with default options; disabling mode sorting can instead return finite vectors with an 11.61% relative eigenvector residual. Default equilibrium covariance calculation also raises on a weakly damped map, although an independent high-precision solve gives a finite positive covariance. Preserving conjugate vector pairs removes these failures. Equal emittances with distinct transport tunes remain accurate.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`mat_eigen`, `src/matrix.jl:2–26`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/matrix.jl#L2-L26"
+   },
+   {
+    "label": "`mat_eigen!`, `src/matrix.jl:31–39`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/matrix.jl#L31-L39"
+   },
+   {
+    "label": "`moveback_unstable!`, `src/matrix.jl:241–254`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/matrix.jl#L241-L254"
+   },
+   {
+    "label": "`normalize_eigenmode!`, `src/matrix.jl:172–205`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/matrix.jl#L172-L205"
+   },
+   {
+    "label": "`orthogonalize_degenerate_pairs!`, `src/matrix.jl:124–150`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/matrix.jl#L124-L150"
+   },
+   {
+    "label": "`src/normal.jl:100–108`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L100-L108"
+   },
+   {
+    "label": "`equilibrium_moments`, `src/normal.jl:547–589`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L547-L589"
+   },
+   {
+    "label": "exported, `src/NonlinearNormalForm.jl:58–72`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/NonlinearNormalForm.jl#L58-L72"
+   },
+   {
+    "label": "damped maps, `docs/src/index.md:9`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/docs/src/index.md#L9"
+   },
+   {
+    "label": "normalization and equilibrium covariance, `docs/src/index.md:36–46`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/docs/src/index.md#L36-L46"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
+    "number": 65,
+    "kind": "issue",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/issues/65",
+    "relation": "report"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "NonlinearNormalForm 0.5.3",
+      "commit": "7e40539857368faf9784736ad29c8f0ae6e70a23",
+      "build": "managed warm-cache packages; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d; Julia 1.13.2, CPU, Float64, one thread"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "NonlinearNormalForm 0.5.3",
+      "commit": "7e40539857368faf9784736ad29c8f0ae6e70a23",
+      "build": "managed warm-cache packages; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d; Julia 1.13.2, CPU, Float64, one thread"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "NonlinearNormalForm main",
+     "commit": "dfc5c2697e5385e2eceb97c8164f415dd1598709",
+     "build": "source archives in a copy of the 2026-10-29 head environment: SciBmad main ae9423d703b4, BeamTracking 0.8.7 0bf3585fdc9c (the newest SciBmad main accepts), AtomicAndPhysicalConstants 750a9f276b7d; Julia 1.13.2, CPU, Float64, one thread"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "NonlinearNormalForm main",
+    "commit": "dfc5c2697e53",
+    "committed": "2026-11-06"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-37.py",
+   "../helpers/_scibmad.py"
+  ],
+  "requirements": [],
+  "page": "scibmad/OPT-37/"
+ },
+ {
+  "code": "scibmad",
+  "id": "OPT-38",
+  "title": "Equal-tune periodic Twiss aborts on a higher-order zero resonance divisor",
+  "area": "Optics and maps",
+  "priority": "P3",
+  "severity": "Crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "For stable, uncoupled FODO rings with equal transverse tunes, periodic twiss at second Taylor order can terminate the Julia process with GTPSA invsqrt(NaN). Roundoff-sized cross-plane terms are divided by a zero resonance denominator during nonlinear normalization, although the linear eigenvectors remain finite and correctly paired. A 1 GeV/c proton cell with quadrupole strengths ±1.600 m⁻², 0.3000 m magnets and 1.700 m drifts has tune 0.1505 in both planes and finite beta functions 6.848 m and 2.825 m. Independent analytic normalization establishes these values; retaining the resonance in the underlying normal-form calculation prevents the abort.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`normal`, `src/normal.jl:165–179`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L165-L179"
+   },
+   {
+    "label": "`res=nothing`, line 8",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L8"
+   },
+   {
+    "label": "`is_orbital_resonance`, lines 463–488",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L463-L488"
+   },
+   {
+    "label": "`src/normal.jl:100–108`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L100-L108"
+   },
+   {
+    "label": "`src/matrix.jl:124–150`",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/matrix.jl#L124-L150"
+   },
+   {
+    "label": "`src/twiss/twiss.jl:58–108`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L58-L108"
+   },
+   {
+    "label": "`twiss` signature, lines 198–239",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L204-L245"
+   },
+   {
+    "label": "periodic descriptor paths, lines 319–325",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L325-L331"
+   },
+   {
+    "label": "`_a_r_tunes`, lines 512–519",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L518-L525"
+   },
+   {
+    "label": "`ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:265–274`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L265-L274"
+   },
+   {
+    "label": "body rotations, `src/kernels/quadrupole_kick.jl:44–60`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/quadrupole_kick.jl#L44-L60"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "bmad-sim/NonlinearNormalForm.jl",
+    "number": 65,
+    "kind": "issue",
+    "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/issues/65",
+    "relation": "discussion"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "NonlinearNormalForm 0.5.3",
+      "commit": "7e40539857368faf9784736ad29c8f0ae6e70a23",
+      "build": "managed warm-cache packages; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d, GTPSA a5790a7deaa6; Julia 1.13.2, CPU, Float64, one thread"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "NonlinearNormalForm 0.5.3",
+      "commit": "7e40539857368faf9784736ad29c8f0ae6e70a23",
+      "build": "managed warm-cache packages; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d, GTPSA a5790a7deaa6; Julia 1.13.2, CPU, Float64, one thread"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "NonlinearNormalForm main",
+     "commit": "dfc5c2697e5385e2eceb97c8164f415dd1598709",
+     "build": "source archives in a copy of the 2026-10-29 head environment: SciBmad main ae9423d703b4, BeamTracking 0.8.7 0bf3585fdc9c (the newest SciBmad main accepts), AtomicAndPhysicalConstants 750a9f276b7d; Julia 1.13.2, CPU, Float64, one thread"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "NonlinearNormalForm main",
+    "commit": "dfc5c2697e53",
+    "committed": "2026-11-06"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "OPT-38.py",
+   "../helpers/_scibmad.py"
+  ],
+  "requirements": [],
+  "page": "scibmad/OPT-38/"
+ },
+ {
+  "code": "scibmad",
   "id": "COL-01",
   "title": "IBS source statistics include lost particles",
   "area": "Collective effects and spin",
@@ -5895,19 +6378,19 @@
   "locations": [
    {
     "label": "`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:115-129`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/general_bl.jl#L115-L129"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L115-L129"
    },
    {
     "label": "`BeamTracking.jl/src/utils/beam_statistics.jl:4-48`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/beam_statistics.jl#L4-L48"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/beam_statistics.jl#L4-L48"
    },
    {
     "label": "`BeamTracking.jl/src/kernels/ibs_kick.jl:5`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/ibs_kick.jl#L5"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L5"
    },
    {
     "label": "`85-87`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/ibs_kick.jl#L85-L87"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L85-L87"
    },
    {
     "label": "`bmad/multiparticle/beam_utils.f90:1367,1379-1380`",
@@ -5979,7 +6462,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6124,23 +6608,32 @@
     }
    ],
    "verified": {
-    "date": "2026-10-24",
+    "date": "2026-11-07",
     "code": {
-     "ref": "BeamTracking main",
-     "commit": "d8e45fdc25db",
-     "build": "main-branch source, Julia 1.13.2, CPU, Float64, serial"
+     "ref": "BeamTracking 0.8.7",
+     "commit": "0bf3585fdc9c",
+     "build": "pinned package set (SciBmad ae9423d703b4, Beamlines 0.11.0 35fe0162c72d, AtomicAndPhysicalConstants 0.11.6 750a9f276b7d), Julia 1.13.2, CPU, one thread"
     },
-    "result": "reproduced"
+    "result": "not reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-24",
+   "date": "2026-10-22",
    "code": {
-    "ref": "BeamTracking main",
-    "commit": "d8e45fdc25db"
+    "ref": "BeamTracking 0.8.7",
+    "commit": "65e343f9afda",
+    "committed": "2026-10-13"
    },
-   "head": true,
-   "head_not_reproduced": null
+   "head": false,
+   "head_not_reproduced": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "BeamTracking 0.8.7",
+     "commit": "0bf3585fdc9c",
+     "committed": "2026-10-28"
+    },
+    "head": true
+   }
   },
   "models": [
    "claude-opus-5-5",
@@ -6169,31 +6662,31 @@
   "locations": [
    {
     "label": "`BeamTracking.jl/src/kernels/sagan_cavity.jl:300-309`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L300-L309"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L300-L309"
    },
    {
     "label": "`BeamTracking.jl/src/tracking_methods.jl:79-87`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/tracking_methods.jl#L79-L87"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/tracking_methods.jl#L79-L87"
    },
    {
     "label": "`SciBmad.jl/docs/src/sagancavity-tracking.md:18-19`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-tracking.md#L18-L19"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-tracking.md#L18-L19"
    },
    {
     "label": "`sagan_cavity.jl:158-160,171-173`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L158-L173"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L158-L173"
    },
    {
     "label": "`radiation.jl:242`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/radiation.jl#L242"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/radiation.jl#L242"
    },
    {
     "label": "`elsep.jl:115`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/elsep.jl#L115"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/elsep.jl#L115"
    },
    {
     "label": "`implicit.jl:763`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/implicit.jl#L763"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L763"
    }
   ],
   "upstream": [],
@@ -6246,7 +6739,8 @@
    "date": "2026-10-30",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6279,20 +6773,20 @@
     "url": "https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L219-L227"
    },
    {
-    "label": "`SciBmad.jl/src/twiss/twiss.jl:512-530`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L512-L530"
+    "label": "`SciBmad.jl/src/twiss/twiss.jl:518-536`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L518-L536"
    },
    {
-    "label": "`SciBmad.jl/src/twiss/twiss.jl:114`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L114"
+    "label": "`SciBmad.jl/src/twiss/twiss.jl:117`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L117"
    },
    {
     "label": "`352`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L352"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L358"
    },
    {
     "label": "`756-762`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L756-L762"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L762-L768"
    },
    {
     "label": "`forest/code/Ci_tpsa.f90:13369-13381`",
@@ -6349,7 +6843,8 @@
    "date": "2026-10-24",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6444,7 +6939,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "NonlinearNormalForm main",
-    "commit": "7e4053985736"
+    "commit": "7e4053985736",
+    "committed": "2026-09-11"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6475,19 +6971,19 @@
   "locations": [
    {
     "label": "`SciBmad.jl/src/track.jl:322-350`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L322-L350"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L322-L350"
    },
    {
     "label": "`track.jl:305-307`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L305-L307"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L305-L307"
    },
    {
     "label": "`track.jl:327-328`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L327-L328"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L327-L328"
    },
    {
     "label": "`track.jl:340-350`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L340-L350"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L340-L350"
    }
   ],
   "upstream": [],
@@ -6540,7 +7036,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6647,7 +7144,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SpaceCharge main",
-    "commit": "ae3046330572"
+    "commit": "ae3046330572",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6764,7 +7262,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SpaceCharge main",
-    "commit": "ae3046330572"
+    "commit": "ae3046330572",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6794,43 +7293,43 @@
   "locations": [
    {
     "label": "`SciBmad.jl/examples/julia/ags-spin-ramp.ipynb:333`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/julia/ags-spin-ramp.ipynb#L333"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/julia/ags-spin-ramp.ipynb#L333"
    },
    {
     "label": "`457`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/julia/ags-spin-ramp.ipynb#L457"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/julia/ags-spin-ramp.ipynb#L457"
    },
    {
     "label": "`599-600`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/julia/ags-spin-ramp.ipynb#L599-L600"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/julia/ags-spin-ramp.ipynb#L599-L600"
    },
    {
     "label": "`ags-spin-ramp.ipynb:193`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/julia/ags-spin-ramp.ipynb#L193"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/julia/ags-spin-ramp.ipynb#L193"
    },
    {
     "label": "`ags-spin-ramp.ipynb:243`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/julia/ags-spin-ramp.ipynb#L243"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/julia/ags-spin-ramp.ipynb#L243"
    },
    {
     "label": "`ags-spin-ramp.ipynb:263`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/julia/ags-spin-ramp.ipynb#L263"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/julia/ags-spin-ramp.ipynb#L263"
    },
    {
     "label": "`ags-spin-ramp.ipynb:315`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/julia/ags-spin-ramp.ipynb#L315"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/julia/ags-spin-ramp.ipynb#L315"
    },
    {
     "label": "`ags-spin-ramp.ipynb:333`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/julia/ags-spin-ramp.ipynb#L333"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/julia/ags-spin-ramp.ipynb#L333"
    },
    {
     "label": "`ags-spin-ramp.ipynb:457`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/julia/ags-spin-ramp.ipynb#L457"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/julia/ags-spin-ramp.ipynb#L457"
    },
    {
     "label": "`ags-spin-ramp.ipynb:599-600`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/julia/ags-spin-ramp.ipynb#L599-L600"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/julia/ags-spin-ramp.ipynb#L599-L600"
    }
   ],
   "upstream": [],
@@ -6883,7 +7382,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -6915,23 +7415,23 @@
   "locations": [
    {
     "label": "`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/unpack_bl.jl:139-160`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L139-L160"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L139-L160"
    },
    {
     "label": "`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:127`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/general_bl.jl#L127"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L127"
    },
    {
     "label": "`BeamTracking.jl/src/kernels/ibs_kick.jl:37-42`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/ibs_kick.jl#L37-L42"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L37-L42"
    },
    {
     "label": "`unpack_bl.jl:345`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L345"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L345"
    },
    {
     "label": "`ibs_kick.jl:37-42`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/ibs_kick.jl#L37-L42"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L37-L42"
    }
   ],
   "upstream": [],
@@ -6975,7 +7475,8 @@
    "date": "2026-10-23",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "d8e45fdc25db"
+    "commit": "d8e45fdc25db",
+    "committed": "2026-10-23"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7004,11 +7505,11 @@
   "locations": [
    {
     "label": "`BeamTracking.jl/src/kernels/sagan_cavity.jl:193-198,215-216`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L193-L216"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L193-L216"
    },
    {
     "label": "`SciBmad.jl/docs/src/sagancavity-physics.md:104-107`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L104-L107"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L104-L107"
    }
   ],
   "upstream": [],
@@ -7051,7 +7552,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7080,15 +7582,15 @@
   "locations": [
    {
     "label": "`BeamTracking.jl/src/kernels/fringe.jl:115-120`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L115-L120"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L115-L120"
    },
    {
     "label": "`219-224`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L219-L224"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L219-L224"
    },
    {
     "label": "`BeamTracking.jl/src/kernels/multipole.jl:44`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/multipole.jl#L44"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/multipole.jl#L44"
    }
   ],
   "upstream": [],
@@ -7131,7 +7633,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7215,7 +7718,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "SpaceCharge main",
-    "commit": "ae3046330572"
+    "commit": "ae3046330572",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7244,39 +7748,39 @@
   "locations": [
    {
     "label": "`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl:38-50`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl#L38-L50"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/sagan_cavity_bl.jl#L38-L50"
    },
    {
     "label": "`src/kernels/sagan_cavity.jl:35-57`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L35-L57"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L35-L57"
    },
    {
     "label": "`sagan_cavity.jl:179-216`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L179-L216"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L179-L216"
    },
    {
     "label": "`sagan_cavity.jl:196-198,216`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/sagan_cavity.jl#L196-L216"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/sagan_cavity.jl#L196-L216"
    },
    {
     "label": "`src/kernels/spin.jl:79-80`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/spin.jl#L79-L80"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/spin.jl#L79-L80"
    },
    {
     "label": "`SciBmad.jl/docs/src/sagancavity-physics.md:9,32-35`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L9-L35"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L9-L35"
    },
    {
     "label": "`sagancavity-physics.md:69`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L69"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L69"
    },
    {
     "label": "`166-167`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L166-L167"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L166-L167"
    },
    {
     "label": "`sagancavity-physics.md:104-107`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/sagancavity-physics.md#L104-L107"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/sagancavity-physics.md#L104-L107"
    }
   ],
   "upstream": [],
@@ -7319,7 +7823,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7350,63 +7855,63 @@
   "locations": [
    {
     "label": "`BeamTracking.jl/src/kernels/ibs_kick.jl:22-35`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/ibs_kick.jl#L22-L35"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L22-L35"
    },
    {
     "label": "`ext/BeamTrackingBeamlinesExt/general_bl.jl:98-167`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/general_bl.jl#L98-L167"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L98-L167"
    },
    {
     "label": "`BeamTrackingBeamlinesExt.jl:12-55`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/BeamTrackingBeamlinesExt.jl#L12-L55"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/BeamTrackingBeamlinesExt.jl#L12-L55"
    },
    {
     "label": "`unpack_bl.jl:1-55`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L1-L55"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L1-L55"
    },
    {
     "label": "`unpack_bl.jl:156-160`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L156-L160"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L156-L160"
    },
    {
     "label": "`unpack_bl.jl:267-274`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L267-L274"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L267-L274"
    },
    {
     "label": "`538`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L538"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L538"
    },
    {
     "label": "`unpack_bl.jl:345`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L345"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L345"
    },
    {
     "label": "`symplectic_bl.jl:73-94`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L73-L94"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L73-L94"
    },
    {
     "label": "`src/kernels/solenoid_kick.jl:62-65`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/solenoid_kick.jl#L62-L65"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/solenoid_kick.jl#L62-L65"
    },
    {
     "label": "`src/types.jl:69`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L69"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L69"
    },
    {
     "label": "`docs/src/track.md:24-29`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/track.md#L24-L29"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/track.md#L24-L29"
    },
    {
     "label": "`src/tracking_methods.jl:8-45`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/tracking_methods.jl#L8-L45"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/tracking_methods.jl#L8-L45"
    },
    {
     "label": "`utils_bl.jl:230-244`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L230-L244"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L230-L244"
    },
    {
     "label": "`src/kernels/integrators.jl:5-33`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/integrators.jl#L5-L33"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/integrators.jl#L5-L33"
    }
   ],
   "upstream": [],
@@ -7449,7 +7954,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7478,39 +7984,39 @@
   "locations": [
    {
     "label": "`ibs_damping_and_diffusion!`, ibs_kick.jl:81–126",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/ibs_kick.jl#L81-L126"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L81-L126"
    },
    {
     "label": "ibs_kick.jl:17–35",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/ibs_kick.jl#L17-L35"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L17-L35"
    },
    {
     "label": "`ibs_kick`, general_bl.jl:165–167",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/general_bl.jl#L165-L167"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L165-L167"
    },
    {
     "label": "unpack_bl.jl:156–160",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L156-L160"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L156-L160"
    },
    {
     "label": "`drift`, symplectic_bl.jl:67–71",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L67-L71"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L67-L71"
    },
    {
     "label": "unpack_bl.jl:82–90",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L82-L90"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L82-L90"
    },
    {
     "label": "tracking guide, track.md:25–29",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/track.md#L25-L29"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/track.md#L25-L29"
    },
    {
     "label": "`compute_time`, z_to_time.jl:15–29",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/z_to_time.jl#L15-L29"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/z_to_time.jl#L15-L29"
    },
    {
     "label": "`bmad_to_mad!` and `mad_to_bmad!`, rfcavity_kick.jl:47–98",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/rfcavity_kick.jl#L47-L98"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/rfcavity_kick.jl#L47-L98"
    }
   ],
   "upstream": [],
@@ -7538,15 +8044,25 @@
       "build": "source, Julia 1.13.2, CPU, Float64, serial"
      }
     }
-   ]
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "BeamTracking 0.8.7",
+     "commit": "0bf3585fdc9c5b41859b23b92854376b933a4fe6",
+     "build": "source archives in a copy of the 2026-10-29 head environment: SciBmad main ae9423d703b4 with the newest BeamTracking it accepts (main is 0.9.0), NonlinearNormalForm main dfc5c2697e53, AtomicAndPhysicalConstants 750a9f276b7d; Julia 1.13.2, CPU, Float64, one thread"
+    },
+    "result": "reproduced"
+   }
   },
   "last_reproduced": {
-   "date": "2026-11-05",
+   "date": "2026-11-07",
    "code": {
-    "ref": "BeamTracking main",
-    "commit": "d8e45fdc25db"
+    "ref": "BeamTracking 0.8.7",
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
-   "head": false,
+   "head": true,
    "head_not_reproduced": null
   },
   "models": [
@@ -7558,6 +8074,243 @@
   ],
   "requirements": [],
   "page": "scibmad/COL-16/"
+ },
+ {
+  "code": "scibmad",
+  "id": "COL-17",
+  "title": "Bend radiation omits the field wedges at inclined faces",
+  "area": "Collective effects and spin",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "With radiation enabled in a dipole with inclined hard-edge faces, tracking applies energy loss and quantum excitation only in the curved sector body and omits the field wedges between each physical face and the sector's end plane. In a 1.500 m, π/32 rad rectangular bend for 3.000 GeV/c electrons, rays displaced horizontally by ±10.00 mm lose momenta differing by the equivalent of 9.600 eV. Their field-filled trajectories are translations of each other along the parallel faces, and independent physical-face integration confirms equal losses. Along the nonradiating orbit, the excitation variance corresponds to field paths of 1.500 m ± 0.9825 mm instead of 1.500 m. Refining the integration, raising its order or subdividing the body preserves the discrepancy; perpendicular faces are unaffected.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:433–444`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L433-L444"
+   },
+   {
+    "label": "`src/kernels/fringe.jl:2–18`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L2-L18"
+   },
+   {
+    "label": "`src/kernels/fringe.jl:62–68`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L62-L68"
+   },
+   {
+    "label": "`src/kernels/fringe.jl:266–318`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L266-L318"
+   },
+   {
+    "label": "`src/kernels/bend_kick.jl:45–63`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/bend_kick.jl#L45-L63"
+   },
+   {
+    "label": "`src/kernels/integrators.jl:5–31`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/integrators.jl#L5-L31"
+   },
+   {
+    "label": "`src/kernels/radiation.jl:95–127`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/radiation.jl#L95-L127"
+   },
+   {
+    "label": "`src/kernels/radiation.jl:169–222`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/radiation.jl#L169-L222"
+   },
+   {
+    "label": "`ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:447–478`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L447-L478"
+   },
+   {
+    "label": "`src/bend.jl:1–14`",
+    "url": "https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/bend.jl#L1-L14"
+   },
+   {
+    "label": "`src/bend.jl:31–35`",
+    "url": "https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/bend.jl#L31-L35"
+   },
+   {
+    "label": "`docs/src/track.md:26–30`",
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/track.md#L26-L30"
+   },
+   {
+    "label": "`bmad/doc/synchrotron-radiation.tex:340–351`",
+    "url": "https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/doc/synchrotron-radiation.tex#L340-L351"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "BeamTracking main",
+      "commit": "d8e45fdc25db",
+      "build": "source (SciBmad 5f0fb83ac889, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "BeamTracking main",
+      "commit": "d8e45fdc25db",
+      "build": "source (SciBmad 5f0fb83ac889, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread"
+     }
+    },
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "date": "2026-11-07",
+     "code": {
+      "ref": "BeamTracking main",
+      "commit": "d8e45fdc25db",
+      "build": "source (SciBmad 5f0fb83ac889, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "BeamTracking 0.8.7",
+     "commit": "0bf3585fdc9c5b41859b23b92854376b933a4fe6",
+     "build": "source archives in a copy of the 2026-10-29 head environment: SciBmad main ae9423d703b4 with the newest BeamTracking it accepts (main is 0.9.0), NonlinearNormalForm main dfc5c2697e53, AtomicAndPhysicalConstants 750a9f276b7d; Julia 1.13.2, CPU, Float64, one thread"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "BeamTracking 0.8.7",
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-17.py",
+   "../helpers/_scibmad.py"
+  ],
+  "requirements": [],
+  "page": "scibmad/COL-17/"
+ },
+ {
+  "code": "scibmad",
+  "id": "COL-18",
+  "title": "Half-cell offsets in multiple directions make the documented free-space solver nonfinite",
+  "area": "Collective effects and spin",
+  "priority": "P4",
+  "severity": "Crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Calling the documented free-space solver with half-cell offsets in two coordinate directions returns nonfinite electric fields for a finite charge distribution. On a 4³ mesh with 0.9766 mm spacing and a 1 pC source, 128 of 192 field components become nonfinite; shifting all three directions makes all 192 nonfinite. Independent surface integration of the Coulomb field gives (3559, 1166, 0) V/m at a sample where the solver returns NaN in both transverse components. Full and pruned FFTs, with and without Green-function caching, exhibit the failure. The exported free-space and cathode solves use zero transverse offsets and avoid this trigger.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`src/solvers/free_space.jl:20–55`",
+    "url": "https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/solvers/free_space.jl#L20-L55"
+   },
+   {
+    "label": "`src/green_functions.jl:69–95`",
+    "url": "https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L69-L95"
+   },
+   {
+    "label": "`src/green_functions.jl:24–37`",
+    "url": "https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L24-L37"
+   },
+   {
+    "label": "`41–66`",
+    "url": "https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L41-L66"
+   },
+   {
+    "label": "`src/green_functions.jl:160–175`",
+    "url": "https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L160-L175"
+   },
+   {
+    "label": "`test/test_solver_reference.jl:15–22`",
+    "url": "https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/test/test_solver_reference.jl#L15-L22"
+   },
+   {
+    "label": "`src/SpaceCharge.jl:19`",
+    "url": "https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/SpaceCharge.jl#L19"
+   },
+   {
+    "label": "`src/deposition.jl:59–84`",
+    "url": "https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/deposition.jl#L59-L84"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "SpaceCharge 1.3.0",
+      "commit": "ae30463305729aec2f04d4687ffd547b94750cb2",
+      "build": "source (SciBmad 0.6.0 5f0fb83ac889), Julia 1.13.2, CPU, Float64, one thread"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "SpaceCharge 1.3.0",
+      "commit": "ae30463305729aec2f04d4687ffd547b94750cb2",
+      "build": "source (SciBmad 0.6.0 5f0fb83ac889), Julia 1.13.2, CPU, Float32/Float64, one thread"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-06",
+    "code": {
+     "ref": "SpaceCharge main (1.3.0)",
+     "commit": "ae30463305729aec2f04d4687ffd547b94750cb2",
+     "build": "source (SciBmad 0.6.0 5f0fb83ac889), Julia 1.13.2, CPU, Float32/Float64, one thread"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-06",
+   "code": {
+    "ref": "SpaceCharge main (1.3.0)",
+    "commit": "ae3046330572",
+    "committed": "2026-10-13"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-18.py",
+   "../helpers/_scibmad.py"
+  ],
+  "requirements": [],
+  "page": "scibmad/COL-18/"
  },
  {
   "code": "scibmad",
@@ -7642,7 +8395,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
-    "commit": "35fe0162c72d"
+    "commit": "35fe0162c72d",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7761,7 +8515,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
-    "commit": "35fe0162c72d"
+    "commit": "35fe0162c72d",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7780,13 +8535,13 @@
  {
   "code": "scibmad",
   "id": "LAT-03",
-  "title": "`R_to_v` and `R_to_gamma` omit the charge state; ion harmonic RF frequency is superluminal",
+  "title": "Beamlines `R_to_v` omits the charge state; ion harmonic RF frequency is superluminal",
   "area": "Lattice and API",
   "priority": "P2",
   "severity": "Wrong physics",
   "level": "Probe-pinned",
   "tags": [],
-  "summary": "Beamlines' `R_to_v`, which converts a reference rigidity R to a speed, mishandles the charge state q: it computes |q|·c/√(1 + (m/Rc)²) instead of c/√(1 + (m/(qRc))²) = c·pc/E. A harmonic-number cavity's `rf_frequency` getter uses this speed, so it is wrong for multiply charged ions; the correct speed is consistent with the separately checked drift reference time. For ⁴He²⁺ at a reference momentum of 10 GeV/c in a 10 m line with `harmon` = 1, the helper returns 4.807×10⁸ m/s, above c, instead of 2.809×10⁸ m/s, and the getter returns 48.07 MHz instead of 28.09 MHz. Singly charged particles and the drift reference clock are unaffected.",
+  "summary": "Beamlines' `R_to_v`, which converts a reference rigidity R to a speed, mishandles the charge state q: it computes |q|·c/√(1 + (m/Rc)²) instead of c/√(1 + (m/(qRc))²) = c·pc/E. The `harmon` ↔ `rf_frequency` getter of an RF element uses this speed, so it is wrong for multiply charged ions; the correct speed agrees with BeamTracking's helpers and the drift reference clock. For ⁴He²⁺ at a reference momentum of 10 GeV/c in a 10 m line with `harmon` = 1, the helper returns 4.807×10⁸ m/s, above c, instead of 2.809×10⁸ m/s, and the getter returns 48.07 MHz instead of 28.09 MHz. Singly charged particles are unaffected, and tracking uses the correct frequency.",
   "justification": null,
   "locations": [
    {
@@ -7798,46 +8553,23 @@
     "url": "https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/ext/BeamlinesGTPSAExt/BeamlinesGTPSAExt.jl#L13"
    },
    {
-    "label": "`BeamTracking.jl/src/utils/energy.jl:9`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/energy.jl#L9"
-   },
-   {
-    "label": "`BeamTracking.jl/src/utils/energy.jl:6`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/energy.jl#L6"
-   },
-   {
     "label": "`Beamlines.jl/src/virtual.jl:557`",
     "url": "https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L557"
-   },
-   {
-    "label": "`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/utils_bl.jl:205`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L205"
    },
    {
     "label": "`Beamlines.jl/src/utils.jl:5`",
     "url": "https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/utils.jl#L5"
    },
    {
-    "label": "`BeamTracking.jl/src/utils/energy.jl:7`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/energy.jl#L7"
-   }
-  ],
-  "upstream": [
-   {
-    "repository": "bmad-sim/BeamTracking.jl",
-    "number": 366,
-    "kind": "issue",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/issues/366",
-    "relation": "report"
+    "label": "`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/utils_bl.jl:205`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L205"
    },
    {
-    "repository": "bmad-sim/BeamTracking.jl",
-    "number": 368,
-    "kind": "pull",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/pull/368",
-    "relation": "fix"
+    "label": "`BeamTracking.jl/src/utils/energy.jl:9`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/energy.jl#L9"
    }
   ],
+  "upstream": [],
   "provenance": {
    "found": [
     {
@@ -7894,20 +8626,21 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-07",
     "code": {
-     "ref": "Beamlines main",
+     "ref": "Beamlines 0.11.0",
      "commit": "35fe0162c72d",
-     "build": "main-branch sources of 2026-10-29 (SciBmad ae9423d703b4, BeamTracking 0bf3585fdc9c, AtomicAndPhysicalConstants 750a9f276b7d), Julia 1.13.2, CPU, one thread"
+     "build": "pinned package set (SciBmad ae9423d703b4, BeamTracking 0bf3585fdc9c, AtomicAndPhysicalConstants 0.11.6 750a9f276b7d), Julia 1.13.2, CPU, one thread"
     },
     "result": "reproduced"
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-11-07",
    "code": {
-    "ref": "Beamlines main",
-    "commit": "35fe0162c72d"
+    "ref": "Beamlines 0.11.0",
+    "commit": "35fe0162c72d",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -7943,7 +8676,7 @@
    },
    {
     "label": "`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/utils_bl.jl:204`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L204"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L204"
    },
    {
     "label": "`Beamlines.jl/src/beamline.jl:557-566`",
@@ -8008,7 +8741,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
-    "commit": "35fe0162c72d"
+    "commit": "35fe0162c72d",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8097,11 +8831,11 @@
     }
    ],
    "verified": {
-    "date": "2026-10-31",
+    "date": "2026-11-07",
     "code": {
-     "ref": "BeamTracking main",
+     "ref": "BeamTracking 0.8.7",
      "commit": "0bf3585fdc9c",
-     "build": "main-branch sources of 2026-10-29 (SciBmad ae9423d703b4, BeamTracking 0bf3585fdc9c, AtomicAndPhysicalConstants 750a9f276b7d), Julia 1.13.2, CPU, one thread"
+     "build": "pinned package set (SciBmad ae9423d703b4, Beamlines 0.11.0 35fe0162c72d, AtomicAndPhysicalConstants 0.11.6 750a9f276b7d), Julia 1.13.2, CPU, one thread"
     },
     "result": "not reproduced"
    }
@@ -8110,15 +8844,18 @@
    "date": "2026-10-22",
    "code": {
     "ref": "BeamTracking 0.8.7",
-    "commit": "65e343f9afda"
+    "commit": "65e343f9afda",
+    "committed": "2026-10-13"
    },
    "head": false,
    "head_not_reproduced": {
-    "date": "2026-10-31",
+    "date": "2026-11-07",
     "code": {
-     "ref": "BeamTracking main",
-     "commit": "0bf3585fdc9c"
-    }
+     "ref": "BeamTracking 0.8.7",
+     "commit": "0bf3585fdc9c",
+     "committed": "2026-10-28"
+    },
+    "head": true
    }
   },
   "models": [
@@ -8219,7 +8956,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
-    "commit": "35fe0162c72d"
+    "commit": "35fe0162c72d",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8324,7 +9062,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
-    "commit": "35fe0162c72d"
+    "commit": "35fe0162c72d",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8354,19 +9093,19 @@
   "locations": [
    {
     "label": "`SciBmad.jl/src/track.jl:182`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L182"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L182"
    },
    {
     "label": "`SciBmad.jl/src/track.jl:130-131`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L130-L131"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L130-L131"
    },
    {
     "label": "`BeamTracking.jl/src/types.jl:78-79`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L78-L79"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L78-L79"
    },
    {
-    "label": "`BeamTracking.jl/src/types.jl:103-115`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L103-L115"
+    "label": "`BeamTracking.jl/src/types.jl:102-114`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L102-L114"
    }
   ],
   "upstream": [],
@@ -8419,7 +9158,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8449,23 +9189,23 @@
   "locations": [
    {
     "label": "`SciBmad.jl/src/track.jl:210`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L210"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L210"
    },
    {
     "label": "`:56`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L56"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L56"
    },
    {
     "label": "`SciBmad.jl/src/track.jl:225-226`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L225-L226"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L225-L226"
    },
    {
     "label": "`BeamTracking.jl/src/kernel.jl:262-263`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernel.jl#L262-L263"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernel.jl#L262-L263"
    },
    {
     "label": "`SciBmad.jl/src/track.jl:167-168`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L167-L168"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L167-L168"
    }
   ],
   "upstream": [],
@@ -8508,7 +9248,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8538,12 +9279,12 @@
   "justification": null,
   "locations": [
    {
-    "label": "`BeamTracking.jl/src/types.jl:133-149`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L133-L149"
+    "label": "`BeamTracking.jl/src/types.jl:132-148`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L132-L148"
    },
    {
     "label": "`BeamTracking.jl/src/BeamTracking.jl:26`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/BeamTracking.jl#L26"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/BeamTracking.jl#L26"
    }
   ],
   "upstream": [],
@@ -8616,7 +9357,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8648,27 +9390,27 @@
   "locations": [
    {
     "label": "`BeamTracking.jl/src/kernels/aperture.jl:4-7`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/aperture.jl#L4-L7"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/aperture.jl#L4-L7"
    },
    {
     "label": "`BeamTracking.jl/src/kernels/aperture.jl:21-25`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/aperture.jl#L21-L25"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/aperture.jl#L21-L25"
    },
    {
     "label": "`SciBmad.jl/docs/src/track.md:72-73`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/track.md#L72-L73"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/track.md#L72-L73"
    },
    {
     "label": "`BeamTracking.jl/src/types.jl:15-18`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L15-L18"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L15-L18"
    },
    {
-    "label": "`BeamTracking.jl/src/kernels/drift_kick.jl:67-68`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/drift_kick.jl#L67-L68"
+    "label": "`BeamTracking.jl/src/kernels/drift_kick.jl:66-67`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/drift_kick.jl#L66-L67"
    },
    {
     "label": "`BeamTracking.jl/test/RungeKuttaTracking_test.jl:331-337`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/test/RungeKuttaTracking_test.jl#L331-L337"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/test/RungeKuttaTracking_test.jl#L331-L337"
    }
   ],
   "upstream": [],
@@ -8721,7 +9463,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8820,7 +9563,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "Beamlines main",
-    "commit": "35fe0162c72d"
+    "commit": "35fe0162c72d",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -8906,11 +9650,11 @@
     }
    ],
    "verified": {
-    "date": "2026-10-29",
+    "date": "2026-11-07",
     "code": {
-     "ref": "BeamTracking main",
+     "ref": "BeamTracking 0.8.7",
      "commit": "0bf3585fdc9c",
-     "build": "main-branch sources of 2026-10-29 (SciBmad ae9423d703b4, BeamTracking 0bf3585fdc9c, AtomicAndPhysicalConstants 750a9f276b7d), Julia 1.13.2, CPU, one thread"
+     "build": "pinned package set (SciBmad ae9423d703b4, Beamlines 0.11.0 35fe0162c72d, AtomicAndPhysicalConstants 0.11.6 750a9f276b7d), Julia 1.13.2, CPU, one thread"
     },
     "result": "not reproduced"
    }
@@ -8919,15 +9663,18 @@
    "date": "2026-10-22",
    "code": {
     "ref": "BeamTracking 0.8.7",
-    "commit": "65e343f9afda"
+    "commit": "65e343f9afda",
+    "committed": "2026-10-13"
    },
    "head": false,
    "head_not_reproduced": {
-    "date": "2026-10-29",
+    "date": "2026-11-07",
     "code": {
-     "ref": "BeamTracking main",
-     "commit": "0bf3585fdc9c"
-    }
+     "ref": "BeamTracking 0.8.7",
+     "commit": "0bf3585fdc9c",
+     "committed": "2026-10-28"
+    },
+    "head": true
    }
   },
   "models": [
@@ -8955,19 +9702,19 @@
   "locations": [
    {
     "label": "`SciBmad.jl/src/track.jl:76`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L76"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L76"
    },
    {
     "label": "`:84`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L84"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L84"
    },
    {
     "label": "`:277`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L277"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L277"
    },
    {
     "label": "`:101`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L101"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L101"
    }
   ],
   "upstream": [],
@@ -9040,7 +9787,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9072,19 +9820,19 @@
   "locations": [
    {
     "label": "`SciBmad.jl/docs/src/batch.md:105`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/batch.md#L105"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/batch.md#L105"
    },
    {
     "label": "`BeamTracking.jl/src/batch.jl:303-312`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L303-L312"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L303-L312"
    },
    {
     "label": "`SciBmad.jl/docs/src/batch.md:48`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/batch.md#L48"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/batch.md#L48"
    },
    {
     "label": "`:74`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/batch.md#L74"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/docs/src/batch.md#L74"
    }
   ],
   "upstream": [],
@@ -9127,7 +9875,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9156,7 +9905,7 @@
   "locations": [
    {
     "label": "`SciBmad.jl/examples/python/nonlinear-twiss.ipynb:333`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/python/nonlinear-twiss.ipynb#L333"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/python/nonlinear-twiss.ipynb#L333"
    }
   ],
   "upstream": [],
@@ -9209,7 +9958,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9239,19 +9989,19 @@
   "locations": [
    {
     "label": "`SciBmad.jl/examples/python/ags-spin-ramp.ipynb:272`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/python/ags-spin-ramp.ipynb#L272"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/python/ags-spin-ramp.ipynb#L272"
    },
    {
     "label": "`:400`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/python/ags-spin-ramp.ipynb#L400"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/python/ags-spin-ramp.ipynb#L400"
    },
    {
     "label": "`:234`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/python/ags-spin-ramp.ipynb#L234"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/python/ags-spin-ramp.ipynb#L234"
    },
    {
     "label": "`SciBmad.jl/src/track.jl:311`",
-    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L311"
+    "url": "https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L311"
    }
   ],
   "upstream": [],
@@ -9294,7 +10044,8 @@
    "date": "2026-10-31",
    "code": {
     "ref": "SciBmad main",
-    "commit": "ae9423d703b4"
+    "commit": "ae9423d703b4",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -9353,15 +10104,15 @@
    },
    {
     "label": "`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/utils_bl.jl:219-220`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L219-L220"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L219-L220"
    },
    {
-    "label": "`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:482`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L482"
+    "label": "`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:486`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L486"
    },
    {
     "label": "`BeamTracking.jl/src/kernels/rfcavity_kick.jl:106-114`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/rfcavity_kick.jl#L106-L114"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/rfcavity_kick.jl#L106-L114"
    }
   ],
   "upstream": [],
@@ -9405,7 +10156,8 @@
    "date": "2026-10-22",
    "code": {
     "ref": "bmad-ecosystem 20261020-0",
-    "commit": "19b8afb46a40"
+    "commit": "19b8afb46a40",
+    "committed": "2026-10-20"
    },
    "head": false,
    "head_not_reproduced": null
@@ -9534,7 +10286,8 @@
    "date": "2026-10-22",
    "code": {
     "ref": "bmad-ecosystem 20261020-0",
-    "commit": "19b8afb46a40"
+    "commit": "19b8afb46a40",
+    "committed": "2026-10-20"
    },
    "head": false,
    "head_not_reproduced": null
@@ -9570,7 +10323,7 @@
    },
    {
     "label": "`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:13`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/general_bl.jl#L13"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L13"
    },
    {
     "label": "`bmad/util_programs/bmad_to_scibmad/bmad_to_scibmad.f90:56-58`",
@@ -9608,7 +10361,8 @@
    "date": "2026-10-22",
    "code": {
     "ref": "bmad-ecosystem 20261020-0",
-    "commit": "19b8afb46a40"
+    "commit": "19b8afb46a40",
+    "committed": "2026-10-20"
    },
    "head": false,
    "head_not_reproduced": null
@@ -9700,10 +10454,11 @@
    ]
   },
   "last_reproduced": {
-   "date": "2026-10-30",
+   "date": "2026-10-22",
    "code": {
     "ref": "bmad-ecosystem 20261020-0",
-    "commit": "19b8afb46a40"
+    "commit": "19b8afb46a40",
+    "committed": "2026-10-20"
    },
    "head": false,
    "head_not_reproduced": null
@@ -9781,10 +10536,11 @@
    ]
   },
   "last_reproduced": {
-   "date": "2026-10-30",
+   "date": "2026-10-22",
    "code": {
     "ref": "bmad-ecosystem 20261020-0",
-    "commit": "19b8afb46a40"
+    "commit": "19b8afb46a40",
+    "committed": "2026-10-20"
    },
    "head": false,
    "head_not_reproduced": null
@@ -9813,63 +10569,63 @@
   "locations": [
    {
     "label": "`BeamTracking.jl/src/batch.jl:102`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L102"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L102"
    },
    {
     "label": "`:111`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L111"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L111"
    },
    {
     "label": "`:139`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L139"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L139"
    },
    {
     "label": "`:141`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L141"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L141"
    },
    {
     "label": "`:150`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L150"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L150"
    },
    {
     "label": "`:152`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L152"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L152"
    },
    {
     "label": "`:181`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L181"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L181"
    },
    {
     "label": "`:183`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L183"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L183"
    },
    {
     "label": "`:126-132`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L126-L132"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L126-L132"
    },
    {
     "label": "`:167-169`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L167-L169"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L167-L169"
    },
    {
     "label": "`:198-200`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L198-L200"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L198-L200"
    },
    {
     "label": "`:105-106`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L105-L106"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L105-L106"
    },
    {
     "label": "`:144-145`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L144-L145"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L144-L145"
    },
    {
     "label": "`:186-187`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L186-L187"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L186-L187"
    },
    {
     "label": "`:93-96`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L93-L96"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L93-L96"
    },
    {
     "label": "`GTPSA.jl/src/operators.jl:116-118`",
@@ -9923,12 +10679,13 @@
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-10-30",
    "code": {
-    "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "ref": "BeamTracking 0.8.7",
+    "commit": "d8e45fdc25db",
+    "committed": "2026-10-23"
    },
-   "head": true,
+   "head": false,
    "head_not_reproduced": null
   },
   "models": [
@@ -9955,59 +10712,59 @@
   "locations": [
    {
     "label": "`BeamTracking.jl/src/batch.jl:83-90`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L83-L90"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L83-L90"
    },
    {
     "label": "`:105`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L105"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L105"
    },
    {
     "label": "`:114`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L114"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L114"
    },
    {
     "label": "`:144`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L144"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L144"
    },
    {
     "label": "`:155`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L155"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L155"
    },
    {
     "label": "`:176`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L176"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L176"
    },
    {
     "label": "`:186`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L186"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L186"
    },
    {
     "label": "`:208`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L208"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L208"
    },
    {
     "label": "`:213`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L213"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L213"
    },
    {
     "label": "`:224-225`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L224-L225"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L224-L225"
    },
    {
     "label": "`:239`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L239"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L239"
    },
    {
     "label": "`:244`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L244"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L244"
    },
    {
     "label": "`:85-86`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L85-L86"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/batch.jl#L85-L86"
    },
    {
     "label": "`BeamTracking.jl/src/kernel.jl:18-20`",
-    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernel.jl#L18-L20"
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernel.jl#L18-L20"
    }
   ],
   "upstream": [],
@@ -10050,7 +10807,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "BeamTracking main",
-    "commit": "0bf3585fdc9c"
+    "commit": "0bf3585fdc9c",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -10150,7 +10908,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "Beamlines main",
-    "commit": "35fe0162c72d"
+    "commit": "35fe0162c72d",
+    "committed": "2026-10-13"
    },
    "head": true,
    "head_not_reproduced": null
@@ -10164,5 +10923,112 @@
   ],
   "requirements": [],
   "page": "scibmad/LAT-25/"
+ },
+ {
+  "code": "scibmad",
+  "id": "LAT-26",
+  "title": "Bmad SciBmad writer turns thin reference bends into ordinary dipole kicks",
+  "area": "Lattice and API",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Exporting a zero-length Bmad multipole with K0L_status=bends_reference to SciBmad silently turns its reference bend into an ordinary dipole kick. For integrated angle θ, the source map requires Δpₓ=θδ and Δz=−θx, where x is horizontal position and δ relative momentum deviation. With θ=1.000 mrad, x=1.000 mm and δ=0.01000, the imported element gives Δpₓ=−0.001000 and Δz=0 instead of +0.00001000 and −1.000 μm, and kicks the design ray. Native tracking and an independently integrated quadratic Hamiltonian agree. Both dipole signs, tilt and an added quadrupole reproduce the error; straight-reference import passes.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`bmad/output/write_lattice_scibmad_format.f90:115–118`",
+    "url": "https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_scibmad_format.f90#L115-L118"
+   },
+   {
+    "label": "`bmad/output/write_lattice_scibmad_format.f90:647–670`",
+    "url": "https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_scibmad_format.f90#L647-L670"
+   },
+   {
+    "label": "`bmad/output/write_lattice_scibmad_format.f90:10–13`",
+    "url": "https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_scibmad_format.f90#L10-L13"
+   },
+   {
+    "label": "`bmad/output/write_lattice_scibmad_format.f90:94–96`",
+    "url": "https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_scibmad_format.f90#L94-L96"
+   },
+   {
+    "label": "`bmad/output/write_lattice_scibmad_format.f90:490`",
+    "url": "https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_scibmad_format.f90#L490"
+   },
+   {
+    "label": "`util_programs/bmad_to_scibmad/bmad_to_scibmad.f90:53–59`",
+    "url": "https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/bmad_to_scibmad/bmad_to_scibmad.f90#L53-L59"
+   },
+   {
+    "label": "`bmad/doc/elements.tex:3860–3878`",
+    "url": "https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L3860-L3878"
+   },
+   {
+    "label": "`bmad/modules/multipole_mod.f90:248–254`",
+    "url": "https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/multipole_mod.f90#L248-L254"
+   },
+   {
+    "label": "`ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:31–44`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L31-L44"
+   },
+   {
+    "label": "`src/kernels/multipole.jl:28–35`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/multipole.jl#L28-L35"
+   },
+   {
+    "label": "`ext/BeamTrackingBeamlinesExt/unpack_bl.jl:514–523`",
+    "url": "https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L514-L523"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "bmad-ecosystem 20261031-0",
+      "commit": "c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3",
+      "build": "production bmad_to_scibmad and Tao 20261031-0; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d; Julia 1.13.2, CPU, Float64, one thread"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "bmad-ecosystem 20261031-0",
+      "commit": "c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3",
+      "build": "production bmad_to_scibmad and Tao 20261031-0; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d; Julia 1.13.2, CPU, Float64, one thread"
+     }
+    }
+   ]
+  },
+  "last_reproduced": {
+   "date": "2026-11-06",
+   "code": {
+    "ref": "bmad-ecosystem 20261031-0",
+    "commit": "c4c629fc9071",
+    "committed": "2026-10-31"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "LAT-26.py",
+   "../helpers/_scibmad.py"
+  ],
+  "requirements": [],
+  "page": "scibmad/LAT-26/"
  }
 ]

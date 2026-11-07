@@ -9,8 +9,7 @@ scaling of the rational approximation.
 
 The script holds three electron slices fixed and evaluates the on-axis and off-axis kicks at three
 interaction lengths. It requires the on-axis scaling control to pass and tests the same linearity
-off axis; a separate quadrature evaluates the manual’s slice integral. Set BMAD_DIST to the build
-root.
+off axis; a separate quadrature evaluates the manual’s slice integral.
 """
 
 import numpy as np

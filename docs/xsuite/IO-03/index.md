@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Source | [`Particles.from_dict`, particles.py:485–498](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L485-L498) |
 
 On CPU, loading a checkpoint with `Particles.from_dict(load_rng_state=True)` and default options reorders the coordinates into active-then-lost order but restores the saved random-number-generator (RNG) words in their original slot order. In checkpoints with lost rows before live rows, some live particles therefore continue another particle's saved random stream, while the persistence contract and an uninterrupted copy require each particle to keep its own. With seeds 11, 22, 33 and 44 and particle 1 lost, live particle 2 draws 0.1720 instead of 0.6269, and particle 3 draws 0.6269 instead of 0.1897. Coordinates keep their particle IDs, but restarted stochastic trajectories change; all-active checkpoints and loading with `_no_reorganize=True` preserve the associations.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python IO-03.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: IO-03.py"
 

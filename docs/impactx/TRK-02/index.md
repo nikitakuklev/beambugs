@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`RFCavity.H#L383-L386`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/RFCavity.H#L383-L386) |
 
 With spin tracking enabled (experimental in ImpactX), `RFCavity` rotates the spin incorrectly: one spin-coupling term omits the on-axis field profile, and two divide by √(1 + γ²) instead of the reference momentum βγ. Thomas–BMT spin precession vanishes where the field is zero and starts at the entrance with rate |dSₓ/ds| = E·`px`·(G + 1/(γ + 1)) for on-axis field E and magnetic anomaly G. For a proton at γ = 2, a cavity with `cos_coefficients=[0]` (no field) turns the spin from (0, 0, 1) to (−0.002864, −0.001091, 1.000); with E = 0.2 m⁻¹ and `px` = 0.001, the entrance rate is 3.294e-4 m⁻¹ instead of 4.252e-4 m⁻¹. Settings describing the same field give the same orbit but different spins; the orbit is unaffected.
+
+Run `python TRK-02.py`.
 
 ??? example "Reproducer: TRK-02.py"
 

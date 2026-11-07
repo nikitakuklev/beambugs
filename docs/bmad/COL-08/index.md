@@ -12,17 +12,14 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Issue | [[gh:https://github.com/bmad-sim/bmad-ecosystem/issues/2214]] |
 | Pull request | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2215]], fix |
 | Source | [csr_bin_kicks, bmad/space_charge/csr_and_space_charge_mod.f90:769–770](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L769-L770)<br>[lsc_kick_params_calc, bmad/space_charge/csr_and_space_charge_mod.f90:1141–1142](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1141-L1142)<br>[csr_and_sc_apply_kicks, bmad/space_charge/csr_and_space_charge_mod.f90:1609–1610](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1609-L1610)<br>[classical_radius, bmad/code/classical_radius.f90:14–23](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/classical_radius.f90#L14-L23) |
 
 One-dimensional coherent synchrotron radiation and both slice space-charge kicks divide by species mass twice. At fixed Lorentz factor, geometry, total charge and unit charge state, normalized kicks must scale inversely with mass because the force is unchanged and the reference momentum scales with mass. The proton-to-electron ratio is 2.966e−7 in all three kicks instead of 5.446e−4, suppressing the proton result by another factor of about 1836. The classical-radius routine already supplies the required inverse mass before the extra divisor.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_fields.py](../helpers/_collective_fields.py) · [View source](../helpers/index.md#_collective_fields)
+Run `python COL-08.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_fields.py](../helpers/_collective_fields.py) in the same directory.
 
 ??? example "Reproducer: COL-08.py"
 
@@ -40,7 +37,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The script compares electron and proton CSR, longitudinal slice and transverse slice kicks at fixed
     Lorentz factor and source charge. It checks that the classical-radius ratio already equals the
-    inverse mass ratio before comparing all three normalized kicks. Set BMAD_DIST to the build root.
+    inverse mass ratio before comparing all three normalized kicks.
     """
 
     import numpy as np

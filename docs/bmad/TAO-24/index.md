@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [normal_form_rd_terms contract, bmad/ptc/ptc_layout_mod.f90:1075–1080](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ptc_layout_mod.f90#L1075-L1080)<br>[normal_form_rd_terms phasor extraction, bmad/ptc/ptc_layout_mod.f90:1146–1152](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ptc_layout_mod.f90#L1146-L1152)<br>[from_phasor, forest/code/Ci_tpsa.f90:3653–3656](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/forest/code/Ci_tpsa.f90#L3653-L3656)<br>[Tao Data Types, normal.h, tao/doc/data.tex:1394–1397](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/data.tex#L1394-L1397)<br>[normalform2 basis, tao/doc/data.tex:1464–1470](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/data.tex#L1464-L1470) |
 
 Tao’s normal.h resonance-driving terms use the complex conjugate of the Bengtsson convention promised by its documentation. For one thin sextupole at nonzero betatron phase, normal.h gives h₂₁₀₀₀ = (0.5273 + 1.258i) m⁻¹ᐟ² while Bengtsson’s formula and srdt give (0.5273 − 1.258i) m⁻¹ᐟ². Eight cubic terms show the same conjugation: their real parts and magnitudes agree, while their imaginary parts reverse sign. The analytic sextupole generator and a strength-scaling control establish the convention mismatch.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) · [View source](../helpers/index.md#_tao_contracts_normal_form)
+Run `python TAO-24.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) in the same directory.
 
 ??? example "Reproducer: TAO-24.py"
 

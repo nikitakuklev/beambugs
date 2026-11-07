@@ -12,7 +12,7 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-20 on Bmad 20261020-0 (`19b8afb`); not reproduced on Bmad 20261031-0 (`c4c629f`), 2026-11-05 |
+| Last reproduced | 2026-10-20 on Bmad 20261020-0 (`19b8afb`, committed 2026-10-20); not reproduced on Bmad 20261031-0 (`c4c629f`), 2026-11-05 |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Issue | [[gh:https://github.com/bmad-sim/bmad-ecosystem/issues/2228]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2229]], filed from this evidence |
@@ -20,10 +20,7 @@ hide:
 
 Exporting a skew multipole of quadrupole order or higher to MAD-X negated its skew coefficients and reversed its transverse kick. The shared complex field expansion requires the same skew sign in both codes. For integrated skew-quadrupole strength 0.91 m⁻¹ at (x, y) = (1, 2) mm, the correct normalized transverse momentum changes are (0.001820, 0.0009100); the export gave (−0.001820, −0.0009100). The field expansion and Bmad tracking agree on the positive changes. The same writer handles skew field errors attached to thick magnets, while the main fields of thick skew magnets and the MAD8 export use separate, correct branches.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _translators.py](../helpers/_translators.py) · [View source](../helpers/index.md#_translators)
+Run `python XLT-13.py` with [_bmad.py](../helpers/_bmad.py) and [_translators.py](../helpers/_translators.py) in the same directory.
 
 ??? example "Reproducer: XLT-13.py"
 

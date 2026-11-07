@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [`curvedDipoleFringe`, csbend.c:6830–6839](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6830-L6839)<br>[6833](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6833)<br>[6896](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6896)<br>[6967](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6967)<br>[7008](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L7008)<br>[csbend.c:7026](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L7026)<br>[manual, csbend.tex:96–101](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L96-L101)<br>[`curvedDipoleFringeCalc`, curvedDipoleFringeCalc.c:461–505](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/elegantTools/curvedDipoleFringeCalc.c#L461-L505) |
 
 A CSBEND edge using model 5 misplaces a parenthesis when |K₃/(1+δ)| < 10⁻⁵, where K₃ is a fringe integral and δ is the fractional momentum offset. Its K₂ fringe-integral contribution adds the constant −K₂/(2(1+δ)²) to the path instead of −K₂y²/(2(1+δ)²), where y is vertical position. The correct expression follows from the lens's momentum-dependent vertical kick and the continuous larger-K₃ formula. A pure-dipole tanh fringe with width parameter 2.000 cm and curvature 0.1000 m⁻¹ has K₃ = 0 and K₂ = 1.000×10⁻⁴ m⁻¹, producing a false constant path offset of −50.00 μm per edge on momentum. All-zero fringe integrals produce no error.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-37.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-37.py"
 

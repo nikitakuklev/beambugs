@@ -9,13 +9,16 @@ normalized-momentum variance ⟨pₓ²⟩ at its vacuum value 1.000×10⁻⁸ in
 of a closed-form uniform-ellipsoid field calculation. ImpactX logs a zero-charge warning; according
 to the source, the dashboard's Run and Export both use this generator.
 
-Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
-generator modules from that clone behind package shells, replacing only the reactive state object so
-that no Trame web UI or server is needed, and selects envelope tracking, 3D space charge and 1 nC
-for a 10 MeV proton Gaussian beam. It executes the generated tracking commands through a 0.2 m drift
-and compares the full covariance matrix with vacuum drift transport. As controls, `init_envelope`
-called with 1 nC and 0.5 nC must match a drift–kick–drift calculation using the closed-form field of
-a prolate uniform ellipsoid with the same rms sizes.
+Setup: `IMPACTX_SOURCE` set to a clone of BLAST-ImpactX/impactx at tag `26.10`; the script loads the
+dashboard modules from it.
+
+The script loads the dashboard's unmodified generator modules from that clone behind package shells,
+replacing only the reactive state object so that no Trame web UI or server is needed, and selects
+envelope tracking, 3D space charge and 1 nC for a 10 MeV proton Gaussian beam. It executes the
+generated tracking commands through a 0.2 m drift and compares the full covariance matrix with
+vacuum drift transport. As controls, `init_envelope` called with 1 nC and 0.5 nC must match a
+drift–kick–drift calculation using the closed-form field of a prolate uniform ellipsoid with the
+same rms sizes.
 """
 
 import os

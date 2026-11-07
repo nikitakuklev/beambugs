@@ -2,7 +2,7 @@
 
 Tightening radiation-integration tolerances makes the convergence test easier to satisfy because it multiplies estimated errors by the tolerances. For a 3.2 m, 1 T planar wiggler at 3 GeV with 4 or 12 periods, the curvature-squared integral I₂ is 0.008871 m⁻¹ instead of 0.01598 m⁻¹, an underestimate of 44.48%. A 13-period case is 0.03527% low, and changing the tolerance from 10⁻⁴ to 10⁻⁸ leaves all three results unchanged. Dividing by the allowed errors in a temporary source copy recovers the analytic period average at 10⁻⁸.
 
-The script runs 4-, 12- and 13-period wigglers at two tolerances and checks the curvature-squared integral against the analytic period average. It then compiles an isolated copy of rad_6d_mod with only the convergence multiplications changed to divisions and repeats the cases. BMAD_DIST and BMAD_SOURCE name the matching production build and source; the source tree and libraries are preserved.
+The script runs 4-, 12- and 13-period wigglers at two tolerances and checks the curvature-squared integral against the analytic period average. It then compiles an isolated copy of rad_6d_mod with only the convergence multiplications changed to divisions and repeats the cases.
 """
 
 import math

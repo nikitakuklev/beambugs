@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [`trackUndulatorKickMap`, ukickmap.c:155–165](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ukickmap.c#L155-L165)<br>[radiation block, ukickmap.c:181–190](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ukickmap.c#L181-L190)<br>[`swapParticles`, elegant.c:2979–2986](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L2979-L2986)<br>[single-particle radiation in tracking, ukickmap.tex:34–45](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ukickmap.tex#L34-L45) |
 
 With classical radiation enabled in UKICKMAP, removing an out-of-map particle can apply one extra radiation update to the survivor moved into its place. The same identified survivors therefore lose different momentum when unrelated lost particles are listed before them rather than after them, although nominal loss must be independent of row order. For electrons at reference momentum p₀ = 5100 mₑc in a 0.16 m map with undulator parameter K = 2.4, one period gives relative momentum offset δ = −1.362×10⁻⁸ instead of −6.808×10⁻⁹; two periods give −4.085×10⁻⁸ instead of −2.723×10⁻⁸. Independent radiation-integral recurrences and no-loss and loss-last controls establish the extra update.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-16.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-16.py"
 

@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`) |
+| Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
-| Source | [`BeamTracking.jl/src/types.jl:133-149`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L133-L149)<br>[`BeamTracking.jl/src/BeamTracking.jl:26`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/BeamTracking.jl#L26) |
+| Source | [`BeamTracking.jl/src/types.jl:132-148`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L132-L148)<br>[`BeamTracking.jl/src/BeamTracking.jl:26`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/BeamTracking.jl#L26) |
 
 Constructing the exported `ParticleView(bunch, i)`, meant as a view of particle i of a `Bunch`, fails with “too many parameters for type ParticleView”: the struct declares six type parameters, but its inner constructor supplies eight, one per field, as reflection confirms. For a bunch whose particle 2 has coordinates [2, 5, 8, 11, 14, 17], the call raises instead of returning that row. Source reading shows a second fault behind the first: the outer constructor takes coordinate columns `view(v, :, i)` and `view(q, :, i)`, whereas particles are rows of the N×6 and N×4 arrays, so the view would hold wrong data once construction works. No code in the SciBmad packages uses `ParticleView`.
+
+Run `julia LAT-10.jl`.
 
 ??? example "Reproducer: LAT-10.jl"
 

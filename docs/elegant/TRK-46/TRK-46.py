@@ -2,7 +2,7 @@
 
 Selecting a custom species with charge magnitude Q in units of the elementary charge and setting run_setup.p_central_mev selects a reference momentum Q times the requested value. The conversion divides by rest energy per charge instead of the rest energy in MeV required by relativistic kinematics. A particle with approximately the helium nucleus mass and Q = 2 requested at 200.0 MeV/c is tracked at 400.0 MeV/c, crossing a 1.000 m drift in 31.26 ns instead of 62.26 ns. Supplying the equivalent dimensionless p_central, or using a singly charged species, gives the correct momentum and arrival time.
 
-The script tracks six identical on-axis particles through an exact drift and compares momentum and flight time with relativistic mass-shell kinematics. Singly charged input, both charge signs and direct dimensionless momentum provide controls, with the same mass constants used in the simulation and oracle. Each case starts a fresh native process with a fixed seed; --mpi also runs three-rank Pelegant. Elegant and SDDS must be on PATH with RPN_DEFNS set.
+The script tracks six identical on-axis particles through an exact drift and compares momentum and flight time with relativistic mass-shell kinematics. Singly charged input, both charge signs and direct dimensionless momentum provide controls, with the same mass constants used in the simulation and oracle. Each case starts a fresh native process with a fixed seed; --mpi also runs three-rank Pelegant.
 """
 
 import math

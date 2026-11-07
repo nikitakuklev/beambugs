@@ -15,8 +15,7 @@ the collision-matrix rates independently of Xfields at the same Coulomb logarith
 six cases (β₀ = 0.45, 0.75 and 0.999, plus reversed, vertical, varying and very small dispersion)
 and checks that Xfields' B&M rates equal that calculation with the dispersions multiplied by β₀ and
 differ from it without the factor. With very small dispersion the factor no longer matters, so there
-the rates must also match the unscaled calculation. It requires the installed prebuilt kernels
-(compilation is forbidden).
+the rates must also match the unscaled calculation.
 """
 
 from _ibs import PARAMS, run_case

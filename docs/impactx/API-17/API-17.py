@@ -9,14 +9,16 @@ electrons at 75 MeV through a 0.125 m drift, inserting `sim.particle_shape = 1` 
 `init_grids()` lets the export run to s = 0.125 m. Exports with CSR off, or with CSR and 3D space
 charge, set the shape and run.
 
-Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
-modules from that clone, each checked equal to the installed copy, substitutes only the Trame UI
-construction and a state object that delivers every registered server-side handler, and exports a 75
-MeV electron Gaussian beam of 24 particles through one 0.125 m drift. Each export runs unchanged in
-a fresh child process; the CSR-only exports with shapes 1 and 3 fail in `init_grids()`. The
-controls, the same exports with only `sim.particle_shape` inserted before `init_grids()`, an export
-with CSR off and one with CSR and 3D space charge, must keep the selected shape and 24 finite
-particles and reach s = 0.125 m.
+Setup: `IMPACTX_SOURCE` set to a clone of BLAST-ImpactX/impactx at tag `26.10`; the script loads the
+dashboard modules from it.
+
+The script loads the dashboard's unmodified modules from that clone, each checked equal to the
+installed copy, substitutes only the Trame UI construction and a state object that delivers every
+registered server-side handler, and exports a 75 MeV electron Gaussian beam of 24 particles through
+one 0.125 m drift. Each export runs unchanged in a fresh child process; the CSR-only exports with
+shapes 1 and 3 fail in `init_grids()`. The controls, the same exports with only `sim.particle_shape`
+inserted before `init_grids()`, an export with CSR off and one with CSR and 3D space charge, must
+keep the selected shape and 24 finite particles and reach s = 0.125 m.
 """
 
 import os

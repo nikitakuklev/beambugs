@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xfields main (`3f06c87`) |
+| Last reproduced | 2026-10-29 on xfields main (`3f06c87`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`TouschekScatter` prefactor, touschek.h:374–376](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/touschek_src/touschek.h#L374-L376)<br>[angular sampling, lines 443–446](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/touschek_src/touschek.h#L443-L446) |
 
 `TouschekScatter` samples the polar scattering angle θ uniformly between `theta_min` and `theta_max` and the azimuth over π, but always uses the Monte Carlo volume π² instead of π·(θₘₐₓ − θₘᵢₙ). With matched random samples for 1.4 GeV/c electrons, narrowing the interval around π/2 from 2⁻²⁰ to 2⁻²⁴ rad leaves the diagnostic `total_mc_rate` at 7464 s⁻¹, whereas the manual's uniform Monte Carlo estimator, which includes the sampled volume, gives 0.002266 and 0.0001416 s⁻¹, a 16-fold reduction. Returned particle weights are normalized to the Piwinski rate, so the factor cancels there; by source reading, `ignored_rate` inherits the diagnostic error. For the default interval the excess is 0.01000% by algebra.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-16.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-16.py"
 
@@ -44,7 +41,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     π/2. Identical final generator states and sampled positions show that both runs use the same
     samples, over which the integrand changes by less than a computed bound, so a correct rate must
     shrink with the sampled volume by a factor 16. It also checks that the returned weights sum to the
-    Piwinski rate. It requires the installed prebuilt kernels (compilation is forbidden).
+    Piwinski rate.
     """
 
     import xfields as xf

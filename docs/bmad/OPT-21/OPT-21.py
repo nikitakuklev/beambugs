@@ -8,10 +8,9 @@ approximation. In a ring with two 10 kV cavities, the implemented denominator is
 the stated formula. The denominator description should identify the cavity sum used by the
 approximation.
 
-The script executes radiation_integrals on a ring with two separated RF cavities. It validates
-the returned bunch length against the cavity sum, compares it with the composed one-turn
-formula, and reads the manual’s denominator definition through BMAD_SOURCE. BMAD_DIST selects
-the build.
+The script executes radiation_integrals on a ring with two separated RF cavities. It validates the
+returned bunch length against the cavity sum, compares it with the composed one-turn formula, and
+reads the manual’s denominator definition through BMAD_SOURCE.
 """
 
 import numpy as np

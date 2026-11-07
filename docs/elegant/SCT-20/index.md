@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [`TouschekRate`, touschekScatter.c:147–148](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L147-L148)<br>[touschekScatter.c:972](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L972)<br>[factor, touschekScatter.c:1026–1030](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L1026-L1030)<br>[rate, touschekScatter.c:626–627](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L626-L627)<br>[weights, touschekScatter.c:690](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L690)<br>[`particleRadius`, elegant.c:3308](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3308)<br>[touschek_scatter, elegant.tex:7693–7697](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7693-L7697)<br>[change_particle, elegant.tex:1497–1517](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L1497-L1517)<br>[usage, touschekLifetime.c:38](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/elegantTools/touschekLifetime.c#L38) |
 
 After change_particle selects a muon, a proton or a custom species, touschek_scatter computes the Touschek scattering rates at TSCATTER elements with the electron's classical radius rₑ instead of the species' r_c = q²/(4πε₀Mc²). At fixed βγ, beam geometry, particle count and momentum aperture, Piwinski's rate scales as r_c², so the correct rate for a singly charged species is the electron's times (mₑ/M)²; Elegant instead writes the electron's rates, from Piwinski's formula and from the Monte Carlo, 4.275×10⁴ times too large for muons and 3.372×10⁶ for protons. For a 1 nC beam at βγ = 100 with a ±10⁻³ momentum aperture, it reports 5.375×10¹¹ s⁻¹ for protons against 1.594×10⁵ s⁻¹ from an independent evaluation of Piwinski's formula.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python SCT-20.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: SCT-20.py"
 

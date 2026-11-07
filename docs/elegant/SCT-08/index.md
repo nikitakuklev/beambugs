@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [smooth update, ibs_tracking.c:513–515](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L513-L515)<br>[centroid and scaling origin, ibs_tracking.c:665–691](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L665-L691) |
 
 With the smooth method (SMOOTH=1), IBSCATTER measures the beam centroid c and scales the transverse coordinates about c + ημ, where η is the dispersion and μ the beam's mean fractional momentum offset δ. The centroid already contains the dispersive displacement ημ, so the origin is displaced twice and the centroid moves by (1−a)ημ, where a is the amplitude growth factor, instead of staying fixed. In a closed ring with η = 14.29 m and μ = 1×10⁻⁴, an amplitude growth of 0.8501% moves the mean horizontal position by −12.14 µm instead of 0; with μ = 0 it stays put.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _ibs_ring.py](../helpers/_ibs_ring.py) · [View source](../helpers/index.md#_ibs_ring)
+Run `python SCT-08.py` with [_elegant.py](../helpers/_elegant.py) and [_ibs_ring.py](../helpers/_ibs_ring.py) in the same directory.
 
 ??? example "Reproducer: SCT-08.py"
 

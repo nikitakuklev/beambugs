@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [make_mat6, bmad/code/make_mat6.f90:105–117](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/make_mat6.f90#L105-L117)<br>[track_a_drift, bmad/low_level/track_a_drift.f90:94–109](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_drift.f90#L94-L109) |
 
 Linear drift tracking constructs its reference map with zero momentum offset but retains the incident particle’s off-momentum speed. The longitudinal coefficient must use the reference speed and equal Lm²/(p₀² + m²), where L is drift length, m is particle mass and p₀ is reference momentum in units with c = 1. For a 1.7 m electron drift at p₀c = 1 MeV with fractional momentum offset 0.2 and initial longitudinal coordinate 0.03 m, the exit coordinate is 0.1076 m instead of 0.1004 m. The transverse first-order map remains correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) · [View source](../helpers/index.md#_s3_14_optics_matrix_radiation)
+Run `python OPT-09.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) in the same directory.
 
 ??? example "Reproducer: OPT-09.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Linear drift tracking constructs its reference map with zero momentum offset but retains the incident particle’s off-momentum speed. The longitudinal coefficient must use the reference speed and equal Lm²/(p₀² + m²), where L is drift length, m is particle mass and p₀ is reference momentum in units with c = 1. For a 1.7 m electron drift at p₀c = 1 MeV with fractional momentum offset 0.2 and initial longitudinal coordinate 0.03 m, the exit coordinate is 0.1076 m instead of 0.1004 m. The transverse first-order map remains correct.
 
-    The script constructs and applies the linear map for a 1.7 m drift at reference and off-reference momentum. It checks the transverse map and reference-momentum control, then compares the longitudinal coefficient with the derivative of the exact drift at the reference speed. BMAD_DIST supplies the build.
+    The script constructs and applies the linear map for a 1.7 m drift at reference and off-reference momentum. It checks the transverse map and reference-momentum control, then compares the longitudinal coefficient with the derivative of the exact drift at the reference speed.
     """
 
     import numpy as np

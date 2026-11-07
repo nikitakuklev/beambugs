@@ -12,17 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">experimental</span> <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`write_lattice_elegant_format`, multipole branch](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L678-L698)<br>[Bmad manual, “Magnetostatic Multipole Fields”, `s:mag.field`, equation `qlpbb`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/electromagnetic-fields.tex#L92-L116)<br>[Bmad manual, “Multipole”, `s:mult`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L3860-L3878) |
 
 Exporting order-zero multipole components to Elegant removes their dipole kicks. An ab_multipole with vertical dipole component a₀ = 0.0007300 should change normalized vertical momentum by 0.0007300, but its export gives zero; a straight-reference K0L dipole is likewise lost. When the omitted component belongs to a thick element’s generated end multipoles, an undefined element name also makes Elegant reject the lattice. Handwritten order-zero MULT elements restore the missing kicks in Elegant.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_24_translations.py](../helpers/_s3_24_translations.py) · [View source](../helpers/index.md#_s3_24_translations)
-- [Download _s4_17_translations.py](../helpers/_s4_17_translations.py) · [View source](../helpers/index.md#_s4_17_translations)
+Run `python XLT-32.py` with [_bmad.py](../helpers/_bmad.py), [_s3_24_translations.py](../helpers/_s3_24_translations.py) and [_s4_17_translations.py](../helpers/_s4_17_translations.py) in the same directory.
 
 ??? example "Reproducer: XLT-32.py"
 
@@ -33,7 +29,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Exporting order-zero multipole components to Elegant removes their dipole kicks. An ab_multipole with vertical dipole component a₀ = 0.0007300 should change normalized vertical momentum by 0.0007300, but its export gives zero; a straight-reference K0L dipole is likewise lost. When the omitted component belongs to a thick element’s generated end multipoles, an undefined element name also makes Elegant reject the lattice. Handwritten order-zero MULT elements restore the missing kicks in Elegant.
 
-    The script exports normal and skew order-zero examples and runs Elegant using ELEGANT_BIN and RPN_DEFNS. It compares the kicks with Bmad and handwritten order-zero MULT controls, and checks the thick-element rejection and missing reference geometry.
+    Setup: `ELEGANT_BIN` set to a serial Elegant executable and `RPN_DEFNS` to the `defns.rpn` file of SDDS; the script runs the exported lattices in Elegant.
+
+    The script exports normal and skew order-zero examples and runs Elegant. It compares the kicks with Bmad and handwritten order-zero MULT controls, and checks the thick-element rejection and missing reference geometry.
     """
 
     import math

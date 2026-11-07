@@ -2,7 +2,7 @@
 
 An overlay assigning more than twenty distinct real attributes of one element overruns fixed bookkeeping buffers. Assigning twenty normal multipole coefficients of a quadrupole succeeds, while adding the valid twenty-first coefficient crashes during lattice parsing. Bounds checking identifies an access to element 21 of a twenty-element pointer array. All twenty-one attributes are valid and should receive the requested value 0.001 without memory corruption.
 
-The script parses overlays controlling twenty and twenty-one coefficients, checking every value in the successful control. It identifies the production crash only after the checkpoint before parsing the twenty-one-target case; the companion bounds script locates the overflowing write. BMAD_DIST selects the build.
+The script parses overlays controlling twenty and twenty-one coefficients, checking every value in the successful control. It identifies the production crash only after the checkpoint before parsing the twenty-one-target case; the companion bounds script locates the overflowing write.
 """
 
 import resource

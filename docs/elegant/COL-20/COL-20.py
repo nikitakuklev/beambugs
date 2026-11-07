@@ -7,6 +7,9 @@ separate-bunch force. For two 30.00 pC bunches 0.4000 ns apart, the first partic
 horizontal slope-kick magnitude is 2.130×10⁻⁷ rather than 4.630×10⁻⁷, 53.99% too small; at
 0.8000 ns it is 73.49% too small.
 
+Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the
+defect occurs only under MPI.
+
 The script tracks two identical 24-particle bunches through one SCMULT of a closed four-sector ring,
 once with the input rows interleaved, so that every tracking rank holds half of each bunch, and once
 with the rows grouped, so that each of two tracking ranks holds one whole bunch. It compares the

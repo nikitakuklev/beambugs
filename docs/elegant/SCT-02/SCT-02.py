@@ -8,6 +8,9 @@ parallel particles. For a 1 nC electron bunch at momentum 800 mₑc, the correct
 first-site local rates are −0.9384, −0.8231 and 568.0 s⁻¹, and the vertical growth rate is −0.8024
 s⁻¹.
 
+Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the
+defect occurs only under MPI.
+
 The script tracks a 1024-particle, 1 nC beam at p = 800 m_e c through two 0.2 m drifts and a
 linac-mode IBSCATTER that writes its rates to a file, once with serial elegant and once with
 3-rank Pelegant. It compares the written local rates and growth-rate parameters with an

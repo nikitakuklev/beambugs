@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [update_ele_from_fibre, bmad/ptc/ptc_layout_mod.f90:1294–1308](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ptc_layout_mod.f90#L1294-L1308)<br>[ele_to_fibre cavity conversion, bmad/ptc/ele_to_fibre.f90:384–416](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ele_to_fibre.f90#L384-L416) |
 
 Synchronizing an unchanged PTC cavity back into Bmad changes its voltage and linear-cavity phase. The inverse conversion omits the active length in the voltage and places the phase parentheses incorrectly. A 0.5 m standing-wave linear cavity specified with 1 MV and phase 0.13 turns becomes 3.336 MV and 1.451 turns. Inverting the forward conversion requires the original voltage and phase to be preserved.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _rf_and_spin.py](../helpers/_rf_and_spin.py) · [View source](../helpers/index.md#_rf_and_spin)
+Run `python TRK-21.py` with [_bmad.py](../helpers/_bmad.py) and [_rf_and_spin.py](../helpers/_rf_and_spin.py) in the same directory.
 
 ??? example "Reproducer: TRK-21.py"
 

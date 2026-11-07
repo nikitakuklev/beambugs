@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`bbu_add_a_bunch`, bsim/code/bbu_track_mod.f90:575–612](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/code/bbu_track_mod.f90#L575-L612) |
 
 Enabling the bunch-charge ramp in the beam-breakup simulation overwrites the circular queue slot with the chronological bunch number. The first insertion records slot zero even though the bunch occupies slot one. The next insertion reports a bunch-array overflow and aborts; the same lattice completes with ramping disabled.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) · [View source](../helpers/index.md#_wake_tables_and_bbu)
+Run `python COL-53.py` with [_bmad.py](../helpers/_bmad.py) and [_wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) in the same directory.
 
 ??? example "Reproducer: COL-53.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Enabling the bunch-charge ramp in the beam-breakup simulation overwrites the circular queue slot with the chronological bunch number. The first insertion records slot zero even though the bunch occupies slot one. The next insertion reports a bunch-array overflow and aborts; the same lattice completes with ramping disabled.
 
-    The script runs the BBU executable with a fixed random seed on the same lattice with ramping disabled and enabled. It checks completion of the control and identifies the queue-overflow diagnostic and abort in the ramped case. BMAD_DIST selects the build.
+    The script runs the BBU executable with a fixed random seed on the same lattice with ramping disabled and enabled. It checks completion of the control and identifies the queue-overflow diagnostic and abort in the ramped case.
     """
 
     from _bmad import RunFailure, run, verdict

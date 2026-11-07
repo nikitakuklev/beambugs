@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`) |
+| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`, head build) |
 | Source | [`Exciter_track_local_particle`, exciter.h:43–47](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/exciter.h#L43-L47)<br>[`start_turn` contract](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/exciter.py#L33-L36) |
 
 `Exciter` applies its first waveform sample to particles arriving less than one sample period before `start_turn`. The documented start time, and an independent calculation of which sample covers each arrival time, require no excitation before then. With `start_turn` = 5, revolution frequency 1 MHz, sampling frequency 0.25 MHz, `knl=[2.5e-6]` and first sample 0.75, the reference particle receives normalized horizontal momentum −1.875 × 10⁻⁶ at turn 4 instead of zero. When sampling is slower than revolution, the kick can start a whole turn early; samples within the waveform, arrivals more than one sample period early and times after the waveform ends are handled correctly.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python TRK-13.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: TRK-13.py"
 

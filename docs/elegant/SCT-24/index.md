@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`, committed 2026-11-03) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`init_IBS` samples, ibs_tracking.c:844–847](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L844-L847)<br>[`track_IBS` distributed call, ibs_tracking.c:347–370](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L347-L370)<br>[exit normalization, zibs.c:47–53](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/zibs.c#L47-L53)<br>[per-sample energy, zibs.c:101–108](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/zibs.c#L101-L108)<br>[`track_IBS` full-line call, ibs_tracking.c:386–392](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L386-L392)<br>[ibs_tracking.c:465](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L465)<br>[`inflateEmittanceZ`, ibs_tracking.c:733–740](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L733-L740)<br>[IBSCATTER parameters, track_data.c:2522](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2522)<br>[IBSCATTER element flags, track_data.c:4237](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L4237)<br>[IBSCATTER, ibscatter.tex:6–10](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ibscatter.tex#L6-L10)<br>[ibscatter.tex:17–20](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ibscatter.tex#L17-L20) |
 
 When Pelegant tracks an accelerating line through IBSCATTER on more than three ranks with PARALLEL_INTEGRATION=1 (the default), each worker integrates the intrabeam-scattering (IBS) growth rates over its part of the line with that part's optics but the reference momenta of the line's first, equally long stretch, and scales the emittances measured at the element as if measured at that stretch's end. The correct rates integrate the whole line, as serial Elegant and PARALLEL_INTEGRATION=0 do; at constant energy all agree. For a 500 pC electron bunch accelerated from 61.32 to 85.32 MeV over 24.00 m, five ranks raise the rms momentum spread by the fraction 9.208×10⁻⁴ instead of 4.219×10⁻⁴, 2.183 times too much; the transverse increments are 2.462 and 2.384 times too large.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python SCT-24.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: SCT-24.py"
 
@@ -39,13 +37,16 @@ Download these shared helpers into the same directory as the reproducer scripts:
     9.208×10⁻⁴ instead of 4.219×10⁻⁴, 2.183 times too much; the transverse increments are 2.462 and
     2.384 times too large.
 
-    The script tracks a 1024-particle, 500 pC electron beam through 48 cells of a 0.3 m drift and a
-    0.2 m, 0.5 MV DC cavity to a single-slice, smooth, linac-mode IBSCATTER, in serial elegant and in
-    5-rank Pelegant, which always runs (--mpi is implied; oversubscribed). Each increment of the rms xp,
-    yp and p is measured against a FACTOR=0 run; the expected longitudinal increment is the flight time
-    times the trapezoid average of serial elegant's local rates, which splitting the line cannot change.
-    The controls are 5-rank Pelegant with PARALLEL_INTEGRATION=0 and the same line at zero cavity
-    voltage, which must both equal serial elegant to rounding.
+    Setup: always runs 5-rank Pelegant (Open MPI `mpirun` on `PATH`, oversubscribed) beside serial
+    Elegant, because the distributed IBSCATTER integration runs only on more than three ranks.
+
+    The script tracks a 1024-particle, 500 pC electron beam through 48 cells of a 0.3 m drift and a 0.2
+    m, 0.5 MV DC cavity to a single-slice, smooth, linac-mode IBSCATTER, in serial elegant and in 5-rank
+    Pelegant. Each increment of the rms xp, yp and p is measured against a FACTOR=0 run; the expected
+    longitudinal increment is the flight time times the trapezoid average of serial elegant's local
+    rates, which splitting the line cannot change. The controls are 5-rank Pelegant with
+    PARALLEL_INTEGRATION=0 and the same line at zero cavity voltage, which must both equal serial
+    elegant to rounding.
     """
 
     import sys

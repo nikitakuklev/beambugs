@@ -9,13 +9,17 @@ elements agree on the correct transport. For a γ = 5 proton at x = 1 mm in a 0.
 `Kn1=0, Ks1=2` gives p_y = 0 instead of 4.000×10⁻⁴. Untilted normal quadrupoles import correctly; a
 skew quadrupole without `Kn1` is rejected with an error.
 
-Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script checks that the installed PALS
-converter equals the pinned source in that clone, then imports normal, 90°-tilted, skew and mixed
-tilted quadrupoles for a γ = 5 proton (L = 0.2 m with k = 2 m⁻², and L = 0.35 m with k = 3.2 m⁻²)
-and tracks both signs of all four transverse unit vectors. It compares the result with the matrix
-exponential of the paraxial equations for the PALS complex coefficient a + i·b and with a native
-`ChrQuad` of strength |a + i·b| rotated by −arg(a + i·b)/2; the imported elements instead match the
-normal-only map. Untilted normal quadrupoles and the native rotated elements are the controls.
+Setup: `IMPACTX_SOURCE` set to a full clone of BLAST-ImpactX/impactx, and `git` on `PATH`; the
+script reads the PALS converter at tag `26.10` (`615921c6867c`) and at commit `b701a6e9d1f9` from
+its history.
+
+The script checks that the installed PALS converter equals the pinned source in that clone, then
+imports normal, 90°-tilted, skew and mixed tilted quadrupoles for a γ = 5 proton (L = 0.2 m with k =
+2 m⁻², and L = 0.35 m with k = 3.2 m⁻²) and tracks both signs of all four transverse unit vectors.
+It compares the result with the matrix exponential of the paraxial equations for the PALS complex
+coefficient a + i·b and with a native `ChrQuad` of strength |a + i·b| rotated by −arg(a + i·b)/2;
+the imported elements instead match the normal-only map. Untilted normal quadrupoles and the native
+rotated elements are the controls.
 """
 
 import os

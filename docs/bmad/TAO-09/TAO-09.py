@@ -6,9 +6,9 @@ of 0 through 6 when the primary branch has three tracking elements. The unfilter
 contains every element and its correct longitudinal position. The filter must use the selected
 element’s own branch count.
 
-The script creates a primary branch and a longer secondary branch and queries both branch
-counts. It verifies the full secondary-branch table against its drift lengths, then compares the
-track-only table with the same expected elements. BMAD_DIST supplies Tao.
+The script creates a primary branch and a longer secondary branch and queries both branch counts. It
+verifies the full secondary-branch table against its drift lengths, then compares the track-only
+table with the same expected elements.
 """
 
 import numpy as np

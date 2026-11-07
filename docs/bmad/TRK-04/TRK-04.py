@@ -9,7 +9,7 @@ of its two transverse components are correct.
 
 The script samples the resolved planar-wiggler field at horizontal wave numbers 0 and 13 m⁻¹ and
 requests its analytic derivative matrix. It compares that matrix with explicit differentiation and a
-fourth-order central stencil with 1e-5 m steps; BMAD_DIST selects the library.
+fourth-order central stencil with 1e-5 m steps;
 """
 
 import os

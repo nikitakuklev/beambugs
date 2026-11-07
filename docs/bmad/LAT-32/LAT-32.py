@@ -2,7 +2,7 @@
 
 The deprecated indexed-attribute routine rejects the spin tracking method and electric multipoles that named attribute lookup can access. On a quadrupole, named access returns the spin-method pointer and an electric B₀ coefficient set to 2, while both indexed calls report an error and return no pointer. The routine's indexed-access contract and its unreachable electric dispatch branch establish the discrepancy; named lookup provides a working access path.
 
-The script requests the same attributes through named and indexed lookup on one quadrupole. Successful named pointers, indexed TRACKING_METHOD access and the assigned electric coefficient establish the controls. Indexed results must identify the exact attribute target. BMAD_DIST selects the build.
+The script requests the same attributes through named and indexed lookup on one quadrupole. Successful named pointers, indexed TRACKING_METHOD access and the assigned electric coefficient establish the controls. Indexed results must identify the exact attribute target.
 """
 
 from _bmad import compare, fortran, verdict

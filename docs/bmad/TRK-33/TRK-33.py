@@ -2,7 +2,7 @@
 
 Native reverse-direction tracking through sol_quad and general sector-bend maps omits the backward motion of the reference clock. Physical particle time should increase while the reference time decreases. A force-free on-axis 1 m sol_quad at 1 MeV/c returns z = 0 and elapsed time −3.746 ns instead of z = −2 m and +3.746 ns. A displaced reverse bend likewise misses −2 m in z and returns a negative flight time; circular geometry and Runge–Kutta tracking give a positive flight time.
 
-The script tracks a reverse-moving electron through sol_quad and a sector bend. Straight-flight and circle/exit-plane geometry supply the expected path lengths and times, with Runge–Kutta as a control. The bend begins 0.1 μm off axis to select its general map; set BMAD_DIST to the build root.
+The script tracks a reverse-moving electron through sol_quad and a sector bend. Straight-flight and circle/exit-plane geometry supply the expected path lengths and times, with Runge–Kutta as a control. The bend begins 0.1 μm off axis to select its general map.
 """
 
 from _bmad import compare, fortran, verdict

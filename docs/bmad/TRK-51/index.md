@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [track1_bmad multipole dispatch](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track1_bmad.f90#L142-L161)<br>[reference-bending kick](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/multipole_mod.f90#L248-L254)<br>[Bmad Manual, “Multipole” (s:mult)](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L3860-L3878) |
 
 A multipole with nonzero integrated dipole strength K₀L and straight_reference should apply a simple dipole kick, but native tracking uses the reference-bending map instead. For an on-axis, on-momentum particle, K₀L = 0.0007300 produces zero normalized horizontal momentum pₓ instead of −0.0007300. PTC and an equivalent ab_multipole give the expected kick and displacement after a 1 m drift. The native dispatch ignores K0L_status when selecting the reference-orbit correction.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) · [View source](../helpers/index.md#_tracking_contracts_materials)
+Run `python TRK-51.py` with [_bmad.py](../helpers/_bmad.py) and [_tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) in the same directory.
 
 ??? example "Reproducer: TRK-51.py"
 

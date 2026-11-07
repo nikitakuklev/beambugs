@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`IBSRate` prefactor, zibs.c:110–113](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/zibs.c#L110-L113)<br>[`coulombLog`, zibs.c:250–295](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/zibs.c#L250-L295)<br>[rate calls, ibs_tracking.c:362–405](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L362-L405)<br>[update, ibs_tracking.c:465–490](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L465-L490)<br>[`particleRadius`, elegant.c:3308](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3308)<br>[change_particle, elegant.tex:1497–1514](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L1497-L1514)<br>[IBSCATTER, ibscatter.tex:1–4](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ibscatter.tex#L1-L4)<br>[`ibs_iterations`, elegant.tex:5617–5624](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5617-L5624)<br>[moments.c:1592–1594](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L1592-L1594) |
 
 After change_particle selects a muon, a proton or a custom species, IBSCATTER computes its intrabeam-scattering growth rates with the electron's classical radius and mass, and so reports and applies the electron rates of the same beam. At fixed velocity, geometric phase space and particle count, the Bjorken–Mtingwa rate scales as r_c² ln Λ, with r_c the classical radius and ln Λ the Coulomb logarithm; for protons this is 4.106×10⁻⁷ of the electron rate. For a 1 nC beam at βγ = 30, the element gives protons a longitudinal rate of 8.067 s⁻¹, 2.436×10⁶ times the correct 3.312×10⁻⁶ s⁻¹. The IBS computed by moments_output is a separate calculation that uses the species' classical radius.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python SCT-18.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: SCT-18.py"
 

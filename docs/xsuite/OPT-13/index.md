@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`) |
+| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`, head build) |
 | Source | [`TwissTable.reverse`, twiss_table.py:984–1111](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_table.py#L984-L1111)<br>[matrix reconstruction APIs, lines 775–881](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_table.py#L775-L881) |
 
 Transverse transfer matrices reconstructed from `TwissTable.reverse()` or `Line.twiss(reverse=True)` give the wrong reversed transport, including spurious focusing in a drift. Analytic drift and thin-lens matrices, transformed into the documented reverse frame, agree with native backtracking and require a reversed drift to keep a positive length. For a 1.7 GeV/c proton line containing 0.7600 m of drift, with initial horizontal beta function 0.7 m and alpha −0.8, the reconstructed response of position to normalized momentum, R₁₂, is −0.7600 m instead of +0.7600 m, and the response of momentum to position, R₂₁, is 2.035 m⁻¹ instead of zero. It also appears over marker subintervals, in the uncoupled channels; forward reconstruction passes.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python OPT-13.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: OPT-13.py"
 

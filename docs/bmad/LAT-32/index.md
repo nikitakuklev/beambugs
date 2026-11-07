@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [indexed-access contract and deprecation, bmad/low_level/pointer_to_indexed_attribute.f90:1–29](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/pointer_to_indexed_attribute.f90#L1-L29)<br>[multipole and component dispatch, bmad/low_level/pointer_to_indexed_attribute.f90:104–176](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/pointer_to_indexed_attribute.f90#L104-L176) |
 
 The deprecated indexed-attribute routine rejects the spin tracking method and electric multipoles that named attribute lookup can access. On a quadrupole, named access returns the spin-method pointer and an electric B₀ coefficient set to 2, while both indexed calls report an error and return no pointer. The routine's indexed-access contract and its unreachable electric dispatch branch establish the discrepancy; named lookup provides a working access path.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _multipass_slicing.py](../helpers/_multipass_slicing.py) · [View source](../helpers/index.md#_multipass_slicing)
+Run `python LAT-32.py` with [_bmad.py](../helpers/_bmad.py) and [_multipass_slicing.py](../helpers/_multipass_slicing.py) in the same directory.
 
 ??? example "Reproducer: LAT-32.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The deprecated indexed-attribute routine rejects the spin tracking method and electric multipoles that named attribute lookup can access. On a quadrupole, named access returns the spin-method pointer and an electric B₀ coefficient set to 2, while both indexed calls report an error and return no pointer. The routine's indexed-access contract and its unreachable electric dispatch branch establish the discrepancy; named lookup provides a working access path.
 
-    The script requests the same attributes through named and indexed lookup on one quadrupole. Successful named pointers, indexed TRACKING_METHOD access and the assigned electric coefficient establish the controls. Indexed results must identify the exact attribute target. BMAD_DIST selects the build.
+    The script requests the same attributes through named and indexed lookup on one quadrupole. Successful named pointers, indexed TRACKING_METHOD access and the assigned electric coefficient establish the controls. Indexed results must identify the exact attribute target.
     """
 
     from _bmad import compare, fortran, verdict

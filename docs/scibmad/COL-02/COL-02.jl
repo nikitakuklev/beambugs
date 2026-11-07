@@ -62,8 +62,17 @@ x, y = v0[1], v0[3]; m = massof(sp)
 xr = rotate(v0, win)[1]; xw = rotate(v0, BT.rot_quaternion(0, 0, t))[1]
 println("recheck: local x deterministic frame = ", xr, " (cos t x + sin t y = ", cos(t) * x + sin(t) * y,
         "); frame used by stochastic kick = ", xw, " (cos t x - sin t y = ", cos(t) * x - sin(t) * y, ")")
-kick(v, targ) = (c = Bunch(v = copy(v)).coords; Random.seed!(5);
-                 BT.stochastic_radiation!(1, c, 0.0, BT.CPU(), -1.0, m, E, g, targ, SciBmad.SA[1], SciBmad.SA[g], SciBmad.SA[0.0], L / 2); c.v)
+# Up to BeamTracking d8e45fd the kernel takes a tilt angle and rotates by rot_quaternion(0, 0, -tilt);
+# from the fix of BeamTracking#379 on it takes that rotation and its inverse, w and w_inv, instead.
+function kick(v, targ)
+    c = Bunch(v = copy(v)).coords; Random.seed!(5)
+    a = (1, c, 0.0, BT.CPU(), -1.0, m, E, g)
+    z = (SciBmad.SA[1], SciBmad.SA[g], SciBmad.SA[0.0], L / 2)
+    frame = applicable(BT.stochastic_radiation!, a..., targ, z...) ? (targ,) :
+            (BT.rot_quaternion(0, 0, -targ), BT.inv_rot_quaternion(0, 0, -targ))
+    BT.stochastic_radiation!(a..., frame..., z...)
+    return c.v
+end
 println("recheck: dpz(builder arg)/dpz(deterministic frame) = ", kick(v0, -t)[6] / kick(v0, t)[6],
         "   analytic sqrt((1+g x_used)/(1+g x_right)) = ", sqrt((1 + g * xw) / (1 + g * xr)))
 on = zeros(1, 6)

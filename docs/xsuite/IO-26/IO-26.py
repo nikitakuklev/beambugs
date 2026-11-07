@@ -1,0 +1,176 @@
+"""IO-26: Exported Cavity slices each repeat the parent's full voltage
+
+Exporting native Cavity slices to MAD-X or MAD-NG writes the parent's full RF voltage on every piece instead of multiplying it by the slice weight. Four equal slices of a 1 MV cavity therefore carry 4 MV in total rather than 1 MV. Thick slices preserve the cavity's length, so their export loads successfully and gives a crest energy gain of 4.000 MeV instead of 1.000 MeV for a unit-charge particle. The integrated RF-kick law, native tracking and independently weighted external elements establish the intended gain. Unsliced and weight-one exports preserve the voltage.
+
+Slice a 1.2 m, 1 MV Cavity in Uniform and Teapot thin and thick mode, export every slice in both writer dialects and compare each written voltage with the slice weight times the parent voltage. MAD-X then parses the whole thick-sliced export and its voltages are read back, and MAD-NG loads whole thick-sliced lines through Line.to_madng and tracks a reference proton at crest, against the integrated RF-kick law Delta E = q V sin(phi); each failing case is also compared with the sum of repeated full voltages. Controls are unsliced and weight-one exports, native tracking of the slices and a natively built line of four independently weighted 0.3 m, 0.25 MV cavities exported to MAD-NG. The script uses cpymad, pymadng and installed serial prebuilt Xtrack kernels with compilation forbidden; scratch files stay in automatically removed directories beside the script.
+"""
+
+import re
+import sys
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
+from _madx_io import madng_track_6d
+from _prebuilt import CTX, identity, kernels, np, xt
+
+# Import after the helpers cap numerical threads and forbid compilation.
+# isort: split
+from importlib.metadata import version
+
+from cpymad.madx import Madx
+from xtrack import mad_writer as writer
+
+PC = 3e9
+LENGTH = 1.2
+VOLTAGE = 1e6
+# MAD-NG refuses an accelerating voltage at zero frequency. At 1 Hz the RF phase of a
+# particle that stays within nanoseconds of the reference changes by < 1e-8 rad, so
+# the crest gain stays V sin(pi/2) = V to far better than the tolerance below.
+FREQUENCY = 1.0
+PHASE = np.pi / 2
+# Gains are ~1e6 eV; binary64 rounding of p0c * pt is ~1e-9 eV.
+GAIN_TOL = 2e-8
+VOLT_TOL = 1e-12  # MV, on written decimal voltages
+VOLT = re.compile(r"(?<![\w.])volt = ([^,}]+)")
+failures = []
+
+
+def cavity(length=LENGTH, voltage=VOLTAGE):
+    return xt.Cavity(length=length, voltage=voltage, frequency=FREQUENCY, phase=PHASE)
+
+
+def line_of(elements, scheme=None):
+    line = xt.Line(elements=elements, element_names=list(elements))
+    line.particle_ref = xt.Particles(p0c=PC)
+    if scheme is not None:
+        line.slice_thick_elements([xt.Strategy(slicing=scheme)], with_progress=False)
+    return line
+
+
+def cavity_names(line):
+    return [nn for nn in line.element_names
+            if isinstance(line[nn], (xt.Cavity, xt.ThinSliceCavity, xt.ThickSliceCavity))]
+
+
+def weight(line, name):
+    el = line[name]
+    return float(el.weight) if hasattr(el, "_parent") else 1.0
+
+
+def text_checks():
+    schemes = {
+        "unsliced": None,
+        "Uniform(1) thick": xt.Uniform(1, mode="thick"),
+        "Uniform(4) thin": xt.Uniform(4, mode="thin"),
+        "Uniform(4) thick": xt.Uniform(4, mode="thick"),
+        "Teapot(4) thin": xt.Teapot(4, mode="thin"),
+        "Teapot(4) thick": xt.Teapot(4, mode="thick"),
+    }
+    for label, scheme in schemes.items():
+        line = line_of({"m": cavity()}, scheme)
+        names = cavity_names(line)
+        # A slice of weight w carries the integrated voltage w V (native kernels and
+        # ThinSliceCavity.get_equivalent_element both apply voltage * weight).
+        expected = [weight(line, nn) * VOLTAGE * 1e-6 for nn in names]
+        for dialect in (writer.MadType.MADX, writer.MadType.MADNG):
+            written = []
+            for nn in names:
+                text = writer.element_to_mad_str(nn, nn, line, mad_type=dialect, substituted_vars=[])
+                (value,) = VOLT.findall(text)
+                written.append(float(value))
+            ok = bool(np.allclose(written, expected, atol=VOLT_TOL, rtol=0))
+            if all(w == 1.0 for w in (weight(line, nn) for nn in names)):
+                assert ok, (label, dialect, written, expected)
+            else:
+                failures.append(not ok)
+            print(f"TEXT {label} {dialect.name}: written volt={written} MV sum={sum(written):.10g} "
+                  f"expected={expected} MV sum={sum(expected):.10g} derivation=slice weight x parent "
+                  f"voltage tol={VOLT_TOL:g} {'pass' if ok else 'FAIL'}")
+
+
+def madx_readback(line, label, defect):
+    source = line.to_madx_sequence("testseq")
+    with (
+        TemporaryDirectory(prefix="io26-madx-", dir=Path(__file__).resolve().parent) as scratch,
+        Madx(stdout=False, cwd=scratch) as mad,
+    ):
+        mad.input(source)
+        mad.beam(particle="proton", pc=PC / 1e9)
+        mad.use(sequence="testseq")
+        seq = mad.sequence["testseq"]
+        volts = [float(e.volt) for e in seq.elements if e.base_type.name == "rfcavity"]
+        length = float(seq.length)
+        print(f"CONSUMER cpymad={version('cpymad')} MAD-X={mad.version}")
+    ok = abs(sum(volts) - VOLTAGE * 1e-6) < VOLT_TOL and abs(length - LENGTH) < 1e-12
+    if defect:
+        failures.append(not ok)
+    else:
+        assert ok, (label, volts, length)
+    print(f"MAD-X {label}: parsed volt={volts} MV total={sum(volts):.10g} MV length={length!r} m "
+          f"expected total={VOLTAGE * 1e-6:g} MV length={LENGTH} m derivation=integrated parent "
+          f"voltage and geometry {'pass' if ok else 'FAIL'}")
+
+
+def gain_compare(label, observed, defect, repeated=None):
+    # Integrated RF-kick law at crest for charge q = +e: Delta E = q V sin(pi/2) = V.
+    expected = float(VOLTAGE * np.sin(PHASE))
+    ok = abs(observed - expected) < GAIN_TOL
+    if defect:
+        failures.append(not ok)
+    else:
+        assert ok, (label, observed, expected)
+    print(f"{label} crest gain: observed={observed!r} eV expected={expected!r} eV "
+          f"derivation=Delta E = q V sin(phi), q = +e tol={GAIN_TOL:g} {'pass' if ok else 'FAIL'}")
+    if defect:
+        assert repeated is not None
+        match = abs(observed - repeated) < GAIN_TOL
+        assert match, (label, observed, repeated)
+        print(f"{label} vs every piece at full voltage: observed={observed!r} eV "
+              f"expected={repeated!r} eV tol={GAIN_TOL:g} pass")
+
+
+def native_gain(line):
+    p = xt.Particles(_context=CTX, p0c=PC)
+    line.build_tracker(_context=CTX)
+    line.track(p)
+    return float(p.ptau[0]) * PC
+
+
+def ng_gain(line):
+    sys.stdout.flush()
+    end, _ = madng_track_6d(line, [0.0] * 6)
+    return end[5] * PC
+
+
+def tracking_checks():
+    for mode in ("thin", "thick"):
+        line = line_of({"m": cavity()}, xt.Uniform(4, mode=mode))
+        gain_compare(f"native Uniform(4) {mode}", native_gain(line), False)
+
+    gain_compare("MAD-NG unsliced", ng_gain(line_of({"m": cavity()})), False)
+    for n in (1, 2, 4):
+        line = line_of({"m": cavity()}, xt.Uniform(n, mode="thick"))
+        gain_compare(f"MAD-NG Uniform({n}) thick", ng_gain(line), n > 1, n * VOLTAGE)
+    line = line_of({"m": cavity()}, xt.Teapot(4, mode="thick"))
+    gain_compare("MAD-NG Teapot(4) thick", ng_gain(line), True, 4 * VOLTAGE)
+
+    # Independently weighted pieces: four ordinary 0.3 m cavities of 0.25 MV each.
+    pieces = {f"c{i}": cavity(LENGTH / 4, VOLTAGE / 4) for i in range(4)}
+    gain_compare("MAD-NG four 0.3 m, 0.25 MV cavities", ng_gain(line_of(pieces)), False)
+
+    madx_readback(line_of({"m": cavity()}), "unsliced", False)
+    madx_readback(line_of({"m": cavity()}, xt.Uniform(4, mode="thick")), "Uniform(4) thick", True)
+
+
+def main():
+    identity()
+    print(f"PACKAGE cpymad {version('cpymad')}; pymadng {version('pymadng')}")
+    text_checks()
+    tracking_checks()
+    kernels()
+    print(f"COMPARISONS expected-correct cases fail={sum(failures)} of {len(failures)}")
+    print("DEFECT REPRODUCED" if any(failures) else "NOT REPRODUCED")
+
+
+if __name__ == "__main__":
+    main()

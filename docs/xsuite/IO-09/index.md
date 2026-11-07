@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xpart main (`2633e52`) |
+| Last reproduced | 2026-10-29 on xpart main (`2633e52`, head build) |
 | Source | [RFBucket.phi_offset_list setter and cached fixed points, rf_bucket.py:164–190](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/rf_bucket.py#L164-L190) |
 
 After an `RFBucket`'s geometry has been read, setting the RF phase `phi_offset_list` leaves the cached stable points and bucket boundaries unchanged, and the synchrotron tune Qₛ is recalculated from the new phase and the stale stable point, giving an inconsistent value. For a 100 m accelerating proton bucket with Lorentz factor γ = 10, harmonic 10, voltage 1 MV and acceleration fraction 0.5, changing the phase from 0 to 0.4 rad leaves the stable point at −0.8333 m instead of −0.1967 m. Fresh construction and the analytic translation give the new geometry and an unchanged Qₛ = 1.156×10⁻³, while the stale-root calculation gives 9.643×10⁻⁴. Setting the phase before reading geometry, or calling `add_fields([], [])`, gives correct results.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python IO-09.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: IO-09.py"
 

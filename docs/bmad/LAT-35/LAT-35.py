@@ -2,7 +2,7 @@
 
 Calling write_beam_file without file_format writes ASCII when the final .h5 or .hdf5 suffix also occurs earlier in the path. The resulting file has an HDF5 filename but is byte-identical to explicitly selected ASCII. The documented reader selects HDF5 from the final suffix and rejects the file, whereas the same particle data in genuine HDF5 reads successfully under that name. Plain suffixes, mixed .h5/.hdf5 suffixes and explicit HDF5 selection work.
 
-The script writes a deterministic three-electron bunch under plain, repeated and mixed suffixes, including occurrences in directory names. It identifies formats from file bytes, checks round trips against the input coordinates and renames identical payloads to isolate filename dispatch. BMAD_DIST must name a completed Bmad build; _bmad.py supplies compilation and temporary-file cleanup.
+The script writes a deterministic three-electron bunch under plain, repeated and mixed suffixes, including occurrences in directory names. It identifies formats from file bytes, checks round trips against the input coordinates and renames identical payloads to isolate filename dispatch. The shared _bmad.py runner supplies compilation and temporary-file cleanup.
 """
 
 from pathlib import PurePosixPath

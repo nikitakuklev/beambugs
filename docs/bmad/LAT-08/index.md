@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`read_beam_file`, bmad/multiparticle/beam_file_io.f90:425–442](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L425-L442)<br>[`n_particle` contract, bmad/doc/beam-init.tex:218–224](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/beam-init.tex#L218-L224) |
 
 When an HDF5 file contains a bunch shorter than the requested particle count, the reader carries that smaller limit into later bunches. A file with two and five particles, read with a request for four per bunch, returns two and two after a warning. The documented contract requires a shortage error. If reading continues, applying the request independently to each bunch would retain two and four.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_11_particle_io.py](../helpers/_s3_11_particle_io.py) · [View source](../helpers/index.md#_s3_11_particle_io)
+Run `python LAT-08.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_11_particle_io.py](../helpers/_s3_11_particle_io.py) in the same directory.
 
 ??? example "Reproducer: LAT-08.py"
 

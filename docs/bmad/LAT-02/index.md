@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`read_beam_ascii` header loop, bmad/multiparticle/beam_file_io.f90:876–950](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L876-L950)<br>[bunch transition, bmad/multiparticle/beam_file_io.f90:954–968](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L954-L968)<br>[ASCII header contract, bmad/doc/beam-init.tex:334–362](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/beam-init.tex#L334-L362) |
 
 When a modern ASCII particle file contains several bunches, the reader discards the first header line of every bunch after the first. An electron bunch followed by a proton bunch reads back species codes −1 and −999 instead of −1 and 2, although the later charge headers survive. Each recognized header assignment must apply to its own bunch. Inserting a comment before the second species header preserves both species.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_11_particle_io.py](../helpers/_s3_11_particle_io.py) · [View source](../helpers/index.md#_s3_11_particle_io)
+Run `python LAT-02.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_11_particle_io.py](../helpers/_s3_11_particle_io.py) in the same directory.
 
 ??? example "Reproducer: LAT-02.py"
 

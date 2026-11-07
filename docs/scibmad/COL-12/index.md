@@ -12,10 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on BeamTracking main (`0bf3585`) |
-| Source | [`BeamTracking.jl/src/kernels/fringe.jl:115-120`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L115-L120)<br>[`219-224`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/fringe.jl#L219-L224)<br>[`BeamTracking.jl/src/kernels/multipole.jl:44`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/multipole.jl#L44) |
+| Last reproduced | 2026-10-29 on BeamTracking main (`0bf3585`, head build) |
+| Source | [`BeamTracking.jl/src/kernels/fringe.jl:115-120`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L115-L120)<br>[`219-224`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L219-L224)<br>[`BeamTracking.jl/src/kernels/multipole.jl:44`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/multipole.jl#L44) |
 
 Normal and skew sextupole fringes apply twice the leading longitudinal-field spin rotation at both the entrance and the exit. Maxwell's equations fix the integrated longitudinal fringe field from the body field with its factorial normalization, and the gradient of an independently constructed scalar potential matches that body field. For a proton at x = 80.00 mm, y = 130.0 mm with zero transverse momentum, the derivative of the entrance spin angle with respect to the normalized normal-sextupole strength is −2.784 × 10⁻⁴ rad·m³ instead of −1.392 × 10⁻⁴ rad·m³. All four normal/skew and entrance/exit derivative checks give a factor 2.000.
+
+Run `julia COL-12.jl`.
 
 ??? example "Reproducer: COL-12.jl"
 

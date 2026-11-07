@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`tao_alias_translate`, tao/code/tao_get_user_input_mod.f90:534–568](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_get_user_input_mod.f90#L534-L568)<br>[“alias” (`s:alias`), tao/doc/command-list.tex:99–124](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/command-list.tex#L99-L124) |
 
 Tao rejects surplus arguments to an alias that uses a placeholder, although the manual says to append arguments without matching placeholders. Defining inspect as pipe ele:mat6 [[1]] and invoking inspect E mat6 reports an extra-arguments error. The equivalent direct matrix query succeeds and gives the analytic drift matrix. The alias should expand to that same query under the documented rule.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_optimization_io.py](../helpers/_tao_optimization_io.py) · [View source](../helpers/index.md#_tao_optimization_io)
+Run `python TAO-12.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_optimization_io.py](../helpers/_tao_optimization_io.py) in the same directory.
 
 ??? example "Reproducer: TAO-12.py"
 
@@ -35,9 +32,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     succeeds and gives the analytic drift matrix. The alias should expand to that same query under
     the documented rule.
 
-    The script checks a direct drift-matrix query analytically, then invokes the same query through
-    a one-placeholder alias with a surplus argument. It accepts only the specific extra-arguments
-    diagnostic as the failure. BMAD_DIST supplies Tao.
+    The script checks a direct drift-matrix query analytically, then invokes the same query through a
+    one-placeholder alias with a surplus argument. It accepts only the specific extra-arguments
+    diagnostic as the failure.
     """
 
     import numpy as np

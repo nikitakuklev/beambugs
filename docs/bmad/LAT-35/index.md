@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [write_beam_file dispatch, bmad/multiparticle/beam_file_io.f90:50–63](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L50-L63)<br>[reader contract, lines 357–379](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L357-L379)<br>[dispatch, lines 410–423](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L410-L423)<br>[final suffix, lines 70–76](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_file_io.f90#L70-L76)<br>[dump_file, tao/doc/initialization.tex:1207–1216](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/initialization.tex#L1207-L1216)<br>[dump caller, tao/code/tao_lattice_calc_mod.f90:609–615](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_lattice_calc_mod.f90#L609-L615) |
 
 Calling write_beam_file without file_format writes ASCII when the final .h5 or .hdf5 suffix also occurs earlier in the path. The resulting file has an HDF5 filename but is byte-identical to explicitly selected ASCII. The documented reader selects HDF5 from the final suffix and rejects the file, whereas the same particle data in genuine HDF5 reads successfully under that name. Plain suffixes, mixed .h5/.hdf5 suffixes and explicit HDF5 selection work.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python LAT-35.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: LAT-35.py"
 
@@ -30,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Calling write_beam_file without file_format writes ASCII when the final .h5 or .hdf5 suffix also occurs earlier in the path. The resulting file has an HDF5 filename but is byte-identical to explicitly selected ASCII. The documented reader selects HDF5 from the final suffix and rejects the file, whereas the same particle data in genuine HDF5 reads successfully under that name. Plain suffixes, mixed .h5/.hdf5 suffixes and explicit HDF5 selection work.
 
-    The script writes a deterministic three-electron bunch under plain, repeated and mixed suffixes, including occurrences in directory names. It identifies formats from file bytes, checks round trips against the input coordinates and renames identical payloads to isolate filename dispatch. BMAD_DIST must name a completed Bmad build; _bmad.py supplies compilation and temporary-file cleanup.
+    The script writes a deterministic three-electron bunch under plain, repeated and mixed suffixes, including occurrences in directory names. It identifies formats from file bytes, checks round trips against the input coordinates and renames identical payloads to isolate filename dispatch. The shared _bmad.py runner supplies compilation and temporary-file cleanup.
     """
 
     from pathlib import PurePosixPath

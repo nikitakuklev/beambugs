@@ -8,7 +8,7 @@ Gaussian response agrees with tracking, and the matrix diagonals agree.
 
 The script compares the high-energy space-charge matrix with two tracked basis displacements and an
 independently rotated linear Gaussian kick. The diagonal entries control the kick strength and the
-cross-plane entries reveal the rotation sign. Set BMAD_DIST to the build root.
+cross-plane entries reveal the rotation sign.
 """
 
 import numpy as np

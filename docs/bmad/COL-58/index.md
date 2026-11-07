@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-20 on Bmad 20261020-0 (`19b8afb`); not reproduced on Bmad 20261031-0 (`c4c629f`), 2026-11-05 |
+| Last reproduced | 2026-10-20 on Bmad 20261020-0 (`19b8afb`, committed 2026-10-20); not reproduced on Bmad 20261031-0 (`c4c629f`), 2026-11-05 |
 | Pull request | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2225]], fix |
 | Source | [`parser_read_sr_wake`, bmad/parsing/bmad_parser_mod.f90:1625–1658](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/bmad_parser_mod.f90#L1625-L1658)<br>[`historical parser_read_sr_wake`, bmad/parsing/bmad_parser_mod.f90:1625–1641](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/parsing/bmad_parser_mod.f90#L1625-L1641)<br>[`Short-Range Longitudinal Wake With a Wake Table (s:sr.wake.z.long)`, bmad/doc/attributes.tex:3123–3139](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L3123-L3139) |
 
 Applying Gaussian smoothing to a tabulated short-range wake uses an asymmetric exponential when the grid index is not squared. A symmetric impulse must produce equal kicks at equally spaced witnesses on either side, but the faulty kernel gives an outer-kick ratio of 54.60 for a smoothing width of half a grid spacing. A normalized Gaussian convolution and an unsmoothed self-bin control establish the expected symmetry and magnitude.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) · [View source](../helpers/index.md#_wake_tables_and_bbu)
+Run `python COL-58.py` with [_bmad.py](../helpers/_bmad.py) and [_wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) in the same directory.
 
 ??? example "Reproducer: COL-58.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Applying Gaussian smoothing to a tabulated short-range wake uses an asymmetric exponential when the grid index is not squared. A symmetric impulse must produce equal kicks at equally spaced witnesses on either side, but the faulty kernel gives an outer-kick ratio of 54.60 for a smoothing width of half a grid spacing. A normalized Gaussian convolution and an unsmoothed self-bin control establish the expected symmetry and magnitude.
 
-    The script parses a symmetric impulse table with and without Gaussian smoothing, then compares three tracked kicks against a normalized Gaussian. The self-bin is halved before smoothing, as required by beam loading. BMAD_DIST selects the build.
+    The script parses a symmetric impulse table with and without Gaussian smoothing, then compares three tracked kicks against a normalized Gaussian. The self-bin is halved before smoothing, as required by beam loading.
     """
 
     import numpy as np

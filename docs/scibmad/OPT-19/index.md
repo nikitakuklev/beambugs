@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-31 on GTPSA main (`a5790a7`) |
+| Last reproduced | 2026-10-31 on GTPSA main (`a5790a7`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
-| Source | [`src/getset.jl:87-100`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/getset.jl#L87-L100)<br>[`:130-142`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/getset.jl#L130-L142)<br>[`:55-66`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/getset.jl#L55-L66)<br>[`src/methods.jl:46`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/methods.jl#L46)<br>[`SciBmad.jl/src/adv.jl:28`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/adv.jl#L28) |
+| Source | [`src/getset.jl:87-100`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/getset.jl#L87-L100)<br>[`:130-142`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/getset.jl#L130-L142)<br>[`:55-66`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/getset.jl#L55-L66)<br>[`src/methods.jl:46`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/methods.jl#L46)<br>[`SciBmad.jl/src/adv.jl:28`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/adv.jl#L28) |
 
 In GTPSA, reading the coefficient of a monomial that the descriptor does not hold ends the Julia process from the C library with the message `invalid monomial`, with no Julia exception or stack trace; code in `catch`, `finally` and `atexit` never runs. An out-of-range indexing call should throw a catchable exception, and GTPSA's own validity test `mad_desc_isvalidm` already identifies such monomials. For t = (x + y)² under `Descriptor([1,1,1], 2)`, whose per-variable caps of 1 exclude every square, `t[[1,1,0]]` correctly returns 2.000, but `t[[2,0,0]]` ends the session with exit status 1. Per-variable caps, such as those of the default `twiss(chrom=2)` descriptor, make such reads easy to issue; by source reading, the monomial setter lacks the same check.
+
+Run `julia OPT-19.jl`.
 
 ??? example "Reproducer: OPT-19.jl"
 
@@ -34,12 +36,14 @@ In GTPSA, reading the coefficient of a monomial that the descriptor does not hol
     # exit status 1. Per-variable caps, such as those of the default `twiss(chrom=2)` descriptor, make
     # such reads easy to issue; by source reading, the monomial setter lacks the same check.
     #
+    # Setup: when the defect reproduces, the script exits with status 1 after printing the verdict,
+    # because the library ends the process with C `exit`.
+    #
     # The script builds t = (x + y)² under `Descriptor([1,1,1], 2)`, asks `mad_desc_isvalidm` about
     # [1,1,0] and [2,0,0], reads the valid coefficient as a control, then reads `t[[2,0,0]]` inside
     # `try`/`catch`. Because the library ends the process with C `exit`, a C-level exit handler
     # registered with `__cxa_atexit` prints the verdict while the read is pending, and a Julia `atexit`
-    # hook that stays silent shows that Julia never unwinds. Run it alone, as its own process: nothing
-    # after the invalid read survives, and it exits with status 1.
+    # hook that stays silent shows that Julia never unwinds. Nothing after the invalid read survives.
     using SciBmad
     # The library ends the process with C exit(1), which skips Julia's own atexit hooks and any
     # try/catch, so this C-level handler prints the verdict, but only while the invalid read is pending.

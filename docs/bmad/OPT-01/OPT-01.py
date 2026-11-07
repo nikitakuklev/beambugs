@@ -2,7 +2,7 @@
 
 Computing a radiation damping map for a bend omits transport from the entrance to each radiation-emission point. The first-order damping correction must include transport on both sides of the local damping matrix, as the transport equation and an independent matrix-exponential calculation establish. For a 2 m sector bend of curvature 0.1 m⁻¹ at 3 GeV, the momentum response to entrance horizontal momentum is zero instead of −7.578 × 10⁻⁷. Splitting the bend into two halves gives −3.795 × 10⁻⁷, so the result depends on segmentation.
 
-The script computes the damping correction for a full sector bend and for two half-bends. It compares the result with a Fréchet derivative of a matrix exponential, which integrates the constant-field transport equation independently. BMAD_DIST supplies the production build; SciPy supplies the matrix exponential.
+The script computes the damping correction for a full sector bend and for two half-bends. It compares the result with a Fréchet derivative of a matrix exponential, which integrates the constant-field transport equation independently. SciPy supplies the matrix exponential.
 """
 
 import numpy as np

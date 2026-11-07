@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [Bmad manual, BeamBeam attribute list, s:beambeam, bmad/doc/elements.tex:315–321](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L315-L321)<br>[Bmad manual, BeamBeam reference-position prose, bmad/doc/elements.tex:352–360](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L352-L360)<br>[S_TWISS_REF registration, bmad/modules/attribute_mod.f90:894–898](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/attribute_mod.f90#L894-L898)<br>[strong_beam_sigma_calc reference position, bmad/low_level/strong_beam_sigma_calc.f90:31–43](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/strong_beam_sigma_calc.f90#L31-L43) |
 
 When users copy the beam–beam manual's s_beta_ref attribute to specify the strong-beam Twiss reference position, the parser rejects it. The accepted attribute is s_twiss_ref, which the field-size calculation and other manual prose already use. A beam–beam element with s_twiss_ref parses successfully, while the otherwise identical element with s_beta_ref fails. Both stale names in the manual should be replaced with s_twiss_ref.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_contracts.py](../helpers/_collective_contracts.py) · [View source](../helpers/index.md#_collective_contracts)
+Run `python COL-40.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_contracts.py](../helpers/_collective_contracts.py) in the same directory.
 
 ??? example "Reproducer: COL-40.py"
 
@@ -31,10 +28,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     When users copy the beam–beam manual's s_beta_ref attribute to specify the strong-beam Twiss reference position, the parser rejects it. The accepted attribute is s_twiss_ref, which the field-size calculation and other manual prose already use. A beam–beam element with s_twiss_ref parses successfully, while the otherwise identical element with s_beta_ref fails. Both stale names in the manual should be replaced with s_twiss_ref.
 
-    The script parses otherwise identical beam–beam elements with the accepted and documented
-    attribute names. It requires a successful control and the explicit bad-attribute error for
-    s_beta_ref, then checks that the stale name remains in the manual. BMAD_DIST and BMAD_SOURCE
-    select the build and source tree.
+    The script parses otherwise identical beam–beam elements with the accepted and documented attribute
+    names. It requires a successful control and the explicit bad-attribute error for s_beta_ref, then
+    checks that the stale name remains in the manual.
     """
 
     from _bmad import verdict

@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`track1_radiation`, bmad/modules/radiation_mod.f90:86–148](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/radiation_mod.f90#L86-L148) |
 
 A deterministic radiation kick changes the momentum coordinate without updating the particle record’s speed β = v/c. The record should satisfy β = p/√(p² + m²c²) at the new physical momentum. A half-element kick in a 10 m bend of curvature 0.1 m⁻¹ at 10 GeV/c changes relative momentum by −7.040 × 10⁻⁴ but leaves β too high by 1.840 × 10⁻¹². The effect is small at this energy but exceeds floating-point rounding.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) · [View source](../helpers/index.md#_orbital_matrices_radiation)
+Run `python TRK-38.py` with [_bmad.py](../helpers/_bmad.py) and [_orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) in the same directory.
 
 ??? example "Reproducer: TRK-38.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     A deterministic radiation kick changes the momentum coordinate without updating the particle record’s speed β = v/c. The record should satisfy β = p/√(p² + m²c²) at the new physical momentum. A half-element kick in a 10 m bend of curvature 0.1 m⁻¹ at 10 GeV/c changes relative momentum by −7.040 × 10⁻⁴ but leaves β too high by 1.840 × 10⁻¹². The effect is small at this energy but exceeds floating-point rounding.
 
-    The script applies the entrance radiation kick with damping disabled and enabled, keeping fluctuations off. It reconstructs β from the returned momentum and compiled electron mass and checks the damping-off control. Set BMAD_DIST to the build root.
+    The script applies the entrance radiation kick with damping disabled and enabled, keeping fluctuations off. It reconstructs β from the returned momentum and compiled electron mass and checks the damping-off control.
     """
 
     import numpy as np

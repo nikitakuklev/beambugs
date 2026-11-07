@@ -2,7 +2,7 @@
 
 The short-range modal wake routines use a momentum-kick normalization that omits the inverse particle-speed factor shown in the manual. With β = v/c = 0.5000, the computed kicks are half the values obtained from the documented equations for the same supplied wake. The longitudinal update also leaves stored β and the longitudinal coordinate unchanged after changing momentum. The implementation and documentation therefore specify different finite-velocity models; their ultrarelativistic limits agree.
 
-The script initializes electrons at β = 0.5 and near unit β, applies longitudinal and transverse modal wakes, and compares with the manual’s normalization. It also records the longitudinal update’s stored speed and coordinate. BMAD_SOURCE supplies the equations and BMAD_DIST selects the build.
+The script initializes electrons at β = 0.5 and near unit β, applies longitudinal and transverse modal wakes, and compares with the manual’s normalization. It also records the longitudinal update’s stored speed and coordinate. BMAD_SOURCE supplies the equations and
 """
 
 import re

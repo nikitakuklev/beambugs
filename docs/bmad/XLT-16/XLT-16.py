@@ -8,12 +8,11 @@ y, pᵧ) with momenta normalized to the reference momentum. Assigning k1 = 1.3 t
 restores that matrix. Specifying both normal and skew strengths selects a separate importer
 branch.
 
-The script translates with madx_to_bmad.py a 0.7 m MAD-X quadrupole, sextupole and octupole
-whose only strength is k1s, k2s or k3s = 1.3, and reads the imported length, tilt and normal
-strength with Tao. For the skew quadrupole it also compares the transverse transfer matrix of
-the imported element with MAD-X TWISS of the source and with the closed-form solution of the
-skew-quadrupole equations x″ = K y, y″ = K x. A copy of the import with k1 = 1.3 added is the
-receiving-code control. Set BMAD_SOURCE to the pinned source checkout.
+The script translates with madx_to_bmad.py a 0.7 m MAD-X quadrupole, sextupole and octupole whose
+only strength is k1s, k2s or k3s = 1.3, and reads the imported length, tilt and normal strength with
+Tao. For the skew quadrupole it also compares the transverse transfer matrix of the imported element
+with MAD-X TWISS of the source and with the closed-form solution of the skew-quadrupole equations x″
+= K y, y″ = K x. A copy of the import with k1 = 1.3 added is the receiving-code control.
 """
 
 import numpy as np

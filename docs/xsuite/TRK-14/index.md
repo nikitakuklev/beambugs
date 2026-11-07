@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`) |
+| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`, head build) |
 | Source | [`Elens_track_local_particle`, elens.h:137–147](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/elens.h#L137-L147)<br>[`Elens` class advertises `has_backtrack=True`](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elens.py#L47) |
 
 Backtracking through an `Elens` repeats its hollow-core residual kicks instead of undoing them, so a forward-then-backward round trip doubles the residual momentum. The inverse of a constant momentum kick has the opposite sign, and an explicit inverse element with both residual kicks negated restores the initial state exactly. For a 1.4 m, 3 A, 12 kV lens with radii 1 and 4 mm and residual normalized kicks (2.3, −4.1) × 10⁻⁷, a 1 GeV/c proton in the core returns with normalized transverse momenta (`px`, `py`) = (4.600, −8.200) × 10⁻⁷ instead of zero. The annular electron-lens force round-trips correctly.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python TRK-14.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: TRK-14.py"
 

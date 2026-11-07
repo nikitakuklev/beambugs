@@ -2,7 +2,7 @@
 
 Native Lie tracking ignores radiation_zero_average when applying deterministic radiation loss in a planar wiggler. The switch should subtract the loss on the zero reference orbit, which samples the same field magnitude as the on-energy orbit in this case. A 650 MeV/c electron in a five-period, 0.3 m wiggler with peak field 0.3 T loses relative momentum 2.221 × 10⁻⁸ with either switch setting; ordinary native and Runge–Kutta tracking cancel the reference loss when the switch is enabled. Removing the separate duplicated native radiation call halves the loss but still leaves the switch ineffective.
 
-The script toggles damping and reference-loss subtraction for native Lie, standard and Runge–Kutta tracking. It checks the ordinary unshifted loss against the analytic sinusoidal-field integral and requires zero loss with damping disabled. Set BMAD_DIST to the build root; the companion one-call diagnostic isolates the duplicated-call defect.
+The script toggles damping and reference-loss subtraction for native Lie, standard and Runge–Kutta tracking. It checks the ordinary unshifted loss against the analytic sinusoidal-field integral and requires zero loss with damping disabled. The companion one-call diagnostic isolates the duplicated-call defect.
 """
 
 import numpy as np

@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Source | [`track_splineboris.h:69–85`](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_splineboris.h#L69-L85) |
 
 `SplineBoris` omits the particle's charge and mass ratios when converting normalized coordinates to physical charge and momentum, so non-reference species get wrong deflections and flight times. The Lorentz impulse in a uniform field scales with the charge-to-mass ratio relative to the reference species, χ, and relativistic kinematics gives field-free particles of equal normalized velocity equal arrival times. Over 0.5 m in a 0.1 T vertical field at reference momentum 1 GeV/c, a particle with twice the reference charge and the same mass (χ = 2) gets normalized horizontal momentum −0.01499 instead of −0.02998. Field-free, doubling both mass and charge gives a longitudinal displacement of −0.5000 m instead of zero. Reference-species particles are tracked correctly, and finer integration removes neither error.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python TRK-08.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: TRK-08.py"
 

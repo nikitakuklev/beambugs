@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [make_mat6_tracking, bmad/low_level/make_mat6_tracking.f90:69–93](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/make_mat6_tracking.f90#L69-L93)<br>[custom spin method, bmad/doc/methods.tex:436–452](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L436-L452) |
 
 Computing a spin map by tracking finite orbital perturbations returns quaternion derivatives with reversed signs. They must use the forward central difference, as the orbital matrix does. For a custom spin rotation by 2κx, where x is horizontal position and κ = 1 m⁻¹, the quaternion is q(x) = (cos κx, 0, 0, sin κx). At x = 0.03 m with a 0.0001 m step, its derivative is (0.03000, 0, 0, −0.9996) m⁻¹ instead of (−0.03000, 0, 0, 0.9996) m⁻¹. The central quaternion and orbital matrix are correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) · [View source](../helpers/index.md#_s3_14_optics_matrix_radiation)
+Run `python OPT-11.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) in the same directory.
 
 ??? example "Reproducer: OPT-11.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Computing a spin map by tracking finite orbital perturbations returns quaternion derivatives with reversed signs. They must use the forward central difference, as the orbital matrix does. For a custom spin rotation by 2κx, where x is horizontal position and κ = 1 m⁻¹, the quaternion is q(x) = (cos κx, 0, 0, sin κx). At x = 0.03 m with a 0.0001 m step, its derivative is (0.03000, 0, 0, −0.9996) m⁻¹ instead of (−0.03000, 0, 0, 0.9996) m⁻¹. The central quaternion and orbital matrix are correct.
 
-    The script uses a custom spin rotation with an exactly known quaternion and a marker with identity orbital transport. It checks the central quaternion, orbital matrix and the five zero derivatives before comparing the x derivative with the exact centered difference. BMAD_DIST supplies the build.
+    The script uses a custom spin rotation with an exactly known quaternion and a marker with identity orbital transport. It checks the central quaternion, orbital matrix and the five zero derivatives before comparing the x derivative with the exact centered difference.
     """
 
     import numpy as np

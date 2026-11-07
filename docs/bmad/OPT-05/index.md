@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [transfer_matrix_calc, bmad/code/transfer_matrix_calc.f90:110–115](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/transfer_matrix_calc.f90#L110-L115)<br>[routine contract, bmad/code/transfer_matrix_calc.f90:15–40](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/transfer_matrix_calc.f90#L15-L40)<br>[initialization, bmad/code/transfer_matrix_calc.f90:67–68](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/transfer_matrix_calc.f90#L67-L68)<br>[composition, bmad/code/transfer_matrix_calc.f90:122–128](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/transfer_matrix_calc.f90#L122-L128) |
 
 Requesting a backward transfer matrix in an open lattice crashes when the optional affine-vector output is omitted. The matrix-only call should return the inverse of the forward matrix. Through a 2 m drift, the same backward call succeeds when the affine vector is supplied and returns the expected horizontal drift coefficient of −2 m and a zero vector.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) · [View source](../helpers/index.md#_s3_14_optics_matrix_radiation)
+Run `python OPT-05.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) in the same directory.
 
 ??? example "Reproducer: OPT-05.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Requesting a backward transfer matrix in an open lattice crashes when the optional affine-vector output is omitted. The matrix-only call should return the inverse of the forward matrix. Through a 2 m drift, the same backward call succeeds when the affine vector is supplied and returns the expected horizontal drift coefficient of −2 m and a zero vector.
 
-    The script checks forward matrix-only transport and backward transport with the affine output before omitting that output. An analytic 2 m drift supplies the complete six-dimensional inverse. It recognizes only a segmentation fault after successful parsing and the two passing controls as the defect; BMAD_DIST supplies the build.
+    The script checks forward matrix-only transport and backward transport with the affine output before omitting that output. An analytic 2 m drift supplies the complete six-dimensional inverse. It recognizes only a segmentation fault after successful parsing and the two passing controls as the defect;
     """
 
     import resource

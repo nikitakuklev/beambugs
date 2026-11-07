@@ -2,7 +2,7 @@
 
 For a thin magnetic AC kicker with a changing waveform, the native matrix omits the dependence of the kick on arrival time. Particle tracking includes the waveform, so differentiating that trajectory gives nonzero longitudinal-to-transverse matrix terms. For a 2 MeV/c electron, a 4 mrad horizontal kick and a 200 kHz sinusoid, M₂₅ is zero instead of 1.340×10⁻⁵ m⁻¹, where M₂₅ is the derivative of horizontal normalized momentum with respect to longitudinal position. Vertical kicks and finite-speed momentum derivatives have the same omission; a constant waveform gives the correct zero terms.
 
-The script tracks thin horizontal and vertical magnetic kicks with two sinusoids, a ramp and a constant-waveform control at 2 MeV/c. It compares native and auto matrices with analytic waveform derivatives and fourth-order trajectory differences at two stencil sizes. BMAD_DIST selects the production build.
+The script tracks thin horizontal and vertical magnetic kicks with two sinusoids, a ramp and a constant-waveform control at 2 MeV/c. It compares native and auto matrices with analytic waveform derivatives and fourth-order trajectory differences at two stencil sizes.
 """
 
 import math

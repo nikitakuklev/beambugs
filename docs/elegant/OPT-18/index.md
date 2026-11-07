@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`concat_matrices`, src/concat_mat.c:56–81](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/concat_mat.c#L56-L81)<br>[`accumulate_matrices`, src/compute_matrices.c:261–263](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L261-L263)<br>[`remove_s_dependent_matrix_elements`, src/matrix.c:1271–1290](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matrix.c#L1271-L1290)<br>[`determineMatrixHigherOrder` sees `trackingMatrixCleanUp`, src/analyze.c:1528–1531](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L1528-L1531)<br>[default is 0, src/global_settings.nl:29](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/global_settings.nl#L29)<br>[s is the total equivalent distance, s = βct, doc/elegant.tex:364–378](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L364-L378)<br>[compaction coefficients are those of the path-length expansion, doc/elegant.tex:8254–8257](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8254-L8257) |
 
 Elegant derives CCBEND maps by tracking, and those maps carry spurious terms that depend on the incoming path coordinate s. Third-order concatenation (`concat_order=3` in `twiss_output`, order-3 `matrix_output`) multiplies these terms by the path length accumulated before the element, so T566 and the second-order momentum compaction αc2 depend on where the element sits. In a 73.60 m, 3 GeV ring of 32 CCBENDs, Twiss gives αc2 = 0.1868 or 0.2117 depending on the starting point, while the path length of off-momentum closed orbits found by tracking gives 0.09547, which second-order concatenation reproduces. Two CCBENDs give T566 = −0.06916, −1.227 and −11.65 m after upstream drifts of 0, 40 and 400 m, while tracking gives −0.01417 m in every case.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-18.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-18.py"
 

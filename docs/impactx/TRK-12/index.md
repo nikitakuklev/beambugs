@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`Buncher.H#L197-L204`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/Buncher.H#L197-L204) |
 
 With spin tracking enabled (experimental in ImpactX), `Buncher` replaces the transverse RF fields with an effective magnetic field that reproduces the orbital kick but not the Thomas–BMT spin precession. Maxwell's near-axis fields of a localized axisymmetric RF field give a spin rotation about the vertical axis of −Ax/[2(γ + 1)] for a particle at offset x, with A = `k`·`V`, independent of the magnetic anomaly; a 65-digit quadrature confirms it. For a proton at γ = 2 in `Buncher(V=0.01, k=2)`, the spin rotation per metre of offset is +0.01529 rad/m instead of −0.003333 rad/m, wrong in sign and magnitude. The orbital kick is correct; the spin error persists for electrons, at γ = 10 and at low voltage.
+
+Run `python TRK-12.py`.
 
 ??? example "Reproducer: TRK-12.py"
 

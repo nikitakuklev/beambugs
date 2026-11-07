@@ -5,7 +5,7 @@ Selecting cathode_fft_3d with s-based tracking silently transports the bunch wit
 The script tracks fresh identical Tao bunches with space charge off, ordinary FFT and cathode FFT
 under s-based tracking. The ordinary FFT case controls that collective effects are active; the
 cathode case must either report its unsupported configuration or reveal the silent space-charge-off
-result. Set BMAD_DIST to the build root.
+result.
 """
 
 import numpy as np

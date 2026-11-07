@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [`mult_matrix`, zero-length substitution, compute_matrices.c:3249–3250](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L3249-L3250)<br>[calls `quadrupole_matrix(KnL / length, length, …)`, compute_matrices.c:3262–3263](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L3262-L3263)<br>[`quadrupole_matrix`, horizontal-plane terms divided by `cos(2kl) - 1`, quad_matrix.c:160 and 172](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L160-L172)<br>[vertical-plane terms divided by `1 - cosh(2kl)`, quad_matrix.c:178 and 190](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L178-L190)<br>[MULT parameters (`L` defaults to 0, `KNL` is the integrated strength, `MATRIX_ORDER`), track_data.c:505–517](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L505-L517)<br>[the strength definition K_nL, doc/mult.tex:5–15](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/mult.tex#L5-L15) |
 
 The third-order transfer map of a zero-length quadrupole, MULT with L=0, ORDER=1 and integrated strength KNL = 0.6 m⁻¹, contains infinite cubic coefficients. Concatenation contaminates 336 map coefficients with NaN, including R₂₁, which should be −0.6000 m⁻¹; finite second-order and short-length controls isolate the singular thin-lens construction. For a thin-lens FODO cell using cubic lens maps, horizontal tune νₓ has d²νₓ/dδ² and d³νₓ/dδ³ equal to NaN instead of 0.2030 and −0.06786, where δ is the relative momentum offset.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _cubic_optics.py](../helpers/_cubic_optics.py) · [View source](../helpers/index.md#_cubic_optics)
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-05.py` with [_cubic_optics.py](../helpers/_cubic_optics.py) and [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-05.py"
 

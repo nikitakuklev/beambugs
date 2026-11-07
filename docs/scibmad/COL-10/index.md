@@ -12,11 +12,13 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-23 on BeamTracking main (`d8e45fd`) |
+| Last reproduced | 2026-10-23 on BeamTracking main (`d8e45fd`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
-| Source | [`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/unpack_bl.jl:139-160`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L139-L160)<br>[`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:127`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/general_bl.jl#L127)<br>[`BeamTracking.jl/src/kernels/ibs_kick.jl:37-42`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/ibs_kick.jl#L37-L42)<br>[`unpack_bl.jl:345`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L345)<br>[`ibs_kick.jl:37-42`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/ibs_kick.jl#L37-L42) |
+| Source | [`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/unpack_bl.jl:139-160`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L139-L160)<br>[`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:127`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L127)<br>[`BeamTracking.jl/src/kernels/ibs_kick.jl:37-42`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L37-L42)<br>[`unpack_bl.jl:345`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/unpack_bl.jl#L345)<br>[`ibs_kick.jl:37-42`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L37-L42) |
 
 The intrabeam scattering (IBS) kick takes its bunch statistics before the element's entrance alignment and aperture act, so it mixes two coordinate frames and counts particles the entrance aperture removes. Offsetting a drift cannot change collisions within the bunch, as translating the bunch itself confirms. For 200 protons at 1.000 GeV with horizontal beam size 100.0 µm, offsetting a 1.000 m drift horizontally by 10.00 µm changes the largest IBS kick by 6.131% of its aligned value instead of zero; an outlier removed by the drift's entrance aperture changes it by 66.02% of the live-only value. Horizontal offsets and entrance losses are reproduced; source inspection places the other alignment parameters on the same entrance path.
+
+Run `julia COL-10.jl`.
 
 ??? example "Reproducer: COL-10.jl"
 

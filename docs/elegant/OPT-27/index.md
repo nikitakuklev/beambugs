@@ -12,15 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Tags | <span class="bb-tag">extreme-regime</span> [?](../../methodology.md#tags) |
 | Source | [`computeTuneShiftWithAmplitude`, src/twiss.cc:3582–3585](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3582-L3585)<br>[src/twiss.cc:3624–3629](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3624-L3629)<br>[the retry, src/twiss.cc:3666–3684](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3666-L3684)<br>[`computeTunesFromTracking`, src/twiss.cc:4104–4117](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L4104-L4117)<br>[`PerformNAFF`, fftpack/naff.c:169](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/fftpack/naff.c#L169)<br>[skips every line outside the window and stops without a frequency when none is left, fftpack/naff.c:197–208](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/fftpack/naff.c#L197-L208)<br>[src/twiss.cc:3483–3484](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3483-L3484)<br>[successive tunes are looked for in the region of the given width around the previous tune, doc/elegant.tex:8468–8473](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8468-L8473)<br>[`scaling_iterations` and the scale factors control automatic scaling of the amplitudes, doc/elegant.tex:8474–8481](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8474-L8481)<br>[the command is deprecated and it is the user's responsibility to optimize its parameters, doc/elegant.tex:8389–8402](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8389-L8402) |
 
 In tracking mode, Elegant's `tune_shift_with_amplitude` treats a failed NAFF tune analysis as a lost particle, shrinks the amplitudes and retries, resetting its retry counter each time, so an analysis that fails at every amplitude never ends the run. A tune window `nux_roi_width` that is narrower than the FFT line spacing 1/turns and contains no line causes this. For four linear FODO cells with tune νx = 0.1444, 256 turns and `nux_roi_width` = 10⁻¹⁰, the nearest line is 1.727×10⁻⁴ from the tune; with `scaling_iterations` = 2 the run retried over 4000 times in 30 s, repeating one state. With `spread_only=1` it finishes, and the default width 0.02 always contains a line, since at least 100 turns are required.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-27.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-27.py"
 

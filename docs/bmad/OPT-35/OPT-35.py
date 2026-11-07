@@ -7,10 +7,10 @@ the reported value is −0.007059 m instead of −0.12 m. For this dispersion sh
 scales with γ_c = (1 + α_c²)/β_c, reaches −1.068 m at β_c = 0.4 m and α_c = 1.6, and leaves
 projected dispersion correct.
 
-The script builds positive beam covariances with a known symplectic dispersion shear and
-executes 84 parameter cases. It validates projected dispersion and covariance, reconstructs the
-longitudinal-mode divisor from the returned normalizing matrix, and compares the transverse
-mode fields with the imposed dispersion. BMAD_DIST selects the build.
+The script builds positive beam covariances with a known symplectic dispersion shear and executes 84
+parameter cases. It validates projected dispersion and covariance, reconstructs the
+longitudinal-mode divisor from the returned normalizing matrix, and compares the transverse mode
+fields with the imposed dispersion.
 """
 
 import itertools

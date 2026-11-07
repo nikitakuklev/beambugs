@@ -2,7 +2,7 @@
 
 Radiation-integral calculations skip sextupoles and octupoles when both steering attributes are zero, even if the supplied orbit passes through a nonzero field. The curvature integrals I₂ = ∫g²ds and I₃ = ∫|g|³ds must be positive on these displaced trajectories, where g is curvature. A 650 MeV/c electron entering a 6 cm sextupole with normalized strength K₂ = 160 m⁻³ at x = 8 mm gives zero for both integrals, instead of 1.570×10⁻⁶ m⁻¹ and 8.035×10⁻⁹ m⁻². Octupoles and magnet offsets show the same omission; on-axis and zero-strength controls return the correct zero.
 
-The script integrates a symmetry-plane Lorentz trajectory independently for displaced sextupoles and octupoles and compares Bmad radiation integrals in three cache modes. Magnet-offset, zero-strength and on-axis cases are included, and a negligible steering attribute activates the otherwise omitted path as a control. BMAD_DIST selects the production build.
+The script integrates a symmetry-plane Lorentz trajectory independently for displaced sextupoles and octupoles and compares Bmad radiation integrals in three cache modes. Magnet-offset, zero-strength and on-axis cases are included, and a negligible steering attribute activates the otherwise omitted path as a control.
 """
 
 import math

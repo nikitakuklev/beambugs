@@ -12,12 +12,14 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-22 on BeamTracking 0.8.7 (`65e343f`); not reproduced on BeamTracking main (`0bf3585`), 2026-10-29 |
+| Last reproduced | 2026-10-22 on BeamTracking 0.8.7 (`65e343f`, committed 2026-10-13); not reproduced on BeamTracking 0.8.7 (`0bf3585`), 2026-11-07 |
 | Issue | [[gh:https://github.com/bmad-sim/BeamTracking.jl/issues/366]] |
 | Pull request | [[gh:https://github.com/bmad-sim/BeamTracking.jl/pull/368]], fix |
 | Source | [src/utils/energy.jl:6](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/energy.jl#L6)<br>[src/utils/energy.jl:9](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/energy.jl#L9)<br>[src/utils.jl:8](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/utils.jl#L8)<br>[ext/BeamlinesGTPSAExt/BeamlinesGTPSAExt.jl:13](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/ext/BeamlinesGTPSAExt/BeamlinesGTPSAExt.jl#L13)<br>[ext/BeamTrackingBeamlinesExt/utils_bl.jl:199–208](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L199-L208)<br>[src/virtual.jl:554–563](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L554-L563)<br>[ext/BeamTrackingBeamlinesExt/BeamTrackingBeamlinesExt.jl:4](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/BeamTrackingBeamlinesExt.jl#L4)<br>[src/utils/energy.jl:7](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/energy.jl#L7) |
 
 For multiply charged ions, the rigidity conversions `R_to_gamma` and `R_to_v` return the wrong Lorentz factor γ and speed, which also corrupts harmonic RF frequencies. The relativistic energy–momentum relation and the independent `E_to_v` helper give the correct charge dependence. For ⁴He²⁺ with reference momentum p₀c = 2mc², twice its rest energy, the helpers return γ = 1.414 instead of 2.236 and a speed of 1.414 instead of 0.8944 times light speed, and a cavity at harmonic 10 in a 100.0 m line gets 42.40 MHz instead of 26.81 MHz. Singly charged species and orbital drift speeds are unaffected.
+
+Run `julia TRK-07.jl`.
 
 ??? example "Reproducer: TRK-07.jl"
 

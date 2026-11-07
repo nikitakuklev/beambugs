@@ -12,17 +12,14 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Pull request | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2108]] |
 | Source | [track_a_thick_multipole, bmad/low_level/track_a_thick_multipole.f90:94–118](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_thick_multipole.f90#L94-L118)<br>[multipole matrix update, bmad/modules/multipole_mod.f90:124–128](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/multipole_mod.f90#L124-L128)<br>[Bmad manual, Linear Transfer Map (Mat6) Calculation Methods, bmad/doc/methods.tex:253–260](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L253-L260)<br>[Bmad manual, AC Kicker waveform, bmad/doc/elements.tex:181–216](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L181-L216) |
 
 For a thin magnetic AC kicker with a changing waveform, the native matrix omits the dependence of the kick on arrival time. Particle tracking includes the waveform, so differentiating that trajectory gives nonzero longitudinal-to-transverse matrix terms. For a 2 MeV/c electron, a 4 mrad horizontal kick and a 200 kHz sinusoid, M₂₅ is zero instead of 1.340×10⁻⁵ m⁻¹, where M₂₅ is the derivative of horizontal normalized momentum with respect to longitudinal position. Vertical kicks and finite-speed momentum derivatives have the same omission; a constant waveform gives the correct zero terms.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) · [View source](../helpers/index.md#_srdt_wiggler_maps)
+Run `python OPT-31.py` with [_bmad.py](../helpers/_bmad.py) and [_srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) in the same directory.
 
 ??? example "Reproducer: OPT-31.py"
 
@@ -33,7 +30,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     For a thin magnetic AC kicker with a changing waveform, the native matrix omits the dependence of the kick on arrival time. Particle tracking includes the waveform, so differentiating that trajectory gives nonzero longitudinal-to-transverse matrix terms. For a 2 MeV/c electron, a 4 mrad horizontal kick and a 200 kHz sinusoid, M₂₅ is zero instead of 1.340×10⁻⁵ m⁻¹, where M₂₅ is the derivative of horizontal normalized momentum with respect to longitudinal position. Vertical kicks and finite-speed momentum derivatives have the same omission; a constant waveform gives the correct zero terms.
 
-    The script tracks thin horizontal and vertical magnetic kicks with two sinusoids, a ramp and a constant-waveform control at 2 MeV/c. It compares native and auto matrices with analytic waveform derivatives and fourth-order trajectory differences at two stencil sizes. BMAD_DIST selects the production build.
+    The script tracks thin horizontal and vertical magnetic kicks with two sinusoids, a ramp and a constant-waveform control at 2 MeV/c. It compares native and auto matrices with analytic waveform derivatives and fourth-order trajectory differences at two stencil sizes.
     """
 
     import math

@@ -12,11 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on NonlinearNormalForm main (`7e40539`) |
+| Last reproduced | 2026-10-29 on NonlinearNormalForm main (`7e40539`, head build) |
 | Issue | [[gh:https://github.com/bmad-sim/NonlinearNormalForm.jl/issues/65]] |
 | Source | [`src/matrix.jl:144`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/matrix.jl#L144)<br>[`src/normal.jl:547-594`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L547-L594)<br>[`matrix.jl:124-130`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/matrix.jl#L124-L130)<br>[`docs/src/index.md:9`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/docs/src/index.md#L9)<br>[`normal.jl:560-562`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L560-L562) |
 
 For damped maps with nonsymplectic coupling and repeated eigenvalues, NonlinearNormalForm mixes a conjugate eigenvector into the degenerate eigenspace. `mat_eigen` then returns vectors that fail the eigenvector equation, and `equilibrium_moments` violates Σ = MΣMᵀ + Q, with Σ the equilibrium covariance and Q the noise. A direct Kronecker solve, a convergent covariance sum and a supplied analytic normalizer independently establish the expected result. For damping factor 0.87 in each mode, angles (0.61, 0.61, 1.13) rad and Q = 2×10⁻⁸·I, the covariance has 22.56% relative error, its fixed-point residual is 0.8035‖Q‖, and the eigenvector residual is 0.3538. Separating the repeated angles by 10⁻⁵ rad restores accuracy.
+
+Run `julia OPT-31.jl`.
 
 ??? example "Reproducer: OPT-31.jl"
 

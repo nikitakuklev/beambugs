@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`twiss_propagate1`, map normalization, bmad/code/twiss_propagate1.f90:133–145](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/twiss_propagate1.f90#L133-L145)<br>[ordinary dispersion transport, bmad/code/twiss_propagate1.f90:245–266](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/twiss_propagate1.f90#L245-L266)<br>[Bmad manual, “Dispersion Calculation”, local and nonlocal definitions, bmad/doc/optics.tex:419–439](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/optics.tex#L419-L439) |
 
 Enabling normalize_twiss while propagating an off-momentum open lattice applies an angle-normalized map to ordinary dispersion coordinates. A 1.7 m drift at fractional momentum offset δ = 0.2 and transverse normalized momenta (0.03, −0.02) gives horizontal dispersion −0.04256 m instead of the exact tracking derivative −0.03546 m. A thin quadrupole with integrated strength 0.3 m⁻¹ returns horizontal momentum dispersion −0.004 instead of −0.006; both elements give the expected values with normalization disabled.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) · [View source](../helpers/index.md#_dispersion_and_moments)
+Run `python OPT-16.py` with [_bmad.py](../helpers/_bmad.py) and [_dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) in the same directory.
 
 ??? example "Reproducer: OPT-16.py"
 
@@ -38,7 +35,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The script tracks an off-momentum drift and thin quadrupole with each normalization setting. It
     checks the orbit and entrance dispersion, then compares exit dispersion with derivatives of the
-    exact drift and thin-lens maps. BMAD_DIST selects the build.
+    exact drift and thin-lens maps.
     """
 
     import numpy as np

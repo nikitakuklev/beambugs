@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [activity flag, sdds_beam.c:886](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sdds_beam.c#L886)<br>[activity assignment and column reads, sdds_beam.c:1092–1113](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sdds_beam.c#L1092-L1113)<br>[empty-column check, SDDS_extract.c:886–888](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/SDDSlib/SDDS_extract.c#L886-L888)<br>[row partition, SDDS_MPI_binary.c:2243–2251](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/SDDSlib/SDDS_MPI_binary.c#L2243-L2251)<br>[track_pages_separately, doc/elegant.tex:7454–7455](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7454-L7455)<br>[unsupported cases, doc/Pelegant.tex:222–228](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/Pelegant.tex#L222-L228) |
 
 When Pelegant, Elegant's MPI version, loads several particle-file pages with `track_pages_separately=0`, it should combine them into one beam. If a later page gives no rows to a worker that read an earlier page, the run stops with "Unable to get column--no rows left" before tracking. A five-particle file split into pages of four and one fails on three ranks (two workers), whereas serial Elegant and Pelegant with a one-plus-four split return all five particles unchanged.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python IO-01.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: IO-01.py"
 
@@ -29,6 +27,8 @@ Download these shared helpers into the same directory as the reproducer scripts:
     """IO-01: Pelegant fails to load a multi-page beam file when a later page leaves a worker without rows
 
     When Pelegant, Elegant's MPI version, loads several particle-file pages with `track_pages_separately=0`, it should combine them into one beam. If a later page gives no rows to a worker that read an earlier page, the run stops with "Unable to get column--no rows left" before tracking. A five-particle file split into pages of four and one fails on three ranks (two workers), whereas serial Elegant and Pelegant with a one-plus-four split return all five particles unchanged.
+
+    Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the defect occurs only under MPI.
 
     The script writes a binary SDDS beam file of five particles in two pages and tracks it through a zero-length drift, so that the output must reproduce the input exactly. The page sizes 4+1 trigger the fault, and the controls 1+4 and 3+2 hold the same particles but give every page after the first at least two rows. Serial Elegant is the control for the 4+1 case.
     """

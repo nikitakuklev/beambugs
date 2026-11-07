@@ -2,7 +2,7 @@
 
 Filtering higher-order modes in the beam-breakup simulation breaks the mode array when any modes are removed. Partial removal attempts to allocate an already allocated array, while complete removal leaves an unallocated array for downstream consumers. A cavity containing orders one and two fails with an allocation error at cutoff one, and a two-cavity case with one fully discarded mode crashes; retaining both orders completes.
 
-The script checks matching one-cavity and two-cavity controls that retain all modes, then runs partial-removal and complete-removal cases in separate processes. It requires the specific allocation failure after successful parsing or segmentation fault after tracking begins. BMAD_DIST selects the build and all runs use seed 123.
+The script checks matching one-cavity and two-cavity controls that retain all modes, then runs partial-removal and complete-removal cases in separate processes. It requires the specific allocation failure after successful parsing or segmentation fault after tracking begins. All runs use seed 123.
 """
 
 from _bmad import RunFailure, run, verdict

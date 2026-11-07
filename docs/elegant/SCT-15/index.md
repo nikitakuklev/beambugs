@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [density, matter.c:89–92](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L89-L92)<br>[width, matter.c:141–144](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L141-L144)<br>[constants, matter.c:19–22](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L19-L22)<br>[radiationLength, matter.c:315–349](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L315-L349)<br>[rates, matter.c:121–128](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L121-L128)<br>[MATTER parameters, track_data.c:2145–2149](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2145-L2149)<br>[forced multiple scattering, matter.tex:49–67](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/matter.tex#L49-L67) |
 
 With PRESSURE, TEMPERATURE and MULTIPLICITY, MATTER computes gas density using the proton mass m_p instead of the atomic mass unit u. ENERGY_DECAY and bremsstrahlung rates are consequently 0.7293% too large, and single-scattering and recoil rates, which also use a rounded u, are 0.7316% too large; with RHO supplied directly, the latter rates are 0.002344% too large. For nitrogen at 100 Pa and 300 K over 10 m, the fractional energy loss is 2.978×10⁻⁵ instead of 2.956×10⁻⁵, as an independent ideal-gas atom-density calculation shows. Forced multiple scattering converts RHO to atom density with m_p, making its angles 0.3626% too small; pressure input gives correct angles.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _matter_model.py](../helpers/_matter_model.py) · [View source](../helpers/index.md#_matter_model)
+Run `python SCT-15.py` with [_elegant.py](../helpers/_elegant.py) and [_matter_model.py](../helpers/_matter_model.py) in the same directory.
 
 ??? example "Reproducer: SCT-15.py"
 

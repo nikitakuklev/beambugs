@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [final grid preparation, csbend.c:3757](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3757)<br>[zeroed grid, csbend.c:3809–3813](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3809-L3813)<br>[wake marked valid, csbend.c:3960](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3960)<br>[hand-off to CSRDRIFT, csbend.c:4007–4010](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4007-L4010)<br>[spacing read, csbend.c:4338](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4338)<br>[gather, csbend.c:4530–4535](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4530-L4535)<br>[Stupakov dispatch, csbend.c:4332–4333](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4332-L4333)<br>[parameter table, track_data.c:2060](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2060)<br>[CSRDRIFT manual, csrdrift.tex:54–60](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csrdrift.tex#L54-L60) |
 
 With `BIN_ONCE=1`, a CSRCSBEND passes zero wake-grid spacing to a following exponential-attenuation CSRDRIFT. In the reproduction the drift bins no particles and applies no kick, warning at every step; the zero-spacing failure can behave differently on other builds. For a one-slice 0.5 m, 50 mrad bend followed by a 0.1 m drift with 1000 m attenuation length, a 1 nC, 1 mm rms Gaussian electron bunch at 2000 mₑc should lose a further 681.0 eV per electron on average, as integration of the exported wake confirms, but loses zero. A drift with `USE_STUPAKOV=1` gives identical nonzero kicks for both binning settings.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-11.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-11.py"
 

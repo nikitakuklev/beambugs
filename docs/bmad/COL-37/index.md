@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [touschek_lifetime, bmad/multiparticle/touschek_mod.f90:49–108](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/touschek_mod.f90#L49-L108) |
 
 The basic Touschek lifetime routine uses the length after the final tracking element as a physical integration weight. A uniform local loss rate must retain its lifetime when averaged around a ring. For four equal-length elements, zero length in the following storage slot makes the lifetime 14.29% too long; setting that nontracking length to twice an element length makes it 11.11% too short. The same indexing reads outside the element array when storage ends at the last tracking element.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-37.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-37.py"
 

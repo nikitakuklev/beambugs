@@ -12,17 +12,14 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Issue | [[gh:https://github.com/bmad-sim/bmad-ecosystem/issues/1996]] |
 | Source | [tao_merit, tao/code/tao_merit.f90:30–41](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_merit.f90#L30-L41) |
 
 Querying pipe merit after disabling Tao lattice calculation reports zero even when the objective has a nonzero minimum. A weighted steering fit has analytic minimum 0.0003200, which Tao returns while calculation is enabled; the next query returns zero after lattice_calc_on is set false. Zero is presented as a valid scalar rather than an unavailable objective. The merit routine returns before evaluating the objective or setting its optional calculation-status argument.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) · [View source](../helpers/index.md#_tao_contracts_normal_form)
+Run `python TAO-18.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) in the same directory.
 
 ??? example "Reproducer: TAO-18.py"
 

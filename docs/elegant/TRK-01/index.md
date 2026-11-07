@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`trackThroughExactCorrector`, exactCorrector.c:244–257](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/exactCorrector.c#L244-L257)<br>[element description, track_data.c:333](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L333) |
 
 A finite-length EHKICK with a nonzero kick mistracks particles with nonzero vertical slope y′: it uses total momentum to set the projected bend radius and changes horizontal slope x′ while keeping y′ fixed. A uniform vertical field conserves total and vertical momentum, requiring a helix whose radius depends on momentum perpendicular to the field, as independent Lorentz-force integrations confirm. For a 0.7 m magnet with a 0.09 rad kick, a particle 20% above reference momentum entering with x′ = 0.08 and y′ = 0.06 leaves with y′ = 0.06000 instead of 0.06054, losing 0.8842% of its vertical momentum. At 1 mrad kick and slopes, y′ is 1.500 nrad too small; particles without vertical slope are unaffected.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-01.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-01.py"
 

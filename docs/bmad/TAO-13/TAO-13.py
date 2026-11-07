@@ -7,8 +7,8 @@ file’s final quit command. Tao labels the finite chain an infinite loop and cl
 command stack.
 
 The script builds acyclic chains just below and at the failing boundary. It verifies that the
-shorter chain reaches its calculation, then checks every call and the exact stack-abort
-diagnostics for the longer chain. BMAD_DIST supplies Tao.
+shorter chain reaches its calculation, then checks every call and the exact stack-abort diagnostics
+for the longer chain.
 """
 
 from _bmad import verdict

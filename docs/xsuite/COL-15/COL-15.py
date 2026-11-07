@@ -11,8 +11,7 @@ which no particle was absorbed.
 The script tracks 20 unit-weight protons from x = 3 mm through the collimator (jaw 1 mm, seeds
 7001–7020), all surviving, and checks the in-memory collimator energy against the kernel's deposit
 counter. It then writes the loss map to JSON in a temporary directory, reloads it, and compares the
-restored collimator energy, and the equality test, with the original. It requires the installed
-prebuilt kernels (compilation is forbidden).
+restored collimator energy, and the equality test, with the original.
 """
 
 import tempfile

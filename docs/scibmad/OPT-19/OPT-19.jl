@@ -9,12 +9,14 @@
 # exit status 1. Per-variable caps, such as those of the default `twiss(chrom=2)` descriptor, make
 # such reads easy to issue; by source reading, the monomial setter lacks the same check.
 #
+# Setup: when the defect reproduces, the script exits with status 1 after printing the verdict,
+# because the library ends the process with C `exit`.
+#
 # The script builds t = (x + y)² under `Descriptor([1,1,1], 2)`, asks `mad_desc_isvalidm` about
 # [1,1,0] and [2,0,0], reads the valid coefficient as a control, then reads `t[[2,0,0]]` inside
 # `try`/`catch`. Because the library ends the process with C `exit`, a C-level exit handler
 # registered with `__cxa_atexit` prints the verdict while the read is pending, and a Julia `atexit`
-# hook that stays silent shows that Julia never unwinds. Run it alone, as its own process: nothing
-# after the invalid read survives, and it exits with status 1.
+# hook that stays silent shows that Julia never unwinds. Nothing after the invalid read survives.
 using SciBmad
 # The library ends the process with C exit(1), which skips Julia's own atexit hooks and any
 # try/catch, so this C-level handler prints the verdict, but only while the invalid read is pending.

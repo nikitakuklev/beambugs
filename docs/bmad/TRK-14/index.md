@@ -12,16 +12,14 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-21 on Bmad 20261020-0 (`19b8afb`); not reproduced on Bmad 20261031-0 (`c4c629f`), 2026-11-05 |
+| Last reproduced | 2026-10-21 on Bmad 20261020-0 (`19b8afb`, committed 2026-10-20); not reproduced on Bmad 20261031-0 (`c4c629f`), 2026-11-05 |
 | Issue | [[gh:https://github.com/bmad-sim/bmad-ecosystem/issues/2222]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2223]], filed from this evidence |
 | Source | [`track_a_lcavity`, bmad/low_level/track_a_lcavity.f90:223–226](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/low_level/track_a_lcavity.f90#L223-L226)<br>[`fringe_kick`, lines 260–265](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/low_level/track_a_lcavity.f90#L260-L265)<br>[`this_energy_kick`, line 358](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/low_level/track_a_lcavity.f90#L358)<br>[`this_pondermotive_transverse_kick`, lines 438–451](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/low_level/track_a_lcavity.f90#L438-L451)<br>[`track1`, bmad/code/track1.f90:219](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/code/track1.f90#L219)<br>[`track1_bmad`, bmad/low_level/track1_bmad.f90:112–116](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/low_level/track1_bmad.f90#L112-L116)<br>[bmad/doc/attributes.tex:2006–2022](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L2006-L2022) |
 
 Turning an aligned lcavity off with `is_on = False` in standard tracking with nonzero `n_rf_steps` leaves its stored RF voltage and focusing active. The energy kick, entrance and exit fringe kicks, and ponderomotive focusing ignore the off state. The documented result is a drift that retains the cavity's reference energy profile while exerting no force on the particle. A 5 MeV/c electron through a 1 m, 1 MV standing-wave cavity gains 1.000 MeV in either state; a particle initially 1 mm off axis leaves an off 2 MV cavity at x = 0.8237 mm instead of 1 mm.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python TRK-14.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: TRK-14.py"
 

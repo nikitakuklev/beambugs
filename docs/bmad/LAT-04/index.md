@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`bunch_init_end_calc`, bmad/multiparticle/beam_utils.f90:1923–1968](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1923-L1968)<br>[beta-dependent bunch spacing, bmad/multiparticle/beam_utils.f90:1991–1998](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1991-L1998)<br>[centroid-offset contract, bmad/doc/beam-init.tex:318–327](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/beam-init.tex#L318-L327) |
 
 Applying a momentum-centroid offset while initializing an HDF5 beam changes particle momentum without updating β, the speed divided by the speed of light. An electron starting at 0.5 MeV/c and shifted to 1 MeV/c retains β = 0.6994 instead of the mass-shell value 0.8905. The final momentum determines β and the subsequent bunch-spacing conversion. The zero-offset control has the correct β.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_11_particle_io.py](../helpers/_s3_11_particle_io.py) · [View source](../helpers/index.md#_s3_11_particle_io)
+Run `python LAT-04.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_11_particle_io.py](../helpers/_s3_11_particle_io.py) in the same directory.
 
 ??? example "Reproducer: LAT-04.py"
 

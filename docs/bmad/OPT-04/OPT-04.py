@@ -2,7 +2,7 @@
 
 Requesting only the high-momentum orbit from the chromaticity routine returns success with the wrong chromaticity and an untracked orbit endpoint. Requesting only the low-momentum orbit crashes. Each optional orbit output should work independently and leave the chromaticity unchanged. In a four-cell FODO ring, the high-only call gives −0.07250 instead of −0.1450, while supplying both outputs or neither agrees with independent thick-lens differentiation.
 
-The script runs the four combinations of optional orbit outputs in separate processes. A thick-lens FODO calculation supplies the tune derivative, and the both-output and neither-output cases are controls. It recognizes only a segmentation fault after successful lattice setup as the low-only crash; BMAD_DIST supplies the build.
+The script runs the four combinations of optional orbit outputs in separate processes. A thick-lens FODO calculation supplies the tune derivative, and the both-output and neither-output cases are controls. It recognizes only a segmentation fault after successful lattice setup as the low-only crash;
 """
 
 import resource

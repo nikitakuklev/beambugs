@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [chrom_calc, bmad/code/chrom_calc.f90:208–225](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/chrom_calc.f90#L208-L225)<br>[open-line selection, bmad/code/chrom_calc.f90:232–241](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/chrom_calc.f90#L232-L241)<br>[argument contract, bmad/code/chrom_calc.f90:9–29](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/chrom_calc.f90#L9-L29) |
 
 Requesting only the high-momentum orbit from the chromaticity routine returns success with the wrong chromaticity and an untracked orbit endpoint. Requesting only the low-momentum orbit crashes. Each optional orbit output should work independently and leave the chromaticity unchanged. In a four-cell FODO ring, the high-only call gives −0.07250 instead of −0.1450, while supplying both outputs or neither agrees with independent thick-lens differentiation.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) · [View source](../helpers/index.md#_s3_14_optics_matrix_radiation)
+Run `python OPT-04.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) in the same directory.
 
 ??? example "Reproducer: OPT-04.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Requesting only the high-momentum orbit from the chromaticity routine returns success with the wrong chromaticity and an untracked orbit endpoint. Requesting only the low-momentum orbit crashes. Each optional orbit output should work independently and leave the chromaticity unchanged. In a four-cell FODO ring, the high-only call gives −0.07250 instead of −0.1450, while supplying both outputs or neither agrees with independent thick-lens differentiation.
 
-    The script runs the four combinations of optional orbit outputs in separate processes. A thick-lens FODO calculation supplies the tune derivative, and the both-output and neither-output cases are controls. It recognizes only a segmentation fault after successful lattice setup as the low-only crash; BMAD_DIST supplies the build.
+    The script runs the four combinations of optional orbit outputs in separate processes. A thick-lens FODO calculation supplies the tune derivative, and the both-output and neither-output cases are controls. It recognizes only a segmentation fault after successful lattice setup as the low-only crash;
     """
 
     import resource

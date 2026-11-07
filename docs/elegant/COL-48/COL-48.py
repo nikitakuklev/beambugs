@@ -2,7 +2,7 @@
 
 After `change_particle name=positron`, CSRCSBEND reverses the coherent synchrotron radiation kick, making a bunch gain energy where an identical electron bunch loses it. Reversing every source and witness charge must preserve the self-force because both the source field and the witness charge reverse. A 100.0 pC Gaussian bunch at 511.0 MeV/c with 35.00 μm rms length gains 104.7 keV per particle on average in a 0.6000 m, 0.3000 rad bend instead of losing 104.7 keV. Disabling coherent radiation restores identical electron and positron transport.
 
-The script tracks deterministic Gaussian quantiles through a single-slice steady-state CSR bend for electrons and positrons, with coherent radiation enabled and disabled. It compares every momentum kick using charge conjugation and checks a zero-charge control; incoherent radiation and random excitation are disabled. Use --mpi to add three-rank Pelegant, with the native programs on PATH and RPN_DEFNS set.
+The script tracks deterministic Gaussian quantiles through a single-slice steady-state CSR bend for electrons and positrons, with coherent radiation enabled and disabled. It compares every momentum kick using charge conjugation and checks a zero-charge control; incoherent radiation and random excitation are disabled. Use --mpi to add three-rank Pelegant.
 """
 
 import numpy as np

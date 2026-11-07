@@ -12,11 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Discussed in | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1757]] |
 | Source | [`ReducedBeamCharacteristics.cpp#L197-L203`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/ReducedBeamCharacteristics.cpp#L197-L203)<br>[`L335`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/diagnostics/ReducedBeamCharacteristics.cpp#L335) |
 
 `beam_moments()` can report zero beam size and emittance for a finite-emittance beam when a distant particle with zero or tiny weight, such as a tracer, is stored first. The moments are accumulated about the first stored particle, so the shifted second moment and squared mean nearly cancel and the core variance is lost. Weighted standard deviations and emittances must not depend on particle order or zero-weight particles; a two-pass weighted covariance gives the correct values. For a core with σx = 10⁻⁹ m and emittance εx = 10⁻¹² m and a tracer at x = 1 m stored first, with weight 0 or 10⁻²⁴, both are reported as 0; stored last, they are correct.
+
+Run `python IO-01.py`.
 
 ??? example "Reproducer: IO-01.py"
 

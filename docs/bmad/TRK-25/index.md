@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [track1_spin_taylor, bmad/spin/track1_spin_taylor.f90:42–66](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/spin/track1_spin_taylor.f90#L42-L66)<br>[offset_particle optional spin rotation, bmad/code/offset_particle.f90:43–48](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/offset_particle.f90#L43-L48)<br>[Bmad Manual, taylor_map_include_offsets Attribute, `s:mapoff`, bmad/doc/methods.tex:919–934](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L919-L934) |
 
 A spin Taylor map that excludes element offsets applies its body-frame spin rotation to laboratory-frame spin. For a tilted quadrupole, the orbital coordinates are rotated into and out of the body frame but the spin is not. A 0.6 m quadrupole tilted by 0.43 rad produces horizontal spin 0.2991 instead of 0.2998 in the example. Explicit frame rotations and a freshly generated map including offsets agree, and the zero-tilt control passes.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _rf_and_spin.py](../helpers/_rf_and_spin.py) · [View source](../helpers/index.md#_rf_and_spin)
+Run `python TRK-25.py` with [_bmad.py](../helpers/_bmad.py) and [_rf_and_spin.py](../helpers/_rf_and_spin.py) in the same directory.
 
 ??? example "Reproducer: TRK-25.py"
 

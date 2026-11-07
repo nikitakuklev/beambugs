@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xfields main (`223b4fa`) |
+| Last reproduced | 2026-10-26 on xfields main (`223b4fa`, head build) |
 | Tags | <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |
 | Source | [`p2m_rectmesh3d_xparticles`, charge_deposition.h:120–136](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/fieldmaps/interpolated_src/charge_deposition.h#L120-L136)<br>[`update_from_particles` API](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/fieldmaps/interpolated.py#L311-L381)<br>[particle contract](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L216-L235) |
 
 When `update_from_particles` deposits an Xtrack `Particles` object onto a particle-in-cell mesh, each macroparticle contributes `weight`·`q0`·e without its `charge_ratio` (q/`q0`, its charge relative to the reference charge). Cloud-in-cell deposition must conserve the physical charge e·Σ `weight`·`q0`·`charge_ratio`, as the explicit-array input path does. For live particles of weights 3 and 7 on a 9³ mesh with `q0` = 1, charge ratios 0.5, 1 and 2 all deposit 10 elementary charges instead of 5, 10 and 20. Mesh space-charge and beam-beam solvers receive this wrong source density; particles with the reference charge are unaffected, and a source comment acknowledges the missing charge ratios.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-03.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-03.py"
 

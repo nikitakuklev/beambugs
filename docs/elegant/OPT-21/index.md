@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [`computeTuneShiftWithAmplitude`, peak windows, src/twiss.cc:3619–3622](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3619-L3622)<br>[the amplitude retry, src/twiss.cc:3666–3684](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3666-L3684)<br>[the namelist, src/twiss.nl:34–38](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.nl#L34-L38)<br>[`nux_roi_width`, `nuy_roi_width` are the widths of the regions of interest for the x and y tunes, doc/elegant.tex:8468–8473](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8468-L8473)<br>[a tune shift above `scale_down_limit` decreases the amplitude by `scale_down_factor`, one below `scale_up_limit` increases it by `scale_up_factor`, doc/elegant.tex:8474–8481](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8474-L8481) |
 
 In tracking mode, Elegant's `tune_shift_with_amplitude` searches the vertical tune peak within `nux_roi_width` and never reads `nuy_roi_width`, `scale_down_factor`, `scale_up_factor` or `scale_up_limit`, all documented in the manual. When the tune change exceeds `scale_down_limit`, it sets the largest amplitude to one third of itself plus two thirds of the smallest, whatever factor was requested, and it never scales amplitudes up. For eight FODO cells with a thin octupole, changing any of these controls (vertical window 0.02 to 10⁻¹⁰, scale-up factor 2 to 5, scale-up limit 0.1 to 10⁻¹⁰, scale-down factor 2 to 10) leaves every tracked tune and fitted coefficient bit-identical; both scale-down factors reduce the largest amplitude from 1.999 mm to 0.6657 mm.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-21.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-21.py"
 

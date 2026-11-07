@@ -1,5 +1,8 @@
 """COL-24: MPI fixed-bin controls with unequal bunch means across workers
 
+Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the
+fixed-bin controls test how tracking ranks split the bunches.
+
 The script tracks two 24-particle bunches, 3 ns apart, through one dipole TRWAKE with a linear
 causal wake and 64 fixed bins. Every particle has the same transverse offsets, so the correct kick
 is a direct causal pair sum over the particles of the same bunch, written without any binning. In

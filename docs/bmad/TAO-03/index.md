@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`tao_write_cmd` row-format dispatch, tao/code/tao_write_cmd.f90:820–827](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_write_cmd.f90#L820-L827)<br>[datum-row assembly, tao/code/tao_write_cmd.f90:896–914](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_write_cmd.f90#L896-L914)<br>[`namelist_item_out`, tao/code/tao_write_cmd.f90:1358–1390](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_write_cmd.f90#L1358-L1390)<br>[Tao manual, “write namelist” (`s:write.namelist`), tao/doc/command-list.tex:4318–4326](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/command-list.tex#L4318-L4326) |
 
 Writing a Tao data namelist for an array of three constraints produces the array header but no datum definitions. Reloading the export with its universe selector quoted leaves all three datums nonexistent and reduces the merit from 2.475 × 10⁻⁵ to zero. A round trip must preserve the definitions and constraints. The row-format writer assembles each row in memory without writing it to the file.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_optimization_io.py](../helpers/_tao_optimization_io.py) · [View source](../helpers/index.md#_tao_optimization_io)
+Run `python TAO-03.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_optimization_io.py](../helpers/_tao_optimization_io.py) in the same directory.
 
 ??? example "Reproducer: TAO-03.py"
 
@@ -36,10 +33,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     the definitions and constraints. The row-format writer assembles each row in memory without
     writing it to the file.
 
-    The script exports RMS, average, and integral constraints on a drift orbit and reloads the
-    generated file in a fresh Tao process. It quotes the universe selector to isolate the missing
-    rows, then compares datum existence and merit before and after the round trip. BMAD_DIST
-    supplies Tao.
+    The script exports RMS, average, and integral constraints on a drift orbit and reloads the generated
+    file in a fresh Tao process. It quotes the universe selector to isolate the missing rows, then
+    compares datum existence and merit before and after the round trip.
     """
 
     import re

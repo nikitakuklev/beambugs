@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`trackRfCavityWithWakes` matrix branch, simple_rfca.c:994–1078](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L994-L1078)<br>[matrix-method selection, simple_rfca.c:525–530](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L525-L530)<br>[parameter table, track_data.c:597–617](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L597-L617)<br>[element description, track_data.c:233](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L233)<br>[RFCA manual, rfca.tex](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfca.tex)<br>[longitudinal coordinate, elegant.tex:364–382](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L364-L382) |
 
 An RFCA of nonzero length using the default matrix method (N_KICKS = 0) times the entire cavity at the entrance speed despite modeling acceleration in its transverse response. Without transverse focusing, that response bounds the transit time for monotonic acceleration; kick tracking satisfies its corresponding bounds. For a 0.75 m, 160 kV cavity at crest and electron momentum p = 2.3 mₑc, the 2.728 ns transit exceeds the allowed upper limit by 27.45 ps. The minimum timing errors fall to 0.3778 ps at 10 mₑc and 0.3902 fs at 100 mₑc.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-08.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-08.py"
 

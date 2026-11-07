@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-22 on bmad-ecosystem 20261020-0 (`19b8afb`) |
+| Last reproduced | 2026-10-22 on bmad-ecosystem 20261020-0 (`19b8afb`, committed 2026-10-20) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`bmad/bmad/output/write_lattice_scibmad_format.f90:777`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L777)<br>[`:633`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L633)<br>[`:622`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L622)<br>[`:1233`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L1233)<br>[`:1237`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L1237)<br>[`Beamlines.jl/src/keymaps.jl:2`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/keymaps.jl#L2)<br>[`Beamlines.jl/src/element.jl:481`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/element.jl#L481)<br>[`Beamlines.jl/src/bmultipole.jl:240`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/bmultipole.jl#L240)<br>[`Beamlines.jl/src/keymaps.jl:73`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/keymaps.jl#L73)<br>[`Beamlines.jl/src/alignment.jl:3-21`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/alignment.jl#L3-L21)<br>[`Beamlines.jl/src/keymaps.jl:75`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/keymaps.jl#L75)<br>[`bmad/bmad/output/write_lattice_scibmad_format.f90:1239`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L1239)<br>[`:769`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L769)<br>[`:749`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/output/write_lattice_scibmad_format.f90#L749) |
 
 Bmad's SciBmad exporter emits property names Beamlines rejects: `bsol_field` for field-master solenoids, `roll` for rolled bends, `is_on` for switched-off elements, and `z_rot` or `t_offset` in controlled assignments. Executed solenoid, bend, switched-off quadrupole and overlay cases fail at load with “Type LineElement has no property” and no incomplete-translation warning. The accepted names are `Bsol`, `tilt` for a bend roll or non-patch tilt, and `dt` for a patch time shift; substituting them loads the tested cases with their expected values. Beamlines has no on/off switch, and dropping `is_on` leaves an off bend's nonzero exported field. Source inspection extends the controlled-name failures to groups and identifies a warning for a controlled roll.
+
+Run `julia LAT-19.jl`.
 
 ??? example "Reproducer: LAT-19.jl"
 
@@ -35,11 +37,13 @@ Bmad's SciBmad exporter emits property names Beamlines rejects: `bsol_field` for
     # on/off switch, and dropping `is_on` leaves an off bend's nonzero exported field. Source inspection
     # extends the controlled-name failures to groups and identifies a warning for a controlled roll.
     #
+    # Setup: `BMAD_SOURCE` set to the root of a bmad-ecosystem `20261020-0` build (the directory
+    # containing `production/bin`); the script runs its `bmad_to_scibmad` program.
+    #
     # The script exports a field-master solenoid (`l = 1`, `bs_field = 0.5`) with Bmad's
     # `bmad_to_scibmad` program, prints the emitted solenoid line and loads the file, which should give
     # a 0.5 T solenoid field; a directly built `Solenoid(L=1, Bsol=0.5)` is the control. The other names
-    # are covered by a second script. Set `BMAD_SOURCE` to the root of a Bmad build, so that the program
-    # is `$BMAD_SOURCE/production/bin/bmad_to_scibmad`.
+    # are covered by a second script.
     using SciBmad
     haskey(ENV, "BMAD_SOURCE") || error("set BMAD_SOURCE to the root of the bmad-ecosystem 20261020-0 build (the directory that contains production/bin)")
     const BIN = joinpath(ENV["BMAD_SOURCE"], "production", "bin", "bmad_to_scibmad")
@@ -81,13 +85,15 @@ Bmad's SciBmad exporter emits property names Beamlines rejects: `bsol_field` for
     ```julia
     # LAT-19: four more emitted names that Beamlines rejects: `roll`, `z_rot`, `t_offset` and `is_on`
     #
+    # Setup: `BMAD_SOURCE` set to the root of a bmad-ecosystem `20261020-0` build (the directory
+    # containing `production/bin`); the script runs its `bmad_to_scibmad` program.
+    #
     # The script exports four Bmad lattices with `bmad_to_scibmad`, one per name: a rolled bend
     # (`roll`), an overlay on a quadrupole's tilt (`z_rot`), an overlay on a patch's `t_offset`, and a
     # switched-off quadrupole (`is_on`). Each emitted file should load. As independent checks it
     # confirms that the emitted name is not a Beamlines property and that the file with the Beamlines
     # name substituted (`tilt` or `dt`, or `is_on` dropped) loads with Bmad's value; it also prints the
-    # emitted line of a switched-off bend, which keeps its field. Set `BMAD_SOURCE` to the root of a
-    # Bmad build, so that the program is `$BMAD_SOURCE/production/bin/bmad_to_scibmad`.
+    # emitted line of a switched-off bend, which keeps its field.
     using SciBmad
     const BL = SciBmad.Beamlines
     haskey(ENV, "BMAD_SOURCE") || error("set BMAD_SOURCE to the root of the bmad-ecosystem 20261020-0 build (the directory that contains production/bin)")

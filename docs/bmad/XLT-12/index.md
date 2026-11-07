@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [parse_and_write_element aperture conversion, util_programs/mad_to_bmad/madx_to_bmad.py:640–663](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/mad_to_bmad/madx_to_bmad.py#L640-L663) |
 
 Importing a MAD-X ellipse or rectangle with two half-apertures crashes the translator. It always selects the third and fourth aperture values, leaving an empty slice for ordinary two-value shapes. An ellipse with half-apertures 0.01 m and 0.02 m raises ValueError instead of producing those Bmad limits. MAD-X accepts the input, and Bmad accepts the corresponding explicit collimator.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _lattice_import_export.py](../helpers/_lattice_import_export.py) · [View source](../helpers/index.md#_lattice_import_export)
+Run `python XLT-12.py` with [_bmad.py](../helpers/_bmad.py) and [_lattice_import_export.py](../helpers/_lattice_import_export.py) in the same directory.
 
 ??? example "Reproducer: XLT-12.py"
 

@@ -8,8 +8,7 @@ The update loop skips zero electric coefficients instead of overwriting their st
 
 The script creates a persistent PTC layout, edits B1_ELEC through the public setter and bookkeeping
 sequence, and tracks between the element’s integration nodes. It compares exact-zero updates with a
-separately constructed zero-field element and a 1e-70 nonzero coefficient control; BMAD_DIST selects
-the build.
+separately constructed zero-field element and a 1e-70 nonzero coefficient control;
 """
 
 import os

@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [rebinning, csbend.c:3286–3294](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3286-L3294)<br>[histogram and growth, csbend.c:3338–3353](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3338-L3353)<br>[IGF allocation, csbend.c:3443–3453](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3443-L3453)<br>[IGF fill, csbend.c:3456–3471](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3456-L3471)<br>[BIN_SIZE, track_data.c:2059](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2059)<br>[IGF, track_data.c:2071](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2071) |
 
 With IGF=1 and BIN_SIZE, CSRCSBEND sizes its integrated-Green-function arrays for the bin count of its first slice and fills them up to the current bin count in every later slice. When a chirped bunch lengthens in the bend, the bin count grows and these writes run past the allocation. For 5001 electrons whose histogram grows from 89 to 2912 bins over the 24 slices of a 0.8 m, 0.4 rad bend, the run ends with a segmentation fault, and Valgrind reports an invalid write just past the 89-element array. The same bend with IGF=0, or with IGF=1 and a fixed bin count, completes.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _csr.py](../helpers/_csr.py) · [View source](../helpers/index.md#_csr)
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-40.py` with [_csr.py](../helpers/_csr.py) and [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-40.py"
 
@@ -31,12 +28,14 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     With IGF=1 and BIN_SIZE, CSRCSBEND sizes its integrated-Green-function arrays for the bin count of its first slice and fills them up to the current bin count in every later slice. When a chirped bunch lengthens in the bend, the bin count grows and these writes run past the allocation. For 5001 electrons whose histogram grows from 89 to 2912 bins over the 24 slices of a 0.8 m, 0.4 rad bend, the run ends with a segmentation fault, and Valgrind reports an invalid write just past the 89-element array. The same bend with IGF=0, or with IGF=1 and a fixed bin count, completes.
 
+    Setup: `valgrind` on `PATH`; the script runs some cases of serial Elegant under Memcheck.
+
     The script tracks 5001 electrons (Gaussian quantiles, σ_ct = 12 μm, linear chirp of 1500 m⁻¹ in
     relative momentum about p = 1500 mₑc) through a 0.8 m, 0.4 rad, 24-slice CSRCSBEND with
-    STEADY_STATE=1 and BIN_SIZE = 4 fs, which lengthens the bunch from slice to slice. The control
-    with IGF=0 runs, and its wake output gives the bin count of every slice; with fixed BINS=128 and
-    IGF=1 the run also completes. With IGF=1 and BIN_SIZE, the script reports the exit of a plain run
-    and the first invalid access Valgrind (which must be on PATH) finds, with the allocation it hits.
+    STEADY_STATE=1 and BIN_SIZE = 4 fs, which lengthens the bunch from slice to slice. The control with
+    IGF=0 runs, and its wake output gives the bin count of every slice; with fixed BINS=128 and IGF=1
+    the run also completes. With IGF=1 and BIN_SIZE, the script reports the exit of a plain run and the
+    first invalid access Valgrind finds, with the allocation it hits.
     """
 
     import re

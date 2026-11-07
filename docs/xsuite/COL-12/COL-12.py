@@ -11,8 +11,7 @@ only the longitudinal kick; references with `q0` = 1 are unaffected.
 The script loads exact tricubic Taylor data for that potential and tracks a 3 GeV/c reference
 particle with `charge_ratio` = 1 from (x, y, ζ) = (0.12, −0.08, 0.18) m for `q0` = 1, 2 and −2. It
 compares the kicks with −L·∇φ and measures the mixed derivatives by central differences with step
-10⁻⁴ m; `q0` = 1 is the control. It requires the installed prebuilt kernels (compilation is
-forbidden).
+10⁻⁴ m; `q0` = 1 is the control.
 """
 
 import xfields as xf

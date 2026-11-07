@@ -2,7 +2,7 @@
 
 Requesting a closed-lattice transfer matrix with a start element and no end element returns identity. The documented omitted-endpoint contract promises a full turn back to the start element. In a 2 m FODO cell, the horizontal angle-to-position coefficient is zero instead of 2.150 m, as an independent thick-lens map establishes. Explicitly requesting one turn avoids the defect.
 
-The script compares omitted and explicit one-turn endpoints in a FODO cell. It constructs the expected map by multiplying independent thick-lens quadrupole and drift matrices, then conjugates the cell map to the exit of the first quadrupole. BMAD_DIST supplies the build.
+The script compares omitted and explicit one-turn endpoints in a FODO cell. It constructs the expected map by multiplying independent thick-lens quadrupole and drift matrices, then conjugates the cell map to the exit of the first quadrupole.
 """
 
 import numpy as np

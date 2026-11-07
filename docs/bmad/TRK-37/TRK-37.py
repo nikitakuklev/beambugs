@@ -2,7 +2,7 @@
 
 Native thin-multipole tracking writes kick terms to the element matrix instead of propagating the matrix supplied by its caller. Even when the supplied matrix is the element matrix, the kick terms overwrite entries rather than composing with the incoming map. A thin quadrupole with integrated strength 0.7 m⁻¹ leaves a separate identity matrix with horizontal kick derivative 0 instead of −0.7 m⁻¹. With an incoming 2 m drift map and an aliased matrix, the horizontal momentum diagonal remains 1 instead of −0.4, although the particle kick is correct.
 
-The script calls track1_bmad with a separate identity matrix and then with an aliased matrix containing a drift term. The expected matrix is the thin-quadrupole Jacobian multiplied by the incoming matrix. Set BMAD_DIST to the build root.
+The script calls track1_bmad with a separate identity matrix and then with an aliased matrix containing a drift term. The expected matrix is the thin-quadrupole Jacobian multiplied by the incoming matrix.
 """
 
 from _bmad import compare, fortran, verdict

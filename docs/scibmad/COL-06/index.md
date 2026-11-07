@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
+| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
-| Source | [`SciBmad.jl/src/track.jl:322-350`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L322-L350)<br>[`track.jl:305-307`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L305-L307)<br>[`track.jl:327-328`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L327-L328)<br>[`track.jl:340-350`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L340-L350) |
+| Source | [`SciBmad.jl/src/track.jl:322-350`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L322-L350)<br>[`track.jl:305-307`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L305-L307)<br>[`track.jl:327-328`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L327-L328)<br>[`track.jl:340-350`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L340-L350) |
 
 The postprocessing helper `track_spin`, which applies tracked spin quaternions to initial spins, accepts an initial-spin matrix of the wrong shape and silently returns wrong spins that are not unit vectors. Its documented input is one three-component row per particle, and identity quaternions must return those spins unchanged; column-major indexing of the misshaped matrix predicts exactly the wrong result. For four particles, a transposed 3×4 matrix is accepted and turns the fourth spin from the intended (0.6000, 0.8000, 0) into (0, 0, 0.6000), shortening it from length 1.000 to 0.6000 instead of rejecting the shape. Correctly shaped input works; source inspection also finds unchecked out-of-bounds reads for undersized matrices.
+
+Run `julia COL-06.jl`.
 
 ??? example "Reproducer: COL-06.jl"
 

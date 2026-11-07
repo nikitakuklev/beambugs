@@ -12,16 +12,13 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`write_lattice_mad_format`, bmad/output/write_lattice_mad_format.f90:294–324](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L294-L324)<br>[`write_lattice_elegant_format`, bmad/output/write_lattice_elegant_format.f90:288–316](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L288-L316)<br>[MAD:616](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L616)<br>[Elegant:475](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L475)<br>[`init_attribute_name_array`, bmad/modules/attribute_mod.f90:762](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/attribute_mod.f90#L762)<br>[`offset_particle`, bmad/code/offset_particle.f90:316–320](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/offset_particle.f90#L316-L320)<br>[bmad/doc/elements.tex:1890–1893](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L1890-L1893)<br>[lines 672–690](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L672-L690) |
 
 Exporting a quadrupole or another host element with embedded steering to MAD-X, MAD8 or Elegant replaces the host by two half-kickers around an identity matrix, deleting the host body and its length. A 1 m quadrupole with strength K₁ = 0.5 m⁻² and horizontal kick 0.1 mrad becomes zero length in MAD-X; its horizontal beta function stays at 10.00 m instead of the thick-lens 5.864 m. Unkicked exports and Bmad match the thick-lens result. Sextupoles, solenoids, cavities, monitors and wigglers are replaced in all three formats; a tilted electrostatic separator also loses its tilt and charge sign. Dedicated kickers, sad_mult elements and MAD-X sbends avoid this replacement.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _translators.py](../helpers/_translators.py) · [View source](../helpers/index.md#_translators)
+Run `python XLT-05.py` with [_bmad.py](../helpers/_bmad.py) and [_translators.py](../helpers/_translators.py) in the same directory.
 
 ??? example "Reproducer: XLT-05.py"
 

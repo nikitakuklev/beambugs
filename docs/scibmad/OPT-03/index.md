@@ -12,12 +12,14 @@ hide:
 | Priority | P1 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-22 on SciBmad 0.6.0 (`62399f9`); not reproduced on SciBmad main (`ae9423d`), 2026-10-31 |
+| Last reproduced | 2026-10-22 on SciBmad 0.6.0 (`62399f9`, committed 2026-10-14); not reproduced on SciBmad main (`ae9423d`), 2026-11-07 |
 | Issue | [[gh:https://github.com/bmad-sim/SciBmad.jl/issues/156]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/SciBmad.jl/pull/157]], filed from this evidence |
 | Source | [`src/twiss/twiss_operators.jl:1066-1085`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L1066-L1085)<br>[`twiss_operators.jl:1026-1063`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L1026-L1063)<br>[`twiss_operators.jl:1052`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss_operators.jl#L1052)<br>[`NonlinearNormalForm.jl/src/bengtsson.jl:37-55`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/bengtsson.jl#L37-L55)<br>[`docs/src/quickstart.md:268-282`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/quickstart.md#L268-L282) |
 
 The `twiss` resonance-driving-term columns `h<ijkl>`, the Bengtsson coefficients of the one-turn Lie generator h, are scaled by a monomial-dependent factor, so scalar and Taylor-series outputs disagree. For a thin octupole of integrated strength K3L the documented coefficient is `h2200` = K3L β²/16, and the normal-form tune slope with amplitude independently confirms this normalization. With K3L = 1000 m⁻³ in a thin-quadrupole cell, the octupole's `h2200` increment is 2961 m⁻¹ in scalar output and 1480 m⁻¹ in Taylor output instead of 740.1 m⁻¹, and a thin sextupole gives `h3000` three times its expected value. Scalar coefficients carry the monomial degree as a factor, Taylor coefficients the last contributing exponent, and the chromatic `dh…_n` columns inherit the error.
+
+Run `julia OPT-03.jl`.
 
 ??? example "Reproducer: OPT-03.jl"
 

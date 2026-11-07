@@ -12,14 +12,12 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Source | [`ThinSliceCrabCavity.get_equivalent_element`, slice_elements_thin.py:162–173](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_thin.py#L162-L173)<br>[`ThinSliceCavity` converter](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_thin.py#L139-L149) |
 
 `Line.optimize_for_tracking()` drops the roll of sliced `CrabCavity` elements and the `phase_taper` of sliced `Cavity` elements. Rotating the transverse kick by the roll angle and applying the RF sine law to the tapered phase give the correct kicks, and the unoptimized slices reproduce them. A 1 GeV/c proton through a 1 m, 1 MV crab cavity at zero frequency, phase π/2 and roll π/2 exits displaced 0.5000 mm horizontally instead of vertically. Through a 1 MV accelerating cavity at zero frequency with phase 0.2 rad and taper 0.3 rad, it gains 198.7 keV instead of 479.4 keV. The taper matters when the mean-radiation configuration enables it.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python TRK-04.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: TRK-04.py"
 

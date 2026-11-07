@@ -12,12 +12,14 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1760]], fix |
 | Source | [`ReferenceParticle.H#L123-L126`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/ReferenceParticle.H#L123-L126) |
 
 With spin tracking enabled (experimental in ImpactX), the built-in `Hminus` species uses the proton's magnetic anomaly a = 1.793 together with its negative charge, which reverses the ion's magnetic moment and its spin precession. Ground-state H⁻ has a closed electron shell and keeps the positive, slightly shielded proton moment; since the moment is (1 + a)qS/m for charge q, mass m and spin S, the negative charge requires 1 + a < 0, giving a ≈ −3.796. In a 0.1 T longitudinal field over 0.1 m at γ = 2, the built-in species precesses by +0.005146 rad instead of the Thomas–BMT value −0.005152 rad. Mass and charge are not affected, and an explicitly supplied anomaly gives the correct precession.
+
+Run `python TRK-13.py`.
 
 ??? example "Reproducer: TRK-13.py"
 

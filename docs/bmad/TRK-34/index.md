@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`check_aperture_limit`, bmad/low_level/check_aperture_limit.f90:173–228](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/check_aperture_limit.f90#L173-L228)<br>[Bmad manual, “Apertures and Element Offsets” (`s:offset.ap`), bmad/doc/attributes.tex:934–958](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L934-L958) |
 
 A moved wall-transition aperture compares the current particle position in the aperture frame with the previous position in the laboratory frame. A particle remaining at the aperture centre can therefore appear to cross a wall and be marked lost. For a rectangular aperture with 10 mm half-widths and a 100 mm horizontal offset, identical old and current horizontal positions of 100 mm produce a loss. The centred-aperture control stays alive, as required for a stationary transverse point.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) · [View source](../helpers/index.md#_orbital_matrices_radiation)
+Run `python TRK-34.py` with [_bmad.py](../helpers/_bmad.py) and [_orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) in the same directory.
 
 ??? example "Reproducer: TRK-34.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     A moved wall-transition aperture compares the current particle position in the aperture frame with the previous position in the laboratory frame. A particle remaining at the aperture centre can therefore appear to cross a wall and be marked lost. For a rectangular aperture with 10 mm half-widths and a 100 mm horizontal offset, identical old and current horizontal positions of 100 mm produce a loss. The centred-aperture control stays alive, as required for a stationary transverse point.
 
-    The script checks a stationary transverse point with zero and nonzero aperture offsets. It compares the returned state with alive, since neither case crosses the wall. Set BMAD_DIST to the build root.
+    The script checks a stationary transverse point with zero and nonzero aperture offsets. It compares the returned state with alive, since neither case crosses the wall.
     """
 
     from _bmad import compare, fortran, verdict

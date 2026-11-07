@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">experimental</span> <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [bend integrated-strength division, bmad/output/write_lattice_elegant_format.f90:581–586](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L581-L586)<br>[quadrupole, sextupole and octupole divisions, bmad/output/write_lattice_elegant_format.f90:600–637](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L600-L637)<br>[multipole scaling, bmad/code/multipole_ele_to_ab.f90:535–572](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/multipole_ele_to_ab.f90#L535-L572) |
 
 Exporting a zero-length quadrupole, sextupole, octupole, or zero-curvature bend to Elegant divides integrated strengths by zero. The output contains NaN strength fields even though the Bmad lattice is valid and the zero-length body has no integrated field. A quadrupole with normalized gradient k₁ = 1.2 m⁻² exports NaN k₁ and sextupole strength k₂ instead of a finite identity body. A zero-length solenoid remains finite because its writer uses the strength directly.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _lattice_import_export.py](../helpers/_lattice_import_export.py) · [View source](../helpers/index.md#_lattice_import_export)
+Run `python XLT-25.py` with [_bmad.py](../helpers/_bmad.py) and [_lattice_import_export.py](../helpers/_lattice_import_export.py) in the same directory.
 
 ??? example "Reproducer: XLT-25.py"
 

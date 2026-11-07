@@ -12,10 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
-| Source | [`SciBmad.jl/examples/python/ags-spin-ramp.ipynb:272`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/python/ags-spin-ramp.ipynb#L272)<br>[`:400`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/python/ags-spin-ramp.ipynb#L400)<br>[`:234`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/examples/python/ags-spin-ramp.ipynb#L234)<br>[`SciBmad.jl/src/track.jl:311`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L311) |
+| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
+| Source | [`SciBmad.jl/examples/python/ags-spin-ramp.ipynb:272`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/python/ags-spin-ramp.ipynb#L272)<br>[`:400`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/python/ags-spin-ramp.ipynb#L400)<br>[`:234`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/examples/python/ags-spin-ramp.ipynb#L234)<br>[`SciBmad.jl/src/track.jl:311`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L311) |
 
 The Python example notebook `ags-spin-ramp.ipynb` rotates spins with `jl.rotate_spins(b0.coords.q, s_initial)`, and its text also names `rotate_spins`, but SciBmad defines neither `rotate_spins` nor `rotate_spins!`. The spin-rotation function is `track_spin(q, s0)`, which takes the N×4×n_saved quaternion array of a `TrackingResult`; the repository history shows `rotate_spins` deleted and the Julia version of the same notebook moved to `track_spin`. The Python example therefore fails at its first spin step. The failure is loud.
+
+Run `julia LAT-17.jl`.
 
 ??? example "Reproducer: LAT-17.jl"
 
@@ -31,9 +33,12 @@ The Python example notebook `ags-spin-ramp.ipynb` rotates spins with `jl.rotate_
     # deleted and the Julia version of the same notebook moved to `track_spin`. The Python example
     # therefore fails at its first spin step. The failure is loud.
     #
+    # Setup: `SCIBMAD_SOURCE` set to a clone of bmad-sim/SciBmad.jl at the pinned commit `5f0fb83`; the
+    # script reads an example notebook from the clone.
+    #
     # The script prints the notebook lines that call `jl.rotate_spins` and checks whether SciBmad
     # defines `rotate_spins`, `rotate_spins!`, `track_spin` and `track_spin!`; the example's call target
-    # should exist. Set `SCIBMAD_SOURCE` to a SciBmad.jl checkout, from which the notebook is read.
+    # should exist.
     using SciBmad
     haskey(ENV, "SCIBMAD_SOURCE") || error("set SCIBMAD_SOURCE to a SciBmad.jl checkout (commit 5f0fb83 or the build under test)")
     nb = joinpath(ENV["SCIBMAD_SOURCE"], "examples", "python", "ags-spin-ramp.ipynb")

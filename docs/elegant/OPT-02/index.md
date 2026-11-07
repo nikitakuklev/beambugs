@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [`compute_twiss_parameters`, `alpha3` accumulation, src/twiss.cc:2398–2411](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2398-L2411)<br>[`alpha2` accumulation, src/twiss.cc:2384–2386](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2384-L2386)<br>[`alphac3` defined as the third-order momentum compaction, manual, doc/elegant.tex:8254–8258](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8254-L8258) |
 
 Elegant's `twiss_output` computes the third-order momentum compaction αc3 of a periodic cell but leaves out the path-length terms in which the momentum offset δ multiplies a transverse coordinate that is itself driven by δ². Take a 10 m cell with betatron tunes 0.17 and 0.23, a second-order term T166 = 0.2 m (horizontal shift ∝ δ²) and a path term T561 = 0.3 (path length ∝ xδ). The closed orbit is x = 0.1 m δ², so the path length is 10 m + 0.03 m δ³ and αc3 = 0.003. Elegant writes the correct second-order dispersion 0.1 m but αc3 = 0.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-02.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-02.py"
 

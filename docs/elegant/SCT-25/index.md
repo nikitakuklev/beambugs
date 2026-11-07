@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`, committed 2026-11-03) |
 | Source | [`TouschekEffect`, touschekScatter.c:97–102](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L97-L102)<br>[`TouschekRate`, touschekScatter.c:203–225](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L203-L225)<br>[`TouschekRate`, touschekScatter.c:238–242](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/touschekScatter.c#L238-L242)<br>[`touschek_scatter`, elegant.tex:7763–7765](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7763-L7765)<br>[`exact_normalized_emittance`, elegant.tex:4143–4145](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4143-L4145)<br>[`touschek_scatter`, elegant.tex:7693–7697](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7693-L7697) |
 
 When normalized transverse emittances are supplied to touschek_scatter at constant energy, their conversion uses the Lorentz factor γ instead of βγ, where β is speed divided by the speed of light. The inferred geometric emittances are therefore too small by a factor β, so equivalent input descriptions give different Piwinski rates. For a 1 pC electron bunch at momentum p = 3mc, where m is the electron mass and c is the speed of light, the rate is 6.561×10¹⁰ s⁻¹ instead of 6.295×10¹⁰ s⁻¹, a 4.223% excess. Independent integration validates the geometric-input rate. The emittance error falls below 0.1% for p > 22.34mc.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python SCT-25.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: SCT-25.py"
 

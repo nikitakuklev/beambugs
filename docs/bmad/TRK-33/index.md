@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`sol_quad_mat6_calc`, bmad/low_level/sol_quad_mat6_calc.f90:323–326](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/sol_quad_mat6_calc.f90#L323-L326)<br>[`track_a_sol_quad`, bmad/low_level/track_a_sol_quad.f90:75–103](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_sol_quad.f90#L75-L103)<br>[general bend body, bmad/low_level/track_a_bend.f90:202–209](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_bend.f90#L202-L209)<br>[Bmad manual, “Tracking Backwards” (`s:back.track`), bmad/doc/tracking.tex:728–748](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/tracking.tex#L728-L748)<br>[`solenoid_track_and_mat`, bmad/low_level/solenoid_track_and_mat.f90:55–57](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/solenoid_track_and_mat.f90#L55-L57) |
 
 Native reverse-direction tracking through sol_quad and general sector-bend maps omits the backward motion of the reference clock. Physical particle time should increase while the reference time decreases. A force-free on-axis 1 m sol_quad at 1 MeV/c returns z = 0 and elapsed time −3.746 ns instead of z = −2 m and +3.746 ns. A displaced reverse bend likewise misses −2 m in z and returns a negative flight time; circular geometry and Runge–Kutta tracking give a positive flight time.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) · [View source](../helpers/index.md#_orbital_matrices_radiation)
+Run `python TRK-33.py` with [_bmad.py](../helpers/_bmad.py) and [_orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) in the same directory.
 
 ??? example "Reproducer: TRK-33.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Native reverse-direction tracking through sol_quad and general sector-bend maps omits the backward motion of the reference clock. Physical particle time should increase while the reference time decreases. A force-free on-axis 1 m sol_quad at 1 MeV/c returns z = 0 and elapsed time −3.746 ns instead of z = −2 m and +3.746 ns. A displaced reverse bend likewise misses −2 m in z and returns a negative flight time; circular geometry and Runge–Kutta tracking give a positive flight time.
 
-    The script tracks a reverse-moving electron through sol_quad and a sector bend. Straight-flight and circle/exit-plane geometry supply the expected path lengths and times, with Runge–Kutta as a control. The bend begins 0.1 μm off axis to select its general map; set BMAD_DIST to the build root.
+    The script tracks a reverse-moving electron through sol_quad and a sector bend. Straight-flight and circle/exit-plane geometry supply the expected path lengths and times, with Runge–Kutta as a control. The bend begins 0.1 μm off axis to select its general map.
     """
 
     from _bmad import compare, fortran, verdict

@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [srdt_calc per_ele_out, bmad/modules/srdt_mod.f90:211–235](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/srdt_mod.f90#L211-L235)<br>[srdt_calc_with_cache per_ele_out, bmad/modules/srdt_mod.f90:362–386](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/srdt_mod.f90#L362-L386)<br>[total normalization, bmad/modules/srdt_mod.f90:133–142](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/srdt_mod.f90#L133-L142)<br>[Bmad manual, Transfer Maps: Driving Terms, bmad/doc/subroutines.tex:3476–3513](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/subroutines.tex#L3476-L3513) |
 
 Requesting per_ele_out from srdt_calc or srdt_calc_with_cache returns contributions that do not add up to the reported totals. The direct routine reverses three first-order signs and quarters the chromatic coefficient h₁₀₀₀₂, while the cached routine omits normalization factors altogether. In an eight-cell ring, the normal sextupole driving coefficient h₂₁₀₀₀ is −0.3827 − 0.3095i, but the direct contributions sum to its negative and cached contributions to −8 times the total. Source inspection finds that chromatic per-element fields are not assigned and second-order resonance fields are formed from unassigned slice fields.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) · [View source](../helpers/index.md#_srdt_wiggler_maps)
+Run `python OPT-28.py` with [_bmad.py](../helpers/_bmad.py) and [_srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) in the same directory.
 
 ??? example "Reproducer: OPT-28.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Requesting per_ele_out from srdt_calc or srdt_calc_with_cache returns contributions that do not add up to the reported totals. The direct routine reverses three first-order signs and quarters the chromatic coefficient h₁₀₀₀₂, while the cached routine omits normalization factors altogether. In an eight-cell ring, the normal sextupole driving coefficient h₂₁₀₀₀ is −0.3827 − 0.3095i, but the direct contributions sum to its negative and cached contributions to −8 times the total. Source inspection finds that chromatic per-element fields are not assigned and second-order resonance fields are formed from unassigned slice fields.
 
-    The script assigns the repeating sextupole strengths (3, −4.5, 1.5) in an eight-cell ring. It sums the eight assigned first-order per-element complex fields from direct and cached calculations and compares them with the reported totals, requiring the correctly normalized direct fields to pass. BMAD_DIST selects the production build.
+    The script assigns the repeating sextupole strengths (3, −4.5, 1.5) in an eight-cell ring. It sums the eight assigned first-order per-element complex fields from direct and cached calculations and compares them with the reported totals, requiring the correctly normalized direct fields to pass.
     """
 
     import numpy as np

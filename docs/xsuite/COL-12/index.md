@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xfields main (`3f06c87`) |
+| Last reproduced | 2026-10-29 on xfields main (`3f06c87`, head build) |
 | Source | [`ElectronCloud_track_local_particle`, electroncloud.h:45–57](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/electroncloud_src/electroncloud.h#L45-L57) |
 
 `ElectronCloud` multiplies its longitudinal kick by the reference charge `q0` but not its transverse kicks, so for `q0` ≠ 1 the kicks no longer derive from one scalar potential and the map is not symplectic. Kicks from a single potential have equal mixed derivatives, ∂(Δpx)/∂ζ = ∂(Δpζ)/∂x, and the canonical energy coordinate `pzeta` (pζ) carries no charge factor. For a 3 GeV/c reference in a 0.7 m element with potential 0.031·xζ − 0.017·yζ, ∂(Δpx)/∂ζ is −0.02170, while ∂(Δpζ)/∂x is −0.04340 for `q0` = 2 and +0.04340 for `q0` = −2 instead of −0.02170. A negative reference charge reverses only the longitudinal kick; references with `q0` = 1 are unaffected.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-12.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-12.py"
 
@@ -40,8 +37,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     The script loads exact tricubic Taylor data for that potential and tracks a 3 GeV/c reference
     particle with `charge_ratio` = 1 from (x, y, ζ) = (0.12, −0.08, 0.18) m for `q0` = 1, 2 and −2. It
     compares the kicks with −L·∇φ and measures the mixed derivatives by central differences with step
-    10⁻⁴ m; `q0` = 1 is the control. It requires the installed prebuilt kernels (compilation is
-    forbidden).
+    10⁻⁴ m; `q0` = 1 is the control.
     """
 
     import xfields as xf

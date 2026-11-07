@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [track1_crystal, trajectory weighting, bmad/photon/track1_photon_mod.f90:961–972](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/track1_photon_mod.f90#L961-L972)<br>[Bmad manual, Incoherent Photon Tracking, panda1, bmad/doc/xray-tracking.tex:27–48](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/xray-tracking.tex#L27-L48) |
 
 Laue crystal tracking includes an absent polarization when calculating the displacement of a purely polarized photon. A 20 µm silicon (111) crystal with asymmetry parameter 0.55 gives the same surface-frame displacement to pure π, pure σ and mixed inputs. For an incoming angle of −20 µrad, pure σ public tracking returns exit x=0.3413 µm instead of 0.3786 µm, an error of −37.27 nm. Independent two-beam dispersion and energy-flow calculations recover the individual polarization paths within the implemented branch-averaging model.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) · [View source](../helpers/index.md#_s3_19_fields_photons_ptc)
+Run `python TRK-12.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) in the same directory.
 
 ??? example "Reproducer: TRK-12.py"
 
@@ -39,7 +36,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     The script tracks pure π, pure σ and mixed polarization through an asymmetric Si(111) Laue crystal
     at three incoming angles. A two-by-two dispersion eigensystem and Poynting energy flow independently
     calculate each individual polarization path, which is then checked against pure-input displacement
-    and public track1 exit coordinates. BMAD_DIST selects the build.
+    and public track1 exit coordinates.
     """
 
     import os

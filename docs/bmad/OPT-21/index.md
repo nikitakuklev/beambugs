@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |
 | Source | [cavity-kick accumulation, bmad/code/radiation_integrals.f90:436–438](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/radiation_integrals.f90#L436-L438)<br>[bunch-length formula, bmad/code/radiation_integrals.f90:648–654](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/radiation_integrals.f90#L648-L654)<br>[Bmad manual, “Synchrotron Radiation Integrals”, small-synchrotron-frequency approximation, bmad/doc/synchrotron-radiation.tex:405–410](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/synchrotron-radiation.tex#L405-L410) |
 
 The radiation-integral bunch-length calculation sums individual RF-cavity M₆₅ values, while the manual defines its denominator as the composed one-turn M₆₅. These coincide to first order in RF strength and differ at second order, within the documented weak-synchrotron approximation. In a ring with two 10 kV cavities, the implemented denominator is 1.708 × 10⁻⁴ m⁻¹ and the one-turn value is 1.707 × 10⁻⁴ m⁻¹, giving 0.03239 m versus 0.03240 m in the stated formula. The denominator description should identify the cavity sum used by the approximation.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) · [View source](../helpers/index.md#_dispersion_and_moments)
+Run `python OPT-21.py` with [_bmad.py](../helpers/_bmad.py) and [_dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) in the same directory.
 
 ??? example "Reproducer: OPT-21.py"
 
@@ -38,10 +35,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     the stated formula. The denominator description should identify the cavity sum used by the
     approximation.
 
-    The script executes radiation_integrals on a ring with two separated RF cavities. It validates
-    the returned bunch length against the cavity sum, compares it with the composed one-turn
-    formula, and reads the manual’s denominator definition through BMAD_SOURCE. BMAD_DIST selects
-    the build.
+    The script executes radiation_integrals on a ring with two separated RF cavities. It validates the
+    returned bunch length against the cavity sum, compares it with the composed one-turn formula, and
+    reads the manual’s denominator definition through BMAD_SOURCE.
     """
 
     import numpy as np

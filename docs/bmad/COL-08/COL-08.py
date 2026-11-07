@@ -9,7 +9,7 @@ supplies the required inverse mass before the extra divisor.
 
 The script compares electron and proton CSR, longitudinal slice and transverse slice kicks at fixed
 Lorentz factor and source charge. It checks that the classical-radius ratio already equals the
-inverse mass ratio before comparing all three normalized kicks. Set BMAD_DIST to the build root.
+inverse mass ratio before comparing all three normalized kicks.
 """
 
 import numpy as np

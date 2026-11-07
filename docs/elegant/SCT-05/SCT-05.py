@@ -35,7 +35,7 @@ COLUMNS = ("x", "xp", "y", "yp", "t", "p")
 # event); that a recoil must lower the momentum follows from the option's documented contract and
 # the positive Moller cross section. The element actually has 61 independent Bernoulli sections of
 # probability MEAN_RECOIL/61 each, whose exact at-least-one expectation is 6913.18 with binomial
-# sigma 67.26; both counts recorded in the ledger pass either 5-sigma comparison.
+# sigma 67.26; the recorded serial and MPI counts, 6910 and 6956, pass either 5-sigma comparison.
 MEAN_RECOIL = LENGTH * RHO / (AMU * A) * 2 * np.pi * Z * RE**2 / P0 * (1 / BS_Y0 - 1)
 RECOIL_EXPECTED = COUNT * -np.expm1(-MEAN_RECOIL)
 RECOIL_SIGMA = np.sqrt(RECOIL_EXPECTED * np.exp(-MEAN_RECOIL))  # Poisson-approximation sigma

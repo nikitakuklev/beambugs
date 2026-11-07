@@ -2,9 +2,8 @@
 
 When users consult the CSR method list, it presents off and 1_dim as the possible settings but omits steady_state_3d. The parser accepts steady_state_3d, and the mesh-parameter description refers to it. Its separate tracking wrapper is explicitly marked experimental and nonoperational and restricts collective kicks to nonzero-length sector bends. The method list should explain that selector and its status, or identify itself as a list of supported methods only.
 
-The script parses an sbend using steady_state_3d and checks the resulting method enum. It
-compares that accepted selector with the manual method list and the wrapper's experimental
-declaration. BMAD_DIST and BMAD_SOURCE select the build and source tree.
+The script parses an sbend using steady_state_3d and checks the resulting method enum. It compares
+that accepted selector with the manual method list and the wrapper's experimental declaration.
 """
 
 from _bmad import verdict

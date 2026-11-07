@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [make_slices, bmad/modules/srdt_mod.f90:558–597](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/srdt_mod.f90#L558-L597)<br>[Bmad manual, Transfer Maps: Driving Terms, bmad/doc/subroutines.tex:3476–3513](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/subroutines.tex#L3476-L3513) |
 
 Calling srdt on a zero-length ab_multipole or sad_mult with a nonzero sextupole component returns NaN driving terms. Only the multipole element class takes the thin-element path; the other classes divide integrated strength by zero length and then multiply by a zero slice length. Equivalent thin elements should return the same finite terms. In a FODO ring, both affected representations return NaN where the equivalent multipole gives h₂₁₀₀₀ = −1.865 and h₁₀₁₁₀ = 0.9849.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) · [View source](../helpers/index.md#_srdt_wiggler_maps)
+Run `python OPT-26.py` with [_bmad.py](../helpers/_bmad.py) and [_srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) in the same directory.
 
 ??? example "Reproducer: OPT-26.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Calling srdt on a zero-length ab_multipole or sad_mult with a nonzero sextupole component returns NaN driving terms. Only the multipole element class takes the thin-element path; the other classes divide integrated strength by zero length and then multiply by a zero slice length. Equivalent thin elements should return the same finite terms. In a FODO ring, both affected representations return NaN where the equivalent multipole gives h₂₁₀₀₀ = −1.865 and h₁₀₁₁₀ = 0.9849.
 
-    The script places equivalent multipole, ab_multipole and sad_mult sextupoles at zero phase in the same FODO ring. It validates the finite multipole control against the analytic normal-sextupole coefficients before checking the two other representations for NaNs. BMAD_DIST selects the production build.
+    The script places equivalent multipole, ab_multipole and sad_mult sextupoles at zero phase in the same FODO ring. It validates the finite multipole control against the analytic normal-sextupole coefficients before checking the two other representations for NaNs.
     """
 
     import numpy as np

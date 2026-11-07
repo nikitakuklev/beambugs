@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [full-current equilibrium calculation, bsim/ibs_ring/ibs_ring.f90:238–244](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L238-L244)<br>[natural-emittance output contract and rate calls, bsim/ibs_ring/ibs_ring.f90:277–292](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L277-L292)<br>[zero-current inputs and saved mode, bsim/ibs_ring/ibs_ring.f90:181–214](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L181-L214)<br>[ibs_equib_der mutates element beam sizes, bmad/multiparticle/ibs_mod.f90:296–339](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L296-L339) |
 
 When ibs_ring uses its derivative method to find equilibrium, its initial growth-rate output uses the equilibrium beam sizes instead of the specified natural, zero-current values. In a 0.001 mA example, horizontal and vertical emittances exceed their requested natural values by 1.523% and 12.39%. At the same population, the first element's vertical growth rate is 2601 s⁻¹ instead of 3025 s⁻¹, 14.01% low. Evaluating the rate kernel with the requested natural beam sizes establishes the expected result.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_contracts.py](../helpers/_collective_contracts.py) · [View source](../helpers/index.md#_collective_contracts)
+Run `python COL-67.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_contracts.py](../helpers/_collective_contracts.py) in the same directory.
 
 ??? example "Reproducer: COL-67.py"
 
@@ -36,10 +33,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     2601 s⁻¹ instead of 3025 s⁻¹, 14.01% low. Evaluating the rate kernel with the requested
     natural beam sizes establishes the expected result.
 
-    The script runs the production driver and a diagnostic rebuild with read-only calculations
-    before the initial-rate call. Direct Bjorken–Mtingwa calls compare the actual and natural beam
-    sizes at identical population; both diagnostic rate files must equal production output.
-    BMAD_DIST and BMAD_SOURCE select the matching build and source tree.
+    The script runs the production driver and a diagnostic rebuild with read-only calculations before
+    the initial-rate call. Direct Bjorken–Mtingwa calls compare the actual and natural beam sizes at
+    identical population; both diagnostic rate files must equal production output.
     """
 
     import io

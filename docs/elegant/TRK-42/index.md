@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`trackRfCavityWithWakes`, simple_rfca.c:745–768](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L745-L768)<br>[simple_rfca.c:804–807](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L804-L807)<br>[simple_rfca.c:1019–1024](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1019-L1024)<br>[1072–1076](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1072-L1076)<br>[`rf_cavity_matrix`, compute_matrices.c:2604–2610](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L2604-L2610)<br>[parameter table, track_data.c:608–609](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L608-L609)<br>[RFCA manual, rfca.tex](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfca.tex) |
 
 RFCA's END1_FOCUS and END2_FOCUS edge lenses, in tracking and in the transfer matrix, have inverse focal length γ′/(2γ), where γ′ is the energy gain per length in units of mc². Integrating the radial field −(r/2)∂E_z/∂z of a hard field edge over the transit time dz/(βc) gives γ′/(2β²γ) at the local β and γ, so both lenses are too weak by the factor β². For electrons entering a 0.7 m cavity that adds 12 MeV at 1.5 MeV kinetic energy, the entrance lens is 4.262 m⁻¹ instead of 4.556 m⁻¹, 6.457% weak; at 5 MeV it is 0.8598% weak and at 20 MeV 0.06207% weak.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _rfca_lens.py](../helpers/_rfca_lens.py) · [View source](../helpers/index.md#_rfca_lens)
+Run `python TRK-42.py` with [_elegant.py](../helpers/_elegant.py) and [_rfca_lens.py](../helpers/_rfca_lens.py) in the same directory.
 
 ??? example "Reproducer: TRK-42.py"
 

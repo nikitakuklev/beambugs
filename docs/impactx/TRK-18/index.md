@@ -12,11 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1576]] |
 | Source | [`ExactDrift.H#L95-L96`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactDrift.H#L95-L96)<br>[particle map](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactDrift.H#L140-L153)<br>[`ReferenceParticle.H#L169-L185`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/ReferenceParticle.H#L169-L185)<br>[public model](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L1999-L2001)<br>[coordinate contract](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/docs/source/theory/coordinates_units.rst#L5-L13) |
 
 At low energy, `ExactDrift` shifts the arrival time `t` of particles moving at the reference energy and direction, because its longitudinal-momentum radical subtracts the separately rounded terms (1/β − `pt`)² and 1/(βγ)², with β and γ those of the reference. Such particles must keep their relative arrival times, as a 90-digit evaluation of the drift confirms. For a proton (rest energy 938.27208816 MeV) at 1 keV kinetic energy, a 1 m drift adds 0.002379 m (7.9 ps) to `t`, shifting the bunch centroid; off-energy and inclined particles get timing errors up to 0.002454 m and transverse errors up to 1.013e-7 m. At 1000 MeV the errors stay below 1e-16 m; at low energy their sign and size depend on floating-point rounding.
+
+Run `python TRK-18.py`.
 
 ??? example "Reproducer: TRK-18.py"
 

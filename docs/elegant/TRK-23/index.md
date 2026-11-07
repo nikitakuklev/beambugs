@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`track_through_csbend`, csbend.c:1029–1081](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1029-L1081)<br>[curvature radius, csbend.c:1111–1116](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1111-L1116)<br>[body kicks, csbend.c:1921–1927](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1921-L1927)<br>[`computeCSBENDFieldCoefficients`, csbend.c:355–359](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L355-L359)<br>[parameter metadata, track_data.c:1961–1962](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1961-L1962)<br>[manual, csbend.tex:26–32](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L26-L32) |
 
 A CSBEND using FSE_DIPOLE to change only the dipole field should leave higher multipole strengths scaled solely by the common error FSE. Orders 3–8 instead receive an extra factor 1 + FSE_DIPOLE/(1 + FSE), while quadrupole and sextupole terms are compensated. For a 0.6 m, 0.09 rad bend with octupole strength K₃ = −3000 m⁻⁴, FSE = 0.07 and FSE_DIPOLE = 0.04, an electron of momentum 49 mₑc exits with horizontal slope x′ = −3.610×10⁻³ instead of −3.700×10⁻³, an error of 8.984×10⁻⁵. Independent Lorentz integration and an equivalent common-error configuration establish the expected trajectory.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _multipole.py](../helpers/_multipole.py) · [View source](../helpers/index.md#_multipole)
+Run `python TRK-23.py` with [_elegant.py](../helpers/_elegant.py) and [_multipole.py](../helpers/_multipole.py) in the same directory.
 
 ??? example "Reproducer: TRK-23.py"
 

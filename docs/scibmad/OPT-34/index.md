@@ -12,10 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on SciBmad main (`ae9423d`) |
-| Source | [`src/dynamic_aperture.jl:189`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/dynamic_aperture.jl#L189)<br>[`:193`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/dynamic_aperture.jl#L193)<br>[`:32-33`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/dynamic_aperture.jl#L32-L33) |
+| Last reproduced | 2026-10-29 on SciBmad main (`ae9423d`, head build) |
+| Source | [`src/dynamic_aperture.jl:189`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/dynamic_aperture.jl#L189)<br>[`:193`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/dynamic_aperture.jl#L193)<br>[`:32-33`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/dynamic_aperture.jl#L32-L33) |
 
 `dynamic_aperture` with a polar scan range outside [−π, π], such as `theta_lims=(0, 2π)` or (2π, 3π), aborts after tracking with `Something went wrong with the analysis`. The cause is a sanity check that compares the principal angle `atan(y, x)` with the requested angle as given. Directions are periodic modulo 2π, the docstring does not restrict the range, and the same scan over (−π, π) returns infinite acceptance on an aperture-free orthogonal one-turn map. At the requested angle 3π/2 (4.712 rad), the principal angle is −1.571 rad, so the check fails after all four turns have been tracked. Scans within [−π, π] are unaffected.
+
+Run `julia OPT-34.jl`.
 
 ??? example "Reproducer: OPT-34.jl"
 

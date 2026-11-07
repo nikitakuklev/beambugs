@@ -2,7 +2,7 @@
 
 The element-assignment manual says that all four field-map pointer arrays share storage after an element copy. Assignment instead creates separate outer descriptors, shares the inner Cartesian, cylindrical and grid payloads, and independently copies generalized-gradient data. Editing a copied Cartesian coefficient changes the source from 1 to 2, while descriptor and generalized-gradient edits leave the source values at 1 and 5. Explicit Cartesian unlinking separates the coefficients, so the documentation needs to distinguish these ownership rules.
 
-The script copies four elements, each containing one map family. It checks pointer associations and edits immediately after assignment, then repeated-transfer reference counts and explicit unlinking. It reads the assignment contract from BMAD_SOURCE and compares its shared-storage statement with the observed copy behavior. BMAD_DIST selects the build.
+The script copies four elements, each containing one map family. It checks pointer associations and edits immediately after assignment, then repeated-transfer reference counts and explicit unlinking. It reads the assignment contract from BMAD_SOURCE and compares its shared-storage statement with the observed copy behavior.
 """
 
 from _bmad import compare, fortran, source, verdict

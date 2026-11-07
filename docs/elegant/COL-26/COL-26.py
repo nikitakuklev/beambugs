@@ -8,6 +8,9 @@ second bunch's last particle receives a horizontal slope kick of 1.364×10⁻⁶
 At 800.0 ps separation, the grouped MPI run aborts even though each bunch individually fits within
 the 512.0 ps wake table.
 
+Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the
+defect occurs only under MPI.
+
 The script tracks two 16-particle bunches through one dipole TRWAKE with a linear causal wake and
 automatic bins, with the bunches 80 ps, 160 ps and 800 ps apart. The correct kick is a direct causal
 pair sum over the particles of the same bunch. In one input row order both tracking ranks hold part

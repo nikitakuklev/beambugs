@@ -8,7 +8,7 @@ species instead both receive a normalized horizontal kick of 3.901e−9; the +2 
 
 The script deposits identical charge distributions for equal-mass +1 and +2 species and gathers the
 electric field before comparing the normalized impulse with the Lorentz-force factor
-|Z|EₓΔs/(p₀cβγ²). The +1 case controls field gathering and units. Set BMAD_DIST to the build root.
+|Z|EₓΔs/(p₀cβγ²). The +1 case controls field gathering and units.
 """
 
 import numpy as np

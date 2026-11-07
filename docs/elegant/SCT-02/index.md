@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [`track_IBS` output transfer, ibs_tracking.c:559–610](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L559-L610)<br>[`dump_IBScatter` output, ibs_tracking.c:1262–1281](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L1262-L1281)<br>[IBSCATTER element flags, track_data.c:4237](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L4237) |
 
 A single-slice IBSCATTER in linac mode (SMOOTH=1, ISRING=0) writes incorrect rate diagnostics under three-rank Pelegant. The local columns dIBSRatex, dIBSRatey and dIBSRatez are all zero, and the vertical growth-rate parameter yGrowthRate is uninitialized. Serial diagnostics agree with independent Bjorken–Mtingwa integration, and amplified-update controls give matching serial and parallel particles. For a 1 nC electron bunch at momentum 800 mₑc, the correct first-site local rates are −0.9384, −0.8231 and 568.0 s⁻¹, and the vertical growth rate is −0.8024 s⁻¹.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python SCT-02.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: SCT-02.py"
 
@@ -35,6 +33,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     parallel particles. For a 1 nC electron bunch at momentum 800 mₑc, the correct
     first-site local rates are −0.9384, −0.8231 and 568.0 s⁻¹, and the vertical growth rate is −0.8024
     s⁻¹.
+
+    Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the
+    defect occurs only under MPI.
 
     The script tracks a 1024-particle, 1 nC beam at p = 800 m_e c through two 0.2 m drifts and a
     linac-mode IBSCATTER that writes its rates to a file, once with serial elegant and once with

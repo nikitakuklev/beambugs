@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`tao_datum_integrate` second moments, tao/code/tao_data_and_eval_mod.f90:769–775](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_data_and_eval_mod.f90#L769-L775)<br>[Tao manual, “Calculation of δD for a Datum”, RMS definition (`s:del.d`), tao/doc/optimization.tex:168–171](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/optimization.tex#L168-L171) |
 
 Tao’s RMS range reduction squares the endpoint samples and applies trapezoidal quadrature, instead of integrating the square of the documented linear interpolation. An exactly linear, centered orbit over a one-metre drift returns 0.5000 mm instead of 0.2887 mm, making the variance three times too large. Its mean and integral are zero. Integrating a linear segment with endpoint values a and b requires a second moment proportional to (a² + ab + b²)/3.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_optimization_io.py](../helpers/_tao_optimization_io.py) · [View source](../helpers/index.md#_tao_optimization_io)
+Run `python TAO-06.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_optimization_io.py](../helpers/_tao_optimization_io.py) in the same directory.
 
 ??? example "Reproducer: TAO-06.py"
 
@@ -36,8 +33,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     with endpoint values a and b requires a second moment proportional to (a² + ab + b²)/3.
 
     The script centers an orbit in a drift and requests RMS, average, and integral constraints. It
-    checks the endpoints and zero mean, then compares RMS with direct integration of the linear
-    orbit. BMAD_DIST supplies Tao.
+    checks the endpoints and zero mean, then compares RMS with direct integration of the linear orbit.
     """
 
     import math

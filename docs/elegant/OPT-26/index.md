@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [`determineRadiationMatrix`, src/analyze.c:1767](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L1767)<br>[the KSEXT branch, src/analyze.c:1949–1962](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L1949-L1962)<br>[the SEXT branch, src/analyze.c:1963–1973](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L1963-L1973)<br>[`determineRadiationMatrix1`, src/analyze.c:2357–2358](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L2357-L2358)<br>[propagates the moments including coupling from rotated elements or offset sextupoles, with or without synchrotron radiation effects in dipoles, quadrupoles, and sextupoles, doc/elegant.tex:5644–5651](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5644-L5651)<br>[KSEXT and other kick elements need SYNCH_RAD=1 and ISR=1, doc/elegant.tex:5608–5612](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5608-L5612)<br>[suggest setting them on KSEXT when a closed orbit is present, doc/elegant.tex:5695–5700](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5695-L5700) |
 
 Elegant's `moments_output` with `radiation=1` leaves out the synchrotron radiation of KSEXT and SEXT sextupoles, even with SYNCH_RAD=1 and ISR=1 on the KSEXT as the manual requires: energy loss, damping and quantum diffusion are all zero. Tracking the same KSEXT radiates. For a 0.2 m sextupole with K₂ = 100 m⁻³ displaced by 5 mm at p = 6000 mₑc, the radiation integrals along the orbit give a fractional momentum change of −1.277×10⁻¹⁰ (0.3914 eV), a damping term 1 − R₆₆ = 2.545×10⁻¹⁰ and a growth of the momentum-deviation variance ⟨δ²⟩ of 4.417×10⁻¹⁸; tracking gives the same loss, `moments_output` zero for all three. Loss and diffusion grow as the fourth and sixth power of the offset; a displaced KQUAD radiates correctly.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-26.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-26.py"
 

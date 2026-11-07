@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`calc_out_coords2`, track_a_converter.f90:320–335](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_converter.f90#L320-L335)<br>[momentum-limit integration setup](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_converter.f90#L412-L435)<br>[Bmad manual, “Converter Tracking”, `s:converter.track`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L754-L764)<br>[the normalized momentum CDF and its inversion](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L821-L836) |
 
 A converter with output momentum limits still generates particles outside the requested interval. With a 200–1000 keV/c table and limits of 350–780 keV/c, 65 of 128 fixed-seed particles fall outside the limits, spanning 202.5–999.8 keV/c. The integrated weight reflects the cut while inverse sampling uses the original table-cell endpoints. Clipping the cumulative distribution and its inversion to the same endpoints is required to preserve the requested momentum support.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_24_converter.py](../helpers/_s3_24_converter.py) · [View source](../helpers/index.md#_s3_24_converter)
+Run `python XLT-02.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_24_converter.py](../helpers/_s3_24_converter.py) in the same directory.
 
 ??? example "Reproducer: XLT-02.py"
 

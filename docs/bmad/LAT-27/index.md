@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`makeup_super_slave1` Taylor entrance rule, bmad/modules/bookkeeper_mod.f90:1225–1237](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bookkeeper_mod.f90#L1225-L1237)<br>[later lord-state copy, bmad/modules/bookkeeper_mod.f90:1423–1434](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bookkeeper_mod.f90#L1423-L1434)<br>[`create_element_slice` API, bmad/code/create_element_slice.f90:1–29](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/create_element_slice.f90#L1-L29) |
 
 Splitting a finite-length Taylor element through the element-slicing API applies its complete map in each slice. A map that adds 1 mm to horizontal position produces 1 mm as a whole element and 2 mm as two half-length slices. The slicing routine explicitly assigns the zero-length map to the physical entrance, but a later copy of the lord's enabled state reactivates the second slice. The map must act once at the entrance.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _multipass_slicing.py](../helpers/_multipass_slicing.py) · [View source](../helpers/index.md#_multipass_slicing)
+Run `python LAT-27.py` with [_bmad.py](../helpers/_bmad.py) and [_multipass_slicing.py](../helpers/_multipass_slicing.py) in the same directory.
 
 ??? example "Reproducer: LAT-27.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Splitting a finite-length Taylor element through the element-slicing API applies its complete map in each slice. A map that adds 1 mm to horizontal position produces 1 mm as a whole element and 2 mm as two half-length slices. The slicing routine explicitly assigns the zero-length map to the physical entrance, but a later copy of the lord's enabled state reactivates the second slice. The map must act once at the entrance.
 
-    The script creates two half-length slices of a Taylor element that translates x by 1 mm. It checks the whole element against that translation, then checks slice activation and their combined displacement. BMAD_DIST selects the build.
+    The script creates two half-length slices of a Taylor element that translates x by 1 mm. It checks the whole element against that translation, then checks slice activation and their combined displacement.
     """
 
     from _bmad import compare, fortran, verdict

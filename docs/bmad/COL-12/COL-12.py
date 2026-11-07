@@ -8,7 +8,7 @@ derivatives and zero FFT padding are correct.
 
 The script differentiates a quadratic density on five evenly spaced points and compares against its
 analytic derivative. It requires the interior stencil and doubled-grid padding to pass before
-checking both endpoints. Set BMAD_DIST to the build root.
+checking both endpoints.
 """
 
 import numpy as np

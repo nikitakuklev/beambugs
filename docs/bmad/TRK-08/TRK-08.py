@@ -8,7 +8,7 @@ producing a 1.600 mm displacement error.
 
 The script constructs a segmented quadratic surface, derives the plane through its four support
 vertices, and compares heights and slopes with z_at_surface. It also checks track_to_surface and
-samples just inside each corner to keep facet selection unambiguous; BMAD_DIST selects the build.
+samples just inside each corner to keep facet selection unambiguous;
 """
 
 import os

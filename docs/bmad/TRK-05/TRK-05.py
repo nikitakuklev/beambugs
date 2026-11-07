@@ -9,7 +9,6 @@ modes and order-one magnetic modes pass the same checks.
 The script constructs 28 parsed maps and evaluates 4,116 samples around 84 centers for orders 1, 2
 and 4, both Fourier signs, two frequencies and both coefficient families. An entire Bessel series
 supplies an independent analytic curl, while Cartesian stencils check divergence and Faraday’s law.
-BMAD_DIST selects the build.
 """
 
 import os

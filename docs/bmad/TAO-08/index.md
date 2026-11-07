@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`tao_pipe_cmd`, `global` response, tao/code/tao_pipe_cmd.f90:4604–4612](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_pipe_cmd.f90#L4604-L4612)<br>[Tao manual, “pipe global” and “pipe global:optimization”, tao/doc/pipe-interface-commands.tex:1251–1286](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/pipe-interface-commands.tex#L1251-L1286) |
 
 A pipe global response contains two copies each of n_opti_cycles and n_opti_loops. Both copies have identical values, matching the corresponding optimization-only response. Parameter names must be unique within a response so clients can validate and consume its schema. Removing the repeated records preserves all parameter values.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_optimization_io.py](../helpers/_tao_optimization_io.py) · [View source](../helpers/index.md#_tao_optimization_io)
+Run `python TAO-08.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_optimization_io.py](../helpers/_tao_optimization_io.py) in the same directory.
 
 ??? example "Reproducer: TAO-08.py"
 
@@ -34,9 +31,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     must be unique within a response so clients can validate and consume its schema. Removing the
     repeated records preserves all parameter values.
 
-    The script counts every parameter name in pipe global and checks the repeated values against
-    pipe global:optimization. It requires the expected parameter schema and successful command
-    completion before assigning a verdict. BMAD_DIST supplies Tao.
+    The script counts every parameter name in pipe global and checks the repeated values against pipe
+    global:optimization. It requires the expected parameter schema and successful command completion
+    before assigning a verdict.
     """
 
     from collections import Counter

@@ -8,12 +8,15 @@ straight-line propagation give. After a multipole with fictitious length 0.5 m, 
 collimator is written with l = 0.5 m. Using the collimator's own length restores the rectangular
 case's trajectory.
 
+Setup: serial Elegant on `PATH` and `RPN_DEFNS` set to the `defns.rpn` file of SDDS; the script
+tracks the exported lattice in Elegant.
+
 The script exports with bmad_to_mad_sad_elegant a 2 m rectangular collimator followed by a 1 m
-drift, tracks a particle with slope 1 mrad through the export in Elegant, and compares the
-exit transverse and longitudinal positions with Bmad's and with straight-line propagation. A copy of the
-export with only `l = 2` added to the collimator is the receiving-code control. A second case
-puts a multipole with the fictitious length 0.5 m before a 2 m elliptical collimator and reads
-the length written for the collimator, with Elegant on PATH and RPN_DEFNS set.
+drift, tracks a particle with slope 1 mrad through the export in Elegant, and compares the exit
+transverse and longitudinal positions with Bmad's and with straight-line propagation. A copy of the
+export with only `l = 2` added to the collimator is the receiving-code control. A second case puts a
+multipole with the fictitious length 0.5 m before a 2 m elliptical collimator and reads the length
+written for the collimator.
 """
 
 import re

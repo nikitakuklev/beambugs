@@ -12,15 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [hdf5_read_beam header, bmad/hdf5/hdf5_read_beam.f90:70–78](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L70-L78)<br>[hdf5_read_grid_field header, bmad/hdf5/hdf5_read_grid_field.f90:49–55](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_grid_field.f90#L49-L55)<br>[openPMD 1.1.0 root-header contract](https://github.com/openPMD/openPMD-standard/blob/1.1.0/STANDARD.md#hierarchy-of-the-data-file)<br>[upcoming 2.0 draft](https://github.com/openPMD/openPMD-standard/blob/upcoming-2.0.0/STANDARD.md#hierarchy-of-the-data-file) |
 
 Reading an openPMD beam fails at the header when openPMDextension is an integer or is absent. The 1.1 standard defines a uint32 extension bit mask, while the 2.0 draft permits omission when no extension is used. Bmad requires a string before decoding particle records, so numeric zero is rejected as not a string and an absent attribute is rejected as missing. The same base-standard particle records decode when the extension attribute is a string.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python LAT-22.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: LAT-22.py"
 

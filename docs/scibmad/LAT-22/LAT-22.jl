@@ -8,10 +8,12 @@
 # generated Context binding and its final reference makes the tested collisions load. The exporter
 # gives no incomplete-translation warning.
 #
+# Setup: `BMAD_SOURCE` set to the root of a bmad-ecosystem `20261020-0` build (the directory
+# containing `production/bin`); the script runs its `bmad_to_scibmad` program.
+#
 # The script exports a one-quadrupole lattice with the quadrupole named `c1`, `C1` and `c2` in turn
 # using Bmad's `bmad_to_scibmad` program and loads each file; every name should load, and `c2` is
-# the control. After each load it prints what the name `c1` holds. Set `BMAD_SOURCE` to the root of
-# a Bmad build, so that the program is `$BMAD_SOURCE/production/bin/bmad_to_scibmad`.
+# the control. After each load it prints what the name `c1` holds.
 using SciBmad
 haskey(ENV, "BMAD_SOURCE") || error("set BMAD_SOURCE to the root of the bmad-ecosystem 20261020-0 build (the directory that contains production/bin)")
 const BIN = joinpath(ENV["BMAD_SOURCE"], "production", "bin", "bmad_to_scibmad")

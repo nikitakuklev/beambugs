@@ -12,14 +12,12 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, committed 2026-10-31) |
 | Source | [manual passage](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/phase-space.tex#L227-L243) |
 
 The manual’s discussion of MAD and Bmad energy-time coordinates contains the words “keept”, “cocordinates” and “differnt”. Their correct spellings are “kept”, “coordinates” and “different”. A check of the three sentences against those spellings identifies the errors directly.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python XLT-36.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: XLT-36.py"
 

@@ -12,16 +12,13 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`write_lattice_mad_format`, bmad/output/write_lattice_mad_format.f90:906–913](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L906-L913)<br>[bmad/doc/elements.tex:4874–4897](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L4874-L4897)<br>[MAD-X cavity.html:28](https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/7998e738eca575c82a424138517c2a17115f3cdb/doc/usrguide/Introduction/cavity.html#L28) |
 
 Exporting a thin rfcavity to MAD-X follows the manual's phase rule and writes lag = φ₀ + 0.5 instead of 0.5 − φ₀. For matched electron beams, Bmad's kick V sin(2π(φ₀ + fτ)) and MAD-X's V sin(2π(lag − fτ)) require the latter rule, where V is voltage, f is frequency, φ₀ is phase in turns, and τ is arrival-time advance. A 10 kV cavity at φ₀ = 0.125 gives an on-time 1 MeV/c electron +7.071 keV in Bmad and −7.071 keV in the export. At longitudinal coordinate z = 3 cm and relative momentum offset δ = 0.1, the gains are +7.494 and −6.622 keV. Correcting lag restores Bmad's waveform.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _translators.py](../helpers/_translators.py) · [View source](../helpers/index.md#_translators)
+Run `python XLT-17.py` with [_bmad.py](../helpers/_bmad.py) and [_translators.py](../helpers/_translators.py) in the same directory.
 
 ??? example "Reproducer: XLT-17.py"
 

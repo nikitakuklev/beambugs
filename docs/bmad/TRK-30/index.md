@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`solenoid_track_and_mat`, bmad/low_level/solenoid_track_and_mat.f90:38–57](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/solenoid_track_and_mat.f90#L38-L57)<br>[Bmad manual, “Solenoid Tracking” (`s:solenoid.std`), bmad/doc/charged-tracking.tex:1623–1653](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L1623-L1653)<br>[`rel_tracking_charge_to_mass`, bmad/code/rel_tracking_charge_to_mass.f90:27–32](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/rel_tracking_charge_to_mass.f90#L27-L32) |
 
 A solenoid with an electron reference rotates equal-mass electrons and positrons with the same handedness in native tracking. The relative charge factor already contains the tracked charge sign, and multiplying by the tracked charge again cancels that reversal. For a 1 m solenoid of strength 1 m⁻¹ and entrance x = 1 mm, both species leave at y = −0.4207 mm; the positron should leave at +0.4207 mm. The analytic solenoid map and Runge–Kutta tracking agree on the required sign.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) · [View source](../helpers/index.md#_orbital_matrices_radiation)
+Run `python TRK-30.py` with [_bmad.py](../helpers/_bmad.py) and [_orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) in the same directory.
 
 ??? example "Reproducer: TRK-30.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     A solenoid with an electron reference rotates equal-mass electrons and positrons with the same handedness in native tracking. The relative charge factor already contains the tracked charge sign, and multiplying by the tracked charge again cancels that reversal. For a 1 m solenoid of strength 1 m⁻¹ and entrance x = 1 mm, both species leave at y = −0.4207 mm; the positron should leave at +0.4207 mm. The analytic solenoid map and Runge–Kutta tracking agree on the required sign.
 
-    The script tracks electrons and positrons through a fringe-free solenoid using both native and Runge–Kutta methods. It derives the transverse positions from the hard-edge solenoid body solution at fixed canonical entrance momentum. Set BMAD_DIST to the build root.
+    The script tracks electrons and positrons through a fringe-free solenoid using both native and Runge–Kutta methods. It derives the transverse positions from the hard-edge solenoid body solution at fixed canonical entrance momentum.
     """
 
     import numpy as np

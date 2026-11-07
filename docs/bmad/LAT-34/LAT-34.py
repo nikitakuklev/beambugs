@@ -2,7 +2,7 @@
 
 A beam line ending with an explicit END marker gains a second END marker by default. A drift followed by END expands to D, END, END, with three tracked elements and two identical terminal names, instead of the documented D, END sequence. The manual explicitly promises to suppress automatic insertion when an ending END marker is already present. Setting no_end_marker to true produces the expected two-element sequence.
 
-The script parses the same drift and explicit END marker with automatic insertion enabled and disabled. It checks branch length and the suppression control, then compares the default element names and counts with the manual's contract. BMAD_DIST selects the build.
+The script parses the same drift and explicit END marker with automatic insertion enabled and disabled. It checks branch length and the suppression control, then compares the default element names and counts with the manual's contract.
 """
 
 from _bmad import compare, fortran, verdict

@@ -12,10 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on BeamTracking main (`0bf3585`) |
-| Source | [`src/kernels/implicit.jl:138-147`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/implicit.jl#L138-L147)<br>[`:228-236`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/implicit.jl#L228-L236)<br>[`:243`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/implicit.jl#L243)<br>[`SciBmad.jl/README.md:24`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/README.md#L24)<br>[`:34`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/README.md#L34)<br>[`Beamlines.jl/src/misc.jl:97-113`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/misc.jl#L97-L113) |
+| Last reproduced | 2026-10-29 on BeamTracking main (`0bf3585`, head build) |
+| Source | [`src/kernels/implicit.jl:138-147`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L138-L147)<br>[`:228-236`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L228-L236)<br>[`:243`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L243)<br>[`SciBmad.jl/README.md:24`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/README.md#L24)<br>[`:34`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/README.md#L34)<br>[`Beamlines.jl/src/misc.jl:97-113`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/misc.jl#L97-L113) |
 
 Differentiating with ForwardDiff with respect to a strength parameter of a four-potential field tracked by BeamTracking's implicit integrator throws `MethodError: no method matching Float64(::ForwardDiff.Dual…)` in both fixed-point and Newton modes, although SciBmad advertises differentiable tracking through arbitrary electromagnetic fields. For the normalized potential A_s = −kx, Hamilton's equations give an exit derivative ∂pₓ/∂k = −L. A proton with reference momentum P₀c = 4mc²/3 through L = 0.55 m at k = 0.037 m⁻¹ should give −0.5500 m, and finite differences of tracking agree within 4.47×10⁻¹³ m. Plain tracking and the derivative with respect to the incoming pₓ work for this field, while field-strength differentiation also fails in a direct call of the implicit kernel.
+
+Run `julia OPT-29.jl`.
 
 ??? example "Reproducer: OPT-29.jl"
 

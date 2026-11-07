@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`pmd_read_real_dataset_rank1`, bmad/hdf5/hdf5_openpmd_mod.f90:1123](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_openpmd_mod.f90#L1123)<br>[`hdf5_read_bunch`, bmad/hdf5/hdf5_read_beam.f90:370–425](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L370-L425)<br>[lines 1053–1066](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_openpmd_mod.f90#L1053-L1066)<br>[901](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_openpmd_mod.f90#L901)<br>[1566](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_openpmd_mod.f90#L1566)<br>[`hdf5_read_grid_field`, bmad/hdf5/hdf5_read_grid_field.f90:239–272](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_grid_field.f90#L239-L272) |
 
 Reading an openPMD beam file in units other than Bmad's metres, eV/c and seconds applies the inverse unit conversion, silently changing the physical coordinates. A stored value multiplied by its unitSI gives its SI value, so conversion requires the file's unitSI divided by the Bmad unit's SI size; the reader uses the reciprocal. Positions stored in millimetres give x = 1000 m instead of 1 mm, SI momenta give a reference momentum of 2.856×10⁻⁴⁸ eV/c instead of 10 MeV/c, and nanosecond times give 4.100×10⁹ s instead of 4.100 ns. Files in Bmad's own units read correctly.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python LAT-10.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: LAT-10.py"
 

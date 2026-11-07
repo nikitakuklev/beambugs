@@ -12,14 +12,12 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`track1_bunch_csr`, bmad/space_charge/csr_and_space_charge_mod.f90:228–229](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L228-L229)<br>[line 297](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L297)<br>[line 305](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L305)<br>[lines 355–356](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L355-L356)<br>[`apply_fft_3d_kicks`, line 1731](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1731)<br>[`track1_bunch_hom`, bmad/multiparticle/beam_mod.f90:319](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_mod.f90#L319)<br>[bmad/doc/param-structs.tex:487–493](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/param-structs.tex#L487-L493) |
 
 In s-based tracking with `space_charge_method = fft_3d`, an element split into n space-charge steps receives n + 1 full-step kicks, including both endpoint kicks. For a straight element with a frozen field, their weights integrate over L(1 + 1/n) instead of the element length L. The slice and CSR solvers in the same loop halve the endpoint weights. For a low-charge bunch in a 1 mm drift, the one-step impulse is 4/3 of the two-step impulse and twice the force integrated over L. The excess is 100/n percent.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-09.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-09.py"
 

@@ -12,11 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`helper.py#L35-L63`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/file_imports/python/helper.py#L35-L63)<br>[`cyclotron/run_cyclotron.py` example](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Toolbar/examples_loader/loader.py#L18-L31) |
 
 The ImpactX dashboard's import of Python input files ignores `set_species()` and keeps its electron mass and charge defaults, so the bundled `cyclotron/run_cyclotron.py` example, which sets a proton reference, imports as an electron. Importing a script must preserve the species it defines; replacing `set_species("proton")` with explicit mass and charge setters does preserve it. At the example's 4 keV kinetic energy K the imported magnetic rigidity is −2.137×10⁻⁴ T·m instead of +9.139×10⁻³ T·m, the proton value of Bρ = √(K(K + 2mc²))/(qc).
+
+Run `python API-08.py`.
 
 ??? example "Reproducer: API-08.py"
 
@@ -32,12 +34,15 @@ The ImpactX dashboard's import of Python input files ignores `set_species()` and
     example's 4 keV kinetic energy K the imported magnetic rigidity is −2.137×10⁻⁴ T·m instead of
     +9.139×10⁻³ T·m, the proton value of Bρ = √(K(K + 2mc²))/(qc).
 
-    Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
-    parser modules from that clone behind package shells, replacing only the reactive state object so
-    that no Trame web UI or server is needed, and parses the bundled cyclotron example. It builds the
-    original and the imported reference particle in the installed core and compares each rigidity with
-    Bρ = √(K(K + 2mc²))/(qc) evaluated in 60-digit decimal arithmetic. The same example with
-    `set_species("proton")` replaced by explicit mass and charge setters is the control.
+    Setup: `IMPACTX_SOURCE` set to a clone of BLAST-ImpactX/impactx at tag `26.10`; the script loads the
+    dashboard modules from it.
+
+    The script loads the dashboard's unmodified parser modules from that clone behind package shells,
+    replacing only the reactive state object so that no Trame web UI or server is needed, and parses the
+    bundled cyclotron example. It builds the original and the imported reference particle in the
+    installed core and compares each rigidity with Bρ = √(K(K + 2mc²))/(qc) evaluated in 60-digit
+    decimal arithmetic. The same example with `set_species("proton")` replaced by explicit mass and
+    charge setters is the control.
     """
 
     import os

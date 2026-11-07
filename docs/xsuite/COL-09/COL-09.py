@@ -10,8 +10,7 @@ while `tot_energy_aperture` and `tot_energy` are both 0.
 
 The script tracks three 2 GeV/c protons into apertures at 1, 4 and 9 m and builds the loss map with
 `correct_aperture_absorption=False`. It checks the per-aperture energies against the mass-shell sum
-and that no collimator energy is recorded, then compares both public totals with that sum. It
-requires the installed prebuilt kernels (compilation is forbidden).
+and that no collimator energy is recorded, then compares both public totals with that sum.
 """
 
 from _prebuilt import CTX, identity, kernels, np, report, xc, xt

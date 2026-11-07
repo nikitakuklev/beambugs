@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`calc_emittances_and_twiss_from_sigma_matrix`, mode dispersion, bmad/multiparticle/beam_utils.f90:1573–1585](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1573-L1585)<br>[Tao beam `eta.a/b`, tao/code/tao_evaluate_a_datum.f90:1362–1379](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_evaluate_a_datum.f90#L1362-L1379)<br>[beam `etap.a/b`, tao/code/tao_evaluate_a_datum.f90:1414–1431](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_evaluate_a_datum.f90#L1414-L1431) |
 
 Extracting dispersion from a six-dimensional beam covariance returns the transverse mode cross-moments without dividing by the longitudinal-mode momentum variance. For an imposed horizontal dispersion of −0.12 m and longitudinal Twiss parameters β_c = 17 m and α_c = 0, the reported value is −0.007059 m instead of −0.12 m. For this dispersion shear, the error scales with γ_c = (1 + α_c²)/β_c, reaches −1.068 m at β_c = 0.4 m and α_c = 1.6, and leaves projected dispersion correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) · [View source](../helpers/index.md#_dispersion_and_moments)
+Run `python OPT-35.py` with [_bmad.py](../helpers/_bmad.py) and [_dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) in the same directory.
 
 ??? example "Reproducer: OPT-35.py"
 
@@ -37,10 +34,10 @@ Download these shared helpers into the same directory as the reproducer scripts:
     scales with γ_c = (1 + α_c²)/β_c, reaches −1.068 m at β_c = 0.4 m and α_c = 1.6, and leaves
     projected dispersion correct.
 
-    The script builds positive beam covariances with a known symplectic dispersion shear and
-    executes 84 parameter cases. It validates projected dispersion and covariance, reconstructs the
-    longitudinal-mode divisor from the returned normalizing matrix, and compares the transverse
-    mode fields with the imposed dispersion. BMAD_DIST selects the build.
+    The script builds positive beam covariances with a known symplectic dispersion shear and executes 84
+    parameter cases. It validates projected dispersion and covariance, reconstructs the
+    longitudinal-mode divisor from the returned normalizing matrix, and compares the transverse mode
+    fields with the imposed dispersion.
     """
 
     import itertools

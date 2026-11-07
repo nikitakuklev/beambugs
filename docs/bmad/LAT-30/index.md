@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`bend_angle_fiducial` and `bend_angle_fiducial2`, bmad/low_level/set_flags_for_changed_attribute.f90:949–998](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/set_flags_for_changed_attribute.f90#L949-L998)<br>[Bmad manual, “Bend: Fiducial Point Calculations” (`s:bend.fiducial`), bmad/doc/charged-tracking.tex:715–733](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L715-L733) |
 
 Changing the angle of a symmetric bend about its center fiducial produces asymmetric face angles and the wrong arc length. Starting from length 1 m, angle 0.1 rad and zero face angles, setting the angle to 0.2 rad gives length 1.002 m, entrance face angle zero and exit face angle 0.1503 rad. Holding the center and face planes fixed requires length 1 m and both face angles 0.05000 rad, as the circle-plane intersection shows. The implementation updates the exit angle twice and reuses already changed curvature.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _multipass_slicing.py](../helpers/_multipass_slicing.py) · [View source](../helpers/index.md#_multipass_slicing)
+Run `python LAT-30.py` with [_bmad.py](../helpers/_bmad.py) and [_multipass_slicing.py](../helpers/_multipass_slicing.py) in the same directory.
 
 ??? example "Reproducer: LAT-30.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Changing the angle of a symmetric bend about its center fiducial produces asymmetric face angles and the wrong arc length. Starting from length 1 m, angle 0.1 rad and zero face angles, setting the angle to 0.2 rad gives length 1.002 m, entrance face angle zero and exit face angle 0.1503 rad. Holding the center and face planes fixed requires length 1 m and both face angles 0.05000 rad, as the circle-plane intersection shows. The implementation updates the exit angle twice and reuses already changed curvature.
 
-    The script changes only ANGLE through Bmad's attribute setter and runs bookkeeping. It verifies the initial symmetric geometry and computes the new radius from the intersection of the new circle with the original face plane. BMAD_DIST selects the build.
+    The script changes only ANGLE through Bmad's attribute setter and runs bookkeeping. It verifies the initial symmetric geometry and computes the new radius from the intersection of the new circle with the original face plane.
     """
 
     import math

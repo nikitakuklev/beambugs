@@ -11,7 +11,7 @@ report wrong loss densities and positions in the boundary cells; interior cells 
 The script tracks three 2 GeV/c protons into the three apertures, checks where they were lost, and
 builds the loss map with `correct_aperture_absorption=False` and no material or scattering engine.
 It compares the cell lengths and centres with periodic midpoint cells built from the positive cyclic
-gaps between apertures. It requires the installed prebuilt kernels (compilation is forbidden).
+gaps between apertures.
 """
 
 from _prebuilt import CTX, identity, kernels, np, report, xc, xt

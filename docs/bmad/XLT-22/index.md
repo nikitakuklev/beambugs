@@ -12,18 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`write_lattice_mad_format`, bmad/output/write_lattice_mad_format.f90:770–776](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L770-L776)<br>[line 294](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L294)<br>[src/madx_ptc_module.f90:905 and 950](https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/7998e738eca575c82a424138517c2a17115f3cdb/src/madx_ptc_module.f90#L905-L950) |
 
 Exporting a bend with a vertical steering kick to MAD-X writes the kick into k0s, a skew dipole strength used by PTC but ignored by ordinary TWISS and TRACK. For a 1.5 m bend with angle 0.15 rad and vkick = 1 mrad, Bmad and MAD-X PTC give vertical displacement y = 0.7500 mm and normalized vertical momentum pᵧ = 0.001000. This agrees with a kick distributed along the bend, whereas ordinary MAD-X TWISS and TRACK give zero displacement and momentum. The exported lattice therefore loses this steering in those two calculation modes.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s4_17_translations.py](../helpers/_s4_17_translations.py) · [View source](../helpers/index.md#_s4_17_translations)
-- [Download _translators.py](../helpers/_translators.py) · [View source](../helpers/index.md#_translators)
-- [Download _s3_24_translations.py](../helpers/_s3_24_translations.py) · [View source](../helpers/index.md#_s3_24_translations)
+Run `python XLT-22.py` with [_bmad.py](../helpers/_bmad.py), [_s4_17_translations.py](../helpers/_s4_17_translations.py), [_translators.py](../helpers/_translators.py) and [_s3_24_translations.py](../helpers/_s3_24_translations.py) in the same directory.
 
 ??? example "Reproducer: XLT-22.py"
 

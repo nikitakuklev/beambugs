@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`twiss_from_mat6`, bmad/code/twiss_from_mat6.f90:110–139](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/twiss_from_mat6.f90#L110-L139)<br>[Bmad manual, “Dispersion Calculation”, `s:dispersion`, `dexds`, bmad/doc/optics.tex:381–417](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/optics.tex#L381-L417) |
 
 Calling the periodic Twiss initializer with vertical reference-orbit momentum gives incorrect vertical and b-mode dispersion slopes. The documented paraxial derivative is η′/q − pᵧ/q², where q = 1 + δ, δ is fractional momentum offset, pᵧ is vertical momentum divided by reference momentum, and η′ = ∂pᵧ/∂δ. At δ = 0.2, pᵧ = −0.02 and η′ = −0.05, both slopes are −0.008333 instead of −0.02778; horizontal and a-mode slopes agree with the derivative.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) · [View source](../helpers/index.md#_dispersion_and_moments)
+Run `python OPT-14.py` with [_bmad.py](../helpers/_bmad.py) and [_dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) in the same directory.
 
 ??? example "Reproducer: OPT-14.py"
 
@@ -35,10 +32,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     momentum, and η′ = ∂pᵧ/∂δ. At δ = 0.2, pᵧ = −0.02 and η′ = −0.05, both slopes are −0.008333
     instead of −0.02778; horizontal and a-mode slopes agree with the derivative.
 
-    The script constructs a stable periodic map with a prescribed fixed-point derivative and calls
-    the compiled Twiss initializer. It checks the ordinary dispersion and horizontal slopes before
-    comparing the vertical and b-mode slopes with the paraxial derivative. BMAD_DIST selects the
-    build.
+    The script constructs a stable periodic map with a prescribed fixed-point derivative and calls the
+    compiled Twiss initializer. It checks the ordinary dispersion and horizontal slopes before comparing
+    the vertical and b-mode slopes with the paraxial derivative.
     """
 
     import numpy as np

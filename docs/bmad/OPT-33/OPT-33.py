@@ -2,7 +2,7 @@
 
 For an off-axis particle in an averaged periodic wiggler, the native matrix omits the leading change of focusing with particle momentum. Differentiating the tracked Hill rotation gives a positive momentum response that the matrix replaces with a much smaller, wrong-sign term. In a 0.48 m, 1.1 T planar wiggler at 0.7 GeV/c, M₄₆/y₀ is −2.264×10⁻⁴ m⁻¹ instead of +0.05259 m⁻¹, where M₄₆ is the derivative of normalized vertical momentum with respect to fractional momentum offset and y₀ is entrance displacement. The omission persists toward weak field and also occurs in the helical model.
 
-The script compares planar weak-field cases and an equal-plane helical case against direct differentiation of the averaged split map. Native transverse blocks and two trajectory stencils serve as controls, including zero field. BMAD_DIST selects the production build.
+The script compares planar weak-field cases and an equal-plane helical case against direct differentiation of the averaged split map. Native transverse blocks and two trajectory stencils serve as controls, including zero field.
 """
 
 import numpy as np

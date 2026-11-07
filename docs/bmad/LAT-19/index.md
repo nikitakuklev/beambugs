@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [Bmad manual, Beam_Init_Struct Structure (`s:beam.init.struct`), bmad/doc/beam-init.tex:264–283](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/beam-init.tex#L264-L283)<br>[bunch_init_end_calc time offset and center, bmad/multiparticle/beam_utils.f90:1891–1914](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1891-L1914)<br>[coordinate-dependent finalization, bmad/multiparticle/beam_utils.f90:1938–1972](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1938-L1972) |
 
 Initializing an ordinary moving-particle bunch with use_particle_start enabled adds t_offset to the time specified by particle_start. The manual first says the offset always applies, then says it is ignored in this mode. An electron at 1 MeV/c with starting time 2 ns and offset 3 ns is initialized at 5 ns, with longitudinal coordinate −0.5339 m determined by the initial 2 ns. The contradictory paragraph should describe the additive time convention.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_12_particle_contracts.py](../helpers/_s3_12_particle_contracts.py) · [View source](../helpers/index.md#_s3_12_particle_contracts)
+Run `python LAT-19.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_12_particle_contracts.py](../helpers/_s3_12_particle_contracts.py) in the same directory.
 
 ??? example "Reproducer: LAT-19.py"
 

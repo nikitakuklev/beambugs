@@ -12,12 +12,14 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1723]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1724]], filed from this evidence |
 | Source | [`Insert.cpp#L64-L74`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/transformation/Insert.cpp#L64-L74) |
 
 `insert_element_every_ds()`, which places a thin element such as a `Marker` at regular spacing by splitting the thick elements it falls in, gives each piece of a split `ExactSbend` the full original angle `phi`. A uniform sector bend of length L and angle θ must keep its total deflection when split, so a piece of length Lᵢ needs the angle θ·Lᵢ/L; the analytic exit coordinates of that arc fix the correct result. A marker at the midpoint of a 1 m, 20° `ExactSbend` makes it bend by 40° in total, and markers every 0.3 m make 80°, while the path length stays 1 m. This holds with `B=0` or an explicit field; `Sbend`, `CFbend`, `Quad` and `ChrAcc` split exactly.
+
+Run `python API-03.py`.
 
 ??? example "Reproducer: API-03.py"
 

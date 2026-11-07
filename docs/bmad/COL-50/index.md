@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [track1_lr_wake elapsed-phase rotation](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L151-L174)<br>[absolute/relative clock use](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L209-L245)<br>[“Long-Range Wakes”, negative-frequency fundamental designation](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L3251-L3256) |
 
 With absolute-time tracking enabled, a fundamental long-range wake mode advances its reference
@@ -21,9 +21,7 @@ retains the elapsed phase and gives the correct delayed wake. For a 1 nC source 
 arriving 0.125 ns later at 1 GHz, the fundamental gives a relative momentum kick of −6.283 ×
 10⁻⁷ instead of −4.443 × 10⁻⁷. The excess is the missing cosine of the π/4 phase advance.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-50.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-50.py"
 

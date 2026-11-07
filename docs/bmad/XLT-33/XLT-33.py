@@ -2,7 +2,9 @@
 
 An Elegant export becomes invalid when a multipole with multiple nonzero orders appears more than once. The first occurrence is split into one MULT per order, but later occurrences retain an original name that has no definition, so Elegant rejects the lattice. The same failure occurs for the paired end multipoles generated from a thick element’s field errors. Replacing the later reference with the split elements makes the repeated thin-multipole example agree with Bmad tracking.
 
-The script exports a repeated thin multipole and a quadrupole with two orders of field error. It verifies Elegant’s exact undefined-name error and checks a repaired thin-multipole beamline against Bmad. ELEGANT_BIN and RPN_DEFNS select the receiving executable and definitions.
+Setup: `ELEGANT_BIN` set to a serial Elegant executable and `RPN_DEFNS` to the `defns.rpn` file of SDDS; the script runs the exported lattices in Elegant.
+
+The script exports a repeated thin multipole and a quadrupole with two orders of field error. It verifies Elegant’s exact undefined-name error and checks a repaired thin-multipole beamline against Bmad.
 """
 
 import re

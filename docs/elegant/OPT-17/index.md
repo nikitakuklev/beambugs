@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [shifts the particles by `dxOffset`, src/ccbend.c:530–531](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L530-L531)<br>[saves that x as `lastX`, src/ccbend.c:1240–1243](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L1240-L1243)<br>[`lastX` is flipped to the lab sign, src/ccbend.c:736–740](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L736-L740)<br>[`addCcbendRadiationIntegrals`, src/ccbend.c:1836–1837](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ccbend.c#L1836-L1837)<br>[CCBEND multipole terms are defined in Cartesian coordinates, doc/ccbend.tex:3](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ccbend.tex#L3)<br>[`In` is the nth radiation integral, doc/elegant.tex:8262](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8262)<br>[`OPTIMIZE_DX` defaults to 1, src/track_data.c:3851](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3851) |
 
 With a sextupole component K2, Elegant's CCBEND I4 radiation integral in `twiss_output` evaluates the gradient as K1 + K2(x − Δx), where x is already measured from the magnet axis that the default optimization (OPTIMIZE_DX) shifts by Δx; for a negative bend the offset enters with the opposite sign. A magnet and its mirror image (opposite angle and K2) therefore get different I4. In a 73.60 m, 3 GeV ring of 32 one-meter CCBENDs with K2 = 3 m⁻³ (Δx = 12.26 mm), Elegant gives a horizontal damping partition of 1.035 and a natural emittance of 351.5 nm, and for the mirrored ring 0.5606 and 648.8 nm. The two I4 differ by 0.5850 m⁻¹, close to 4K2·Δx·I1 = 0.5859 m⁻¹.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-17.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-17.py"
 

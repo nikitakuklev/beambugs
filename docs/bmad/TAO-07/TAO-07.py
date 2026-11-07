@@ -8,7 +8,6 @@ dispersion-slope selectors must read their matching a-mode fields.
 
 The script initializes distinct a- and b-mode beta and alpha derivatives, then queries lat_list,
 ele:param, and ele:twiss. It uses ele:twiss and the lattice initial conditions as controls.
-BMAD_DIST supplies Tao.
 """
 
 from _bmad import compare, verdict

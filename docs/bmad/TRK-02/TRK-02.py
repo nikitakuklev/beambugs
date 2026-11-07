@@ -8,7 +8,7 @@ magnetic-quadrupole calculation give the correct result.
 
 The script evaluates a pure electric quadrupole at zero and both signs of π/6 tilt in laboratory and
 body frames. It uses explicit Cartesian rotations as the oracle and a magnetic quadrupole at the
-same point as a control; BMAD_DIST selects the build.
+same point as a control;
 """
 
 import os

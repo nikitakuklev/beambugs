@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [Bmad manual, Space_Charge_Common_Struct, s:sc.com, bmad/doc/param-structs.tex:487–494](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/param-structs.tex#L487-L494)<br>[track1_bunch_csr lookup and diagnostic, bmad/space_charge/csr_and_space_charge_mod.f90:220–225](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L220-L225)<br>[track1_bunch_csr3d lookup and diagnostic, bmad/space_charge/csr_and_space_charge_mod.f90:1936–1942](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1936-L1942)<br>[registered CSR_DS_STEP, bmad/modules/attribute_mod.f90:723–729](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/attribute_mod.f90#L723-L729) |
 
 When users set the element step size using either spelling in the CSR parameter description, the lattice parser rejects the input. The manual names csr_ds_track and csr_track_step, while the accepted attribute is csr_ds_step. Both CSR wrappers also print the stale name CSR_TRACK_STEP in their missing-step diagnostic. The documented names and diagnostics should identify csr_ds_step and retain the global ds_track_step fallback.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_contracts.py](../helpers/_collective_contracts.py) · [View source](../helpers/index.md#_collective_contracts)
+Run `python COL-18.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_contracts.py](../helpers/_collective_contracts.py) in the same directory.
 
 ??? example "Reproducer: COL-18.py"
 
@@ -33,8 +30,8 @@ Download these shared helpers into the same directory as the reproducer scripts:
     When users set the element step size using either spelling in the CSR parameter description, the lattice parser rejects the input. The manual names csr_ds_track and csr_track_step, while the accepted attribute is csr_ds_step. Both CSR wrappers also print the stale name CSR_TRACK_STEP in their missing-step diagnostic. The documented names and diagnostics should identify csr_ds_step and retain the global ds_track_step fallback.
 
     The script parses an sbend with csr_ds_step as a successful control, then tries each documented
-    spelling in a fresh parser process. It checks the explicit bad-attribute diagnostic and the
-    manual text from BMAD_SOURCE. BMAD_DIST selects the production build.
+    spelling in a fresh parser process. It checks the explicit bad-attribute diagnostic and the manual
+    text from BMAD_SOURCE.
     """
 
     from _bmad import verdict

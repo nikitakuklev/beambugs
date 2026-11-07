@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [clearSCSpecs, get_beamline.c:2364–2377](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/get_beamline.c#L2364-L2377)<br>[clear and disable, insertSCeffects.cc:81–87](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L81-L87)<br>[warning, insertSCeffects.cc:112–116](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L112-L116)<br>[addSCSpec, get_beamline.c:2339–2357](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/get_beamline.c#L2339-L2357)<br>[disable and clear, elegant.tex:4480–4481](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4480-L4481) |
 
 Setting clear = 1 on insert_sceffects decrements the count of insertion specifications to −1 instead of 0, so the next specification is written one entry before its array. Clearing and replacing an earlier command with the same selector then completes with no SCMULT and no warning, so the run has no space charge; clearing in a fresh run, clearing alone, and clearing with disable = 1 after an earlier command crash. The manual says clear deletes prior insertions and disable makes a command ignored, so each run must complete, and all but the lone clear must insert one SCMULT. In a one-segment ring with a 0.8000 nC bunch, the replacement's expected linear slope kick of 2.379×10⁻⁴ becomes exactly zero.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _scinsert.py](../helpers/_scinsert.py) · [View source](../helpers/index.md#_scinsert)
+Run `python COL-29.py` with [_elegant.py](../helpers/_elegant.py) and [_scinsert.py](../helpers/_scinsert.py) in the same directory.
 
 ??? example "Reproducer: COL-29.py"
 

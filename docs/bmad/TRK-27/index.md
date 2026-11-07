@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [magnus_omega solenoid generator, bmad/spin/track1_spin_integration.f90:252–327](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/spin/track1_spin_integration.f90#L252-L327)<br>[ordinary spin integration, bmad/spin/track1_spin_integration.f90:225–230](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/spin/track1_spin_integration.f90#L225-L230)<br>[Bmad Manual, time direction, bmad/doc/tracking.tex:75–77](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/tracking.tex#L75-L77)<br>[Bmad Manual, Magnus Spin Tracking, `s:magnus`, bmad/doc/charged-tracking.tex:1281–1313](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L1281-L1313) |
 
 Backward-time Magnus spin tracking through an axial solenoid repeats the forward rotation instead of undoing it. The constant-field spin generator requires opposite rotation angles for the two time directions. At 3 MeV/c, a 1.3 m solenoid with strength −1.1 m⁻¹ maps spin (0.36, 0.48, 0.8) to (−0.4780, −0.3626, 0.8) after a round trip instead of restoring it. Ordinary spin integration and Runge–Kutta tracking restore the spin to roundoff.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _rf_and_spin.py](../helpers/_rf_and_spin.py) · [View source](../helpers/index.md#_rf_and_spin)
+Run `python TRK-27.py` with [_bmad.py](../helpers/_bmad.py) and [_rf_and_spin.py](../helpers/_rf_and_spin.py) in the same directory.
 
 ??? example "Reproducer: TRK-27.py"
 

@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [stored-K1 overwrite, compute_matrices.c:1649–1650](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L1649-L1650)<br>[body strength, multipole.c:791–795](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L791-L795)<br>[entrance fringe, multipole.c:1131–1132](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1131-L1132)<br>[exit fringe, multipole.c:1224–1225](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1224-L1225)<br>[nonlinear fringe coefficient, fringe.c:110](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/fringe.c#L110)<br>[K1, BORE and B definitions, track_data.c:1253–1258](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1253-L1258)<br>[nonlinear fringe coefficient, fringe.c:110](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/fringe.c#L110)<br>[linear fringe matrices, fringe.c:53–54](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/fringe.c#L53-L54)<br>[K1 scaling, quad_matrix.c:40](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L40)<br>[entrance, quad_matrix.c:364](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L364)<br>[exit, quad_matrix.c:374](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/quad_matrix.c#L374)<br>[FSE definition, track_data.c:1262](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1262)<br>[fringe definition, kquad.tex:84–95](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/kquad.tex#L84-L95) |
 
 When KQUAD is specified by pole-tip field B and bore radius BORE, or has fractional strength error FSE, its body resolves the effective gradient but both fringes use the stored K₁. With B/BORE and default K₁ = 0, a matrix or Twiss request changes tracking by populating that stored value; FSE is still omitted. For a 0.4 m magnet at electron momentum 2000 mₑc, the field-input error reaches 1.749 µrad, while K₁ = 5 m⁻² with FSE = 0.2 differs from the equivalent K₁ = 6 m⁻² magnet by 419.4 nrad. Equivalent-field and zero-field controls establish that both fringes must use the same effective gradient as the body.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-03.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-03.py"
 

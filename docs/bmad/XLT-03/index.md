@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`track_a_converter`, track_a_converter.f90:240–252](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_converter.f90#L240-L252)<br>[Bmad manual, “Charged Particle Phase Space Coordinates”, `s:phase.space`, equation `zbctt`](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/phase-space.tex#L81-L94) |
 
 Converting a particle to a different speed rescales its longitudinal coordinate z by the inverse of the required speed ratio. The coordinate definition z = −βc(t − t₀), where β is speed divided by c and t₀ is reference time, requires z to scale as β_new/β_old when stored time stays fixed. In a 4 MeV/c electron-to-positron example, the returned z is 31.63 mm instead of 16.72 mm. The absolute clock and the post-drift speed-ratio calculation give the same expected value.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_24_converter.py](../helpers/_s3_24_converter.py) · [View source](../helpers/index.md#_s3_24_converter)
+Run `python XLT-03.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_24_converter.py](../helpers/_s3_24_converter.py) in the same directory.
 
 ??? example "Reproducer: XLT-03.py"
 

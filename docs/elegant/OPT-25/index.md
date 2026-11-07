@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [`dumpBeamMoments`, starting row, src/moments.c:270–282](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L270-L282)<br>[`moments_output` computes periodic or propagates non-periodic beam moments, doc/elegant.tex:5549](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5549)<br>[with `matched=0` the given values are propagated, doc/elegant.tex:5606–5607](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5606-L5607)<br>[the starting ellipses are given in all three planes, doc/elegant.tex:5632–5633](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5632-L5633) |
 
 Elegant's `moments_output` crashes with a segmentation fault on a beamline of one element when it writes moments along the beamline (the default `final_values_only=0`): writing the starting row reads the Coulomb logarithm of the element after the first, which does not exist. The manual supports propagating given starting moments through a non-periodic beamline, and a single 1.7 m drift entered with Twiss βx = 3 m, αx = 0.4 and emittance εx = 2 nm is valid input. With `final_values_only=1`, or with a zero-length marker appended, Elegant finishes and writes the drift-transported beam-matrix elements σ11 = 5.515×10⁻⁹ m² and σ12 = 5.147×10⁻¹⁰ m.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-25.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-25.py"
 

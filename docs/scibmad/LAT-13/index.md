@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-22 on BeamTracking 0.8.7 (`65e343f`); not reproduced on BeamTracking main (`0bf3585`), 2026-10-29 |
+| Last reproduced | 2026-10-22 on BeamTracking 0.8.7 (`65e343f`, committed 2026-10-13); not reproduced on BeamTracking 0.8.7 (`0bf3585`), 2026-11-07 |
 | Pull request | [[gh:https://github.com/bmad-sim/BeamTracking.jl/pull/370]], fix |
 | Source | [`BeamTracking.jl/src/types.jl:80-86`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/types.jl#L80-L86)<br>[`BeamTracking.jl/src/callbacks.jl:61`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/callbacks.jl#L61)<br>[`SciBmad.jl/docs/src/track.md:155-177`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/docs/src/track.md#L155-L177) |
 
 The `Bunch` docstring tells users to write a tracking callback as `callback(coords, ds_step, g)`, but tracking calls each callback with nine arguments, `(i, coords, cur_s, cur_t_ref, cur_beta_gamma_ref, last_ds_step, last_g, transforms_out!, transforms_in!)`. The call site and the narrative tracking documentation agree on the nine-argument form. A callback written to the docstring raises a `MethodError` at its first call, while a nine-argument callback runs. The failure is loud.
+
+Run `julia LAT-13.jl`.
 
 ??? example "Reproducer: LAT-13.jl"
 

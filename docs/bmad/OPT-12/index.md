@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [lat_make_mat6, bmad/code/lat_make_mat6.f90:240–250](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/lat_make_mat6.f90#L240-L250)<br>[initialization, bmad/code/lat_make_mat6.f90:59–64](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/lat_make_mat6.f90#L59-L64)<br>[output contract, bmad/code/lat_make_mat6.f90:21–26](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/lat_make_mat6.f90#L21-L26) |
 
 Requesting a single-element transfer matrix whose cached reference orbit already matches returns an error flag despite a valid matrix. This happens both with and without an explicit reference-orbit array. In a 1.2 m quadrupole of strength 0.7 m⁻², the cached horizontal position coefficient remains the correct 0.5369, but the call reports failure. A successful cache hit should report success just like recomputation.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) · [View source](../helpers/index.md#_s3_14_optics_matrix_radiation)
+Run `python OPT-12.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) in the same directory.
 
 ??? example "Reproducer: OPT-12.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Requesting a single-element transfer matrix whose cached reference orbit already matches returns an error flag despite a valid matrix. This happens both with and without an explicit reference-orbit array. In a 1.2 m quadrupole of strength 0.7 m⁻², the cached horizontal position coefficient remains the correct 0.5369, but the call reports failure. A successful cache hit should report success just like recomputation.
 
-    The script exercises both single-element cache branches in separate processes, with and without an explicit orbit array. It verifies the cached quadrupole coefficient against the analytic thick-lens cosine before inspecting the error flag. BMAD_DIST supplies the build.
+    The script exercises both single-element cache branches in separate processes, with and without an explicit orbit array. It verifies the cached quadrupole coefficient against the analytic thick-lens cosine before inspecting the error flag.
     """
 
     import numpy as np

@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [z_at_surface, segmented plane, bmad/photon/photon_utils_mod.f90:118–122](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/photon_utils_mod.f90#L118-L122)<br>[init_surface_segment, bmad/parsing/bmad_parser_mod.f90:8222–8299](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/bmad_parser_mod.f90#L8222-L8299)<br>[Bmad manual, Displacement, H_Misalign, and Segmented Surface Grids, bmad/doc/attributes.tex:1469–1481](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L1469-L1481) |
 
 Segmented photon surfaces reverse the signed height slopes of their flat facets. For a facet of the surface z=−1.7x²−0.6y², the height at (93, −101) mm is −23.60 mm instead of the supporting plane’s −25.20 mm. Returned slope values describe the correct plane, while finite differences of the returned heights have the opposite signs. A photon intersection follows the incorrect height, producing a 1.600 mm displacement error.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) · [View source](../helpers/index.md#_s3_19_fields_photons_ptc)
+Run `python TRK-08.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) in the same directory.
 
 ??? example "Reproducer: TRK-08.py"
 
@@ -37,7 +34,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The script constructs a segmented quadratic surface, derives the plane through its four support
     vertices, and compares heights and slopes with z_at_surface. It also checks track_to_surface and
-    samples just inside each corner to keep facet selection unambiguous; BMAD_DIST selects the build.
+    samples just inside each corner to keep facet selection unambiguous;
     """
 
     import os

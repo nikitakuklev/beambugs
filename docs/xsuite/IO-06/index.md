@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Source | [`Particles._update_refs`, particles.py:1704–1708](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L1704-L1708)<br>[`rigidity0` getter and linked setter](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L1342-L1360) |
 
 Constructing `Particles` from the reference rigidity `rigidity0` computes the momentum from `rigidity0`·|q₀|·c, while the `rigidity0` getter and setter use the signed reference charge q₀, so a negative-charge reference's own reported rigidity reconstructs a negative momentum. The manual defines signed rigidity, and property-to-constructor round trips must preserve the reference state. For electron-mass references with q₀ = −1 or −2 at 1 GeV/c, the constructor returns the reference momentum `p0c` = −1.000×10⁹ eV and reference speed β₀ = v/c = −1.000, while the particle remains alive; the correct momentum and speed are positive. Positive-charge construction, the linked rigidity setter, and construction from `p0c` or `energy0` pass their controls.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python IO-06.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: IO-06.py"
 

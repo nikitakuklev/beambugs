@@ -12,11 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on Beamlines main (`35fe016`) |
+| Last reproduced | 2026-10-31 on Beamlines main (`35fe016`, head build) |
 | Tags | <span class="bb-tag">contract-unsettled</span> [?](../../methodology.md#tags) |
-| Source | [`Beamlines.jl/src/virtual.jl:556`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L556)<br>[`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/utils_bl.jl:204`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L204)<br>[`Beamlines.jl/src/beamline.jl:557-566`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/beamline.jl#L557-L566)<br>[`Beamlines.jl/src/rf.jl:37-38`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/rf.jl#L37-L38)<br>[`Beamlines.jl/src/branch.jl:156-158`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/branch.jl#L156-L158) |
+| Source | [`Beamlines.jl/src/virtual.jl:556`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L556)<br>[`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/utils_bl.jl:204`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L204)<br>[`Beamlines.jl/src/beamline.jl:557-566`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/beamline.jl#L557-L566)<br>[`Beamlines.jl/src/rf.jl:37-38`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/rf.jl#L37-L38)<br>[`Beamlines.jl/src/branch.jl:156-158`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/branch.jl#L156-L158) |
 
 A harmonic-number cavity's `rf_frequency` getter and its tracking setup take as circumference the branch-global end position `s` of the cavity's Beamline, which includes every upstream Beamline of the `Branch`. The documentation defines `harmon` relative to the containing Beamline's own length, and the same cavity Beamline standing alone gives exactly that frequency. For a 1 GeV/c proton in a 3 m cavity Beamline with `harmon` = 1, adding a 2 m upstream Beamline changes the frequency from 72.88 MHz to 43.73 MHz, and a 4 m one gives 31.23 MHz. Adding a 7 m downstream Beamline leaves 43.73 MHz, although the whole-Branch harmonic is 18.22 MHz. Cavities after upstream Beamlines therefore violate the documented length contract.
+
+Run `julia LAT-04.jl`.
 
 ??? example "Reproducer: LAT-04.jl"
 

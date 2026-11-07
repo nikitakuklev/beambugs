@@ -7,10 +7,9 @@ changes a sampled longitudinal field from −512.8 V/m to −1608 V/m, as direct
 integration establishes. The active cathode route uses a reflected-charge solve and avoids this
 transform error.
 
-The script compares an impulse transform with its analytic discrete Fourier transform, then
-compiles a legacy cathode-field case. Independent uniform-cell quadrature supplies the electric
-field reference; method 2 and the active reflected-charge route are controls. Set BMAD_DIST to the
-build root.
+The script compares an impulse transform with its analytic discrete Fourier transform, then compiles
+a legacy cathode-field case. Independent uniform-cell quadrature supplies the electric field
+reference; method 2 and the active reflected-charge route are controls.
 """
 
 import numpy as np

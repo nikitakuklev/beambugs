@@ -2,9 +2,9 @@
 
 When cathode image fields are enabled, the cutoff compares the image field with the sum of direct and image fields instead of the direct bunch field. Cancellation changes whether images remain enabled. In a 27-particle example, the largest image/direct component ratio is 0.6762, while the image/total ratio is 0.7083. A cutoff of 0.6922 therefore retains images even though the documented bunch-field criterion would disable them.
 
-The script evaluates the direct and total fields for the same 27 stationary particles on a 16³
-mesh. It derives the image field by subtraction, tests a cutoff between the two component
-ratios, and checks zero and high cutoffs as controls. BMAD_DIST selects the production build.
+The script evaluates the direct and total fields for the same 27 stationary particles on a 16³ mesh.
+It derives the image field by subtraction, tests a cutoff between the two component ratios, and
+checks zero and high cutoffs as controls.
 """
 
 import numpy as np

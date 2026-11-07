@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`, committed 2026-11-03) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`track_through_csbend`,
 csbend.c:1151–1166](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1151-L1166)<br>[`process_particle_command`,
@@ -26,9 +26,7 @@ elegant.tex:5608–5612](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c
 
 For a multiply charged custom species, moments_output overestimates the CSBEND quantum variance σδ², where δ is relative momentum deviation, by Q², where Q is charge magnitude in units of the elementary charge. Its Gaussian diffusion coefficient gives variance proportional to Q⁴ instead of the Q² law obtained from the synchrotron photon spectrum. For a particle with approximately the lead nucleus mass, Q = 82 and momentum 573.8 TeV/c, a 14.30 m bend of radius 2804 m gives σδ² = 6.713×10⁻²³ instead of 9.984×10⁻²⁷, a factor 6724. Singly charged controls agree with the spectrum integral.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-47.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-47.py"
 
@@ -39,7 +37,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     For a multiply charged custom species, moments_output overestimates the CSBEND quantum variance σδ², where δ is relative momentum deviation, by Q², where Q is charge magnitude in units of the elementary charge. Its Gaussian diffusion coefficient gives variance proportional to Q⁴ instead of the Q² law obtained from the synchrotron photon spectrum. For a particle with approximately the lead nucleus mass, Q = 82 and momentum 573.8 TeV/c, a 14.30 m bend of radius 2804 m gives σδ² = 6.713×10⁻²³ instead of 9.984×10⁻²⁷, a factor 6724. Singly charged controls agree with the spectrum integral.
 
-    The script computes deterministic moments_output covariance growth from zero initial covariance through a bend with the exact Hamiltonian. It compares the photon-spectrum integral with electron-mass and heavy unit-charge controls and heavy particles with charge magnitudes 2, 10 and 82, including both signs at 82. Dimensionless p_central isolates diffusion from momentum-input conversion, and no stochastic tracking variance is measured. Each case runs serial Elegant in a fresh process with a fixed seed; Elegant and SDDS must be on PATH with RPN_DEFNS set.
+    The script computes deterministic moments_output covariance growth from zero initial covariance through a bend with the exact Hamiltonian. It compares the photon-spectrum integral with electron-mass and heavy unit-charge controls and heavy particles with charge magnitudes 2, 10 and 82, including both signs at 82. Dimensionless p_central isolates diffusion from momentum-input conversion, and no stochastic tracking variance is measured. Each case runs serial Elegant in a fresh process with a fixed seed;
     """
 
     import math

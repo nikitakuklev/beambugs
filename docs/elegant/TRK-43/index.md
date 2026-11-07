@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [`trackRfCavityWithWakes`, simple_rfca.c:1047–1066](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1047-L1066)<br>[`rf_cavity_matrix`, compute_matrices.c:2552–2554](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L2552-L2554)<br>[simple_rfca.c:525–529](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L525-L529)<br>[parameter table, track_data.c:612](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L612)<br>[rfca.tex:5–6](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfca.tex#L5-L6) |
 
 An RFCA tracked with the default matrix method (N_KICKS = 0) and no body focusing computes R12 for momentum growing linearly along the cavity, while its own transfer matrix takes a uniform gradient, under which energy grows linearly. Conserved transverse momentum then gives R12 = L p₀(arcosh γ₁ − arcosh γ₀)/(γ₁ − γ₀), with γ₀, γ₁ the entrance and exit Lorentz factors and p₀ the entrance βγ; 1024-kick tracking has a relative difference of 1.568×10⁻⁶. For electrons entering a 0.7 m cavity that adds 12 MeV at 1.5 MeV kinetic energy, tracking gives R12 = 0.2229 m instead of 0.2221 m, 0.3685% too large; the error is 0.03247% at 5 MeV and 7.003×10⁻⁶ at 20 MeV.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _rfca_lens.py](../helpers/_rfca_lens.py) · [View source](../helpers/index.md#_rfca_lens)
+Run `python TRK-43.py` with [_elegant.py](../helpers/_elegant.py) and [_rfca_lens.py](../helpers/_rfca_lens.py) in the same directory.
 
 ??? example "Reproducer: TRK-43.py"
 

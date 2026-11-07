@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [MAD helper kicker names, bmad/output/write_lattice_mad_format.f90:290–300](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L290-L300)<br>[MAD definition deduplication, bmad/output/write_lattice_mad_format.f90:620–624](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L620-L624)<br>[Elegant helper kicker names, bmad/output/write_lattice_elegant_format.f90:288–295](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L288-L295)<br>[Elegant definition deduplication, bmad/output/write_lattice_elegant_format.f90:485–488](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L485-L488) |
 
 Foreign lattice export can replace a real element when its name collides with an automatically generated helper element. A kicked quadrupole creates Q_KICKER_1; if a following 2 m drift already has that name, the writer defines only the kicker and uses it at all three occurrences. The exported line loses the drift and gains an extra kick. Renaming the input drift preserves its definition and length.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _lattice_import_export.py](../helpers/_lattice_import_export.py) · [View source](../helpers/index.md#_lattice_import_export)
+Run `python XLT-27.py` with [_bmad.py](../helpers/_bmad.py) and [_lattice_import_export.py](../helpers/_lattice_import_export.py) in the same directory.
 
 ??? example "Reproducer: XLT-27.py"
 

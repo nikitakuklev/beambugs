@@ -12,12 +12,14 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`) |
+| Last reproduced | 2026-10-31 on BeamTracking main (`0bf3585`, head build) |
 | Issue | [[gh:https://github.com/bmad-sim/BeamTracking.jl/issues/380]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/BeamTracking.jl/pull/381]], filed from this evidence |
-| Source | [`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:115-129`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/ext/BeamTrackingBeamlinesExt/general_bl.jl#L115-L129)<br>[`BeamTracking.jl/src/utils/beam_statistics.jl:4-48`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/utils/beam_statistics.jl#L4-L48)<br>[`BeamTracking.jl/src/kernels/ibs_kick.jl:5`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/ibs_kick.jl#L5)<br>[`85-87`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernels/ibs_kick.jl#L85-L87)<br>[`bmad/multiparticle/beam_utils.f90:1367,1379-1380`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/multiparticle/beam_utils.f90#L1367-L1380) |
+| Source | [`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/general_bl.jl:115-129`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/general_bl.jl#L115-L129)<br>[`BeamTracking.jl/src/utils/beam_statistics.jl:4-48`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/beam_statistics.jl#L4-L48)<br>[`BeamTracking.jl/src/kernels/ibs_kick.jl:5`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L5)<br>[`85-87`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/ibs_kick.jl#L85-L87)<br>[`bmad/multiparticle/beam_utils.f90:1367,1379-1380`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/bmad/multiparticle/beam_utils.f90#L1367-L1380) |
 
 The intrabeam scattering (IBS) kick computes the particle count, centroid and covariance that set live-particle kicks over the whole bunch, including particles marked lost. The kernel kicks only live particles, so these statistics must describe the live sample; removing the lost row, or giving it zero weight, gives the same live-only result. For 200 live protons at 1.000 GeV, each representing 1.000 × 10⁴ particles, one lost particle 20 standard deviations out changes the largest deterministic kick through a 1.000 m drift by 66.02% of its live-only value instead of zero. A lost row holding NaN or Inf can make tracking throw `SingularException`.
+
+Run `julia COL-01.jl`.
 
 ??? example "Reproducer: COL-01.jl"
 

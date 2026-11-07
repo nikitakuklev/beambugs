@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |
 | Source | [`emit_6d`, artificial RF kick, bmad/modules/rad_6d_mod.f90:130–139](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L130-L139)<br>[longitudinal output branches, bmad/modules/rad_6d_mod.f90:182–199](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L182-L199)<br>[final RF-off invalidation, bmad/modules/rad_6d_mod.f90:222–224](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L222-L224) |
 
 Calling emit_6d with RF off and photon opening angle disabled returns a positive longitudinal emittance from an artificial RF kick. The routine marks the ordinary longitudinal emittance invalid with −1, but leaves emittance_no_vert positive even though it comes from the same artificial focusing. A ring with zero damped-map M₆₅ returns −1 in the ordinary field and 5.578 × 10⁻⁶ m in emittance_no_vert. The invalid marker should apply to the emittance field selected by the opening-angle option.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) · [View source](../helpers/index.md#_dispersion_and_moments)
+Run `python OPT-22.py` with [_bmad.py](../helpers/_bmad.py) and [_dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) in the same directory.
 
 ??? example "Reproducer: OPT-22.py"
 
@@ -37,9 +34,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     ordinary field and 5.578 × 10⁻⁶ m in emittance_no_vert. The invalid marker should apply to
     the emittance field selected by the opening-angle option.
 
-    The script checks zero longitudinal focusing in the actual RF-off damped map, then executes
-    both opening-angle branches of emit_6d. It checks the longitudinal emittance markers and
-    runs an RF-on control with positive emittances. BMAD_DIST selects the build.
+    The script checks zero longitudinal focusing in the actual RF-off damped map, then executes both
+    opening-angle branches of emit_6d. It checks the longitudinal emittance markers and runs an RF-on
+    control with positive emittances.
     """
 
     import numpy as np

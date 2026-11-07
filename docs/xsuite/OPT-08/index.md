@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Source | [`TwissTable.get_twiss_init`, twiss_table.py:359–369](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/twiss_table.py#L359-L369) |
 
 `TwissTable.get_twiss_init()` loses a reference-momentum change that lies between the table start and the selected row, so an open Twiss restarted from the extracted initial conditions follows a particle with a different physical momentum and orbit. `ReferenceEnergyChange` only changes the normalization, so exact momentum identities and drift transport require the restarted and uninterrupted trajectories to agree. Starting at 1 GeV/c with x = 3 mm and normalized horizontal momentum pₓ = 0.001, rebasing to 2 GeV/c and restarting before a 1 m exact drift gives a final x of 6.069 mm instead of 4.000 mm; the extracted reference momentum is 1.000 GeV/c instead of 2.000 GeV/c. Without a reference change the restart is correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python OPT-08.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: OPT-08.py"
 

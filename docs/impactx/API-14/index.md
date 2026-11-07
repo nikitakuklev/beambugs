@@ -12,12 +12,14 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on ImpactX development (`f9c2a82`) |
+| Last reproduced | 2026-11-05 on ImpactX development (`f9c2a82`, head build) |
 | Tags | <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1755]] |
 | Source | [`MADXParser.py#L746-L763`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/MADXParser.py#L746-L763)<br>[`_parse_beam_command()`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/MADXParser.py#L2243-L2254)<br>[`getFreq0()`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/MADXParser.py#L2668-L2670)<br>[RF branch](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/madx_to_impactx.py#L1480-L1553)<br>[public import contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L1139-L1246) |
 
 Importing into ImpactX a MAD-X ring whose `RFCAVITY` gives only the harmonic number h (`HARMON`), without `FREQ` or a beam `FREQ0`, creates a `ShortRF` with zero frequency and prints a warning. MAD-X derives the frequency from the ring circumference C as f = hβc/C, and native MAD-X does so for the same decks: a 1.4 GeV (total energy) proton ring with C = 73 m and h = 17 needs 51.82 MHz. For a 0.73 MV cavity at zero crossing, the slope of the energy kick along the bunch is 0 instead of −7.630×10⁻⁴ m⁻¹, so the cavity gives no longitudinal focusing. Cavities with an explicit `FREQ` or `FREQ0` import correctly; a source comment requires `HARMON` and `FREQ0` together, but the importer's documentation does not.
+
+Run `python API-14.py`.
 
 ??? example "Reproducer: API-14.py"
 

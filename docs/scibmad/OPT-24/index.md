@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-24 on SciBmad main (`5f0fb83`) |
+| Last reproduced | 2026-10-24 on SciBmad main (`5f0fb83`, head build) |
 | Tags | <span class="bb-tag">contract-unsettled</span> [?](../../methodology.md#tags) |
-| Source | [`src/twiss/twiss.jl:242`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L242)<br>[`:358-363`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L358-L363)<br>[`closed_orbit.jl:241`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/closed_orbit.jl#L241)<br>[`:235`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/closed_orbit.jl#L235)<br>[`:132`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/closed_orbit.jl#L132)<br>[`:143`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/closed_orbit.jl#L143)<br>[`twiss.jl:112-113`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L112-L113) |
+| Source | [`src/twiss/twiss.jl:248`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L248)<br>[`:364-369`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L364-L369)<br>[`closed_orbit.jl:241`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/closed_orbit.jl#L241)<br>[`:235`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/closed_orbit.jl#L235)<br>[`:132`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/closed_orbit.jl#L132)<br>[`:143`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/closed_orbit.jl#L143)<br>[`twiss.jl:115-116`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L115-L116) |
 
 `twiss(bl; v0=guess)` hands the caller's matrix to the in-place closed-orbit solver, which overwrites it with the closed orbit, although the `twiss` docstring calls `v0` an initial guess and does not mention the overwrite. `find_closed_orbit` documents this mutation; documenting the overwrite in `twiss` or removing it settles the contract question. In a coasting thin FODO with a 10⁻⁴ rad kicker and 1 GeV electrons, a guess at momentum deviation δ = 0.01 becomes x = −3.570×10⁻⁴ m and pₓ = −1.928×10⁻⁴, and tracking confirms a transverse fixed-point residual of 5.421×10⁻²⁰. Reusing the matrix changes later tracking launches or guesses; periodic RF calls also mutate it, while calls with `a_initial` bypass the solver.
+
+Run `julia OPT-24.jl`.
 
 ??? example "Reproducer: OPT-24.jl"
 

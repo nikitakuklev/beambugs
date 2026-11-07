@@ -2,7 +2,7 @@
 
 A particle travelling backward through a stepped quadrupole receives the full element reference-clock correction at every integration step. On axis the force vanishes, so the flight time and longitudinal coordinate must be independent of the number of steps. For a 1 m quadrupole at 1 MeV/c, one step gives z = −2 m and elapsed time 3.746 ns, while eight steps give z = −16 m and 56.19 ns. The correction uses the element reference time without the signed step fraction.
 
-The script tracks the same on-axis reverse-moving electron with one and eight integration steps. A tiny sextupole coefficient activates stepping without producing an on-axis force; the expected time is the straight flight length divided by βc. Set BMAD_DIST to the build root.
+The script tracks the same on-axis reverse-moving electron with one and eight integration steps. A tiny sextupole coefficient activates stepping without producing an on-axis force; the expected time is the straight flight length divided by βc.
 """
 
 from _bmad import compare, fortran, verdict

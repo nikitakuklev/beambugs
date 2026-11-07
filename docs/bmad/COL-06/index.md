@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [csr_and_sc_apply_kicks fast branch, bmad/space_charge/csr_and_space_charge_mod.f90:1532–1549](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1532-L1549)<br>[coordinate update, bmad/space_charge/csr_and_space_charge_mod.f90:1599–1603](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1599-L1603)<br>[subsequent FFT dispatch, bmad/space_charge/csr_and_space_charge_mod.f90:1646–1650](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L1646-L1650)<br>[Charged Particle Phase Space Coordinates, s:phase.space / zbctt, phase-space.tex:80–101](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/phase-space.tex#L80-L101) |
 
 The one-dimensional coherent synchrotron radiation fast path changes particle momentum without refreshing speed β or longitudinal coordinate z. Bmad defines z = −cβΔt, where Δt is the arrival-time offset, so an instantaneous kick must update β and rescale z to preserve arrival time. For an electron at reference momentum 2 MeV/c receiving a normalized momentum kick of −1e−5, β stays too large by 5.937e−7 and z stays too large by 4.596e−7 m. The general branch with slice space charge performs the required refresh.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_fields.py](../helpers/_collective_fields.py) · [View source](../helpers/index.md#_collective_fields)
+Run `python COL-06.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_fields.py](../helpers/_collective_fields.py) in the same directory.
 
 ??? example "Reproducer: COL-06.py"
 
@@ -39,7 +36,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The script applies a zero kick, a small negative kick and a larger diagnostic positive kick to
     electrons. It derives β from the mass shell and z from fixed arrival time, independently of Bmad’s
-    conversion routine. Set BMAD_DIST to the build root.
+    conversion routine.
     """
 
     import numpy as np

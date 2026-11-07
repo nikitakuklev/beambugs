@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [long-range deposits and kicks](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L197-L259)<br>[short-range longitudinal modal path](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L324-L381)<br>[short-range transverse modal path](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L420-L458)<br>[z_long table path](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L538-L608)<br>[“Short-Range Wakes”, delvp1–delvp3 and pelqxw1–pelqxw2](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/wakefields.tex#L28-L70)<br>[“Long-Range Wakes” strength and charge definitions](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/wakefields.tex#L112-L147) |
 
 Short-range modal, tabulated and long-range wakes omit the witness charge state and the source species’ sign. At fixed source-charge magnitude in coulombs and reference momentum, the ultrarelativistic wake kick must scale with Qw sign(Qs), where Qw and Qs are witness and source charges in elementary-charge units. Carbon ions with charge 6 receive kicks six times too small, while positrons following electrons receive kicks with the wrong sign. Source self-kicks also miss the factor six; a short-range longitudinal example gives a fractional momentum change −2.219 × 10⁻⁷ for a carbon witness instead of −1.331 × 10⁻⁶.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-66.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-66.py"
 

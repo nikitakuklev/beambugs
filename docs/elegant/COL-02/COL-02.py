@@ -9,6 +9,9 @@ horizontally and 3.150×10⁻³ m vertically after one turn. The warning is ther
 readings, although the manual says Pelegant
 results are identical to serial for a deterministic beam.
 
+Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the
+defect occurs only under MPI.
+
 The script tracks 24 particles through a stable alternating-gradient cell with two correctors and
 one monitor, and runs `fast_orbit_feedback` for one and for three turns per readout, with
 integral gain 0 and 0.25. The first half of the rows sits at one position and the second half at

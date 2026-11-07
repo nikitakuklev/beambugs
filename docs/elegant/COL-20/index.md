@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [trackThroughSCMULT skip, insertSCeffects.cc:253–261](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L253-L261)<br>[initializeSCMULT skip, insertSCeffects.cc:680–687](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L680-L687)<br>[accumulateSCMULT skip, insertSCeffects.cc:810–818](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L810-L818)<br>[global bunch range, lrwake.c:74–84](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L74-L84)<br>[local bunch counts, lrwake.c:149–166](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L149-L166)<br>[charge reduction, insertSCeffects.cc:289–300](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L289-L300)<br>[computeRmsCoordinate, insertSCeffects.cc:874–930](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L874-L930)<br>[initializeSCMULT, do_tracking.c:804–813](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L804-L813)<br>[accumulateSCMULT, do_tracking.c:2964–2975](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2964-L2975)<br>[trackThroughSCMULT, do_tracking.c:2188–2191](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2188-L2191)<br>[bunch-mode input, elegant.tex:481–506](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L481-L506)<br>[linear force, scmult.tex:12–22](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/scmult.tex#L12-L22)<br>[row partition, SDDS_MPI_binary.c:2235–2252](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/SDDSlib/SDDS_MPI_binary.c#L2235-L2252) |
 
 When two bunches are distributed one per tracking rank, linear unsliced SCMULT space-charge tracking under MPI (Pelegant) merges their statistics. Reordering the same input rows changes the kicks; serial tracking and MPI with both bunches on both ranks agree with the manual's separate-bunch force. For two 30.00 pC bunches 0.4000 ns apart, the first particle's outward horizontal slope-kick magnitude is 2.130×10⁻⁷ rather than 4.630×10⁻⁷, 53.99% too small; at 0.8000 ns it is 73.49% too small.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-20.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-20.py"
 
@@ -35,6 +33,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     separate-bunch force. For two 30.00 pC bunches 0.4000 ns apart, the first particle's outward
     horizontal slope-kick magnitude is 2.130×10⁻⁷ rather than 4.630×10⁻⁷, 53.99% too small; at
     0.8000 ns it is 73.49% too small.
+
+    Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the
+    defect occurs only under MPI.
 
     The script tracks two identical 24-particle bunches through one SCMULT of a closed four-sector ring,
     once with the input rows interleaved, so that every tracking rank holds half of each bunch, and once

@@ -12,10 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Source | [`ExactCFbend.H#L340-L342`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactCFbend.H#L340-L342) |
 
 An `ExactCFbend` with zero dipole strength, `k_normal[0]=0`, and any coefficient slot above the dipole, even one set to zero, returns NaN in `x`, `px`, `y`, `py` and `t`, because its multipole kick divides by a bend radius stored as zero. At zero curvature the element must reduce to the corresponding straight multipole; for a quadrupole that is `ExactQuad`, which agrees with an independent integration of the square-root (exact) Hamiltonian. For a proton with all six coordinates nonzero, `ExactCFbend(ds=0.7, k_normal=[0, 0.8])` gives NaN, while `ExactQuad(ds=0.7, k=0.8)` with the same integrator gives `x` = 0.02394 m, `px` = 0.01032 and `y` = −0.01456 m. An element with only the dipole coefficient, `k_normal=[0]`, stays finite.
+
+Run `python TRK-07.py`.
 
 ??? example "Reproducer: TRK-07.py"
 

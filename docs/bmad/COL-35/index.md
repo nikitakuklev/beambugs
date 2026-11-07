@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [make_SR_mats species propagation, bmad/multiparticle/envelope_mod.f90:99–111](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/envelope_mod.f90#L99-L111)<br>[diffusion_matrix_B coefficient, bmad/multiparticle/envelope_mod.f90:124–138](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/envelope_mod.f90#L124-L138)<br>[mass and Planck constants, sim_utils/interfaces/physical_constants.f90:18–40](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/sim_utils/interfaces/physical_constants.f90#L18-L40) |
 
 When the envelope radiation-diffusion helper is called for a heavier species, its classical radius changes with species but its recoil coefficient keeps the electron mass. The coefficient should contain ℏ/(mc), where ℏ is the reduced Planck constant, m is the species mass and c is the speed of light. At equal Lorentz factor and curvature, the proton/electron diffusion ratio is 5.446 × 10⁻⁴ instead of 2.966 × 10⁻⁷, a factor of 1836 too large. Approximate physical constants also make the electron coefficient 0.03383% high.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_contracts.py](../helpers/_collective_contracts.py) · [View source](../helpers/index.md#_collective_contracts)
+Run `python COL-35.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_contracts.py](../helpers/_collective_contracts.py) in the same directory.
 
 ??? example "Reproducer: COL-35.py"
 
@@ -35,7 +32,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     The script calls the production diffusion helper for electrons, positrons and protons at equal
     Lorentz factor and curvature. It checks charge-conjugate equality and compares the species ratio
     with the classical-radius and recoil-mass factors, then checks the electron value against Bmad's
-    physical constants. BMAD_DIST selects the build.
+    physical constants.
     """
 
     from _bmad import compare, fortran, verdict

@@ -2,7 +2,7 @@
 
 Calling srdt on a zero-length ab_multipole or sad_mult with a nonzero sextupole component returns NaN driving terms. Only the multipole element class takes the thin-element path; the other classes divide integrated strength by zero length and then multiply by a zero slice length. Equivalent thin elements should return the same finite terms. In a FODO ring, both affected representations return NaN where the equivalent multipole gives h₂₁₀₀₀ = −1.865 and h₁₀₁₁₀ = 0.9849.
 
-The script places equivalent multipole, ab_multipole and sad_mult sextupoles at zero phase in the same FODO ring. It validates the finite multipole control against the analytic normal-sextupole coefficients before checking the two other representations for NaNs. BMAD_DIST selects the production build.
+The script places equivalent multipole, ab_multipole and sad_mult sextupoles at zero phase in the same FODO ring. It validates the finite multipole control against the analytic normal-sextupole coefficients before checking the two other representations for NaNs.
 """
 
 import numpy as np

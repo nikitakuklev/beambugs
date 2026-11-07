@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on SDDS master (`a3f730a`) |
+| Last reproduced | 2026-11-04 on SDDS master (`a3f730a`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [reciprocals, wofz.c:191,197](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/wofz.c#L191-L197)<br>[accuracy contract, wofz.c:65](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/wofz.c#L65)<br>[double-precision statement, wofz.c:113](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/wofz.c#L113)<br>[types, f2c.h:21,26](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/include/f2c.h#L21-L26)<br>[complexErf, complex.cc:27–33](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/complex.cc#L27-L33)<br>[wa and wb, insertSCeffects.cc:581–584](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L581-L584)<br>[kicks, insertSCeffects.cc:592–602](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/insertSCeffects.cc#L592-L602)<br>[nonlinear force, scmult.tex:24–43](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/scmult.tex#L24-L43) |
 
 Nonlinear SCMULT kicks for elliptical Gaussian beams lose accuracy when the SDDS complex error function evaluates its power-series reciprocals in single precision despite a 14-digit accuracy contract. For 1 nC of electrons at 10 mₑc with rms sizes 2 mm horizontally and 1 mm vertically, a sampled particle's horizontal kick is −3.149×10⁻⁵ rad, differing from the independent Poisson-integral value by −7.904×10⁻¹³ rad (2.510×10⁻⁸ relative). A scalar model reproduces the native kicks with single-precision reciprocals and agrees with the integral to about 10⁻¹⁵ relative with double-precision reciprocals.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _scring.py](../helpers/_scring.py) · [View source](../helpers/index.md#_scring)
+Run `python COL-06.py` with [_elegant.py](../helpers/_elegant.py) and [_scring.py](../helpers/_scring.py) in the same directory.
 
 ??? example "Reproducer: COL-06.py"
 

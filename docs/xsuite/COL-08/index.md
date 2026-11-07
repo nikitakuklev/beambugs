@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`) |
+| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`, head build) |
 | Source | [`LossMap.add_particles`, lossmap.py:496–497](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L496-L497) |
 
 `LossMap.add_particles` adds the energy of the whole accumulated population to `tot_energy_initial` on every call, so a loss map built from several batches counts the earlier batches again. The initial energy is additive: splitting an ensemble into batches or reordering them must not change it. For seven primary protons at 3 TeV/c, the merged map reports 2.100 × 10¹³ eV, batches of 2 then 5 report 2.700 × 10¹³ eV and 5 then 2 report 3.600 × 10¹³ eV; two equal batches report 3 times one batch's energy instead of 2. `num_initial` is correct, and loss maps filled in a single call are unaffected.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-08.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-08.py"
 
@@ -40,8 +37,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     The script builds batches of two and five primary protons with disjoint particle IDs and no losses,
     and adds them to loss maps merged, as 2 then 5, as 5 then 2, and as two equal batches. It compares
     the split results with the merged map, which equals the sum of the separately evaluated batch
-    energies, and checks that `num_initial` agrees. It requires the installed prebuilt kernels
-    (compilation is forbidden).
+    energies, and checks that `num_initial` agrees.
     """
 
     from _prebuilt import CTX, identity, kernels, np, report, xc, xt

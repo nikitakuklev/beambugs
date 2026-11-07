@@ -12,16 +12,13 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [ibs_matrix_C argument comments, bmad/multiparticle/envelope_mod.f90:720–728](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/envelope_mod.f90#L720-L728)<br>[beam_envelope_ibs argument comments, bmad/multiparticle/envelope_mod.f90:758–766](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/envelope_mod.f90#L758-L766)<br>[tail-cut impact parameter, bmad/multiparticle/envelope_mod.f90:909–918](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/envelope_mod.f90#L909-L918)<br>[tau_a comment, bmad/multiparticle/ibs_mod.f90:10–12](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L10-L12)<br>[driver damping-time calculation, bsim/envelope_ibs/envelope_ibs.f90:210–216](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/envelope_ibs/envelope_ibs.f90#L210-L216)<br>[longest-mode choice and call, bsim/envelope_ibs/envelope_ibs.f90:239–252](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/envelope_ibs/envelope_ibs.f90#L239-L252) |
 
 When callers follow the envelope IBS argument comments, they supply a damping rate where the tail-cut calculation requires a damping time in seconds. The implementation divides a ratio of volume to speed by that input to form a squared impact parameter, which requires time units. In a fixed diagonal beam covariance, passing 100 instead of a 0.01 s damping time increases the diffusion norm by a factor of 1.621. The envelope driver already passes the longest mode damping time; the argument comments should describe that convention.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_contracts.py](../helpers/_collective_contracts.py) · [View source](../helpers/index.md#_collective_contracts)
+Run `python COL-34.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_contracts.py](../helpers/_collective_contracts.py) in the same directory.
 
 ??? example "Reproducer: COL-34.py"
 
@@ -32,9 +29,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     When callers follow the envelope IBS argument comments, they supply a damping rate where the tail-cut calculation requires a damping time in seconds. The implementation divides a ratio of volume to speed by that input to form a squared impact parameter, which requires time units. In a fixed diagonal beam covariance, passing 100 instead of a 0.01 s damping time increases the diffusion norm by a factor of 1.621. The envelope driver already passes the longest mode damping time; the argument comments should describe that convention.
 
-    The script evaluates the envelope IBS kernel on the same diagonal covariance with a damping time
-    and its reciprocal. It compares the finite diffusion outputs and reads the argument descriptions
-    from BMAD_SOURCE. BMAD_DIST selects the production library.
+    The script evaluates the envelope IBS kernel on the same diagonal covariance with a damping time and
+    its reciprocal. It compares the finite diffusion outputs and reads the argument descriptions from
+    BMAD_SOURCE.
     """
 
     import numpy as np

@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [event probability, matter.c:127–128](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L127-L128)<br>[matter.c:187](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L187)<br>[matter.c:246–251](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L246-L251)<br>[matter.c:258–283](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L258-L283)<br>[`ELECTRON_RECOIL`, track_data.c:2143](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2143)<br>[matter.c:84–85](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L84-L85) |
 
 In MATTER, enabling ELECTRON_RECOIL while ENERGY_DECAY and NUCLEAR_BREMSSTRAHLUNG are disabled omits the documented recoil energy loss. The energy-processing gates ignore standalone recoil, although collisions with target electrons must transfer positive energy. For 20000 electrons of momentum 1000 mₑc crossing 0.01 m of dilute helium, a Poisson approximation to the option's event rate predicts 6894 ± 67.21 electrons losing energy, but recoil-only output is bit-identical to all-off output. Enabling bremsstrahlung activates thousands of recoil losses, isolating the activation failure.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _matter.py](../helpers/_matter.py) · [View source](../helpers/index.md#_matter)
+Run `python SCT-05.py` with [_elegant.py](../helpers/_elegant.py) and [_matter.py](../helpers/_matter.py) in the same directory.
 
 ??? example "Reproducer: SCT-05.py"
 
@@ -64,7 +61,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     # event); that a recoil must lower the momentum follows from the option's documented contract and
     # the positive Moller cross section. The element actually has 61 independent Bernoulli sections of
     # probability MEAN_RECOIL/61 each, whose exact at-least-one expectation is 6913.18 with binomial
-    # sigma 67.26; both counts recorded in the ledger pass either 5-sigma comparison.
+    # sigma 67.26; the recorded serial and MPI counts, 6910 and 6956, pass either 5-sigma comparison.
     MEAN_RECOIL = LENGTH * RHO / (AMU * A) * 2 * np.pi * Z * RE**2 / P0 * (1 / BS_Y0 - 1)
     RECOIL_EXPECTED = COUNT * -np.expm1(-MEAN_RECOIL)
     RECOIL_SIGMA = np.sqrt(RECOIL_EXPECTED * np.exp(-MEAN_RECOIL))  # Poisson-approximation sigma

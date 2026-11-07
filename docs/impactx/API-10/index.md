@@ -12,11 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`simulation.py#L12-L20`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/dashboard/Run/simulation.py#L12-L20)<br>[`init_envelope` contract](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/docs/source/usage/python.rst#L340-L348) |
 
 In envelope tracking mode, the ImpactX dashboard generates `sim.init_envelope(ref, distr)` without the selected beam intensity, so the envelope starts with zero bunch charge and its space-charge kicks vanish. `init_envelope` defines the intensity as bunch charge in C for 3D space charge and current in A for 2D, and the bundled envelope example passes it. Running the generated code for a 10 MeV proton envelope with 1 nC selected, through a 0.2 m drift with 3D space charge, leaves the normalized-momentum variance ⟨pₓ²⟩ at its vacuum value 1.000×10⁻⁸ instead of 3.889×10⁻⁵, the result of a closed-form uniform-ellipsoid field calculation. ImpactX logs a zero-charge warning; according to the source, the dashboard's Run and Export both use this generator.
+
+Run `python API-10.py`.
 
 ??? example "Reproducer: API-10.py"
 
@@ -34,13 +36,16 @@ In envelope tracking mode, the ImpactX dashboard generates `sim.init_envelope(re
     of a closed-form uniform-ellipsoid field calculation. ImpactX logs a zero-charge warning; according
     to the source, the dashboard's Run and Export both use this generator.
 
-    Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
-    generator modules from that clone behind package shells, replacing only the reactive state object so
-    that no Trame web UI or server is needed, and selects envelope tracking, 3D space charge and 1 nC
-    for a 10 MeV proton Gaussian beam. It executes the generated tracking commands through a 0.2 m drift
-    and compares the full covariance matrix with vacuum drift transport. As controls, `init_envelope`
-    called with 1 nC and 0.5 nC must match a drift–kick–drift calculation using the closed-form field of
-    a prolate uniform ellipsoid with the same rms sizes.
+    Setup: `IMPACTX_SOURCE` set to a clone of BLAST-ImpactX/impactx at tag `26.10`; the script loads the
+    dashboard modules from it.
+
+    The script loads the dashboard's unmodified generator modules from that clone behind package shells,
+    replacing only the reactive state object so that no Trame web UI or server is needed, and selects
+    envelope tracking, 3D space charge and 1 nC for a 10 MeV proton Gaussian beam. It executes the
+    generated tracking commands through a 0.2 m drift and compares the full covariance matrix with
+    vacuum drift transport. As controls, `init_envelope` called with 1 nC and 0.5 nC must match a
+    drift–kick–drift calculation using the closed-form field of a prolate uniform ellipsoid with the
+    same rms sizes.
     """
 
     import os

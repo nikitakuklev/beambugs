@@ -12,10 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-31 on BatchSolve main (`ac41c09`) |
+| Last reproduced | 2026-10-31 on BatchSolve main (`ac41c09`, head build) |
 | Source | [`src/rootfinders/newton.jl:30`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L30)<br>[`:59`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L59)<br>[`src/minimizers/brent.jl:24`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/minimizers/brent.jl#L24)<br>[`:38`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/minimizers/brent.jl#L38) |
 
 The docstrings of BatchSolve's allocating `newton` and `brent` say that the returned solution `u` is the caller's `x`, mutated in place, but both work on a copy and leave `x` unchanged. The in-place `brent!` does alias its argument, so the text describes the in-place functions. Calling `newton` from x = [2.0] returns u = [1.000] and leaves x = [2.0], with `u === x` false. Code that follows the docstring and reads `x` after the call gets the initial guess. The allocating behavior itself is sensible; only the documentation is wrong.
+
+Run `julia OPT-15.jl`.
 
 ??? example "Reproducer: OPT-15.jl"
 

@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`) |
+| Last reproduced | 2026-10-29 on xcoll main (`64e13f5`, head build) |
 | Source | [`LossMap._make_coll_summary`, lossmap.py:698–701](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L698-L701) |
 
 The collimator summary of `LossMap` computes the primary energy `e_prim` from the absorbed primary energy plus the secondary-particle deposit counter, instead of the primary one. The Everest kernel accumulates primary and secondary deposits separately, so without absorption `e_prim` must equal the primary counter. For 20 protons at 400 GeV/c through 0.6 mm of carbon-fibre composite without absorption, an all-primary batch reports `e_prim` = 0 instead of 2.865 × 10⁶ eV, and an all-secondary batch 2.865 × 10⁶ eV instead of 0. The total collimator energy is correct; its split into primary and secondary deposits is wrong.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python COL-14.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: COL-14.py"
 
@@ -40,8 +37,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     The script tracks two unit-weight batches of 20 protons from x = 3 mm through the collimator (jaw 1
     mm, seeds 7001–7020), all surviving: one batch starts as primary particles, the other in state
     `SECONDARY_PARTICLE`. It reads the kernel's two deposit counters, then compares the loss map's total
-    and primary collimator energy with them. It requires the installed prebuilt kernels (compilation is
-    forbidden).
+    and primary collimator energy with them.
     """
 
     from _prebuilt import CTX, identity, kernels, np, xc, xt

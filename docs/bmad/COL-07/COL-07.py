@@ -7,8 +7,8 @@ cell integrals are finite; direct volume integration gives a sampled field of (3
 Zero and full-cell offsets remain finite.
 
 The script solves the same charged-cell problem at zero, half-cell and full-cell offsets and checks
-electric-field and potential finiteness. Independent volume quadrature establishes a finite field
-at the half-cell observation point. Set BMAD_DIST to the build root.
+electric-field and potential finiteness. Independent volume quadrature establishes a finite field at
+the half-cell observation point.
 """
 
 import numpy as np

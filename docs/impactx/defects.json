@@ -78,7 +78,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -154,7 +155,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -243,15 +245,18 @@
    "date": "2026-10-27",
    "code": {
     "ref": "ImpactX 26.10",
-    "commit": "615921c6867c"
+    "commit": "615921c6867c",
+    "committed": "2026-10-05"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
-     "commit": "f9c2a82e24b7"
-    }
+     "commit": "f9c2a82e24b7",
+     "committed": "2026-11-05"
+    },
+    "head": true
    }
   },
   "models": [
@@ -350,7 +355,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -439,7 +445,8 @@
    "date": "2026-10-30",
    "code": {
     "ref": "ImpactX development",
-    "commit": "dfd49f22c34f"
+    "commit": "dfd49f22c34f",
+    "committed": "2026-10-30"
    },
    "head": true,
    "head_not_reproduced": null
@@ -532,7 +539,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -606,7 +614,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -690,7 +699,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -772,7 +782,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -861,15 +872,18 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
-    "commit": "615921c6867c"
+    "commit": "615921c6867c",
+    "committed": "2026-10-05"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
-     "commit": "f9c2a82e24b7"
-    }
+     "commit": "f9c2a82e24b7",
+     "committed": "2026-11-05"
+    },
+    "head": true
    }
   },
   "models": [
@@ -958,15 +972,18 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
-    "commit": "615921c6867c"
+    "commit": "615921c6867c",
+    "committed": "2026-10-05"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
-     "commit": "f9c2a82e24b7"
-    }
+     "commit": "f9c2a82e24b7",
+     "committed": "2026-11-05"
+    },
+    "head": true
    }
   },
   "models": [
@@ -1040,7 +1057,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1125,7 +1143,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1217,7 +1236,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1294,7 +1314,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1315,7 +1336,7 @@
  {
   "code": "impactx",
   "id": "TRK-16",
-  "title": "Rolled `ThinDipole`, `Sbend` and `ExactSbend` omit vertical steering",
+  "title": "Rolled `ThinDipole`, `Sbend`, `ExactSbend` and pure-dipole `ExactCFbend` omit vertical steering",
   "area": "Tracking",
   "priority": "P1",
   "severity": "Wrong physics",
@@ -1323,24 +1344,40 @@
   "tags": [
    "contract-unsettled"
   ],
-  "summary": "Setting `rotation`, a roll about the beam axis, on a `ThinDipole`, `Sbend` or `ExactSbend` produces no vertical steering. The manual describes `rotation` as a rotation error, and the Lorentz force in a bend of angle θ rolled by α then gives a vertical kick `py` = −θ·sin α to leading order in θ; ImpactX gives `py` = 0. A 3 mrad bend rolled by 20 mrad misses a kick of −6.000e-5 (60 μrad), about 60 μm after a 1 m drift, so roll-error studies lose the leading vertical effect of rolled dipoles. Examples and the MAD-X importer also use `rotation` as a design roll, under which the reference orbit must bend vertically; under either reading the orbit stays in the horizontal plane.",
+  "summary": "Setting `rotation`, a roll α about the beam axis, on `ThinDipole`, `Sbend`, `ExactSbend`, or pure-dipole `ExactCFbend` omits vertical steering. Under the documented rotation-error contract, a bend of angle θ should give normalized vertical momentum py ≈ −θ sin α; a 3.000 mrad bend rolled by 20.00 mrad gives zero instead of −6.000e−5. An independent Lorentz integration confirms this leading effect. Under the design-roll interpretation used by examples, the reference should bend vertically, yet its vertical position and momentum stay zero.",
   "justification": null,
   "locations": [
    {
     "label": "`ThinDipole.H#L154-L193`",
-    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ThinDipole.H#L154-L193"
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/ThinDipole.H#L154-L193"
    },
    {
     "label": "`Sbend.H#L178-L284`",
-    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/Sbend.H#L178-L284"
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/Sbend.H#L178-L284"
    },
    {
     "label": "`ExactSbend.H#L166-L305`",
-    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ExactSbend.H#L166-L305"
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/ExactSbend.H#L166-L305"
+   },
+   {
+    "label": "orbital dispatcher",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/ExactCFbend.H#L160-L199"
+   },
+   {
+    "label": "`map1`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/ExactCFbend.H#L255-L286"
+   },
+   {
+    "label": "`map2`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/ExactCFbend.H#L344-L365"
+   },
+   {
+    "label": "reference push",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/ExactCFbend.H#L718-L775"
    },
    {
     "label": "alignment wrapper",
-    "url": "https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/mixin/beamoptic.H#L440-L507"
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/mixin/beamoptic.H#L440-L507"
    },
    {
     "label": "`Sbend`",
@@ -1357,6 +1394,14 @@
    {
     "label": "reference-trajectory contract",
     "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/theory/concepts.rst#L9-L20"
+   },
+   {
+    "label": "`ExactCFbend` API contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L2071-L2104"
+   },
+   {
+    "label": "coordinate contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/theory/coordinates_units.rst#L6-L17"
    }
   ],
   "upstream": [
@@ -1379,6 +1424,17 @@
       "commit": "615921c6867c",
       "build": "impactx-noacc wheel, CPU, double, serial"
      }
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4"
+     },
+     "scope": "pure-dipole ExactCFbend roll extension"
     }
    ],
    "confirmed": [
@@ -1390,6 +1446,38 @@
       "ref": "26.10",
       "commit": "615921c6867c",
       "build": "impactx-noacc wheel, CPU, double, serial"
+     }
+    },
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4"
+     },
+     "scope": "pure-dipole ExactCFbend roll extension"
+    },
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "development",
+      "commit": "f9c2a82e24b7",
+      "build": "source, CPU NOACC, double, serial, FFT, no SIMD/openPMD"
+     },
+     "scope": "pure-dipole ExactCFbend roll extension on development"
+    },
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "date": "2026-11-07",
+     "code": {
+      "ref": "development",
+      "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+      "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD; also the impactx-noacc 26.10 wheel"
      }
     }
    ],
@@ -1404,15 +1492,17 @@
    }
   },
   "last_reproduced": {
-   "date": "2026-10-29",
+   "date": "2026-11-07",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
    },
-   "head": true,
+   "head": false,
    "head_not_reproduced": null
   },
   "models": [
+   "claude-opus-5-5",
    "gpt-6-astra",
    "gpt-6.1-sol"
   ],
@@ -1500,7 +1590,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1598,7 +1689,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1719,7 +1811,8 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "f9c2a82e24b7"
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1806,7 +1899,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1823,6 +1917,282 @@
    "scipy"
   ],
   "page": "impactx/TRK-20/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-21",
+  "title": "Field-free zero-frequency RFCavity returns nonfinite transport",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Setting a field-free finite-length RFCavity to zero frequency produces NaN transverse particle coordinates instead of linear drift transport. The constructor and frequency setter accept this value without an error, and the parameter documentation gives no nonzero-frequency restriction. For a 1.200 m element at reference Lorentz factor γ₀ = 3, an initial horizontal position of 0.004000 m and normalized horizontal momentum of 0.003000 should give 0.007600 m; the result is NaN. The transfer map and covariance transport are also nonfinite, and multiple slices contaminate all six coordinates. Positive-frequency field-free cavities and zero-frequency ShortRF controls remain finite.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`RFCavity.H:414–428`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L414-L428"
+   },
+   {
+    "label": "`464–481`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L464-L481"
+   },
+   {
+    "label": "`193–204`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L193-L204"
+   },
+   {
+    "label": "`145–150`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L145-L150"
+   },
+   {
+    "label": "`559–563`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L559-L563"
+   },
+   {
+    "label": "`elements.cpp:2395–2398`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/elements.cpp#L2395-L2398"
+   },
+   {
+    "label": "parameter contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1748-L1774"
+   },
+   {
+    "label": "`lineartransport.H:59–77`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/mixin/lineartransport.H#L59-L77"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-06",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-06",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-21.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/TRK-21/"
+ },
+ {
+  "code": "impactx",
+  "id": "TRK-22",
+  "title": "Absolute reference clocks corrupt thick RF phase after many turns",
+  "area": "Tracking",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "known-limitation",
+   "partly-source-only"
+  ],
+  "summary": "After many turns, rounding of the absolute reference clock changes the phase of thick RF cavities. For protons at Lorentz factor γ₀=2, sampling a 4.000 cm, 1.300 GHz gap at 28.15 MV/m after 10⁶ turns of a 998.6 m magnetic ring gives −787.7 keV instead of +587.4 keV with the default ten integration steps. Exact flight time and a high-precision split map establish the expected gain; independent analytic-invariant quadrature gives +588.1 keV before finite-step error. The stored clock is ahead by 176.2 ps. Refining the cavity integration can introduce further clock error. ShortRF uses synchronous phase and is independent of this absolute clock.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "coordinate contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/theory/coordinates_units.rst#L6-L17"
+   },
+   {
+    "label": "`ReferenceParticle.H:34–42`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/ReferenceParticle.H#L34-L42"
+   },
+   {
+    "label": "`RFCavity.H:347–353`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L347-L353"
+   },
+   {
+    "label": "`464–481`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L464-L481"
+   },
+   {
+    "label": "`414–428`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L414-L428"
+   },
+   {
+    "label": "`193–204`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L193-L204"
+   },
+   {
+    "label": "`Sbend.H:262–277`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/Sbend.H#L262-L277"
+   },
+   {
+    "label": "`Drift.H:175–185`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/Drift.H#L175-L185"
+   },
+   {
+    "label": "thick-cavity contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1748-L1780"
+   },
+   {
+    "label": "Fourier representation",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/theory/softedge_elements.rst#L13-L27"
+   },
+   {
+    "label": "`RF_Efield`, 304–317",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L304-L317"
+   },
+   {
+    "label": "Defaults are ten map steps and one slice",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1816-L1824"
+   },
+   {
+    "label": "positive-step validation",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L559-L563"
+   },
+   {
+    "label": "second-order split",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/integrators/Integrators.H#L93-L112"
+   },
+   {
+    "label": "`RFCavity.H:601–612`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/RFCavity.H#L601-L612"
+   },
+   {
+    "label": "reference RF example",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/examples/rfcavity/run_rfcavity_ref_part.py#L44-L54"
+   },
+   {
+    "label": "Repeated lattice periods",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L301-L306"
+   },
+   {
+    "label": "`common.H:149–166`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/tracking/common.H#L149-L166"
+   },
+   {
+    "label": "synchronous phase",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L1950-L1958"
+   },
+   {
+    "label": "`ShortRF.H:199–220`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/ShortRF.H#L199-L220"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1391,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1391",
+    "relation": "report"
+   },
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1195,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1195",
+    "relation": "discussion"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD, ABLASTR from WarpX 26.10; head 6eb30ee17675 changes only docs/source/conf.py"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "TRK-22.py",
+   "../helpers/_precision.py"
+  ],
+  "requirements": [
+   "mpmath",
+   "numpy"
+  ],
+  "page": "impactx/TRK-22/"
  },
  {
   "code": "impactx",
@@ -1900,7 +2270,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -1980,7 +2351,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2062,15 +2434,18 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
-    "commit": "615921c6867c"
+    "commit": "615921c6867c",
+    "committed": "2026-10-05"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
-     "commit": "f9c2a82e24b7"
-    }
+     "commit": "f9c2a82e24b7",
+     "committed": "2026-11-05"
+    },
+    "head": true
    }
   },
   "models": [
@@ -2195,7 +2570,8 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX development",
-    "commit": "b701a6e9d1f9"
+    "commit": "b701a6e9d1f9",
+    "committed": "2026-10-23"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2279,7 +2655,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2358,7 +2735,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2440,7 +2818,8 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "f9c2a82e24b7"
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2552,7 +2931,8 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "f9c2a82e24b7"
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2569,6 +2949,461 @@
    "scipy"
   ],
   "page": "impactx/COL-05/"
+ },
+ {
+  "code": "impactx",
+  "id": "COL-06",
+  "title": "3D FFT integrated Green function loses far-cell accuracy",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "With the 3D FFT space-charge solver, cancellation in the integrated Green function can reverse the field on highly anisotropic meshes. On a 128³-cell mesh covering 1.280 mm × 1.280 µm × 1.280 mm, a symmetric eight-charge source carrying 1.000 nC at reference Lorentz factor γ₀ = 2 gives −23.23 V/m vertically where independent cell-volume quadrature and a 90-digit prism integral give +64.30 V/m, a 136.1% vector error. Both references include the implemented centered field stencil. An ordinary cubic-mesh control agrees within 3.562×10⁻¹⁰ relative.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`IntegratedPotential3D`, IntegratedGreenFunctionSolver.H:38–47",
+    "url": "https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/IntegratedGreenFunctionSolver.H#L38-L47"
+   },
+   {
+    "label": "`SumOfIntegratedPotential3D`, 83–94",
+    "url": "https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/IntegratedGreenFunctionSolver.H#L83-L94"
+   },
+   {
+    "label": "`IntegratedGreenFunctionSolver.cpp:74–85`",
+    "url": "https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/IntegratedGreenFunctionSolver.cpp#L74-L85"
+   },
+   {
+    "label": "`PoissonSolver.H:270–273`",
+    "url": "https://github.com/BLAST-WarpX/warpx/blob/ec1660d961696c865c87c26728b7e248b5454082/Source/ablastr/fields/PoissonSolver.H#L270-L273"
+   },
+   {
+    "label": "`ForceFromSelfFields.cpp:70–72`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/ForceFromSelfFields.cpp#L70-L72"
+   },
+   {
+    "label": "rectangular-domain contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2592-L2603"
+   },
+   {
+    "label": "FFT solver contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2614-L2630"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1442,
+    "kind": "issue",
+    "url": "https://github.com/BLAST-ImpactX/impactx/issues/1442",
+    "relation": "discussion"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD, ABLASTR from WarpX 26.10; head 6eb30ee17675 changes only docs/source/conf.py"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-06.py"
+  ],
+  "requirements": [
+   "mpmath",
+   "numpy"
+  ],
+  "page": "impactx/COL-06/"
+ },
+ {
+  "code": "impactx",
+  "id": "COL-07",
+  "title": "ISR omits the particle path through the bend field",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "With incoherent synchrotron radiation enabled in bends, mean energy loss and diffusion use the reference slice length instead of each particle's path through the magnetic field. A 1.000 m, 100.0 mrad bend with 30.00 mrad face angles has zero relative loss slope with horizontal displacement instead of 0.04003 m⁻¹. At 3.000 GeV and a 0.1000 mm offset, this omits 4.003 ppm of the bend's energy loss, about 0.04565 eV per pass. Refining or explicitly splitting the body preserves the error; the rectangular-face displacement term cancels physically.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "ISRPush",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/wakefields/ISRPush.cpp#L24-L120"
+   },
+   {
+    "label": "HandleISR",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/wakefields/HandleISR.H#L30-L66"
+   },
+   {
+    "label": "bend_radius",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/wakefields/BendRadius.H#L35-L55"
+   },
+   {
+    "label": "DipEdge",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/DipEdge.H#L29-L44"
+   },
+   {
+    "label": "ISR parameter contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2719-L2753"
+   },
+   {
+    "label": "Python ISR contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L227-L245"
+   },
+   {
+    "label": "conservative Hamiltonian approximations",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/theory/assumptions.rst#L22-L44"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-06",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-06",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-07.py",
+   "../helpers/_slicing.py"
+  ],
+  "requirements": [
+   "cpymad",
+   "numpy",
+   "scipy"
+  ],
+  "page": "impactx/COL-07/"
+ },
+ {
+  "code": "impactx",
+  "id": "COL-08",
+  "title": "Automatic mesh bounds discard their own upper-extremum particles",
+  "area": "Collective effects",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Automatic mesh sizing with `geometry.prob_relative=1` can silently delete particles although this setting is documented to cover the beam exactly. Upper-extremum particles fall outside the accepted particle cells and redistribution removes them before deposition. Initialization with any enabled space-charge model is also affected. A 1.000 nC beam of 8192 particles loses 261 particles across 100 slices of a 1 cm drift, leaving 0.9681 nC despite having no aperture or loss process. Charge conservation and an independent boundary calculation establish the error. Near-unit positive padding can also fail through rounding; factors 1.2 and the default 3 preserve this beam.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "InitMeshRefinement.cpp:51–63",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/initialization/InitMeshRefinement.cpp#L51-L63"
+   },
+   {
+    "label": "InitMeshRefinement.cpp:99–133",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/initialization/InitMeshRefinement.cpp#L99-L133"
+   },
+   {
+    "label": "dynamic-domain contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2568-L2590"
+   },
+   {
+    "label": "InitDistribution.cpp:424–433",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/initialization/InitDistribution.cpp#L424-L433"
+   },
+   {
+    "label": "HandleSpacecharge.cpp:65–82",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/HandleSpacecharge.cpp#L65-L82"
+   },
+   {
+    "label": "deposit_charge",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/ImpactX.cpp#L706-L725"
+   },
+   {
+    "label": "AMReX_Geometry.cpp:566–569",
+    "url": "https://github.com/AMReX-Codes/amrex/blob/015c14b65715b277fbc54706ebe7455b196d2254/Src/Base/AMReX_Geometry.cpp#L566-L569"
+   },
+   {
+    "label": "AMReX_Geometry.H:507–522",
+    "url": "https://github.com/AMReX-Codes/amrex/blob/015c14b65715b277fbc54706ebe7455b196d2254/Src/Base/AMReX_Geometry.H#L507-L522"
+   },
+   {
+    "label": "AMReX_Geometry.cpp:708–716",
+    "url": "https://github.com/AMReX-Codes/amrex/blob/015c14b65715b277fbc54706ebe7455b196d2254/Src/Base/AMReX_Geometry.cpp#L708-L716"
+   },
+   {
+    "label": "AMReX_ParticleContainerI.H:451–459",
+    "url": "https://github.com/AMReX-Codes/amrex/blob/015c14b65715b277fbc54706ebe7455b196d2254/Src/Particle/AMReX_ParticleContainerI.H#L451-L459"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    },
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "date": "2026-11-07",
+     "code": {
+      "ref": "development",
+      "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+      "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD; also the impactx-noacc 26.10 wheel"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD, ABLASTR from WarpX 26.10; head 6eb30ee17675 changes only docs/source/conf.py"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-08.py",
+   "../helpers/_precision.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/COL-08/"
+ },
+ {
+  "code": "impactx",
+  "id": "COL-09",
+  "title": "Zero-bunch-charge Gaussian space charge returns nonfinite coordinates",
+  "area": "Collective effects",
+  "priority": "P3",
+  "severity": "Crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "Tracking a zero-bunch-charge test beam with `Gauss2p5D` or `Gauss3D` returns nonfinite particle coordinates instead of the field-free map. Zero bunch charge is accepted with an advisory warning, but the Gaussian pushers consume undefined weighted beam sizes before multiplying by zero source charge. An independent linear-drift calculation predicts finite coordinates for every particle. For 128 initially finite particles through a 3.7 cm drift, `Gauss2p5D` produces 768 nonfinite coordinate entries and `Gauss3D` produces 640. The three PIC models and disabled space charge remain finite and agree with the analytic drift to within 4.941e-16 in reference-normalized momentum.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "InitDistribution.cpp:303–320",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/initialization/InitDistribution.cpp#L303-L320"
+   },
+   {
+    "label": "zero-weight diagnostic contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/dataanalysis/dataanalysis.rst#L138-L142"
+   },
+   {
+    "label": "Gaussian-model contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2460-L2466"
+   },
+   {
+    "label": "ReducedBeamCharacteristics.cpp:297–298",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/diagnostics/ReducedBeamCharacteristics.cpp#L297-L298"
+   },
+   {
+    "label": "ReducedBeamCharacteristics.cpp:545–567",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/diagnostics/ReducedBeamCharacteristics.cpp#L545-L567"
+   },
+   {
+    "label": "Gauss2p5dPush.cpp:161–166",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/Gauss2p5dPush.cpp#L161-L166"
+   },
+   {
+    "label": "Gauss2p5dPush.cpp:240–247",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/Gauss2p5dPush.cpp#L240-L247"
+   },
+   {
+    "label": "Gauss2p5dPush.cpp:280–299",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/Gauss2p5dPush.cpp#L280-L299"
+   },
+   {
+    "label": "Gauss3dPush.cpp:122–149",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/Gauss3dPush.cpp#L122-L149"
+   },
+   {
+    "label": "Gauss3dPush.cpp:182–190",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/Gauss3dPush.cpp#L182-L190"
+   },
+   {
+    "label": "HandleSpacecharge.cpp:36–46",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/spacecharge/HandleSpacecharge.cpp#L36-L46"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD, ABLASTR from WarpX 26.10; head 6eb30ee17675 changes only docs/source/conf.py"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "COL-09.py",
+   "../helpers/_precision.py"
+  ],
+  "requirements": [
+   "numpy"
+  ],
+  "page": "impactx/COL-09/"
  },
  {
   "code": "impactx",
@@ -2639,7 +3474,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -2725,15 +3561,18 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
-    "commit": "615921c6867c"
+    "commit": "615921c6867c",
+    "committed": "2026-10-05"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
-     "commit": "f9c2a82e24b7"
-    }
+     "commit": "f9c2a82e24b7",
+     "committed": "2026-11-05"
+    },
+    "head": true
    }
   },
   "models": [
@@ -2822,15 +3661,18 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
-    "commit": "615921c6867c"
+    "commit": "615921c6867c",
+    "committed": "2026-10-05"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
-     "commit": "f9c2a82e24b7"
-    }
+     "commit": "f9c2a82e24b7",
+     "committed": "2026-11-05"
+    },
+    "head": true
    }
   },
   "models": [
@@ -2927,15 +3769,18 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX 26.10",
-    "commit": "615921c6867c"
+    "commit": "615921c6867c",
+    "committed": "2026-10-05"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
-     "commit": "f9c2a82e24b7"
-    }
+     "commit": "f9c2a82e24b7",
+     "committed": "2026-11-05"
+    },
+    "head": true
    }
   },
   "models": [
@@ -2950,6 +3795,220 @@
    "scipy"
   ],
   "page": "impactx/IO-04/"
+ },
+ {
+  "code": "impactx",
+  "id": "IO-05",
+  "title": "BeamMonitor additive position records omit the laboratory projection",
+  "area": "Particles and I/O",
+  "priority": "P4",
+  "severity": "Silent wrong result",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "known-limitation",
+   "partly-source-only"
+  ],
+  "summary": "With a BeamMonitor at a nonzero reference heading, reading the standard openPMD position-plus-positionOffset records combines local transverse deviations with laboratory reference coordinates. The sum omits the rotation required to obtain laboratory particle positions. In a 0.2000 rad bend example, the horizontal separation is 12.51 mm from the records instead of the geometrically correct 12.26 mm, a 2.034% error. Raw local coordinates, reference attributes, tracking maps, and aligned straight-line output are correct.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`BeamMonitor.cpp:257–269`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/diagnostics/BeamMonitor.cpp#L257-L269"
+   },
+   {
+    "label": "`304–312`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/diagnostics/BeamMonitor.cpp#L304-L312"
+   },
+   {
+    "label": "`397–402`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/diagnostics/BeamMonitor.cpp#L397-L402"
+   },
+   {
+    "label": "`431–432`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/diagnostics/BeamMonitor.cpp#L431-L432"
+   },
+   {
+    "label": "`493–496`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/diagnostics/BeamMonitor.cpp#L493-L496"
+   },
+   {
+    "label": "monitor contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/dataanalysis/dataanalysis.rst#L11-L43"
+   },
+   {
+    "label": "coordinate definitions",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/theory/coordinates_units.rst#L6-L17"
+   },
+   {
+    "label": "openPMD 1.1.0 standard",
+    "url": "https://github.com/openPMD/openPMD-standard/blob/1e1d1fe9fd5914628898ab36fb516c4cfc27eeca/STANDARD.md#L475-L514"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1694,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1694",
+    "relation": "discussion"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD/HDF5"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD/HDF5"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+     "build": "source, CPU NOACC, double, serial, FFT, openPMD 0.17.1 with HDF5 2.1.0, JSON and TOML, no SIMD, ABLASTR from WarpX 26.10; head 6eb30ee17675 changes only docs/source/conf.py"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-05.py"
+  ],
+  "requirements": [
+   "h5py",
+   "numpy",
+   "scipy"
+  ],
+  "page": "impactx/IO-05/"
+ },
+ {
+  "code": "impactx",
+  "id": "IO-06",
+  "title": "Source cannot reload empty BeamMonitor populations",
+  "area": "Particles and I/O",
+  "priority": "P3",
+  "severity": "Crash or API hazard",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Loading a BeamMonitor file with zero saved particles through Source raises “Unallocated pointer passed during chunk loading.” instead of injecting an empty population. The reader passes a null buffer to openPMD even for a zero-length read. The same call is reached on MPI ranks assigned no particles when the file contains fewer particles than ranks. HDF5, JSON and TOML empty files fail in serial tests; one- and three-particle files preserve all tested coordinates and weights exactly.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`src/elements/Source.cpp:133–160`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/Source.cpp#L133-L160"
+   },
+   {
+    "label": "`src/elements/Source.cpp:182–208`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/Source.cpp#L182-L208"
+   },
+   {
+    "label": "Source contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2110-L2118"
+   },
+   {
+    "label": "reference-restoration option",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2136-L2149"
+   }
+  ],
+  "upstream": [
+   {
+    "repository": "BLAST-ImpactX/impactx",
+    "number": 1694,
+    "kind": "pull",
+    "url": "https://github.com/BLAST-ImpactX/impactx/pull/1694",
+    "relation": "fix"
+   }
+  ],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD/HDF5"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD/HDF5/JSON/TOML"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+     "build": "source, CPU NOACC, double, serial, FFT, openPMD 0.17.1 with HDF5 2.1.0, JSON and TOML, no SIMD, ABLASTR from WarpX 26.10; head 6eb30ee17675 changes only docs/source/conf.py"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "IO-06.py"
+  ],
+  "requirements": [
+   "h5py",
+   "numpy"
+  ],
+  "page": "impactx/IO-06/"
  },
  {
   "code": "impactx",
@@ -3027,15 +4086,18 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
-    "commit": "615921c6867c"
+    "commit": "615921c6867c",
+    "committed": "2026-10-05"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
-     "commit": "f9c2a82e24b7"
-    }
+     "commit": "f9c2a82e24b7",
+     "committed": "2026-11-05"
+    },
+    "head": true
    }
   },
   "models": [
@@ -3113,15 +4175,18 @@
    "date": "2026-10-28",
    "code": {
     "ref": "ImpactX 26.10",
-    "commit": "615921c6867c"
+    "commit": "615921c6867c",
+    "committed": "2026-10-05"
    },
    "head": false,
    "head_not_reproduced": {
     "date": "2026-11-05",
     "code": {
      "ref": "ImpactX development",
-     "commit": "f9c2a82e24b7"
-    }
+     "commit": "f9c2a82e24b7",
+     "committed": "2026-11-05"
+    },
+    "head": true
    }
   },
   "models": [
@@ -3206,7 +4271,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3282,7 +4348,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3356,7 +4423,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3431,7 +4499,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3509,7 +4578,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3591,7 +4661,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3667,7 +4738,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3747,7 +4819,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3831,7 +4904,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -3911,7 +4985,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4001,7 +5076,8 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "f9c2a82e24b7"
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4103,7 +5179,8 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "f9c2a82e24b7"
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4190,7 +5267,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4270,7 +5348,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4358,7 +5437,8 @@
    "date": "2026-10-29",
    "code": {
     "ref": "ImpactX development",
-    "commit": "fa0a43b9bb07"
+    "commit": "fa0a43b9bb07",
+    "committed": "2026-10-28"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4455,7 +5535,8 @@
    "date": "2026-11-05",
    "code": {
     "ref": "ImpactX development",
-    "commit": "f9c2a82e24b7"
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
    },
    "head": true,
    "head_not_reproduced": null
@@ -4472,5 +5553,569 @@
    "numpy"
   ],
   "page": "impactx/API-18/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-19",
+  "title": "MAD-X beam import retains the preceding species’ magnetic anomaly",
+  "area": "Python API",
+  "priority": "P4",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "experimental"
+  ],
+  "summary": "With experimental spin tracking, importing a named electron beam through RefPart.load_file() after selecting protons retains the proton magnetic anomaly. At 150.0 MeV total energy, a 0.3500 T, 0.6000 m solenoid rotates an initially vertical unit spin to (−0.9216, 0.3881, 0) instead of (−0.4079, 0.9130, 0), a 0.5249 component error. An independent Thomas–BMT integration establishes the electron result. Explicitly setting the electron anomaly restores it, and imported orbital tracking remains unchanged.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`src/python/impactx/madx_to_impactx.py:1707–1754`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/madx_to_impactx.py#L1707-L1754"
+   },
+   {
+    "label": "__init__.py:22",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/__init__.py#L22-L22"
+   },
+   {
+    "label": "62",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/__init__.py#L62-L62"
+   },
+   {
+    "label": "`src/particles/ReferenceParticle.H:111–122`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/ReferenceParticle.H#L111-L122"
+   },
+   {
+    "label": "`src/particles/ReferenceParticle.H:139–141`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/particles/ReferenceParticle.H#L139-L141"
+   },
+   {
+    "label": "`src/elements/Sol.H:116–123`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/Sol.H#L116-L123"
+   },
+   {
+    "label": "`src/elements/Sol.H:284–290`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/Sol.H#L284-L290"
+   },
+   {
+    "label": "zero-anomaly guard",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/tracking/particles.cpp#L109-L115"
+   },
+   {
+    "label": "named-species contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L846-L854"
+   },
+   {
+    "label": "load_file contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L888-L898"
+   },
+   {
+    "label": "spin contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2792-L2805"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    },
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "development",
+      "commit": "f9c2a82e24b7",
+      "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD"
+     },
+     "scope": "named-electron import and spin on development"
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    },
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "development",
+      "commit": "f9c2a82e24b7",
+      "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD"
+     },
+     "scope": "independent SI Thomas–BMT confirmation on development"
+    }
+   ],
+   "verified": {
+    "date": "2026-11-06",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b7",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-06",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-19.py"
+  ],
+  "requirements": [
+   "numpy",
+   "scipy"
+  ],
+  "page": "impactx/API-19/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-20",
+  "title": "MAD-X sequence import drops the final implicit drift",
+  "area": "Python API",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Importing a MAD-X SEQUENCE whose final element ends before its declared length drops the remaining drift, so particle transport, transfer matrices and reference flight time describe a shorter beamline. A 12.50 m sequence containing a 1.750 m drift centred at 3.125 m imports as 4.000 m: its transfer-matrix element R₁₂ = ∂x/∂pₓ is 4.000 m instead of 12.50 m. Native MAD-X and analytic free transport give the full 12.50 m. Adding a marker at the endpoint or using an equivalent explicit LINE restores the missing transport.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "src/python/impactx/MADXParser.py:1823–1862",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/MADXParser.py#L1823-L1862"
+   },
+   {
+    "label": "gap expansion",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/MADXParser.py#L1959-L1986"
+   },
+   {
+    "label": "load_file contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L1139-L1160"
+   },
+   {
+    "label": "defines `L`",
+    "url": "https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/7998e738eca575c82a424138517c2a17115f3cdb/doc/latexuguide/sequence.tex#L32-L33"
+   },
+   {
+    "label": "`test_sequence_refer_and_drifts`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/tests/python/test_madx_call.py#L380-L402"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    },
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "date": "2026-11-07",
+     "code": {
+      "ref": "development",
+      "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+      "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD; also the impactx-noacc 26.10 wheel"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-06",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-20.py",
+   "../helpers/_slicing.py"
+  ],
+  "requirements": [
+   "cpymad",
+   "numpy"
+  ],
+  "page": "impactx/API-20/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-21",
+  "title": "MAD-X nominal thin dipoles import as straight-reference steering kicks",
+  "area": "Python API",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Importing a MAD-X MULTIPOLE with a nonzero dipole coefficient KNL[0], which MAD-X defines as a zero-length reference bend, turns the bend into a steering kick. For a 17.00 mrad bend, the design particle receives normalized horizontal momentum pₓ = −0.01700 instead of zero, and the reference heading does not turn. At reference speed β₀ = 0.9428, the dispersive coefficient R₂₆ = ∂pₓ/∂pt and the path-length coefficient R₅₁ = ∂t/∂x (t the arrival-time distance, pt = −ΔE/(P₀c)) are zero instead of −0.01803 and +0.01803. The MAD-X manual and native MAD-X TRACK, TWISS and SURVEY establish the expected result. An imported HKICKER remains a correct straight-reference kick, and native ThinDipole bends the reference correctly.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "MULTIPOLE translation branch",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/madx_to_impactx.py#L1375-L1440"
+   },
+   {
+    "label": "particle push",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/Multipole.H#L160-L193"
+   },
+   {
+    "label": "zero-length no-op",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/mixin/thin.H#L25-L33"
+   },
+   {
+    "label": "ThinDipole",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/elements/ThinDipole.H#L131-L185"
+   },
+   {
+    "label": "thin-element model-floor contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L1211-L1216"
+   },
+   {
+    "label": "states",
+    "url": "https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/7998e738eca575c82a424138517c2a17115f3cdb/doc/latexuguide/elements.tex#L552-L565"
+   },
+   {
+    "label": "synmadx conversion",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/synmadx/syn2_to_impactx.py#L360-L390"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "gpt-6-astra",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    },
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "date": "2026-11-07",
+     "code": {
+      "ref": "development",
+      "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+      "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD; also the impactx-noacc 26.10 wheel"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-06",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": false,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6-astra",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-21.py",
+   "../helpers/_slicing.py"
+  ],
+  "requirements": [
+   "cpymad",
+   "numpy"
+  ],
+  "page": "impactx/API-21/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-22",
+  "title": "MAD-X sequence import places a nested sub-sequence as a zero-length element",
+  "area": "Python API",
+  "priority": "P2",
+  "severity": "Wrong physics",
+  "level": "Reproduced, independently rechecked",
+  "tags": [
+   "partly-source-only"
+  ],
+  "summary": "Importing a MAD-X sequence that contains a positive-length sub-sequence treats the child as zero-length while generating the parent's gap drifts. With the default `REFER=centre`, a 4.000 m child centred at 8.000 m starts at 8.000 m instead of 6.000 m; elements placed after the child move by 4.000 m. A 20.00 m drift-only parent therefore imports as 24.00 m and gives R₁₂ = ∂x/∂pₓ = 24.00 m instead of 20.00 m, established by analytic transport and native MAD-X. `REFER=exit` also misplaces the child; `REFER=entry` preserves its entry but misplaces following elements.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "`MADXParser._get_element_length()`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/MADXParser.py#L1812-L1821"
+   },
+   {
+    "label": "`_parse_sequence_definition()`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/MADXParser.py#L1823-L1857"
+   },
+   {
+    "label": "REFER conversion and gap loop",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/MADXParser.py#L1944-L1986"
+   },
+   {
+    "label": "`_flatten_line()`",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/MADXParser.py#L2460-L2495"
+   },
+   {
+    "label": "load_file contract",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L1139-L1160"
+   },
+   {
+    "label": "permits sub-sequences",
+    "url": "https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/7998e738eca575c82a424138517c2a17115f3cdb/doc/latexuguide/sequence.tex#L85-L98"
+   },
+   {
+    "label": "the total sequence length",
+    "url": "https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/7998e738eca575c82a424138517c2a17115f3cdb/doc/latexuguide/sequence.tex#L32-L37"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "source reading, not executed for this claim"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     }
+    },
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c895cf3a8fcf1d12991079d0f7d75",
+      "build": "impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD"
+     },
+     "scope": "placement against MAD-X for every outer REFER and model floor"
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD, ABLASTR from WarpX 26.10; head 6eb30ee17675 changes only docs/source/conf.py"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-22.py",
+   "../helpers/_slicing.py"
+  ],
+  "requirements": [
+   "cpymad",
+   "numpy"
+  ],
+  "page": "impactx/API-22/"
+ },
+ {
+  "code": "impactx",
+  "id": "API-23",
+  "title": "MAD-X import documentation contains a malformed RFCAVITY sentence",
+  "area": "Python API",
+  "priority": "P4",
+  "severity": "Documentation or example mismatch",
+  "level": "Reproduced, independently rechecked",
+  "tags": [],
+  "summary": "The MAD-X lattice-import documentation contains a malformed sentence combining “is a thin kick model” with “becomes”. It should state that a finite-length MAD-X RFCAVITY becomes ExactDrift + ShortRF + ExactDrift at `min_model=\"exact\"`. A 1.600 m cavity correctly imports as a 0.8000 m drift, a zero-length ShortRF kick, and another 0.8000 m drift, so only the explanatory prose requires repair.",
+  "justification": null,
+  "locations": [
+   {
+    "label": "thin-element paragraph in KnownElementsList.load_file",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L1211-L1218"
+   },
+   {
+    "label": "append_thin_with_length()",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/madx_to_impactx.py#L324-L342"
+   },
+   {
+    "label": "RFCAVITY dispatch",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/madx_to_impactx.py#L1463-L1478"
+   },
+   {
+    "label": "ShortRF construction",
+    "url": "https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/madx_to_impactx.py#L1537-L1553"
+   }
+  ],
+  "upstream": [],
+  "provenance": {
+   "found": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "pinned documentation source inspection; no reproducer execution"
+     }
+    }
+   ],
+   "confirmed": [
+    {
+     "model": "gpt-6.1-sol",
+     "effort": "xhigh",
+     "date": "2026-11-06",
+     "code": {
+      "ref": "26.10",
+      "commit": "615921c6867c",
+      "build": "impactx-noacc wheel, CPU, double, serial; Docutils 0.22.4"
+     }
+    }
+   ],
+   "verified": {
+    "date": "2026-11-07",
+    "code": {
+     "ref": "development",
+     "commit": "f9c2a82e24b700be2fbe9196a8c7404eaab09dfc",
+     "build": "source, CPU NOACC, double, serial, FFT, no openPMD or SIMD, ABLASTR from WarpX 26.10; head 6eb30ee17675 changes only docs/source/conf.py"
+    },
+    "result": "reproduced"
+   }
+  },
+  "last_reproduced": {
+   "date": "2026-11-07",
+   "code": {
+    "ref": "ImpactX development",
+    "commit": "f9c2a82e24b7",
+    "committed": "2026-11-05"
+   },
+   "head": true,
+   "head_not_reproduced": null
+  },
+  "models": [
+   "claude-opus-5-5",
+   "gpt-6.1-sol"
+  ],
+  "reproducers": [
+   "API-23.py",
+   "../helpers/_slicing.py"
+  ],
+  "requirements": [
+   "cpymad",
+   "docutils",
+   "numpy"
+  ],
+  "page": "impactx/API-23/"
  }
 ]

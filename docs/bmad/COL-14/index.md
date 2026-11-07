@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [setup_high_energy_space_charge_calc, bmad/space_charge/high_energy_space_charge_mod.f90:132–143](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/high_energy_space_charge_mod.f90#L132-L143) |
 
 A branch containing one tracking element receives only half of its prescribed high-energy space-charge interaction length. The last-element rule overwrites the first-element rule, leaving L/2 instead of the full branch length L. For a 0.6 m drift, the kick constant is 5.095e−10 instead of 1.019e−9, a factor-of-two underestimate.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_fields.py](../helpers/_collective_fields.py) · [View source](../helpers/index.md#_collective_fields)
+Run `python COL-14.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_fields.py](../helpers/_collective_fields.py) in the same directory.
 
 ??? example "Reproducer: COL-14.py"
 
@@ -34,9 +31,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     leaving L/2 instead of the full branch length L. For a 0.6 m drift, the kick constant is
     5.095e−10 instead of 1.019e−9, a factor-of-two underestimate.
 
-    The script prepares a 0.6 m branch with exactly one tracking element, retaining allocated padding
-    to isolate the length rule. It checks the count and beam widths, then compares the stored kick
-    constant with the full-length analytic expression. Set BMAD_DIST to the build root.
+    The script prepares a 0.6 m branch with exactly one tracking element, retaining allocated padding to
+    isolate the length rule. It checks the count and beam widths, then compares the stored kick constant
+    with the full-length analytic expression.
     """
 
     import numpy as np

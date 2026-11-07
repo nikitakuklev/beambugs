@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`integrate_csbend_ordn_expanded`, csbend.c:2205–2224](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2205-L2224)<br>[csbend.c:2104–2119](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2104-L2119)<br>[csbend.c:1950–1952](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1950-L1952)<br>[`determineRadiationMatrix`, analyze.c:1775–1783](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L1775-L1783)<br>[manual, csbend.tex:105–110](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L105-L110)<br>[parameter table, track_data.c:1977](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1977) |
 
 A CSBEND with EXPAND_HAMILTONIAN=1 and ISR=1 gives every radiation kick the step length s/3, although integration orders 2, 4 and 6 have 1, 3 and 7 kicks per step of length s. The energy-spread variance σδ² it adds in tracking is therefore 1/3 of the correct value at order 2 and 7/3 at order 6, and moments_output, which always integrates at order 6, applies 7/3 at every order. For a 0.9 m, 0.07 rad bend at 2.555 GeV, moments_output gives σδ² = 4.446×10⁻¹² instead of the Sands quantum-diffusion value 1.905×10⁻¹², which the exact Hamiltonian reproduces. Order 4 is correct in tracking.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-34.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-34.py"
 

@@ -1,12 +1,14 @@
 # LAT-19: four more emitted names that Beamlines rejects: `roll`, `z_rot`, `t_offset` and `is_on`
 #
+# Setup: `BMAD_SOURCE` set to the root of a bmad-ecosystem `20261020-0` build (the directory
+# containing `production/bin`); the script runs its `bmad_to_scibmad` program.
+#
 # The script exports four Bmad lattices with `bmad_to_scibmad`, one per name: a rolled bend
 # (`roll`), an overlay on a quadrupole's tilt (`z_rot`), an overlay on a patch's `t_offset`, and a
 # switched-off quadrupole (`is_on`). Each emitted file should load. As independent checks it
 # confirms that the emitted name is not a Beamlines property and that the file with the Beamlines
 # name substituted (`tilt` or `dt`, or `is_on` dropped) loads with Bmad's value; it also prints the
-# emitted line of a switched-off bend, which keeps its field. Set `BMAD_SOURCE` to the root of a
-# Bmad build, so that the program is `$BMAD_SOURCE/production/bin/bmad_to_scibmad`.
+# emitted line of a switched-off bend, which keeps its field.
 using SciBmad
 const BL = SciBmad.Beamlines
 haskey(ENV, "BMAD_SOURCE") || error("set BMAD_SOURCE to the root of the bmad-ecosystem 20261020-0 build (the directory that contains production/bin)")

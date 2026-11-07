@@ -11,8 +11,7 @@ unaffected.
 The script builds batches of two and five primary protons with disjoint particle IDs and no losses,
 and adds them to loss maps merged, as 2 then 5, as 5 then 2, and as two equal batches. It compares
 the split results with the merged map, which equals the sum of the separately evaluated batch
-energies, and checks that `num_initial` agrees. It requires the installed prebuilt kernels
-(compilation is forbidden).
+energies, and checks that `num_initial` agrees.
 """
 
 from _prebuilt import CTX, identity, kernels, np, report, xc, xt

@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [em_field_calc, on-axis branch, bmad/code/em_field_calc.f90:1381–1399](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/em_field_calc.f90#L1381-L1399)<br>[field accumulation, bmad/code/em_field_calc.f90:1427–1430](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/em_field_calc.f90#L1427-L1430)<br>[Bmad manual, Field Maps, bmad/doc/attributes.tex:2169–2178](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L2169-L2178) |
 
 When a Cartesian grid precedes an axisymmetric grid in the same element, evaluating the field exactly on axis adds the first grid’s transverse field twice. Constant magnetic grids (0.7, −0.4, 0.2) T and (0, 0, 1.3) T return (1.4, −0.8, 1.5) T instead of their vector sum (0.7, −0.4, 1.5) T. Reversing the grid order, evaluating either grid alone, or moving off axis gives the correct result. The axisymmetric branch leaves transverse components from the preceding grid in its temporary accumulator.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) · [View source](../helpers/index.md#_s3_19_fields_photons_ptc)
+Run `python TRK-01.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) in the same directory.
 
 ??? example "Reproducer: TRK-01.py"
 

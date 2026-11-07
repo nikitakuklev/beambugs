@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [material-helper output contract, bmad/interface/xraylib_interface.f90:28–31](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/interface/xraylib_interface.f90#L28-L31)<br>[successful crystal lookup, bmad/interface/xraylib_interface.f90:59–73](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/interface/xraylib_interface.f90#L59-L73)<br>[mask transmission, bmad/photon/track1_photon_mod.f90:199–209](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/track1_photon_mod.f90#L199-L209)<br>[Bmad manual, Mask Wall For Diffraction Plate and Mask Elements, bmad/doc/attributes.tex:1913–1916](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L1913-L1916) |
 
 A transmitting mask filled with a recognized crystal material marks valid photons as lost. A 20 µm silicon section at 9 keV returns a lost photon with unchanged unit field instead of a live photon with field amplitude 0.9001. The material lookup computes finite absorption and phase coefficients but leaves its error flag set. A titanium section at normal incidence follows the successful elemental lookup and transmits with the expected amplitude 0.5154.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) · [View source](../helpers/index.md#_s3_19_fields_photons_ptc)
+Run `python TRK-07.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) in the same directory.
 
 ??? example "Reproducer: TRK-07.py"
 
@@ -37,7 +34,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The script calls the material helper and public track1 for silicon and titanium clear mask sections
     at normal incidence. It checks successful coefficient calculation, live state, Beer attenuation and
-    optical phase modulo 2π; BMAD_DIST selects the build.
+    optical phase modulo 2π;
     """
 
     import os

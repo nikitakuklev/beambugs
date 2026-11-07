@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [track_a_rfcavity matrix and particle kicks, bmad/low_level/track_a_rfcavity.f90:98–120](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_rfcavity.f90#L98-L120)<br>[Bmad Manual, particle tracking direction and time direction, bmad/doc/tracking.tex:50–77](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/tracking.tex#L50-L77) |
 
 With backward-time tracking, the native RF cavity map returns the correct particle energy but the wrong longitudinal transfer matrix. It inverts a forward Jacobian evaluated at the reverse input, instead of differentiating the signed reverse kick there. For a thin 200 kV crest cavity at reference momentum 1 MeV/c, the derivative M₆₆ of exit fractional momentum with respect to entrance fractional momentum is 1.049 instead of 1.069. Differentiating the energy subtraction supplies the expected value.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _rf_and_spin.py](../helpers/_rf_and_spin.py) · [View source](../helpers/index.md#_rf_and_spin)
+Run `python TRK-18.py` with [_bmad.py](../helpers/_bmad.py) and [_rf_and_spin.py](../helpers/_rf_and_spin.py) in the same directory.
 
 ??? example "Reproducer: TRK-18.py"
 

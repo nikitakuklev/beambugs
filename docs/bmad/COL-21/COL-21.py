@@ -2,10 +2,9 @@
 
 Combining transverse slice space charge with shielding images multiplies the kick by −2 for an odd image count and by +2 for an even nonzero count. Shielding images belong to the coherent synchrotron radiation calculation and should not change the slice-model force. In a 1 cm drift with 10 MeV/c electrons and 10 pC bunch charge, the space-charge change in the position–momentum covariance is 3.231e−11, −6.462e−11 and 6.462e−11 m for zero, one and two images. Longitudinal slice space charge is calculated at the direct-source iteration and avoids this multiplier.
 
-The script runs fresh deterministic Tao bunches with space charge off and with slice space charge
-at zero, one and two shielding images. It subtracts the drift-only covariance and requires all 2000
+The script runs fresh deterministic Tao bunches with space charge off and with slice space charge at
+zero, one and two shielding images. It subtracts the drift-only covariance and requires all 2000
 particles to survive. With CSR off, the tracked covariance must be independent of image count.
-Set BMAD_DIST to the build root.
 """
 
 import numpy as np

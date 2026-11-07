@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Pull request | [[gh:https://github.com/xsuite/xtrack/pull/911]], fix |
 | Source | [`ThinSliceBendEntry.get_equivalent_element`, slice_elements_edge.py:52–73](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_edge.py#L52-L73) |
 
 `Line.optimize_for_tracking()` replaces the full edge of a sliced `Bend` with a dipole-only edge, silently dropping the fringe field of the bend's quadrupole component. Optimization should leave the sliced map unchanged, and the unoptimized line agrees with the manual's multipole-fringe generating function. For a straight 0.4 m `Bend` with no dipole field, quadrupole strength `k1` = 0.7 m⁻², a full entrance edge and `Teapot(1)` slicing, a particle entering at (x, y) = (20, 10) mm with normalized momenta (`px`, `py`) = (0.001, −0.002) exits at y = 9.738 mm instead of 9.737 mm, 0.9015 µm too high. Entrance and exit edges with a normal quadrupole component are both affected; without one, optimization preserves the map.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python TRK-02.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: TRK-02.py"
 

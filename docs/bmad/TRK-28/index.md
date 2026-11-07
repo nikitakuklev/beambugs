@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [magnus_omega solenoid generator, bmad/spin/track1_spin_integration.f90:252–327](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/spin/track1_spin_integration.f90#L252-L327)<br>[valid_spin_tracking_method, bmad/spin/valid_spin_tracking_method.f90:81–84](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/spin/valid_spin_tracking_method.f90#L81-L84)<br>[Bmad Manual, Equations of Motion, `orpt`, bmad/doc/spin.tex:25–35](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/spin.tex#L25-L35)<br>[Bmad Manual, Solenoid, bmad/doc/elements.tex:5270–5279](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L5270-L5279) |
 
 Forward Magnus spin tracking through a solenoid gives equal-momentum electrons and positrons the same rotation in the same physical field. The normalized solenoid strength needs the tracked-to-reference charge ratio in the Thomas–BMT generator. For a positron at 3 MeV/c in an electron-reference 1.3 m solenoid of strength −1.1 m⁻¹, spin (0.36, 0.48, 0.8) becomes (−0.4254, 0.4231, 0.8) instead of (0.5253, −0.2899, 0.8). Matching-charge cases and the two ordinary integration methods agree with the charge-aware expectation.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _rf_and_spin.py](../helpers/_rf_and_spin.py) · [View source](../helpers/index.md#_rf_and_spin)
+Run `python TRK-28.py` with [_bmad.py](../helpers/_bmad.py) and [_rf_and_spin.py](../helpers/_rf_and_spin.py) in the same directory.
 
 ??? example "Reproducer: TRK-28.py"
 

@@ -2,6 +2,8 @@
 
 When Pelegant, Elegant's MPI version, loads several particle-file pages with `track_pages_separately=0`, it should combine them into one beam. If a later page gives no rows to a worker that read an earlier page, the run stops with "Unable to get column--no rows left" before tracking. A five-particle file split into pages of four and one fails on three ranks (two workers), whereas serial Elegant and Pelegant with a one-plus-four split return all five particles unchanged.
 
+Setup: always runs 3-rank Pelegant (Open MPI `mpirun` on `PATH`) beside serial Elegant, because the defect occurs only under MPI.
+
 The script writes a binary SDDS beam file of five particles in two pages and tracks it through a zero-length drift, so that the output must reproduce the input exactly. The page sizes 4+1 trigger the fault, and the controls 1+4 and 3+2 hold the same particles but give every page after the first at least two rows. Serial Elegant is the control for the 4+1 case.
 """
 

@@ -7,8 +7,8 @@ selector makes the same namelist readable and recovers universe 1. Generated dat
 use the syntax accepted by the reader.
 
 The script generates a data export with Tao and compiles a small Fortran reader with the same
-character-valued selector declaration. It compares reads of the original export and a copy with
-only that selector quoted. BMAD_DIST supplies Tao and the Fortran compiler/link recipe.
+character-valued selector declaration. It compares reads of the original export and a copy with only
+that selector quoted.
 """
 
 import re

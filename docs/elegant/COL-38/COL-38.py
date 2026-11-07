@@ -8,13 +8,15 @@ wavelength gives an attenuation factor of 0.003415 for a 0.4 m drift, but the ki
 unattenuated (factor 1), and Valgrind reports the use of uninitialized values in the drift. The
 default sigmaz mode differs from the formula by about 1.020×10⁻⁸ relative.
 
-The script tracks 40001 electrons (Gaussian quantiles, σ_ct = 35 μm, p = 4000 mₑc, 0.1 pC, x
-spread over ±30 μm) through a one-slice 0.6 m, 0.3 rad CSRCSBEND (400 bins, STEADY_STATE=1) and a
-0.4 m CSRDRIFT with one kick, without SPREAD and with SPREAD=1, SPREAD_MODE="radiation-only" and
-BUNCHLENGTH_MODE="rms" in both wavelength modes. Expected attenuation factors follow the
-model's formula with the bend-exit beam size and the wavelength the mode selects; the sigmaz
-mode is the control. Both spread modes are then run under Valgrind (which must be on PATH),
-which must report no use of uninitialized values in the drift.
+Setup: `valgrind` on `PATH`; the script runs some cases of serial Elegant under Memcheck.
+
+The script tracks 40001 electrons (Gaussian quantiles, σ_ct = 35 μm, p = 4000 mₑc, 0.1 pC, x spread
+over ±30 μm) through a one-slice 0.6 m, 0.3 rad CSRCSBEND (400 bins, STEADY_STATE=1) and a 0.4 m
+CSRDRIFT with one kick, without SPREAD and with SPREAD=1, SPREAD_MODE="radiation-only" and
+BUNCHLENGTH_MODE="rms" in both wavelength modes. Expected attenuation factors follow the model's
+formula with the bend-exit beam size and the wavelength the mode selects; the sigmaz mode is the
+control. Both spread modes are then run under Valgrind, which must report no use of uninitialized
+values in the drift.
 """
 
 import re

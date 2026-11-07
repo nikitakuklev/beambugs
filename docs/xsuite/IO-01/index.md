@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xpart main (`2633e52`) |
+| Last reproduced | 2026-10-26 on xpart main (`2633e52`, head build) |
 | Source | [`generate_longitudinal_coordinates`, generate_longitudinal.py:450–482](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/generate_longitudinal.py#L450-L482) |
 
 With `engine='single-rf-harmonic'`, `generate_longitudinal_coordinates` samples the energy coordinate p_τ (`ptau`) for the requested reference particle, but converts it to the relative momentum deviation δ (`delta`) through a temporary `Particles` built without the reference mass, so the default proton mass is used for every species. The relativistic relation δ = √(1 + p_τ² + 2p_τ/β₀) − 1, with the reference speed β₀ = v/c of the actual species, gives the correct value, and the proton case agrees with it. For a 5 MeV/c positron bunch matched to 1 kV RF at harmonic 1 in a 100 m line, one particle gets δ = 0.03520 instead of 1.919×10⁻⁴, another 0.1245 instead of 7.083×10⁻⁴. Positions `zeta` are correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python IO-01.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: IO-01.py"
 

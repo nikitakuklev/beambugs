@@ -12,16 +12,13 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`computeHigherOrderChromaticities`, one-cell map construction and trace, chrom.c:928–942](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/chrom.c#L928-L942)<br>[trace fit and chromaticity formulas, chrom.c:949–956](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/chrom.c#L949-L956)<br>[`propagate_twiss_parameters` has already multiplied by `n_periods`, twiss.cc:806–807](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L806-L807)<br>[multiplies the resulting `chrom2` and `chrom3` by `n_periods` again, twiss.cc:2296–2299](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2296-L2299)<br>[the same scaling, twiss.cc:2344–2347](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2344-L2347)<br>[`dnux/dp2` and `dnux/dp3` as d²ν/dδ² and d³ν/dδ³, doc/elegant.tex:8228–8231](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8228-L8231)<br>[`n_periods` field, src/twiss.nl:77](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.nl#L77) |
 
 With `higher_order_chromaticity=1` and `n_periods=2`, Elegant's `twiss_output` converts single-cell trace derivatives using the repeated lattice's phase, producing wrong second and third chromaticities. On a continuous phase branch, a stable cell's tune ν and every momentum derivative must scale with the period count. For 0.5 m `KQUAD`s with K1 = 0.6 and −0.54 m⁻² and 1 m drifts, one period gives d²νₓ/dδ² = 0.1268 and d³νₓ/dδ³ = −0.08637, where δ is the relative momentum offset. Two periods require 0.2537 and −0.1727, but the output gives 0.1865 and −0.3286; the tune and first chromaticity scale correctly.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _cubic_optics.py](../helpers/_cubic_optics.py) · [View source](../helpers/index.md#_cubic_optics)
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-07.py` with [_cubic_optics.py](../helpers/_cubic_optics.py) and [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-07.py"
 

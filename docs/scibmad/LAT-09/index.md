@@ -12,10 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`) |
-| Source | [`SciBmad.jl/src/track.jl:210`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L210)<br>[`:56`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L56)<br>[`SciBmad.jl/src/track.jl:225-226`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L225-L226)<br>[`BeamTracking.jl/src/kernel.jl:262-263`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/kernel.jl#L262-L263)<br>[`SciBmad.jl/src/track.jl:167-168`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/track.jl#L167-L168) |
+| Last reproduced | 2026-10-31 on SciBmad main (`ae9423d`, head build) |
+| Source | [`SciBmad.jl/src/track.jl:210`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L210)<br>[`:56`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L56)<br>[`SciBmad.jl/src/track.jl:225-226`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L225-L226)<br>[`BeamTracking.jl/src/kernel.jl:262-263`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernel.jl#L262-L263)<br>[`SciBmad.jl/src/track.jl:167-168`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L167-L168) |
 
 On the CPU, `track(bl; v0, use_KA=true)`, which selects KernelAbstractions (KA) kernels, raises “Cannot use both KernelAbstractions (KA) and explicit SIMD”, because `use_explicit_SIMD` keeps its CPU default `true` instead of following `use_KA`. The `track` docstring gives the default of `use_explicit_SIMD` as `!use_KA`, and both `TrackingConfig(use_KA=true)` and the lower-level `launch!` apply that rule. The single-keyword call fails, while adding `use_explicit_SIMD=false` or passing `config=TrackingConfig(use_KA=true)` returns identical coordinates. The failure is loud.
+
+Run `julia LAT-09.jl`.
 
 ??? example "Reproducer: LAT-09.jl"
 

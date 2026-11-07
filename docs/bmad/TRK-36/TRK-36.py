@@ -2,7 +2,7 @@
 
 A patch that changes reference energy computes geometric matrix terms using both incoming- and outgoing-normalized momenta. Reference renormalization should leave the geometric displacement and its derivative with respect to incoming coordinates unchanged. For a 1 m longitudinal offset and a 100 keV reference-energy increase at 1 MeV/c, x is correctly 0.1857 m, but M₁₆, the derivative of x with respect to relative momentum, is −0.1585 m instead of −0.1761 m. Finite differences also expose the error in a pitched energy-changing patch, while a geometric patch without an energy change passes.
 
-The script compares the pure-offset M₁₆ against the derivative of x = pₓ/pₛ in incoming normalization. It also compares full matrices with central particle differences for geometric and pitched energy-changing patches. Set BMAD_DIST to the build root.
+The script compares the pure-offset M₁₆ against the derivative of x = pₓ/pₛ in incoming normalization. It also compares full matrices with central particle differences for geometric and pitched energy-changing patches.
 """
 
 import numpy as np

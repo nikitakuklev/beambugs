@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [ibs_equib_der, bmad/multiparticle/ibs_mod.f90:279–324](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L279-L324)<br>[ibs_equib_rlx, bmad/multiparticle/ibs_mod.f90:160–191](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L160-L191)<br>[IBS Ring manual, Methods for determining equilibrium emittances, bsim/ibs_ring/doc/ibs_ring.tex:243–277](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/doc/ibs_ring.tex#L243-L277) |
 
 Both IBS equilibrium solvers balance radiation damping against IBS growth using RMS energy spread instead of its variance. For amplitude damping time τ, RMS IBS growth rate r and zero-current RMS spread σ₀, equilibrium requires RMS spread σ = σ₀/√(1 − τr), with r evaluated self-consistently. The solvers instead use σ = σ₀/(1 − τr). In a 2 GeV electron case, the derivative solver returns relative energy spread 0.001221 instead of 0.001139, an excess of 7.241%; the relaxation solver gives the same erroneous balance.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-27.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-27.py"
 

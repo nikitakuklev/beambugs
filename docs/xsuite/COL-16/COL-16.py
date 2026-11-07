@@ -14,7 +14,7 @@ seed 9823, integrated Piwinski rate 3.25 s⁻¹) with θ intervals of width 2⁻
 π/2. Identical final generator states and sampled positions show that both runs use the same
 samples, over which the integrand changes by less than a computed bound, so a correct rate must
 shrink with the sampled volume by a factor 16. It also checks that the returned weights sum to the
-Piwinski rate. It requires the installed prebuilt kernels (compilation is forbidden).
+Piwinski rate.
 """
 
 import xfields as xf

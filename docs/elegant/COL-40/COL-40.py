@@ -2,12 +2,14 @@
 
 With IGF=1 and BIN_SIZE, CSRCSBEND sizes its integrated-Green-function arrays for the bin count of its first slice and fills them up to the current bin count in every later slice. When a chirped bunch lengthens in the bend, the bin count grows and these writes run past the allocation. For 5001 electrons whose histogram grows from 89 to 2912 bins over the 24 slices of a 0.8 m, 0.4 rad bend, the run ends with a segmentation fault, and Valgrind reports an invalid write just past the 89-element array. The same bend with IGF=0, or with IGF=1 and a fixed bin count, completes.
 
+Setup: `valgrind` on `PATH`; the script runs some cases of serial Elegant under Memcheck.
+
 The script tracks 5001 electrons (Gaussian quantiles, σ_ct = 12 μm, linear chirp of 1500 m⁻¹ in
 relative momentum about p = 1500 mₑc) through a 0.8 m, 0.4 rad, 24-slice CSRCSBEND with
-STEADY_STATE=1 and BIN_SIZE = 4 fs, which lengthens the bunch from slice to slice. The control
-with IGF=0 runs, and its wake output gives the bin count of every slice; with fixed BINS=128 and
-IGF=1 the run also completes. With IGF=1 and BIN_SIZE, the script reports the exit of a plain run
-and the first invalid access Valgrind (which must be on PATH) finds, with the allocation it hits.
+STEADY_STATE=1 and BIN_SIZE = 4 fs, which lengthens the bunch from slice to slice. The control with
+IGF=0 runs, and its wake output gives the bin count of every slice; with fixed BINS=128 and IGF=1
+the run also completes. With IGF=1 and BIN_SIZE, the script reports the exit of a plain run and the
+first invalid access Valgrind finds, with the allocation it hits.
 """
 
 import re

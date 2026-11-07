@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-30 on xtrack 0.118.2 (`ad5e808`); not reproduced on xtrack main (`f09e0fb`), 2026-10-29 |
+| Last reproduced | 2026-10-26 on xtrack 0.118.2 (`ad5e808`, committed 2026-10-19); not reproduced on xtrack main (`f09e0fb`), 2026-10-29 |
 | Pull request | [[gh:https://github.com/xsuite/xtrack/pull/923]], fix |
 | Source | [`magnet_spin`, track_magnet_radiation.h:141–166](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_radiation.h#L141-L166) |
 
 Spin tracking in the body of a `UniformSolenoid` takes the particle direction from the canonical momentum plus the vector potential (`px + ax`, `py + ay`) instead of their difference, the kinetic momentum. For motion along the field, the Thomas–BMT spin-precession equation gives a pure rotation about the field axis and no longitudinal spin. A 1 GeV/c proton (anomalous magnetic moment G = 1.793) entering a 0.7 m solenoid with `ks` = 0.8 m⁻¹ at (x, y) = (50, 20) mm, with zero transverse kinetic momentum and spin along x, exits with longitudinal spin −0.007126 instead of zero. Edge maps are off, and sixteen body pieces give the same result; orbit, spin length and the G = 0 case are correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python TRK-09.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: TRK-09.py"
 

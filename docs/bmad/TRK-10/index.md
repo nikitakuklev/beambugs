@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [crystal_diffraction_field_calc, coherent branches, bmad/photon/photon_utils_mod.f90:384–410](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/photon_utils_mod.f90#L384-L410)<br>[Bmad manual, crystal entrance boundary equations, bmad/doc/xray-tracking.tex:1009–1022](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/xray-tracking.tex#L1009-L1022)<br>[Coherent Laue Crystal Tracking, bmad/doc/xray-tracking.tex:1032–1041](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/xray-tracking.tex#L1032-L1041) |
 
 Coherent forward-Laue crystal tracking gives one internal branch an extra π phase. At the zero-thickness limit of symmetric silicon (111), sampled fields split between +1 and −1 although the entrance boundary conditions require every normalized sample to equal +1. Public tracking through a positive 1e-13 m thickness also produces both signs. Incoherent transport gives the correct positive field at zero thickness.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) · [View source](../helpers/index.md#_s3_19_fields_photons_ptc)
+Run `python TRK-10.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) in the same directory.
 
 ??? example "Reproducer: TRK-10.py"
 

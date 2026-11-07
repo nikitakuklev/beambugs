@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`, committed 2026-11-03) |
 | Source | [`track_through_csbendCSR`, csbend.c:2762–2764](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2762-L2764)<br>[`track_through_csbendCSR`, csbend.c:3132–3135](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3132-L3135)<br>[`track_through_csbendCSR`, csbend.c:3545–3551](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3545-L3551)<br>[`track_through_csbendCSR`, csbend.c:3467–3471](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3467-L3471)<br>[`track_through_csbendCSR`, csbend.c:3565–3568](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3565-L3568)<br>[`track_through_csbendCSR`, csbend.c:3613–3617](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3613-L3617)<br>[`process_particle_command`, elegant.c:3264–3281](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3264-L3281)<br>[`do_tracking`, do_tracking.c:894–897](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L894-L897)<br>[`track_through_csbendCSR`, csbend.c:4007–4010](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4007-L4010)<br>[`track_through_csbendCSR`, csbend.c:3968–3969](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3968-L3969)<br>[`track_through_driftCSR`, csbend.c:4530–4535](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L4530-L4535)<br>[`track_through_driftCSR_Stupakov`, csbend.c:5114–5118](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5114-L5118)<br>[`track_through_driftCSR_Stupakov`, csbend.c:5152–5154](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5152-L5154) |
 
 After `change_particle name=positron`, CSRCSBEND reverses the coherent synchrotron radiation kick, making a bunch gain energy where an identical electron bunch loses it. Reversing every source and witness charge must preserve the self-force because both the source field and the witness charge reverse. A 100.0 pC Gaussian bunch at 511.0 MeV/c with 35.00 μm rms length gains 104.7 keV per particle on average in a 0.6000 m, 0.3000 rad bend instead of losing 104.7 keV. Disabling coherent radiation restores identical electron and positron transport.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-48.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-48.py"
 
@@ -30,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     After `change_particle name=positron`, CSRCSBEND reverses the coherent synchrotron radiation kick, making a bunch gain energy where an identical electron bunch loses it. Reversing every source and witness charge must preserve the self-force because both the source field and the witness charge reverse. A 100.0 pC Gaussian bunch at 511.0 MeV/c with 35.00 μm rms length gains 104.7 keV per particle on average in a 0.6000 m, 0.3000 rad bend instead of losing 104.7 keV. Disabling coherent radiation restores identical electron and positron transport.
 
-    The script tracks deterministic Gaussian quantiles through a single-slice steady-state CSR bend for electrons and positrons, with coherent radiation enabled and disabled. It compares every momentum kick using charge conjugation and checks a zero-charge control; incoherent radiation and random excitation are disabled. Use --mpi to add three-rank Pelegant, with the native programs on PATH and RPN_DEFNS set.
+    The script tracks deterministic Gaussian quantiles through a single-slice steady-state CSR bend for electrons and positrons, with coherent radiation enabled and disabled. It compares every momentum kick using charge conjugation and checks a zero-charge control; incoherent radiation and random excitation are disabled. Use --mpi to add three-rank Pelegant.
     """
 
     import numpy as np

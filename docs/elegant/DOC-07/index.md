@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [WAKE manual, wake.tex:34–38](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/wake.tex#L34-L38)<br>[long-beam check, wake.c:154–168](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L154-L168)<br>[wake.c:176–181](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L176-L181)<br>[bin range, wake.c:200–207](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L200-L207)<br>[wake.c:514–529](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L514-L529)<br>[track_data.c:2540](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2540) |
 
 The WAKE manual says that when the beam is longer than the wake data and ALLOW_LONG_BEAM is nonzero, Elegant warns and ignores the part of the beam furthest from the mean arrival time in computing the wake. Elegant warns but bins and kicks the whole beam; the trimming is commented out in the source. For a 0.8 nC beam of 90 electrons at t = 0 and satellite groups of 10 at 50 ps and 51 ps, with 20 ps of wake data, the manual's algorithm keeps only the main group and gives no loss, whereas the 51 ps group loses 2182 eV, the whole-beam pair sum.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _wake.py](../helpers/_wake.py) · [View source](../helpers/index.md#_wake)
+Run `python DOC-07.py` with [_elegant.py](../helpers/_elegant.py) and [_wake.py](../helpers/_wake.py) in the same directory.
 
 ??? example "Reproducer: DOC-07.py"
 

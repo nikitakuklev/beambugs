@@ -12,15 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`computeCSBENDFieldCoefficients`, csbend.c:313–330](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L313-L330)<br>[evaluator, csbend.c:127–170](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L127-L170)<br>[`Kn` to `b[n]`, csbend.c:1029–1048](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1029-L1048)<br>[coefficient setup, csbend.c:1198](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1198)<br>[CSRCSBEND setup, csbend.c:2889](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2889)<br>[manual, csbend.tex:42–51](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L42-L51) |
 
 For a CSBEND with EXPANSION_ORDER=0, the manual promises field terms through total degree n+3 in transverse coordinates x and y, with a minimum degree of 4, where n is the highest nonzero multipole order. For normal sextupole (n = 2) and octupole (n = 3) components, tracking instead matches explicit order n+2. Independent vacuum-field integration validates the documented-order trajectories. In a 0.25 m bend of curvature 1 m⁻¹ with K₃ = 3000 m⁻⁴, particles starting at x = 15–30 mm and y = 20–40 mm with zero slopes acquire slope differences up to 2.823×10⁻⁷. The tested quadrupole-only and midplane controls are unaffected.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python DOC-05.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: DOC-05.py"
 

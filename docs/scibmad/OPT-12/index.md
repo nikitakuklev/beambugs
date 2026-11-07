@@ -12,10 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-24 on NonlinearNormalForm main (`7e40539`) |
+| Last reproduced | 2026-10-24 on NonlinearNormalForm main (`7e40539`, head build) |
 | Source | [`NonlinearNormalForm.jl/src/normal.jl:219-224`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L219-L224)<br>[`forest/code/Ci_tpsa.f90:13369-13383`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/forest/code/Ci_tpsa.f90#L13369-L13383) |
 
 NonlinearNormalForm's spin normal form throws `InexactError: Float64(NaN + NaN*im)` when the closed-orbit spin axis is exactly vertical or there is no spin rotation. The step that aligns the axis with ŷ divides by a zero axis norm or transverse axis length, although these maps admit a normal form and Forest's FPP handles them explicitly. For a synthetic map that rotates spin by 0.6 rad about ŷ, tilting the axis by 1e-9 rad returns the correct spin-tune magnitude 0.09549 but leaves a transverse quaternion component of 2.96e-10, because the alignment angle loses the tilt. The public `twiss(spin=true)` fails in checked planar rings and straight cells, including RF and coasting cases; the thick-bend quickstart ring escapes only through transverse round-off of order 1e-34.
+
+Run `julia OPT-12.jl`.
 
 ??? example "Reproducer: OPT-12.jl"
 

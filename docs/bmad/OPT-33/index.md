@@ -12,17 +12,14 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Pull request | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2108]] |
 | Source | [track_a_wiggler body matrix, bmad/low_level/track_a_wiggler.f90:100–150](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_wiggler.f90#L100-L150)<br>[Bmad manual, Periodic Type Wigglers, bmad/doc/elements.tex:5697–5723](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L5697-L5723)<br>[Bmad manual, Linear Transfer Map (Mat6) Calculation Methods, bmad/doc/methods.tex:253–260](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L253-L260) |
 
 For an off-axis particle in an averaged periodic wiggler, the native matrix omits the leading change of focusing with particle momentum. Differentiating the tracked Hill rotation gives a positive momentum response that the matrix replaces with a much smaller, wrong-sign term. In a 0.48 m, 1.1 T planar wiggler at 0.7 GeV/c, M₄₆/y₀ is −2.264×10⁻⁴ m⁻¹ instead of +0.05259 m⁻¹, where M₄₆ is the derivative of normalized vertical momentum with respect to fractional momentum offset and y₀ is entrance displacement. The omission persists toward weak field and also occurs in the helical model.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) · [View source](../helpers/index.md#_srdt_wiggler_maps)
+Run `python OPT-33.py` with [_bmad.py](../helpers/_bmad.py) and [_srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) in the same directory.
 
 ??? example "Reproducer: OPT-33.py"
 
@@ -33,7 +30,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     For an off-axis particle in an averaged periodic wiggler, the native matrix omits the leading change of focusing with particle momentum. Differentiating the tracked Hill rotation gives a positive momentum response that the matrix replaces with a much smaller, wrong-sign term. In a 0.48 m, 1.1 T planar wiggler at 0.7 GeV/c, M₄₆/y₀ is −2.264×10⁻⁴ m⁻¹ instead of +0.05259 m⁻¹, where M₄₆ is the derivative of normalized vertical momentum with respect to fractional momentum offset and y₀ is entrance displacement. The omission persists toward weak field and also occurs in the helical model.
 
-    The script compares planar weak-field cases and an equal-plane helical case against direct differentiation of the averaged split map. Native transverse blocks and two trajectory stencils serve as controls, including zero field. BMAD_DIST selects the production build.
+    The script compares planar weak-field cases and an equal-plane helical case against direct differentiation of the averaged split map. Native transverse blocks and two trajectory stencils serve as controls, including zero field.
     """
 
     import numpy as np

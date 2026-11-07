@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-28 on ImpactX 26.10 (`615921c`); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Last reproduced | 2026-10-28 on ImpactX 26.10 (`615921c`, committed 2026-10-05); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1762]], fix |
 | Source | [`ImpactXParticleContainer.py#L97-L125`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L97-L125)<br>[`L239-L253`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L239-L253) |
 
 The phase-space plot from `plot_phasespace()` labels its charge histograms Q [C/bin] but counts macroparticles instead of summing their charges q_ref·w, where q_ref is the reference-particle charge and w the number of real particles a macroparticle represents. The displayed values are therefore counts, and bins whose particles carry different weights also have wrong relative charges. For a 1.550 nC test beam, a 2×2 x–px histogram shows 16 in every bin instead of the charges from 8.613×10⁻¹¹ to 8.613×10⁻¹⁰ C that a direct sum of q_ref·w gives, and splitting each macroparticle into two half-weight copies doubles every bin while the beam is unchanged. The numerical charge and moment diagnostics are correct.
+
+Run `python IO-02.py`.
 
 ??? example "Reproducer: IO-02.py"
 

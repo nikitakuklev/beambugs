@@ -9,13 +9,15 @@ FODO cells with a thin octupole of integrated strength K₃L, that order gives d
 within 0.02% of the first-order detuning K₃L βx²/(32π), while the documented order gives an error or
 0.
 
-The script reads the sequence statement of the `tune_shift_with_amplitude` section from
-`doc/elegant.tex` of the Elegant source checkout named by `ELEGANT_SOURCE` (required) and exits if
-it is missing or unrecognized. It runs serial Elegant in tracking mode on eight FODO cells with one
-thin octupole, first with `tune_shift_with_amplitude` before a scheduled `twiss_output` (the
-control, compared with first-order octupole detuning), then in the documented order with scheduled
-and with immediate Twiss output, and compares their dnux/dAx, dnux/dAy, dnuy/dAx and dnuy/dAy with
-the control's.
+Setup: `ELEGANT_SOURCE` set to a clone of rtsoliday/elegant; the script reads the manual's LaTeX
+source from it.
+
+The script reads the sequence statement of the `tune_shift_with_amplitude` section from the
+checkout's `doc/elegant.tex` and exits if it is missing or unrecognized. It runs serial Elegant in
+tracking mode on eight FODO cells with one thin octupole, first with `tune_shift_with_amplitude`
+before a scheduled `twiss_output` (the control, compared with first-order octupole detuning), then
+in the documented order with scheduled and with immediate Twiss output, and compares their dnux/dAx,
+dnux/dAy, dnuy/dAx and dnuy/dAy with the control's.
 """
 
 import os

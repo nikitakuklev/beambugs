@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [osc_freespace_solver2, bmad/space_charge/open_spacecharge_mod.f90:742–759](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_mod.f90#L742-L759)<br>[CSR3D prefactor, bmad/space_charge/csr3d_mod.f90:100–102](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr3d_mod.f90#L100-L102)<br>[space_charge_3d speed literal and B-field conversion, bmad/space_charge/open_spacecharge_mod.f90:639–663](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_mod.f90#L639-L663) |
 
 The FFT free-space solver squares the speed-of-light literal in default real precision before converting to double precision. Its Coulomb prefactor falls short of the stated formula by 290.0 V m/C, making the electric field 32.27 parts per billion too small. Independent uniform-cell quadrature confirms the common normalization error while field direction and relative component strengths agree.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_fields.py](../helpers/_collective_fields.py) · [View source](../helpers/index.md#_collective_fields)
+Run `python COL-10.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_fields.py](../helpers/_collective_fields.py) in the same directory.
 
 ??? example "Reproducer: COL-10.py"
 
@@ -38,7 +35,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The script solves a uniformly charged cell and compares three field vectors with converged
     Gauss–Legendre volume quadrature. Compiler-kind, prefactor, field-direction and relative-strength
-    checks isolate the shared normalization error. Set BMAD_DIST to the build root.
+    checks isolate the shared normalization error.
     """
 
     import numpy as np

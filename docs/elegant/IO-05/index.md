@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [bunch organization, doc/elegant.tex:498–506](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L498-L506)<br>[IDSlotsPerBunch, sdds_beam.c:1041–1047](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sdds_beam.c#L1041-L1047)<br>[bunch assignment, sdds_beam.c:786–800](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sdds_beam.c#L786-L800)<br>[bunch range, lrwake.c:59–89](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lrwake.c#L59-L89)<br>[bunch selection, trwake.c:72–88](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L72-L88) |
 
 The manual says that with `IDSlotsPerBunch` S the bunch of particle ID I is ⌊(I − 1)/S⌋, then illustrates this for S = 1000 with IDs 1 to 1000 in bunch 0 and IDs 2001 to 3000 in bunch 1. The formula, which the code implements, puts IDs 1001 to 2000 in bunch 1 and IDs 2001 to 3000 in bunch 2. A user who follows the example, leaving out IDs 1001 to 2000, and selects bunch 1 of a transverse wake gets no kick on any particle; in the test, the 1.252×10⁻⁷ rad kick that the example implies for particle 3000 appears only when bunch 2 is selected.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python IO-05.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: IO-05.py"
 

@@ -2,7 +2,7 @@
 
 The Sad_Mult element documentation calls aₙ normal and bₙ skew, reversing Bmad’s magnetic-field convention. The correct labels are normal bₙ and skew aₙ. The defining field equation and direct tracking of separate quadrupole coefficients establish those labels; the two test kicks agree exactly with that convention.
 
-The script reads the Sad_Mult description and field definition from BMAD_SOURCE, then tracks zero-length sad_mult elements with separate b1 and a1 coefficients against analytic quadrupole kicks. BMAD_DIST selects the production library; both kick controls must pass before the documentation verdict.
+The script reads the Sad_Mult description and field definition from BMAD_SOURCE, then tracks zero-length sad_mult elements with separate b1 and a1 coefficients against analytic quadrupole kicks. Both kick controls must pass before the documentation verdict.
 """
 
 import re

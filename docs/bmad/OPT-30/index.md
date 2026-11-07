@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [track1_taylor, bmad/low_level/track1_taylor.f90:83–116](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track1_taylor.f90#L83-L116)<br>[Bmad manual, taylor_map_include_offsets Attribute, bmad/doc/methods.tex:919–938](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L919-L938) |
 
 With taylor_map_includes_offsets set to false, the Taylor tracker returns a body-frame Jacobian for a tilted element even though its particle trajectories are transformed correctly. The laboratory Jacobian must include the entrance and exit rotations. For a 0.8 m quadrupole with normalized strength 0.7 m⁻² and tilt 0.31 rad, M₂₃ is zero instead of −0.3259 m⁻¹, where M₂₃ is the derivative of horizontal normalized momentum with respect to vertical position. Including offsets in the map, or setting the tilt to zero, gives the correct matrix.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) · [View source](../helpers/index.md#_srdt_wiggler_maps)
+Run `python OPT-30.py` with [_bmad.py](../helpers/_bmad.py) and [_srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) in the same directory.
 
 ??? example "Reproducer: OPT-30.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     With taylor_map_includes_offsets set to false, the Taylor tracker returns a body-frame Jacobian for a tilted element even though its particle trajectories are transformed correctly. The laboratory Jacobian must include the entrance and exit rotations. For a 0.8 m quadrupole with normalized strength 0.7 m⁻² and tilt 0.31 rad, M₂₃ is zero instead of −0.3259 m⁻¹, where M₂₃ is the derivative of horizontal normalized momentum with respect to vertical position. Including offsets in the map, or setting the tilt to zero, gives the correct matrix.
 
-    The script builds first-order Taylor maps of a tilted quadrupole with offsets excluded, offsets included, and zero tilt. It compares the returned transverse matrix and same-map trajectory differences with the analytically rotated focusing and defocusing blocks. BMAD_DIST selects the production build.
+    The script builds first-order Taylor maps of a tilted quadrupole with offsets excluded, offsets included, and zero tilt. It compares the returned transverse matrix and same-map trajectory differences with the analytically rotated focusing and defocusing blocks.
     """
 
     from _bmad import compare, fortran, verdict

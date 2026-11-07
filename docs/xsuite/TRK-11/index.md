@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`) |
+| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`, head build) |
 | Source | [`Elens_track_local_particle`, elens.h:110–135](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/elens.h#L110-L135)<br>[electron-lens force](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L3341-L3385) |
 
 The annular `Elens` kick shrinks when the particle charge grows and carries an extra dependence on the relative momentum deviation δ. Gauss's law and the magnetic force of the counter-propagating electron beam require the normalized kick to scale with the particle's charge-to-mass ratio relative to the reference species, χ, and the physical velocity factor. For a 3.7 A, 1.3 m, 10 kV lens with radii 1 and 4 mm, a 1 GeV/c particle at (x, y) = (2, 0.4) mm with twice the reference charge and the same mass gets normalized horizontal momentum −1.173 × 10⁻⁴ instead of −4.693 × 10⁻⁴. At δ = +20% the reference-species kick is 1.200 times too large.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python TRK-11.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: TRK-11.py"
 

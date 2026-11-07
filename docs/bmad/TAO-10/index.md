@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`tao_load_this_datum` wrapped reductions, tao/code/tao_data_and_eval_mod.f90:595–612](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_data_and_eval_mod.f90#L595-L612)<br>[`tao_datum_integrate` length check, tao/code/tao_data_and_eval_mod.f90:739–757](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_data_and_eval_mod.f90#L739-L757)<br>[“Calculation of δD for a Datum” (`s:del.d`), tao/doc/optimization.tex:145–171](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/optimization.tex#L145-L171) |
 
 Average, integral, and RMS constraints over a range that wraps around the start of a ring are rejected when Tao passes the whole-branch value buffer alongside the shorter wrapped position array. A valid one-metre range in a two-metre ring receives an internal-error diagnostic and invalid model, base, and design values. Its default invalid-value setting leaves the residual and merit at zero, while the clock average should be 4.336 ns and its integral 4.336 ns·m. The constructed wrapped positions and reordered values must be passed together.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_optimization_io.py](../helpers/_tao_optimization_io.py) · [View source](../helpers/index.md#_tao_optimization_io)
+Run `python TAO-10.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_optimization_io.py](../helpers/_tao_optimization_io.py) in the same directory.
 
 ??? example "Reproducer: TAO-10.py"
 
@@ -37,9 +34,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     and merit at zero, while the clock average should be 4.336 ns and its integral 4.336 ns·m. The
     constructed wrapped positions and reordered values must be passed together.
 
-    The script requests all three reductions over a wrapped range and a non-wrapped control in
-    separate Tao processes. It verifies every clock sample analytically, identifies the exact
-    invalid-data diagnostic, and checks the resulting flags and merit. BMAD_DIST supplies Tao.
+    The script requests all three reductions over a wrapped range and a non-wrapped control in separate
+    Tao processes. It verifies every clock sample analytically, identifies the exact invalid-data
+    diagnostic, and checks the resulting flags and merit.
     """
 
     import math

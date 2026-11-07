@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`, committed 2026-11-03) |
 | Source | [`track_through_csbendCSR`, csbend.c:3686–3695](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3686-L3695)<br>[`track_through_csbendCSR`, csbend.c:3712–3716](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3712-L3716)<br>[`track_through_csbendCSR`, csbend.c:2973–2979](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L2973-L2979)<br>[`csrcsbend_param`, track_data.c:2058–2069](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2058-L2069)<br>[`track_through_csbendCSR`, csbend.c:3442–3449](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3442-L3449)<br>[`track_through_csbendCSR`, csbend.c:3613–3617](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L3613-L3617) |
 
 With `BIN_ONCE=1` and a wake `OUTPUT_FILE`, CSRCSBEND leaves its retained histogram scaled after writing each page and attempts to restore elements one past both histogram arrays. Later output pages should retain the initial density and derivative, but for a 100.0 pC bunch represented by 4096 particles, the second page integrates to 7.319×10⁻⁴ pC and the fourth to 3.921×10⁻¹⁴ pC. The derivative grows by a factor of 5.321×10⁷ per additional page instead of remaining unchanged, and Valgrind confirms invalid reads and writes. The tested tracking kicks are unchanged by wake output.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _csr.py](../helpers/_csr.py) · [View source](../helpers/index.md#_csr)
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python COL-50.py` with [_csr.py](../helpers/_csr.py) and [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: COL-50.py"
 
@@ -31,7 +28,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     With `BIN_ONCE=1` and a wake `OUTPUT_FILE`, CSRCSBEND leaves its retained histogram scaled after writing each page and attempts to restore elements one past both histogram arrays. Later output pages should retain the initial density and derivative, but for a 100.0 pC bunch represented by 4096 particles, the second page integrates to 7.319×10⁻⁴ pC and the fourth to 3.921×10⁻¹⁴ pC. The derivative grows by a factor of 5.321×10⁷ per additional page instead of remaining unchanged, and Valgrind confirms invalid reads and writes. The tested tracking kicks are unchanged by wake output.
 
-    The script tracks deterministic Gaussian quantiles through a four-slice bend and compares all-page, last-only, interval-two and disabled wake output, with a rebinned control. It integrates the reported current, checks the repeated scaling against the macroparticle charge and bin width, and compares final coordinates. It also runs the retained and rebinned cases under Valgrind, which must be on PATH with Elegant and RPN_DEFNS set.
+    Setup: `valgrind` on `PATH`; the script runs some cases of serial Elegant under Memcheck.
+
+    The script tracks deterministic Gaussian quantiles through a four-slice bend and compares all-page, last-only, interval-two and disabled wake output, with a rebinned control. It integrates the reported current, checks the repeated scaling against the macroparticle charge and bin width, and compares final coordinates. It also runs the retained and rebinned cases under Valgrind.
     """
 
     import re

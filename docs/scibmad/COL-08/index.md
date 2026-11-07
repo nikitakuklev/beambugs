@@ -12,10 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on SpaceCharge main (`ae30463`) |
+| Last reproduced | 2026-10-31 on SpaceCharge main (`ae30463`, head build) |
 | Source | [`SpaceCharge.jl/src/green_functions.jl:35-38`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L35-L38)<br>[`41-67`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L41-L67)<br>[`103-112`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L103-L112)<br>[`SpaceCharge.jl/src/solvers/free_space.jl:49-56`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/solvers/free_space.jl#L49-L56)<br>[`green_functions.jl:144-158`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L144-L158)<br>[`green_functions.jl:169-175`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L169-L175)<br>[`green_functions.jl:54`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L54)<br>[`green_functions.jl:61-66`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L61-L66)<br>[`free_space.jl:53-56`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/solvers/free_space.jl#L53-L56) |
 
 `solve!(at_cathode=true)` loses Float64 accuracy when the cathode image is far away compared with the mesh-cell size, producing spurious transverse fields. An on-axis source has zero transverse field by symmetry, and numerical integration over the charged cell and high-precision kernel evaluation independently give the expected field. With 1.000 nC at a mesh node 1.000 cm from the cathode, 1.000 µm cells and consistent manual bounds on a 32³ mesh, the horizontal field is 133.9 V/m instead of zero, beside an expected axial field of −2.247 × 10⁴ V/m. Errors are negligible for sources within about 100 cell widths of the cathode, but fine grids with distant images suffer cancellation and FFT contamination from unused kernel planes; the shipped example reaches this regime.
+
+Run `julia COL-08.jl`.
 
 ??? example "Reproducer: COL-08.jl"
 

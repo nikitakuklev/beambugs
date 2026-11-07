@@ -7,9 +7,9 @@ comes from the same artificial focusing. A ring with zero damped-map M₆₅ ret
 ordinary field and 5.578 × 10⁻⁶ m in emittance_no_vert. The invalid marker should apply to
 the emittance field selected by the opening-angle option.
 
-The script checks zero longitudinal focusing in the actual RF-off damped map, then executes
-both opening-angle branches of emit_6d. It checks the longitudinal emittance markers and
-runs an RF-on control with positive emittances. BMAD_DIST selects the build.
+The script checks zero longitudinal focusing in the actual RF-off damped map, then executes both
+opening-angle branches of emit_6d. It checks the longitudinal emittance markers and runs an RF-on
+control with positive emittances.
 """
 
 import numpy as np

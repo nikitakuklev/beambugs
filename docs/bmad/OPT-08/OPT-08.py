@@ -2,7 +2,7 @@
 
 A handled transfer-matrix calculation error leaves the global radiation-fluctuation switch off. Matrix construction temporarily disables quantum fluctuations, but it must restore the incoming setting before returning an error. A deliberately failing custom matrix callback is called once with fluctuations off and returns with them still off, although they were enabled before the call. Subsequent tracking therefore omits quantum fluctuations after the caller recovers from the error. Successful matrix construction restores the switch.
 
-The script runs the same custom matrix callback with successful and failing returns in separate processes. It checks that each callback ran once with fluctuations disabled, and that the successful call restored the switch before testing the error path. BMAD_DIST supplies the build.
+The script runs the same custom matrix callback with successful and failing returns in separate processes. It checks that each callback ran once with fluctuations disabled, and that the successful call restored the switch before testing the error path.
 """
 
 from _bmad import compare, fortran, verdict

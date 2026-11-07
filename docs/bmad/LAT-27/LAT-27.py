@@ -2,7 +2,7 @@
 
 Splitting a finite-length Taylor element through the element-slicing API applies its complete map in each slice. A map that adds 1 mm to horizontal position produces 1 mm as a whole element and 2 mm as two half-length slices. The slicing routine explicitly assigns the zero-length map to the physical entrance, but a later copy of the lord's enabled state reactivates the second slice. The map must act once at the entrance.
 
-The script creates two half-length slices of a Taylor element that translates x by 1 mm. It checks the whole element against that translation, then checks slice activation and their combined displacement. BMAD_DIST selects the build.
+The script creates two half-length slices of a Taylor element that translates x by 1 mm. It checks the whole element against that translation, then checks slice activation and their combined displacement.
 """
 
 from _bmad import compare, fortran, verdict

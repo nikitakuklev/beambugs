@@ -13,7 +13,6 @@ The script uses four slices over [−1, 1] m and a causal transverse wake W(d) =
 followed by zero, one or two explicitly numbered empty turns and then a witness at ζ = −0.75 m,
 whose kick is compared with direct convolution. The empty turns consist of lost particles, live
 particles outside the slicing window, or live particles of zero weight; the last two are controls.
-It requires the installed prebuilt kernels (compilation is forbidden).
 """
 
 from typing import ClassVar

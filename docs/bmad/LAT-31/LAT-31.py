@@ -2,7 +2,7 @@
 
 After a midpoint marker splits a quadrupole, setting its super lord’s spin tracking method to off leaves the tracked slices using spin tracking. A particle starting at x = 1 mm with spin (0, 0, 1) exits a 1 m quadrupole with its spin rotated by 2.751 mrad, while the whole disabled-spin element preserves (0, 0, 1) exactly. The slices must inherit the lord's method because the spin method is not an independently adjustable super-slave attribute. The missing method copy silently defeats the requested switch.
 
-The script inserts a midpoint marker into a quadrupole, disables the lord's spin method and runs bookkeeping. It compares the two quadrupole slices and their tracked spin with the exact off-state invariant and the whole-lord control. BMAD_DIST selects the build.
+The script inserts a midpoint marker into a quadrupole, disables the lord's spin method and runs bookkeeping. It compares the two quadrupole slices and their tracked spin with the exact off-state invariant and the whole-lord control.
 """
 
 import numpy as np

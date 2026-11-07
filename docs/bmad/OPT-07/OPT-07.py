@@ -2,7 +2,7 @@
 
 Computing radiation curvature integrals for a tilted element rotates the second component using an already-rotated first component. An orthogonal rotation must use the original vector for both components and preserve its norm. For a short quadrupole tilted by 45°, the second integrated-curvature component is 2.500 × 10⁻⁷ instead of 3.536 × 10⁻⁷, an underestimate of 29.29%. The untilted case provides the rotation control.
 
-The script integrates curvature in a short quadrupole, then rotates both the quadrupole and its incoming particle by 45°. It compares the tilted vector with a two-component orthogonal rotation of the untilted result. BMAD_DIST supplies the production build.
+The script integrates curvature in a short quadrupole, then rotates both the quadrupole and its incoming particle by 45°. It compares the tilted vector with a two-component orthogonal rotation of the untilted result.
 """
 
 import numpy as np

@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on xtrack 0.118.2 (`ad5e808`) |
+| Last reproduced | 2026-11-07 on xtrack main (`f09e0fb`, head build) |
 | Source | [`_compute_radiation_integrals`, radiation.py:398–417](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L398-L417)<br>[`_add_strengths_to_twiss_res`, strengths.py:31–37](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/strengths.py#L31-L37)<br>[radiation.py:450–453](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/twiss/radiation.py#L450-L453)<br>[xtrack.tex:6100–6107](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L6100-L6107)<br>[xtrack.tex:6259–6283](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L6259-L6283)<br>[`Sextupole.k2`, sextupole.py:32–35](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/sextupole.py#L32-L35)<br>[`shift_x`, _common.py:151–155](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/_common.py#L151-L155)<br>[`Magnet`, magnet.py:37–42](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/magnet.py#L37-L42) |
 
 With `radiation_integrals=True`, a sextupole traversed away from its magnetic axis contributes zero to the fourth radiation integral I₄ because the calculation uses its nominal quadrupole coefficient instead of the field gradient at the orbit. The gradient must include k₂(x − a), where k₂ is the sextupole strength, x the horizontal orbit and a the magnetic-axis displacement. A 0.2000 m sextupole with k₂ = 100.0 m⁻³, a = 5.000 mm and entrance dispersion 0.2000 m returns zero instead of −5.042 × 10⁻⁵ m⁻¹, as independent orbit and dispersion integration establishes. In a separate 132.0 m periodic ring, the missing sextupole term makes the horizontal damping partition 0.005686% too large.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python OPT-17.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: OPT-17.py"
 

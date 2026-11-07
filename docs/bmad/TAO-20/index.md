@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [tao_ptc_normal_form, tao/code/tao_ptc_normal_form.f90:69–74](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_ptc_normal_form.f90#L69-L74)<br>[normal.dhdj selection, tao/code/tao_evaluate_a_datum.f90:1859–1864](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_evaluate_a_datum.f90#L1859-L1864)<br>[coefficient dispatch, tao/code/tao_evaluate_a_datum.f90:1902–1910](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_evaluate_a_datum.f90#L1902-L1910)<br>[taylor_coef, bmad/modules/taylor_mod.f90:95–110](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/taylor_mod.f90#L95-L110)<br>[Data Types, normal.<type>, normal.type, tao/doc/data.tex:1446–1462](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/data.tex#L1446-L1462) |
 
 Requesting the documented normal.dhdj.1.000001 coefficient in Tao crashes with a segmentation fault on a stable alternating-quadrupole ring after its one-turn map has been calculated. The routine that would populate this Taylor series is commented out, but the datum path still asks for a coefficient from it. The query should return the coefficient or an explicit unavailable result.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) · [View source](../helpers/index.md#_tao_contracts_normal_form)
+Run `python TAO-20.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) in the same directory.
 
 ??? example "Reproducer: TAO-20.py"
 

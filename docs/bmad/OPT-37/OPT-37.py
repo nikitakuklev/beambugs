@@ -2,7 +2,7 @@
 
 For averaged planar and helical wigglers, the photon-count radiation integral I₀ omits the element length; the planar formula also uses 2/3 instead of the absolute-cosine average 2/π. The integral I₀ = ∫γ|g|ds must scale with length and be additive under subdivision, where γ is the relativistic energy factor and g is curvature. At 650 MeV/c and 0.3 T, a 0.48 m planar wiggler returns 117.3 instead of 53.78, and splitting it into four pieces raises the result to 469.3. The corresponding helical values are 176.0 and 704.0 instead of 84.48; the squared- and cubed-curvature integrals remain correct.
 
-The script compares complete-period planar and helical wigglers at two lengths and with four-piece subdivision. It derives I0, I2 and I3 from the absolute field moments, checks three cache modes and validates the I2/I3 and zero-field controls. BMAD_DIST selects the production build.
+The script compares complete-period planar and helical wigglers at two lengths and with four-piece subdivision. It derives I0, I2 and I3 from the absolute field moments, checks three cache modes and validates the I2/I3 and zero-field controls.
 """
 
 import math

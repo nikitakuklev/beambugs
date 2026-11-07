@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [zero-frequency input guard, bmad/low_level/track_a_lcavity.f90:57–61](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_lcavity.f90#L57-L61)<br>[this_rf_phase absolute-time reduction, bmad/low_level/track_a_lcavity.f90:499–510](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_lcavity.f90#L499-L510) |
 
 A zero-voltage, zero-frequency linear cavity produces NaN coordinates and transfer matrices when absolute-time tracking is enabled. The phase calculation divides by the zero frequency before reducing the time modulo an infinite period. The same 1 m cavity is a finite drift in relative-time tracking, as required when the field is zero. The NaN occurs with the cavity both on and off.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _rf_and_spin.py](../helpers/_rf_and_spin.py) · [View source](../helpers/index.md#_rf_and_spin)
+Run `python TRK-24.py` with [_bmad.py](../helpers/_bmad.py) and [_rf_and_spin.py](../helpers/_rf_and_spin.py) in the same directory.
 
 ??? example "Reproducer: TRK-24.py"
 

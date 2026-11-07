@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [LSCDRIFT window, lsc.c:145](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L145)<br>[forward FFT, lsc.c:246](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L246)<br>[impedance and inverse FFT, lsc.c:337–358](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L337-L358)<br>[CSRDRIFT calls, csbend.c:5212](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5212)<br>[5229](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L5229)<br>[window, lsc.c:446](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L446)<br>[FFT, lsc.c:543](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L543)<br>[impedance and inverse FFT, lsc.c:625–642](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L625-L642)<br>[allocation, lsc.c:96–101](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lsc.c#L96-L101)<br>[LSCDRIFT manual, lscdrift.tex:1–6](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/lscdrift.tex#L1-L6)<br>[rfcw.tex:14–19](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfcw.tex#L14-L19) |
 
 LSCDRIFT, and the longitudinal space charge of RFCW and CSRDRIFT, apply the impedance with a discrete Fourier transform over a window three bins longer than the bunch's sampled extent, without zero padding, so the field is that of a periodic train of bunch copies. For short, wide, low-energy bunches the images cancel much of the field. At Lorentz factor γ = 4, a 1 pC Gaussian bunch of 80 μm rms length and 2 mm rms size receives at +1σ a kick 21.43% weaker than the isolated-bunch field from a real-space Coulomb integral, and 6.004% weaker at γ = 15. More bins do not help; stretching the window to 80σ brings the kick within 0.09324% of the isolated value.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _lsc.py](../helpers/_lsc.py) · [View source](../helpers/index.md#_lsc)
+Run `python COL-45.py` with [_elegant.py](../helpers/_elegant.py) and [_lsc.py](../helpers/_lsc.py) in the same directory.
 
 ??? example "Reproducer: COL-45.py"
 

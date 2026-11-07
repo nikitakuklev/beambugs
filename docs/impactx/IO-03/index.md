@@ -12,11 +12,13 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-28 on ImpactX 26.10 (`615921c`); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Last reproduced | 2026-10-28 on ImpactX 26.10 (`615921c`, committed 2026-10-05); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1762]], fix |
 | Source | [`ImpactXParticleContainer.py#L83-L95`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L83-L95)<br>[`L117-L125`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L117-L125)<br>[`L252`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/python/impactx/extensions/ImpactXParticleContainer.py#L252) |
 
 The phase-space plot from `plot_phasespace()` multiplies the longitudinal momentum pt, the energy deviation −ΔE/(P₀c) with P₀ the reference momentum, by 1000, the factor it uses to convert transverse momenta to mrad, while the axis label states units of p₀c with no scale factor. ImpactX documents pt as dimensionless, so a per-mille display must state its factor. A beam with pt = ±0.004 is plotted at ±4. Tracking and stored coordinates are unaffected; values read from the plot are 1000 times too large.
+
+Run `python IO-03.py`.
 
 ??? example "Reproducer: IO-03.py"
 

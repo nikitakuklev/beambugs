@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [ele_to_an_bn multipole case](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ptc_interface_mod.f90#L3255-L3269)<br>[Bmad Manual, “Multipole” (s:mult)](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L3860-L3878)<br>[native thin-bend map](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/multipole_mod.f90#L248-L254) |
 
 A multipole with K0L_status set to bends_reference loses its off-momentum kick and longitudinal displacement in PTC tracking and PTC-derived Taylor maps. The paraxial thin reference bend requires Δpₓ = K₀L·δ and Δz = −K₀L·x, where K₀L is the integrated dipole strength, pₓ is normalized horizontal momentum and δ is relative momentum offset. At K₀L = 0.001, x = 1 mm and δ = 0.01, native tracking returns Δpₓ = 10⁻⁵ and Δz = −1 μm, while PTC and Taylor tracking return zero for both. The PTC interface removes the dipole coefficients without supplying the reference-bend terms.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) · [View source](../helpers/index.md#_tracking_contracts_materials)
+Run `python TRK-53.py` with [_bmad.py](../helpers/_bmad.py) and [_tracking_contracts_materials.py](../helpers/_tracking_contracts_materials.py) in the same directory.
 
 ??? example "Reproducer: TRK-53.py"
 

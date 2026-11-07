@@ -6,9 +6,9 @@ invoking inspect E mat6 reports an extra-arguments error. The equivalent direct 
 succeeds and gives the analytic drift matrix. The alias should expand to that same query under
 the documented rule.
 
-The script checks a direct drift-matrix query analytically, then invokes the same query through
-a one-placeholder alias with a surplus argument. It accepts only the specific extra-arguments
-diagnostic as the failure. BMAD_DIST supplies Tao.
+The script checks a direct drift-matrix query analytically, then invokes the same query through a
+one-placeholder alias with a surplus argument. It accepts only the specific extra-arguments
+diagnostic as the failure.
 """
 
 import numpy as np

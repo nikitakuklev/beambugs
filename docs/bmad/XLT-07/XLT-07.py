@@ -8,11 +8,11 @@ an independent circle calculation, while MAD-X keeps it on the design orbit. The
 without taper is dg = k₀ − g, zero here. The same sector bend without explicit k₀ imports
 correctly.
 
-The script translates with madx_to_bmad.py a MAD-X sbend with L = 1 m, angle 0.1 rad and
-k0 = 0.1 m⁻¹, the ideal bend written with its field explicit, and the same bend without k0 as
-the control. It reads the imported dg and tracks the imported lattice in Tao from a zero orbit.
-MAD-X TWISS of the source deck, which must stay on the design orbit, is the receiving-code
-reference, and the exact circle in the doubled field accounts for the observed orbit. Set BMAD_SOURCE to the pinned source checkout.
+The script translates with madx_to_bmad.py a MAD-X sbend with L = 1 m, angle 0.1 rad and k0 = 0.1
+m⁻¹, the ideal bend written with its field explicit, and the same bend without k0 as the control. It
+reads the imported dg and tracks the imported lattice in Tao from a zero orbit. MAD-X TWISS of the
+source deck, which must stay on the design orbit, is the receiving-code reference, and the exact
+circle in the doubled field accounts for the observed orbit.
 """
 
 from _bmad import compare, verdict

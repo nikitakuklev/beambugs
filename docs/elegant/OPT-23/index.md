@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`NormalizeEigenvectors`, src/moments.c:1123–1136](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L1123-L1136)<br>[`computeNaturalEmittances`, src/moments.c:1054–1055](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L1054-L1055)<br>[`e1`, `e2`, `e3`, emittances of modes 1 to 3, src/moments.c:111–113](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L111-L113)<br>[changing the time sign for symplecticity, src/coupled_twiss.c:381–385](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/coupled_twiss.c#L381-L385)<br>[canonical variables are (x, q_x, y, q_y, −s, δ), doc/elegant.tex:987](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L987)<br>[the equilibrium moments, doc/elegant.tex:5613](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5613) |
 
 Elegant's `moments_output` normalizes its normal modes with the same symplectic sign for all coordinate pairs, although the canonical longitudinal pair is (−s, δ), where s is path length and δ is relative momentum deviation. With transverse–longitudinal mixing, this gives wrong mode emittances; without intrabeam scattering, the covariance still solves the exported linear equilibrium equation. In a 2.4 GeV, 70 m ring with a 1.5 MV cavity, the covariance's paraxial eigen-emittances are 5.448 and 51.45 μm, but Elegant reports 5.418 and 51.17 μm (−0.5564% and −0.5555%). Changing the ring's starting point gives a −0.7020% error in the first mode.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-23.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-23.py"
 

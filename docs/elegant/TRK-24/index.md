@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`computeTotalErrorMultipoleFields`, multipole.c:1788–1795](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1788-L1795)<br>[row test, multipole.c:1791–1794](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1791-L1794)<br>[entrance edge consumer, multipole.c:1369–1379](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1369-L1379)<br>[exit edge consumer, multipole.c:1532–1542](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1532-L1542)<br>[KQUAD setup, multipole.c:818–846](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L818-L846)<br>[KSEXT setup, multipole.c:894–922](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L894-L922)<br>[edge arrays, multipole.c:1731–1744](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L1731-L1744)<br>[KQUAD manual, kquad.tex:11](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/kquad.tex#L11)<br>[KSEXT manual, ksext.tex:11](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/ksext.tex#L11)<br>[cutoff metadata, track_data.c:1279](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L1279) |
 
 When KQUAD or KSEXT magnets use separate body and edge multipole files, minimum and maximum normal/skew order cutoffs incorrectly select edge rows using the body file's order labels. Relabelling zero-amplitude body rows must leave every physical field unchanged, but changes the edge kicks. In a 0.17 m KQUAD with K₁ = −0.7 m⁻², edge orders 2 and 4 and minimum normal and skew orders of 3, reversing body labels from [2, 4] to [4, 2] changes horizontal slope x′ from −1.754×10⁻³ to −1.637×10⁻³. The largest vertical-slope error is 5.084×10⁻⁴; independent edge impulses and body integration establish the expected result.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _multipole.py](../helpers/_multipole.py) · [View source](../helpers/index.md#_multipole)
+Run `python TRK-24.py` with [_elegant.py](../helpers/_elegant.py) and [_multipole.py](../helpers/_multipole.py) in the same directory.
 
 ??? example "Reproducer: TRK-24.py"
 

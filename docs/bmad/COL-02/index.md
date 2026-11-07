@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [ccfft3d, bmad/space_charge/fft_interface_mod.f90:129–170](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/fft_interface_mod.f90#L129-L170)<br>[osc_getgrnimageconvcorr / imageconvcorr3d, bmad/space_charge/open_spacecharge_core_mod.f90:1228–1254](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_core_mod.f90#L1228-L1254)<br>[pipe correlation, bmad/space_charge/open_spacecharge_core_mod.f90:790–805](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_core_mod.f90#L790-L805)<br>[space_charge_3d, bmad/space_charge/open_spacecharge_mod.f90:675–691](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/open_spacecharge_mod.f90#L675-L691) |
 
 Bmad’s FFTW wrapper ignores the second and third transform directions when a caller requests a mixture of forward and inverse axes. An impulse transform with signs (1, 1, −1) has a maximum error of 2, while the same-sign control agrees to roundoff. In the legacy cathode solver, this changes a sampled longitudinal field from −512.8 V/m to −1608 V/m, as direct charge-volume integration establishes. The active cathode route uses a reflected-charge solve and avoids this transform error.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_fields.py](../helpers/_collective_fields.py) · [View source](../helpers/index.md#_collective_fields)
+Run `python COL-02.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_fields.py](../helpers/_collective_fields.py) in the same directory.
 
 ??? example "Reproducer: COL-02.py"
 
@@ -37,10 +34,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     integration establishes. The active cathode route uses a reflected-charge solve and avoids this
     transform error.
 
-    The script compares an impulse transform with its analytic discrete Fourier transform, then
-    compiles a legacy cathode-field case. Independent uniform-cell quadrature supplies the electric
-    field reference; method 2 and the active reflected-charge route are controls. Set BMAD_DIST to the
-    build root.
+    The script compares an impulse transform with its analytic discrete Fourier transform, then compiles
+    a legacy cathode-field case. Independent uniform-cell quadrature supplies the electric field
+    reference; method 2 and the active reflected-charge route are controls.
     """
 
     import numpy as np

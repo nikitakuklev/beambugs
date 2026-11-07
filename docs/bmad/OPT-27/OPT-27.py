@@ -2,7 +2,7 @@
 
 When srdt_lsq_solution is asked to choose sextupole strengths that cancel first-order driving terms, it replaces every response column by the sum of all columns. The least-squares solver therefore returns the same strength for every variable and leaves large residuals. An eight-cell ring with 24 thick sextupoles returns the sextupole strength K₂ = 0.007165 m⁻³ everywhere and a largest first-order residual of 7.170, while an independently formed response matrix reduces all residuals below 2.139×10⁻¹¹. Source inspection also finds a negative slice weight for thin-multipole variables and incorrect signs and normalization for nonzero chromaticity targets.
 
-The script reconstructs the 18 by 24 response matrix by varying one sextupole at a time in thick and thin FODO rings. NumPy computes the minimum-norm solution and the script reapplies it in Bmad as a control, then compares the library solver result. BMAD_DIST selects the production build.
+The script reconstructs the 18 by 24 response matrix by varying one sextupole at a time in thick and thin FODO rings. NumPy computes the minimum-norm solution and the script reapplies it in Bmad as a control, then compares the library solver result.
 """
 
 import numpy as np

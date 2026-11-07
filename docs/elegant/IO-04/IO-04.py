@@ -2,7 +2,9 @@
 
 The SDDS routines `accumulateMoments` and `accumulateWeightedMoments` return the mean, rms and standard deviation of data supplied in batches (first call with reset = 1, later calls with reset = 0), but in their default single-thread form they do not combine the batches. For the values 2, 4, 8, 10 supplied as [2, 4] then [8, 10], the mean is 6, the rms √46 = 6.782 and the sample standard deviation √(40/3) = 3.651, as one call over all four values gives. The unweighted routine returns a mean of 4.5 (the last batch's sum over the total count) and the unit-weight routine returns 9 (the last batch's mean).
 
-The script compiles a small C program that calls the routines on the whole data and on the two batches, with unit weights and with weights 1, 2, 3, 4, and compares the combined mean, rms and standard deviation with closed forms; the one-call results and `computeMoments` are the controls. It needs `sddsprocess` on PATH, to locate the SDDS libraries, and `gcc`.
+Setup: `gcc`, and `sddsprocess` on `PATH` from an SDDS build tree, because the script compiles small C programs against that tree's `lib/Linux-x86_64/libmdbmth.a` and `libmdblib.a`.
+
+The script compiles a small C program that calls the routines on the whole data and on the two batches, with unit weights and with weights 1, 2, 3, 4, and compares the combined mean, rms and standard deviation with closed forms; the one-call results and `computeMoments` are the controls.
 """
 
 import sys

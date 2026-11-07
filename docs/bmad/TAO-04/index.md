@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`tao_write_cmd`, tao/code/tao_write_cmd.f90:802–806](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_write_cmd.f90#L802-L806)<br>[`tao_init_data` character declaration, tao/code/tao_init_data_mod.f90:43–49](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_init_data_mod.f90#L43-L49) |
 
 Tao writes the universe selector as an unquoted integer in an exported data namelist, although its reader declares that selector as character data. The build compiler’s namelist reader rejects the generated file with IOSTAT = 5010 and a missing-quote error. Quoting only the selector makes the same namelist readable and recovers universe 1. Generated data namelists must use the syntax accepted by the reader.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_optimization_io.py](../helpers/_tao_optimization_io.py) · [View source](../helpers/index.md#_tao_optimization_io)
+Run `python TAO-04.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_optimization_io.py](../helpers/_tao_optimization_io.py) in the same directory.
 
 ??? example "Reproducer: TAO-04.py"
 
@@ -36,8 +33,8 @@ Download these shared helpers into the same directory as the reproducer scripts:
     use the syntax accepted by the reader.
 
     The script generates a data export with Tao and compiles a small Fortran reader with the same
-    character-valued selector declaration. It compares reads of the original export and a copy with
-    only that selector quoted. BMAD_DIST supplies Tao and the Fortran compiler/link recipe.
+    character-valued selector declaration. It compares reads of the original export and a copy with only
+    that selector quoted.
     """
 
     import re

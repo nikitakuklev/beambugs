@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [rad1_damp_and_stoc_mats, bmad/modules/rad_6d_mod.f90:491–550](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L491-L550)<br>[rad_g_integrals, bmad/modules/rad_6d_mod.f90:852–857](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L852-L857)<br>[routine contract, bmad/modules/rad_6d_mod.f90:384–403](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/rad_6d_mod.f90#L384-L403) |
 
 Tightening radiation-integration tolerances makes the convergence test easier to satisfy because it multiplies estimated errors by the tolerances. For a 3.2 m, 1 T planar wiggler at 3 GeV with 4 or 12 periods, the curvature-squared integral I₂ is 0.008871 m⁻¹ instead of 0.01598 m⁻¹, an underestimate of 44.48%. A 13-period case is 0.03527% low, and changing the tolerance from 10⁻⁴ to 10⁻⁸ leaves all three results unchanged. Dividing by the allowed errors in a temporary source copy recovers the analytic period average at 10⁻⁸.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) · [View source](../helpers/index.md#_s3_14_optics_matrix_radiation)
+Run `python OPT-06.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) in the same directory.
 
 ??? example "Reproducer: OPT-06.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Tightening radiation-integration tolerances makes the convergence test easier to satisfy because it multiplies estimated errors by the tolerances. For a 3.2 m, 1 T planar wiggler at 3 GeV with 4 or 12 periods, the curvature-squared integral I₂ is 0.008871 m⁻¹ instead of 0.01598 m⁻¹, an underestimate of 44.48%. A 13-period case is 0.03527% low, and changing the tolerance from 10⁻⁴ to 10⁻⁸ leaves all three results unchanged. Dividing by the allowed errors in a temporary source copy recovers the analytic period average at 10⁻⁸.
 
-    The script runs 4-, 12- and 13-period wigglers at two tolerances and checks the curvature-squared integral against the analytic period average. It then compiles an isolated copy of rad_6d_mod with only the convergence multiplications changed to divisions and repeats the cases. BMAD_DIST and BMAD_SOURCE name the matching production build and source; the source tree and libraries are preserved.
+    The script runs 4-, 12- and 13-period wigglers at two tolerances and checks the curvature-squared integral against the analytic period average. It then compiles an isolated copy of rad_6d_mod with only the convergence multiplications changed to divisions and repeats the cases.
     """
 
     import math

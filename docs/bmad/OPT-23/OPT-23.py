@@ -7,10 +7,10 @@ instead of 2.132 × 10⁴ eV, and its linac energy spread is 150.9 eV instead of
 Damping, emittance growth and stochastic energy variance inherit the missing factor of 36,
 while unit-charge controls and the separate native radiation-map loss obey the species scaling.
 
-The script runs the same ring and open line for unit-charge particles and carbon-12. It
-compares radiation-integral loss, damping, energy spread and emittance growth with the manual’s
-species-radius formulas and checks the native radiation-map loss independently. BMAD_DIST
-selects the build; the companion tracking script checks mean loss and fluctuations.
+The script runs the same ring and open line for unit-charge particles and carbon-12. It compares
+radiation-integral loss, damping, energy spread and emittance growth with the manual’s
+species-radius formulas and checks the native radiation-map loss independently. The companion
+tracking script checks mean loss and fluctuations.
 """
 
 import numpy as np

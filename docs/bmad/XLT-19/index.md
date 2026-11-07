@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [ele_type_translate mappings, util_programs/elegant_to_bmad/elegant_to_bmad.py:79–169](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/elegant_to_bmad/elegant_to_bmad.py#L79-L169)<br>[parse_element lookup and serialization, util_programs/elegant_to_bmad/elegant_to_bmad.py:567–600](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/elegant_to_bmad/elegant_to_bmad.py#L567-L600)<br>[Bmad key lookup and rejection, bmad/parsing/bmad_parser.f90:733–752](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/parsing/bmad_parser.f90#L733-L752)<br>[announces beta status](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/elegant_to_bmad/elegant_to_bmad.py#L993) |
 
 Importing Elegant SEXT, OCTU, SLICE, EVKICK, or RFTMEZ0 elements emits misspelled Bmad element classes. The resulting classes are sextuple, octuple, maker, vhicker, and rf_cavity, respectively. Bmad rejects every generated definition as an unrecognized key. Changing only the class to sextupole, octupole, marker, vkicker, or rfcavity makes each lattice parse.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _lattice_import_export.py](../helpers/_lattice_import_export.py) · [View source](../helpers/index.md#_lattice_import_export)
+Run `python XLT-19.py` with [_bmad.py](../helpers/_bmad.py) and [_lattice_import_export.py](../helpers/_lattice_import_export.py) in the same directory.
 
 ??? example "Reproducer: XLT-19.py"
 

@@ -14,8 +14,7 @@ them with tracked off-momentum closed orbits and computes the collision-matrix r
 of Xfields, for protons at β₀ = 0.45. Five cases cover zero dispersion, a tiny `dx` = 10⁻⁹ m
 continuity control, `dx` = 0 with `dpx` = 0.11, zero horizontal with nonzero vertical dispersion,
 and a three-segment line in which only one location has Hₓ = 0. At zero dispersion it also checks
-the reference rates against the rest-frame kinetic-energy invariant. It requires the installed
-prebuilt kernels (compilation is forbidden).
+the reference rates against the rest-frame kinetic-energy invariant.
 """
 
 from _ibs import PARAMS, local_oracle, run_case

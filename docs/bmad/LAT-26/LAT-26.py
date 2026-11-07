@@ -2,7 +2,7 @@
 
 A temporary full-length slice with one lord and apertures at both ends keeps only the exit check. In a 1.2 m quadrupole, a particle starting at x = 2 mm outside a 1 mm aperture is lost by the original element but survives its slice, reaching x = 65.56 μm at the exit. The analytic quadrupole map confirms the exit position; preserving both physical ends requires the entrance loss to remain in force.
 
-The script creates a full-length quadrupole slice and compares its aperture selection and particle survival with the original element. It checks the surviving body's horizontal orbit against the analytic focusing map. BMAD_DIST selects the build.
+The script creates a full-length quadrupole slice and compares its aperture selection and particle survival with the original element. It checks the surviving body's horizontal orbit against the analytic focusing map.
 """
 
 import math

@@ -12,15 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`trackRfCavityWithWakes`, simple_rfca.c:720–722](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L720-L722)<br>[`add_to_particle_energy`, simple_rfca.c:1137](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1137)<br>[SRS matrix branch, simple_rfca.c:1001–1003](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L1001-L1003)<br>[clock receives the interval, simple_rfca.c:629](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L629)<br>[RFCA manual, rfca.tex:19–32](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/rfca.tex#L19-L32)<br>[clock definition, simple_rfca.c:63–75](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/simple_rfca.c#L63-L75) |
 
 In an RFCA with CHANGE_T = 1, a nonzero interval T of whole RF periods is subtracted at each of N integration kicks but added to the clock only once. Laboratory arrival time, stored time plus clock, shifts by −(N−1)T although the energy is unchanged, so downstream time-dependent elements act at the wrong time. For a 0.135 m, 24 kV, 0.8 GHz cavity with N = 3 and electron momentum p = 7 mₑc, T = 6.250 ns and the shift is −12.50 ns. A downstream BUMPER gives horizontal slope x′ = 1.475×10⁻³ instead of 1.388×10⁻³, as checked by an independent laboratory-time recurrence. One effective kick is unaffected.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-21.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-21.py"
 

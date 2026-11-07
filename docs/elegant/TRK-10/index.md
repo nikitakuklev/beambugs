@@ -12,15 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">contract-unsettled</span> <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`applySimpleDipoleEdgeKick`, csbend.c:6723–6749](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L6723-L6749)<br>[entrance model-3 call, csbend.c:1421](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1421)<br>[exit model-3 call, csbend.c:1611](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1611)<br>[finite-gap angle, csbend.c:1139–1142](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1139-L1142)<br>[canonical conversions, csbend.c:1733–1751](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/csbend.c#L1733-L1751)<br>[model-3 documentation, csbend.tex:88–89](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L88-L89)<br>[model-1 documentation, csbend.tex:69–74](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/csbend.tex#L69-L74) |
 
 The manual recommends CSBEND edge model 3 for applications requiring symplecticity, without restricting the claim to transverse motion at fixed energy. With a finite pole gap, its momentum-dependent vertical kick omits the time shift needed for a six-dimensional canonical map. In a 0.9 m, 0.23 rad bend, a particle with relative momentum offset δ = 0.15 and vertical offset y = 20 mm receives no exit-edge path shift, while canonical completion requires Δs = −2.222×10⁻⁷ m. The measured six-dimensional symplecticity residual is 2.224×10⁻⁵, despite a transverse residual below 3.5×10⁻¹³. The completion is not a measured physical fringe delay.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-10.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-10.py"
 

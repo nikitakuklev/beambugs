@@ -2,7 +2,7 @@
 
 Computing a spin map by tracking finite orbital perturbations returns quaternion derivatives with reversed signs. They must use the forward central difference, as the orbital matrix does. For a custom spin rotation by 2κx, where x is horizontal position and κ = 1 m⁻¹, the quaternion is q(x) = (cos κx, 0, 0, sin κx). At x = 0.03 m with a 0.0001 m step, its derivative is (0.03000, 0, 0, −0.9996) m⁻¹ instead of (−0.03000, 0, 0, 0.9996) m⁻¹. The central quaternion and orbital matrix are correct.
 
-The script uses a custom spin rotation with an exactly known quaternion and a marker with identity orbital transport. It checks the central quaternion, orbital matrix and the five zero derivatives before comparing the x derivative with the exact centered difference. BMAD_DIST supplies the build.
+The script uses a custom spin rotation with an exactly known quaternion and a marker with identity orbital transport. It checks the central quaternion, orbital matrix and the five zero derivatives before comparing the x derivative with the exact centered difference.
 """
 
 import numpy as np

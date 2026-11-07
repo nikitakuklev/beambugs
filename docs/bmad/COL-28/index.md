@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [damping_matrix_D, bmad/multiparticle/envelope_mod.f90:148–170](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/envelope_mod.f90#L148-L170)<br>[make_SR_mats caller, bmad/multiparticle/envelope_mod.f90:99–109](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/envelope_mod.f90#L99-L109) |
 
 The envelope radiation-damping matrix makes linear energy loss depend on vertical displacement in an on-axis normal combined-function field. Reflection symmetry requires the vertical derivative of B² to vanish, because Bₓ = B₁y and Bᵧ = B₀ + B₁x. At Lorentz factor 1000, curvature 0.1 m⁻¹ and gradient B₁ = B₀/(1 m), the matrix gives D₆₃ = 3.757 × 10⁻⁸ m⁻² instead of zero. Its horizontal term agrees with the field derivative.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-28.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-28.py"
 

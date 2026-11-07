@@ -12,11 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX 26.10 (`615921c`); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Last reproduced | 2026-10-29 on ImpactX 26.10 (`615921c`, committed 2026-10-05); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1738]], fix |
 | Source | [`Thermal.H#L99-L108`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L99-L108)<br>[`matched_scale_radius` at L162-L172](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L162-L172)<br>[caller](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/initialization/InitDistribution.cpp#L310-L312)<br>[L354-L356](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/initialization/InitDistribution.cpp#L354-L356)<br>[sampler contract](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/particles/distribution/Thermal.H#L277-L290) |
 
 Initializing a `Thermal` distribution for a negatively charged species, such as electrons or H⁻, with positive focusing strength k and nonzero bunch charge returns NaN for every particle position, while the momenta are finite and the call returns normally. In the source, the radius calculation raises a self-field coefficient formed with the signed species charge to the power 2/3. Reversing the charge sign leaves the repulsive self-force unchanged, so the distribution must equal that of the opposite charge; an independent integration of Gauss's law with a Boltzmann density gives that finite solution. In the electron and H⁻ cases all 2049 positions are NaN, while positive species give finite positions and, at zero bunch charge, both signs give identical results.
+
+Run `python IO-04.py`.
 
 ??? example "Reproducer: IO-04.py"
 

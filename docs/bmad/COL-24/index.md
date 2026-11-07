@@ -12,7 +12,7 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-21 on Bmad 20261020-0 (`19b8afb`); not reproduced on Bmad 20261031-0 (`c4c629f`), 2026-11-05 |
+| Last reproduced | 2026-10-21 on Bmad 20261020-0 (`19b8afb`, committed 2026-10-20); not reproduced on Bmad 20261031-0 (`c4c629f`), 2026-11-05 |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Issue | [[gh:https://github.com/bmad-sim/bmad-ecosystem/issues/2230]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2231]], filed from this evidence |
@@ -20,9 +20,7 @@ hide:
 
 For multiply charged ions, five IBS rate formulas and the Coulomb-logarithm helper used a classical radius proportional to charge magnitude instead of charge squared. For the Bjorken–Mtingwa formula with a fixed Coulomb logarithm, the rates were underestimated by the squared charge state. For carbon-12⁶⁺, the longitudinal Bjorken–Mtingwa rate was 1.640 × 10⁻⁷ s⁻¹ instead of 5.902 × 10⁻⁶ s⁻¹, a factor of 36. Unit-charge beams have the correct charge scaling.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-24.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-24.py"
 

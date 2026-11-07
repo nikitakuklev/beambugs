@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`compute_slave_coupler`, bmad/modules/bookkeeper_mod.f90:1530–1543](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bookkeeper_mod.f90#L1530-L1543)<br>[`rf_coupler_kick`, bmad/low_level/rf_coupler_kick.f90:39–75](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/rf_coupler_kick.f90#L39-L75)<br>[Bmad manual, “RF Couplers” (`s:rf.coupler`), bmad/doc/attributes.tex:2797–2828](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L2797-L2828) |
 
 Inserting a midpoint marker into an rfcavity element changes its transverse coupler kicks. With couplers enabled at both ends or only at the exit, the split cavity produces horizontal normalized momentum pₓ = 0.0001618 instead of 0.00008090; with couplers disabled, it produces the same nonzero kick instead of zero. Slicing chooses couplers from geometric edge alignment without respecting the enabled ends, and loses the half-strength factor for a both-end coupler. Preserving the physical ends and their strengths must preserve the kick.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _multipass_slicing.py](../helpers/_multipass_slicing.py) · [View source](../helpers/index.md#_multipass_slicing)
+Run `python LAT-28.py` with [_bmad.py](../helpers/_bmad.py) and [_multipass_slicing.py](../helpers/_multipass_slicing.py) in the same directory.
 
 ??? example "Reproducer: LAT-28.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Inserting a midpoint marker into an rfcavity element changes its transverse coupler kicks. With couplers enabled at both ends or only at the exit, the split cavity produces horizontal normalized momentum pₓ = 0.0001618 instead of 0.00008090; with couplers disabled, it produces the same nonzero kick instead of zero. Slicing chooses couplers from geometric edge alignment without respecting the enabled ends, and loses the half-strength factor for a both-end coupler. Preserving the physical ends and their strengths must preserve the kick.
 
-    The script compares split and whole RF cavities for both-end, exit-only and disabled couplers. It also evaluates individual edge kicks at a fixed phase against the analytic gradient-times-strength formula, separating location and normalization errors from orbit-dependent phase changes. BMAD_DIST selects the build.
+    The script compares split and whole RF cavities for both-end, exit-only and disabled couplers. It also evaluates individual edge kicks at a fixed phase against the analytic gradient-times-strength formula, separating location and normalization errors from orbit-dependent phase changes.
     """
 
     import math

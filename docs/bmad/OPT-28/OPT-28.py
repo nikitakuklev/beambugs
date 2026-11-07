@@ -2,7 +2,7 @@
 
 Requesting per_ele_out from srdt_calc or srdt_calc_with_cache returns contributions that do not add up to the reported totals. The direct routine reverses three first-order signs and quarters the chromatic coefficient h₁₀₀₀₂, while the cached routine omits normalization factors altogether. In an eight-cell ring, the normal sextupole driving coefficient h₂₁₀₀₀ is −0.3827 − 0.3095i, but the direct contributions sum to its negative and cached contributions to −8 times the total. Source inspection finds that chromatic per-element fields are not assigned and second-order resonance fields are formed from unassigned slice fields.
 
-The script assigns the repeating sextupole strengths (3, −4.5, 1.5) in an eight-cell ring. It sums the eight assigned first-order per-element complex fields from direct and cached calculations and compares them with the reported totals, requiring the correctly normalized direct fields to pass. BMAD_DIST selects the production build.
+The script assigns the repeating sextupole strengths (3, −4.5, 1.5) in an eight-cell ring. It sums the eight assigned first-order per-element complex fields from direct and cached calculations and compares them with the reported totals, requiring the correctly normalized direct fields to pass.
 """
 
 import numpy as np

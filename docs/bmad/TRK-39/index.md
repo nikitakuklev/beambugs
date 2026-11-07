@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`track_all` allocation guard and output access, bmad/code/track_all.f90:57–77](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/track_all.f90#L57-L77)<br>[`reallocate_coord_n`, bmad/low_level/reallocate_coord.f90:26–52](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/reallocate_coord.f90#L26-L52) |
 
 Calling track_all with an orbit array one record shorter than the lattice requires can write beyond the allocation. The routine grows smaller arrays but compares their size with the last required index, forgetting that the orbit starts at index zero. A two-element lattice supplied with indices 0:1 bypasses reallocation and attempts to write index 2; bounds checking reports the invalid access. A correctly sized array tracks successfully.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) · [View source](../helpers/index.md#_orbital_matrices_radiation)
+Run `python TRK-39.py` with [_bmad.py](../helpers/_bmad.py) and [_orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) in the same directory.
 
 ??? example "Reproducer: TRK-39.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Calling track_all with an orbit array one record shorter than the lattice requires can write beyond the allocation. The routine grows smaller arrays but compares their size with the last required index, forgetting that the orbit starts at index zero. A two-element lattice supplied with indices 0:1 bypasses reallocation and attempts to write index 2; bounds checking reports the invalid access. A correctly sized array tracks successfully.
 
-    The script first checks a correctly sized array against the production library and a bounds-checked copy of the pin’s unmodified track_all source. It then runs the one-short array against that checked copy and requires the specific index-2 bounds failure. Set BMAD_DIST to the build root and BMAD_SOURCE to its matching source tree.
+    The script first checks a correctly sized array against the production library and a bounds-checked copy of the pin’s unmodified track_all source. It then runs the one-short array against that checked copy and requires the specific index-2 bounds failure.
     """
 
     from _bmad import RunFailure, compare, fortran, source, verdict

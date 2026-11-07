@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`ele_param_value`, tao/code/tao_pipe_cmd.f90:9317–9324](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_pipe_cmd.f90#L9317-L9324)<br>[Tao manual, “pipe ele:param” (`p:ele:param`), tao/doc/pipe-interface-commands.tex:974–984](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/pipe-interface-commands.tex#L974-L984) |
 
 The a-mode chromatic derivative selectors in Tao’s pipe interface return b-mode values. With a/b beta derivatives set to 11/22 and alpha derivatives set to 33/44, lat_list reports [22, 44] for the a mode, and ele:param returns 22 for its beta derivative. The ele:twiss response correctly returns the a-mode values 11 and 33. The four a-mode beta, alpha, dispersion, and dispersion-slope selectors must read their matching a-mode fields.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_optimization_io.py](../helpers/_tao_optimization_io.py) · [View source](../helpers/index.md#_tao_optimization_io)
+Run `python TAO-07.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_optimization_io.py](../helpers/_tao_optimization_io.py) in the same directory.
 
 ??? example "Reproducer: TAO-07.py"
 
@@ -38,7 +35,6 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The script initializes distinct a- and b-mode beta and alpha derivatives, then queries lat_list,
     ele:param, and ele:twiss. It uses ele:twiss and the lattice initial conditions as controls.
-    BMAD_DIST supplies Tao.
     """
 
     from _bmad import compare, verdict

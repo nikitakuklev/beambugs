@@ -12,11 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on NonlinearNormalForm main (`7e40539`) |
+| Last reproduced | 2026-10-29 on NonlinearNormalForm main (`7e40539`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`src/operators.jl:87`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/operators.jl#L87)<br>[`:126`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/operators.jl#L126)<br>[`:95`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/operators.jl#L95)<br>[`:134`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/operators.jl#L134)<br>[`docs/src/index.md:21`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/docs/src/index.md#L21) |
 
 For a NonlinearNormalForm `DAMap` M and a scaled identity λI, `M + λI`, `λI + M` and `M - λI` ignore λ and change each orbital diagonal coefficient by +1 or −1. Coefficient arithmetic requires M + 0I = M and a diagonal change of λ, which explicitly constructed scaled-identity maps confirm. For a map with diagonal (2, 3), `M + 0I` returns (3, 4), while `M - 3I` returns (1, 2) instead of (−1, 0). Unit-scale addition and right subtraction avoid this scale error. Source inspection establishes the analogous `TPSAMap`, `VectorField` and quaternion-scalar paths.
+
+Run `julia OPT-33.jl`.
 
 ??? example "Reproducer: OPT-33.jl"
 

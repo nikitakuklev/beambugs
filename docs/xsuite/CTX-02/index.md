@@ -12,15 +12,12 @@ hide:
 | Priority | P1 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xobjects main (`dfe34ae`) |
+| Last reproduced | 2026-10-29 on xobjects main (`dfe34ae`, head build) |
 | Source | [HybridClass.copy, hybrid_class.py:344–360](https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/xobjects/hybrid_class.py#L344-L360)<br>[nested-object tests](https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/tests/test_hybrid_class.py#L95-L138) |
 
 Copying a `SpaceChargeBiGaussian` and changing its public longitudinal-profile population leaves the tracking kernel using the old intensity, because the copied child fields are disconnected from the parent's storage. At fixed geometry the kick must scale linearly with population, as a freshly constructed control confirms. For a 0.7 m element with longitudinal RMS size 0.13 m and transverse RMS size 1.2 mm, increasing the population from 7.000×10⁹ to 1.750×10¹⁰ leaves a 1.3 GeV/c proton at the bunch center and x = 0.7 mm with normalized horizontal momentum `px` = 3.145×10⁻⁶ instead of 7.862×10⁻⁶. Both default-buffer and same-buffer copies fail. The original object remains unchanged.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python CTX-02.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: CTX-02.py"
 

@@ -8,8 +8,8 @@ After seven of eight particles are lost, the survivor retains an electric field 
 values, locating an unwritten-output path.
 
 The script computes fields for eight particles and calls the routine again after seven are lost,
-with cathode images off. A separate fresh program supplies arbitrary electric and magnetic
-sentinels to a one-particle call. Set BMAD_DIST to the build root.
+with cathode images off. A separate fresh program supplies arbitrary electric and magnetic sentinels
+to a one-particle call.
 """
 
 import numpy as np

@@ -12,12 +12,14 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-28 on ImpactX 26.10 (`615921c`); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
+| Last reproduced | 2026-10-28 on ImpactX 26.10 (`615921c`, committed 2026-10-05); not reproduced on ImpactX development (`f9c2a82`), 2026-11-05 |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1742]], filed from this evidence |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1743]], filed from this evidence |
 | Source | [`ChrPlasmaLens.H#L219-L223`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/ChrPlasmaLens.H#L219-L223) |
 
 In a defocusing `ChrPlasmaLens` (negative strength `k`), one arrival-time term proportional to (x² + y²)·`ds` keeps the sign of the focusing branch, so the arrival-time coordinate `t` is wrong and the map is not symplectic. Integrating the element's documented Hamiltonian (second order in the transverse variables, exact in `pt`) gives the correct `t`; the observed error equals the sign-flipped term to 2e-15 m. For a proton at γ = 2 with `ds` = 0.4 m, `k` = −2 m⁻², x = 0.01 m and y = −0.015 m, `t` is off by 1.459e-4 m with one slice and 1.713e-4 m with four, and the map's Jacobian M violates the symplectic condition MᵀJM = J by 0.01347. The transverse map and focusing lenses are correct.
+
+Run `python TRK-10.py`.
 
 ??? example "Reproducer: TRK-10.py"
 

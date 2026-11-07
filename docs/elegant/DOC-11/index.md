@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Source | [the `tune_shift_with_amplitude` section, doc/elegant.tex:8389–8395](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8389-L8395)<br>[`if (do_twiss_output) bombElegant("you must give tune_shift_with_amplitude before twiss_output", NULL);`, src/elegant.c:1754–1757](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L1754-L1757)<br>[src/elegant.c:1676–1689](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L1676-L1689)<br>[doc/elegant.tex:8241–8243](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8241-L8243) |
 
 The Elegant manual says `tune_shift_with_amplitude` must follow `twiss_output`. Given in that order with Twiss output scheduled for each step (`output_at_each_step=1`), Elegant stops with "you must give tune_shift_with_amplitude before twiss_output"; after an immediate `twiss_output`, Elegant has already written the Twiss file, so no tune shift is computed and dnux/dAx and the other tune-shift columns stay 0. The working order is `tune_shift_with_amplitude` before `twiss_output`. For eight FODO cells with a thin octupole of integrated strength K₃L, that order gives dnux/dAx = 1.411 m⁻¹, within 0.02% of the first-order detuning K₃L βx²/(32π), while the documented order gives an error or 0.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python DOC-11.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: DOC-11.py"
 
@@ -37,13 +35,15 @@ Download these shared helpers into the same directory as the reproducer scripts:
     within 0.02% of the first-order detuning K₃L βx²/(32π), while the documented order gives an error or
     0.
 
-    The script reads the sequence statement of the `tune_shift_with_amplitude` section from
-    `doc/elegant.tex` of the Elegant source checkout named by `ELEGANT_SOURCE` (required) and exits if
-    it is missing or unrecognized. It runs serial Elegant in tracking mode on eight FODO cells with one
-    thin octupole, first with `tune_shift_with_amplitude` before a scheduled `twiss_output` (the
-    control, compared with first-order octupole detuning), then in the documented order with scheduled
-    and with immediate Twiss output, and compares their dnux/dAx, dnux/dAy, dnuy/dAx and dnuy/dAy with
-    the control's.
+    Setup: `ELEGANT_SOURCE` set to a clone of rtsoliday/elegant; the script reads the manual's LaTeX
+    source from it.
+
+    The script reads the sequence statement of the `tune_shift_with_amplitude` section from the
+    checkout's `doc/elegant.tex` and exits if it is missing or unrecognized. It runs serial Elegant in
+    tracking mode on eight FODO cells with one thin octupole, first with `tune_shift_with_amplitude`
+    before a scheduled `twiss_output` (the control, compared with first-order octupole detuning), then
+    in the documented order with scheduled and with immediate Twiss output, and compares their dnux/dAx,
+    dnux/dAy, dnuy/dAx and dnuy/dAy with the control's.
     """
 
     import os

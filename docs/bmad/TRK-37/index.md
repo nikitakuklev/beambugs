@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`track1_bmad` thin-multipole branch, bmad/low_level/track1_bmad.f90:145–166](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track1_bmad.f90#L145-L166)<br>[argument contract, bmad/low_level/track1_bmad.f90:8–18](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track1_bmad.f90#L8-L18)<br>[`multipole_kick_mat` contract and assignments, bmad/low_level/multipole_kick_mat.f90:17–45](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/multipole_kick_mat.f90#L17-L45) |
 
 Native thin-multipole tracking writes kick terms to the element matrix instead of propagating the matrix supplied by its caller. Even when the supplied matrix is the element matrix, the kick terms overwrite entries rather than composing with the incoming map. A thin quadrupole with integrated strength 0.7 m⁻¹ leaves a separate identity matrix with horizontal kick derivative 0 instead of −0.7 m⁻¹. With an incoming 2 m drift map and an aliased matrix, the horizontal momentum diagonal remains 1 instead of −0.4, although the particle kick is correct.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) · [View source](../helpers/index.md#_orbital_matrices_radiation)
+Run `python TRK-37.py` with [_bmad.py](../helpers/_bmad.py) and [_orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) in the same directory.
 
 ??? example "Reproducer: TRK-37.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Native thin-multipole tracking writes kick terms to the element matrix instead of propagating the matrix supplied by its caller. Even when the supplied matrix is the element matrix, the kick terms overwrite entries rather than composing with the incoming map. A thin quadrupole with integrated strength 0.7 m⁻¹ leaves a separate identity matrix with horizontal kick derivative 0 instead of −0.7 m⁻¹. With an incoming 2 m drift map and an aliased matrix, the horizontal momentum diagonal remains 1 instead of −0.4, although the particle kick is correct.
 
-    The script calls track1_bmad with a separate identity matrix and then with an aliased matrix containing a drift term. The expected matrix is the thin-quadrupole Jacobian multiplied by the incoming matrix. Set BMAD_DIST to the build root.
+    The script calls track1_bmad with a separate identity matrix and then with an aliased matrix containing a drift term. The expected matrix is the thin-quadrupole Jacobian multiplied by the incoming matrix.
     """
 
     from _bmad import compare, fortran, verdict

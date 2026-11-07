@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`tao_geo_lm_func`, tao/code/tao_geodesic_lm_optimizer_mod.f90:148–163](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_geodesic_lm_optimizer_mod.f90#L148-L163)<br>[`jacobian`, tao/code/tao_geodesic_lm_optimizer_mod.f90:204–231](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_geodesic_lm_optimizer_mod.f90#L204-L231)<br>[“Optimization Overview”, Eq. `m1`, tao/doc/optimization.tex:50–65](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/optimization.tex#L50-L65) |
 
 Geodesic Levenberg–Marquardt optimization ignores the weights of variable penalties while applying the weights of data constraints. For a quadrupole strength y with objective y² + 100(y − 0.1)², it returns y = 0.05000 and merit 0.2525 instead of y = 0.09901 and merit 0.009901. At y = −0.2000 m⁻², its residual norm squared is 0.1300 while Tao reports merit 9.040. SVD reaches the analytic weighted optimum on the same one-variable problem.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_optimization_io.py](../helpers/_tao_optimization_io.py) · [View source](../helpers/index.md#_tao_optimization_io)
+Run `python TAO-02.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_optimization_io.py](../helpers/_tao_optimization_io.py) in the same directory.
 
 ??? example "Reproducer: TAO-02.py"
 
@@ -37,8 +34,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
     reaches the analytic weighted optimum on the same one-variable problem.
 
     The script compiles a probe of the geodesic residual vector and compares it with the weighted
-    objective. Separate Tao processes run geodesic LM and an SVD control against the analytic
-    minimum. BMAD_DIST supplies the build.
+    objective. Separate Tao processes run geodesic LM and an SVD control against the analytic minimum.
     """
 
     import re

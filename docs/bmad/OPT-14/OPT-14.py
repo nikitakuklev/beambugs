@@ -6,10 +6,9 @@ where q = 1 + δ, δ is fractional momentum offset, pᵧ is vertical momentum di
 momentum, and η′ = ∂pᵧ/∂δ. At δ = 0.2, pᵧ = −0.02 and η′ = −0.05, both slopes are −0.008333
 instead of −0.02778; horizontal and a-mode slopes agree with the derivative.
 
-The script constructs a stable periodic map with a prescribed fixed-point derivative and calls
-the compiled Twiss initializer. It checks the ordinary dispersion and horizontal slopes before
-comparing the vertical and b-mode slopes with the paraxial derivative. BMAD_DIST selects the
-build.
+The script constructs a stable periodic map with a prescribed fixed-point derivative and calls the
+compiled Twiss initializer. It checks the ordinary dispersion and horizontal slopes before comparing
+the vertical and b-mode slopes with the paraxial derivative.
 """
 
 import numpy as np

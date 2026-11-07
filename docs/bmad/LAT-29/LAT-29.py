@@ -2,7 +2,7 @@
 
 A girder declared off is created enabled, and explicitly turning it off leaves its displacement applied to attached magnets. A 1 cm girder offset remains on a 1 m quadrupole with strength 1 m⁻², moving a centered particle to x = 4.597 mm with normalized horizontal momentum pₓ = 0.008415. An off girder is documented as unshifted relative to its reference frame, so this centered quadrupole must leave x and pₓ zero. The measured orbit matches the analytic map of the displaced magnet.
 
-The script parses a disabled girder, then explicitly switches it off and on through the API with bookkeeping. It checks the on-state orbit against the displaced-quadrupole map and the off state against zero displacement and zero orbit. BMAD_DIST selects the build.
+The script parses a disabled girder, then explicitly switches it off and on through the API with bookkeeping. It checks the on-state orbit against the displaced-quadrupole map and the off state against zero displacement and zero orbit.
 """
 
 import math

@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [entrance cubic-kick Jacobian, bmad/low_level/track_a_wiggler.f90:108–118](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_wiggler.f90#L108-L118)<br>[exit cubic-kick Jacobian, bmad/low_level/track_a_wiggler.f90:173–183](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_wiggler.f90#L173-L183)<br>[Bmad manual, Periodic Type Wigglers, bmad/doc/elements.tex:5697–5723](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L5697-L5723)<br>[Bmad manual, Linear Transfer Map (Mat6) Calculation Methods, bmad/doc/methods.tex:253–260](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L253-L260) |
 
 In the averaged helical-wiggler model, the native horizontal Jacobian differentiates the cubic horizontal kick using the vertical coordinate. The horizontal derivative must depend on the square of the horizontal coordinate. For a 0.48 m, 1.1 T wiggler at 0.7 GeV/c with horizontal position x = 2.4 mm, vertical position y = 0 and fractional momentum offset δ = 0.19, M₂₁ is −0.04463 m⁻¹ instead of −0.04541 m⁻¹, a 1.720% focusing error. Here M₂₁ is the derivative of horizontal normalized momentum with respect to x. The vertical block, equal-plane coordinates and zero-field controls give the correct transverse derivatives.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) · [View source](../helpers/index.md#_srdt_wiggler_maps)
+Run `python OPT-32.py` with [_bmad.py](../helpers/_bmad.py) and [_srdt_wiggler_maps.py](../helpers/_srdt_wiggler_maps.py) in the same directory.
 
 ??? example "Reproducer: OPT-32.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     In the averaged helical-wiggler model, the native horizontal Jacobian differentiates the cubic horizontal kick using the vertical coordinate. The horizontal derivative must depend on the square of the horizontal coordinate. For a 0.48 m, 1.1 T wiggler at 0.7 GeV/c with horizontal position x = 2.4 mm, vertical position y = 0 and fractional momentum offset δ = 0.19, M₂₁ is −0.04463 m⁻¹ instead of −0.04541 m⁻¹, a 1.720% focusing error. Here M₂₁ is the derivative of horizontal normalized momentum with respect to x. The vertical block, equal-plane coordinates and zero-field controls give the correct transverse derivatives.
 
-    The script checks unequal-plane and equal-plane helical-wiggler orbits and zero-field controls. It compares native and auto matrices with a split-map analytic model, complex-step derivatives and two fourth-order trajectory stencils. BMAD_DIST selects the production build.
+    The script checks unequal-plane and equal-plane helical-wiggler orbits and zero-field controls. It compares native and auto matrices with a split-map analytic model, complex-step derivatives and two fourth-order trajectory stencils.
     """
 
     import numpy as np

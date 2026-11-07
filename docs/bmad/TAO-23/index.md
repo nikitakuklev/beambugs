@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [single-endpoint selection, tao/code/tao_show_this.f90:5224–5230](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_show_this.f90#L5224-L5230)<br>[show taylor_map, s:show.taylor, tao/doc/command-list.tex:3297–3300](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/command-list.tex#L3297-L3300)<br>[show matrix alias, tao/doc/command-list.tex:2908–2911](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/command-list.tex#L2908-L2911) |
 
 Giving show matrix a single element name does not select that element’s map as the Tao manual promises. In an open line, it returns transport from the beginning to the element; in a closed ring, it returns a full turn at that element. A 1.7 m drift preceded by a 0.7 m drift therefore displays R₁₂ = 2.400 m instead of the element’s 1.700 m. Explicit endpoints and the -elements option return the correct element map.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) · [View source](../helpers/index.md#_tao_contracts_normal_form)
+Run `python TAO-23.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) in the same directory.
 
 ??? example "Reproducer: TAO-23.py"
 

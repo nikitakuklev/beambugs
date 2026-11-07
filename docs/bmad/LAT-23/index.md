@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [init_random_distribution count-weighted normalization, bmad/multiparticle/beam_utils.f90:600–663](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L600-L663)<br>[centering and overlay, bmad/multiparticle/beam_utils.f90:711–725](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L711-L725)<br>[combine_bunch_distributions coordinate-only overlay, bmad/multiparticle/beam_utils.f90:1116–1126](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1116-L1126)<br>[ellipse shell weights, bmad/multiparticle/beam_utils.f90:889–908](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L889-L908)<br>[Bmad manual, Beam_Init_Struct Structure: mixed distributions, bmad/doc/beam-init.tex:135–147](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/beam-init.tex#L135-L147)<br>[Bmad manual, renormalization flags, bmad/doc/beam-init.tex:241–245](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/beam-init.tex#L241-L245)<br>[Bmad manual, Multiparticle Simulation: ellipse distribution, bmad/doc/multiparticle.tex:43–129](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/multiparticle.tex#L43-L129) |
 
 Mixing Gaussian coordinates with an ellipse distribution leaves unequal shell charges attached to coordinates normalized with equal particle weights. With both renormalization flags enabled, the charge-weighted centroid and widths therefore miss the requested values. In a 40-particle example, the horizontal variance is 2.916 × 10⁻⁶ m² instead of 3.850 × 10⁻⁶ m², making the RMS width 12.97% too small. An equal-charge shell control recovers the requested moments, and the Gaussian coordinates stay identical as the shell cutoff changes.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python LAT-23.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: LAT-23.py"
 

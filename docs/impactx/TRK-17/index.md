@@ -12,11 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`SoftSol.H#L418-L462`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L418-L462)<br>[`map3()`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L477-L544)<br>[spin push](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/SoftSol.H#L243-L295)<br>[soft-element contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/theory/softedge_elements.rst#L17-L29)<br>[spin contract](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/parameters.rst#L2792-L2800) |
 
 With spin tracking enabled (experimental in ImpactX), `SoftSolenoid` omits the spin precession caused by the radial fringe field of a varying longitudinal field, because its spin map discards the field derivative. Maxwell's equations give the off-axis transverse fields −x·b′/2 and −y·b′/2 for b the longitudinal field divided by the rigidity Bρ; an independent Thomas–BMT integration with these fields disagrees with ImpactX while the orbits agree, and at vanishing magnetic anomaly ImpactX's spin does not follow the velocity, as it must. For a proton at γ = 3.3 offset by 20 μm in an asymmetric 0.7 m field profile, the transverse spin error at the exit is 1.548e-4. On-axis precession is correct.
+
+Run `python TRK-17.py`.
 
 ??? example "Reproducer: TRK-17.py"
 

@@ -12,15 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`track_magnet_drift.h:475–482`](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_drift.h#L475-L482) |
 
 Expanding a `UniformSolenoid` about zero field, with its normalized strength `ks` as a parameter of the experimental `ParticlesTpsa` API for native truncated-power-series (Taylor) maps, returns zero orbit sensitivity to that strength. Differentiating the exact solenoid map gives a nonzero response, confirmed by central differences of ordinary particle tracking. For a 0.7 m solenoid and a 1 GeV/c proton starting at x = 3 mm with all other coordinates zero, the derivative of vertical position y with respect to `ks` is 0 instead of −1.050 × 10⁻³ m². A calculation using this derivative, such as an optimizer starting from a switched-off solenoid, sees no response; tested expansions about nonzero field agree with numerical differentiation.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python OPT-03.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: OPT-03.py"
 

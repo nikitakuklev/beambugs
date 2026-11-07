@@ -2,10 +2,9 @@
 
 When users select the documented ibs_ring Kubo method, the IBS dispatch stops because it has no kubo branch. The accompanying use_t6_cache option is also absent from the driver's namelist and causes an input error. A bjmt control reaches the rate calculation successfully. The manual should remove these driver options and direct covariance-based calculations to envelope_ibs.
 
-The script calls ibs1 with a working bjmt control and the advertised kubo selector. It
-separately invokes the production ibs_ring executable with use_t6_cache and requires that
-option's specific namelist error. BMAD_DIST selects the build and BMAD_SOURCE supplies the
-manual text.
+The script calls ibs1 with a working bjmt control and the advertised kubo selector. It separately
+invokes the production ibs_ring executable with use_t6_cache and requires that option's specific
+namelist error. BMAD_SOURCE supplies the manual text.
 """
 
 import numpy as np

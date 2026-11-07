@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [`stochastic_laserModulator`, motion.cc:2413–2423](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/motion.cc#L2413-L2423)<br>[`radCoef`, motion.cc:213](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/motion.cc#L213)<br>[LSRMDLTR manual, lsrmdltr.tex:1–6](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/lsrmdltr.tex#L1-L6)<br>[`SYNCH_RAD` dictionary entry, track_data.c:3328](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3328) |
 
 With classical radiation enabled in the LSRMDLTR laser modulator, an electron's calculated momentum loss changes when only the reference momentum changes. For particle momentum p and reference momentum p₀ in units of mₑc, the implemented local loss rate is (p₀/γ)³ times the classical rate, where γ = √(1 + p²) is the Lorentz factor. At p = 1200 in a 0.8 m, eight-period, 0.8 T undulator, classical loss on the same integration grid is 2.383×10⁻⁴ mₑc; tracking gives 2.979×10⁻⁵ at p₀ = 600, 2.312×10⁻⁴ at 1188 and 1.906×10⁻³ at 2400.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-18.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-18.py"
 

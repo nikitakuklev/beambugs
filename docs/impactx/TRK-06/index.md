@@ -12,11 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`) |
+| Last reproduced | 2026-10-29 on ImpactX development (`fa0a43b`, head build) |
 | Discussed in | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1664#issuecomment-5706911843]] |
 | Source | [`CFbend.H#L133-L140`](https://github.com/BLAST-ImpactX/impactx/blob/b701a6e9d1f9e30cefb9a3e18e82ae7e02b9d943/src/elements/CFbend.H#L133-L140) |
 
 The linear `CFbend` returns NaN coordinates when a focusing frequency is zero: gradient `k` = 0 gives NaN `y` and `py`, and `k` = −1/`rc`² (bend radius `rc`), which cancels horizontal focusing, gives NaN `x`, `px` and `t`. The transfer functions have finite limits there, matched by `Sbend` at `k` = 0 and by a gradient raised by 1e-9 m⁻². When rounding leaves a residue of −1.4e-17 m⁻² in the horizontal focusing `k` + 1/`rc`², the result is finite but wrong: for `rc` = 1/0.3 m, `k` = −0.09 m⁻² and `ds` = 0.7 m, `x` is 0.02770 m instead of 0.03025 m and `t` is 0.01115 m instead of 0.01314 m.
+
+Run `python TRK-06.py`.
 
 ??? example "Reproducer: TRK-06.py"
 

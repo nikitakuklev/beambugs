@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`symp_lie_bmad::radiation_kick`, bmad/low_level/symp_lie_bmad.f90:1469–1495](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/symp_lie_bmad.f90#L1469-L1495)<br>[native radiation delegation, bmad/code/track1.f90:143–147](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/track1.f90#L143-L147)<br>[Bmad manual, synchrotron-radiation reference-loss subtraction, bmad/doc/synchrotron-radiation.tex:49–73](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/synchrotron-radiation.tex#L49-L73)<br>[`radiation_zero_average`, bmad/doc/param-structs.tex:301–307](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/param-structs.tex#L301-L307)<br>[`Symp_Lie_Bmad`, bmad/doc/methods.tex:134–138](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L134-L138)<br>[ordinary radiation kicks, bmad/modules/radiation_mod.f90:111–119](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/radiation_mod.f90#L111-L119) |
 
 Native Lie tracking ignores radiation_zero_average when applying deterministic radiation loss in a planar wiggler. The switch should subtract the loss on the zero reference orbit, which samples the same field magnitude as the on-energy orbit in this case. A 650 MeV/c electron in a five-period, 0.3 m wiggler with peak field 0.3 T loses relative momentum 2.221 × 10⁻⁸ with either switch setting; ordinary native and Runge–Kutta tracking cancel the reference loss when the switch is enabled. Removing the separate duplicated native radiation call halves the loss but still leaves the switch ineffective.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) · [View source](../helpers/index.md#_orbital_matrices_radiation)
+Run `python TRK-56.py` with [_bmad.py](../helpers/_bmad.py) and [_orbital_matrices_radiation.py](../helpers/_orbital_matrices_radiation.py) in the same directory.
 
 ??? example "Reproducer: TRK-56.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Native Lie tracking ignores radiation_zero_average when applying deterministic radiation loss in a planar wiggler. The switch should subtract the loss on the zero reference orbit, which samples the same field magnitude as the on-energy orbit in this case. A 650 MeV/c electron in a five-period, 0.3 m wiggler with peak field 0.3 T loses relative momentum 2.221 × 10⁻⁸ with either switch setting; ordinary native and Runge–Kutta tracking cancel the reference loss when the switch is enabled. Removing the separate duplicated native radiation call halves the loss but still leaves the switch ineffective.
 
-    The script toggles damping and reference-loss subtraction for native Lie, standard and Runge–Kutta tracking. It checks the ordinary unshifted loss against the analytic sinusoidal-field integral and requires zero loss with damping disabled. Set BMAD_DIST to the build root; the companion one-call diagnostic isolates the duplicated-call defect.
+    The script toggles damping and reference-loss subtraction for native Lie, standard and Runge–Kutta tracking. It checks the ordinary unshifted loss against the analytic sinusoidal-field integral and requires zero loss with damping disabled. The companion one-call diagnostic isolates the duplicated-call defect.
     """
 
     import numpy as np

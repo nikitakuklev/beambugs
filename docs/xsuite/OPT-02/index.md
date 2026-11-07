@@ -12,15 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`) |
+| Last reproduced | 2026-10-26 on xtrack main (`3cd8bfc`, head build) |
 | Tags | <span class="bb-tag">experimental</span> <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |
 | Source | [`track_rf.h:51–58`](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_rf.h#L51-L58) |
 
 Tracking a `Cavity` with `absolute_time=True` through the experimental `ParticlesTpsa` API, which propagates native truncated-power-series (Taylor) maps, silently ignores the absolute RF clock and so uses the wrong RF phase. The absolute-arrival-time definition and the relativistic energy–momentum relation give the correct kick, and ordinary particle tracking reproduces it. For a 1 GeV/c proton at zero position and RF phase, a 1 MV, 100 MHz cavity with `time_s` = 2.5 ns gives a relative momentum change δ of zero instead of 1.371 × 10⁻³, a 1.000 MeV energy gain; relative-time controls are correct. A source comment acknowledges the restriction, but the public interface accepts the configuration without warning or rejection.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python OPT-02.py` with [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: OPT-02.py"
 

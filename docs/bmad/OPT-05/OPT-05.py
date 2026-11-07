@@ -2,7 +2,7 @@
 
 Requesting a backward transfer matrix in an open lattice crashes when the optional affine-vector output is omitted. The matrix-only call should return the inverse of the forward matrix. Through a 2 m drift, the same backward call succeeds when the affine vector is supplied and returns the expected horizontal drift coefficient of −2 m and a zero vector.
 
-The script checks forward matrix-only transport and backward transport with the affine output before omitting that output. An analytic 2 m drift supplies the complete six-dimensional inverse. It recognizes only a segmentation fault after successful parsing and the two passing controls as the defect; BMAD_DIST supplies the build.
+The script checks forward matrix-only transport and backward transport with the affine output before omitting that output. An analytic 2 m drift supplies the complete six-dimensional inverse. It recognizes only a segmentation fault after successful parsing and the two passing controls as the defect;
 """
 
 import resource

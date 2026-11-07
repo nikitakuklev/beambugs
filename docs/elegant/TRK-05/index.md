@@ -12,14 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [zero-voltage branch, mod_rfca.c:102–111](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/mod_rfca.c#L102-L111)<br>[zero-voltage branch, ramped_rfca.c:67–77](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ramped_rfca.c#L67-L77)<br>[MODRF half drifts, mod_rfca.c:246–262](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/mod_rfca.c#L246-L262)<br>[RAMPRF half drifts, ramped_rfca.c:170–186](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ramped_rfca.c#L170-L186) |
 
 With VOLT = 0, MODRF and RAMPRF move particles along straight lines but advance the longitudinal coordinate by cavity length L, omitting the extra path L(√(1 + x′² + y′²) − 1) for transverse slopes x′ and y′. A nonzero nominal voltage with exactly zero effective field gives the full slanted-path time, as an exact-drift control confirms. For L = 1.7 m and electron momentum 2 mₑc with x′ = 0.03 and y′ = −0.02, arrival is at 6.340 ns instead of 6.344 ns, 4.120 ps early.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-05.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-05.py"
 

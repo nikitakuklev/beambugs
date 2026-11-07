@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [write_lattice_sad_format, bmad/output/write_lattice_sad_format.f90:703–738](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_sad_format.f90#L703-L738)<br>[multipole1_kt_to_ab, bmad/low_level/multipole1_kt_to_ab.f90:18–39](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/multipole1_kt_to_ab.f90#L18-L39) |
 
 A sextupole with an embedded horizontal kick takes the SAD MULT export path, which loses its body strength and creates normal and skew multipoles at unrelated orders. A 0.5 m sextupole with k₂ = 2 m⁻³ and a 0.1 mrad horizontal kick exports K₂ = −0.0002000 instead of 1.000 m⁻², SK₀ = 1.571 instead of zero, and SK₂₁ = 8.025 × 10¹⁹ instead of zero. The same sextupole without the kick exports K₂ correctly. The scalar-to-array additions and misplaced rotation arguments explain the spurious coefficients.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _lattice_import_export.py](../helpers/_lattice_import_export.py) · [View source](../helpers/index.md#_lattice_import_export)
+Run `python XLT-08.py` with [_bmad.py](../helpers/_bmad.py) and [_lattice_import_export.py](../helpers/_lattice_import_export.py) in the same directory.
 
 ??? example "Reproducer: XLT-08.py"
 

@@ -5,9 +5,9 @@ space-charge interaction length. The last-element rule overwrites the first-elem
 leaving L/2 instead of the full branch length L. For a 0.6 m drift, the kick constant is
 5.095e−10 instead of 1.019e−9, a factor-of-two underestimate.
 
-The script prepares a 0.6 m branch with exactly one tracking element, retaining allocated padding
-to isolate the length rule. It checks the count and beam widths, then compares the stored kick
-constant with the full-length analytic expression. Set BMAD_DIST to the build root.
+The script prepares a 0.6 m branch with exactly one tracking element, retaining allocated padding to
+isolate the length rule. It checks the count and beam widths, then compares the stored kick constant
+with the full-length analytic expression.
 """
 
 import numpy as np

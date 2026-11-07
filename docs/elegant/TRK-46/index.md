@@ -12,7 +12,7 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-05 on Elegant master (`0355dd6`, committed 2026-11-03) |
 | Source | [`main` (`run_setup`),
 elegant.c:1014–1019](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L1014-L1019)<br>[`process_particle_command`,
 elegant.c:3292–3308](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3292-L3308)<br>[`change_particle`,
@@ -21,9 +21,7 @@ elegant.tex:7259–7262](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c
 
 Selecting a custom species with charge magnitude Q in units of the elementary charge and setting run_setup.p_central_mev selects a reference momentum Q times the requested value. The conversion divides by rest energy per charge instead of the rest energy in MeV required by relativistic kinematics. A particle with approximately the helium nucleus mass and Q = 2 requested at 200.0 MeV/c is tracked at 400.0 MeV/c, crossing a 1.000 m drift in 31.26 ns instead of 62.26 ns. Supplying the equivalent dimensionless p_central, or using a singly charged species, gives the correct momentum and arrival time.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python TRK-46.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: TRK-46.py"
 
@@ -34,7 +32,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Selecting a custom species with charge magnitude Q in units of the elementary charge and setting run_setup.p_central_mev selects a reference momentum Q times the requested value. The conversion divides by rest energy per charge instead of the rest energy in MeV required by relativistic kinematics. A particle with approximately the helium nucleus mass and Q = 2 requested at 200.0 MeV/c is tracked at 400.0 MeV/c, crossing a 1.000 m drift in 31.26 ns instead of 62.26 ns. Supplying the equivalent dimensionless p_central, or using a singly charged species, gives the correct momentum and arrival time.
 
-    The script tracks six identical on-axis particles through an exact drift and compares momentum and flight time with relativistic mass-shell kinematics. Singly charged input, both charge signs and direct dimensionless momentum provide controls, with the same mass constants used in the simulation and oracle. Each case starts a fresh native process with a fixed seed; --mpi also runs three-rank Pelegant. Elegant and SDDS must be on PATH with RPN_DEFNS set.
+    The script tracks six identical on-axis particles through an exact drift and compares momentum and flight time with relativistic mass-shell kinematics. Singly charged input, both charge signs and direct dimensionless momentum provide controls, with the same mass constants used in the simulation and oracle. Each case starts a fresh native process with a fixed seed; --mpi also runs three-rank Pelegant.
     """
 
     import math

@@ -12,15 +12,12 @@ hide:
 | Priority | P5 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [init_random_distribution longitudinal transform, bmad/multiparticle/beam_utils.f90:675–706](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L675-L706)<br>[Bmad manual, Beam_Init_Struct Structure (`s:beam.init.struct`), bmad/doc/beam-init.tex:247–253](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/beam-init.tex#L247-L253) |
 
 Initializing an ordinary Gaussian bunch with sig_pz sets σδ, the RMS fractional momentum spread, although the manual calls it fractional energy spread. At finite speed these differ: σE/E₀ = β₀² σδ to first order about the reference particle. Here E₀ is reference energy, σE is RMS energy spread, β₀ is reference speed divided by light speed, and δ is momentum deviation divided by reference momentum. For an electron reference momentum of 1 MeV/c and sig_pz = 0.002, the generated σδ is 0.002, while the relative energy spread is smaller. The longitudinal covariance and mass-shell relation establish the momentum convention.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_12_particle_contracts.py](../helpers/_s3_12_particle_contracts.py) · [View source](../helpers/index.md#_s3_12_particle_contracts)
+Run `python LAT-17.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_12_particle_contracts.py](../helpers/_s3_12_particle_contracts.py) in the same directory.
 
 ??? example "Reproducer: LAT-17.py"
 

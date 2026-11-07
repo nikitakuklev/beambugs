@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [touschek_background spread propagation, bsim/touschek_background/touschek_background.f90:475–516](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/touschek_background/touschek_background.f90#L475-L516)<br>[beam-input path, lines 421–458](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/touschek_background/touschek_background.f90#L421-L458)<br>[Touschek-background manual, “sigma_p.out”](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/touschek_background/doc/touschek_background.tex#L306-L315)<br>[map coefficients, bmad/doc/elements.tex:5307–5375](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L5307-L5375)<br>[identity defaults, coefficient replacement and length behavior, lines 5451–5493](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L5451-L5493) |
 
 With use_beam enabled in touschek_background, bunch compression measured by beam tracking is omitted from the propagated energy spread written to sigma_p.out. The propagation loop updates an unused scalar instead of the spread carried between elements. For a factor-two linear compression at 1 GeV with zero radiation excitation and disabled intrabeam scattering, the application reports a relative spread of 10⁻⁶ instead of 2 × 10⁻⁶, a 50% underestimate. The identity map gives the correct unchanged spread.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-30.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-30.py"
 
@@ -31,7 +29,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     With use_beam enabled in touschek_background, bunch compression measured by beam tracking is omitted from the propagated energy spread written to sigma_p.out. The propagation loop updates an unused scalar instead of the spread carried between elements. For a factor-two linear compression at 1 GeV with zero radiation excitation and disabled intrabeam scattering, the application reports a relative spread of 10⁻⁶ instead of 2 × 10⁻⁶, a 50% underestimate. The identity map gives the correct unchanged spread.
 
-    The script compiles the complete, unchanged application from BMAD_SOURCE against BMAD_DIST and the installed Open MPI, then runs two MPI ranks on the CPU selected with taskset. Fixed particles traverse an identity map, a longitudinal scaling map, and another identity map; analytic covariance transport and a separate beam-tracking program check the expected spread. Identity, expansion, and fixed-bunch-length cases isolate the compression correction, and all compiled programs are removed after execution.
+    Setup: `libbsim.a` in the production build, Open MPI `mpifort` and `mpiexec` on `PATH`, compatible with the build's Fortran compiler (the run used Open MPI 5.0.10), and the run pinned to one CPU (`taskset -c <cpu>`); the script compiles the `touschek_background` program and runs two MPI ranks, one thread each, on that CPU.
+
+    The script compiles the complete, unchanged application from BMAD_SOURCE against BMAD_DIST and the installed Open MPI, then runs two MPI ranks. Fixed particles traverse an identity map, a longitudinal scaling map, and another identity map; analytic covariance transport and a separate beam-tracking program check the expected spread. Identity, expansion, and fixed-bunch-length cases isolate the compression correction, and all compiled programs are removed after execution.
     """
 
     from __future__ import annotations

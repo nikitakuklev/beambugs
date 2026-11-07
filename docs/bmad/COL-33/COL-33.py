@@ -5,7 +5,7 @@ When ibs_ring writes ibs_rates0.out, it converts the requested current to bunch 
 The script runs the production ibs_ring executable on an inline ring and then recompiles the
 matching driver with one added population-print statement. It requires both rate files from the
 diagnostic build to equal the production files before comparing the measured population with the
-current-to-charge conversion. BMAD_DIST and BMAD_SOURCE select the matching build and source.
+current-to-charge conversion.
 """
 
 import io

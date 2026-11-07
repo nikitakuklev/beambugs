@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [random-method plane gates, ibs_tracking.c:479–489](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L479-L489)<br>[smooth update, ibs_tracking.c:513–516](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ibs_tracking.c#L513-L516)<br>[IBSCATTER parameters, track_data.c:2512–2515](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2512-L2515) |
 
 With the smooth method (SMOOTH=1), an IBSCATTER element applies the intrabeam-scattering growth to all three planes whatever the plane switches DO_X, DO_Y and DO_Z say. With all three switches at 0 the beam should leave the element unchanged, as it does for FACTOR=0, and with one switch at 1 only that plane should change. In a closed ring of 16 identical bends and 256 particles, every switch setting gives the same output as the fully enabled element: the horizontal variance grows by 1.707% and the rms momentum deviation by 2.000%, where the all-off case should show 0%.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _ibs_ring.py](../helpers/_ibs_ring.py) · [View source](../helpers/index.md#_ibs_ring)
+Run `python SCT-07.py` with [_elegant.py](../helpers/_elegant.py) and [_ibs_ring.py](../helpers/_ibs_ring.py) in the same directory.
 
 ??? example "Reproducer: SCT-07.py"
 

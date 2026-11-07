@@ -6,10 +6,13 @@
 # closed`, and an independent count finds one opening and no closing parenthesis on the offending
 # line. It is the only syntax error found by that parser check.
 #
+# Setup: `SCIBMAD_SOURCE` set to a clone of bmad-sim/SciBmad.jl at the pinned commit `5f0fb83`, and
+# `python3` on `PATH`; the script reads an example notebook from the clone and parses its cells with
+# CPython.
+#
 # The script parses every code cell of the notebook with CPython's `ast` module, after dropping
 # IPython magic and shell lines, and counts the parentheses on the offending raw notebook line;
-# every code cell of a shipped example should parse. Set `SCIBMAD_SOURCE` to a SciBmad.jl checkout,
-# from which the notebook is read; `python3` must be on the PATH.
+# every code cell of a shipped example should parse.
 haskey(ENV, "SCIBMAD_SOURCE") || error("set SCIBMAD_SOURCE to a SciBmad.jl checkout (commit 5f0fb83 or the build under test)")
 nb = joinpath(ENV["SCIBMAD_SOURCE"], "examples", "python", "nonlinear-twiss.ipynb")
 isfile(nb) || error("notebook not found at $nb")

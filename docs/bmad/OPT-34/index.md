@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`calc_emittances_and_twiss_from_sigma_matrix`, normalization factor, bmad/multiparticle/beam_utils.f90:1489–1495](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1489-L1495)<br>[eigenmode normalized emittance, bmad/multiparticle/beam_utils.f90:1530–1532](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1530-L1532)<br>[projected normalized emittance, bmad/multiparticle/beam_utils.f90:1631–1632](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1631-L1632)<br>[Bmad manual, “Charged Particle Phase Space Coordinates”, `s:phase.space`, `ppp`, bmad/doc/phase-space.tex:62–78](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/phase-space.tex#L62-L78)<br>[initialization conversion, bmad/multiparticle/beam_init_setup.f90:61–78](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_init_setup.f90#L61-L78) |
 
 Computing transverse normalized emittance for a beam with zero physical dispersion multiplies by the mean particle momentum even though transverse momenta are normalized to reference momentum. This adds an extra factor 1 + ⟨δ⟩, where δ is the fractional momentum offset, and changes the result when only the reference momentum is redefined. An electron beam with physical horizontal normalized emittance 5.479 × 10⁻⁷ m is reported as 5.892 × 10⁻⁷ m when reference momentum is reduced to 93%; a mean offset of 0.025 causes a 2.5% error at unchanged reference momentum.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) · [View source](../helpers/index.md#_dispersion_and_moments)
+Run `python OPT-34.py` with [_bmad.py](../helpers/_bmad.py) and [_dispersion_and_moments.py](../helpers/_dispersion_and_moments.py) in the same directory.
 
 ??? example "Reproducer: OPT-34.py"
 
@@ -37,10 +34,9 @@ Download these shared helpers into the same directory as the reproducer scripts:
     10⁻⁷ m when reference momentum is reduced to 93%; a mean offset of 0.025 causes a 2.5% error
     at unchanged reference momentum.
 
-    The script constructs weighted hypercube beams with zero physical dispersion and changes only
-    their reference momentum. It checks particle invariants and computes normalized emittance
-    directly from physical-momentum covariance before comparing projected and mode outputs.
-    BMAD_DIST selects the build.
+    The script constructs weighted hypercube beams with zero physical dispersion and changes only their
+    reference momentum. It checks particle invariants and computes normalized emittance directly from
+    physical-momentum covariance before comparing projected and mode outputs.
     """
 
     import itertools

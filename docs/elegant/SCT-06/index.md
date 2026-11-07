@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [event probability, matter.c:127–128](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L127-L128)<br>[transfer sampling, matter.c:249–250](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L249-L250)<br>[`ELECTRON_RECOIL`, track_data.c:2143](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2143) |
 
 For relativistic electrons in MATTER with ELECTRON_RECOIL and NUCLEAR_BREMSSTRAHLUNG enabled, recoil-transfer rates are suppressed by about the momentum P, measured in mₑc, at transfers above binding energies and small compared with incident kinetic energy. The event rate contains 1/P, but sampled transfers are subtracted directly from the Lorentz factor γ. For 20000 electrons at P = 1000 crossing 0.01 m of dilute helium, the free-electron Møller integral predicts 42.22 electrons losing at least 1.022 keV; serial and three-rank parallel runs give none despite active recoil sampling. The Poisson probability of zero such transfers under that reference is 4.408×10⁻¹⁹.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _matter.py](../helpers/_matter.py) · [View source](../helpers/index.md#_matter)
+Run `python SCT-06.py` with [_elegant.py](../helpers/_elegant.py) and [_matter.py](../helpers/_matter.py) in the same directory.
 
 ??? example "Reproducer: SCT-06.py"
 
@@ -85,8 +82,8 @@ Download these shared helpers into the same directory as the reproducer scripts:
     # Electrons that suffer any recoil in the model's process, in a Poisson approximation to the
     # sampler's total rate: it shows that the sampler runs, so the missing tail is not an activation
     # failure. The element has 61 independent Bernoulli sections of probability MEAN_RECOIL/61, whose
-    # exact at-least-one expectation is 6913.18 with binomial sigma 67.26; both counts recorded in the
-    # ledger pass either 5-sigma comparison.
+    # exact at-least-one expectation is 6913.18 with binomial sigma 67.26; the recorded serial and MPI
+    # counts, 6910 and 6956, pass either 5-sigma comparison.
     MEAN_RECOIL = C / P0 * (1 / BS_Y0 - 1)
     RECOIL_EXPECTED = COUNT * -np.expm1(-MEAN_RECOIL)
     RECOIL_SIGMA = np.sqrt(RECOIL_EXPECTED * np.exp(-MEAN_RECOIL))

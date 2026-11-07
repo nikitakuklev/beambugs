@@ -12,12 +12,14 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-22 on BeamTracking 0.8.7 (`65e343f`); not reproduced on BeamTracking main (`0bf3585`), 2026-10-31 |
+| Last reproduced | 2026-10-22 on BeamTracking 0.8.7 (`65e343f`, committed 2026-10-13); not reproduced on BeamTracking 0.8.7 (`0bf3585`), 2026-11-07 |
 | Issue | [[gh:https://github.com/bmad-sim/BeamTracking.jl/issues/374]], filed from this evidence |
 | Pull request | [[gh:https://github.com/bmad-sim/BeamTracking.jl/pull/375]], filed from this evidence |
 | Source | [`BeamTracking.jl/src/batch.jl:102-103`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L102-L103)<br>[`BeamTracking.jl/src/batch.jl:131`](https://github.com/bmad-sim/BeamTracking.jl/blob/d8e45fdc25dbebf4be8195e69be04df13d7383b1/src/batch.jl#L131) |
 
 Subtracting an array-backed `BatchParam` from scalar zero, as in `0 - c.K1`, returns the batch unnegated: `0 - BatchParam([1, -2])` gives [1, −2] instead of [−1, 2], while unary minus and lane-wise subtraction give the correct signs. For a 1 GeV electron starting at x = 1 mm with other coordinates zero, a 0.5 m quadrupole using `Kn1 = 0 - K1` with K1 = [0.3, 0.6] m⁻² focuses horizontally instead of defocusing. After a 1 m drift, x is [0.8146, 0.6334] mm instead of [1.190, 1.383] mm. The negation `-c.K1` works.
+
+Run `julia LAT-05.jl`.
 
 ??? example "Reproducer: LAT-05.jl"
 

@@ -12,14 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [beam_envelope_ibs, bmad/multiparticle/envelope_mod.f90:865–933](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/envelope_mod.f90#L865-L933) |
 
 For a beam with coupled momentum covariance, the envelope IBS calculation rotates its diffusion with transposed eigenvectors. Rotating the input covariance must rotate the diffusion tensor by the same rotation. A three-axis rotation produces a relative tensor error of 1.530 and changes the first rest-frame diagonal from the expected +8.280 × 10⁻²⁰ m⁻¹ to −1.071 × 10⁻¹⁹ m⁻¹. The unrotated control agrees with independent Kubo quadrature.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
+Run `python COL-23.py` with [_bmad.py](../helpers/_bmad.py) in the same directory.
 
 ??? example "Reproducer: COL-23.py"
 

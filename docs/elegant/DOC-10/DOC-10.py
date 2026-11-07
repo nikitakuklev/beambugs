@@ -8,12 +8,14 @@ invariant (1 + α_q²)q²/β_q and defaults `lines_only` to 1. At a start with �
 omitting `lines_only` with a 4×4 grid tracks 7 points on two lines instead of the 16 of the
 documented default.
 
-The script reads both statements from `doc/elegant.tex` of the Elegant source checkout named by
-`ELEGANT_SOURCE` (required) and exits if either is missing or unrecognized. It then runs serial
-Elegant `tune_shift_with_amplitude` in tracking mode on eight FODO cells with one thin octupole,
-started where αx = −0.8574, and compares the written amplitudes Ax with x²(1 + αx²)/βx and with
-the manual's x²(1 + αx)/βx; it counts the tracked grid points with `lines_only` omitted and with
-`lines_only=0`, the documented default.
+Setup: `ELEGANT_SOURCE` set to a clone of rtsoliday/elegant; the script reads the manual's LaTeX
+source from it.
+
+The script reads both statements from the checkout's `doc/elegant.tex` and exits if either is
+missing or unrecognized. It then runs serial Elegant `tune_shift_with_amplitude` in tracking mode on
+eight FODO cells with one thin octupole, started where αx = −0.8574, and compares the written
+amplitudes Ax with x²(1 + αx²)/βx and with the manual's x²(1 + αx)/βx; it counts the tracked grid
+points with `lines_only` omitted and with `lines_only=0`, the documented default.
 """
 
 import os

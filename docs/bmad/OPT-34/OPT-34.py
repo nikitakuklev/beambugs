@@ -8,10 +8,9 @@ beam with physical horizontal normalized emittance 5.479 × 10⁻⁷ m is report
 10⁻⁷ m when reference momentum is reduced to 93%; a mean offset of 0.025 causes a 2.5% error
 at unchanged reference momentum.
 
-The script constructs weighted hypercube beams with zero physical dispersion and changes only
-their reference momentum. It checks particle invariants and computes normalized emittance
-directly from physical-momentum covariance before comparing projected and mode outputs.
-BMAD_DIST selects the build.
+The script constructs weighted hypercube beams with zero physical dispersion and changes only their
+reference momentum. It checks particle invariants and computes normalized emittance directly from
+physical-momentum covariance before comparing projected and mode outputs.
 """
 
 import itertools

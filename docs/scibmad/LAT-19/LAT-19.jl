@@ -10,11 +10,13 @@
 # on/off switch, and dropping `is_on` leaves an off bend's nonzero exported field. Source inspection
 # extends the controlled-name failures to groups and identifies a warning for a controlled roll.
 #
+# Setup: `BMAD_SOURCE` set to the root of a bmad-ecosystem `20261020-0` build (the directory
+# containing `production/bin`); the script runs its `bmad_to_scibmad` program.
+#
 # The script exports a field-master solenoid (`l = 1`, `bs_field = 0.5`) with Bmad's
 # `bmad_to_scibmad` program, prints the emitted solenoid line and loads the file, which should give
 # a 0.5 T solenoid field; a directly built `Solenoid(L=1, Bsol=0.5)` is the control. The other names
-# are covered by a second script. Set `BMAD_SOURCE` to the root of a Bmad build, so that the program
-# is `$BMAD_SOURCE/production/bin/bmad_to_scibmad`.
+# are covered by a second script.
 using SciBmad
 haskey(ENV, "BMAD_SOURCE") || error("set BMAD_SOURCE to the root of the bmad-ecosystem 20261020-0 build (the directory that contains production/bin)")
 const BIN = joinpath(ENV["BMAD_SOURCE"], "production", "bin", "bmad_to_scibmad")

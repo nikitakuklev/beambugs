@@ -12,17 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [em_field_calc, AC cylindrical branch, bmad/code/em_field_calc.f90:1231–1249](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/em_field_calc.f90#L1231-L1249)<br>[frequency and Cartesian conversion, bmad/code/em_field_calc.f90:1256–1279](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/em_field_calc.f90#L1256-L1279)<br>[Bmad manual, AC Cylindrical Map Decomposition, aiew, bmad/doc/electromagnetic-fields.tex:733–780](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/electromagnetic-fields.tex#L733-L780)<br>[Cylindrical_Map Field Map, bmad/doc/attributes.tex:2427–2441](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L2427-L2441) |
 
 AC cylindrical magnetic modes with azimuthal order above one return an extra radial magnetic field. For an order-two, 80 MHz mode at (11, −7, 190) mm, the horizontal field is −1.491 µT instead of 372.4 µT from the curl of the documented electric field. Cartesian finite differences give a magnetic divergence of −0.06803 T/m where Maxwell’s equations require zero. Electric-coefficient modes and order-one magnetic modes pass the same checks.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_19_cylindrical.py](../helpers/_s3_19_cylindrical.py) · [View source](../helpers/index.md#_s3_19_cylindrical)
-- [Download _s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) · [View source](../helpers/index.md#_s3_19_fields_photons_ptc)
+Run `python TRK-05.py` with [_bmad.py](../helpers/_bmad.py), [_s3_19_cylindrical.py](../helpers/_s3_19_cylindrical.py) and [_s3_19_fields_photons_ptc.py](../helpers/_s3_19_fields_photons_ptc.py) in the same directory.
 
 ??? example "Reproducer: TRK-05.py"
 
@@ -40,7 +36,6 @@ Download these shared helpers into the same directory as the reproducer scripts:
     The script constructs 28 parsed maps and evaluates 4,116 samples around 84 centers for orders 1, 2
     and 4, both Fourier signs, two frequencies and both coefficient families. An entire Bessel series
     supplies an independent analytic curl, while Cartesian stencils check divergence and Faraday’s law.
-    BMAD_DIST selects the build.
     """
 
     import os

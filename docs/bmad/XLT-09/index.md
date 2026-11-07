@@ -12,16 +12,13 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |
 | Source | [`write_lattice_elegant_format`, bmad/output/write_lattice_elegant_format.f90:646–661](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L646-L661)<br>[rtsoliday/elegant `0355dd6aca12`, src/track_data.c:3011 and 3076](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L3011-L3076)<br>[line 120](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_elegant_format.f90#L120) |
 
 Exporting a Bmad taylor element to Elegant writes second-order coefficients as first-order matrix entries, applying quadratic terms as linear focusing and overwriting linear coefficients with the same name. For normalized momentum pₓ and the map pₓ → pₓ − 2x², a particle at x = 1 mm leaves Elegant with slope x′ = −2.000 mrad instead of −2.000 µrad, as the polynomial and Bmad give. Adding the linear term −0.5x leaves the result at −2.000 mrad instead of −0.5020 mrad. Writing the coefficient as t211 with order = 2 restores the expected slopes within the canonical-momentum to slope conversion error.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _translators.py](../helpers/_translators.py) · [View source](../helpers/index.md#_translators)
+Run `python XLT-09.py` with [_bmad.py](../helpers/_bmad.py) and [_translators.py](../helpers/_translators.py) in the same directory.
 
 ??? example "Reproducer: XLT-09.py"
 
@@ -38,11 +35,14 @@ Download these shared helpers into the same directory as the reproducer scripts:
     Writing the coefficient as t211 with order = 2 restores the expected slopes within the
     canonical-momentum to slope conversion error.
 
+    Setup: serial Elegant on `PATH` and `RPN_DEFNS` set to the `defns.rpn` file of SDDS; the script
+    tracks the exported lattice in Elegant.
+
     The script exports with bmad_to_mad_sad_elegant two Bmad taylor maps, the identity plus the
-    quadratic term px += −2 x², and the same map with a linear term px += −0.5 x added. It tracks
-    a particle at x = 1 mm through each export in Elegant and compares the exit slope with the
-    polynomial value and with Bmad. An independently written EMATRIX with `t211` and `order = 2`
-    is the receiving-code control; Elegant must be on PATH with RPN_DEFNS set.
+    quadratic term px += −2 x², and the same map with a linear term px += −0.5 x added. It tracks a
+    particle at x = 1 mm through each export in Elegant and compares the exit slope with the polynomial
+    value and with Bmad. An independently written EMATRIX with `t211` and `order = 2` is the
+    receiving-code control.
     """
 
     from _bmad import compare, verdict

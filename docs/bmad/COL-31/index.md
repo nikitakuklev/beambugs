@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [ibs1 formula dispatch, bmad/multiparticle/ibs_mod.f90:657–673](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L657-L673)<br>[multi_coulomb_log options 3 and 4, bmad/multiparticle/ibs_mod.f90:790–804](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/ibs_mod.f90#L790-L804)<br>[ibs_ring manual, Bjorken and Mtingwa formula, bsim/ibs_ring/doc/ibs_ring.tex:143–148](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/doc/ibs_ring.tex#L143-L148)<br>[ibs_ring manual parameter summary, bsim/ibs_ring/doc/ibs_ring.tex:460–463](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/doc/ibs_ring.tex#L460-L463)<br>[driver selector comments, bsim/ibs_ring/ibs_ring.f90:91–93](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_ring/ibs_ring.f90#L91-L93) |
 
 When users follow the ibs_ring description of the Bjorken–Mtingwa formula, its cimp selector runs Completely Integrated Modified Piwinski instead; Bjorken–Mtingwa uses bjmt. The Coulomb-log summary and driver comments also misidentify choices 3 and 4, which execute Bane and Kubo/Oide forms respectively. At one fixed electron-beam working point, cimp gives a longitudinal growth rate of 2.979 s⁻¹ while bjmt gives 2.513 s⁻¹. The input descriptions should name the algorithms selected by the existing branches.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_contracts.py](../helpers/_collective_contracts.py) · [View source](../helpers/index.md#_collective_contracts)
+Run `python COL-31.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_contracts.py](../helpers/_collective_contracts.py) in the same directory.
 
 ??? example "Reproducer: COL-31.py"
 
@@ -32,9 +29,8 @@ Download these shared helpers into the same directory as the reproducer scripts:
     When users follow the ibs_ring description of the Bjorken–Mtingwa formula, its cimp selector runs Completely Integrated Modified Piwinski instead; Bjorken–Mtingwa uses bjmt. The Coulomb-log summary and driver comments also misidentify choices 3 and 4, which execute Bane and Kubo/Oide forms respectively. At one fixed electron-beam working point, cimp gives a longitudinal growth rate of 2.979 s⁻¹ while bjmt gives 2.513 s⁻¹. The input descriptions should name the algorithms selected by the existing branches.
 
     The script runs both ibs1 selectors and calls their named kernels directly at identical fixed
-    optics. It also checks Coulomb-log choices 3 and 4 against separate analytic evaluations of
-    their tail-cut formulas. BMAD_DIST selects the production library and BMAD_SOURCE supplies the
-    manual.
+    optics. It also checks Coulomb-log choices 3 and 4 against separate analytic evaluations of their
+    tail-cut formulas. BMAD_SOURCE supplies the manual.
     """
 
     import math

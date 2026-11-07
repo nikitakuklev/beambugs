@@ -2,7 +2,7 @@
 
 Analytic transfer matrices for bends with exact curved multipoles disagree with derivatives of their particle map. The exact-basis branch overwrites the derivative of the position-dependent kick factor instead of multiplying that derivative by the integration step. In a 0.8 m bend with curvature 0.2 m⁻¹ and quadrupole strength 0.7 m⁻², the horizontal-pure matrix gives −0.5564 m⁻¹ for the response of exit normalized horizontal momentum to entrance horizontal position, instead of −0.5575 m⁻¹ (0.1984% error). The vertical-pure basis has the same defect; exact_multipoles = off passes, and requesting a matrix leaves the particle trajectory unchanged.
 
-The script checks both exact bases and the off control using fourth-order particle finite differences at two step sizes. It verifies stencil convergence and identical central trajectories with and without matrix construction. Set BMAD_DIST to the build root.
+The script checks both exact bases and the off control using fourth-order particle finite differences at two step sizes. It verifies stencil convergence and identical central trajectories with and without matrix construction.
 """
 
 import numpy as np

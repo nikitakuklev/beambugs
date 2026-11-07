@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`mult_matrix`, rigidity `H = P me c/e` and the pole-tip conversion, compute_matrices.c:3251–3254](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/compute_matrices.c#L3251-L3254)<br>[`particleCharge/(particleMass c Po)`, multipole.c:531–535](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/multipole.c#L531-L535)<br>[`change_particle` sets the species mass and signed charge, elegant.c:3244–3290](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3244-L3290)<br>[K_nL = n! B_tip L/(rⁿ Bρ), doc/mult.tex:5–15](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/mult.tex#L5-L15)<br>[`BORE` and `BTIPL` parameters, track_data.c:508–509](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L508-L509)<br>[`change_particle`, which must precede `run_setup` and has had limited testing, doc/elegant.tex:1493–1518](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L1493-L1518) |
 
 For `MULT` quadrupoles specified by pole-tip fields, analytic optics use electron rigidity even when `change_particle` selects positrons or protons. For a 0.4 m magnet with bore radius 0.02 m, integrated pole-tip field 2.000×10⁻⁵ T·m and dimensionless momentum p/(mc) = 10, the physical horizontal slope response R₂₁ is −0.05844 m⁻¹ for electrons, +0.05890 m⁻¹ for positrons and +3.195×10⁻⁵ m⁻¹ for protons; the analytic matrix gives −0.05844 m⁻¹ for all three. The positron and proton focusing signs are reversed, and the proton |R₂₁| is 1829 times too large. Direct tracking and explicit integrated strengths agree with the physical quadrupole matrix.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python OPT-11.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: OPT-11.py"
 

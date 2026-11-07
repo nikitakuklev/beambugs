@@ -12,12 +12,14 @@ hide:
 | Priority | P3 |
 | Severity | Silent wrong result |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-10-31 on Beamlines main (`35fe016`) |
+| Last reproduced | 2026-10-31 on Beamlines main (`35fe016`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Pull request | [[gh:https://github.com/bmad-sim/Beamlines.jl/pull/171]], fix |
 | Source | [`Beamlines.jl/ext/BeamlinesGTPSAExt/BeamlinesGTPSAExt.jl:16-20`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/ext/BeamlinesGTPSAExt/BeamlinesGTPSAExt.jl#L16-L20)<br>[`Beamlines.jl/src/defexpr.jl:132-160`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/defexpr.jl#L132-L160)<br>[`Beamlines.jl/src/defexpr.jl:94-99`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/defexpr.jl#L94-L99)<br>[`Beamlines.jl/src/context.jl:88-97`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/context.jl#L88-L97) |
 
 Applying `sincu` (sin x/x) to a deferred expression (`DefExpr`) discards the Context supplied when the expression is evaluated and looks up variables in the global Contexts instead. With `d` reading a variable `a`, evaluating `sincu(d)` in `Context(a=0.3)` raises “Variable a is not defined” when no global `a` exists. A global `a = 0.1` instead produces 0.9983 without warning, rather than the correct sin(0.3)/0.3 = 0.9851, and a Beamline's `Kn1` built this way takes that wrong value; the generic `sin` correctly uses the supplied Context. Source inspection extends the failure to the other functions in the GTPSA extension list, including `sinhc`, `erf` and `wf`.
+
+Run `julia LAT-07.jl`.
 
 ??? example "Reproducer: LAT-07.jl"
 

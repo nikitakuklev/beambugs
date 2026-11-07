@@ -7,9 +7,9 @@ x² + y² + (y − 0.1)², one SVD cycle returns (0.3000, 0) with merit 0.1000 i
 minimum at (0, 0.05000) with merit 0.005000. Reordering the same variables so the penalized one
 comes first gives the correct derivatives and minimum.
 
-The script compares both optimizer Jacobians with central differences, then compares one SVD
-cycle with the analytic least-squares solution. Reordering the same variables is a control for
-both the derivatives and the fit. BMAD_DIST supplies the executable and compiler/link recipe.
+The script compares both optimizer Jacobians with central differences, then compares one SVD cycle
+with the analytic least-squares solution. Reordering the same variables is a control for both the
+derivatives and the fit.
 """
 
 import re

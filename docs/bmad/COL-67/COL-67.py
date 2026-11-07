@@ -7,10 +7,9 @@ uses the equilibrium beam sizes instead of the specified natural, zero-current v
 2601 s⁻¹ instead of 3025 s⁻¹, 14.01% low. Evaluating the rate kernel with the requested
 natural beam sizes establishes the expected result.
 
-The script runs the production driver and a diagnostic rebuild with read-only calculations
-before the initial-rate call. Direct Bjorken–Mtingwa calls compare the actual and natural beam
-sizes at identical population; both diagnostic rate files must equal production output.
-BMAD_DIST and BMAD_SOURCE select the matching build and source tree.
+The script runs the production driver and a diagnostic rebuild with read-only calculations before
+the initial-rate call. Direct Bjorken–Mtingwa calls compare the actual and natural beam sizes at
+identical population; both diagnostic rate files must equal production output.
 """
 
 import io

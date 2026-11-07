@@ -6,9 +6,9 @@ with a 3 mm entrance offset, both return 4.000 mm instead of the referenced disp
 1.000 mm. Tao’s documented order is to subtract the reference value before taking the absolute
 value. Ordinary target constraints and a non-wrapped range retain the reference subtraction.
 
-The script compares two single-element absolute constraints with the analytic drift displacement
-and a target control. It then expands the absolute constraints to a genuine range and checks
-their referenced extrema. BMAD_DIST supplies Tao.
+The script compares two single-element absolute constraints with the analytic drift displacement and
+a target control. It then expands the absolute constraints to a genuine range and checks their
+referenced extrema.
 """
 
 import math

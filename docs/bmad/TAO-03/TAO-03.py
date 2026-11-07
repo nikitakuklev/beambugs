@@ -6,10 +6,9 @@ datums nonexistent and reduces the merit from 2.475 × 10⁻⁵ to zero. A round
 the definitions and constraints. The row-format writer assembles each row in memory without
 writing it to the file.
 
-The script exports RMS, average, and integral constraints on a drift orbit and reloads the
-generated file in a fresh Tao process. It quotes the universe selector to isolate the missing
-rows, then compares datum existence and merit before and after the round trip. BMAD_DIST
-supplies Tao.
+The script exports RMS, average, and integral constraints on a drift orbit and reloads the generated
+file in a fresh Tao process. It quotes the universe selector to isolate the missing rows, then
+compares datum existence and merit before and after the round trip.
 """
 
 import re

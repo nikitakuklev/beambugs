@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [csr_bin_particles, bmad/space_charge/csr_and_space_charge_mod.f90:631–673](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/space_charge/csr_and_space_charge_mod.f90#L631-L673) |
 
 With slice-width flooring enabled, the charge-weighted average width retains only the final eligible bin’s numerator while its denominator includes all eligible charge. Narrow slices consequently receive too small a minimum width, affecting the longitudinal and transverse space-charge forces. In a 400-particle example, the two central widths remain 0.2864 mm instead of reaching the required 0.5265 mm floor. Independent triangular-overlap integration reproduces the baseline charges and widths before applying the full weighted average.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _collective_fields.py](../helpers/_collective_fields.py) · [View source](../helpers/index.md#_collective_fields)
+Run `python COL-11.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_fields.py](../helpers/_collective_fields.py) in the same directory.
 
 ??? example "Reproducer: COL-11.py"
 
@@ -38,7 +35,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The script bins 400 deterministic particles with flooring off and on, then independently integrates
     each triangular particle shape over the bins. Baseline charges and widths must agree before the
-    floored widths are compared with the full charge-weighted average. Set BMAD_DIST to the build root.
+    floored widths are compared with the full charge-weighted average.
     """
 
     import numpy as np

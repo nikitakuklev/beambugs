@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">contract-unsettled</span> [?](../../methodology.md#tags) |
 | Source | [tao_merit, tao/code/tao_merit.f90:144–154](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_merit.f90#L144-L154)<br>[zero_phase_merit, tao/code/tao_merit.f90:193–210](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_merit.f90#L193-L210)<br>[Data Types, phase.a and phase.b, phase, tao/doc/data.tex:1539–1550](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/data.tex#L1539-L1550) |
 
 Renaming an array of phase constraints changes Tao’s optimization objective even when the data types, targets, weights, and reference elements stay identical. A single phase.a datum in an array named phase.a has zero merit, while the same datum in match.a has merit 0.2197. The manual describes removal of the arbitrary phase origin by data type and reference element, without this array-name requirement. An explicit BEGINNING reference gives the same nonzero merit for the named array; unequal weights also expose the arithmetic mean used for recentering.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) · [View source](../helpers/index.md#_tao_contracts_normal_form)
+Run `python TAO-17.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_contracts_normal_form.py](../helpers/_tao_contracts_normal_form.py) in the same directory.
 
 ??? example "Reproducer: TAO-17.py"
 

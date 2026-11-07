@@ -9,7 +9,7 @@ baseline charges and widths before applying the full weighted average.
 
 The script bins 400 deterministic particles with flooring off and on, then independently integrates
 each triangular particle shape over the bins. Baseline charges and widths must agree before the
-floored widths are compared with the full charge-weighted average. Set BMAD_DIST to the build root.
+floored widths are compared with the full charge-weighted average.
 """
 
 import numpy as np

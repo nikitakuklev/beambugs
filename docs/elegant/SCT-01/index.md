@@ -12,14 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [`computeAverageGasPressures` coverage check, pressureData.c:207–218](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/physics/pressureData.c#L207-L218)<br>[interval limits, ionEffects.cc:593–616](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ionEffects.cc#L593-L616)<br>[averaging call, ionEffects.cc:633–634](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ionEffects.cc#L633-L634)<br>[default, ionEffects.nl:53](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/ionEffects.nl#L53)<br>[call at the start of tracking, elegant.c:1300–1301](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L1300-L1301)<br>[spacing checks, pressureData.c:179–191](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/physics/pressureData.c#L179-L191) |
 
 With IONEFFECTS' default pressure averaging, a lattice interval lying entirely before or after the gas-pressure samples triggers an error diagnostic that reads position index −1. Evaluating the message reads 8 bytes before the position array instead of safely reporting the coverage problem. With samples at 2 m and 3 m and an interval from 0 to 1 m, the run stops with a value that is not a sample position in the message, and a memory checker confirms an invalid read of size 8.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python SCT-01.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: SCT-01.py"
 
@@ -33,6 +31,8 @@ Download these shared helpers into the same directory as the reproducer scripts:
     message reads 8 bytes before the position array instead of safely reporting the coverage problem.
     With samples at 2 m and 3 m and an interval from 0 to 1 m, the run stops with a value that is not a
     sample position in the message, and a memory checker confirms an invalid read of size 8.
+
+    Setup: `valgrind` on `PATH`; the script runs serial Elegant under Memcheck.
 
     The script writes a one-element IONEFFECTS lattice spanning 0 to 1 m and runs serial Elegant under
     Valgrind with four pressure profiles: two that reach the interval (samples at 0, 0.5 and 1 m, and

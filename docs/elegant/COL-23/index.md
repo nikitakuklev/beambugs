@@ -12,16 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [tracking caller, do_tracking.c:2483–2486](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/do_tracking.c#L2483-L2486)<br>[trwake.c:154–156](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L154-L156)<br>[binTransverseTimeDistribution, trwake.c:649–660](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L649-L660)<br>[gather call, trwake.c:251–255](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L251-L255)<br>[`applyTransverseWakeKicks`, trwake.c:328–331](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L328-L331)<br>[trwake.c:151–152](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/trwake.c#L151-L152)<br>[quadrupole wake, trwake.tex:53–58](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/trwake.tex#L53-L58)<br>[misalignment parameters, track_data.c:2604–2605](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2604-L2605) |
 
 TRWAKE quadrupole wakes (probe exponents 1, drive exponents 0) use each particle's global transverse coordinate even when the structure has misalignments DX and DY. The kick must use displacement from the structure, so translating beam and structure together must preserve the kicks, and a beam on the structure's axis must receive none. For a 0.6000 nC electron bunch represented by 18 macroparticles, a common shift of (3.100, −1.700) mm raises the trailing particle's horizontal slope kick from 1.498×10⁻⁵ to 6.660×10⁻⁵, and an on-axis beam receives 5.161×10⁻⁵ instead of zero. Dipole wakes, with probe factor 1, pass the translation controls.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _trwake.py](../helpers/_trwake.py) · [View source](../helpers/index.md#_trwake)
+Run `python COL-23.py` with [_elegant.py](../helpers/_elegant.py) and [_trwake.py](../helpers/_trwake.py) in the same directory.
 
 ??? example "Reproducer: COL-23.py"
 

@@ -9,6 +9,9 @@ a 3 GeV, 288.0 m ring with Jx = 0.9634, κ = 0.1 and 1 nC, it returns 48.96 nm v
 0.3408% high; the transverse balance misses zero by 0.3408% of its excitation term. This
 lower-bound obstruction is absent for weak IBS when τx ≤ τy.
 
+Setup: the `ibsEmittance` program of the Elegant build on `PATH`; the script runs it on the ring's
+Twiss output.
+
 The script builds a 3 GeV periodic model of 12 FODO cells, with 55.2 m total length and sector
 bends totaling π, writes its Twiss and radiation integrals with elegant, and runs ibsEmittance for the equilibrium at κ = 0.1, at 10⁻¹² nC (no IBS)
 and at 1 nC. It compares the returned εx with the root of the program's own radiation balance,

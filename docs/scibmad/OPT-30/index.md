@@ -12,10 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on SciBmad main (`ae9423d`) |
-| Source | [`src/twiss/twiss.jl:330`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L330)<br>[`twiss.jl:103-107`](https://github.com/bmad-sim/SciBmad.jl/blob/5f0fb83ac8899c1e26d4522ccc8e54c59633307f/src/twiss/twiss.jl#L103-L107)<br>[`Beamlines.jl/src/misc.jl:18-52`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/misc.jl#L18-L52) |
+| Last reproduced | 2026-10-29 on SciBmad main (`ae9423d`, head build) |
+| Source | [`src/twiss/twiss.jl:336`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L336)<br>[`twiss.jl:106-110`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L106-L110)<br>[`Beamlines.jl/src/misc.jl:18-52`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/misc.jl#L18-L52) |
 
 With `damping` and the initial normalizer `a_initial` omitted, `twiss` decides whether the optics are damped by checking the normalizer's symplecticity instead of the transport map's, and misses damping in a supported user transport map. For M = A·diag(ρᵢRᵢ)·A⁻¹ with symplectic Courant–Snyder A, rotations Rᵢ and amplitude factors ρᵢ, the matched beta functions must be periodic. With β = (2, 3, 4) m and ρ = (0.93, 0.87, 0.81), automatic selection instead changes β₁ from 2.000 to 1.730 m and β₂ from 3.000 to 2.271 m and omits damping summaries. Explicit `damping=true` restores periodicity and the analytic decrements −log ρᵢ. The undamped control passes.
+
+Run `julia OPT-30.jl`.
 
 ??? example "Reproducer: OPT-30.jl"
 

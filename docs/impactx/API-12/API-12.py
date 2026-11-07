@@ -10,13 +10,16 @@ tracking model directly. An envelope export, `sim.init_envelope(ref, distr)` fol
 particle tracking. The changed mode is visible in the interface; particle-mode exports and scripts
 with an explicit `tracking_mode` assignment keep their mode.
 
-Set IMPACTX_SOURCE to a clone of the ImpactX repository. The script loads the dashboard's unmodified
-parser and export modules from that clone behind package shells, replacing only the reactive state
-object so that no Trame web UI or server is needed. For each of the three tracking modes it exports
-a simulation, parses the export, applies the returned state and compares the regenerated tracking
-commands with the original ones; it also imports the two bundled envelope examples. Particle mode
-and an envelope export prefixed with an explicit `tracking_mode` assignment are the controls;
-quadratic distribution parameters keep the test clear of the dashboard's Twiss-parsing defect.
+Setup: `IMPACTX_SOURCE` set to a clone of BLAST-ImpactX/impactx at tag `26.10`; the script loads the
+dashboard modules from it.
+
+The script loads the dashboard's unmodified parser and export modules from that clone behind package
+shells, replacing only the reactive state object so that no Trame web UI or server is needed. For
+each of the three tracking modes it exports a simulation, parses the export, applies the returned
+state and compares the regenerated tracking commands with the original ones; it also imports the two
+bundled envelope examples. Particle mode and an envelope export prefixed with an explicit
+`tracking_mode` assignment are the controls; quadratic distribution parameters keep the test clear
+of the dashboard's Twiss-parsing defect.
 """
 
 import os

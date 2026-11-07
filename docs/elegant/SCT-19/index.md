@@ -12,15 +12,13 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`7514db3`) |
+| Last reproduced | 2026-11-04 on Elegant master (`7514db3`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [moments.c:1496–1503](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L1496-L1503)<br>[moments.c:1531–1539](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L1531-L1539)<br>[Coulomb log, moments.c:1555–1582](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L1555-L1582)<br>[moments.c:1592–1594](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/moments.c#L1592-L1594)<br>[elegant.c:3284–3308](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/elegant.c#L3284-L3308)<br>[change_particle, elegant.tex:1497–1517](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L1497-L1517)<br>[`ibs_iterations`, elegant.tex:5617–5624](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5617-L5624) |
 
 After change_particle selects a muon or a custom heavy species, moments_output with ibs_iterations forms the Coulomb logarithm ln Λ of its intrabeam-scattering (IBS) diffusion from momentum spreads in electron units but a classical minimum impact parameter with the species mass M, which inflates that cutoff by (M/mₑ)². Where it exceeds the other cutoff, ln Λ and the IBS diffusion, proportional to it, are too small. The correct value follows from Kubo and Oide's cutoffs in physical units on the same beam moments. In a radiating test ring at normalized momentum βγ = 1200 with 1 pC, ln Λ is 12.76–18.63% low for muons and 86.64–95.11% low for antiprotons, a custom species. Electrons and positrons are not affected.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
+Run `python SCT-19.py` with [_elegant.py](../helpers/_elegant.py) in the same directory.
 
 ??? example "Reproducer: SCT-19.py"
 

@@ -2,7 +2,7 @@
 
 Replacing a tabulated short-range wake with a mode-only definition leaves the old table spacing active after its arrays have been emptied. Tracking then reports that the bunch exceeds the table window and marks a particle lost. A single electron macroparticle receives the same normalized momentum kick, −0.0005000, as the mode-only control, but is lost instead of remaining alive.
 
-The script parses a table followed by a mode-only replacement, then parses the final definition alone as a control. Each fresh process tracks one charged particle and reports table size, spacing, state and kick. BMAD_DIST selects the build.
+The script parses a table followed by a mode-only replacement, then parses the final definition alone as a control. Each fresh process tracks one charged particle and reports table size, spacing, state and kick.
 """
 
 import re

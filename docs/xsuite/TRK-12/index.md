@@ -12,15 +12,12 @@ hide:
 | Priority | P3 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`) |
+| Last reproduced | 2026-10-29 on xtrack main (`f09e0fb`, head build) |
 | Source | [`Wire_track_local_particle`, wire.h:33–50](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/wire.h#L33-L50)<br>[species-coordinate Hamiltonian](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L321-L466) |
 
 `Wire` gives every particle the reference-species kick regardless of its charge or mass, so even opposite charges bend the same way. Integrating the Biot–Savart field of the finite wire shows that the normalized kick must scale with the particle's charge-to-mass ratio relative to the reference species, χ. For a 7 A wire of physical length 0.7 m and interaction length 1.1 m at (x, y) = (−1, 0.2) mm, a 1 GeV/c particle at (2, 0.5) mm with twice the reference charge and the same mass gets normalized horizontal momentum −9.696 × 10⁻⁵ instead of −1.939 × 10⁻⁴. Reference-species and off-momentum particles are tracked correctly.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _prebuilt.py](../helpers/_prebuilt.py) · [View source](../helpers/index.md#_prebuilt)
-- [Download _common.py](../helpers/_common.py) · [View source](../helpers/index.md#_common)
+Run `python TRK-12.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.py](../helpers/_common.py) in the same directory.
 
 ??? example "Reproducer: TRK-12.py"
 

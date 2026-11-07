@@ -2,10 +2,9 @@
 
 When users copy the beam–beam manual's s_beta_ref attribute to specify the strong-beam Twiss reference position, the parser rejects it. The accepted attribute is s_twiss_ref, which the field-size calculation and other manual prose already use. A beam–beam element with s_twiss_ref parses successfully, while the otherwise identical element with s_beta_ref fails. Both stale names in the manual should be replaced with s_twiss_ref.
 
-The script parses otherwise identical beam–beam elements with the accepted and documented
-attribute names. It requires a successful control and the explicit bad-attribute error for
-s_beta_ref, then checks that the stale name remains in the manual. BMAD_DIST and BMAD_SOURCE
-select the build and source tree.
+The script parses otherwise identical beam–beam elements with the accepted and documented attribute
+names. It requires a successful control and the explicit bad-attribute error for s_beta_ref, then
+checks that the stale name remains in the manual.
 """
 
 from _bmad import verdict

@@ -2,7 +2,9 @@
 
 When `sddsprocess` computes a `gmintegral` from three samples, or a program calls the SDDS routine `GillMillerIntegration` with three samples, the final integral silently becomes zero. For f = 1 at x = 0, 1, 2 the correct integral is 2; for f = x at x = 0.2, 0.7, 2.3 it is 2.625, yet the utility returns 0 for both without warning. Direct library calls also leave the middle cumulative result unwritten, while four-sample constant and nonuniform cubic controls agree with exact antiderivatives to double precision roundoff.
 
-The script integrates constant and linear three-sample tables with `sddsprocess` and calls the library on uniform constant three- and four-sample tables prefilled with a sentinel. It compares with the exact antiderivative; the controls are the trapezoid rule of `sddsprocess` and four-sample constant and cubic tables. It needs `sddsprocess` on PATH and `gcc`.
+Setup: `gcc`, and `sddsprocess` on `PATH` from an SDDS build tree, because the script compiles small C programs against that tree's `lib/Linux-x86_64/libmdbmth.a` and `libmdblib.a`.
+
+The script integrates constant and linear three-sample tables with `sddsprocess` and calls the library on uniform constant three- and four-sample tables prefilled with a sentinel. It compares with the exact antiderivative; the controls are the trapezoid rule of `sddsprocess` and four-sample constant and cubic tables.
 """
 
 import sys

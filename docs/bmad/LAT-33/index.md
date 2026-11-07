@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [Bmad manual, “Initialization and Pointers”, assignment contract, bmad/doc/ele-struct.tex:170–178](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/ele-struct.tex#L170-L178)<br>[Cartesian payload sharing, bmad/low_level/transfer_fieldmap.f90:55–60](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/transfer_fieldmap.f90#L55-L60)<br>[cylindrical sharing and generalized-gradient copy, bmad/low_level/transfer_fieldmap.f90:94–130](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/transfer_fieldmap.f90#L94-L130)<br>[grid sharing, bmad/low_level/transfer_fieldmap.f90:163–168](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/transfer_fieldmap.f90#L163-L168)<br>[explicit Cartesian detachment, bmad/code/pointer_to_attribute.f90:279–283](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/pointer_to_attribute.f90#L279-L283) |
 
 The element-assignment manual says that all four field-map pointer arrays share storage after an element copy. Assignment instead creates separate outer descriptors, shares the inner Cartesian, cylindrical and grid payloads, and independently copies generalized-gradient data. Editing a copied Cartesian coefficient changes the source from 1 to 2, while descriptor and generalized-gradient edits leave the source values at 1 and 5. Explicit Cartesian unlinking separates the coefficients, so the documentation needs to distinguish these ownership rules.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _multipass_slicing.py](../helpers/_multipass_slicing.py) · [View source](../helpers/index.md#_multipass_slicing)
+Run `python LAT-33.py` with [_bmad.py](../helpers/_bmad.py) and [_multipass_slicing.py](../helpers/_multipass_slicing.py) in the same directory.
 
 ??? example "Reproducer: LAT-33.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     The element-assignment manual says that all four field-map pointer arrays share storage after an element copy. Assignment instead creates separate outer descriptors, shares the inner Cartesian, cylindrical and grid payloads, and independently copies generalized-gradient data. Editing a copied Cartesian coefficient changes the source from 1 to 2, while descriptor and generalized-gradient edits leave the source values at 1 and 5. Explicit Cartesian unlinking separates the coefficients, so the documentation needs to distinguish these ownership rules.
 
-    The script copies four elements, each containing one map family. It checks pointer associations and edits immediately after assignment, then repeated-transfer reference counts and explicit unlinking. It reads the assignment contract from BMAD_SOURCE and compares its shared-storage statement with the observed copy behavior. BMAD_DIST selects the build.
+    The script copies four elements, each containing one map family. It checks pointer associations and edits immediately after assignment, then repeated-transfer reference counts and explicit unlinking. It reads the assignment contract from BMAD_SOURCE and compares its shared-storage statement with the observed copy behavior.
     """
 
     from _bmad import compare, fortran, source, verdict

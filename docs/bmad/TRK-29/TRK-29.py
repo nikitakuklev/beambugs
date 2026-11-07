@@ -2,7 +2,7 @@
 
 An on-axis positron tracked through an electron-reference sector bend receives no deflection from the native near-axis map. The general map and Runge–Kutta tracking follow the oppositely curved orbit. For a 1 m bend with curvature 0.1 m⁻¹, the native result is horizontal position x = 0 and normalized horizontal momentum = 0 instead of 0.1014 m and 0.1997. Moving the entrance x by only 0.1 μm activates the general map and restores the deflection.
 
-The script tracks on-axis and slightly displaced positrons through a fringe-free bend using native and Runge–Kutta methods. It compares the exit coordinates with a charge-reversed circle intersecting the reference exit plane. Set BMAD_DIST to the Bmad build root.
+The script tracks on-axis and slightly displaced positrons through a fringe-free bend using native and Runge–Kutta methods. It compares the exit coordinates with a charge-reversed circle intersecting the reference exit plane.
 """
 
 import numpy as np

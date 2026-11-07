@@ -2,7 +2,7 @@
 
 A legacy long-range wake file with gaps between populated rows can silently change a retained mode’s polarization. The parser compacts the rows but reads the polarization angle from the output index instead of the input row. Modes in rows one and three with angles zero and 0.2500 turns parse successfully, but the second mode becomes unpolarized with angle zero; the same modes in consecutive rows preserve both angles.
 
-The script parses identical legacy long-range modes from consecutive rows and from rows one and three. It compares every mode’s frequency, polarization flag and angle with the input values. BMAD_DIST selects the build.
+The script parses identical legacy long-range modes from consecutive rows and from rows one and three. It compares every mode’s frequency, polarization flag and angle with the input values.
 """
 
 from _bmad import compare, fortran, verdict

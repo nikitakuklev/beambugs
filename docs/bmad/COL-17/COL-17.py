@@ -3,9 +3,8 @@
 When the high-energy space-charge setup receives a branch allocated exactly through its last tracking element, it reads the next element before applying the last-element length rule. That next element lies outside the supplied array. A bounds-checked build stops on index 2 for a branch whose final index is 1. The same routine succeeds when the branch has an extra allocated element.
 
 The script runs a padded branch against the production library, then recompiles the unchanged
-upstream module with bounds checks using the build's compiler and libraries. It verifies the
-padded result and requires the specific out-of-bounds diagnostic for a tightly allocated branch.
-BMAD_DIST and BMAD_SOURCE select the matching build and source tree.
+upstream module with bounds checks using the build's compiler and libraries. It verifies the padded
+result and requires the specific out-of-bounds diagnostic for a tightly allocated branch.
 """
 
 from _bmad import RunFailure, compare, fortran, verdict

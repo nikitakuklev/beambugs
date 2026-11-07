@@ -12,15 +12,12 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [radiation_map_setup, bmad/modules/radiation_mod.f90:231–249](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/radiation_mod.f90#L231-L249) |
 
 Constructing a radiation map for a bend with exact multipoles silently switches exact multipoles off on the original element. An auxiliary map calculation must preserve the original element’s field model. In a 2 m combined-function bend at 3 GeV, identical radiation-disabled tracking before and after setup changes the exit horizontal position from 1.403 mm to 1.420 mm. The 16.91 μm shift follows a change from horizontally pure exact multipoles to the approximate field model.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) · [View source](../helpers/index.md#_s3_14_optics_matrix_radiation)
+Run `python OPT-02.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_14_optics_matrix_radiation.py](../helpers/_s3_14_optics_matrix_radiation.py) in the same directory.
 
 ??? example "Reproducer: OPT-02.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Constructing a radiation map for a bend with exact multipoles silently switches exact multipoles off on the original element. An auxiliary map calculation must preserve the original element’s field model. In a 2 m combined-function bend at 3 GeV, identical radiation-disabled tracking before and after setup changes the exit horizontal position from 1.403 mm to 1.420 mm. The 16.91 μm shift follows a change from horizontally pure exact multipoles to the approximate field model.
 
-    The script tracks the same particle before and after radiation-map setup in a combined-function bend. Radiation is disabled for both tracks, so preserving the element must preserve the orbit. It also checks the exact-multipole selector directly; BMAD_DIST supplies the build.
+    The script tracks the same particle before and after radiation-map setup in a combined-function bend. Radiation is disabled for both tracks, so preserving the element must preserve the orbit. It also checks the exact-multipole selector directly;
     """
 
     from _bmad import compare, fortran, verdict

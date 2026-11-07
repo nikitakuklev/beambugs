@@ -2,7 +2,7 @@
 
 Applying Gaussian smoothing to a tabulated short-range wake uses an asymmetric exponential when the grid index is not squared. A symmetric impulse must produce equal kicks at equally spaced witnesses on either side, but the faulty kernel gives an outer-kick ratio of 54.60 for a smoothing width of half a grid spacing. A normalized Gaussian convolution and an unsmoothed self-bin control establish the expected symmetry and magnitude.
 
-The script parses a symmetric impulse table with and without Gaussian smoothing, then compares three tracked kicks against a normalized Gaussian. The self-bin is halved before smoothing, as required by beam loading. BMAD_DIST selects the build.
+The script parses a symmetric impulse table with and without Gaussian smoothing, then compares three tracked kicks against a normalized Gaussian. The self-bin is halved before smoothing, as required by beam loading.
 """
 
 import numpy as np

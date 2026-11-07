@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Source | [`HOM-order filtering`, bsim/bbu/bbu_program.f90:87–109](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/bbu/bbu_program.f90#L87-L109)<br>[`bbu_setup`, bsim/code/bbu_track_mod.f90:105–116](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/code/bbu_track_mod.f90#L105-L116)<br>[`track1_lr_wake`, bmad/multiparticle/wake_mod.f90:128–140](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L128-L140) |
 
 Filtering higher-order modes in the beam-breakup simulation breaks the mode array when any modes are removed. Partial removal attempts to allocate an already allocated array, while complete removal leaves an unallocated array for downstream consumers. A cavity containing orders one and two fails with an allocation error at cutoff one, and a two-cavity case with one fully discarded mode crashes; retaining both orders completes.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) · [View source](../helpers/index.md#_wake_tables_and_bbu)
+Run `python COL-54.py` with [_bmad.py](../helpers/_bmad.py) and [_wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) in the same directory.
 
 ??? example "Reproducer: COL-54.py"
 
@@ -31,7 +28,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Filtering higher-order modes in the beam-breakup simulation breaks the mode array when any modes are removed. Partial removal attempts to allocate an already allocated array, while complete removal leaves an unallocated array for downstream consumers. A cavity containing orders one and two fails with an allocation error at cutoff one, and a two-cavity case with one fully discarded mode crashes; retaining both orders completes.
 
-    The script checks matching one-cavity and two-cavity controls that retain all modes, then runs partial-removal and complete-removal cases in separate processes. It requires the specific allocation failure after successful parsing or segmentation fault after tracking begins. BMAD_DIST selects the build and all runs use seed 123.
+    The script checks matching one-cavity and two-cavity controls that retain all modes, then runs partial-removal and complete-removal cases in separate processes. It requires the specific allocation failure after successful parsing or segmentation fault after tracking begins. All runs use seed 123.
     """
 
     from _bmad import RunFailure, run, verdict

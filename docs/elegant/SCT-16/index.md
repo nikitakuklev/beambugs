@@ -12,15 +12,12 @@ hide:
 | Priority | P4 |
 | Severity | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
-| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`) |
+| Last reproduced | 2026-11-04 on Elegant master (`0355dd6`, head build) |
 | Source | [straggling, matter.c:264–273](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matter.c#L264-L273)<br>[simplified energy loss, matter.tex:78–94](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/matter.tex#L78-L94)<br>[`ENERGY_STRAGGLE`, track_data.c:2141](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2141) |
 
 With ENERGY_DECAY=1 and ENERGY_STRAGGLE=1, MATTER multiplies each electron's exponential energy loss by 1 + 0.5·N(0, 1), with N(0, 1) a standard normal deviate, and redraws whenever the loss would be negative. The manual states that the loss then has a standard deviation of half its mean, the exponential loss; the redraw instead gives a truncated normal distribution whose mean is 2.762% larger and whose standard deviation is 0.4581 of that mean. For 200000 electrons at 1000 mₑc crossing hydrogen of 10⁻⁴ radiation lengths, the mean loss is 2.750 ± 0.1051% above the exponential law, and the ratio is 0.4576.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _elegant.py](../helpers/_elegant.py) · [View source](../helpers/index.md#_elegant)
-- [Download _matter_model.py](../helpers/_matter_model.py) · [View source](../helpers/index.md#_matter_model)
+Run `python SCT-16.py` with [_elegant.py](../helpers/_elegant.py) and [_matter_model.py](../helpers/_matter_model.py) in the same directory.
 
 ??? example "Reproducer: SCT-16.py"
 

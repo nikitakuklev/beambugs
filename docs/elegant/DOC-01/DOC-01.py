@@ -6,12 +6,15 @@ should be 3: `alphac3` is the coefficient of δ³. For a prescribed one-turn map
 path 10 m + 2 m·δ² + 7 m·δ³, Elegant writes αc = 0, αc2 = 0.2000 and αc3 = 0.7000, and tracking
 gives 10.01 m at δ = −0.1 and 10.03 m at δ = +0.1; the printed equation predicts 10.09 m at both.
 
-The script reads the compaction equation from `doc/elegant.tex` of the Elegant source checkout named
-by `ELEGANT_SOURCE` and exits if it is missing or unrecognized. It prescribes the one-turn map with
-zero transverse orbit and dispersion, reads `alphac`, `alphac2` and `alphac3` from `twiss_output`,
-and tracks particles at six momentum offsets to obtain the path length from their arrival times. It
-compares the tracked path with the manual's equation and with the equation using δ³. A map without
-the cubic term, for which the two equations coincide, is the control.
+Setup: `ELEGANT_SOURCE` set to a clone of rtsoliday/elegant; the script reads the manual's LaTeX
+source from it.
+
+The script reads the compaction equation from the checkout's `doc/elegant.tex` and exits if it is
+missing or unrecognized. It prescribes the one-turn map with zero transverse orbit and dispersion,
+reads `alphac`, `alphac2` and `alphac3` from `twiss_output`, and tracks particles at six momentum
+offsets to obtain the path length from their arrival times. It compares the tracked path with the
+manual's equation and with the equation using δ³. A map without the cubic term, for which the two
+equations coincide, is the control.
 """
 
 import os

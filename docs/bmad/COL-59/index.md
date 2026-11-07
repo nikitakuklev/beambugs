@@ -12,16 +12,13 @@ hide:
 | Priority | P2 |
 | Severity | Wrong physics |
 | Evidence | Probe-pinned |
-| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`) |
+| Last reproduced | 2026-11-05 on Bmad 20261031-0 (`c4c629f`, head build) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |
 | Source | [`track1_sr_wake`, bmad/multiparticle/wake_mod.f90:728–754](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L728-L754)<br>[`sr_z_long_wake`, bmad/multiparticle/wake_mod.f90:498–505](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L498-L505) |
 
 Reordering the stored particles of an otherwise identical bunch changes its tabulated short-range wake kicks. The dispatcher selects the table origin by averaging the storage indices of the head and tail, rather than their longitudinal coordinates. In a three-particle case, the leading particle’s normalized momentum kick changes from −1.194 × 10⁻⁶ to −1.000 × 10⁻⁶ under a storage permutation. A direct calculation with a fixed physical center agrees with an independent charge-deposition and interpolation sum.
 
-Download these shared helpers into the same directory as the reproducer scripts:
-
-- [Download _bmad.py](../helpers/_bmad.py) · [View source](../helpers/index.md#_bmad)
-- [Download _wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) · [View source](../helpers/index.md#_wake_tables_and_bbu)
+Run `python COL-59.py` with [_bmad.py](../helpers/_bmad.py) and [_wake_tables_and_bbu.py](../helpers/_wake_tables_and_bbu.py) in the same directory.
 
 ??? example "Reproducer: COL-59.py"
 
@@ -32,7 +29,7 @@ Download these shared helpers into the same directory as the reproducer scripts:
 
     Reordering the stored particles of an otherwise identical bunch changes its tabulated short-range wake kicks. The dispatcher selects the table origin by averaging the storage indices of the head and tail, rather than their longitudinal coordinates. In a three-particle case, the leading particle’s normalized momentum kick changes from −1.194 × 10⁻⁶ to −1.000 × 10⁻⁶ under a storage permutation. A direct calculation with a fixed physical center agrees with an independent charge-deposition and interpolation sum.
 
-    The script tracks a fixed three-particle set in two storage orders and remaps both results to physical order. A direct call with a fixed midpoint is checked against an independent cloud-in-cell sum. BMAD_DIST selects the build.
+    The script tracks a fixed three-particle set in two storage orders and remaps both results to physical order. A direct call with a fixed midpoint is checked against an independent cloud-in-cell sum.
     """
 
     import numpy as np
