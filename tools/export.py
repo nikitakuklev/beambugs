@@ -343,6 +343,7 @@ class UpstreamCommits:
         self.path = path
         self.data: dict = json.loads(path.read_text()) if path.is_file() else {}
         self.tips: dict[tuple[str, str], str] = {}
+        self.tags: dict[str, dict[str, list[str]]] = {}
 
     def _get(self, url: str) -> dict:
         request = urllib.request.Request(
@@ -396,6 +397,23 @@ class UpstreamCommits:
         record["tip_seen"] = str(dt.datetime.now(LEDGER_TZ).date())
         return day <= dt.date.fromisoformat(record["tip_seen"])
 
+    def release(self, repo: str, commit: str) -> str | None:
+        """The tag on the commit, if any (the first in sorted order when several are).
+        Tags are read from GitHub on every run rather than cached, since a commit can
+        be tagged after it is first looked up."""
+        if repo not in self.tags:
+            by_sha: dict[str, list[str]] = {}
+            page = 1
+            while batch := self._get(
+                f"https://api.github.com/repos/{repo}/tags?per_page=100&page={page}"
+            ):
+                for tag in batch:
+                    by_sha.setdefault(tag["commit"]["sha"], []).append(tag["name"])
+                page += 1
+            self.tags[repo] = by_sha
+        names = self.tags[repo].get(self._record(repo, commit)["sha"])
+        return min(names) if names else None
+
     def save(self) -> None:
         self.path.write_text(json.dumps(self.data, indent=1, sort_keys=True) + "\n")
 
@@ -428,8 +446,11 @@ def reproduction(provenance: dict, config: dict, commits: UpstreamCommits) -> di
         ref = str(c["ref"]) if " " in str(c["ref"]) else f"{config['name']} {c['ref']}"
         return {
             "ref": ref,
+            "repository": repo,
             "commit": str(c["commit"])[:12],
             "committed": str(commits.committed(repo, str(c["commit"]))),
+            # Verified against the repository's tags, not taken from the ref label.
+            "release": commits.release(repo, str(c["commit"])),
         }
 
     def head(run: dict) -> bool:

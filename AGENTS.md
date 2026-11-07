@@ -17,7 +17,7 @@ ledger, the templates or the exporter, then regenerate.
 | `locations` | Source permalinks of the faulty code. |
 | `upstream` | Linked issues and PRs: `repository`, `number`, `kind`, `url`, `relation` (`filed` from this evidence; others' `report` of the defect, `fix` of it, or `discussion` of it or its cause). Live state is shown on the site only. |
 | `provenance` | `found` and `confirmed` lists (`model`, `effort`, `date`, `code` {`ref`, `commit`, `build`}, optional `scope`), `verified` (last recorded run on a head build). |
-| `last_reproduced` | Most recent current reproducing run (else the most recent one, for a defect fixed upstream): `date`, `code` {`ref`, `commit`, `committed` (commit date)}, `head` (the commit was the development-branch head), `head_not_reproduced` (the head run, when it no longer reproduces). |
+| `last_reproduced` | Most recent current reproducing run (else the most recent one, for a defect fixed upstream): `date`, `code` {`ref` (ledger label), `repository`, `commit`, `committed` (commit date), `release` (the upstream tag on the commit, or null)}, `head` (the commit was the development-branch head), `head_not_reproduced` (the head run, when it no longer reproduces). |
 | `models` | Distinct models in `found` and `confirmed`. |
 | `reproducers` | Download paths relative to `page`: `<ID>*.py`/`.jl`/`.sh` scripts and input directories are local to the entry; imported `_*.py` helpers (including transitive imports) use `../helpers/<name>.py`. |
 | `requirements` | Third-party Python packages the reproducer and its helpers import besides the code itself. |

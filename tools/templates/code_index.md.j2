@@ -1,3 +1,5 @@
+{# A run's code: the release when its commit carries a tag, else the linked commit. #}
+{% macro ran(c, code) %}{% if c.release %}[{% if code.repositories %}{{ c.ref.split()[0] }} {% endif %}{{ c.release }}](https://github.com/{{ c.repository }}/tree/{{ c.release }}){% else %}[`{{ c.commit[:7] }}`](https://github.com/{{ c.repository }}/commit/{{ c.commit }}){% endif %}{% endmacro %}
 {% macro links(e, kind) %}{% for u in e.upstream if u.kind == kind and u.relation != 'discussion' %}[[gh:{{ u.url }}{% if u.relation == 'filed' %} filed{% endif %}]]{% if not loop.last %}<br>{% endif %}{% endfor %}{% endmacro %}
 ---
 title: {{ code.name }}
@@ -23,8 +25,8 @@ Some reproducers also need: {{ extras | join(', ') }}.
 
 <div class="bb-filters" data-column="Area"></div>
 
-| ID | Defect | Area | Priority | Severity | Last reproduced | Issue | PR |
+| ID | Priority | Defect | Area | Severity | Last reproduced | Issue | PR |
 |---|---|---|---|---|---|---|---|
 {% for e in rows %}
-| [{{ e.id }}]({{ e.id }}/index.md) | {{ e.title }}{% for t in e.tags %} <span class="bb-tag">{{ t }}</span>{% endfor %} | {{ e.area }} | {{ e.priority }} | {{ e.severity }} | {% set r = e.last_reproduced %}{{ r.date }} (`{{ r.code.commit[:7] }}`{% if r.head %}, head{% endif %}{% if r.head_not_reproduced %}; not on head {{ r.head_not_reproduced.date }}{% endif %}) | {{ links(e, 'issue') }} | {{ links(e, 'pull') }} |
+| [{{ e.id }}]({{ e.id }}/index.md){% if e.last_reproduced.head_not_reproduced %}<span class="bb-fixed"></span>{% endif %} | {{ e.priority }} | {{ e.title }}{% for t in e.tags %} <span class="bb-tag">{{ t }}</span>{% endfor %} | {{ e.area }} | {{ e.severity }} | {{ e.last_reproduced.date }} ({{ ran(e.last_reproduced.code, code) }}) | {{ links(e, 'issue') }} | {{ links(e, 'pull') }} |
 {% endfor %}

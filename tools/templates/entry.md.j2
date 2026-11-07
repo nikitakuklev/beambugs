@@ -14,8 +14,8 @@ hide:
 | Severity | {{ e.severity }} |
 | Evidence | {{ e.level }} |
 {% set r = e.last_reproduced %}
-{% set n = r.head_not_reproduced %}
-| Last reproduced | {{ r.date }} on {{ r.code.ref }} (`{{ r.code.commit[:7] }}`, {% if r.head %}head build{% else %}committed {{ r.code.committed }}{% endif %}){% if n %}; not reproduced on {{ n.code.ref }} (`{{ n.code.commit[:7] }}`), {{ n.date }}{% endif %} |
+{% set pkg = r.code.ref.split()[0] if code.repositories else code.name %}
+| Last reproduced | {{ r.date }} on {{ pkg }} {% if r.code.release %}release [{{ r.code.release }}](https://github.com/{{ r.code.repository }}/tree/{{ r.code.release }}) (`{{ r.code.commit[:7] }}`){% else %}commit [`{{ r.code.commit[:7] }}`](https://github.com/{{ r.code.repository }}/commit/{{ r.code.commit }}), committed {{ r.code.committed }}{% endif %} |
 {% if e.tags %}
 | Tags | {% for t in e.tags %}<span class="bb-tag">{{ t }}</span> {% endfor %}[?](../../methodology.md#tags) |
 {% endif %}

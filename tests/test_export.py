@@ -64,6 +64,8 @@ def isolate(tmp_path: Path, monkeypatch, published: set[str] = frozenset()) -> N
     monkeypatch.setattr(export, "ROOT", tmp_path)
     monkeypatch.setattr(export, "DOCS", tmp_path / "docs")
     monkeypatch.setattr(export, "published_ids", lambda code: set(published))
+    # Tags are read live from GitHub; these ledgers' commits carry none.
+    monkeypatch.setattr(export.UpstreamCommits, "release", lambda self, repo, commit: None)
 
 
 def test_shared_helpers(tmp_path, monkeypatch):

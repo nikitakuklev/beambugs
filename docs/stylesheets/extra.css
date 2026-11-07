@@ -11,7 +11,9 @@
 .md-typeset table thead:has(th:empty) { display: none; }
 /* Index tables: keep dates, commits and upstream links on one line. */
 .md-typeset table[data-defects] td:nth-child(n+6), .md-typeset table[data-defects] td:first-child { white-space: nowrap; }
-.md-typeset table[data-defects] td:nth-child(2) { min-width: 22em; }
+.md-typeset table[data-defects] td:nth-child(3) { min-width: 22em; }
+/* ID and Priority (columns 1-2) shrink to their content with tighter padding. */
+.md-typeset table[data-defects] :is(th, td):nth-child(-n+2) { width: 1%; min-width: 0; padding-left: .6em; padding-right: .6em; }
 /* GitHub-style state icons for linked issues and pull requests. */
 .md-typeset .bb-open { color: #1a7f37; }
 .md-typeset .bb-done { color: #8250df; }
@@ -34,3 +36,15 @@
 .md-typeset .bb-filters button[aria-pressed="true"] {
   background: var(--md-primary-fg-color); color: var(--md-primary-bg-color);
 }
+/* "Show fixed" switch at the right end of the filter bar. */
+.md-typeset .bb-switch { margin-left: auto; display: inline-flex; align-items: center; gap: .4em; cursor: pointer; }
+.md-typeset .bb-switch input {
+  appearance: none; position: relative; width: 2.2em; height: 1.2em; margin: 0; cursor: pointer;
+  border-radius: .6em; background: var(--md-default-fg-color--lighter); transition: background .15s;
+}
+.md-typeset .bb-switch input::before {
+  content: ""; position: absolute; top: .15em; left: .15em; width: .9em; height: .9em;
+  border-radius: 50%; background: var(--md-default-bg-color); transition: transform .15s;
+}
+.md-typeset .bb-switch input:checked { background: var(--md-primary-fg-color); }
+.md-typeset .bb-switch input:checked::before { transform: translateX(1em); }
