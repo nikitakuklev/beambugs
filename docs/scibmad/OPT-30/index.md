@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P2 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on SciBmad commit [`ae9423d`](https://github.com/bmad-sim/SciBmad.jl/commit/ae9423d703b4), committed 2026-10-28 |
 | Source | [`src/twiss/twiss.jl:336`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L336)<br>[`twiss.jl:106-110`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/twiss/twiss.jl#L106-L110)<br>[`Beamlines.jl/src/misc.jl:18-52`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/misc.jl#L18-L52) |

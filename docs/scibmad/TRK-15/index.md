@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Tracking |
 | Priority | P4 |
-| Severity | Documentation or example mismatch |
+| Failure | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-07 on Beamlines release [v0.11.0](https://github.com/bmad-sim/Beamlines.jl/tree/v0.11.0) (`35fe016`) |
 | Source | [src/element.jl:250–256](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/element.jl#L250-L256)<br>[ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl:1–32](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/scibmadstandard_bl.jl#L1-L32) |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Elegant](../index.md) · Optics |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [`compute_twiss_parameters`, `alpha3` accumulation, src/twiss.cc:2398–2411](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2398-L2411)<br>[`alpha2` accumulation, src/twiss.cc:2384–2386](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L2384-L2386)<br>[`alphac3` defined as the third-order momentum compaction, manual, doc/elegant.tex:8254–8258](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8254-L8258) |

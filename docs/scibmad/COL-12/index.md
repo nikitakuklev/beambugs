@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Collective effects and spin |
 | Priority | P3 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on BeamTracking commit [`0bf3585`](https://github.com/bmad-sim/BeamTracking.jl/commit/0bf3585fdc9c), committed 2026-10-28 |
 | Source | [`BeamTracking.jl/src/kernels/fringe.jl:115-120`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L115-L120)<br>[`219-224`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/fringe.jl#L219-L224)<br>[`BeamTracking.jl/src/kernels/multipole.jl:44`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/multipole.jl#L44) |

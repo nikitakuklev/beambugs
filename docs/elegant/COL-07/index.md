@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Elegant](../index.md) · Collective effects |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [record, wake.c:366–370](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L366-L370)<br>[cache lookup, wake.c:423–425](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L423-L425)<br>[cache reuse, wake.c:473–475](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L473-L475)<br>[column retrieval, wake.c:442–459](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L442-L459)<br>[parameter table, track_data.c:2530–2531](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/track_data.c#L2530-L2531)<br>[grid spacing, wake.c:487](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/wake.c#L487)<br>[wake manual, wake.tex:1–12](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/wake.tex#L1-L12) |

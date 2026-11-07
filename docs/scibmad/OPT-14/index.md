@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P4 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-31 on BatchSolve release [v0.1.5](https://github.com/mattsignorelli/BatchSolve.jl/tree/v0.1.5) (`ac41c09`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |

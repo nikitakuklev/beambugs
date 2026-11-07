@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Elegant](../index.md) · Optics |
 | Priority | P4 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on Elegant commit [`7514db3`](https://github.com/rtsoliday/elegant/commit/7514db36f764), committed 2026-11-04 |
 | Source | [`determineMatrixHigherOrder`, src/analyze.c:1528–1531](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L1528-L1531)<br>[frees Q and sets `M->Q = NULL`, src/matrix.c:439–443](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matrix.c#L439-L443)<br>[`remove_s_dependent_matrix_elements`, src/matrix.c:1271–1290](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/matrix.c#L1271-L1290)<br>[`global_settings`, src/global_settings.nl:29](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/global_settings.nl#L29) |

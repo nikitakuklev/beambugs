@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Collective effects |
 | Priority | P4 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-26 on xfields release [v0.27.5](https://github.com/xsuite/xfields/tree/v0.27.5) (`223b4fa`) |
 | Source | [`CollectiveMonitor._update_slice_buffer`, collective_monitor.py:348–364](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/collective_monitor.py#L348-L364)<br>[`UniformBinSlicer.cov`](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/slicers/uniform.py#L319-L333) |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Lattices, particles and I/O |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`bend_angle_fiducial` and `bend_angle_fiducial2`, bmad/low_level/set_flags_for_changed_attribute.f90:949–998](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/set_flags_for_changed_attribute.f90#L949-L998)<br>[Bmad manual, “Bend: Fiducial Point Calculations” (`s:bend.fiducial`), bmad/doc/charged-tracking.tex:715–733](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/charged-tracking.tex#L715-L733) |

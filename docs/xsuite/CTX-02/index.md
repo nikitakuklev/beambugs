@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Contexts and kernels |
 | Priority | P1 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on xobjects release [v0.7.2](https://github.com/xsuite/xobjects/tree/v0.7.2) (`dfe34ae`) |
 | Source | [HybridClass.copy, hybrid_class.py:344–360](https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/xobjects/hybrid_class.py#L344-L360)<br>[nested-object tests](https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/tests/test_hybrid_class.py#L95-L138) |

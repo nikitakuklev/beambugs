@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tracking, RF, fields and spin |
 | Priority | P3 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`track_a_bend`, bmad/low_level/track_a_bend.f90:88–149](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_bend.f90#L88-L149)<br>[`rel_tracking_charge_to_mass`, bmad/code/rel_tracking_charge_to_mass.f90:2–32](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/rel_tracking_charge_to_mass.f90#L2-L32) |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P3 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on BeamTracking commit [`0bf3585`](https://github.com/bmad-sim/BeamTracking.jl/commit/0bf3585fdc9c), committed 2026-10-28 |
 | Source | [`src/kernels/implicit.jl:138-147`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L138-L147)<br>[`:228-236`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L228-L236)<br>[`:243`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/implicit.jl#L243)<br>[`SciBmad.jl/README.md:24`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/README.md#L24)<br>[`:34`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/README.md#L34)<br>[`Beamlines.jl/src/misc.jl:97-113`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/misc.jl#L97-L113) |

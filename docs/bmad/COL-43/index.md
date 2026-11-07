@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Collective effects |
 | Priority | P3 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [ibs_linac::set_ele](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bsim/ibs_linac/ibs_linac.f90#L221-L232)<br>[calc_emittances_and_twiss_from_sigma_matrix](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1491-L1532) |

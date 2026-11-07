@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tao |
 | Priority | P4 |
-| Severity | Documentation or example mismatch |
+| Failure | Documentation or example mismatch |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`tao_call_cmd` nesting check, tao/code/tao_call_cmd.f90:59–64](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_call_cmd.f90#L59-L64)<br>[“call” (`s:call`), tao/doc/command-list.tex:139–144](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/command-list.tex#L139-L144) |

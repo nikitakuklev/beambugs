@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Tracking |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-26 on xtrack release [v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4) (`3cd8bfc`) |
 | Source | [`track_solenoid_single_particle`, track_magnet_drift.h:468–531](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_drift.h#L468-L531)<br>[entrance potential at track_magnet_edge.h:72–75](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/elements_src/track_magnet_edge.h#L72-L75) |

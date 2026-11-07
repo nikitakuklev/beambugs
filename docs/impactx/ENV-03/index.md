@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Envelope |
 | Priority | P5 |
-| Severity | Documentation or example mismatch |
+| Failure | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-28 on ImpactX release [26.10](https://github.com/BLAST-ImpactX/impactx/tree/26.10) (`615921c`) |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1762]], fix |

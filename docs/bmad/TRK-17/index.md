@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tracking, RF, fields and spin |
 | Priority | P3 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [track_a_rfcavity, bmad/low_level/track_a_rfcavity.f90:56–76](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_rfcavity.f90#L56-L76)<br>[track_a_crab_cavity, bmad/low_level/track_a_crab_cavity.f90:68–94](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_crab_cavity.f90#L68-L94)<br>[rel_tracking_charge_to_mass, bmad/code/rel_tracking_charge_to_mass.f90:27–32](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/rel_tracking_charge_to_mass.f90#L27-L32)<br>[Bmad Manual, RFCavity, bmad/doc/elements.tex:4874–4891](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L4874-L4891)<br>[Bmad Manual, Crab_Cavity, bmad/doc/elements.tex:1201–1222](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/elements.tex#L1201-L1222) |

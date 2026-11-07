@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tracking, RF, fields and spin |
 | Priority | P4 |
-| Severity | Documentation or example mismatch |
+| Failure | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [check_aperture_limit header](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/check_aperture_limit.f90#L4-L20)<br>[momentum check before geometric apertures](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/check_aperture_limit.f90#L57-L63)<br>[charged-particle momentum guard](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/orbit_too_large.f90#L85-L118) |

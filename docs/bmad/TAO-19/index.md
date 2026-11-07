@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tao |
 | Priority | P4 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [pipe type definitions, tao/code/tao_pipe_cmd.f90:15–21](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_pipe_cmd.f90#L15-L21)<br>[ele:param dispatch and formatting, tao/code/tao_pipe_cmd.f90:3621–3644](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_pipe_cmd.f90#L3621-L3644)<br>[re_str, tao/code/tao_pipe_cmd.f90:9036–9047](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_pipe_cmd.f90#L9036-L9047) |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Collective effects |
 | Priority | P4 |
-| Severity | Documentation or example mismatch |
+| Failure | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`Short--Range Wakes (s:sr.wake.eq), delvp2 and delvp3`, bmad/doc/wakefields.tex:26–53](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/wakefields.tex#L26-L53)<br>[`Short-Range Wakes (s:sr.wake.syntax)`, bmad/doc/attributes.tex:3036–3049](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L3036-L3049)<br>[`sr_longitudinal_wake_particle`, bmad/multiparticle/wake_mod.f90:343–380](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/wake_mod.f90#L343-L380) |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Collective effects |
 | Priority | P4 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on xfields release [v0.27.7](https://github.com/xsuite/xfields/tree/v0.27.7) (`3f06c87`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |

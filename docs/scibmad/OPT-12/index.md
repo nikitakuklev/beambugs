@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P3 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-24 on NonlinearNormalForm release [v0.5.3](https://github.com/bmad-sim/NonlinearNormalForm.jl/tree/v0.5.3) (`7e40539`) |
 | Source | [`NonlinearNormalForm.jl/src/normal.jl:219-224`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/normal.jl#L219-L224)<br>[`forest/code/Ci_tpsa.f90:13369-13383`](https://github.com/bmad-sim/bmad-ecosystem/blob/19b8afb46a400d12a53a92d616e02359b3b2b71f/forest/code/Ci_tpsa.f90#L13369-L13383) |

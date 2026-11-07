@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Lattices, particles and I/O |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-07 on xtrack release [v0.118.6](https://github.com/xsuite/xtrack/tree/v0.118.6) (`f09e0fb`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Tracking |
 | Priority | P4 |
-| Severity | Documentation or example mismatch |
+| Failure | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on AtomicAndPhysicalConstants release [v0.11.6](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/tree/v0.11.6) (`750a9f2`) |
 | Discussed in | [[gh:https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/pull/306]] |

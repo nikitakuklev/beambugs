@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Lattice and API |
 | Priority | P4 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-31 on SciBmad commit [`ae9423d`](https://github.com/bmad-sim/SciBmad.jl/commit/ae9423d703b4), committed 2026-10-28 |
 | Source | [`SciBmad.jl/src/track.jl:182`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L182)<br>[`SciBmad.jl/src/track.jl:130-131`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/track.jl#L130-L131)<br>[`BeamTracking.jl/src/types.jl:78-79`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L78-L79)<br>[`BeamTracking.jl/src/types.jl:102-114`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/types.jl#L102-L114) |

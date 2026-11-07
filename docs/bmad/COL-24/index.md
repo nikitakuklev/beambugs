@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Collective effects |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-21 on Bmad release [20261020-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261020-0) (`19b8afb`) |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |

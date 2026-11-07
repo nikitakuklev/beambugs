@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tao |
 | Priority | P2 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [srdt calculation gate, tao/code/tao_lattice_calc.f90:257–270](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_lattice_calc.f90#L257-L270)<br>[initial data setup, tao/code/tao_init_data_mod.f90:582–585](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_init_data_mod.f90#L582-L585)<br>[run-time data scan, tao/code/tao_run_cmd.f90:85–94](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_run_cmd.f90#L85-L94)<br>[srdt expression evaluation, tao/code/tao_evaluate_a_datum.f90:3113–3155](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_evaluate_a_datum.f90#L3113-L3155)<br>[summation_rdt_struct, bmad/modules/srdt_mod.f90:11–34](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/srdt_mod.f90#L11-L34) |

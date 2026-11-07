@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Optics |
 | Priority | P2 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [make_mat6_tracking, bmad/low_level/make_mat6_tracking.f90:69–93](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/make_mat6_tracking.f90#L69-L93)<br>[custom spin method, bmad/doc/methods.tex:436–452](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L436-L452) |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P1 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-31 on SciBmad commit [`ae9423d`](https://github.com/bmad-sim/SciBmad.jl/commit/ae9423d703b4), committed 2026-10-28 |
 | Issue | [[gh:https://github.com/bmad-sim/SciBmad.jl/issues/152]], filed from this evidence |

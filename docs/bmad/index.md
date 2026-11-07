@@ -40,7 +40,7 @@ Some reproducers also need: cpymad, h5py, mpmath, pysdds, scipy.
 
 <div class="bb-filters" data-column="Area"></div>
 
-| ID | Priority | Defect | Area | Severity | Last reproduced | Issue | PR |
+| ID | Priority | Defect | Area | Failure | Last reproduced | Issue | PR |
 |---|---|---|---|---|---|---|---|
 | [TRK-14](TRK-14/index.md)<span class="bb-fixed"></span> | P1 | An lcavity with is_on = False still accelerates and focuses the beam | Tracking, RF, fields and spin | Wrong physics | 2026-10-21 ([20261020-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261020-0)) | [[gh:https://github.com/bmad-sim/bmad-ecosystem/issues/2222 filed]] | [[gh:https://github.com/bmad-sim/bmad-ecosystem/pull/2223 filed]] |
 | [COL-09](COL-09/index.md) | P1 | S-based FFT space charge gives full kicks at both element endpoints | Collective effects | Wrong physics | 2026-11-05 ([20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0)) |  |  |

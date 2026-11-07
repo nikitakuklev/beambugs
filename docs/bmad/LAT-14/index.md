@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Lattices, particles and I/O |
 | Priority | P2 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [hdf5_read_bunch initialization, bmad/hdf5/hdf5_read_beam.f90:321–327](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L321-L327)<br>[ordinary read completion, bmad/hdf5/hdf5_read_beam.f90:562–587](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L562-L587)<br>[patch splitting, bmad/hdf5/hdf5_read_beam.f90:219–231](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L219-L231) |

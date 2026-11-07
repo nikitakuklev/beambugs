@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tracking, RF, fields and spin |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`sol_quad_mat6_calc`, bmad/low_level/sol_quad_mat6_calc.f90:323–326](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/sol_quad_mat6_calc.f90#L323-L326)<br>[`track_a_sol_quad`, bmad/low_level/track_a_sol_quad.f90:75–103](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_sol_quad.f90#L75-L103)<br>[general bend body, bmad/low_level/track_a_bend.f90:202–209](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_bend.f90#L202-L209)<br>[Bmad manual, “Tracking Backwards” (`s:back.track`), bmad/doc/tracking.tex:728–748](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/tracking.tex#L728-L748)<br>[`solenoid_track_and_mat`, bmad/low_level/solenoid_track_and_mat.f90:55–57](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/solenoid_track_and_mat.f90#L55-L57) |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Tracking |
 | Priority | P0 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-24 on BeamTracking commit [`d8e45fd`](https://github.com/bmad-sim/BeamTracking.jl/commit/d8e45fdc25db), committed 2026-10-23 |
 | Source | [ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:486](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L486)<br>[ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:501](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L501)<br>[src/kernels/rfcavity_kick.jl:106–114](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/kernels/rfcavity_kick.jl#L106-L114)<br>[ext/BeamTrackingBeamlinesExt/utils_bl.jl:214–226](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L214-L226)<br>[src/rf.jl:4–5](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/rf.jl#L4-L5)<br>[src/rf.jl:66](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/rf.jl#L66)<br>[ext/BeamTrackingBeamlinesExt/symplectic_bl.jl:488](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/symplectic_bl.jl#L488)<br>[ext/BeamTrackingBeamlinesExt/utils_bl.jl:217–222](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L217-L222) |

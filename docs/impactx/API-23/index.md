@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Python API |
 | Priority | P4 |
-| Severity | Documentation or example mismatch |
+| Failure | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-07 on ImpactX commit [`f9c2a82`](https://github.com/BLAST-ImpactX/impactx/commit/f9c2a82e24b7), committed 2026-11-05 |
 | Source | [thin-element paragraph in KnownElementsList.load_file](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/docs/source/usage/python.rst#L1211-L1218)<br>[append_thin_with_length()](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/madx_to_impactx.py#L324-L342)<br>[RFCAVITY dispatch](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/madx_to_impactx.py#L1463-L1478)<br>[ShortRF construction](https://github.com/BLAST-ImpactX/impactx/blob/615921c6867c895cf3a8fcf1d12991079d0f7d75/src/python/impactx/madx_to_impactx.py#L1537-L1553) |

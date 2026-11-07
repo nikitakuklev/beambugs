@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Lattices, particles and I/O |
 | Priority | P4 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on xdeps release [v0.11.1](https://github.com/xsuite/xdeps/tree/v0.11.1) (`6484795`) |
 | Source | [Manager.copy, tasks.py:518–527](https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/tasks.py#L518-L527)<br>[Manager.set_value](https://github.com/xsuite/xdeps/blob/73147cf7d9f1fc7b0f49ddb55c0ce037b70b7353/xdeps/tasks.py#L239-L253) |

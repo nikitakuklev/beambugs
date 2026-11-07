@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tracking, RF, fields and spin |
 | Priority | P3 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [zero-frequency input guard, bmad/low_level/track_a_lcavity.f90:57–61](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_lcavity.f90#L57-L61)<br>[this_rf_phase absolute-time reduction, bmad/low_level/track_a_lcavity.f90:499–510](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/track_a_lcavity.f90#L499-L510) |

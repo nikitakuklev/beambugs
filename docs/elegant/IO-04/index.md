@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Elegant](../index.md) · Lattices, particles and I/O |
 | Priority | P4 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on SDDS commit [`a3f730a`](https://github.com/rtsoliday/SDDS/commit/a3f730a14c49), committed 2026-10-31 |
 | Source | [`sum = partial_sum`, moments.c:365–367](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/moments.c#L365-L367)<br>[weighted branch, moments.c:426–430](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/moments.c#L426-L430)<br>[wrappers, moments.c:324–327 and 382–385](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/moments.c#L324-L327)<br>[prototypes, include/mdb.h:886–893](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/include/mdb.h#L886-L893) |

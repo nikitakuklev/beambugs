@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Lattice and API |
 | Priority | P4 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-22 on bmad-ecosystem release [20261020-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261020-0) (`19b8afb`) |
 | Tags | <span class="bb-tag">known-limitation</span> [?](../../methodology.md#tags) |

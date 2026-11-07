@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Collective effects |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-26 on xfields release [v0.27.5](https://github.com/xsuite/xfields/tree/v0.27.5) (`223b4fa`) |
 | Source | [`BeamBeamBiGaussian2D.compute_spacial_moments`, beambeam2d.py:272–283](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/beambeam2d.py#L272-L283)<br>[collective pipeline](https://github.com/xsuite/xfields/blob/223b4fa134a1435be9b45ef21ae8903f96c5f685/xfields/beam_elements/beambeam2d.py#L238-L266) |

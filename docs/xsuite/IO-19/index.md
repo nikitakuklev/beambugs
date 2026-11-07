@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Lattices, particles and I/O |
 | Priority | P4 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-06 on xtrack release [v0.118.2](https://github.com/xsuite/xtrack/tree/v0.118.2) (`ad5e808`) |
 | Pull request | [[gh:https://github.com/xsuite/xtrack/pull/923]], fix |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Elegant](../index.md) · Collective effects |
 | Priority | P4 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on SDDS commit [`a3f730a`](https://github.com/rtsoliday/SDDS/commit/a3f730a14c49), committed 2026-10-31 |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |

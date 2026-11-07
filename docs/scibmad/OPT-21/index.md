@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P2 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-23 on SciBmad commit [`5f0fb83`](https://github.com/bmad-sim/SciBmad.jl/commit/5f0fb83ac889), committed 2026-10-15 |
 | Source | [`src/adv.jl:39`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/adv.jl#L39)<br>[`adv.jl:32-33`](https://github.com/bmad-sim/SciBmad.jl/blob/ae9423d703b4e612ae66e9deb0546aa79f62a340/src/adv.jl#L32-L33)<br>[`TPSAInterface.jl/src/TPSAInterface.jl:155-158`](https://github.com/bmad-sim/TPSAInterface.jl/blob/59800445670c542ac4546a6562af31ca3c3335a9/src/TPSAInterface.jl#L155-L158)<br>[`GTPSA.jl/src/low.jl:7-24`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/low.jl#L7-L24)<br>[`mad_tpsa.c:434-446`](https://github.com/MethodicalAcceleratorDesign/MAD-NG/blob/4dc3e409a9719cd6dacbc2dc73f70cd8221150ed/src/mad_tpsa.c#L434-L446) |

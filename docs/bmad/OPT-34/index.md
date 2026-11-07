@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Optics |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`calc_emittances_and_twiss_from_sigma_matrix`, normalization factor, bmad/multiparticle/beam_utils.f90:1489–1495](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1489-L1495)<br>[eigenmode normalized emittance, bmad/multiparticle/beam_utils.f90:1530–1532](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1530-L1532)<br>[projected normalized emittance, bmad/multiparticle/beam_utils.f90:1631–1632](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_utils.f90#L1631-L1632)<br>[Bmad manual, “Charged Particle Phase Space Coordinates”, `s:phase.space`, `ppp`, bmad/doc/phase-space.tex:62–78](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/phase-space.tex#L62-L78)<br>[initialization conversion, bmad/multiparticle/beam_init_setup.f90:61–78](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/multiparticle/beam_init_setup.f90#L61-L78) |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Translators |
 | Priority | P4 |
-| Severity | Documentation or example mismatch |
+| Failure | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [CLI aperture-option contract, util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90:23–27](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90#L23-L27)<br>[writer aperture-option contract, bmad/output/write_lattice_mad_format.f90:36–39](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L36-L39)<br>[MAD-X aperture output guard, bmad/output/write_lattice_mad_format.f90:987–997](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/output/write_lattice_mad_format.f90#L987-L997)<br>[option parser, util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90:65–67](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90#L65-L67)<br>[MAD-X dispatch, util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90:126–129](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/util_programs/bmad_to_mad_sad_elegant/bmad_to_mad_sad_elegant.f90#L126-L129) |

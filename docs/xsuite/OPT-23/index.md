@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Optics and matching |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-06 on xtrack release [v0.118.2](https://github.com/xsuite/xtrack/tree/v0.118.2) (`ad5e808`) |
 | Pull request | [[gh:https://github.com/xsuite/xtrack/pull/923]], fix |

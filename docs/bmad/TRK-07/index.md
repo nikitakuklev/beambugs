@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tracking, RF, fields and spin |
 | Priority | P3 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [material-helper output contract, bmad/interface/xraylib_interface.f90:28–31](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/interface/xraylib_interface.f90#L28-L31)<br>[successful crystal lookup, bmad/interface/xraylib_interface.f90:59–73](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/interface/xraylib_interface.f90#L59-L73)<br>[mask transmission, bmad/photon/track1_photon_mod.f90:199–209](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/photon/track1_photon_mod.f90#L199-L209)<br>[Bmad manual, Mask Wall For Diffraction Plate and Mask Elements, bmad/doc/attributes.tex:1913–1916](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L1913-L1916) |

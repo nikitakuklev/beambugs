@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tao |
 | Priority | P2 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [normal_form_rd_terms contract, bmad/ptc/ptc_layout_mod.f90:1075–1080](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ptc_layout_mod.f90#L1075-L1080)<br>[normal_form_rd_terms phasor extraction, bmad/ptc/ptc_layout_mod.f90:1146–1152](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ptc_layout_mod.f90#L1146-L1152)<br>[from_phasor, forest/code/Ci_tpsa.f90:3653–3656](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/forest/code/Ci_tpsa.f90#L3653-L3656)<br>[Tao Data Types, normal.h, tao/doc/data.tex:1394–1397](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/data.tex#L1394-L1397)<br>[normalform2 basis, tao/doc/data.tex:1464–1470](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/data.tex#L1464-L1470) |

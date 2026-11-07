@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Collective effects and spin |
 | Priority | P2 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-31 on SpaceCharge release [v1.3.0](https://github.com/bmad-sim/SpaceCharge.jl/tree/v1.3.0) (`ae30463`) |
 | Source | [`SpaceCharge.jl/src/green_functions.jl:35-38`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L35-L38)<br>[`41-67`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L41-L67)<br>[`103-112`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L103-L112)<br>[`SpaceCharge.jl/src/solvers/free_space.jl:49-56`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/solvers/free_space.jl#L49-L56)<br>[`green_functions.jl:144-158`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L144-L158)<br>[`green_functions.jl:169-175`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L169-L175)<br>[`green_functions.jl:54`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L54)<br>[`green_functions.jl:61-66`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/green_functions.jl#L61-L66)<br>[`free_space.jl:53-56`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/solvers/free_space.jl#L53-L56) |

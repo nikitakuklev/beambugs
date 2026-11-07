@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Elegant](../index.md) · Optics |
 | Priority | P4 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on Elegant commit [`7514db3`](https://github.com/rtsoliday/elegant/commit/7514db36f764), committed 2026-11-04 |
 | Source | [`computeTuneShiftWithAmplitude`, peak windows, src/twiss.cc:3619–3622](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3619-L3622)<br>[the amplitude retry, src/twiss.cc:3666–3684](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3666-L3684)<br>[the namelist, src/twiss.nl:34–38](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.nl#L34-L38)<br>[`nux_roi_width`, `nuy_roi_width` are the widths of the regions of interest for the x and y tunes, doc/elegant.tex:8468–8473](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8468-L8473)<br>[a tune shift above `scale_down_limit` decreases the amplitude by `scale_down_factor`, one below `scale_up_limit` increases it by `scale_up_factor`, doc/elegant.tex:8474–8481](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8474-L8481) |

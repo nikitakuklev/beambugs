@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Elegant](../index.md) · Lattices, particles and I/O |
 | Priority | P4 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on SDDS commit [`a3f730a`](https://github.com/rtsoliday/SDDS/commit/a3f730a14c49), committed 2026-10-31 |
 | Source | [contract, GillMillerIntegration.c:34–40](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/GillMillerIntegration.c#L34-L40)<br>[gmintegral, SDDSaps/doc/sddsprocess.tex:320–322](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/SDDSaps/doc/sddsprocess.tex#L320-L322)<br>[setup, GillMillerIntegration.c:54–60](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/GillMillerIntegration.c#L54-L60)<br>[loop, GillMillerIntegration.c:64](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/GillMillerIntegration.c#L64)<br>[final slot, GillMillerIntegration.c:145–149](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/mdbmth/GillMillerIntegration.c#L145-L149)<br>[wrapper, SDDSaps/SDDSaps.c:4165–4171](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/SDDSaps/SDDSaps.c#L4165-L4171)<br>[caller, SDDSaps.c:1849–1851](https://github.com/rtsoliday/SDDS/blob/a3f730a14c49ddd4f4d6347b42d60d34aa7cadc6/SDDSaps/SDDSaps.c#L1849-L1851) |

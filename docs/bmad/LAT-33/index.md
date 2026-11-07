@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Lattices, particles and I/O |
 | Priority | P4 |
-| Severity | Documentation or example mismatch |
+| Failure | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [Bmad manual, “Initialization and Pointers”, assignment contract, bmad/doc/ele-struct.tex:170–178](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/ele-struct.tex#L170-L178)<br>[Cartesian payload sharing, bmad/low_level/transfer_fieldmap.f90:55–60](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/transfer_fieldmap.f90#L55-L60)<br>[cylindrical sharing and generalized-gradient copy, bmad/low_level/transfer_fieldmap.f90:94–130](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/transfer_fieldmap.f90#L94-L130)<br>[grid sharing, bmad/low_level/transfer_fieldmap.f90:163–168](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/transfer_fieldmap.f90#L163-L168)<br>[explicit Cartesian detachment, bmad/code/pointer_to_attribute.f90:279–283](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/pointer_to_attribute.f90#L279-L283) |

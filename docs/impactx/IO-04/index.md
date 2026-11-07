@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Particles and I/O |
 | Priority | P3 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on ImpactX release [26.10](https://github.com/BLAST-ImpactX/impactx/tree/26.10) (`615921c`) |
 | Pull request | [[gh:https://github.com/BLAST-ImpactX/impactx/pull/1738]], fix |

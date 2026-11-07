@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Lattices, particles and I/O |
 | Priority | P4 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on xpart release [v0.23.23](https://github.com/xsuite/xpart/tree/v0.23.23) (`2633e52`) |
 | Source | [RFBucket.emittance_single_particle, rf_bucket.py:539–557](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/rf_bucket.py#L539-L557) |

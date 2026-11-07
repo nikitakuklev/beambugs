@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Lattices, particles and I/O |
 | Priority | P4 |
-| Severity | Documentation or example mismatch |
+| Failure | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-07 on xsuite commit [`fb7df34`](https://github.com/xsuite/xsuite/commit/fb7df34faa78), committed 2026-11-02 |
 | Source | [particle-coordinate definitions and exact conversions, xtrack.tex:334–358](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L334-L358)<br>[small-offset expansion, lines 383–390](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L383-L390)<br>[physics_man.tex:143](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/physics_man.tex#L143)<br>[particles.py:1740–1777](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L1740-L1777) |

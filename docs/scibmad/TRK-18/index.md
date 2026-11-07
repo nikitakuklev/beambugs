@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Tracking |
 | Priority | P1 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-24 on BeamTracking commit [`d8e45fd`](https://github.com/bmad-sim/BeamTracking.jl/commit/d8e45fdc25db), committed 2026-10-23 |
 | Tags | <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |

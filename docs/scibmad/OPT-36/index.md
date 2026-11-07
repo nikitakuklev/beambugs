@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P3 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on GTPSA release [v1.5.6](https://github.com/bmad-sim/GTPSA.jl/tree/v1.5.6) (`a5790a7`) |
 | Source | [`src/methods.jl:39-49`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/methods.jl#L39-L49)<br>[`src/low.jl:8-27`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/low.jl#L8-L27)<br>[`src/low_level/rtpsa.jl:477-495`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/low_level/rtpsa.jl#L477-L495)<br>[`:613-625`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/low_level/rtpsa.jl#L613-L625)<br>[`TPSAInterface.jl/ext/TPSAInterfaceGTPSAExt.jl:66`](https://github.com/bmad-sim/TPSAInterface.jl/blob/59800445670c542ac4546a6562af31ca3c3335a9/ext/TPSAInterfaceGTPSAExt.jl#L66)<br>[`NonlinearNormalForm.jl/src/methods.jl:31-44`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/methods.jl#L31-L44)<br>[`src/sanity.jl:20-29`](https://github.com/bmad-sim/NonlinearNormalForm.jl/blob/7e40539857368faf9784736ad29c8f0ae6e70a23/src/sanity.jl#L20-L29)<br>[`GTPSA.jl/src/methods.jl:17-19`](https://github.com/bmad-sim/GTPSA.jl/blob/a5790a7deaa62c13d3edc168d5f98b15e8a3c490/src/methods.jl#L17-L19)<br>[`TPSAInterface.jl/src/TPSAInterface.jl:102-105`](https://github.com/bmad-sim/TPSAInterface.jl/blob/59800445670c542ac4546a6562af31ca3c3335a9/src/TPSAInterface.jl#L102-L105) |

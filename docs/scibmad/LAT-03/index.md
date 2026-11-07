@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Lattice and API |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-11-07 on Beamlines release [v0.11.0](https://github.com/bmad-sim/Beamlines.jl/tree/v0.11.0) (`35fe016`) |
 | Source | [`Beamlines.jl/src/utils.jl:8`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/utils.jl#L8)<br>[`Beamlines.jl/ext/BeamlinesGTPSAExt/BeamlinesGTPSAExt.jl:13`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/ext/BeamlinesGTPSAExt/BeamlinesGTPSAExt.jl#L13)<br>[`Beamlines.jl/src/virtual.jl:557`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/virtual.jl#L557)<br>[`Beamlines.jl/src/utils.jl:5`](https://github.com/bmad-sim/Beamlines.jl/blob/35fe0162c72d0899a02a67eb929e8a900a165bc1/src/utils.jl#L5)<br>[`BeamTracking.jl/ext/BeamTrackingBeamlinesExt/utils_bl.jl:205`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/ext/BeamTrackingBeamlinesExt/utils_bl.jl#L205)<br>[`BeamTracking.jl/src/utils/energy.jl:9`](https://github.com/bmad-sim/BeamTracking.jl/blob/0bf3585fdc9c5b41859b23b92854376b933a4fe6/src/utils/energy.jl#L9) |

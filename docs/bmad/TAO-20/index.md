@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tao |
 | Priority | P3 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [tao_ptc_normal_form, tao/code/tao_ptc_normal_form.f90:69–74](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_ptc_normal_form.f90#L69-L74)<br>[normal.dhdj selection, tao/code/tao_evaluate_a_datum.f90:1859–1864](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_evaluate_a_datum.f90#L1859-L1864)<br>[coefficient dispatch, tao/code/tao_evaluate_a_datum.f90:1902–1910](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/code/tao_evaluate_a_datum.f90#L1902-L1910)<br>[taylor_coef, bmad/modules/taylor_mod.f90:95–110](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/taylor_mod.f90#L95-L110)<br>[Data Types, normal.<type>, normal.type, tao/doc/data.tex:1446–1462](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/tao/doc/data.tex#L1446-L1462) |

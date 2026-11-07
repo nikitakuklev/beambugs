@@ -27,7 +27,7 @@ Some reproducers also need: cpymad, docutils, h5py, matplotlib, mpmath, pals_sch
 
 <div class="bb-filters" data-column="Area"></div>
 
-| ID | Priority | Defect | Area | Severity | Last reproduced | Issue | PR |
+| ID | Priority | Defect | Area | Failure | Last reproduced | Issue | PR |
 |---|---|---|---|---|---|---|---|
 | [TRK-16](TRK-16/index.md) | P1 | Rolled `ThinDipole`, `Sbend`, `ExactSbend` and pure-dipole `ExactCFbend` omit vertical steering <span class="bb-tag">contract-unsettled</span> | Tracking | Wrong physics | 2026-11-07 ([`f9c2a82`](https://github.com/BLAST-ImpactX/impactx/commit/f9c2a82e24b7)) | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1725 filed]] |  |
 | [COL-01](COL-01/index.md) | P1 | PIC `2p5D` longitudinal kick uses a fixed 1 m reference length `r0`, which `Gauss2p5D` exposes | Collective effects | Wrong physics | 2026-10-28 ([`b701a6e`](https://github.com/BLAST-ImpactX/impactx/commit/b701a6e9d1f9)) | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1718 filed]] |  |

@@ -29,7 +29,7 @@ Some reproducers also need: cpymad, madng-tpsa, mpmath, scipy.
 
 <div class="bb-filters" data-column="Area"></div>
 
-| ID | Priority | Defect | Area | Severity | Last reproduced | Issue | PR |
+| ID | Priority | Defect | Area | Failure | Last reproduced | Issue | PR |
 |---|---|---|---|---|---|---|---|
 | [TRK-04](TRK-04/index.md) | P1 | Optimizing RF slices drops roll and phase taper | Tracking | Wrong physics | 2026-10-26 ([xtrack v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4)) |  |  |
 | [TRK-07](TRK-07/index.md) | P1 | Optimization disables radiation in curved-body RBend slices | Tracking | Wrong physics | 2026-10-26 ([xtrack v0.118.4](https://github.com/xsuite/xtrack/tree/v0.118.4)) |  |  |

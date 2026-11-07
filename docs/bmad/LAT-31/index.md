@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Lattices, particles and I/O |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`makeup_super_slave1` method inheritance, bmad/modules/bookkeeper_mod.f90:1423–1434](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/bookkeeper_mod.f90#L1423-L1434)<br>[multipass-only integer-attribute propagation, bmad/low_level/set_flags_for_changed_attribute.f90:87–104](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/set_flags_for_changed_attribute.f90#L87-L104)<br>[`attribute_free1` super-slave restrictions, bmad/modules/attribute_mod.f90:3294–3303](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/modules/attribute_mod.f90#L3294-L3303)<br>[Bmad manual, “Spin Tracking Methods” (`s:spin.methods`), bmad/doc/methods.tex:436–459](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/methods.tex#L436-L459) |

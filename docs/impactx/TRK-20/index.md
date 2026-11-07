@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Tracking |
 | Priority | P4 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on ImpactX commit [`fa0a43b`](https://github.com/BLAST-ImpactX/impactx/commit/fa0a43b9bb07), committed 2026-10-28 |
 | Tags | <span class="bb-tag">experimental</span> [?](../../methodology.md#tags) |

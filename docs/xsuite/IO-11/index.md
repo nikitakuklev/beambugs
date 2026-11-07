@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Lattices, particles and I/O |
 | Priority | P4 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-07 on xtrack release [v0.118.6](https://github.com/xsuite/xtrack/tree/v0.118.6) (`f09e0fb`) |
 | Source | [`get_misaligned_element_survey`, misalignment_survey.py:368–405](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/survey/misalignment_survey.py#L368-L405)<br>[thin-slice declaration, slice_elements_thin.py:18–23](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_thin.py#L18-L23)<br>[tracking wrapper, track_local_particle_with_transformations.h:99–107](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/headers/track_local_particle_with_transformations.h#L99-L107)<br>[nominal survey, survey.py:439–441](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/survey/survey.py#L439-L441)<br>[length and thickness contract, multipole.py:42–46](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/multipole.py#L42-L46)<br>[actual entrance and exit frames including misalignments, survey.rst:38–43](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/survey.rst#L38-L43)<br>[rotation matrices, xtrack.tex:3735–3760](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/physics_manual/xtrack.tex#L3735-L3760) |

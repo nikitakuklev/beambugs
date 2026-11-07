@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P1 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-22 on SciBmad release [v0.6.0](https://github.com/bmad-sim/SciBmad.jl/tree/v0.6.0) (`62399f9`) |
 | Issue | [[gh:https://github.com/bmad-sim/SciBmad.jl/issues/156]], filed from this evidence |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Collective effects |
 | Priority | P1 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-28 on ImpactX commit [`b701a6e`](https://github.com/BLAST-ImpactX/impactx/commit/b701a6e9d1f9), committed 2026-10-23 |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1718]], filed from this evidence |

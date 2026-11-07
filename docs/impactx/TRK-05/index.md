@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Tracking |
 | Priority | P3 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-30 on ImpactX commit [`dfd49f2`](https://github.com/BLAST-ImpactX/impactx/commit/dfd49f22c34f), committed 2026-10-30 |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1740]], filed from this evidence |

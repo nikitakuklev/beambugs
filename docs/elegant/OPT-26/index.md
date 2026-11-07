@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Elegant](../index.md) · Optics |
 | Priority | P3 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on Elegant commit [`7514db3`](https://github.com/rtsoliday/elegant/commit/7514db36f764), committed 2026-11-04 |
 | Source | [`determineRadiationMatrix`, src/analyze.c:1767](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L1767)<br>[the KSEXT branch, src/analyze.c:1949–1962](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L1949-L1962)<br>[the SEXT branch, src/analyze.c:1963–1973](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L1963-L1973)<br>[`determineRadiationMatrix1`, src/analyze.c:2357–2358](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/analyze.c#L2357-L2358)<br>[propagates the moments including coupling from rotated elements or offset sextupoles, with or without synchrotron radiation effects in dipoles, quadrupoles, and sextupoles, doc/elegant.tex:5644–5651](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5644-L5651)<br>[KSEXT and other kick elements need SYNCH_RAD=1 and ISR=1, doc/elegant.tex:5608–5612](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5608-L5612)<br>[suggest setting them on KSEXT when a closed orbit is present, doc/elegant.tex:5695–5700](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L5695-L5700) |

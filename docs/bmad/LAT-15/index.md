@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Lattices, particles and I/O |
 | Priority | P5 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [hdf5_write_beam weight record, bmad/hdf5/hdf5_write_beam.f90:263–267](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_write_beam.f90#L263-L267)<br>[unit definitions, bmad/hdf5/hdf5_openpmd_mod.f90:19–39](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_openpmd_mod.f90#L19-L39)<br>[hdf5_read_bunch charge readback, bmad/hdf5/hdf5_read_beam.f90:424–427](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/hdf5/hdf5_read_beam.f90#L424-L427)<br>[Bmad manual, HDF5 Particle Beam Data Storage (`s:hdf5.beam`), bmad/doc/hdf5-programming.tex:68–82](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/hdf5-programming.tex#L68-L82) |

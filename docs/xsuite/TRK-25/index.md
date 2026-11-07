@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Tracking |
 | Priority | P3 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-07 on xtrack release [v0.118.6](https://github.com/xsuite/xtrack/tree/v0.118.6) (`f09e0fb`) |
 | Source | [characterize_aperture, loss_location_refinement.py:594–659](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/loss_location_refinement/loss_location_refinement.py#L594-L659)<br>[The path selection, lines 159–185](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/loss_location_refinement/loss_location_refinement.py#L159-L185)<br>[Refinement and writeback, lines 354–383](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/loss_location_refinement/loss_location_refinement.py#L354-L383)<br>[LossLocationRefinement parameters, lines 31–58](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/loss_location_refinement/loss_location_refinement.py#L31-L58)<br>[the interpolated-impact guide, collimation.rst:248–255](https://github.com/xsuite/xsuite/blob/e0913e0a18028b2fce06991aebed6150876124b3/docs/collimation.rst#L248-L255)<br>[example, 001_loss_location_refinement.py:20–45](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/examples/collimation/001_loss_location_refinement.py#L20-L45) |

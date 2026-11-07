@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Lattice and API |
 | Priority | P2 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-22 on BeamTracking release [v0.8.7](https://github.com/bmad-sim/BeamTracking.jl/tree/v0.8.7) (`65e343f`) |
 | Issue | [[gh:https://github.com/bmad-sim/BeamTracking.jl/issues/374]], filed from this evidence |

@@ -33,7 +33,7 @@ A script that needs more than this states it in a `Setup:` paragraph of its desc
 
 <div class="bb-filters" data-column="Area"></div>
 
-| ID | Priority | Defect | Area | Severity | Last reproduced | Issue | PR |
+| ID | Priority | Defect | Area | Failure | Last reproduced | Issue | PR |
 |---|---|---|---|---|---|---|---|
 | [TRK-01](TRK-01/index.md) | P0 | Ordinary RF decelerates at the declared accelerating crest | Tracking | Wrong physics | 2026-10-24 ([`d8e45fd`](https://github.com/bmad-sim/BeamTracking.jl/commit/d8e45fdc25db)) |  |  |
 | [OPT-17](OPT-17/index.md) | P0 | Orbital caps of 1 drop the start-point dispersion feed-down (default `twiss(chrom=2)`, documented knob descriptors) | Optics and maps | Silent wrong result | 2026-10-31 ([`ae9423d`](https://github.com/bmad-sim/SciBmad.jl/commit/ae9423d703b4)) |  |  |

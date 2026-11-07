@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Elegant](../index.md) · Optics |
 | Priority | P1 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [`performSliceAnalysis`, whole-beam values, sliceAnalysis.c:543–546](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sliceAnalysis.c#L543-L546)<br>[the per-slice values, sliceAnalysis.c:594–601](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/sliceAnalysis.c#L594-L601)<br>[`exact_normalized_emittance` states that the approximate normalized emittance is ε⟨βγ⟩, elegant.tex:4143–4144](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L4143-L4144)<br>[slice analysis always uses that approximate computation, elegant.tex:7572–7573](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L7572-L7573) |

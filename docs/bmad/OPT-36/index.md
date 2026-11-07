@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Optics |
 | Priority | P2 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [radiation_integrals element dispatch, bmad/code/radiation_integrals.f90:458–491](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/radiation_integrals.f90#L458-L491)<br>[later wiggler dispatch, bmad/code/radiation_integrals.f90:514–539](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/radiation_integrals.f90#L514-L539)<br>[linac accumulation, bmad/code/radiation_integrals.f90:570–579](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/code/radiation_integrals.f90#L570-L579)<br>[Bmad manual, Synchrotron Radiation Integrals, bmad/doc/synchrotron-radiation.tex:283–295](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/synchrotron-radiation.tex#L283-L295) |

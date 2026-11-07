@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Lattices, particles and I/O |
 | Priority | P4 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-07 on xtrack release [v0.118.6](https://github.com/xsuite/xtrack/tree/v0.118.6) (`f09e0fb`) |
 | Source | [`element_to_mad_str`, mad_writer.py:670–680](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/mad_writer.py#L670-L680)<br>[edge-slice base, slice_elements_edge.py:34–39](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/beam_elements/slice_elements_edge.py#L34-L39)<br>[`Line.to_madx_sequence`, line.py:877–894](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/line.py#L877-L894)<br>[quadrupole attribute dictionary, mad_dict.c:1740–1793](https://github.com/MethodicalAcceleratorDesign/MAD-X/blob/3865cb633e66fb4cf53d2f37b00c919dbd6ab495/src/mad_dict.c#L1740-L1793)<br>[thick elements, madl_element.mad:174–177](https://github.com/MethodicalAcceleratorDesign/MAD-NG/blob/6e9f93fa222d4f3a3eb4b2685b2c45f2d07feb62/src/madl_element.mad#L174-L177) |

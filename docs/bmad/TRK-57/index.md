@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Bmad](../index.md) · Tracking, RF, fields and spin |
 | Priority | P3 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-05 on Bmad release [20261031-0](https://github.com/bmad-sim/bmad-ecosystem/tree/20261031-0) (`c4c629f`) |
 | Source | [`ptc_track_all`, bmad/ptc/ptc_layout_mod.f90:605–635](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ptc_layout_mod.f90#L605-L635)<br>[output contract, bmad/ptc/ptc_layout_mod.f90:580–584](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/ptc/ptc_layout_mod.f90#L580-L584)<br>[Bmad manual, “Aperture Placement” (`s:ap.place`), bmad/doc/attributes.tex:971–988](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/doc/attributes.tex#L971-L988)<br>[rectangular positive-horizontal limit, bmad/low_level/check_aperture_limit.f90:302–308](https://github.com/bmad-sim/bmad-ecosystem/blob/c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3/bmad/low_level/check_aperture_limit.f90#L302-L308) |

@@ -31,7 +31,7 @@ Some reproducers also need: mpmath, pysdds, scipy.
 
 <div class="bb-filters" data-column="Area"></div>
 
-| ID | Priority | Defect | Area | Severity | Last reproduced | Issue | PR |
+| ID | Priority | Defect | Area | Failure | Last reproduced | Issue | PR |
 |---|---|---|---|---|---|---|---|
 | [OPT-07](OPT-07/index.md) | P1 | Higher chromaticities mix cell and repeated-period phases <span class="bb-tag">partly-source-only</span> | Optics | Wrong physics | 2026-11-04 ([`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12)) |  |  |
 | [COL-44](COL-44/index.md) | P1 | An accelerating RFCW without a longitudinal wake evaluates its longitudinal space charge at the entrance momentum | Collective effects | Wrong physics | 2026-11-04 ([`7514db3`](https://github.com/rtsoliday/elegant/commit/7514db36f764)) |  |  |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [ImpactX](../index.md) · Tracking |
 | Priority | P2 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-27 on ImpactX release [26.10](https://github.com/BLAST-ImpactX/impactx/tree/26.10) (`615921c`) |
 | Issue | [[gh:https://github.com/BLAST-ImpactX/impactx/issues/1729]], filed from this evidence |

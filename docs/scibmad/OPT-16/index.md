@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P2 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-31 on FundamentalFrequencies release [v0.1.2](https://github.com/bmad-sim/FundamentalFrequencies.jl/tree/v0.1.2) (`f208dc0`) |
 | Source | [`src/FundamentalFrequencies.jl:108-114`](https://github.com/bmad-sim/FundamentalFrequencies.jl/blob/f208dc0724b6c22dc85d9f018c6e8b50bce37591/src/FundamentalFrequencies.jl#L108-L114)<br>[`:111`](https://github.com/bmad-sim/FundamentalFrequencies.jl/blob/f208dc0724b6c22dc85d9f018c6e8b50bce37591/src/FundamentalFrequencies.jl#L111)<br>[`:113`](https://github.com/bmad-sim/FundamentalFrequencies.jl/blob/f208dc0724b6c22dc85d9f018c6e8b50bce37591/src/FundamentalFrequencies.jl#L113)<br>[`:26`](https://github.com/bmad-sim/FundamentalFrequencies.jl/blob/f208dc0724b6c22dc85d9f018c6e8b50bce37591/src/FundamentalFrequencies.jl#L26)<br>[`:60`](https://github.com/bmad-sim/FundamentalFrequencies.jl/blob/f208dc0724b6c22dc85d9f018c6e8b50bce37591/src/FundamentalFrequencies.jl#L60) |

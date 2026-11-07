@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Collective effects and spin |
 | Priority | P2 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-10-31 on SpaceCharge release [v1.3.0](https://github.com/bmad-sim/SpaceCharge.jl/tree/v1.3.0) (`ae30463`) |
 | Source | [`SpaceCharge.jl/src/mesh.jl:142-173`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/mesh.jl#L142-L173)<br>[`SpaceCharge.jl/src/solvers/free_space.jl:25-31`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/solvers/free_space.jl#L25-L31)<br>[`SpaceCharge.jl/src/fft/transforms.jl:26,38`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/fft/transforms.jl#L26-L38)<br>[`free_space.jl:12`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/solvers/free_space.jl#L12)<br>[`mesh.jl:233-244`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/mesh.jl#L233-L244)<br>[`mesh.jl:168-173`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/src/mesh.jl#L168-L173)<br>[`SpaceCharge.jl/examples/cathode_solver_example.jl:8-21`](https://github.com/bmad-sim/SpaceCharge.jl/blob/ae30463305729aec2f04d4687ffd547b94750cb2/examples/cathode_solver_example.jl#L8-L21) |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P4 |
-| Severity | Crash or API hazard |
+| Failure | Crash or API hazard |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-24 on SciBmad commit [`5f0fb83`](https://github.com/bmad-sim/SciBmad.jl/commit/5f0fb83ac889), committed 2026-10-15 |
 | Tags | <span class="bb-tag">experimental</span> <span class="bb-tag">partly-source-only</span> [?](../../methodology.md#tags) |

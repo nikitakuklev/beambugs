@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P4 |
-| Severity | Documentation or example mismatch |
+| Failure | Documentation or example mismatch |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-31 on BatchSolve release [v0.1.5](https://github.com/mattsignorelli/BatchSolve.jl/tree/v0.1.5) (`ac41c09`) |
 | Source | [`src/rootfinders/newton.jl:30`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L30)<br>[`:59`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/rootfinders/newton.jl#L59)<br>[`src/minimizers/brent.jl:24`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/minimizers/brent.jl#L24)<br>[`:38`](https://github.com/mattsignorelli/BatchSolve.jl/blob/ac41c095255df9a3d4f33c4242a4e5d69e32a7ec/src/minimizers/brent.jl#L38) |

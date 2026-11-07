@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [SciBmad](../index.md) · Optics and maps |
 | Priority | P3 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-11-07 on NonlinearNormalForm commit [`dfc5c26`](https://github.com/bmad-sim/NonlinearNormalForm.jl/commit/dfc5c2697e53), committed 2026-11-06 |
 | Issue | [[gh:https://github.com/bmad-sim/NonlinearNormalForm.jl/issues/65]] |

@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Lattices, particles and I/O |
 | Priority | P4 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on xpart release [v0.23.23](https://github.com/xsuite/xpart/tree/v0.23.23) (`2633e52`) |
 | Source | [RFBucket.phi_offset_list setter and cached fixed points, rf_bucket.py:164–190](https://github.com/xsuite/xpart/blob/2633e528018af2e2de24db94122fbab7956ab12e/xpart/longitudinal/rf_bucket.py#L164-L190) |

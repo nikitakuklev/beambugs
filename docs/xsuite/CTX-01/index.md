@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Contexts and kernels |
 | Priority | P1 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on xobjects release [v0.7.2](https://github.com/xsuite/xobjects/tree/v0.7.2) (`dfe34ae`) |
 | Source | [`LinkedArrayCpu`, context_cpu.py:172–187](https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/xobjects/context_cpu.py#L172-L187)<br>[`BaseLinkedArray.__setitem__`, linkedarray.py:27–36](https://github.com/xsuite/xobjects/blob/dfe34ae824bd8b202015f4350e655238b5bb9511/xobjects/linkedarray.py#L27-L36)<br>[`Particles.delta` setter](https://github.com/xsuite/xtrack/blob/ad5e808cdc5b9a881eac2f41e32a0b7d11cc7028/xtrack/particles/particles.py#L1213-L1225) |

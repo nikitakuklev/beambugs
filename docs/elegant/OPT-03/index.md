@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Elegant](../index.md) · Optics |
 | Priority | P1 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-11-05 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [`incrementRadIntegrals`, CCBEND branch, src/twiss.cc:3091–3102](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3091-L3102)<br>[`incrementRadIntegrals`, LGBEND branch, src/twiss.cc:3103–3124](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3103-L3124)<br>[the generic bend branch, src/twiss.cc:3331–3335](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3331-L3335)<br>[the common per-element output, src/twiss.cc:3346–3351](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3346-L3351)<br>[`addLgbendRadiationIntegrals`, src/lgbend.c:814–912](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/lgbend.c#L814-L912)<br>[`completeRadiationIntegralComputation`, src/twiss.cc:3363–3369](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/twiss.cc#L3363-L3369)<br>[`radiation_integrals` option, manual, doc/elegant.tex:8092–8095](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8092-L8095) |

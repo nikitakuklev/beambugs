@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Elegant](../index.md) · Optics |
 | Priority | P3 |
-| Severity | Wrong physics |
+| Failure | Wrong physics |
 | Evidence | Probe-pinned |
 | Last reproduced | 2026-11-04 on Elegant commit [`0355dd6`](https://github.com/rtsoliday/elegant/commit/0355dd6aca12), committed 2026-11-03 |
 | Source | [`computeChromaticAlphaValue`, nonperiodic branch, src/chrom.c:1192–1200](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/chrom.c#L1192-L1200)<br>[`computeChromaticityValue`, src/chrom.c:1166–1167](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/chrom.c#L1166-L1167)<br>[`computeChromaticities`, assigning `dalphax` and `dalphay`, src/chrom.c:867–895](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/src/chrom.c#L867-L895)<br>[`dalphax/dp` and `dalphay/dp` are the chromatic derivatives of the alpha functions, dα/dδ, manual, doc/elegant.tex:8234–8235](https://github.com/rtsoliday/elegant/blob/0355dd6aca12c861971fbf8f3ae78a0ded991734/doc/elegant.tex#L8234-L8235) |

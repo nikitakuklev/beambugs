@@ -10,7 +10,7 @@ hide:
 |---|---|
 | Code | [Xsuite](../index.md) · Collective effects |
 | Priority | P3 |
-| Severity | Silent wrong result |
+| Failure | Silent wrong result |
 | Evidence | Reproduced, independently rechecked |
 | Last reproduced | 2026-10-29 on xcoll release [v0.12.5](https://github.com/xsuite/xcoll/tree/v0.12.5) (`64e13f5`) |
 | Source | [`LossMap._make_coll_summary`, lossmap.py:698–701](https://github.com/xsuite/xcoll/blob/64e13f596c879cb28edded913e3c97261a3401f2/xcoll/lossmap.py#L698-L701) |
