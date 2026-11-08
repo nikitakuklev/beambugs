@@ -26,6 +26,7 @@ nav:
       - Xsuite: xsuite/index.md
       - SciBmad: scibmad/index.md
       - Elegant: elegant/index.md
+      - PyORBIT: pyorbit/index.md
 
 hooks:
   - hooks/upstream_state.py

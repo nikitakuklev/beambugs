@@ -21,26 +21,20 @@ bmad:
     tao.md: Tao
   modules: []
   run: |
-    1. Build Bmad ecosystem release `20261031-0` (`c4c629fc9071`) from source, with GNU Fortran,
-       double precision, OpenMP enabled and serial Bmad libraries (the reproducers ran with GNU
-       Fortran 15.3.0): configure `util/dist_prefs` for GNU Fortran and the installed dependencies,
-       source `util/dist_source_me`, run `util/dist_build_production`, then run `mk` inside
-       `regression_tests`. This builds Tao, `bmad_to_mad_sad_elegant` and the regression executables.
+    1. Build the Bmad ecosystem from source with GNU Fortran, double precision, OpenMP enabled and
+       serial Bmad libraries: configure `util/dist_prefs` for GNU Fortran and the installed
+       dependencies, source `util/dist_source_me`, run `util/dist_build_production`, then run `mk`
+       inside `regression_tests`. This builds Tao, `bmad_to_mad_sad_elegant` and the regression
+       executables.
     2. Keep the complete build tree, including its CMake compile/link recipes, libraries, Fortran
        module files and the compiler that built them; the reproducers compile inline Fortran with
        those recipes.
     3. Set `BMAD_DIST` to that tree's absolute path (the directory containing `production` and
        `regression_tests`) and `BMAD_SOURCE` to the matching ecosystem source tree; a distribution
        build containing its archived sources can serve both variables.
-    4. Install NumPy and the additional Python packages listed below. MAD-X checks use cpymad 1.19.0
-       with MAD-X 5.09.03.
-    5. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
+    4. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
        [helpers directory](helpers/index.md), and save the helpers beside the script.
-    6. Run `python <ID>.py` with `OMP_NUM_THREADS=1`, one script per process.
-
-    A script that needs more than this states it in a `Setup:` paragraph of its description.
-    Scripts that run Elegant used serial Elegant from rtsoliday/elegant `0355dd6aca12` and SDDS
-    from rtsoliday/SDDS `a3f730a14c49`.
+    5. Run `python <ID>.py` with `OMP_NUM_THREADS=1`, one script per process.
 impactx:
   name: ImpactX
   homepage: https://impactx.readthedocs.io
@@ -58,13 +52,11 @@ impactx:
   modules: [impactx, amrex]
   # Shown once on the code page, above the generated list of extra packages.
   run: |
-    1. Install the CPU build of ImpactX 26.10, on which the reproducers ran:
-       `pip install impactx-noacc==26.10`.
+    1. Install the CPU build of ImpactX with its Python bindings: `pip install impactx-noacc` for a
+       release, or a source build for a `development` commit.
     2. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
        [helpers directory](helpers/index.md), and save the helpers beside the script.
     3. Run `python <ID>.py`, one script per process.
-
-    A script that needs more than this states it in a `Setup:` paragraph of its description.
 xsuite:
   name: Xsuite
   homepage: https://xsuite.readthedocs.io
@@ -87,15 +79,12 @@ xsuite:
     contexts_kernels.md: Contexts and kernels
   modules: [xsuite, xtrack, xpart, xobjects, xfields, xdeps, xcoll, xwakes]
   run: |
-    1. Install Xsuite 0.66.3 (`pip install xsuite==0.66.3`); the reproducers ran with xtrack
-       0.118.2, xfields 0.27.5, xpart 0.23.23, xobjects 0.7.2, xdeps 0.10.21 and xcoll 0.12.5.
+    1. Install Xsuite (`pip install xsuite`).
     2. Build its prebuilt CPU kernels with `xsuite-prebuild regenerate`. Scripts that use the
        `_prebuilt` helper forbid kernel compilation and run only these kernels.
     3. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
        [helpers directory](helpers/index.md), and save the helpers beside the script.
     4. Run `python <ID>.py`, one script per process.
-
-    A script that needs more than this states it in a `Setup:` paragraph of its description.
 scibmad:
   name: SciBmad
   homepage: https://github.com/bmad-sim/SciBmad.jl
@@ -120,20 +109,14 @@ scibmad:
     lattice_api.md: Lattice and API
   modules: []
   run: |
-    1. Install Julia 1.13 (the reproducers ran on 1.13.2).
-    2. In one Julia environment, add SciBmad, BeamTracking and AtomicAndPhysicalConstants at the
-       unreleased `main` commits the reproducers ran on: SciBmad `5f0fb83` (version 0.6.0),
-       BeamTracking `d8e45fd` (0.8.7) and AtomicAndPhysicalConstants `4095d79` (0.11.5). Add
-       SpaceCharge 1.3.0. The other dependencies ran at their releases Beamlines 0.11.0, GTPSA 1.5.6,
-       TPSAInterface 0.3.1, NonlinearNormalForm 0.5.3, BatchSolve 0.1.5 and FundamentalFrequencies
-       0.1.2.
+    1. Install Julia.
+    2. In one Julia environment, add SciBmad, BeamTracking, AtomicAndPhysicalConstants and
+       SpaceCharge. A package at an unreleased commit is added as `] add <Package>#<commit>`.
     3. Download a reproducer. For a Python launcher (`<ID>.py`), also download the `_*.py` helpers
        linked on its entry page from the shared [helpers directory](helpers/index.md) and save them
        beside the script.
     4. Run `julia <ID>.jl` (or `python <ID>.py`) in that environment with one thread
        (`JULIA_NUM_THREADS=1`), one script per process.
-
-    A script that needs more than this states it in a `Setup:` paragraph of its description.
 elegant:
   name: Elegant
   homepage: https://ops.aps.anl.gov/elegant.html
@@ -150,14 +133,35 @@ elegant:
     lattice_io.md: Lattices, particles and I/O
   modules: []
   run: |
-    1. Build serial Elegant and the SDDS tools from rtsoliday/elegant master `0355dd6aca12` and
-       rtsoliday/SDDS master `a3f730a14c49`, on which the reproducers ran (CPU, no CUDA). For MPI
-       runs, also build Pelegant with Open MPI.
+    1. Build serial Elegant and the SDDS tools from source
+       ([rtsoliday/elegant](https://github.com/rtsoliday/elegant) and
+       [rtsoliday/SDDS](https://github.com/rtsoliday/SDDS); CPU, no CUDA). For MPI runs, also build
+       Pelegant with Open MPI.
     2. Put the `elegant` and SDDS `bin` directories on `PATH` and set `RPN_DEFNS` to the `defns.rpn`
        file of SDDS; Elegant does not start without it.
     3. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
        [helpers directory](helpers/index.md), and save the helpers beside the script.
     4. Run `python <ID>.py`, which runs serial Elegant. Most scripts also accept `--mpi`, which adds a
        3-rank Pelegant run of the same cases and needs Pelegant and Open MPI `mpirun` on `PATH`.
-
-    A script that needs more than this states it in a `Setup:` paragraph of its description.
+pyorbit:
+  name: PyORBIT
+  homepage: https://github.com/PyORBIT-Collaboration/PyORBIT3
+  repository: PyORBIT-Collaboration/PyORBIT3
+  branch: main
+  repositories: {}
+  ledger: /mnt/apollo/ref_docs/pyorbit/upstream_defects
+  areas:
+    tracking.md: Tracking
+    optics.md: Optics
+    parsers.md: Lattice import
+    lattice_api.md: Lattice API
+    collective.md: Collective effects
+    particles_io.md: Particles and I/O
+    diagnostics.md: Diagnostics
+    elements.md: Elements and apertures
+    bindings.md: Bindings and build
+  modules: [orbit]
+  run: |
+    1. Build PyORBIT3 from source; the build needs a C++ compiler and FFTW. In a clone of the
+       repository, run `pip install --config-settings=setup-args=-DUSE_MPI=none .`.
+    2. Run `python <ID>.py` with `OMP_NUM_THREADS=1`, one script per process.
