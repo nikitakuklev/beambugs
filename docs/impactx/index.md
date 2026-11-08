@@ -13,15 +13,17 @@ Tags are explained in [Methodology](../methodology.md#tags).
 
 ## Running the reproducers
 
-1. Install the CPU build of ImpactX 26.10, on which the reproducers ran:
-   `pip install impactx-noacc==26.10`.
+1. Install the CPU build of ImpactX with its Python bindings: `pip install impactx-noacc` for a
+   release, or a source build for a `development` commit.
 2. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
    [helpers directory](helpers/index.md), and save the helpers beside the script.
 3. Run `python <ID>.py`, one script per process.
 
-A script that needs more than this states it in a `Setup:` paragraph of its description.
-
 Some reproducers also need: cpymad, docutils, h5py, matplotlib, mpmath, pals_schema, quantiphy, scipy, sympy.
+
+A script that needs more than this states it in a `Setup:` paragraph of its description.
+Each entry's *Last reproduced* names the release or commit its reproducer last ran on, and its
+provenance table gives the build of every run.
 
 ## Defects
 

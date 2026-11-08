@@ -13,21 +13,19 @@ Tags are explained in [Methodology](../methodology.md#tags).
 
 ## Running the reproducers
 
-1. Install Julia 1.13 (the reproducers ran on 1.13.2).
-2. In one Julia environment, add SciBmad, BeamTracking and AtomicAndPhysicalConstants at the
-   unreleased `main` commits the reproducers ran on: SciBmad `5f0fb83` (version 0.6.0),
-   BeamTracking `d8e45fd` (0.8.7) and AtomicAndPhysicalConstants `4095d79` (0.11.5). Add
-   SpaceCharge 1.3.0. The other dependencies ran at their releases Beamlines 0.11.0, GTPSA 1.5.6,
-   TPSAInterface 0.3.1, NonlinearNormalForm 0.5.3, BatchSolve 0.1.5 and FundamentalFrequencies
-   0.1.2.
+1. Install Julia.
+2. In one Julia environment, add SciBmad, BeamTracking, AtomicAndPhysicalConstants and
+   SpaceCharge. A package at an unreleased commit is added as `] add <Package>#<commit>`.
 3. Download a reproducer. For a Python launcher (`<ID>.py`), also download the `_*.py` helpers
    linked on its entry page from the shared [helpers directory](helpers/index.md) and save them
    beside the script.
 4. Run `julia <ID>.jl` (or `python <ID>.py`) in that environment with one thread
    (`JULIA_NUM_THREADS=1`), one script per process.
 
-A script that needs more than this states it in a `Setup:` paragraph of its description.
 
+A script that needs more than this states it in a `Setup:` paragraph of its description.
+Each entry's *Last reproduced* names the release or commit its reproducer last ran on, and its
+provenance table gives the build of every run.
 
 ## Defects
 

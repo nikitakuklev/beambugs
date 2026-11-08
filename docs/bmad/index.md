@@ -13,28 +13,26 @@ Tags are explained in [Methodology](../methodology.md#tags).
 
 ## Running the reproducers
 
-1. Build Bmad ecosystem release `20261031-0` (`c4c629fc9071`) from source, with GNU Fortran,
-   double precision, OpenMP enabled and serial Bmad libraries (the reproducers ran with GNU
-   Fortran 15.3.0): configure `util/dist_prefs` for GNU Fortran and the installed dependencies,
-   source `util/dist_source_me`, run `util/dist_build_production`, then run `mk` inside
-   `regression_tests`. This builds Tao, `bmad_to_mad_sad_elegant` and the regression executables.
+1. Build the Bmad ecosystem from source with GNU Fortran, double precision, OpenMP enabled and
+   serial Bmad libraries: configure `util/dist_prefs` for GNU Fortran and the installed
+   dependencies, source `util/dist_source_me`, run `util/dist_build_production`, then run `mk`
+   inside `regression_tests`. This builds Tao, `bmad_to_mad_sad_elegant` and the regression
+   executables.
 2. Keep the complete build tree, including its CMake compile/link recipes, libraries, Fortran
    module files and the compiler that built them; the reproducers compile inline Fortran with
    those recipes.
 3. Set `BMAD_DIST` to that tree's absolute path (the directory containing `production` and
    `regression_tests`) and `BMAD_SOURCE` to the matching ecosystem source tree; a distribution
    build containing its archived sources can serve both variables.
-4. Install NumPy and the additional Python packages listed below. MAD-X checks use cpymad 1.19.0
-   with MAD-X 5.09.03.
-5. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
+4. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
    [helpers directory](helpers/index.md), and save the helpers beside the script.
-6. Run `python <ID>.py` with `OMP_NUM_THREADS=1`, one script per process.
-
-A script that needs more than this states it in a `Setup:` paragraph of its description.
-Scripts that run Elegant used serial Elegant from rtsoliday/elegant `0355dd6aca12` and SDDS
-from rtsoliday/SDDS `a3f730a14c49`.
+5. Run `python <ID>.py` with `OMP_NUM_THREADS=1`, one script per process.
 
 Some reproducers also need: cpymad, h5py, mpmath, pysdds, scipy.
+
+A script that needs more than this states it in a `Setup:` paragraph of its description.
+Each entry's *Last reproduced* names the release or commit its reproducer last ran on, and its
+provenance table gives the build of every run.
 
 ## Defects
 

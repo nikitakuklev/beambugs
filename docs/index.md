@@ -18,5 +18,6 @@ Where an entry has been reported upstream, its page links the issue or pull requ
 | [Xsuite](xsuite/index.md) | 111 |
 | [SciBmad](scibmad/index.md) | 103 |
 | [Elegant](elegant/index.md) | 207 |
+| [PyORBIT](pyorbit/index.md) | 123 |
 
 All entries as JSON: [defects.json](defects.json).

@@ -13,9 +13,10 @@ Tags are explained in [Methodology](../methodology.md#tags).
 
 ## Running the reproducers
 
-1. Build serial Elegant and the SDDS tools from rtsoliday/elegant master `0355dd6aca12` and
-   rtsoliday/SDDS master `a3f730a14c49`, on which the reproducers ran (CPU, no CUDA). For MPI
-   runs, also build Pelegant with Open MPI.
+1. Build serial Elegant and the SDDS tools from source
+   ([rtsoliday/elegant](https://github.com/rtsoliday/elegant) and
+   [rtsoliday/SDDS](https://github.com/rtsoliday/SDDS); CPU, no CUDA). For MPI runs, also build
+   Pelegant with Open MPI.
 2. Put the `elegant` and SDDS `bin` directories on `PATH` and set `RPN_DEFNS` to the `defns.rpn`
    file of SDDS; Elegant does not start without it.
 3. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
@@ -23,9 +24,11 @@ Tags are explained in [Methodology](../methodology.md#tags).
 4. Run `python <ID>.py`, which runs serial Elegant. Most scripts also accept `--mpi`, which adds a
    3-rank Pelegant run of the same cases and needs Pelegant and Open MPI `mpirun` on `PATH`.
 
-A script that needs more than this states it in a `Setup:` paragraph of its description.
-
 Some reproducers also need: mpmath, pysdds, scipy.
+
+A script that needs more than this states it in a `Setup:` paragraph of its description.
+Each entry's *Last reproduced* names the release or commit its reproducer last ran on, and its
+provenance table gives the build of every run.
 
 ## Defects
 

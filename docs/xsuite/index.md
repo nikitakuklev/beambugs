@@ -13,17 +13,18 @@ Tags are explained in [Methodology](../methodology.md#tags).
 
 ## Running the reproducers
 
-1. Install Xsuite 0.66.3 (`pip install xsuite==0.66.3`); the reproducers ran with xtrack
-   0.118.2, xfields 0.27.5, xpart 0.23.23, xobjects 0.7.2, xdeps 0.10.21 and xcoll 0.12.5.
+1. Install Xsuite (`pip install xsuite`).
 2. Build its prebuilt CPU kernels with `xsuite-prebuild regenerate`. Scripts that use the
    `_prebuilt` helper forbid kernel compilation and run only these kernels.
 3. Download a reproducer and the `_*.py` helpers linked on its entry page from the shared
    [helpers directory](helpers/index.md), and save the helpers beside the script.
 4. Run `python <ID>.py`, one script per process.
 
-A script that needs more than this states it in a `Setup:` paragraph of its description.
-
 Some reproducers also need: cpymad, madng-tpsa, mpmath, scipy.
+
+A script that needs more than this states it in a `Setup:` paragraph of its description.
+Each entry's *Last reproduced* names the release or commit its reproducer last ran on, and its
+provenance table gives the build of every run.
 
 ## Defects
 
