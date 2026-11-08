@@ -11,8 +11,8 @@
 /* Index tables are as wide as their content: Defect (3) and Failure (5) wrap at fixed widths. */
 .md-typeset table[data-index] td:nth-child(3) { width: 26em; min-width: 26em; }
 .md-typeset table[data-index] :is(th, td):nth-child(5) { width: 8em; min-width: 8em; }
-/* Faint column lines in every sortable table. */
-.md-typeset table[data-defects] :is(th, td) + :is(th, td) { border-left: .05rem solid var(--md-default-fg-color--lightest); }
+/* Faint column lines in every table. */
+.md-typeset table:not([class]) :is(th, td) + :is(th, td) { border-left: .05rem solid var(--md-default-fg-color--lightest); }
 /* ID and Priority (columns 1-2) shrink to their content with tighter padding. */
 .md-typeset table[data-index] :is(th, td):nth-child(-n+2) { width: 1%; min-width: 0; padding-left: .6em; padding-right: .6em; }
 /* GitHub-style state icons for linked issues and pull requests. */
@@ -52,3 +52,7 @@
 /* Provenance tables: model and date stay on one line; a run's scope note wraps within its own width. */
 .md-typeset .bb-nowrap { white-space: nowrap; }
 .md-typeset .bb-scope { display: inline-block; max-width: 16em; }
+/* Definition tables on the methodology page span the text width; the term column fits its content. */
+.md-typeset .bb-defs .md-typeset__table { width: 100%; }
+.md-typeset .bb-defs table:not([class]) { display: table; width: 100%; }
+.md-typeset .bb-defs :is(th, td):first-child { width: 1%; white-space: nowrap; }
