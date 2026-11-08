@@ -7,14 +7,14 @@
 /* Entry header tables have no column headings. */
 .md-typeset table thead:has(th:empty) { display: none; }
 /* Index tables: keep dates, commits and upstream links on one line. */
-.md-typeset table[data-defects] td:nth-child(n+6), .md-typeset table[data-defects] td:first-child { white-space: nowrap; }
+.md-typeset table[data-index] td:nth-child(n+6), .md-typeset table[data-index] td:first-child { white-space: nowrap; }
 /* Index tables are as wide as their content: Defect (3) and Failure (5) wrap at fixed widths. */
-.md-typeset table[data-defects] td:nth-child(3) { width: 26em; min-width: 26em; }
-.md-typeset table[data-defects] :is(th, td):nth-child(5) { width: 8em; min-width: 8em; }
-/* Faint column lines. */
+.md-typeset table[data-index] td:nth-child(3) { width: 26em; min-width: 26em; }
+.md-typeset table[data-index] :is(th, td):nth-child(5) { width: 8em; min-width: 8em; }
+/* Faint column lines in every sortable table. */
 .md-typeset table[data-defects] :is(th, td) + :is(th, td) { border-left: .05rem solid var(--md-default-fg-color--lightest); }
 /* ID and Priority (columns 1-2) shrink to their content with tighter padding. */
-.md-typeset table[data-defects] :is(th, td):nth-child(-n+2) { width: 1%; min-width: 0; padding-left: .6em; padding-right: .6em; }
+.md-typeset table[data-index] :is(th, td):nth-child(-n+2) { width: 1%; min-width: 0; padding-left: .6em; padding-right: .6em; }
 /* GitHub-style state icons for linked issues and pull requests. */
 .md-typeset .bb-open { color: #1a7f37; }
 .md-typeset .bb-done { color: #8250df; }
@@ -49,3 +49,6 @@
 }
 .md-typeset .bb-switch input:checked { background: var(--md-primary-fg-color); }
 .md-typeset .bb-switch input:checked::before { transform: translateX(1em); }
+/* Provenance tables: model and date stay on one line; a run's scope note wraps within its own width. */
+.md-typeset .bb-nowrap { white-space: nowrap; }
+.md-typeset .bb-scope { display: inline-block; max-width: 16em; }

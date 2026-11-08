@@ -4,6 +4,7 @@
 document$.subscribe(function () {
   document.querySelectorAll(".bb-filters").forEach(function (box) {
     var table = box.parentElement.querySelector("table");
+    table.dataset.index = "";  // the code table; its column widths are styled in extra.css
     var headers = Array.from(table.tHead.rows[0].cells).map(function (c) { return c.textContent.trim(); });
     var col = headers.indexOf(box.dataset.column);
     if (col < 0) { throw new Error("bb-filters: no column " + box.dataset.column); }
