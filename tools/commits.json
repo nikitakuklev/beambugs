@@ -31,6 +31,14 @@
    "tip_seen": null
   }
  },
+ "PyORBIT-Collaboration/PyORBIT3": {
+  "28df66018aeb": {
+   "committed": "2026-10-14",
+   "sha": "28df66018aebe4e2b780b9747f4a2d7b8430a5c0",
+   "superseded": false,
+   "tip_seen": null
+  }
+ },
  "bmad-sim/AtomicAndPhysicalConstants.jl": {
   "750a9f276b7d": {
    "committed": "2026-10-26",
