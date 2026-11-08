@@ -111,7 +111,7 @@ Run `python COL-08.py` with [_precision.py](../helpers/_precision.py) in the sam
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-11-06 | 26.10 (`615921c6867c895cf3a8fcf1d12991079d0f7d75`), impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-06 | 26.10 (`615921c6867c895cf3a8fcf1d12991079d0f7d75`), impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD |
-| Confirmed | `claude-opus-5-5` | high | 2026-11-07 | development (`f9c2a82e24b700be2fbe9196a8c7404eaab09dfc`), source, CPU NOACC, double, serial, FFT, no openPMD or SIMD; also the impactx-noacc 26.10 wheel |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | 26.10 (`615921c6867c895cf3a8fcf1d12991079d0f7d75`), impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | 26.10 (`615921c6867c895cf3a8fcf1d12991079d0f7d75`), impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD |
+| Confirmed | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-11-07</span> | development (`f9c2a82e24b700be2fbe9196a8c7404eaab09dfc`), source, CPU NOACC, double, serial, FFT, no openPMD or SIMD; also the impactx-noacc 26.10 wheel |
 

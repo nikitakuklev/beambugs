@@ -122,7 +122,7 @@ Run `python TRK-12.py`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found<br><small>barrier nodes at q = −1 and +2</small> | `claude-opus-5-5` | high | 2026-11-07 | main (`28df66018aeb`), source, serial, CPU, double |
-| Found<br><small>barrier kernel for antiprotons and U²⁸⁺</small> | `claude-opus-5-5` | high | 2026-11-07 | main (`28df66018aeb`), source, serial, CPU, double |
-| Confirmed | `claude-sonnet-5-5` | high | 2026-11-07 | main (`28df66018aeb`), source, serial, CPU, double |
+| Found<br><small class="bb-scope">barrier nodes at q = −1 and +2</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-11-07</span> | main (`28df66018aeb`), source, serial, CPU, double |
+| Found<br><small class="bb-scope">barrier kernel for antiprotons and U²⁸⁺</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-11-07</span> | main (`28df66018aeb`), source, serial, CPU, double |
+| Confirmed | <span class="bb-nowrap">`claude-sonnet-5-5`</span> | high | <span class="bb-nowrap">2026-11-07</span> | main (`28df66018aeb`), source, serial, CPU, double |
 

@@ -130,6 +130,6 @@ Run `python COL-05.py` with [_common.py](../helpers/_common.py) in the same dire
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-26 | xfields 0.27.5 (`223b4fa134a1`), installed wheel and main-branch source, CPU, serial |
-| Confirmed | `gpt-6.1-sol` | low | 2026-10-26 | xfields 0.27.5 (`223b4fa134a1`), installed wheel and main-branch source, CPU, serial |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-26</span> | xfields 0.27.5 (`223b4fa134a1`), installed wheel and main-branch source, CPU, serial |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | low | <span class="bb-nowrap">2026-10-26</span> | xfields 0.27.5 (`223b4fa134a1`), installed wheel and main-branch source, CPU, serial |
 

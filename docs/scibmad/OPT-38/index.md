@@ -252,6 +252,6 @@ Run `python OPT-38.py` with [_scibmad.py](../helpers/_scibmad.py) in the same di
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `claude-opus-5-5` | high | 2026-11-06 | NonlinearNormalForm 0.5.3 (`7e40539857368faf9784736ad29c8f0ae6e70a23`), managed warm-cache packages; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d, GTPSA a5790a7deaa6; Julia 1.13.2, CPU, Float64, one thread |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-06 | NonlinearNormalForm 0.5.3 (`7e40539857368faf9784736ad29c8f0ae6e70a23`), managed warm-cache packages; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d, GTPSA a5790a7deaa6; Julia 1.13.2, CPU, Float64, one thread |
+| Found | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-11-06</span> | NonlinearNormalForm 0.5.3 (`7e40539857368faf9784736ad29c8f0ae6e70a23`), managed warm-cache packages; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d, GTPSA a5790a7deaa6; Julia 1.13.2, CPU, Float64, one thread |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | NonlinearNormalForm 0.5.3 (`7e40539857368faf9784736ad29c8f0ae6e70a23`), managed warm-cache packages; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d, GTPSA a5790a7deaa6; Julia 1.13.2, CPU, Float64, one thread |
 

@@ -111,6 +111,6 @@ Run `julia COL-13.jl`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-28 | SpaceCharge 1.3.0 (`ae3046330572`), source, Julia 1.13.2, CPU, Float32 and Float64, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-28 | SpaceCharge 1.3.0 (`ae3046330572`), source, Julia 1.13.2, CPU, Float32 and Float64, serial |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-28</span> | SpaceCharge 1.3.0 (`ae3046330572`), source, Julia 1.13.2, CPU, Float32 and Float64, serial |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-28</span> | SpaceCharge 1.3.0 (`ae3046330572`), source, Julia 1.13.2, CPU, Float32 and Float64, serial |
 

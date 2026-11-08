@@ -71,6 +71,6 @@ Run `python XLT-24.py` with [_bmad.py](../helpers/_bmad.py) and [_lattice_import
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6.1-sol` | xhigh | 2026-10-21 | foreign-export-embedded-kicks (`5afc3c33a462`), source, production, CPU, double, serial |
-| Confirmed | `claude-opus-5-5` | xhigh | 2026-10-22 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Found | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-21</span> | foreign-export-embedded-kicks (`5afc3c33a462`), source, production, CPU, double, serial |
+| Confirmed | <span class="bb-nowrap">`claude-opus-5-5`</span> | xhigh | <span class="bb-nowrap">2026-10-22</span> | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
 

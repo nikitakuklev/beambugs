@@ -142,6 +142,6 @@ Run `python IO-01.py` with [_common.py](../helpers/_common.py) in the same direc
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-26 | xpart 0.23.23 (`2633e528018a`), installed packages, CPU, serial |
-| Confirmed | `gpt-6.1-sol` | low | 2026-10-26 | xpart 0.23.23 (`2633e528018a`), installed packages, CPU, serial |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-26</span> | xpart 0.23.23 (`2633e528018a`), installed packages, CPU, serial |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | low | <span class="bb-nowrap">2026-10-26</span> | xpart 0.23.23 (`2633e528018a`), installed packages, CPU, serial |
 

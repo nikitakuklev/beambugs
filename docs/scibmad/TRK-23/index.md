@@ -186,6 +186,6 @@ Run `python TRK-23.py`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-11-06 | BeamTracking main (`d8e45fdc25dbebf4be8195e69be04df13d7383b1`), pinned source (BeamTracking 0.8.7, SciBmad 0.6.0 5f0fb83ac889, Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float32/Float64, scalar/SIMD, one thread |
-| Confirmed<br><small>body kick and fringe momentum conversion</small> | `gpt-6.1-sol` | xhigh | 2026-11-06 | BeamTracking main (`d8e45fdc25dbebf4be8195e69be04df13d7383b1`), pinned source (BeamTracking 0.8.7, SciBmad 0.6.0 5f0fb83ac889, Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float32/Float64, scalar/SIMD and zero-length KA CPU, one thread |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | BeamTracking main (`d8e45fdc25dbebf4be8195e69be04df13d7383b1`), pinned source (BeamTracking 0.8.7, SciBmad 0.6.0 5f0fb83ac889, Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float32/Float64, scalar/SIMD, one thread |
+| Confirmed<br><small class="bb-scope">body kick and fringe momentum conversion</small> | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | BeamTracking main (`d8e45fdc25dbebf4be8195e69be04df13d7383b1`), pinned source (BeamTracking 0.8.7, SciBmad 0.6.0 5f0fb83ac889, Beamlines 0.11.0 35fe0162c72d), Julia 1.13.2, CPU, Float32/Float64, scalar/SIMD and zero-length KA CPU, one thread |
 

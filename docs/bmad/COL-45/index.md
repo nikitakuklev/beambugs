@@ -248,7 +248,7 @@ Run `python COL-45.py` with [_bmad.py](../helpers/_bmad.py) in the same director
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-24 | ibs-ion-classical-radius (`886607535af8`), source, production, CPU, double, serial |
-| Confirmed<br><small>pwd_mat charge-state scaling</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
-| Confirmed<br><small>Vlasov bunch-length charge-state scaling</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | ibs-ion-classical-radius (`886607535af8`), source, production, CPU, double, serial |
+| Confirmed<br><small class="bb-scope">pwd_mat charge-state scaling</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Confirmed<br><small class="bb-scope">Vlasov bunch-length charge-state scaling</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
 

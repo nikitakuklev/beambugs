@@ -163,7 +163,7 @@ Run `python TAO-24.py` with [_bmad.py](../helpers/_bmad.py) and [_tao_contracts_
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found<br><small>normal-form conjugation convention (source check)</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`) |
-| Confirmed<br><small>geometric h300000 and h210000 conjugation</small> | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
-| Confirmed | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Found<br><small class="bb-scope">normal-form conjugation convention (source check)</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | 20261021-0 (`d00a8f17e55a`) |
+| Confirmed<br><small class="bb-scope">geometric h300000 and h210000 conjugation</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-05</span> | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
+| Confirmed | <span class="bb-nowrap">`claude-opus-5-5`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
 

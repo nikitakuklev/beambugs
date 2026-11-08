@@ -144,6 +144,6 @@ Run `python API-23.py` with [_slicing.py](../helpers/_slicing.py) in the same di
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `claude-opus-5-5` | high | 2026-11-06 | 26.10 (`615921c6867c`), pinned documentation source inspection; no reproducer execution |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-06 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial; Docutils 0.22.4 |
+| Found | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-11-06</span> | 26.10 (`615921c6867c`), pinned documentation source inspection; no reproducer execution |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial; Docutils 0.22.4 |
 

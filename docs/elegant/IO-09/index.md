@@ -133,6 +133,6 @@ Run `python IO-09.py` with [_diagnostics.py](../helpers/_diagnostics.py), [_eleg
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-11-06 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, double, serial elegant and elegantto, one thread |
-| Confirmed<br><small>MAD8/SAD and KSEXT, stale strengths and zero-field controls</small> | `gpt-6.1-sol` | xhigh | 2026-11-06 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, double, serial elegant and elegantto, one thread |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, double, serial elegant and elegantto, one thread |
+| Confirmed<br><small class="bb-scope">MAD8/SAD and KSEXT, stale strengths and zero-field controls</small> | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, double, serial elegant and elegantto, one thread |
 

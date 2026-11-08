@@ -90,7 +90,7 @@ Run `julia LAT-18.jl`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), source reading and phase arithmetic; the exporter was not built or run |
-| Confirmed | `gpt-6-sol` | xhigh | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), source reading and phase arithmetic; the exporter was not built or run |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | bmad-ecosystem 20261020-0 (`19b8afb46a40`), production bmad_to_scibmad 20261020-0, SciBmad 0.6.0 release packages, Julia 1.13.2, CPU |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-22</span> | bmad-ecosystem 20261020-0 (`19b8afb46a40`), source reading and phase arithmetic; the exporter was not built or run |
+| Confirmed | <span class="bb-nowrap">`gpt-6-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-22</span> | bmad-ecosystem 20261020-0 (`19b8afb46a40`), source reading and phase arithmetic; the exporter was not built or run |
+| Confirmed | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-22</span> | bmad-ecosystem 20261020-0 (`19b8afb46a40`), production bmad_to_scibmad 20261020-0, SciBmad 0.6.0 release packages, Julia 1.13.2, CPU |
 

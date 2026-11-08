@@ -172,6 +172,6 @@ Run `python IO-10.py`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `claude-opus-5-5` | high | 2026-11-07 | main (`28df66018aeb`), source, MPICH 5.0.2, CPU, double |
-| Confirmed<br><small>the hang; the offset identifiers as a contract question</small> | `claude-sonnet-5-5` | high | 2026-11-07 | main (`28df66018aeb`), source, MPICH 5.0.2, CPU, double |
+| Found | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-11-07</span> | main (`28df66018aeb`), source, MPICH 5.0.2, CPU, double |
+| Confirmed<br><small class="bb-scope">the hang; the offset identifiers as a contract question</small> | <span class="bb-nowrap">`claude-sonnet-5-5`</span> | high | <span class="bb-nowrap">2026-11-07</span> | main (`28df66018aeb`), source, MPICH 5.0.2, CPU, double |
 

@@ -338,7 +338,7 @@ Run `python API-18.py`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `claude-opus-5-5` | high | 2026-10-29 | development (`fa0a43b9bb07`), source, CPU, double, serial |
-| Found<br><small>LinearMap duplication; source only</small> | `gpt-6-astra` | xhigh | 2026-10-28 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-29 | development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Found | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-29</span> | development (`fa0a43b9bb07`), source, CPU, double, serial |
+| Found<br><small class="bb-scope">LinearMap duplication; source only</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-28</span> | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-29</span> | development (`fa0a43b9bb07`), source, CPU, double, serial |
 

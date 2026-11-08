@@ -243,6 +243,6 @@ Run `python TRK-72.py` with [_diagnostics.py](../helpers/_diagnostics.py) and [_
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `claude-opus-5-5` | high | 2026-11-06 | master (`0355dd6aca12`), source inspection; serial CPU/double attempt with SDDS a3f730a14c49 reached BINS validation |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-06 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, double, serial and three-rank MPI, one thread |
+| Found | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-11-06</span> | master (`0355dd6aca12`), source inspection; serial CPU/double attempt with SDDS a3f730a14c49 reached BINS validation |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, double, serial and three-rank MPI, one thread |
 

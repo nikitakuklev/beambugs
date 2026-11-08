@@ -123,6 +123,6 @@ Run `python IO-22.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `claude-opus-5-5` | high | 2026-11-06 | xsuite 0.66.3 (`e0913e0a1802`), LaTeX source inspection |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-06 | xsuite 0.66.3 (`e0913e0a1802`), LaTeX source; installed xtrack 0.118.2 (ad5e808cdc5b), Python particle conversion, CPU, double, serial; mpmath 1.3.0 at 70 digits |
+| Found | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-11-06</span> | xsuite 0.66.3 (`e0913e0a1802`), LaTeX source inspection |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | xsuite 0.66.3 (`e0913e0a1802`), LaTeX source; installed xtrack 0.118.2 (ad5e808cdc5b), Python particle conversion, CPU, double, serial; mpmath 1.3.0 at 70 digits |
 

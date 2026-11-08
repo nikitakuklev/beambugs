@@ -75,6 +75,6 @@ Run `python TRK-21.py` with [_bmad.py](../helpers/_bmad.py) and [_rf_and_spin.py
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `claude-opus-5-5` | high | 2026-10-22 | ptc-cavity-phase-update (`0a293736d062`), source, production, CPU, double, serial |
-| Confirmed<br><small>inverse voltage and phase conversions (source check)</small> | `gpt-6.1-sol` | xhigh | 2026-10-22 | ptc-cavity-phase-update (`b48e02e3d9fa`) |
+| Found | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-22</span> | ptc-cavity-phase-update (`0a293736d062`), source, production, CPU, double, serial |
+| Confirmed<br><small class="bb-scope">inverse voltage and phase conversions (source check)</small> | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-22</span> | ptc-cavity-phase-update (`b48e02e3d9fa`) |
 

@@ -187,6 +187,6 @@ Run `python COL-22.py` with [_prebuilt.py](../helpers/_prebuilt.py) and [_common
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-11-06 | xcoll 0.12.5 (`64e13f596c87`), installed packages, property/cache calculation, kernel compilation forbidden, CPU, double, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-06 | xcoll 0.12.5 (`64e13f596c87`), installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | xcoll 0.12.5 (`64e13f596c87`), installed packages, property/cache calculation, kernel compilation forbidden, CPU, double, serial |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | xcoll 0.12.5 (`64e13f596c87`), installed packages, prebuilt kernels (compilation forbidden), CPU, double, serial |
 

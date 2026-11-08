@@ -290,7 +290,7 @@ Run `python COL-30.py` with [_bmad.py](../helpers/_bmad.py) in the same director
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found<br><small>source check</small> | `gpt-6.1-sol` | xhigh | 2026-10-21 | 20261020-0 (`19b8afb46a40`) |
-| Found<br><small>source check</small> | `gpt-6-astra` | xhigh | 2026-10-21 | 20261020-0 (`19b8afb46a40`) |
-| Confirmed<br><small>compression-dependent energy-spread propagation</small> | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial libraries, OpenMP=1; application Open MPI 5.0.10, 2 ranks on one CPU |
+| Found<br><small class="bb-scope">source check</small> | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-21</span> | 20261020-0 (`19b8afb46a40`) |
+| Found<br><small class="bb-scope">source check</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-21</span> | 20261020-0 (`19b8afb46a40`) |
+| Confirmed<br><small class="bb-scope">compression-dependent energy-spread propagation</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-05</span> | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial libraries, OpenMP=1; application Open MPI 5.0.10, 2 ranks on one CPU |
 

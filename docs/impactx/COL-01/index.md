@@ -97,10 +97,10 @@ Run `python COL-01.py`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed<br><small>physics review of the reference length</small> | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`) |
-| Confirmed<br><small>validity review</small> | `gpt-6-astra` | xhigh | 2026-10-28 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed<br><small>validity review</small> | `claude-opus-5-5` | high | 2026-10-28 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed<br><small>development-build numbers</small> | `gpt-6-astra` | xhigh | 2026-10-28 | development (`b701a6e9d1f9`), source, CPU, double, serial |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-27</span> | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-27</span> | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed<br><small class="bb-scope">physics review of the reference length</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-27</span> | 26.10 (`615921c6867c`) |
+| Confirmed<br><small class="bb-scope">validity review</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-28</span> | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed<br><small class="bb-scope">validity review</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-28</span> | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed<br><small class="bb-scope">development-build numbers</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-28</span> | development (`b701a6e9d1f9`), source, CPU, double, serial |
 

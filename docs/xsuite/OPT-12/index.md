@@ -114,6 +114,6 @@ Run `python OPT-12.py` with [_matching.py](../helpers/_matching.py), [_prebuilt.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-28 | xtrack 0.118.2 (`ad5e808cdc5b`), installed wheels, Python only (no tracking kernels), CPU, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-28 | xtrack 0.118.2 (`ad5e808cdc5b`), installed wheels, Python only (no tracking kernels), CPU, serial |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-28</span> | xtrack 0.118.2 (`ad5e808cdc5b`), installed wheels, Python only (no tracking kernels), CPU, serial |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-28</span> | xtrack 0.118.2 (`ad5e808cdc5b`), installed wheels, Python only (no tracking kernels), CPU, serial |
 

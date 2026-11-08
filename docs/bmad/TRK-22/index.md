@@ -174,6 +174,6 @@ Run `python TRK-22.py` with [_bmad.py](../helpers/_bmad.py) and [_rf_and_spin.py
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6.1-sol` | xhigh | 2026-10-22 | ptc-cavity-phase-update (`b48e02e3d9fa`), source, production, CPU, double, serial |
-| Confirmed | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
+| Found | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-22</span> | ptc-cavity-phase-update (`b48e02e3d9fa`), source, production, CPU, double, serial |
+| Confirmed | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-05</span> | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
 

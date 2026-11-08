@@ -280,8 +280,8 @@ Run `python COL-24.py` with [_elegant.py](../helpers/_elegant.py) and [_trwake.p
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found<br><small>single-bunch zero time origin</small> | `gpt-6-astra` | xhigh | 2026-10-29 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
-| Found<br><small>multiple-bunch rank-local time origins</small> | `gpt-6.1-sol` | xhigh | 2026-10-29 | master (`75a2e1a1a58b`), source reading, not executed for this claim |
-| Confirmed<br><small>single-bunch zero time origin</small> | `gpt-6.1-sol` | xhigh | 2026-10-29 | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
-| Confirmed<br><small>multiple-bunch rank-local time origins</small> | `gpt-6-astra` | xhigh | 2026-11-03 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial control and 3-rank Pelegant |
+| Found<br><small class="bb-scope">single-bunch zero time origin</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-29</span> | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
+| Found<br><small class="bb-scope">multiple-bunch rank-local time origins</small> | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-29</span> | master (`75a2e1a1a58b`), source reading, not executed for this claim |
+| Confirmed<br><small class="bb-scope">single-bunch zero time origin</small> | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-29</span> | master (`75a2e1a1a58b`), source with SDDS a60b9bbed7cc, CPU, serial and 3-rank Pelegant |
+| Confirmed<br><small class="bb-scope">multiple-bunch rank-local time origins</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-03</span> | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial control and 3-rank Pelegant |
 

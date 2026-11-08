@@ -231,6 +231,6 @@ Run `julia OPT-36.jl`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-29 | GTPSA 1.5.6 (`a5790a7deaa6`), source, Julia 1.13.2, CPU, Float64, serial |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-29 | GTPSA 1.5.6 (`a5790a7deaa6`), source, Julia 1.13.2, CPU, Float64, serial |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-29</span> | GTPSA 1.5.6 (`a5790a7deaa6`), source, Julia 1.13.2, CPU, Float64, serial |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-29</span> | GTPSA 1.5.6 (`a5790a7deaa6`), source, Julia 1.13.2, CPU, Float64, serial |
 

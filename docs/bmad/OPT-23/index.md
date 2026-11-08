@@ -229,7 +229,7 @@ Run `python OPT-23.py` with [_bmad.py](../helpers/_bmad.py) and [_dispersion_and
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found<br><small>ion charge-squared radiation scaling (source check)</small> | `gpt-6-astra` | xhigh | 2026-10-24 | ibs-ion-classical-radius (`886607535af8`) |
-| Confirmed<br><small>radiation_integrals ion scaling</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
-| Confirmed<br><small>symp_lie_bmad ion scaling</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Found<br><small class="bb-scope">ion charge-squared radiation scaling (source check)</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | ibs-ion-classical-radius (`886607535af8`) |
+| Confirmed<br><small class="bb-scope">radiation_integrals ion scaling</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Confirmed<br><small class="bb-scope">symp_lie_bmad ion scaling</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
 

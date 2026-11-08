@@ -207,7 +207,7 @@ Run `python COL-17.py` with [_scibmad.py](../helpers/_scibmad.py) in the same di
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-11-06 | BeamTracking main (`d8e45fdc25db`), source (SciBmad 5f0fb83ac889, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-06 | BeamTracking main (`d8e45fdc25db`), source (SciBmad 5f0fb83ac889, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
-| Confirmed | `claude-opus-5-5` | high | 2026-11-07 | BeamTracking main (`d8e45fdc25db`), source (SciBmad 5f0fb83ac889, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | BeamTracking main (`d8e45fdc25db`), source (SciBmad 5f0fb83ac889, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | BeamTracking main (`d8e45fdc25db`), source (SciBmad 5f0fb83ac889, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
+| Confirmed | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-11-07</span> | BeamTracking main (`d8e45fdc25db`), source (SciBmad 5f0fb83ac889, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
 

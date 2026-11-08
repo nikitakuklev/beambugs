@@ -137,6 +137,6 @@ Run `python IO-06.py` with [_diagnostics.py](../helpers/_diagnostics.py) and [_e
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-11-06 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, double, serial and 3-rank MPI, one thread |
-| Confirmed<br><small>arbitrary selected particle-ID subsets, count and sparse modes, aperture losses</small> | `gpt-6.1-sol` | xhigh | 2026-11-06 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, double, serial and 3-rank MPI, one thread |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, double, serial and 3-rank MPI, one thread |
+| Confirmed<br><small class="bb-scope">arbitrary selected particle-ID subsets, count and sparse modes, aperture losses</small> | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, double, serial and 3-rank MPI, one thread |
 

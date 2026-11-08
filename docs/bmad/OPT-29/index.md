@@ -188,7 +188,7 @@ Run `python OPT-29.py` with [_bmad.py](../helpers/_bmad.py) in the same director
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6.1-sol` | xhigh | 2026-10-24 | symp-lie-bmad-radiation (`057b5bb2f83a`), source, production, CPU, double, serial |
-| Confirmed<br><small>reference-species radiation coefficients (source check)</small> | `claude-opus-5-5` | high | 2026-10-24 | 20261021-0 (`d00a8f17e55a`) |
-| Confirmed<br><small>deterministic reference-species radiation dependence</small> | `gpt-6-astra` | xhigh | 2026-11-05 | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
+| Found | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | symp-lie-bmad-radiation (`057b5bb2f83a`), source, production, CPU, double, serial |
+| Confirmed<br><small class="bb-scope">reference-species radiation coefficients (source check)</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-24</span> | 20261021-0 (`d00a8f17e55a`) |
+| Confirmed<br><small class="bb-scope">deterministic reference-species radiation dependence</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-05</span> | 20261031-0 (`c4c629fc9071`), source, production, GNU Fortran 15.3.0, CPU, double, serial, OpenMP=1 |
 

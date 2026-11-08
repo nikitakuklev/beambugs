@@ -98,7 +98,7 @@ Run `python TRK-06.py`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Found<br><small>silently wrong near-zero case</small> | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-27 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-27</span> | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Found<br><small class="bb-scope">silently wrong near-zero case</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-27</span> | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
+| Confirmed | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-27</span> | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU, double, serial |
 

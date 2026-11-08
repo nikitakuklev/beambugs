@@ -300,8 +300,8 @@ Run `python API-19.py`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-11-06 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD |
-| Found<br><small>named-electron import and spin on development</small> | `gpt-6-astra` | xhigh | 2026-11-06 | development (`f9c2a82e24b7`), source, CPU NOACC, double, serial, FFT, no openPMD or SIMD |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-06 | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD |
-| Confirmed<br><small>independent SI Thomas–BMT confirmation on development</small> | `gpt-6.1-sol` | xhigh | 2026-11-06 | development (`f9c2a82e24b7`), source, CPU NOACC, double, serial, FFT, no openPMD or SIMD |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD |
+| Found<br><small class="bb-scope">named-electron import and spin on development</small> | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | development (`f9c2a82e24b7`), source, CPU NOACC, double, serial, FFT, no openPMD or SIMD |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | 26.10 (`615921c6867c`), impactx-noacc wheel, CPU NOACC, double, serial, SIMD 4, FFT, openPMD |
+| Confirmed<br><small class="bb-scope">independent SI Thomas–BMT confirmation on development</small> | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | development (`f9c2a82e24b7`), source, CPU NOACC, double, serial, FFT, no openPMD or SIMD |
 

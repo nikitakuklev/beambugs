@@ -193,6 +193,6 @@ Run `python SCT-24.py` with [_elegant.py](../helpers/_elegant.py) in the same di
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-11-05 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial and 5-rank Pelegant |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-05 | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial and 3-, 5- and 7-rank Pelegant |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-05</span> | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial and 5-rank Pelegant |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-05</span> | master (`0355dd6aca12`), source with SDDS a3f730a14c49, CPU, serial and 3-, 5- and 7-rank Pelegant |
 

@@ -200,6 +200,6 @@ Run `python LAT-26.py` with [_scibmad.py](../helpers/_scibmad.py) in the same di
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-11-06 | bmad-ecosystem 20261031-0 (`c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3`), production bmad_to_scibmad and Tao 20261031-0; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d; Julia 1.13.2, CPU, Float64, one thread |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-11-06 | bmad-ecosystem 20261031-0 (`c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3`), production bmad_to_scibmad and Tao 20261031-0; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d; Julia 1.13.2, CPU, Float64, one thread |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | bmad-ecosystem 20261031-0 (`c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3`), production bmad_to_scibmad and Tao 20261031-0; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d; Julia 1.13.2, CPU, Float64, one thread |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-11-06</span> | bmad-ecosystem 20261031-0 (`c4c629fc9071d3a56cb1ba5bc714baba65e9c5d3`), production bmad_to_scibmad and Tao 20261031-0; SciBmad 5f0fb83ac889, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d; Julia 1.13.2, CPU, Float64, one thread |
 

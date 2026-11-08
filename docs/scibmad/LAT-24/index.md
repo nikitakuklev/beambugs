@@ -71,6 +71,6 @@ Run `julia LAT-24.jl`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), BeamTracking main, same tree as the 0.8.7 release, with the proposed fix for LAT-05 applied, Julia 1.13.2, CPU |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-23 | BeamTracking 0.8.7 (`65e343f9afda`), BeamTracking main, same tree as the 0.8.7 release, Julia 1.13.2, CPU, serial |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-23</span> | BeamTracking 0.8.7 (`65e343f9afda`), BeamTracking main, same tree as the 0.8.7 release, with the proposed fix for LAT-05 applied, Julia 1.13.2, CPU |
+| Confirmed | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-23</span> | BeamTracking 0.8.7 (`65e343f9afda`), BeamTracking main, same tree as the 0.8.7 release, Julia 1.13.2, CPU, serial |
 

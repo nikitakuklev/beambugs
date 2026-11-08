@@ -76,7 +76,7 @@ Run `julia OPT-19.jl`.
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `claude-opus-5-5` | high | 2026-10-22 | GTPSA 1.5.6 (`a5790a7deaa6`), release sources, Julia 1.13.2, CPU, Float64 |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | GTPSA 1.5.6 (`a5790a7deaa6`), release sources, Julia 1.13.2, CPU, Float64 |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-30 | GTPSA 1.5.6 (`a5790a7deaa6`), source (SciBmad 5f0fb83ac889, NonlinearNormalForm 7e4053985736, GTPSA a5790a7deaa6, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
+| Found | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-22</span> | GTPSA 1.5.6 (`a5790a7deaa6`), release sources, Julia 1.13.2, CPU, Float64 |
+| Confirmed | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-22</span> | GTPSA 1.5.6 (`a5790a7deaa6`), release sources, Julia 1.13.2, CPU, Float64 |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-30</span> | GTPSA 1.5.6 (`a5790a7deaa6`), source (SciBmad 5f0fb83ac889, NonlinearNormalForm 7e4053985736, GTPSA a5790a7deaa6, BeamTracking d8e45fdc25db, Beamlines 35fe0162c72d), Julia 1.13.2, CPU, Float64, one thread |
 

@@ -97,7 +97,7 @@ Run `python XLT-30.py` with [_bmad.py](../helpers/_bmad.py) and [_s3_24_translat
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-24 | madx-ksl-sign, source, production, CPU, double, serial |
-| Confirmed<br><small>whole-element multipole tilt in MAD-X export</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
-| Confirmed<br><small>tilted reference-bend and thick-element error extensions</small> | `claude-opus-5-5` | xhigh | 2026-10-24 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | madx-ksl-sign, source, production, CPU, double, serial |
+| Confirmed<br><small class="bb-scope">whole-element multipole tilt in MAD-X export</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Confirmed<br><small class="bb-scope">tilted reference-bend and thick-element error extensions</small> | <span class="bb-nowrap">`claude-opus-5-5`</span> | xhigh | <span class="bb-nowrap">2026-10-24</span> | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
 

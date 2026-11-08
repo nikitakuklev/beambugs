@@ -125,6 +125,6 @@ Run `python IO-04.py` with [_elegant.py](../helpers/_elegant.py) and [_sdds.py](
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6-astra` | xhigh | 2026-10-28 | SDDS master (`a60b9bbed7cc`), source with Elegant 75a2e1a1a58b, CPU, serial native library API, one thread |
-| Confirmed | `gpt-6.1-sol` | xhigh | 2026-10-28 | SDDS master (`a60b9bbed7cc`), source with Elegant 75a2e1a1a58b, CPU, serial native library API, one thread |
+| Found | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-28</span> | SDDS master (`a60b9bbed7cc`), source with Elegant 75a2e1a1a58b, CPU, serial native library API, one thread |
+| Confirmed | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-28</span> | SDDS master (`a60b9bbed7cc`), source with Elegant 75a2e1a1a58b, CPU, serial native library API, one thread |
 

@@ -178,6 +178,6 @@ Run `python COL-08.py` with [_bmad.py](../helpers/_bmad.py) and [_collective_fie
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gemini-4-argon-high` |  | 2026-10-20 | 20261020-0 (`19b8afb46a40`), source, production, CPU, double, serial |
-| Confirmed | `gpt-6-astra` | xhigh | 2026-10-20 | 20261020-0 (`19b8afb46a40`), source, production, CPU, double, serial |
+| Found | <span class="bb-nowrap">`gemini-4-argon-high`</span> |  | <span class="bb-nowrap">2026-10-20</span> | 20261020-0 (`19b8afb46a40`), source, production, CPU, double, serial |
+| Confirmed | <span class="bb-nowrap">`gpt-6-astra`</span> | xhigh | <span class="bb-nowrap">2026-10-20</span> | 20261020-0 (`19b8afb46a40`), source, production, CPU, double, serial |
 

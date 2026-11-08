@@ -101,6 +101,6 @@ Run `python XLT-29.py` with [_bmad.py](../helpers/_bmad.py), [_s4_17_translation
 
 | Role | Model | Effort | Date | Code examined |
 |---|---|---|---|---|
-| Found | `gpt-6.1-sol` | xhigh | 2026-10-22 | madx-ksl-sign (`4f66d23445fb`), source, production, CPU, double, serial |
-| Confirmed | `claude-opus-5-5` | high | 2026-10-22 | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
+| Found | <span class="bb-nowrap">`gpt-6.1-sol`</span> | xhigh | <span class="bb-nowrap">2026-10-22</span> | madx-ksl-sign (`4f66d23445fb`), source, production, CPU, double, serial |
+| Confirmed | <span class="bb-nowrap">`claude-opus-5-5`</span> | high | <span class="bb-nowrap">2026-10-22</span> | 20261021-0 (`d00a8f17e55a`), source, production, CPU, double, serial |
 
